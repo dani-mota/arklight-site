@@ -1372,6 +1372,68 @@
             letter-spacing: 0.05em;
         }
 
+        /* Overview Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 1px;
+            background: var(--border-primary);
+            border: 1px solid var(--border-primary);
+        }
+
+        .overview-card {
+            background: var(--bg-primary);
+            padding: 32px;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+
+        .overview-card:hover {
+            background: var(--bg-secondary);
+        }
+
+        .overview-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .overview-card-name {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .overview-card-id {
+            font-size: 11px;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+        }
+
+        .overview-card-score {
+            text-align: right;
+        }
+
+        .overview-card-value {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        .overview-card-band {
+            font-size: 9px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .overview-card-roles {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .cutlines-container {
@@ -1419,49 +1481,634 @@
             }
 
             .bar-item {
-                grid-template-columns: 120px 1fr 50px;
+                grid-template-columns: 100px 1fr 40px;
+                gap: 12px;
+            }
+
+            .bar-label {
+                font-size: 11px;
             }
 
             .impact-strip {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .controls-bar {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .control-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            select {
+                min-width: 160px;
+            }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+            /* Header */
             .header {
                 flex-direction: column;
                 height: auto;
                 padding: 16px 20px;
-                gap: 16px;
+                gap: 12px;
             }
 
+            .logo-section {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .nav-tabs {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-tab {
+                padding: 8px 16px;
+                font-size: 12px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            /* Main content */
             .main-content {
-                padding: 140px 20px 40px;
+                padding: 130px 16px 40px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 40px 0 60px;
+            }
+
+            .hero-eyebrow {
+                font-size: 10px;
+                margin-bottom: 16px;
             }
 
             .hero-title {
-                font-size: 36px;
+                font-size: 32px;
+                margin-bottom: 16px;
+            }
+
+            .hero-subtitle {
+                font-size: 15px;
+                margin-bottom: 32px;
+                padding: 0 8px;
+            }
+
+            /* Impact strip */
+            .impact-strip {
+                grid-template-columns: 1fr 1fr;
+                margin: 40px 0;
+            }
+
+            .impact-card {
+                padding: 24px 16px;
+            }
+
+            .impact-value {
+                font-size: 32px;
+            }
+
+            .impact-label {
+                font-size: 9px;
+            }
+
+            /* Section headers */
+            .section-header {
+                margin-bottom: 24px;
+                padding-bottom: 16px;
+            }
+
+            /* Controls */
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 16px 0;
+                margin-bottom: 24px;
+            }
+
+            .control-group {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            select {
+                flex: 1;
+                min-width: 0;
+                max-width: 200px;
+            }
+
+            .checkbox-label {
+                font-size: 12px;
+            }
+
+            /* Candidate table - convert to cards on mobile */
+            .candidate-table {
+                display: block;
+            }
+
+            .candidate-table thead {
+                display: none;
+            }
+
+            .candidate-table tbody {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+                background: var(--border-primary);
+            }
+
+            .candidate-table tbody tr {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                grid-template-rows: auto auto auto;
+                gap: 8px 16px;
+                padding: 20px;
+                background: var(--bg-primary);
+            }
+
+            .candidate-table tbody tr td {
+                padding: 0;
+                border: none;
+            }
+
+            .candidate-table tbody tr td:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .candidate-table tbody tr td:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+                justify-self: end;
+            }
+
+            .candidate-table tbody tr td:nth-child(3) {
+                grid-column: 1 / -1;
+                grid-row: 2;
+            }
+
+            /* Hide extra score columns on mobile, show only ACI */
+            .candidate-table tbody tr td:nth-child(5),
+            .candidate-table tbody tr td:nth-child(6),
+            .candidate-table tbody tr td:nth-child(7) {
+                display: none;
+            }
+
+            .candidate-table tbody tr td:nth-child(4) {
+                grid-column: 2;
+                grid-row: 1 / 3;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+
+            .candidate-table tbody tr td:nth-child(4) .score-cell {
+                font-size: 28px;
+                font-weight: 300;
+            }
+
+            .candidate-name {
+                font-size: 16px;
+            }
+
+            .candidate-id {
+                font-size: 10px;
+            }
+
+            .role-chips {
+                margin-top: 4px;
+            }
+
+            /* Detail view */
+            .detail-back {
+                margin-bottom: 24px;
+                font-size: 12px;
+            }
+
+            .detail-header {
+                padding-bottom: 32px;
+                margin-bottom: 32px;
+                gap: 24px;
+            }
+
+            .detail-candidate-name {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .detail-candidate-meta {
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                font-size: 11px;
+                margin-bottom: 12px;
+            }
+
+            .detail-candidate-meta .divider {
+                display: none;
+            }
+
+            .detail-candidate-meta > span,
+            .detail-candidate-meta > .candidate-status,
+            .detail-candidate-meta > .onboarding-indicator {
+                padding: 4px 0;
+            }
+
+            .detail-candidate-background {
+                font-size: 14px;
+            }
+
+            .detail-aci-score {
+                padding-top: 24px;
+            }
+
+            .detail-aci-value {
+                font-size: 56px;
+            }
+
+            .detail-aci-percentile {
+                font-size: 13px;
+            }
+
+            /* Composites grid */
+            .composites-grid {
+                grid-template-columns: 1fr 1fr;
+                margin-bottom: 40px;
+            }
+
+            .composite-card {
+                padding: 24px 16px;
+            }
+
+            .composite-label {
+                font-size: 9px;
+                margin-bottom: 12px;
+            }
+
+            .composite-value {
+                font-size: 28px;
+            }
+
+            .composite-percentile {
+                font-size: 11px;
+            }
+
+            /* Charts */
+            .charts-grid {
+                gap: 24px;
+                margin-bottom: 40px;
+            }
+
+            .chart-container {
+                padding: 24px 16px;
+            }
+
+            .chart-title {
+                margin-bottom: 20px;
+            }
+
+            .radar-chart svg {
+                max-width: 280px;
+                max-height: 280px;
+            }
+
+            .bar-item {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .bar-label {
+                text-align: left;
+                font-size: 11px;
+            }
+
+            .bar-track {
+                order: 1;
+            }
+
+            .bar-percentile {
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 11px;
+            }
+
+            .bar-item {
+                position: relative;
+                padding-right: 40px;
+            }
+
+            /* Construct sections */
+            .construct-section-header {
+                padding: 16px 20px;
+            }
+
+            .construct-section-title {
+                font-size: 13px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .construct-card {
+                padding: 20px;
+            }
+
+            .construct-card-header {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .construct-name {
+                font-size: 13px;
+                flex-wrap: wrap;
+            }
+
+            .construct-predicts {
+                font-size: 12px;
+            }
+
+            .construct-matters {
+                font-size: 11px;
+            }
+
+            .construct-scores {
+                justify-content: space-between;
+                padding-top: 12px;
+                border-top: 1px solid var(--border-primary);
+            }
+
+            .construct-score-value {
+                font-size: 24px;
+            }
+
+            .construct-score-secondary {
+                text-align: left;
+            }
+
+            /* Evidence panel */
+            .construct-evidence {
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+
+            .evidence-section {
+                margin-bottom: 20px;
+            }
+
+            .evidence-scenario,
+            .evidence-rationale {
+                padding: 16px;
+                font-size: 13px;
+            }
+
+            .transcript-turn {
+                padding: 16px;
+            }
+
+            .transcript-content {
+                font-size: 13px;
+            }
+
+            .evidence-indicators {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .indicator-item {
+                padding: 10px 16px;
+                font-size: 11px;
+            }
+
+            .standardization-note {
+                padding: 12px 16px;
+                font-size: 11px;
+            }
+
+            /* Cutlines */
+            .cutlines-container {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                border: none;
+                background: transparent;
+            }
+
+            .cutlines-roles {
+                display: flex;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                gap: 1px;
+                background: var(--border-primary);
+                border: 1px solid var(--border-primary);
+                margin-bottom: 24px;
+            }
+
+            .cutlines-role-item {
+                flex-shrink: 0;
+                padding: 16px 20px;
+                min-width: 160px;
+                border-bottom: none;
+            }
+
+            .cutlines-role-item.selected {
+                background: var(--bg-tertiary);
+            }
+
+            .cutlines-role-name {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .cutlines-role-count {
+                font-size: 11px;
+            }
+
+            .cutlines-detail {
+                padding: 24px 20px;
+                border: 1px solid var(--border-primary);
+            }
+
+            .cutlines-detail h3 {
+                font-size: 20px;
+                margin-bottom: 24px;
+            }
+
+            .requirement-item {
+                padding: 12px 0;
+            }
+
+            .requirement-construct {
+                font-size: 13px;
+            }
+
+            .cutline-candidate-row {
+                padding: 12px 0;
+            }
+
+            .cutline-candidate-name {
+                font-size: 14px;
+            }
+
+            .fit-explanation {
+                margin-top: 24px;
+                padding: 20px;
+            }
+
+            .fit-title {
+                font-size: 13px;
+            }
+
+            .fit-item {
+                font-size: 12px;
+            }
+
+            /* Heatmap */
+            .heatmap-container {
+                margin: 0 -16px;
+                padding: 0 16px;
+            }
+
+            .heatmap-table {
+                font-size: 9px;
+            }
+
+            .heatmap-table th,
+            .heatmap-table td {
+                padding: 8px 4px;
+            }
+
+            .heatmap-table th.rotate {
+                height: 60px;
+                font-size: 8px;
+            }
+
+            .heatmap-table td.candidate-col {
+                font-size: 10px;
+                padding-left: 8px;
+                max-width: 80px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .heatmap-cell {
+                font-size: 9px;
+            }
+
+            /* Overview grid */
+            .overview-card {
+                padding: 20px;
+            }
+
+            .overview-card-header {
+                margin-bottom: 12px;
+            }
+
+            .overview-card-name {
+                font-size: 14px;
+            }
+
+            .overview-card-id {
+                font-size: 10px;
+            }
+
+            .overview-card-value {
+                font-size: 24px;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 24px 16px;
+            }
+
+            .footer-disclaimer {
+                font-size: 10px;
+                padding: 10px 16px;
+            }
+
+            .footer p {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .main-content {
+                padding: 120px 12px 32px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .impact-strip {
+                grid-template-columns: 1fr;
             }
 
             .composites-grid {
                 grid-template-columns: 1fr;
             }
 
-            .impact-strip {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-tabs {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
             .detail-candidate-name {
-                font-size: 32px;
+                font-size: 24px;
             }
 
             .detail-aci-value {
-                font-size: 64px;
+                font-size: 48px;
+            }
+
+            .nav-tab {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+        }
+
+        /* Touch-friendly tap targets */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-tab {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .candidate-table tbody tr {
+                min-height: 80px;
+            }
+
+            .construct-section-header {
+                min-height: 56px;
+            }
+
+            .cutlines-role-item {
+                min-height: 60px;
+            }
+
+            .cutline-candidate-row {
+                min-height: 48px;
+            }
+
+            select {
+                min-height: 44px;
+            }
+
+            .checkbox-label {
+                min-height: 44px;
             }
         }
 
@@ -2082,27 +2729,24 @@
             const container = document.getElementById('overview-dashboard');
             const candidates = getFilteredCandidates().slice(0, 6);
 
-            let html = `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border-primary); border: 1px solid var(--border-primary);">`;
+            let html = `<div class="overview-grid">`;
 
             candidates.forEach(c => {
                 const band = getBand(c.composites.aci);
                 const roles = c.recommendedRoles.map(rid => ROLES.find(r => r.id === rid)?.abbr || rid);
                 html += `
-                    <div style="background: var(--bg-primary); padding: 32px; cursor: pointer; transition: background 0.2s;"
-                         onmouseover="this.style.background='var(--bg-secondary)'"
-                         onmouseout="this.style.background='var(--bg-primary)'"
-                         data-candidate="${c.id}">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                            <div>
-                                <div style="font-weight: 500; font-size: 15px; margin-bottom: 4px;">${c.name}</div>
-                                <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">${c.id}</div>
+                    <div class="overview-card" data-candidate="${c.id}">
+                        <div class="overview-card-header">
+                            <div class="overview-card-info">
+                                <div class="overview-card-name">${c.name}</div>
+                                <div class="overview-card-id">${c.id}</div>
                             </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 32px; font-weight: 300; letter-spacing: -0.02em;">${c.composites.aci}</div>
-                                <div style="font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em;">${band.label}</div>
+                            <div class="overview-card-score">
+                                <div class="overview-card-value">${c.composites.aci}</div>
+                                <div class="overview-card-band">${band.label}</div>
                             </div>
                         </div>
-                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                        <div class="overview-card-roles">
                             ${roles.map(r => `<span class="role-chip primary">${r}</span>`).join('')}
                         </div>
                     </div>
@@ -2201,7 +2845,7 @@
                 const roles = c.recommendedRoles.map(rid => ROLES.find(r => r.id === rid));
 
                 html += `
-                    <tr data-candidate="${c.id}" tabindex="0" role="row">
+                    <tr data-candidate="${c.id}" data-aci="${c.composites.aci}" tabindex="0" role="row">
                         <td>
                             <div class="candidate-name">${c.name}</div>
                             <div class="candidate-id">${c.id}</div>
