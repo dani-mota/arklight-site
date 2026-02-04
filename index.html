@@ -650,6 +650,74 @@
             border: 1px solid var(--border-secondary);
         }
 
+        /* Executive Summary */
+        .detail-summary-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .summary-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .summary-row {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .summary-value {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .summary-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .role-fit-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .chart-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
         .onboarding-indicator {
             display: inline-flex;
             align-items: center;
@@ -810,6 +878,77 @@
             color: var(--text-muted);
         }
 
+        /* Composite Domains */
+        .domain-grid {
+            display: grid;
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .domain-header {
+            margin-bottom: 24px;
+        }
+
+        .domain-title {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .domain-purpose {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .domain-table {
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .domain-row {
+            display: grid;
+            grid-template-columns: 180px 1.2fr 1.2fr 1.6fr;
+            gap: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .domain-row.header {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .domain-row.header .domain-cell {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .domain-cell {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .domain-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .domain-summary {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-left: 2px solid var(--border-secondary);
+            line-height: 1.6;
+        }
+
         /* Construct Sections */
         .construct-section {
             margin-bottom: 2px;
@@ -918,7 +1057,13 @@
             margin-bottom: 4px;
         }
 
-        .construct-matters {
+        .construct-measures {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .construct-operational {
             font-size: 12px;
             color: var(--text-dim);
         }
@@ -1106,6 +1251,23 @@
             font-size: 12px;
             color: var(--text-muted);
             padding: 16px 20px;
+            background: var(--bg-secondary);
+            border-left: 2px solid var(--border-secondary);
+            line-height: 1.6;
+        }
+
+        .evidence-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .evidence-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 12px 16px;
             background: var(--bg-secondary);
             border-left: 2px solid var(--border-secondary);
             line-height: 1.6;
@@ -1476,6 +1638,38 @@
                 border-top: 1px solid var(--border-primary);
             }
 
+            .detail-summary-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 40px;
+            }
+
+            .summary-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .role-fit-text {
+                font-size: 13px;
+            }
+
+            .chart-note {
+                font-size: 11px;
+            }
+
+            .domain-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .domain-row.header {
+                display: none;
+            }
+
+            .domain-summary {
+                padding: 12px 16px;
+            }
+
             .composites-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1747,6 +1941,26 @@
                 font-size: 13px;
             }
 
+            .summary-label {
+                font-size: 9px;
+            }
+
+            .summary-value {
+                font-size: 13px;
+            }
+
+            .domain-title {
+                font-size: 15px;
+            }
+
+            .domain-cell {
+                font-size: 12px;
+            }
+
+            .domain-summary {
+                font-size: 12px;
+            }
+
             /* Composites grid */
             .composites-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1841,11 +2055,15 @@
                 flex-wrap: wrap;
             }
 
+            .construct-measures {
+                font-size: 12px;
+            }
+
             .construct-predicts {
                 font-size: 12px;
             }
 
-            .construct-matters {
+            .construct-operational {
                 font-size: 11px;
             }
 
@@ -1895,6 +2113,11 @@
             .indicator-item {
                 padding: 10px 16px;
                 font-size: 11px;
+            }
+
+            .evidence-list li {
+                font-size: 12px;
+                padding: 10px 12px;
             }
 
             .standardization-note {
@@ -2161,8 +2384,7 @@
                     <p class="hero-eyebrow">Next-Generation Assessment</p>
                     <h1 class="hero-title">Arklight Cognitive Index</h1>
                     <p class="hero-subtitle">
-                        Combining ASVAB-caliber cognitive measurement with adaptive conversational AI
-                        to predict learning velocity, error avoidance, and mission reliability.
+                        Combining military and intelligence psychological research with adaptive AI, the Arklight Cognitive Index quantifies aptitude, predicts learning velocity, reliability, and overall talent capability for industrial partners.
                     </p>
                 </section>
 
@@ -2208,25 +2430,25 @@
                         <label class="control-label" for="sort-select">Sort</label>
                         <select id="sort-select">
                             <option value="aci">ACI Score</option>
-                            <option value="reliability">Reliability Index</option>
-                            <option value="learning">Learning Velocity</option>
-                            <option value="cyber">Cyber Aptitude</option>
+                            <option value="cognitive">Cognitive Core</option>
+                            <option value="technical">Technical Aptitude</option>
                             <option value="manufacturing">Manufacturing Technical</option>
-                            <option value="semiconductor">Semiconductor Ops</option>
-                            <option value="integrity">Integrity Index</option>
+                            <option value="learning">Learning Velocity</option>
+                            <option value="reliability">Reliability Index</option>
+                            <option value="integrity">Behavioral Integrity</option>
                         </select>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="role-filter">Role</label>
                         <select id="role-filter">
                             <option value="all">All Roles</option>
-                            <option value="fab">Semiconductor Fab Operator</option>
-                            <option value="automation">Automation & Robotics</option>
-                            <option value="quality">Quality Systems</option>
-                            <option value="manufacturing">Manufacturing Systems</option>
-                            <option value="reliability">Reliability / Failure Analysis</option>
-                            <option value="ot-cyber">OT / Industrial Cyber</option>
-                            <option value="controls">Controls / PLC Debug</option>
+                            <option value="cnc-machinist">CNC Machinist (5-Axis)</option>
+                            <option value="cnc-programmer">CNC Programmer</option>
+                            <option value="mfg-systems">Manufacturing Systems Technician</option>
+                            <option value="quality-metrology">Quality / Metrology Technician</option>
+                            <option value="production-assembly">Production Assembly Technician</option>
+                            <option value="automation-robotics">Automation &amp; Robotics Technician (Factory)</option>
+                            <option value="mfg-engineer">Manufacturing Engineer (Production-Facing)</option>
                         </select>
                     </div>
                     <div class="control-group">
@@ -2269,7 +2491,7 @@
             <div class="footer-disclaimer">
                 All candidate data is synthetic for demonstration
             </div>
-            <p>Arklight Project — ACI v2.4</p>
+            <p>Project Arklight — ACI v2.4</p>
         </footer>
     </div>
 
@@ -2283,99 +2505,325 @@
 
         const CONSTRUCTS = {
             cognitive: [
-                { id: 'FI', name: 'Fluid Intelligence', predicts: 'Novel problem-solving and rapid adaptation', matters: 'Critical for troubleshooting unfamiliar equipment failures' },
-                { id: 'ER', name: 'Extrapolational Reasoning', predicts: 'Ability to project patterns and anticipate outcomes', matters: 'Predicts fault anticipation before cascade failures' },
-                { id: 'ICI', name: 'Cognitive Interference Control', predicts: 'Focus maintenance under distraction', matters: 'Essential in high-alert environments with multiple alarm states' },
-                { id: 'MAC', name: 'Metacognitive Accuracy', predicts: 'Self-awareness of knowledge boundaries', matters: 'Reduces overconfident errors in safety-critical decisions' },
-                { id: 'TCDQ', name: 'Time-Compressed Decision Quality', predicts: 'Sound judgment under time pressure', matters: 'Determines response quality during line emergencies' },
-                { id: 'CMR', name: 'Causal Misattribution Resistance', predicts: 'Avoiding false cause-effect conclusions', matters: 'Prevents chasing wrong root causes in diagnostics' },
-                { id: 'ERCS', name: 'Error Recovery & Correction Speed', predicts: 'Rapid recognition and correction of mistakes', matters: 'Limits propagation of operator errors' }
+                {
+                    id: 'FI',
+                    name: 'Fluid Intelligence',
+                    measures: 'Abstract reasoning and novel problem solving without known templates.',
+                    predicts: 'Novel problem-solving and rapid adaptation.',
+                    matters: 'Enables rapid root-cause isolation when a process drifts or a new fixture is introduced.',
+                    operationalValue: 'Reduces time to stabilize new setups and prevents scrap during first-article runs.',
+                    development: [
+                        'Improves with structured post-mortem reviews on unfamiliar failures.',
+                        'Improves through cross-training on new cell layouts and tooling.'
+                    ]
+                },
+                {
+                    id: 'ER',
+                    name: 'Extrapolational Reasoning',
+                    measures: 'Projecting trends and downstream effects from partial signals.',
+                    predicts: 'Anticipating outcomes and second-order effects.',
+                    matters: 'Helps foresee tolerance stack issues before they hit inspection.',
+                    operationalValue: 'Prevents late-stage scrap by predicting drift and compensating early.',
+                    development: [
+                        'Improves with exposure to SPC trend analysis and yield data.',
+                        'Improves by practicing pre-mortem planning for process changes.'
+                    ]
+                },
+                {
+                    id: 'ICI',
+                    name: 'Cognitive Interference Control',
+                    measures: 'Maintaining attention and task priority amid distraction.',
+                    predicts: 'Focus stability under interruption.',
+                    matters: 'Protects critical steps during multi-alarm or high-traffic shifts.',
+                    operationalValue: 'Reduces rework by preventing skipped or out-of-sequence steps.',
+                    development: [
+                        'Improves with standardized checklists and interruption protocols.',
+                        'Improves with supervised operation under simulated alarm load.'
+                    ]
+                },
+                {
+                    id: 'MAC',
+                    name: 'Metacognitive Accuracy',
+                    measures: 'Accuracy of self-assessment and error awareness.',
+                    predicts: 'Realistic confidence and calibration.',
+                    matters: 'Prevents overconfident adjustments that drive out-of-spec parts.',
+                    operationalValue: 'Increases first-pass yield by catching uncertainty early.',
+                    development: [
+                        'Improves with coached decision logs and after-action reviews.',
+                        'Improves with peer calibration sessions on measurement calls.'
+                    ]
+                },
+                {
+                    id: 'TCDQ',
+                    name: 'Time-Compressed Decision Quality',
+                    measures: 'Decision quality under time pressure and ambiguity.',
+                    predicts: 'Sound judgment when time is limited.',
+                    matters: 'Determines safe responses during line stoppages or tool alarms.',
+                    operationalValue: 'Shortens downtime without sacrificing safety or quality.',
+                    development: [
+                        'Improves with timed troubleshooting drills.',
+                        'Improves with supervised escalation practice.'
+                    ]
+                },
+                {
+                    id: 'CMR',
+                    name: 'Causal Misattribution Resistance',
+                    measures: 'Resistance to false causal links and confirmation bias.',
+                    predicts: 'Hypothesis discipline in diagnostics.',
+                    matters: 'Prevents chasing the wrong root cause during failures.',
+                    operationalValue: 'Cuts mean time to repair by avoiding false fixes.',
+                    development: [
+                        'Improves with structured fault-tree analysis.',
+                        'Improves through exposure to counterfactual testing.'
+                    ]
+                },
+                {
+                    id: 'ERCS',
+                    name: 'Error Recovery & Correction Speed',
+                    measures: 'Speed of detecting and correcting errors.',
+                    predicts: 'Recovery velocity after mistakes.',
+                    matters: 'Limits propagation of errors across a production batch.',
+                    operationalValue: 'Reduces scrap and rework during tight-tolerance runs.',
+                    development: [
+                        'Improves with closed-loop feedback and rapid correction cycles.',
+                        'Improves through supervised decision authority on minor deviations.'
+                    ]
+                }
             ],
             technical: [
-                { id: 'SRD', name: 'Systems Reasoning & Diagnostics', predicts: 'Understanding complex system interactions', matters: 'Core skill for isolating faults in integrated manufacturing lines' },
-                { id: 'PRAD', name: 'Pattern Recognition & Anomaly Detection', predicts: 'Detecting deviations from normal operation', matters: 'Early warning capability for quality and safety events' },
-                { id: 'TMAQ', name: 'Technical Math & Quant Reasoning', predicts: 'Applied mathematical problem-solving', matters: 'Required for SPC, yield calculations, tolerance analysis' },
-                { id: 'DLCT', name: 'Digital Logic & Computational Thinking', predicts: 'Understanding of logical operations and sequences', matters: 'Foundation for PLC programming and automation debugging' },
-                { id: 'SPV', name: 'Spatial & Process Visualization', predicts: 'Mental modeling of physical systems and flows', matters: 'Enables effective work with CAD, process diagrams, equipment layouts' },
-                { id: 'ASWL', name: 'Attention Stability Under Load', predicts: 'Sustained vigilance during extended operations', matters: 'Critical for long-shift monitoring of process parameters' },
-                { id: 'FIDS', name: 'Fault Isolation & Debug Speed', predicts: 'Efficient narrowing of problem sources', matters: 'Minimizes mean-time-to-repair in production environments' },
-                { id: 'ISI', name: 'Information Security Instinct', predicts: 'Natural caution with access and data handling', matters: 'First line of defense against social engineering and insider threats' },
-                { id: 'RRCP', name: 'Reliability & Rules Compliance', predicts: 'Consistent adherence to procedures', matters: 'Maintains safety margins and audit readiness' }
+                {
+                    id: 'SRD',
+                    name: 'Systems Reasoning & Diagnostics',
+                    measures: 'Systems reasoning across mechanical, electrical, and process interactions.',
+                    predicts: 'Diagnostic accuracy in complex systems.',
+                    matters: 'Core for isolating faults in integrated machining and inspection cells.',
+                    operationalValue: 'Enables faster stabilization of multi-step manufacturing flows.',
+                    development: [
+                        'Improves with cross-functional training on machine subsystems.',
+                        'Improves through guided fault-tree walkthroughs.'
+                    ]
+                },
+                {
+                    id: 'PRAD',
+                    name: 'Pattern Recognition & Anomaly Detection',
+                    measures: 'Detection of subtle deviations, drift, and anomalies.',
+                    predicts: 'Early warning of quality or process instability.',
+                    matters: 'Protects against out-of-tolerance drift before it hits final inspection.',
+                    operationalValue: 'Improves yield by catching deviation in-process.',
+                    development: [
+                        'Improves with SPC trend review practice.',
+                        'Improves with exposure to historical drift patterns.'
+                    ]
+                },
+                {
+                    id: 'TMAQ',
+                    name: 'Technical Math & Quant Reasoning',
+                    measures: 'Applied math for tolerances, rates, and measurement systems.',
+                    predicts: 'Accuracy in calculating offsets, feeds, and inspection criteria.',
+                    matters: 'Required for CMM programming, tolerance stackups, and SPC.',
+                    operationalValue: 'Prevents measurement and setup errors that drive scrap.',
+                    development: [
+                        'Improves with fixture math and tolerance exercises.',
+                        'Improves through supervised CMM program validation.'
+                    ]
+                },
+                {
+                    id: 'DLCT',
+                    name: 'Digital Logic & Computational Thinking',
+                    measures: 'Logic sequencing, conditional reasoning, and algorithmic thinking.',
+                    predicts: 'PLC, robot, and CNC program reasoning.',
+                    matters: 'Foundational for CAM post-processing and automation logic.',
+                    operationalValue: 'Reduces downtime from program errors or mis-sequencing.',
+                    development: [
+                        'Improves with ladder logic walkthroughs and dry runs.',
+                        'Improves by reviewing post-processor output with supervision.'
+                    ]
+                },
+                {
+                    id: 'SPV',
+                    name: 'Spatial & Process Visualization',
+                    measures: 'Spatial reasoning and process flow visualization.',
+                    predicts: 'Ability to plan toolpaths and fixture orientations.',
+                    matters: 'Enables effective 5-axis setup planning and inspection coverage.',
+                    operationalValue: 'Reduces collisions and improves surface finish consistency.',
+                    development: [
+                        'Improves with 3D simulation review and setup shadowing.',
+                        'Improves through fixture planning exercises.'
+                    ]
+                },
+                {
+                    id: 'ASWL',
+                    name: 'Attention Stability Under Load',
+                    measures: 'Sustained vigilance under load and repetition.',
+                    predicts: 'Stability across long shifts and batch runs.',
+                    matters: 'Critical for monitoring multi-hour machining cycles.',
+                    operationalValue: 'Prevents missed alarms and unnoticed drift.',
+                    development: [
+                        'Improves with structured rotation and check cadence.',
+                        'Improves through supervised long-cycle monitoring.'
+                    ]
+                },
+                {
+                    id: 'FIDS',
+                    name: 'Fault Isolation & Debug Speed',
+                    measures: 'Speed and accuracy of isolating fault sources.',
+                    predicts: 'Time to repair and restart.',
+                    matters: 'Reduces line downtime during unexpected stops.',
+                    operationalValue: 'Improves OEE by shortening diagnosis cycles.',
+                    development: [
+                        'Improves with standardized troubleshooting trees.',
+                        'Improves by practicing root-cause isolation drills.'
+                    ]
+                },
+                {
+                    id: 'ISI',
+                    name: 'Information Security Instinct',
+                    measures: 'Security instinct and access discipline.',
+                    predicts: 'Resistance to social engineering and policy violations.',
+                    matters: 'Protects IP and prevents unauthorized program changes.',
+                    operationalValue: 'Reduces risk of compromised toolpaths or data loss.',
+                    development: [
+                        'Improves with incident debriefs and access-control drills.',
+                        'Improves through supervised credential hygiene checks.'
+                    ]
+                },
+                {
+                    id: 'RRCP',
+                    name: 'Reliability & Rules Compliance',
+                    measures: 'Consistency and adherence to procedures.',
+                    predicts: 'Reliability under SOPs and audits.',
+                    matters: 'Maintains safety margins and quality compliance.',
+                    operationalValue: 'Protects audit readiness and reduces variance.',
+                    development: [
+                        'Improves with checklist discipline and peer verification.',
+                        'Improves through exposure to audit walk-throughs.'
+                    ]
+                }
             ],
             integrity: [
-                { id: 'VCS', name: 'Values Conflict Scenarios', predicts: 'Ethical reasoning under competing pressures', matters: 'Predicts behavior when shortcuts tempt vs. protocol demands' },
-                { id: 'BCC', name: 'Behavioral Consistency Cross-Check', predicts: 'Story alignment and response stability', matters: 'Flags potential deception or impression management' },
-                { id: 'MAI', name: 'Mission Alignment Indicator', predicts: 'Fit with organizational values and mission', matters: 'Predicts engagement and discretionary effort over time' }
+                {
+                    id: 'VCS',
+                    name: 'Values Conflict Scenarios',
+                    measures: 'Ethical decision making under pressure.',
+                    predicts: 'Willingness to uphold quality when rushed.',
+                    matters: 'Prevents shortcuts during high-pressure production pushes.',
+                    operationalValue: 'Protects brand and safety by keeping quality gates intact.',
+                    development: [
+                        'Improves with scenario-based ethics training.',
+                        'Improves through reinforcement of stop-work authority.'
+                    ]
+                },
+                {
+                    id: 'BCC',
+                    name: 'Behavioral Consistency Cross-Check',
+                    measures: 'Consistency of responses across scenarios.',
+                    predicts: 'Behavioral reliability and honesty.',
+                    matters: 'Flags instability or impression management in critical roles.',
+                    operationalValue: 'Improves trust in operator reporting and escalation.',
+                    development: [
+                        'Improves with coaching on transparent incident reporting.',
+                        'Improves through consistent feedback loops.'
+                    ]
+                },
+                {
+                    id: 'MAI',
+                    name: 'Mission Alignment Indicator',
+                    measures: 'Alignment with mission and values.',
+                    predicts: 'Long-term engagement and discretionary effort.',
+                    matters: 'Predicts sustained commitment to quality and safety standards.',
+                    operationalValue: 'Improves retention and adherence to mission-critical standards.',
+                    development: [
+                        'Improves with clear mission ownership and mentorship.',
+                        'Improves by connecting work to mission outcomes.'
+                    ]
+                }
             ]
         };
 
         const ROLES = [
-            { id: 'fab', name: 'Semiconductor Fab Operator', abbr: 'Fab Op' },
-            { id: 'automation', name: 'Automation & Robotics Technician', abbr: 'Auto/Robot' },
-            { id: 'quality', name: 'Quality Systems Specialist', abbr: 'Quality' },
-            { id: 'manufacturing', name: 'Manufacturing Systems Operator', abbr: 'Mfg Sys' },
-            { id: 'reliability', name: 'Reliability / Failure Analysis Technician', abbr: 'Rel/FA' },
-            { id: 'ot-cyber', name: 'OT / Industrial Cyber Analyst', abbr: 'OT Cyber' },
-            { id: 'controls', name: 'Controls / PLC Debug Technician', abbr: 'PLC/Ctrl' }
+            { id: 'cnc-machinist', name: 'CNC Machinist (5-Axis)', abbr: 'CNC 5X' },
+            { id: 'cnc-programmer', name: 'CNC Programmer', abbr: 'CNC Prog' },
+            { id: 'mfg-systems', name: 'Manufacturing Systems Technician', abbr: 'Mfg Sys' },
+            { id: 'quality-metrology', name: 'Quality / Metrology Technician', abbr: 'Quality' },
+            { id: 'production-assembly', name: 'Production Assembly Technician', abbr: 'Assembly' },
+            { id: 'automation-robotics', name: 'Automation & Robotics Technician (Factory)', abbr: 'Automation' },
+            { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production-Facing)', abbr: 'Mfg Eng' }
         ];
 
         const ROLE_CUTLINES = {
-            'fab': {
+            'cnc-machinist': {
                 requirements: [
                     { construct: 'PRAD', threshold: 60 },
-                    { construct: 'ASWL', threshold: 65 },
-                    { construct: 'RRCP', threshold: 70 },
-                    { composite: 'integrity', threshold: 65 }
-                ]
-            },
-            'automation': {
-                requirements: [
-                    { construct: 'SRD', threshold: 65 },
-                    { construct: 'DLCT', threshold: 60 },
-                    { construct: 'FIDS', threshold: 60 },
-                    { composite: 'manufacturingTechnical', threshold: 55 }
-                ]
-            },
-            'quality': {
-                requirements: [
-                    { construct: 'PRAD', threshold: 70 },
-                    { construct: 'TMAQ', threshold: 60 },
-                    { construct: 'MAC', threshold: 60 },
-                    { composite: 'integrity', threshold: 70 }
-                ]
-            },
-            'manufacturing': {
-                requirements: [
-                    { construct: 'SPV', threshold: 55 },
-                    { construct: 'ASWL', threshold: 60 },
+                    { construct: 'SPV', threshold: 65 },
                     { construct: 'RRCP', threshold: 65 },
-                    { composite: 'manufacturingTechnical', threshold: 50 }
+                    { construct: 'ASWL', threshold: 60 },
+                    { composite: 'manufacturingTechnical', threshold: 60 }
                 ]
             },
-            'reliability': {
-                requirements: [
-                    { construct: 'SRD', threshold: 70 },
-                    { construct: 'CMR', threshold: 65 },
-                    { construct: 'FIDS', threshold: 70 },
-                    { composite: 'generalTechnical', threshold: 65 }
-                ]
-            },
-            'ot-cyber': {
-                requirements: [
-                    { construct: 'PRAD', threshold: 65 },
-                    { construct: 'ISI', threshold: 60 },
-                    { construct: 'ICI', threshold: 60 },
-                    { composite: 'integrity', threshold: 70 }
-                ]
-            },
-            'controls': {
+            'cnc-programmer': {
                 requirements: [
                     { construct: 'DLCT', threshold: 65 },
-                    { construct: 'FIDS', threshold: 65 },
+                    { construct: 'TMAQ', threshold: 65 },
                     { construct: 'SRD', threshold: 60 },
-                    { composite: 'cyber', threshold: 55 }
+                    { construct: 'SPV', threshold: 60 },
+                    { composite: 'technicalAptitude', threshold: 60 }
+                ]
+            },
+            'mfg-systems': {
+                requirements: [
+                    { construct: 'SRD', threshold: 60 },
+                    { construct: 'FIDS', threshold: 60 },
+                    { construct: 'ASWL', threshold: 60 },
+                    { construct: 'RRCP', threshold: 65 },
+                    { composite: 'manufacturingTechnical', threshold: 60 }
+                ]
+            },
+            'quality-metrology': {
+                requirements: [
+                    { construct: 'PRAD', threshold: 70 },
+                    { construct: 'TMAQ', threshold: 65 },
+                    { construct: 'MAC', threshold: 60 },
+                    { construct: 'RRCP', threshold: 65 },
+                    { composite: 'behavioralIntegrity', threshold: 70 }
+                ]
+            },
+            'production-assembly': {
+                requirements: [
+                    { construct: 'RRCP', threshold: 65 },
+                    { construct: 'ASWL', threshold: 60 },
+                    { construct: 'ICI', threshold: 60 },
+                    { composite: 'behavioralIntegrity', threshold: 65 }
+                ]
+            },
+            'automation-robotics': {
+                requirements: [
+                    { construct: 'SRD', threshold: 65 },
+                    { construct: 'DLCT', threshold: 65 },
+                    { construct: 'FIDS', threshold: 60 },
+                    { construct: 'SPV', threshold: 60 },
+                    { composite: 'technicalAptitude', threshold: 60 }
+                ]
+            },
+            'mfg-engineer': {
+                requirements: [
+                    { construct: 'FI', threshold: 70 },
+                    { construct: 'ER', threshold: 65 },
+                    { construct: 'SRD', threshold: 65 },
+                    { construct: 'CMR', threshold: 60 },
+                    { composite: 'cognitiveCore', threshold: 70 }
                 ]
             }
+        };
+
+        const COMPOSITE_LABELS = {
+            aci: 'ACI Overall',
+            cognitiveCore: 'Cognitive Core',
+            technicalAptitude: 'Technical Aptitude',
+            behavioralIntegrity: 'Behavioral Integrity',
+            manufacturingTechnical: 'Manufacturing Technical',
+            generalTechnical: 'General Technical',
+            learningVelocity: 'Learning Velocity',
+            reliability: 'Reliability Index'
         };
 
         function generateCandidateData() {
@@ -2515,6 +2963,9 @@
 
             const composites = {
                 aci: Math.round(cognitiveAvg * 0.35 + technicalAvg * 0.45 + integrityAvg * 0.20),
+                cognitiveCore: Math.round(cognitiveAvg),
+                technicalAptitude: Math.round(technicalAvg),
+                behavioralIntegrity: Math.round(integrityAvg),
                 generalTechnical: Math.round(average([scores.FI, scores.SRD, scores.PRAD, scores.TMAQ, scores.DLCT])),
                 manufacturingTechnical: Math.round(average([scores.SRD, scores.SPV, scores.ASWL, scores.FIDS, scores.RRCP])),
                 semiconductor: Math.round(average([scores.PRAD, scores.ASWL, scores.SPV, scores.RRCP, scores.MAC])),
@@ -2544,7 +2995,8 @@
                 ...candidate,
                 scores,
                 composites,
-                recommendedRoles: recommendedRoles.length > 0 ? recommendedRoles : [roleScores[0].role.id]
+                recommendedRoles: recommendedRoles.length > 0 ? recommendedRoles : [roleScores[0].role.id],
+                roleScores
             };
         }
 
@@ -2656,13 +3108,13 @@
         const state = {
             currentView: 'overview',
             selectedCandidate: null,
-            selectedRole: 'ot-cyber',
+            selectedRole: 'cnc-machinist',
             sortBy: 'aci',
             sortDirection: 'desc',
             roleFilter: 'all',
             cutlineFilter: false,
             candidates: generateCandidateData(),
-            expandedSections: { cognitive: true, technical: false, integrity: false },
+            expandedSections: { cognitive: false, technical: false, integrity: false },
             expandedConstructs: {}
         };
 
@@ -2781,12 +3233,12 @@
 
             const sortKey = {
                 'aci': 'aci',
-                'reliability': 'reliability',
-                'learning': 'learningVelocity',
-                'cyber': 'cyber',
+                'cognitive': 'cognitiveCore',
+                'technical': 'technicalAptitude',
                 'manufacturing': 'manufacturingTechnical',
-                'semiconductor': 'semiconductor',
-                'integrity': 'integrity'
+                'learning': 'learningVelocity',
+                'reliability': 'reliability',
+                'integrity': 'behavioralIntegrity'
             }[state.sortBy] || 'aci';
 
             candidates.sort((a, b) => {
@@ -2830,7 +3282,7 @@
                                 Learning <span class="sort-indicator">${state.sortBy === 'learning' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
                             </th>
                             <th data-sort="integrity" class="${state.sortBy === 'integrity' ? 'sorted' : ''}">
-                                Integrity <span class="sort-indicator">${state.sortBy === 'integrity' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
+                                Behavioral Integrity <span class="sort-indicator">${state.sortBy === 'integrity' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
                             </th>
                         </tr>
                     </thead>
@@ -2841,7 +3293,7 @@
                 const aciBand = getBand(c.composites.aci);
                 const reliabilityBand = getBand(c.composites.reliability);
                 const learningBand = getBand(c.composites.learningVelocity);
-                const integrityBand = getBand(c.composites.integrity);
+                const integrityBand = getBand(c.composites.behavioralIntegrity);
                 const roles = c.recommendedRoles.map(rid => ROLES.find(r => r.id === rid));
 
                 html += `
@@ -2858,13 +3310,13 @@
                         </td>
                         <td>
                             <div class="role-chips">
-                                ${roles.map((r, i) => `<span class="role-chip ${i === 0 ? 'primary' : ''}">${r?.abbr || r?.name}</span>`).join('')}
+                                ${roles.map((r, i) => `<span class="role-chip ${i === 0 ? 'primary' : ''}">${r?.name || r?.abbr}</span>`).join('')}
                             </div>
                         </td>
                         <td><span class="score-cell ${aciBand.class}">${c.composites.aci}</span></td>
                         <td><span class="score-cell ${reliabilityBand.class}">${c.composites.reliability}</span></td>
                         <td><span class="score-cell ${learningBand.class}">${c.composites.learningVelocity}</span></td>
-                        <td><span class="score-cell ${integrityBand.class}">${c.composites.integrity}</span></td>
+                        <td><span class="score-cell ${integrityBand.class}">${c.composites.behavioralIntegrity}</span></td>
                     </tr>
                 `;
             });
@@ -2910,6 +3362,10 @@
             }
 
             const aciBand = getBand(candidate.composites.aci);
+            const roleRankings = getRoleRankings(candidate);
+            const primaryRole = roleRankings[0]?.role?.name || 'Manufacturing Systems Technician';
+            const secondaryRole = roleRankings[1]?.role?.name || ROLES.find(r => r.id !== roleRankings[0]?.role?.id)?.name || 'Quality / Metrology Technician';
+            const summary = buildExecutiveSummary(candidate, primaryRole, secondaryRole);
 
             let html = `
                 <div class="detail-header">
@@ -2938,33 +3394,44 @@
                     </div>
                 </div>
 
-                <div class="composites-grid">
-                    ${renderCompositeCard('General Technical', candidate.composites.generalTechnical)}
-                    ${renderCompositeCard('Manufacturing', candidate.composites.manufacturingTechnical)}
-                    ${renderCompositeCard('Semiconductor', candidate.composites.semiconductor)}
-                    ${renderCompositeCard('Cyber Aptitude', candidate.composites.cyber)}
-                    ${renderCompositeCard('Integrity', candidate.composites.integrity)}
+                <div class="detail-summary-grid">
+                    ${renderExecutiveSummary(summary)}
+                    ${renderRoleFitMapping(roleRankings)}
                 </div>
 
                 <div class="charts-grid">
-                    <div class="chart-container">
+                    <div class="chart-container full-width">
                         <h3 class="chart-title">Cognitive Profile</h3>
                         <div class="radar-chart" id="radar-chart"></div>
-                    </div>
-                    <div class="chart-container">
-                        <h3 class="chart-title">Composite Indices</h3>
-                        <div class="bar-chart">
-                            ${renderBarItem('ACI Overall', candidate.composites.aci)}
-                            ${renderBarItem('General Technical', candidate.composites.generalTechnical)}
-                            ${renderBarItem('Manufacturing', candidate.composites.manufacturingTechnical)}
-                            ${renderBarItem('Semiconductor', candidate.composites.semiconductor)}
-                            ${renderBarItem('Cyber Aptitude', candidate.composites.cyber)}
-                            ${renderBarItem('Integrity', candidate.composites.integrity)}
-                            ${renderBarItem('Learning Velocity', candidate.composites.learningVelocity)}
-                            ${renderBarItem('Reliability', candidate.composites.reliability)}
-                        </div>
+                        <p class="chart-note">Benchmarks are derived from partnerships with leading advanced manufacturing and defense-adjacent organizations, informed by structured interviews and performance analysis of top operators across public and private sectors.</p>
                     </div>
                 </div>
+
+                <div class="domain-grid">
+                    ${renderDomainSection({
+                        title: 'Cognitive Core — Foundational Meta-Capabilities',
+                        purpose: 'Governs learning speed, decision quality, error avoidance, and long-term performance ceiling.',
+                        constructs: CONSTRUCTS.cognitive,
+                        valueLabel: 'Operational value',
+                        summary: 'This layer determines how fast the candidate learns, how early they detect risk, and how effectively they recover from error.'
+                    })}
+                    ${renderDomainSection({
+                        title: 'Technical Aptitude — Operational Cognition',
+                        purpose: 'Measures real-world technical reasoning under operational constraints.',
+                        constructs: CONSTRUCTS.technical,
+                        valueLabel: 'Operational value'
+                    })}
+                    ${renderDomainSection({
+                        title: 'Behavioral Integrity & Mission Alignment',
+                        purpose: 'Measures behavior under constraint, not personality.',
+                        constructs: CONSTRUCTS.integrity,
+                        valueLabel: 'Why it matters operationally'
+                    })}
+                </div>
+
+                <section class="section-header">
+                    <h2 class="section-title">Construct-Level Detail</h2>
+                </section>
 
                 ${renderConstructSection('cognitive', 'Cognitive Core', CONSTRUCTS.cognitive, candidate)}
                 ${renderConstructSection('technical', 'Technical Aptitude', CONSTRUCTS.technical, candidate)}
@@ -2976,27 +3443,149 @@
             setupConstructListeners();
         }
 
-        function renderCompositeCard(label, score) {
-            const band = getBand(score);
+        function getRoleRankings(candidate) {
+            if (candidate.roleScores && candidate.roleScores.length) {
+                return candidate.roleScores;
+            }
+            return ROLES.map(role => {
+                const cutline = ROLE_CUTLINES[role.id];
+                let fitScore = 0;
+                let passes = 0;
+                const total = cutline?.requirements?.length || 0;
+                cutline?.requirements?.forEach(req => {
+                    const score = req.construct ? candidate.scores[req.construct] : candidate.composites[req.composite];
+                    const percentile = scoreToPercentile(score);
+                    if (percentile >= req.threshold) passes++;
+                    fitScore += percentile - req.threshold;
+                });
+                return { role, fitScore, passes, total };
+            }).sort((a, b) => b.fitScore - a.fitScore);
+        }
+
+        function buildExecutiveSummary(candidate, primaryRole, secondaryRole) {
+            return {
+                overallTalent: getOverallPotential(candidate),
+                primaryRole,
+                secondaryRole,
+                deploymentConfidence: getDeploymentConfidence(candidate),
+                bestUse: getBestUseOfCandidate(candidate),
+                riskFlags: getRiskFlags(candidate)
+            };
+        }
+
+        function getOverallPotential(candidate) {
+            const band = getBand(candidate.composites.aci).label;
+            if (band === 'Elite') return 'Elite-tier operator with high upside for precision manufacturing and metrology roles.';
+            if (band === 'Strong') return 'Strong operational performer with consistent learning velocity and low error risk.';
+            if (band === 'Developing') return 'Developing talent with targeted coaching potential for production-facing roles.';
+            return 'High-risk placement without close supervision and structured development.';
+        }
+
+        function getDeploymentConfidence(candidate) {
+            const strongReliability = candidate.composites.reliability >= 70;
+            const strongIntegrity = candidate.composites.behavioralIntegrity >= 70;
+            const strongAci = candidate.composites.aci >= 70;
+            return (strongReliability && strongIntegrity && strongAci) ?
+                'High confidence for direct placement' :
+                'High potential with mentorship';
+        }
+
+        function getRiskFlags(candidate) {
+            const risks = [];
+            if (candidate.composites.behavioralIntegrity < 60) {
+                risks.push('Behavioral integrity below target for high-trust roles.');
+            }
+            if (candidate.composites.reliability < 60) {
+                risks.push('Reliability index below target for sustained production loads.');
+            }
+            if (candidate.composites.learningVelocity < 55) {
+                risks.push('Learning velocity below target for rapid ramp expectations.');
+            }
+            return risks.length > 0 ? risks : 'None identified';
+        }
+
+        function getBestUseOfCandidate(candidate) {
+            const primaryRoleId = getRoleRankings(candidate)[0]?.role?.id;
+            const bestUseByRole = {
+                'quality-metrology': 'Lead CMM programming and first-article inspection; drive gage R&R, SPC calls, and containment when drift appears.',
+                'cnc-machinist': 'Deploy on 5-axis machining cells for complex geometries; own setup validation, tool offsets, and in-process inspection.',
+                'cnc-programmer': 'Own CAM toolpath development and post-processor validation; partner on fixture strategy and cycle-time optimization.',
+                'mfg-systems': 'Stabilize machining and inspection cells line-side; handle fault isolation, fixture health, and repeatability checks.',
+                'production-assembly': 'Execute high-mix assembly with strict work instructions and quality gates; reliable for detail-critical builds.',
+                'automation-robotics': 'Support robot cell programming, recovery, and fault isolation for automated transfer and inspection.',
+                'mfg-engineer': 'Bridge process planning and production execution; optimize setups, tolerance stackups, and quality escape prevention.'
+            };
+            return bestUseByRole[primaryRoleId] ||
+                'Deploy across CNC and metrology workflows where precision, repeatability, and disciplined inspection are required.';
+        }
+
+        function renderExecutiveSummary(summary) {
             return `
-                <div class="composite-card">
-                    <div class="composite-label">${label}</div>
-                    <div class="composite-value">${score}</div>
-                    <div class="composite-percentile">${ordinal(score)} percentile</div>
-                    <div class="composite-band">${band.label}</div>
+                <div class="chart-container executive-summary">
+                    <h3 class="chart-title">Executive Summary</h3>
+                    <div class="summary-grid">
+                        ${renderSummaryRow('Overall Talent Potential', summary.overallTalent)}
+                        ${renderSummaryRow('Primary Role Fit', summary.primaryRole)}
+                        ${renderSummaryRow('Secondary / Adjacent Role Fit', summary.secondaryRole)}
+                        ${renderSummaryRow('Deployment Confidence', summary.deploymentConfidence)}
+                        ${renderSummaryRow('Best Use of Candidate', summary.bestUse)}
+                        ${renderSummaryRow('Risk Flags', summary.riskFlags)}
+                    </div>
                 </div>
             `;
         }
 
-        function renderBarItem(label, score) {
-            const band = getBand(score);
+        function renderSummaryRow(label, value) {
+            const valueHtml = Array.isArray(value) ?
+                `<div class="summary-value"><ul class="summary-list">${value.map(item => `<li>${item}</li>`).join('')}</ul></div>` :
+                `<div class="summary-value">${value}</div>`;
             return `
-                <div class="bar-item">
-                    <div class="bar-label">${label}</div>
-                    <div class="bar-track">
-                        <div class="bar-fill ${band.class}" style="width: ${score}%;"></div>
+                <div class="summary-row">
+                    <div class="summary-label">${label}</div>
+                    ${valueHtml}
+                </div>
+            `;
+        }
+
+        function renderRoleFitMapping(roleRankings) {
+            const roleNames = ROLES.map(role => role.name).join(', ');
+            const primaryId = roleRankings[0]?.role?.id;
+            const secondaryId = roleRankings[1]?.role?.id;
+            return `
+                <div class="chart-container role-fit-mapping">
+                    <h3 class="chart-title">Role Fit Mapping</h3>
+                    <div class="role-fit-text">These cognitive strengths support success in: ${roleNames}.</div>
+                    <div class="role-chips">
+                        ${ROLES.map(role => `<span class="role-chip ${role.id === primaryId || role.id === secondaryId ? 'primary' : ''}">${role.name}</span>`).join('')}
                     </div>
-                    <div class="bar-percentile">${score}</div>
+                </div>
+            `;
+        }
+
+        function renderDomainSection(domain) {
+            return `
+                <div class="chart-container domain-card">
+                    <div class="domain-header">
+                        <div class="domain-title">${domain.title}</div>
+                        <div class="domain-purpose">${domain.purpose}</div>
+                    </div>
+                    <div class="domain-table">
+                        <div class="domain-row header">
+                            <div class="domain-cell">Subtest</div>
+                            <div class="domain-cell">What it measures</div>
+                            <div class="domain-cell">Predicts</div>
+                            <div class="domain-cell">${domain.valueLabel}</div>
+                        </div>
+                        ${domain.constructs.map(c => `
+                            <div class="domain-row">
+                                <div class="domain-cell domain-name">${c.name} (${c.id})</div>
+                                <div class="domain-cell">${c.measures}</div>
+                                <div class="domain-cell">${c.predicts}</div>
+                                <div class="domain-cell">${c.operationalValue}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${domain.summary ? `<div class="domain-summary">${domain.summary}</div>` : ''}
                 </div>
             `;
         }
@@ -3035,8 +3624,9 @@
                                 ${construct.name}
                                 <span class="construct-abbr">${construct.id}</span>
                             </div>
-                            <div class="construct-predicts">${construct.predicts}</div>
-                            <div class="construct-matters">${construct.matters}</div>
+                            <div class="construct-measures">Measures: ${construct.measures}</div>
+                            <div class="construct-predicts">Predicts: ${construct.predicts}</div>
+                            <div class="construct-operational">Operational value: ${construct.operationalValue}</div>
                         </div>
                         <div class="construct-scores">
                             <div class="construct-score-secondary">
@@ -3091,6 +3681,12 @@
                             </div>
                         </div>
                         <div class="evidence-section">
+                            <div class="evidence-label">Development Guidance</div>
+                            <ul class="evidence-list">
+                                ${construct.development.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="evidence-section">
                             <div class="standardization-note">
                                 AI adapts difficulty and pacing to candidate ability. Scoring constructs remain fixed across all candidates.
                             </div>
@@ -3137,7 +3733,7 @@
             const container = document.getElementById('radar-chart');
             if (!container) return;
 
-            const constructs = CONSTRUCTS.cognitive;
+            const constructs = [...CONSTRUCTS.cognitive, ...CONSTRUCTS.technical, ...CONSTRUCTS.integrity];
             const scores = constructs.map(c => candidate.scores[c.id]);
             const labels = constructs.map(c => c.id);
 
@@ -3168,12 +3764,12 @@
                 const y = centerY + Math.sin(angle) * radius;
                 svg += `<line x1="${centerX}" y1="${centerY}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
 
-                const labelRadius = radius + 20;
+                const labelRadius = radius + 16;
                 const labelX = centerX + Math.cos(angle) * labelRadius;
                 const labelY = centerY + Math.sin(angle) * labelRadius;
                 const textAnchor = Math.abs(Math.cos(angle)) < 0.1 ? 'middle' :
                                    Math.cos(angle) > 0 ? 'start' : 'end';
-                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="10" font-family="var(--font-mono)" dominant-baseline="middle">${labels[i]}</text>`;
+                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle">${labels[i]}</text>`;
             }
 
             const dataPoints = [];
@@ -3263,7 +3859,7 @@
                             (CONSTRUCTS.cognitive.find(c => c.id === req.construct) ||
                              CONSTRUCTS.technical.find(c => c.id === req.construct) ||
                              CONSTRUCTS.integrity.find(c => c.id === req.construct))?.name || req.construct :
-                            req.composite.replace(/([A-Z])/g, ' $1').trim();
+                            (COMPOSITE_LABELS[req.composite] || req.composite.replace(/([A-Z])/g, ' $1').trim());
                         return `
                             <div class="requirement-item">
                                 <span class="requirement-construct">${label}</span>
