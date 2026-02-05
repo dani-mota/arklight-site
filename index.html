@@ -215,31 +215,121 @@
 
         /* Investors */
         .investor-hero {
-            padding: 80px 0 40px;
-            max-width: 900px;
+            padding: 88px 0 48px;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
-        .investor-kicker {
-            font-size: 11px;
+        .investor-hero .rule {
+            height: 1px;
+            width: 100%;
+            background: var(--border-primary);
+        }
+
+        .investor-quote-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .investor-quote {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin: 0;
+            max-width: 920px;
+            flex: 1;
+        }
+
+        .investor-quote-attribution {
+            font-size: 0.32em;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .investor-flag {
+            width: 64px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .investor-flag .flag-field {
+            fill: var(--bg-tertiary);
+            stroke: var(--border-secondary);
+            stroke-width: 1;
+        }
+
+        .investor-flag .flag-canton {
+            fill: var(--bg-secondary);
+        }
+
+        .investor-flag .flag-star {
+            fill: var(--accent-green);
+            opacity: 0.45;
+        }
+
+        .investor-flag .flag-stripe {
+            fill: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .investor-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+
+        .investor-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .investor-meta-label {
+            font-size: 10px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
+            color: var(--text-muted);
         }
 
-        .investor-title {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 16px;
+        .investor-meta-value {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.6;
         }
 
-        .investor-subtitle {
+        .investor-scroll {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-primary);
+            text-decoration: none;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .investor-scroll-arrow {
             font-size: 16px;
             color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 720px;
+            line-height: 1;
+        }
+
+        .investor-scroll:hover {
+            color: var(--text-secondary);
+        }
+
+        .investor-scroll .investor-meta-value {
+            color: inherit;
+            font-size: inherit;
+            line-height: inherit;
         }
 
         .investor-layout {
@@ -2502,6 +2592,15 @@
                 top: 0;
             }
 
+            .investor-hero {
+                padding-top: 72px;
+            }
+
+            .investor-flag {
+                width: 56px;
+                height: 36px;
+            }
+
             .toc-list {
                 flex-direction: row;
                 overflow-x: auto;
@@ -2644,8 +2743,21 @@
                 font-size: 16px;
             }
 
-            .investor-title {
-                font-size: 30px;
+            .investor-quote {
+                font-size: 32px;
+            }
+
+            .investor-quote-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .investor-flag {
+                order: -1;
+            }
+
+            .investor-meta {
+                grid-template-columns: 1fr;
             }
 
             .investor-section {
@@ -3688,16 +3800,56 @@
 
         <main id="view-investors" class="page-view main-content" data-view="investors">
             <section class="investor-hero">
-                <p class="investor-kicker">Investor Overview</p>
-                <h1 class="investor-title">Building the Talent Infrastructure Behind Industrial Scale</h1>
-                <p class="investor-subtitle">Project Arklight investor overview.</p>
+                <div class="rule"></div>
+                <div class="investor-quote-row">
+                    <h1 class="investor-quote">
+                        <span class="investor-quote-text">“ The industrial base of a nation is the foundation of its strength. ”</span>
+                        <span class="investor-quote-attribution">&nbsp;&nbsp;- Dwight D. Eisenhower</span>
+                    </h1>
+                    <svg class="investor-flag" viewBox="0 0 64 40" aria-hidden="true" focusable="false">
+                        <rect class="flag-field" x="1" y="1" width="62" height="38" rx="3"></rect>
+                        <rect class="flag-canton" x="1" y="1" width="26" height="18"></rect>
+                        <g class="flag-stars">
+                            <circle class="flag-star" cx="6" cy="6" r="1.1"></circle>
+                            <circle class="flag-star" cx="12" cy="6" r="1.1"></circle>
+                            <circle class="flag-star" cx="18" cy="6" r="1.1"></circle>
+                            <circle class="flag-star" cx="6" cy="11" r="1.1"></circle>
+                            <circle class="flag-star" cx="12" cy="11" r="1.1"></circle>
+                            <circle class="flag-star" cx="18" cy="11" r="1.1"></circle>
+                            <circle class="flag-star" cx="6" cy="16" r="1.1"></circle>
+                            <circle class="flag-star" cx="12" cy="16" r="1.1"></circle>
+                            <circle class="flag-star" cx="18" cy="16" r="1.1"></circle>
+                        </g>
+                        <rect class="flag-stripe" x="1" y="21" width="62" height="4"></rect>
+                        <rect class="flag-stripe" x="1" y="28" width="62" height="4"></rect>
+                        <rect class="flag-stripe" x="1" y="35" width="62" height="3"></rect>
+                    </svg>
+                </div>
+                <div class="rule"></div>
+                <div class="investor-meta">
+                    <div class="investor-meta-item">
+                        <div class="investor-meta-label">Scroll to read</div>
+                        <button class="investor-scroll" type="button" data-scroll-target="investors-executive-summary" aria-label="Scroll to Executive Summary">
+                            <span class="investor-scroll-arrow">↓</span>
+                            <span class="investor-meta-value">Executive Summary</span>
+                        </button>
+                    </div>
+                    <div class="investor-meta-item">
+                        <div class="investor-meta-label">Team</div>
+                        <div class="investor-meta-value">Dani Mota<br>Josh Soto<br>Ray Bryant</div>
+                    </div>
+                    <div class="investor-meta-item">
+                        <div class="investor-meta-label">Last edited</div>
+                        <div class="investor-meta-value" id="investor-last-edited">February 5, 2026</div>
+                    </div>
+                </div>
             </section>
 
             <div class="investor-layout">
                 <aside class="investor-toc" aria-label="Investor table of contents">
                     <div class="toc-title">Contents</div>
                     <div class="toc-list">
-                        <a class="toc-link" href="#investors-executive" data-target="investors-executive">Executive Summary</a>
+                        <a class="toc-link" href="#investors-executive-summary" data-target="investors-executive-summary">Executive Summary</a>
                         <a class="toc-link" href="#investors-problem" data-target="investors-problem">The Problem</a>
                         <a class="toc-link" href="#investors-opportunity" data-target="investors-opportunity">The Opportunity</a>
                         <a class="toc-link" href="#investors-solution" data-target="investors-solution">The Solution</a>
@@ -3712,10 +3864,10 @@
                 </aside>
 
                 <div class="investor-content">
-                    <section id="investors-executive" class="investor-section" data-section>
+                    <section id="investors-executive-summary" class="investor-section" data-section>
                         <div class="investor-section-header">
                             <h2 class="section-title">Executive Summary</h2>
-                            <button class="copy-link" type="button" data-copy="investors-executive" aria-label="Copy link to Executive Summary">Copy link</button>
+                            <button class="copy-link" type="button" data-copy="investors-executive-summary" aria-label="Copy link to Executive Summary">Copy link</button>
                         </div>
                         <ul class="bullet-list">
                             <li>Project Arklight is addressing a national security failure: talent.</li>
@@ -4212,6 +4364,8 @@
         const tocLinks = Array.from(investorView.querySelectorAll('.toc-link'));
         const sections = Array.from(investorView.querySelectorAll('[data-section]'));
         const copyButtons = Array.from(investorView.querySelectorAll('[data-copy]'));
+        const heroScroll = investorView.querySelector('[data-scroll-target]');
+        const lastEdited = investorView.querySelector('#investor-last-edited');
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         function setActiveSection(id) {
@@ -4246,6 +4400,24 @@
                 scrollToSection(targetId);
             });
         });
+
+        if (heroScroll) {
+            heroScroll.addEventListener('click', (event) => {
+                const targetId = heroScroll.dataset.scrollTarget;
+                if (!targetId) return;
+                event.preventDefault();
+                scrollToSection(targetId);
+            });
+        }
+
+        if (lastEdited) {
+            const now = new Date();
+            lastEdited.textContent = now.toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+        }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
