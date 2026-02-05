@@ -1006,11 +1006,20 @@
             font-size: 12px;
             line-height: 1.6;
             padding: 12px 14px;
-            max-width: 220px;
+            max-width: 240px;
             border-radius: 10px;
             opacity: 0;
             transition: opacity var(--transition-fast);
             pointer-events: none;
+        }
+
+        .radar-tooltip-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .radar-tooltip-body {
+            font-weight: 400;
         }
 
         .radar-tooltip-line {
@@ -4348,6 +4357,85 @@
             const container = document.getElementById('radar-chart');
             if (!container) return;
 
+            const CONSTRUCT_TOOLTIP_COPY = {
+                FI: {
+                    title: 'Fluid Intelligence (FI)',
+                    body: 'How quickly someone can understand new problems and learn complex systems without needing repeated instruction.'
+                },
+                ER: {
+                    title: 'Extrapolational Reasoning (ER)',
+                    body: 'Ability to see what is likely to happen next and act before small issues become major failures.'
+                },
+                ICI: {
+                    title: 'Cognitive Inhibition / Interference Control (ICI)',
+                    body: 'Ability to pause, double check, and avoid wrong actions when under time pressure or stress.'
+                },
+                MAC: {
+                    title: 'Metacognitive Accuracy (MAC)',
+                    body: 'Ability to accurately judge what they know and when to ask for help, avoiding dangerous overconfidence.'
+                },
+                TCDQ: {
+                    title: 'Time-Compressed Decision Quality (TCDQ)',
+                    body: 'Ability to make correct decisions even when time is limited and stakes are high.'
+                },
+                CMR: {
+                    title: 'Causal Misattribution Resistance (CMR)',
+                    body: 'Ability to diagnose problems based on evidence rather than assumptions or false explanations.'
+                },
+                ERCS: {
+                    title: 'Error Recovery & Correction Speed (ERCS)',
+                    body: 'Ability to quickly recognize a mistake, change course, and restore operations.'
+                },
+                SRD: {
+                    title: 'Systems Reasoning & Diagnostics (SRD)',
+                    body: 'Ability to understand how complex systems work together and trace problems to their true root cause.'
+                },
+                PRAD: {
+                    title: 'Pattern Recognition & Anomaly Detection (PRAD)',
+                    body: 'Ability to notice subtle issues or irregularities that others miss in noisy or data-heavy environments.'
+                },
+                TMAQ: {
+                    title: 'Technical Math & Quant Reasoning (TMAQ)',
+                    body: 'Ability to understand tolerances, measurements, and how small errors can create large downstream problems.'
+                },
+                DLCT: {
+                    title: 'Digital Logic & Computational Thinking (DLCT)',
+                    body: 'Ability to understand and troubleshoot automated systems, logic flows, and machine behavior.'
+                },
+                SPV: {
+                    title: 'Spatial & Process Visualization (SPV)',
+                    body: 'Ability to mentally visualize physical systems, workflows, and 3D environments accurately.'
+                },
+                ASWL: {
+                    title: 'Attention Stability Under Load (ASWL)',
+                    body: 'Ability to maintain focus, accuracy, and consistency during long shifts or high intensity work.'
+                },
+                FIDS: {
+                    title: 'Fault Isolation & Debug Speed (FIDS)',
+                    body: 'Ability to quickly isolate the real source of a failure in complex or noisy conditions.'
+                },
+                ISI: {
+                    title: 'Information Security Instinct (ISI)',
+                    body: 'Natural awareness of digital risks and ability to avoid unsafe or careless security behavior.'
+                },
+                RRCP: {
+                    title: 'Reliability & Rules Compliance (RRCP)',
+                    body: 'Ability to consistently follow procedures and safety rules even under pressure or urgency.'
+                },
+                VCS: {
+                    title: 'Values Conflict Scenarios (VCS)',
+                    body: 'How someone makes decisions when safety, ethics, or rules are in conflict with speed or convenience.'
+                },
+                BCC: {
+                    title: 'Behavioral Consistency Cross-Check (BCC)',
+                    body: 'Whether someone remains honest and consistent over time rather than gaming the system.'
+                },
+                MAI: {
+                    title: 'Mission Alignment Indicator (MAI)',
+                    body: 'Whether someone’s personal values align with high responsibility, long term mission driven work.'
+                }
+            };
+
             const constructs = [...CONSTRUCTS.cognitive, ...CONSTRUCTS.technical, ...CONSTRUCTS.integrity];
             const scores = constructs.map(c => candidate.scores[c.id]);
             const labels = constructs.map(c => c.id);
@@ -4441,9 +4529,11 @@
                     const index = Number(event.currentTarget.dataset.constructIndex);
                     const construct = constructs[index];
                     if (!construct) return;
+                    const copy = CONSTRUCT_TOOLTIP_COPY[construct.id];
+                    if (!copy) return;
                     tooltip.innerHTML = `
-                        <div class="radar-tooltip-line">${construct.name}</div>
-                        <div class="radar-tooltip-line">${construct.measures}</div>
+                        <div class="radar-tooltip-title">${copy.title}</div>
+                        <div class="radar-tooltip-body">${copy.body}</div>
                     `;
                     tooltip.style.opacity = '1';
                     positionTooltip(event);
