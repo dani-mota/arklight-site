@@ -116,21 +116,6 @@
             flex-wrap: wrap;
         }
 
-        .investor-placeholder {
-            margin-top: 24px;
-            padding: 14px 18px;
-            border: 1px dashed var(--border-secondary);
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
-            display: none;
-        }
-
-        .investor-placeholder.is-visible {
-            display: block;
-        }
-
         .button {
             display: inline-flex;
             align-items: center;
@@ -226,6 +211,292 @@
             margin-top: 72px;
             padding-top: 48px;
             border-top: 1px solid var(--border-primary);
+        }
+
+        /* Investors */
+        .investor-hero {
+            padding: 80px 0 40px;
+            max-width: 900px;
+        }
+
+        .investor-kicker {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .investor-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .investor-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 720px;
+        }
+
+        .investor-layout {
+            display: grid;
+            grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+            gap: 40px;
+            align-items: start;
+        }
+
+        .investor-toc {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+        }
+
+        .toc-title {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .toc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 0 4px 12px;
+            border-left: 1px solid transparent;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .toc-link:hover {
+            color: var(--text-primary);
+        }
+
+        .toc-link.active {
+            color: var(--text-primary);
+            border-left-color: var(--border-hover);
+        }
+
+        .investor-section {
+            border: 1px solid var(--border-primary);
+            background: var(--bg-secondary);
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            scroll-margin-top: 140px;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .investor-section:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .investor-section.is-active {
+            border-color: var(--border-hover);
+        }
+
+        .investor-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .copy-link {
+            border: 1px dashed var(--border-secondary);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            cursor: pointer;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .copy-link:hover {
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+        }
+
+        .copy-link[data-copied="true"] {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        .bullet-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .bullet-list li {
+            margin-bottom: 8px;
+        }
+
+        .bullet-list.compact li {
+            margin-bottom: 4px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-tile {
+            border: 1px solid var(--border-secondary);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 14px 16px;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .stat-tile:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .investor-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .investor-card {
+            border: 1px solid var(--border-secondary);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 18px;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .investor-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .card-title {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .detail-card {
+            margin-top: 16px;
+            border: 1px solid var(--border-secondary);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 14px;
+        }
+
+        .detail-card summary {
+            cursor: pointer;
+            list-style: none;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .detail-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .detail-body {
+            margin-top: 12px;
+        }
+
+        .micro-label {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .investor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .investor-table th {
+            text-align: left;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .investor-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-primary);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .team-card {
+            border: 1px solid var(--border-secondary);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 18px;
+        }
+
+        .team-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .team-bio {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         .tilt-card {
@@ -2222,6 +2493,34 @@
                 gap: 8px;
             }
 
+            .investor-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .investor-toc {
+                position: relative;
+                top: 0;
+            }
+
+            .toc-list {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .toc-link {
+                border: 1px solid var(--border-secondary);
+                border-radius: 999px;
+                padding: 6px 12px;
+                border-left: none;
+                white-space: nowrap;
+            }
+
+            .toc-link.active {
+                border-color: var(--text-primary);
+            }
+
             .role-fit-text {
                 font-size: 13px;
             }
@@ -2343,6 +2642,19 @@
 
             .home-hero-subtitle {
                 font-size: 16px;
+            }
+
+            .investor-title {
+                font-size: 30px;
+            }
+
+            .investor-section {
+                padding: 22px;
+            }
+
+            .investor-card-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
             }
 
             .home-section-title {
@@ -3112,6 +3424,7 @@
                     <div class="nav-links">
                         <a class="global-link" href="#home" data-nav="home">Home</a>
                         <a class="global-link" href="#partners" data-nav="partners">Partners</a>
+                        <a class="global-link" href="#investors" data-nav="investors">Investors</a>
                     </div>
                     <a class="nav-cta" href="#demo" data-nav="demo">Demo</a>
                 </nav>
@@ -3137,9 +3450,6 @@
                 <div class="home-ctas">
                     <a class="button secondary" href="#investors">For Investors</a>
                     <a class="button secondary" href="#partners">For Partners</a>
-                </div>
-                <div id="investors-placeholder" class="investor-placeholder" aria-live="polite">
-                    Investor information is available on request. Please reach out to begin.
                 </div>
             </section>
 
@@ -3376,6 +3686,325 @@
         
         </main>
 
+        <main id="view-investors" class="page-view main-content" data-view="investors">
+            <section class="investor-hero">
+                <p class="investor-kicker">Investor Overview</p>
+                <h1 class="investor-title">Building the Talent Infrastructure Behind Industrial Scale</h1>
+                <p class="investor-subtitle">Project Arklight investor overview.</p>
+            </section>
+
+            <div class="investor-layout">
+                <aside class="investor-toc" aria-label="Investor table of contents">
+                    <div class="toc-title">Contents</div>
+                    <div class="toc-list">
+                        <a class="toc-link" href="#investors-executive" data-target="investors-executive">Executive Summary</a>
+                        <a class="toc-link" href="#investors-problem" data-target="investors-problem">The Problem</a>
+                        <a class="toc-link" href="#investors-opportunity" data-target="investors-opportunity">The Opportunity</a>
+                        <a class="toc-link" href="#investors-solution" data-target="investors-solution">The Solution</a>
+                        <a class="toc-link" href="#investors-market" data-target="investors-market">The Market</a>
+                        <a class="toc-link" href="#investors-plan" data-target="investors-plan">Plan, Use of Funds &amp; Milestones</a>
+                        <a class="toc-link" href="#investors-model" data-target="investors-model">Business Model</a>
+                        <a class="toc-link" href="#investors-traction" data-target="investors-traction">Traction</a>
+                        <a class="toc-link" href="#investors-team" data-target="investors-team">Team</a>
+                        <a class="toc-link" href="#investors-arc" data-target="investors-arc">Product Deep Dive: ARC Assessment (fka NAIB)</a>
+                        <a class="toc-link" href="#investors-factory" data-target="investors-factory">Product Deep Dive: Talent Factory</a>
+                    </div>
+                </aside>
+
+                <div class="investor-content">
+                    <section id="investors-executive" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Executive Summary</h2>
+                            <button class="copy-link" type="button" data-copy="investors-executive" aria-label="Copy link to Executive Summary">Copy link</button>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Project Arklight is addressing a national security failure: talent.</li>
+                            <li>China can produce over 200 military ships per year. The United States can only produce one.</li>
+                            <li>U.S. aerospace backlog exceeds 15,000 aircraft with delivery delays exceeding 11 years.</li>
+                            <li>Submarine programs face delays up to 7 years.</li>
+                            <li>Core constraint: shortage of skilled, mission-ready talent.</li>
+                        </ul>
+                        <div class="stat-grid">
+                            <div class="stat-tile">
+                                <div class="stat-value">200:1</div>
+                                <div class="stat-label">Shipbuilding capacity gap</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">15,000+</div>
+                                <div class="stat-label">Aerospace backlog</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">7 years</div>
+                                <div class="stat-label">Submarine delays</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="investors-problem" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">The Problem</h2>
+                            <button class="copy-link" type="button" data-copy="investors-problem" aria-label="Copy link to The Problem">Copy link</button>
+                        </div>
+                        <div class="investor-card-grid">
+                            <div class="investor-card">
+                                <p class="info-text">Wartime economy and production gap (shipbuilding 200:1; 14,000+ aircraft backlogged).</p>
+                            </div>
+                            <div class="investor-card">
+                                <p class="info-text">Structural talent collapse (2M unfilled roles today; 3.8M projected by 2033; 50% retirement-eligible; median machinist 44+).</p>
+                            </div>
+                            <div class="investor-card">
+                                <p class="info-text">Economic immobilization (stalled capital: $52B CHIPS and $369B IRA; $1.7T education debt).</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="investors-opportunity" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">The Opportunity</h2>
+                            <button class="copy-link" type="button" data-copy="investors-opportunity" aria-label="Copy link to The Opportunity">Copy link</button>
+                        </div>
+                        <p class="micro-label">Why now</p>
+                        <ul class="bullet-list">
+                            <li>While legacy systems remain paralyzed by a &gt;$1.5T industrial labor crisis, Project Arklight operationalizes the 'Arsenal of Democracy' by building the mission-critical talent infrastructure required to restore U.S. industrial sovereignty.</li>
+                            <li>Labor Gap: 2M unfilled roles today; 3.8M projected by 2033.</li>
+                            <li>Stalled Capital: $52B (CHIPS) &amp; $369B (IRA) neutralized by "immobile" labor.</li>
+                            <li>Demand, Capital, and Policy are aligned, yet talent remains the binding constraint. Solving this is a strategic requirement for industrial sovereignty.</li>
+                            <li>Shipbuilding Gap: China leads U.S. 200:1 in production capacity.</li>
+                        </ul>
+                    </section>
+
+                    <section id="investors-solution" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">The Solution</h2>
+                            <button class="copy-link" type="button" data-copy="investors-solution" aria-label="Copy link to The Solution">Copy link</button>
+                        </div>
+                        <div class="investor-card-grid">
+                            <div class="investor-card">
+                                <p class="card-title">Product I</p>
+                                <p class="info-text">NAIB/ARC talent signal layer</p>
+                            </div>
+                            <div class="investor-card">
+                                <p class="card-title">Product II</p>
+                                <p class="info-text">Talent Factory</p>
+                            </div>
+                            <div class="investor-card">
+                                <p class="card-title">Moat</p>
+                                <p class="info-text">Vertically owns Physical, Data, and Talent layers</p>
+                            </div>
+                        </div>
+                        <details class="detail-card">
+                            <summary>Details</summary>
+                            <div class="detail-body">
+                                <ul class="bullet-list compact">
+                                    <li>Physical layer</li>
+                                    <li>Data layer</li>
+                                    <li>Talent layer</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </section>
+
+                    <section id="investors-market" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">The Market</h2>
+                            <button class="copy-link" type="button" data-copy="investors-market" aria-label="Copy link to The Market">Copy link</button>
+                        </div>
+                        <p class="info-text">Arklight operates at the intersection of workforce infrastructure and manufacturing ownership.</p>
+                        <p class="info-text">Arklight is neither a traditional school nor simply a network of distributed factories. Instead, it creates value by closing two structural gaps simultaneously:</p>
+                        <ul class="bullet-list compact">
+                            <li>Talent infrastructure (assessment, training, validation)</li>
+                            <li>Distributed manufacturing capacity (via acquisition of firms without succession plans)</li>
+                        </ul>
+                        <div class="stat-grid">
+                            <div class="stat-tile">
+                                <div class="stat-value">TAM $503B</div>
+                                <div class="stat-label">Total U.S. manufacturing SMB enterprise value plus embedded talent-infrastructure opportunity, representing the full asset base where labor readiness and production capacity are structurally constrained.</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">SAM $71.8B</div>
+                                <div class="stat-label">Focused subset of manufacturing SMBs within target geographies, subsectors, and succession-driven ownership profiles where acquisitions and NAIB deployment are operationally feasible.</div>
+                            </div>
+                            <div class="stat-tile">
+                                <div class="stat-value">SOM $450M</div>
+                                <div class="stat-label">Realistically obtainable outcome over 5 to 7 years through disciplined rollup execution and NAIB integration, capturing under 1% of the serviceable market.</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="investors-plan" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Plan, Use of Funds &amp; Milestones</h2>
+                            <button class="copy-link" type="button" data-copy="investors-plan" aria-label="Copy link to Plan, Use of Funds &amp; Milestones">Copy link</button>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Having already validated institutional demand, this pre-seed round focuses on commercializing NAIB to generate revenue and convert pilots into binding Talent Factory agreements.</li>
+                            <li>NAIB serves as the spearhead into major industrial partners, producing the performance data required to lock contracts before acquiring assets.</li>
+                            <li>With commercial demand secured, Arklight will scale Talent Factories through targeted acquisitions.</li>
+                            <li>Given the wartime-economy, there is a plethora of capital and friendly financing options from the Department of War, Department of Labor, CHIPS Act, IRA Act, and state programs, not including private financing and alternatives.</li>
+                        </ul>
+                        <div class="investor-card-grid">
+                            <div class="investor-card">
+                                <p class="card-title">NAIB MVP Built &amp; Commercialized</p>
+                                <ul class="bullet-list compact">
+                                    <li>Build and deploy the NAIB MVP to assess aptitude, learning velocity, and integrity against real industrial roles</li>
+                                    <li>Secure paying customers using NAIB in live hiring, screening, or workforce decisions</li>
+                                    <li>Generate initial revenue and performance data validating NAIB as a trusted talent signal</li>
+                                </ul>
+                            </div>
+                            <div class="investor-card">
+                                <p class="card-title">Talent Factory Commercial Agreements Secured</p>
+                                <ul class="bullet-list compact">
+                                    <li>Sign commercial agreements with the government and private partners on Talent Factory.</li>
+                                    <li>Define role-specific skill requirements, throughput targets, and performance benchmarks with partners</li>
+                                    <li>Underwrite the economics for a first Talent Factory, triggering a de-risked shop acquisition.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <details class="detail-card">
+                            <summary>Use of funds</summary>
+                            <div class="detail-body">
+                                <ul class="bullet-list compact">
+                                    <li>Product</li>
+                                    <li>Pilots</li>
+                                    <li>Partnerships</li>
+                                    <li>Operating</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </section>
+
+                    <section id="investors-model" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Business Model</h2>
+                            <button class="copy-link" type="button" data-copy="investors-model" aria-label="Copy link to Business Model">Copy link</button>
+                        </div>
+                        <table class="investor-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>NAIB</td>
+                                    <td>High-margin recurring revenue, $2,000 per assessment or $250k to $1M per year enterprise</td>
+                                </tr>
+                                <tr>
+                                    <td>Talent Factory</td>
+                                    <td>Contract fulfillment revenue, placement fees, tuition commitment signaling</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="micro-label" style="margin-top: 16px;">Principles</p>
+                        <ul class="bullet-list compact">
+                            <li>Demand-first acquisition</li>
+                            <li>Non-dilutive dominance</li>
+                            <li>Contract-backed scale</li>
+                        </ul>
+                    </section>
+
+                    <section id="investors-traction" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Traction</h2>
+                            <button class="copy-link" type="button" data-copy="investors-traction" aria-label="Copy link to Traction">Copy link</button>
+                        </div>
+                        <table class="investor-table">
+                            <thead>
+                                <tr>
+                                    <th>Partner validation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hadrian</td>
+                                </tr>
+                                <tr>
+                                    <td>Anduril</td>
+                                </tr>
+                                <tr>
+                                    <td>U.S. Navy</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="info-text" style="margin-top: 12px;">Alignment with the $17B Maritime Industrial Base.</p>
+                    </section>
+
+                    <section id="investors-team" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Team</h2>
+                            <button class="copy-link" type="button" data-copy="investors-team" aria-label="Copy link to Team">Copy link</button>
+                        </div>
+                        <div class="team-grid">
+                            <div class="team-card">
+                                <div class="team-name">Dani Mota</div>
+                                <div class="team-role">Chief Executive Officer, Founder</div>
+                                <div class="team-bio">Scaled a fintech from &lt;15 to 80+ staff and a $250M valuation; former board member of a university foundation.</div>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Josh Soto</div>
+                                <div class="team-role">Founder</div>
+                                <div class="team-bio">Former military intelligence and ex-A16Z operator who rebuilt a failing K-12 school into an AI-enabled school; driving AI strategy at Cisco as an executive.</div>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Ray Bryant</div>
+                                <div class="team-role">Founder</div>
+                                <div class="team-bio">Serial entrepreneur, and PE partner with multiple successful exits as both a founder and investor. Currently a professor and startup advisor.</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="investors-arc" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Product Deep Dive: ARC Assessment (fka NAIB)</h2>
+                            <button class="copy-link" type="button" data-copy="investors-arc" aria-label="Copy link to Product Deep Dive: ARC Assessment">Copy link</button>
+                        </div>
+                        <p class="info-text"><strong>NAIB replaces subjective hiring with quantified performance telemetry, turning human potential into a bankable asset.</strong></p>
+                        <p class="info-text">Challenge: proxy dependency (degrees, resumes, interviews)</p>
+                        <ul class="bullet-list">
+                            <li>I. Stress-Test Assessment: In-person, military-grade evaluation of cognitive velocity and problem-solving under pressure.</li>
+                            <li>II. Living Talent Profile: AI-driven synthesis of psychometrics and execution patterns into dynamic readiness scores.</li>
+                            <li>III. Closed-Loop Validation: Continuous integration of real work data to validate competency and identify gaps.</li>
+                        </ul>
+                    </section>
+
+                    <section id="investors-factory" class="investor-section" data-section>
+                        <div class="investor-section-header">
+                            <h2 class="section-title">Product Deep Dive: Talent Factory</h2>
+                            <button class="copy-link" type="button" data-copy="investors-factory" aria-label="Copy link to Product Deep Dive: Talent Factory">Copy link</button>
+                        </div>
+                        <div class="investor-card-grid">
+                            <div class="investor-card">
+                                <p class="card-title">I. Heritage Shop</p>
+                                <p class="info-text">Reality: Traditional shops rely on tribal knowledge, aging operators, and outdated infrastructure.</p>
+                                <p class="info-text">Risk: As veteran workers retire, critical skills disappear, driving inconsistent quality, slower production, and margin erosion.</p>
+                            </div>
+                            <div class="investor-card">
+                                <p class="card-title">II. Modernized Hub</p>
+                                <p class="info-text">Upgrade: Arklight acquires or builds shops and installs a digital-first, high-performance operating model.</p>
+                                <p class="info-text">Objective:</p>
+                                <ul class="bullet-list compact">
+                                    <li>Expand capability: Serve higher-precision, higher-value customers</li>
+                                    <li>Improve economics: Increase throughput, quality, and margins</li>
+                                    <li>Scale: Turn a local shop into a reliable node in the supply chain</li>
+                                </ul>
+                            </div>
+                            <div class="investor-card">
+                                <p class="card-title">III. Talent Factory</p>
+                                <p class="info-text">Integration: Production and training become one system.</p>
+                                <p class="info-text">How it works:</p>
+                                <ul class="bullet-list compact">
+                                    <li>Operators train inside live production from day one</li>
+                                    <li>Arklight OS delivers task-specific instruction in real time</li>
+                                    <li>NAIB measures performance, identifies gaps, and validates readiness*</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
         <main id="view-demo" class="page-view main-content" data-view="demo">
 
             <section id="assessment-demo" class="assessment-demo">
@@ -3505,12 +4134,28 @@
             home: 'home',
             partners: 'partners',
             demo: 'demo',
-            investors: 'home'
+            investors: 'investors'
         };
 
         const views = Array.from(document.querySelectorAll('main[data-view]'));
         const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
-        const investorPlaceholder = document.getElementById('investors-placeholder');
+        const investorView = document.getElementById('view-investors');
+        const investorContent = investorView ? investorView.querySelector('.investor-content') : null;
+
+        function resolveView(raw) {
+            if (raw.startsWith('investors')) {
+                return 'investors';
+            }
+            return viewMap[raw] || 'home';
+        }
+
+        function scrollToInvestorSection(sectionId) {
+            if (!investorView || !sectionId) return;
+            const target = investorView.querySelector(`#${sectionId}`);
+            if (!target) return;
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+        }
 
         function setView(name) {
             views.forEach((view) => {
@@ -3527,6 +4172,13 @@
                     link.removeAttribute('aria-current');
                 }
             });
+
+            if (name === 'investors') {
+                if (investorContent) {
+                    investorContent.scrollTop = 0;
+                }
+                window.scrollTo({ top: 0, behavior: 'auto' });
+            }
         }
 
         function handleHashChange() {
@@ -3535,14 +4187,11 @@
                 window.location.hash = '#home';
                 return;
             }
-            const next = viewMap[raw] || 'home';
+            const next = resolveView(raw);
             setView(next);
-
-            const isInvestor = raw === 'investors';
-            if (investorPlaceholder) {
-                investorPlaceholder.classList.toggle('is-visible', isInvestor);
-                if (isInvestor) {
-                    investorPlaceholder.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (next === 'investors') {
+                if (raw !== 'investors') {
+                    scrollToInvestorSection(raw);
                 }
             }
         }
@@ -3553,6 +4202,94 @@
         } else {
             handleHashChange();
         }
+    })();
+    </script>
+    <script>
+    (function() {
+        const investorView = document.getElementById('view-investors');
+        if (!investorView) return;
+
+        const tocLinks = Array.from(investorView.querySelectorAll('.toc-link'));
+        const sections = Array.from(investorView.querySelectorAll('[data-section]'));
+        const copyButtons = Array.from(investorView.querySelectorAll('[data-copy]'));
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function setActiveSection(id) {
+            sections.forEach(section => {
+                section.classList.toggle('is-active', section.id === id);
+            });
+            tocLinks.forEach(link => {
+                const isActive = link.dataset.target === id;
+                link.classList.toggle('active', isActive);
+                if (isActive) {
+                    link.setAttribute('aria-current', 'true');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        function scrollToSection(id) {
+            const target = investorView.querySelector(`#${id}`);
+            if (!target) return;
+            target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+        }
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetId = link.dataset.target;
+                if (!targetId) return;
+                event.preventDefault();
+                if (window.location.hash !== `#${targetId}`) {
+                    window.location.hash = targetId;
+                }
+                scrollToSection(targetId);
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+        if (sections.length) {
+            setActiveSection(sections[0].id);
+        }
+
+        function copyText(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise((resolve) => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'absolute';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                resolve();
+            });
+        }
+
+        copyButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const targetId = button.dataset.copy;
+                if (!targetId) return;
+                const hash = `#${targetId}`;
+                await copyText(hash);
+                button.dataset.copied = 'true';
+                window.setTimeout(() => {
+                    button.dataset.copied = 'false';
+                }, 1200);
+            });
+        });
     })();
     </script>
 <script>
