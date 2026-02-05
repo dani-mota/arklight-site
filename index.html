@@ -189,6 +189,54 @@
             padding-top: 48px;
             border-top: 1px solid var(--border-primary);
         }
+
+        .tilt-card {
+            margin-top: 32px;
+            padding: 24px;
+            border: 1px solid var(--border-primary);
+            background: var(--bg-secondary);
+        }
+
+        .tilt-stage {
+            perspective: 900px;
+        }
+
+        .tilt-object {
+            transform-style: preserve-3d;
+            transition: transform 160ms ease;
+            will-change: transform;
+        }
+
+        .tilt-illustration {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .tilt-illustration .line-strong {
+            stroke: var(--text-secondary);
+            stroke-width: 1.2;
+        }
+
+        .tilt-illustration .line-muted {
+            stroke: var(--text-dim);
+            stroke-width: 1;
+        }
+
+        .tilt-illustration .line-accent {
+            stroke: var(--accent-blue);
+            stroke-width: 1.2;
+            stroke-opacity: 0.7;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tilt-object {
+                transition: none;
+                transform: none !important;
+            }
+        }
         /* Header */
         .header {
             position: fixed;
@@ -2904,6 +2952,44 @@
                     In collaboration with our industrial partners, Talent Factories are existing manufacturing facilities acquired and operated as production environments to develop, validate, and deploy high-quality talent at scale and speed for the American industrial base.
                 </p>
                 <a class="button" href="#talent-factory">Explore the Talent Factory Model</a>
+                <div class="tilt-card" aria-label="Talent Factory illustration">
+                    <div class="tilt-stage">
+                        <div class="tilt-object">
+                            <svg class="tilt-illustration" viewBox="0 0 520 360" role="img" aria-label="Talent Factory line art" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse class="line-muted" cx="260" cy="310" rx="180" ry="26" />
+                                    <ellipse class="line-muted" cx="260" cy="300" rx="160" ry="22" />
+                                    <ellipse class="line-strong" cx="260" cy="290" rx="140" ry="18" />
+
+                                    <ellipse class="line-strong" cx="260" cy="200" rx="180" ry="22" />
+                                    <ellipse class="line-muted" cx="260" cy="192" rx="160" ry="18" />
+
+                                    <path class="line-strong" d="M140 200 C185 90 335 90 380 200" />
+                                    <path class="line-muted" d="M190 200 C210 125 240 105 260 105" />
+                                    <path class="line-muted" d="M330 200 C310 125 280 105 260 105" />
+                                    <path class="line-muted" d="M240 200 C245 130 255 110 260 105" />
+                                    <path class="line-muted" d="M280 200 C275 130 265 110 260 105" />
+
+                                    <line class="line-muted" x1="170" y1="250" x2="170" y2="205" />
+                                    <line class="line-muted" x1="210" y1="250" x2="210" y2="205" />
+                                    <line class="line-strong" x1="250" y1="250" x2="250" y2="205" />
+                                    <line class="line-strong" x1="290" y1="250" x2="290" y2="205" />
+                                    <line class="line-muted" x1="330" y1="250" x2="330" y2="205" />
+                                    <line class="line-muted" x1="350" y1="250" x2="350" y2="205" />
+
+                                    <ellipse class="line-muted" cx="260" cy="250" rx="150" ry="16" />
+
+                                    <ellipse class="line-muted" cx="260" cy="265" rx="150" ry="16" />
+                                    <line class="line-muted" x1="110" y1="265" x2="110" y2="292" />
+                                    <line class="line-muted" x1="410" y1="265" x2="410" y2="292" />
+
+                                    <circle class="line-accent" cx="260" cy="96" r="10" />
+                                    <path class="line-accent" d="M250 108 L270 108" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="home-audience" aria-label="Investors and Partners">
@@ -5200,5 +5286,53 @@
 
     })();
     </script>
+
+    <script>
+    (function() {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) return;
+
+        const cards = document.querySelectorAll('.tilt-card');
+        const maxDeg = 8;
+        const depth = 10;
+
+        cards.forEach((card) => {
+            const object = card.querySelector('.tilt-object');
+            if (!object) return;
+
+            let rafId = null;
+            let bounds = null;
+
+            const update = (event) => {
+                if (!bounds) bounds = card.getBoundingClientRect();
+                const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+                const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+                const rotY = x * maxDeg;
+                const rotX = -y * maxDeg;
+
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(() => {
+                    object.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(${depth}px)`;
+                });
+            };
+
+            const reset = () => {
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(() => {
+                    object.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+                bounds = null;
+            };
+
+            card.addEventListener('mouseenter', () => {
+                bounds = card.getBoundingClientRect();
+            });
+            card.addEventListener('mousemove', update);
+            card.addEventListener('mouseleave', reset);
+            card.addEventListener('touchstart', reset, { passive: true });
+        });
+    })();
+    </script>
+
 </body>
 </html>
