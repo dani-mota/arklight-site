@@ -5459,28 +5459,6 @@
                 ${renderConstructSection('cognitive', 'Cognitive Core', CONSTRUCTS.cognitive, candidate)}
                 ${renderConstructSection('technical', 'Technical Aptitude', CONSTRUCTS.technical, candidate)}
                 ${renderConstructSection('integrity', 'Behavioral Integrity', CONSTRUCTS.integrity, candidate)}
-
-                <div class="domain-grid">
-                    ${renderDomainSection({
-                        title: 'Cognitive Core — Foundational Meta-Capabilities',
-                        purpose: 'Governs learning speed, decision quality, error avoidance, and long-term performance ceiling.',
-                        constructs: CONSTRUCTS.cognitive,
-                        valueLabel: 'Operational value',
-                        summary: 'This layer determines how fast the candidate learns, how early they detect risk, and how effectively they recover from error.'
-                    })}
-                    ${renderDomainSection({
-                        title: 'Technical Aptitude — Operational Cognition',
-                        purpose: 'Measures real-world technical reasoning under operational constraints.',
-                        constructs: CONSTRUCTS.technical,
-                        valueLabel: 'Operational value'
-                    })}
-                    ${renderDomainSection({
-                        title: 'Behavioral Integrity & Mission Alignment',
-                        purpose: 'Measures behavior under constraint, not personality.',
-                        constructs: CONSTRUCTS.integrity,
-                        valueLabel: 'Why it matters operationally'
-                    })}
-                </div>
             `;
 
             container.innerHTML = html;
