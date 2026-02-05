@@ -919,6 +919,11 @@
             grid-template-columns: repeat(3, 1fr);
         }
 
+        .partner-impact .impact-value {
+            font-size: clamp(20px, 2.6vw, 30px);
+            font-weight: 500;
+        }
+
         .impact-card {
             background: var(--bg-primary);
             padding: 48px 24px;
@@ -1034,6 +1039,13 @@
         select:focus, input[type="text"]:focus {
             outline: none;
             border-color: var(--text-muted);
+        }
+
+        input[type="text"].candidate-filter {
+            background-image: none;
+            padding-right: 16px;
+            min-width: 220px;
+            cursor: text;
         }
 
         .checkbox-label {
@@ -2900,24 +2912,11 @@
             }
 
             .candidate-table tbody tr td:nth-child(2) {
-                grid-column: 2;
-                grid-row: 1;
-                justify-self: end;
-            }
-
-            .candidate-table tbody tr td:nth-child(3) {
-                grid-column: 1 / -1;
+                grid-column: 1;
                 grid-row: 2;
             }
 
-            /* Hide extra score columns on mobile, show only ACI */
-            .candidate-table tbody tr td:nth-child(5),
-            .candidate-table tbody tr td:nth-child(6),
-            .candidate-table tbody tr td:nth-child(7) {
-                display: none;
-            }
-
-            .candidate-table tbody tr td:nth-child(4) {
+            .candidate-table tbody tr td:nth-child(3) {
                 grid-column: 2;
                 grid-row: 1 / 3;
                 display: flex;
@@ -2925,7 +2924,19 @@
                 justify-content: flex-end;
             }
 
-            .candidate-table tbody tr td:nth-child(4) .score-cell {
+            /* Hide extra score columns on mobile, show only ACI */
+            .candidate-table tbody tr td:nth-child(4),
+            .candidate-table tbody tr td:nth-child(5),
+            .candidate-table tbody tr td:nth-child(6) {
+                display: none;
+            }
+
+            .candidate-table tbody tr td:nth-child(7) {
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+            .candidate-table tbody tr td:nth-child(3) .score-cell {
                 font-size: 28px;
                 font-weight: 300;
             }
@@ -3674,7 +3685,7 @@
 
             <section class="section-block">
                 <h2 class="section-title">Partner Problems We Solve</h2>
-                <div class="impact-strip impact-strip--three">
+                <div class="impact-strip impact-strip--three partner-impact">
                     <div class="impact-card">
                         <div class="impact-value">Talent Scarcity</div>
                         <div class="impact-label">With 4 million roles projected to go unfilled by 2030, traditional sourcing is mathematically incapable of meeting 2026 demand.</div>
@@ -3684,7 +3695,7 @@
                         <div class="impact-label">Every new hire carries a $50,000+ hidden cost.</div>
                     </div>
                     <div class="impact-card">
-                        <div class="impact-value">Quality &amp; Execution Risk</div>
+                        <div class="impact-value">Locked Growth</div>
                         <div class="impact-label">Manufacturing turnover averages 28%, and a single mis-hire costs 2x the annual salary in rework and lost margin.</div>
                     </div>
                 </div>
@@ -3692,7 +3703,7 @@
 
             <section class="section-block">
                 <h2 class="section-title">Outcomes for Our Partners</h2>
-                <div class="impact-strip">
+                <div class="impact-strip partner-impact">
                     <div class="impact-card">
                         <div class="impact-value">Predictable Talent Supply</div>
                         <div class="impact-label">A reliable pipeline of high-quality talent aligned to special projects.</div>
@@ -3721,7 +3732,7 @@
                 <p class="home-section-description">
                     Identifies candidates with the capacity to learn fast, perform under pressure, and reach productive output sooner. Reveals high-potential talent missed by traditional hiring methods.
                 </p>
-                <a class="button" href="#demo">View the Talent Assessment Demo</a>
+                <a class="button" href="#demo" id="partners-demo-cta">View the Talent Assessment Demo</a>
             </section>
 
             <section class="home-section" id="partners-talent-factory">
@@ -4228,10 +4239,7 @@
                             <option value="aci">ACI Score</option>
                             <option value="cognitive">Cognitive Core</option>
                             <option value="technical">Technical Aptitude</option>
-                            <option value="manufacturing">Manufacturing Technical</option>
-                            <option value="learning">Learning Velocity</option>
-                            <option value="reliability">Reliability Index</option>
-                            <option value="integrity">Behavioral Integrity</option>
+                            <option value="behavioral">Behavioral Integrity &amp; Mission Alignment</option>
                         </select>
                     </div>
                     <div class="control-group">
@@ -4252,6 +4260,10 @@
                             <input type="checkbox" id="cutline-filter">
                             <span>Meets cutline only</span>
                         </label>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="candidate-filter">Filter</label>
+                        <input type="text" id="candidate-filter" class="candidate-filter" placeholder="Filter candidates" autocomplete="off">
                     </div>
                 </div>
 
@@ -4994,6 +5006,32 @@
             return arr.reduce((a, b) => a + b, 0) / arr.length;
         }
 
+        const DOMAIN_CONSTRUCTS = {
+            cognitiveCore: ['FI', 'ER', 'ICI', 'MAC', 'TCDQ', 'CMR', 'ERCS'],
+            technicalAptitude: ['SRD', 'PRAD', 'TMAQ', 'DLCT', 'SPV', 'ASWL', 'FIDS', 'ISI', 'RRCP'],
+            behavioralAlignment: ['VCS', 'BCC', 'MAI']
+        };
+
+        function computeDomainAverages(candidate) {
+            const scores = candidate?.scores || {};
+            const averageFor = (ids) => {
+                const values = ids.map(id => scores[id]).filter(v => typeof v === 'number');
+                if (!values.length) return null;
+                return Math.round(values.reduce((sum, val) => sum + val, 0) / values.length);
+            };
+
+            return {
+                cognitiveCore: averageFor(DOMAIN_CONSTRUCTS.cognitiveCore),
+                technicalAptitude: averageFor(DOMAIN_CONSTRUCTS.technicalAptitude),
+                behavioralAlignment: averageFor(DOMAIN_CONSTRUCTS.behavioralAlignment)
+            };
+        }
+
+        function getPrimaryRole(candidate) {
+            const roleId = candidate?.recommendedRoles?.[0];
+            return ROLES.find(role => role.id === roleId);
+        }
+
         function scoreToPercentile(score) {
             return Math.max(1, Math.min(99, score));
         }
@@ -5099,6 +5137,7 @@
             sortDirection: 'desc',
             roleFilter: 'all',
             cutlineFilter: false,
+            filterText: '',
             candidates: generateCandidateData(),
             expandedSections: { cognitive: false, technical: false, integrity: false },
             expandedConstructs: {}
@@ -5221,15 +5260,25 @@
                 'aci': 'aci',
                 'cognitive': 'cognitiveCore',
                 'technical': 'technicalAptitude',
-                'manufacturing': 'manufacturingTechnical',
-                'learning': 'learningVelocity',
-                'reliability': 'reliability',
-                'integrity': 'behavioralIntegrity'
+                'behavioral': 'behavioralAlignment'
             }[state.sortBy] || 'aci';
 
+            const filterValue = state.filterText.trim().toLowerCase();
+            if (filterValue && state.currentView === 'candidates') {
+                candidates = candidates.filter(candidate => {
+                    const primaryRole = getPrimaryRole(candidate);
+                    const roleText = primaryRole ? `${primaryRole.name} ${primaryRole.abbr}` : '';
+                    const bandLabel = getBand(candidate.composites.aci).label;
+                    const haystack = `${candidate.name} ${roleText} ${bandLabel}`.toLowerCase();
+                    return haystack.includes(filterValue);
+                });
+            }
+
             candidates.sort((a, b) => {
-                const aVal = a.composites[sortKey];
-                const bVal = b.composites[sortKey];
+                const aDomains = computeDomainAverages(a);
+                const bDomains = computeDomainAverages(b);
+                const aVal = sortKey in aDomains ? (aDomains[sortKey] ?? 0) : a.composites[sortKey];
+                const bVal = sortKey in bDomains ? (bDomains[sortKey] ?? 0) : b.composites[sortKey];
                 return state.sortDirection === 'desc' ? bVal - aVal : aVal - bVal;
             });
 
@@ -5256,20 +5305,20 @@
                     <thead>
                         <tr>
                             <th>Candidate</th>
-                            <th>Status</th>
-                            <th>Recommended Roles</th>
+                            <th>Target Role</th>
                             <th data-sort="aci" class="${state.sortBy === 'aci' ? 'sorted' : ''}">
                                 ACI <span class="sort-indicator">${state.sortBy === 'aci' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
                             </th>
-                            <th data-sort="reliability" class="${state.sortBy === 'reliability' ? 'sorted' : ''}">
-                                Reliability <span class="sort-indicator">${state.sortBy === 'reliability' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
+                            <th data-sort="cognitive" class="${state.sortBy === 'cognitive' ? 'sorted' : ''}">
+                                Cognitive Core <span class="sort-indicator">${state.sortBy === 'cognitive' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
                             </th>
-                            <th data-sort="learning" class="${state.sortBy === 'learning' ? 'sorted' : ''}">
-                                Learning <span class="sort-indicator">${state.sortBy === 'learning' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
+                            <th data-sort="technical" class="${state.sortBy === 'technical' ? 'sorted' : ''}">
+                                Technical Aptitude <span class="sort-indicator">${state.sortBy === 'technical' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
                             </th>
-                            <th data-sort="integrity" class="${state.sortBy === 'integrity' ? 'sorted' : ''}">
-                                Behavioral Integrity <span class="sort-indicator">${state.sortBy === 'integrity' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
+                            <th data-sort="behavioral" class="${state.sortBy === 'behavioral' ? 'sorted' : ''}">
+                                Behavioral Integrity &amp; Mission Alignment <span class="sort-indicator">${state.sortBy === 'behavioral' ? (state.sortDirection === 'desc' ? '↓' : '↑') : '↓'}</span>
                             </th>
+                            <th>Band</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -5277,10 +5326,12 @@
 
             candidates.forEach(c => {
                 const aciBand = getBand(c.composites.aci);
-                const reliabilityBand = getBand(c.composites.reliability);
-                const learningBand = getBand(c.composites.learningVelocity);
-                const integrityBand = getBand(c.composites.behavioralIntegrity);
-                const roles = c.recommendedRoles.map(rid => ROLES.find(r => r.id === rid));
+                const domains = computeDomainAverages(c);
+                const cognitiveBand = domains.cognitiveCore ? getBand(domains.cognitiveCore) : null;
+                const technicalBand = domains.technicalAptitude ? getBand(domains.technicalAptitude) : null;
+                const behavioralBand = domains.behavioralAlignment ? getBand(domains.behavioralAlignment) : null;
+                const primaryRole = getPrimaryRole(c);
+                const primaryRoleLabel = primaryRole?.name || '—';
 
                 html += `
                     <tr data-candidate="${c.id}" data-aci="${c.composites.aci}" tabindex="0" role="row">
@@ -5289,20 +5340,13 @@
                             <div class="candidate-id">${c.id}</div>
                         </td>
                         <td>
-                            <span class="candidate-status ${c.status === 'complete' ? 'complete' : 'in-progress'}">
-                                <span class="status-dot"></span>
-                                ${c.status === 'complete' ? 'Complete' : 'In Progress'}
-                            </span>
-                        </td>
-                        <td>
-                            <div class="role-chips">
-                                ${roles.map((r, i) => `<span class="role-chip ${i === 0 ? 'primary' : ''}">${r?.name || r?.abbr}</span>`).join('')}
-                            </div>
+                            <span class="role-chip primary">${primaryRoleLabel}</span>
                         </td>
                         <td><span class="score-cell ${aciBand.class}">${c.composites.aci}</span></td>
-                        <td><span class="score-cell ${reliabilityBand.class}">${c.composites.reliability}</span></td>
-                        <td><span class="score-cell ${learningBand.class}">${c.composites.learningVelocity}</span></td>
-                        <td><span class="score-cell ${integrityBand.class}">${c.composites.behavioralIntegrity}</span></td>
+                        <td><span class="score-cell ${cognitiveBand ? cognitiveBand.class : ''}">${domains.cognitiveCore ?? '—'}</span></td>
+                        <td><span class="score-cell ${technicalBand ? technicalBand.class : ''}">${domains.technicalAptitude ?? '—'}</span></td>
+                        <td><span class="score-cell ${behavioralBand ? behavioralBand.class : ''}">${domains.behavioralAlignment ?? '—'}</span></td>
+                        <td><span class="score-cell ${aciBand.class}">${aciBand.label}</span></td>
                     </tr>
                 `;
             });
@@ -6615,6 +6659,32 @@
             document.getElementById('cutline-filter').addEventListener('change', (e) => {
                 setState({ cutlineFilter: e.target.checked });
             });
+
+            const filterInput = document.getElementById('candidate-filter');
+            if (filterInput) {
+                let filterTimer = null;
+                filterInput.addEventListener('input', () => {
+                    const value = filterInput.value;
+                    window.clearTimeout(filterTimer);
+                    filterTimer = window.setTimeout(() => {
+                        setState({ filterText: value });
+                    }, 100);
+                });
+            }
+
+            const partnerDemoCta = document.getElementById('partners-demo-cta');
+            if (partnerDemoCta) {
+                partnerDemoCta.addEventListener('click', () => {
+                    setState({ currentView: 'overview', selectedCandidate: null });
+                    window.setTimeout(() => {
+                        const demoView = document.getElementById('view-demo');
+                        if (demoView) {
+                            demoView.scrollTop = 0;
+                        }
+                        window.scrollTo({ top: 0, behavior: 'auto' });
+                    }, 0);
+                });
+            }
 
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && state.currentView === 'candidate-detail') {
