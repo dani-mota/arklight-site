@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arklight Project — Home</title>
+    <title>Arklight Project</title>
     <style>
         :root {
             --bg-primary: #000000;
@@ -114,6 +114,21 @@
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
+        }
+
+        .investor-placeholder {
+            margin-top: 24px;
+            padding: 14px 18px;
+            border: 1px dashed var(--border-secondary);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .investor-placeholder.is-visible {
+            display: block;
         }
 
         .button {
@@ -337,7 +352,15 @@
         .global-nav {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
@@ -364,9 +387,32 @@
             border-color: var(--text-primary);
         }
 
-        .global-link:focus-visible {
+        .global-link:focus-visible,
+        .nav-cta:focus-visible {
             outline: 1px solid var(--text-muted);
             outline-offset: 4px;
+        }
+
+        .nav-cta {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border: 1px solid var(--border-secondary);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 11px;
+            font-weight: 500;
+            text-decoration: none;
+            background: transparent;
+            transition: background var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .nav-cta:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-hover);
         }
 
         .nav-tabs {
@@ -2131,8 +2177,12 @@
 
             .global-nav {
                 width: 100%;
-                justify-content: flex-start;
+                align-items: flex-start;
                 row-gap: 8px;
+            }
+
+            .nav-cta {
+                margin-left: 0;
             }
 
             .header-bottom {
@@ -2250,7 +2300,11 @@
             .global-nav {
                 width: 100%;
                 gap: 12px;
-                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .nav-cta {
+                margin-left: 0;
             }
 
             .nav-tabs {
@@ -2920,11 +2974,127 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
-    </style>
+    
+        .partner-hero {
+            padding: 80px 0 60px;
+            max-width: 900px;
+        }
+
+        .partner-hero-title {
+            font-size: clamp(36px, 6vw, 60px);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .partner-hero-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .section-block {
+            padding: 48px 0 56px;
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .info-card {
+            border: 1px solid var(--border-primary);
+            padding: 24px;
+            background: var(--bg-secondary);
+        }
+
+        .info-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        main[data-view] {
+            display: none;
+        }
+
+        main[data-view].is-active {
+            display: block;
+        }
+
+        .header-bottom {
+            display: none;
+        }
+
+        body[data-view="demo"] .header-bottom {
+            display: flex;
+        }
+
+        .main-content {
+            padding: 120px 48px 80px;
+            max-width: 1400px;
+        }
+
+        body[data-view="demo"] .main-content {
+            padding-top: 160px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                padding: 120px 24px 60px;
+            }
+
+            body[data-view="demo"] .main-content {
+                padding-top: 190px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .main-content {
+                padding: 130px 16px 40px;
+            }
+
+            body[data-view="demo"] .main-content {
+                padding-top: 200px;
+            }
+
+            .partner-hero {
+                padding: 48px 0 40px;
+            }
+
+            .partner-hero-title {
+                font-size: 32px;
+            }
+
+            .partner-hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section-title,
+            .home-section-title {
+                font-size: 20px;
+            }
+        }
+</style>
 </head>
 <body>
     <div class="app-container">
-        <header class="header">
+                <header class="header">
             <div class="header-top">
                 <div class="logo-section">
                     <div class="logo">
@@ -2937,14 +3107,13 @@
                         </div>
                         <span class="logo-text">Arklight Project</span>
                     </div>
-                    <span class="demo-badge">Demo</span>
                 </div>
                 <nav class="global-nav" aria-label="Primary">
-                    <a class="global-link active" href="#home" aria-current="page">Home</a>
-                    <a class="global-link" href="#talent-assessment">Talent Assessment</a>
-                    <a class="global-link" href="#talent-factory">Talent Factory</a>
-                    <a class="global-link" href="#investors">Investors</a>
-                    <a class="global-link" href="#partners">Partners</a>
+                    <div class="nav-links">
+                        <a class="global-link" href="#home" data-nav="home">Home</a>
+                        <a class="global-link" href="#partners" data-nav="partners">Partners</a>
+                    </div>
+                    <a class="nav-cta" href="#demo" data-nav="demo">Demo</a>
                 </nav>
             </div>
             <div class="header-bottom">
@@ -2957,8 +3126,10 @@
             </div>
         </header>
 
-        <main class="main-content">
-            <section class="home-hero" id="home">
+
+                <main id="view-home" class="page-view main-content is-active" data-view="home">
+
+            <section class="home-hero">
                 <h1 class="home-hero-title">Building the Talent Infrastructure Behind Industrial Scale</h1>
                 <p class="home-hero-subtitle">
                     Project Arklight partners with the American industrial base to build the talent and workforce infrastructure required to sustain long-term industrial leadership.
@@ -2967,24 +3138,27 @@
                     <a class="button secondary" href="#investors">For Investors</a>
                     <a class="button secondary" href="#partners">For Partners</a>
                 </div>
+                <div id="investors-placeholder" class="investor-placeholder" aria-live="polite">
+                    Investor information is available on request. Please reach out to begin.
+                </div>
             </section>
 
-            <section class="home-section" id="talent-assessment">
+            <section class="home-section" id="home-talent-assessment">
                 <h2 class="home-section-title">Talent Assessment to Identify Hidden Potential</h2>
                 <p class="home-section-description">
                     Identifies candidates with the capacity to learn fast, perform under pressure, and reach productive output sooner. Reveals high-potential talent missed by traditional hiring methods.
                 </p>
-                <a class="button" href="#assessment-demo">View the Talent Assessment Demo</a>
+                <a class="button" href="#demo">View the Talent Assessment Demo</a>
             </section>
 
-            <section class="home-section" id="talent-factory">
+            <section class="home-section" id="home-talent-factory">
                 <div class="factory-grid">
                     <div class="factory-content">
                         <h2 class="home-section-title">Scalable Talent Factories for Industrial Capacity</h2>
                         <p class="home-section-description">
                             In collaboration with our industrial partners, Talent Factories are existing manufacturing facilities acquired and operated as production environments to develop, validate, and deploy high-quality talent at scale and speed for the American industrial base.
                         </p>
-                        <a class="button" href="#talent-factory">Explore the Talent Factory Model</a>
+                        <a class="button" href="#partners">Explore the Talent Factory Model</a>
                     </div>
                     <div class="factory-visual">
                         <div class="tilt-card" aria-label="Talent Factory illustration">
@@ -3060,15 +3234,149 @@
                     </div>
                 </div>
             </section>
+        
+        </main>
 
-            <section class="home-audience" aria-label="Investors and Partners">
-                <div class="home-audience-card" id="investors">
-                    <h3 class="home-audience-title">Investors</h3>
-                </div>
-                <div class="home-audience-card" id="partners">
-                    <h3 class="home-audience-title">Partners</h3>
+        <main id="view-partners" class="page-view main-content" data-view="partners">
+
+            <section class="partner-hero">
+                <h1 class="partner-hero-title">Building Predictable, High-Quality Talent Capacity for American Industrial Base</h1>
+                <p class="partner-hero-subtitle">
+                    Project Arklight solves talent bottlenecks for advanced manufacturing and defense, helping partners scale production and unlock revenue faster.
+                </p>
+            </section>
+
+            <section class="section-block">
+                <h2 class="section-title">Partner Problems We Solve</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <p class="info-text">Problem I: Talent Scarcity: With 4 million roles projected to go unfilled by 2030, traditional sourcing is mathematically incapable of meeting 2026 demand.</p>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">Problem II: Slow Ramp-Up: Every new hire carries a $50,000+ hidden cost. Internal training burdens stall throughput, causing 60% of production ramps to miss their targets.</p>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">Problem III: Quality & Execution Risk: Manufacturing turnover averages 28%, and a single mis-hire costs 2x the annual salary in rework and lost margin. Resumes are no longer a reliable predictor of mission-critical performance.</p>
+                    </div>
                 </div>
             </section>
+
+            <section class="section-block">
+                <h2 class="section-title">Outcomes for Our Partners</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <p class="info-text">Outcome I: Predictable Talent Supply: A reliable pipeline of high-quality talent aligned to special projects.</p>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">Outcome II: Faster Time to Productivity: Operators reach productive output sooner, reducing ramp-up delays.</p>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">Outcome III: Reduced Hiring & Execution Risk: Objective validation lowers mis-hire rates and quality variability.</p>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">Outcome IV: Scalable Workforce Capacity: Talent capacity expands in step with manufacturing growth.</p>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">Outcome V: Revenue Unlocked: Production timelines are met without talent bottlenecks delaying contracts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-section" id="partners-talent-assessment">
+                <h2 class="home-section-title">Talent Assessment to Identify Hidden Potential</h2>
+                <p class="home-section-description">
+                    Identifies candidates with the capacity to learn fast, perform under pressure, and reach productive output sooner. Reveals high-potential talent missed by traditional hiring methods.
+                </p>
+                <a class="button" href="#demo">View the Talent Assessment Demo</a>
+            </section>
+
+            <section class="home-section" id="partners-talent-factory">
+                <div class="factory-grid">
+                    <div class="factory-content">
+                        <h2 class="home-section-title">Scalable Talent Factories for Industrial Capacity</h2>
+                        <p class="home-section-description">
+                            In collaboration with our industrial partners, Talent Factories are existing manufacturing facilities acquired and operated as production environments to develop, validate, and deploy high-quality talent at scale and speed for the American industrial base.
+                        </p>
+                        <a class="button" href="#partners">Explore the Talent Factory Model</a>
+                    </div>
+                    <div class="factory-visual">
+                        <div class="tilt-card" aria-label="Talent Factory illustration">
+                            <div class="tilt-stage">
+                                <div class="tilt-object">
+                                    <svg class="tilt-illustration" viewBox="0 0 640 420" role="img" aria-label="Modern factory with workforce" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect class="line-strong" x="80" y="140" width="480" height="190" rx="18" />
+                                            <path class="line-muted" d="M110 140 L160 95 L235 140" />
+                                            <path class="line-muted" d="M235 140 L305 90 L375 140" />
+                                            <path class="line-muted" d="M375 140 L450 92 L530 140" />
+
+                                            <rect class="line-muted" x="120" y="170" width="90" height="60" rx="6" />
+                                            <rect class="line-muted" x="225" y="170" width="90" height="60" rx="6" />
+                                            <rect class="line-muted" x="330" y="170" width="90" height="60" rx="6" />
+                                            <rect class="line-muted" x="435" y="170" width="90" height="60" rx="6" />
+
+                                            <rect class="line-muted" x="130" y="255" width="120" height="55" rx="8" />
+                                            <rect class="line-muted" x="390" y="255" width="120" height="55" rx="8" />
+
+                                            <line class="line-muted" x1="120" y1="242" x2="520" y2="242" />
+                                            <line class="line-muted" x1="120" y1="320" x2="520" y2="320" />
+
+                                            <path class="line-muted" d="M95 330 C95 352 120 362 150 362" />
+                                            <path class="line-muted" d="M545 330 C545 352 520 362 490 362" />
+                                            <line class="line-muted" x1="150" y1="362" x2="490" y2="362" />
+
+                                            <g class="line-strong">
+                                                <circle cx="200" cy="300" r="7" />
+                                                <line x1="200" y1="307" x2="200" y2="324" />
+                                                <line x1="192" y1="316" x2="208" y2="316" />
+                                                <line x1="195" y1="324" x2="190" y2="336" />
+                                                <line x1="205" y1="324" x2="210" y2="336" />
+
+                                                <circle cx="260" cy="300" r="7" />
+                                                <line x1="260" y1="307" x2="260" y2="324" />
+                                                <line x1="252" y1="316" x2="268" y2="316" />
+                                                <line x1="255" y1="324" x2="250" y2="336" />
+                                                <line x1="265" y1="324" x2="270" y2="336" />
+
+                                                <circle cx="320" cy="300" r="7" />
+                                                <line x1="320" y1="307" x2="320" y2="324" />
+                                                <line x1="312" y1="316" x2="328" y2="316" />
+                                                <line x1="315" y1="324" x2="310" y2="336" />
+                                                <line x1="325" y1="324" x2="330" y2="336" />
+
+                                                <circle cx="380" cy="300" r="7" />
+                                                <line x1="380" y1="307" x2="380" y2="324" />
+                                                <line x1="372" y1="316" x2="388" y2="316" />
+                                                <line x1="375" y1="324" x2="370" y2="336" />
+                                                <line x1="385" y1="324" x2="390" y2="336" />
+
+                                                <circle cx="440" cy="300" r="7" />
+                                                <line x1="440" y1="307" x2="440" y2="324" />
+                                                <line x1="432" y1="316" x2="448" y2="316" />
+                                                <line x1="435" y1="324" x2="430" y2="336" />
+                                                <line x1="445" y1="324" x2="450" y2="336" />
+                                            </g>
+
+                                            <line class="line-muted" x1="150" y1="150" x2="150" y2="330" />
+                                            <line class="line-muted" x1="250" y1="150" x2="250" y2="330" />
+                                            <line class="line-muted" x1="350" y1="150" x2="350" y2="330" />
+                                            <line class="line-muted" x1="450" y1="150" x2="450" y2="330" />
+
+                                            <path class="line-accent" d="M500 120 L535 85 L555 120" />
+                                            <line class="line-accent" x1="535" y1="85" x2="535" y2="60" />
+                                            <circle class="line-accent" cx="535" cy="55" r="5" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        </main>
+
+        <main id="view-demo" class="page-view main-content" data-view="demo">
 
             <section id="assessment-demo" class="assessment-demo">
             <!-- Overview View -->
@@ -3181,17 +3489,73 @@
                 <div id="heatmap-content"></div>
             </div>
             </section>
-        </main>
-
-        <footer class="footer">
+        
+<footer class="footer">
             <div class="footer-disclaimer">
                 All candidate data is synthetic for demonstration
             </div>
             <p>Project Arklight — ACI v2.4</p>
         </footer>
+        </main>
     </div>
 
-    <script>
+        <script>
+    (function() {
+        const viewMap = {
+            home: 'home',
+            partners: 'partners',
+            demo: 'demo',
+            investors: 'home'
+        };
+
+        const views = Array.from(document.querySelectorAll('main[data-view]'));
+        const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
+        const investorPlaceholder = document.getElementById('investors-placeholder');
+
+        function setView(name) {
+            views.forEach((view) => {
+                view.classList.toggle('is-active', view.dataset.view === name);
+            });
+            document.body.dataset.view = name;
+
+            navLinks.forEach((link) => {
+                const isActive = link.dataset.nav === name;
+                link.classList.toggle('active', isActive);
+                if (isActive) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        function handleHashChange() {
+            const raw = window.location.hash.replace('#', '').trim();
+            if (!raw) {
+                window.location.hash = '#home';
+                return;
+            }
+            const next = viewMap[raw] || 'home';
+            setView(next);
+
+            const isInvestor = raw === 'investors';
+            if (investorPlaceholder) {
+                investorPlaceholder.classList.toggle('is-visible', isInvestor);
+                if (isInvestor) {
+                    investorPlaceholder.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleHashChange);
+        } else {
+            handleHashChange();
+        }
+    })();
+    </script>
+<script>
     (function() {
         'use strict';
 
