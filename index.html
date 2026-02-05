@@ -995,6 +995,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        .radar-tooltip {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.6;
+            padding: 12px 14px;
+            max-width: 220px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            pointer-events: none;
+        }
+
+        .radar-tooltip-line {
+            margin: 0;
         }
 
         /* Horizontal Bar Chart */
@@ -4365,7 +4385,7 @@
                 const labelY = centerY + Math.sin(angle) * labelRadius;
                 const textAnchor = Math.abs(Math.cos(angle)) < 0.1 ? 'middle' :
                                    Math.cos(angle) > 0 ? 'start' : 'end';
-                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle"><title>${construct.measures}</title>${labels[i]}</text>`;
+                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle" class="radar-label" data-construct-index="${i}">${labels[i]}</text>`;
             }
 
             const dataPoints = [];
@@ -4389,6 +4409,52 @@
 
             svg += '</svg>';
             container.innerHTML = svg;
+
+            let tooltip = container.querySelector('.radar-tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.className = 'radar-tooltip';
+                tooltip.setAttribute('aria-hidden', 'true');
+                container.appendChild(tooltip);
+            }
+
+            const positionTooltip = (event) => {
+                const containerRect = container.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+                let left = event.clientX - containerRect.left + 12;
+                let top = event.clientY - containerRect.top + 12;
+
+                if (left + tooltipRect.width > containerRect.width) {
+                    left = event.clientX - containerRect.left - tooltipRect.width - 12;
+                }
+
+                if (top + tooltipRect.height > containerRect.height) {
+                    top = event.clientY - containerRect.top - tooltipRect.height - 12;
+                }
+
+                tooltip.style.left = `${Math.max(8, left)}px`;
+                tooltip.style.top = `${Math.max(8, top)}px`;
+            };
+
+            container.querySelectorAll('.radar-label').forEach(label => {
+                label.addEventListener('mouseenter', (event) => {
+                    const index = Number(event.currentTarget.dataset.constructIndex);
+                    const construct = constructs[index];
+                    if (!construct) return;
+                    tooltip.innerHTML = `
+                        <div class="radar-tooltip-line">${construct.name}</div>
+                        <div class="radar-tooltip-line">${construct.measures}</div>
+                    `;
+                    tooltip.style.opacity = '1';
+                    positionTooltip(event);
+                });
+
+                label.addEventListener('mousemove', positionTooltip);
+
+                label.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
         }
 
         // ============================================================
