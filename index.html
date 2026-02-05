@@ -306,12 +306,26 @@
             line-height: 1.5;
         }
 
+        .impact-context {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
         .demo-disclaimer {
             font-size: 11px;
             color: var(--text-dim);
             text-align: center;
             margin-top: 24px;
             letter-spacing: 0.05em;
+        }
+
+        .section-handoff {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin: 24px 0 40px;
         }
 
         /* Section Headers */
@@ -704,6 +718,27 @@
             line-height: 1.6;
         }
 
+        .detail-aci-microcopy {
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            display: grid;
+            gap: 6px;
+        }
+
+        .role-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .role-fit-grid {
+            margin-bottom: 20px;
+        }
+
         .role-fit-text {
             font-size: 14px;
             color: var(--text-secondary);
@@ -711,10 +746,152 @@
             margin-bottom: 16px;
         }
 
+        .detail-section {
+            margin-bottom: 40px;
+        }
+
         .chart-note {
             margin-top: 20px;
             font-size: 12px;
             color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .radar-callouts {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .radar-callout {
+            border: 1px solid var(--border-primary);
+            padding: 12px 16px;
+        }
+
+        .callout-label {
+            font-size: 9px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 6px;
+        }
+
+        .callout-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .validation-role {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .validation-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .validation-item {
+            border-top: 1px solid var(--border-primary);
+            padding-top: 20px;
+        }
+
+        .validation-item:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .validation-item-title {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .validation-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-primary);
+        }
+
+        .validation-row:last-child {
+            border-bottom: none;
+        }
+
+        .validation-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .validation-value {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .onboarding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .onboarding-title {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .onboarding-weeks {
+            display: grid;
+            gap: 10px;
+        }
+
+        .onboarding-week {
+            border: 1px solid var(--border-primary);
+            padding: 10px 12px;
+        }
+
+        .week-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        .week-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .benchmark-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .benchmark-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .benchmark-value {
+            font-size: 13px;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
@@ -1649,12 +1826,21 @@
                 gap: 8px;
             }
 
+            .validation-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
             .role-fit-text {
                 font-size: 13px;
             }
 
             .chart-note {
                 font-size: 11px;
+            }
+
+            .radar-callouts {
+                grid-template-columns: 1fr;
             }
 
             .domain-row {
@@ -2388,6 +2574,7 @@
                     </p>
                 </section>
 
+                <p class="impact-context">Observed impact when ARC informs hiring and deployment decisions versus traditional screening.</p>
                 <div class="impact-strip" aria-label="Impact metrics">
                     <div class="impact-card">
                         <div class="impact-value">47%</div>
@@ -2411,6 +2598,7 @@
                     </div>
                 </div>
                 <p class="demo-disclaimer">Illustrative demo metrics</p>
+                <p class="section-handoff">Select a candidate to view deployment guidance, ramp projections, and risk profile.</p>
 
                 <section class="section-header">
                     <h2 class="section-title">Candidate Dashboard</h2>
@@ -2750,6 +2938,11 @@
             { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production-Facing)', abbr: 'Mfg Eng' }
         ];
 
+        const DETAIL_ROLE_OPTIONS = [
+            { id: 'cnc-machinist', name: 'CNC Machinist (5-Axis)' },
+            { id: 'quality-metrology', name: 'CMM Programmer' }
+        ];
+
         const ROLE_CUTLINES = {
             'cnc-machinist': {
                 requirements: [
@@ -3013,7 +3206,7 @@
         }
 
         function getBand(percentile) {
-            if (percentile >= 85) return { label: 'Elite', class: 'elite' };
+            if (percentile >= 85) return { label: 'Elite Readiness', class: 'elite' };
             if (percentile >= 60) return { label: 'Strong', class: 'strong' };
             if (percentile >= 40) return { label: 'Developing', class: 'developing' };
             return { label: 'Concern', class: 'concern' };
@@ -3364,8 +3557,13 @@
             const aciBand = getBand(candidate.composites.aci);
             const roleRankings = getRoleRankings(candidate);
             const primaryRole = roleRankings[0]?.role?.name || 'Manufacturing Systems Technician';
-            const secondaryRole = roleRankings[1]?.role?.name || ROLES.find(r => r.id !== roleRankings[0]?.role?.id)?.name || 'Quality / Metrology Technician';
-            const summary = buildExecutiveSummary(candidate, primaryRole, secondaryRole);
+            const primaryRoleId = roleRankings[0]?.role?.id || 'mfg-systems';
+            const summary = buildExecutiveSummary(candidate, primaryRole, primaryRoleId);
+            const detailRoleId = getDetailRoleId(primaryRoleId);
+            const roleInsights = getRoleInsights(candidate, detailRoleId);
+            const validationItems = getValidationItems(candidate, detailRoleId, roleInsights);
+            const onboardingPlan = getOnboardingPlan(candidate, detailRoleId, roleInsights);
+            const benchmark = getBenchmarkComparison(candidate, detailRoleId);
 
             let html = `
                 <div class="detail-header">
@@ -3391,21 +3589,38 @@
                         <div class="detail-aci-value">${candidate.composites.aci}</div>
                         <div class="detail-aci-percentile">${ordinal(candidate.composites.aci)} Percentile</div>
                         <div class="detail-aci-band">${aciBand.label}</div>
+                        <div class="detail-aci-microcopy">
+                            <div>Predicts: learning velocity, reliability, error recovery under production constraints</div>
+                            <div>Does not replace: interviews, hands-on trials, or manager judgment</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="detail-summary-grid">
                     ${renderExecutiveSummary(summary)}
-                    ${renderRoleFitMapping(roleRankings)}
+                    ${renderRoleFitMapping(candidate, roleRankings, detailRoleId, roleInsights)}
                 </div>
 
                 <div class="charts-grid">
                     <div class="chart-container full-width">
                         <h3 class="chart-title">Cognitive Profile</h3>
                         <div class="radar-chart" id="radar-chart"></div>
+                        ${renderRadarCallouts(roleInsights)}
                         <p class="chart-note">Benchmarks are derived from partnerships with leading advanced manufacturing and defense-adjacent organizations, informed by structured interviews and performance analysis of top operators across public and private sectors.</p>
                     </div>
                 </div>
+
+                ${renderValidationProtocol(validationItems, detailRoleId)}
+                ${renderOnboardingPlan(onboardingPlan, detailRoleId)}
+                ${renderBenchmarkComparison(benchmark, detailRoleId)}
+
+                <section class="section-header">
+                    <h2 class="section-title">Construct-Level Detail</h2>
+                </section>
+
+                ${renderConstructSection('cognitive', 'Cognitive Core', CONSTRUCTS.cognitive, candidate)}
+                ${renderConstructSection('technical', 'Technical Aptitude', CONSTRUCTS.technical, candidate)}
+                ${renderConstructSection('integrity', 'Behavioral Integrity', CONSTRUCTS.integrity, candidate)}
 
                 <div class="domain-grid">
                     ${renderDomainSection({
@@ -3428,19 +3643,18 @@
                         valueLabel: 'Why it matters operationally'
                     })}
                 </div>
-
-                <section class="section-header">
-                    <h2 class="section-title">Construct-Level Detail</h2>
-                </section>
-
-                ${renderConstructSection('cognitive', 'Cognitive Core', CONSTRUCTS.cognitive, candidate)}
-                ${renderConstructSection('technical', 'Technical Aptitude', CONSTRUCTS.technical, candidate)}
-                ${renderConstructSection('integrity', 'Behavioral Integrity', CONSTRUCTS.integrity, candidate)}
             `;
 
             container.innerHTML = html;
             renderRadarChart(candidate);
             setupConstructListeners();
+
+            const roleSelect = container.querySelector('#intended-role-select');
+            if (roleSelect) {
+                roleSelect.addEventListener('change', (e) => {
+                    setState({ selectedRole: e.target.value });
+                });
+            }
         }
 
         function getRoleRankings(candidate) {
@@ -3462,20 +3676,172 @@
             }).sort((a, b) => b.fitScore - a.fitScore);
         }
 
-        function buildExecutiveSummary(candidate, primaryRole, secondaryRole) {
+        function getDetailRoleId(primaryRoleId) {
+            const optionIds = DETAIL_ROLE_OPTIONS.map(option => option.id);
+            if (optionIds.includes(state.selectedRole)) return state.selectedRole;
+            if (optionIds.includes(primaryRoleId)) return primaryRoleId;
+            return DETAIL_ROLE_OPTIONS[0].id;
+        }
+
+        function getConstructById(constructId) {
+            return [...CONSTRUCTS.cognitive, ...CONSTRUCTS.technical, ...CONSTRUCTS.integrity].find(c => c.id === constructId);
+        }
+
+        function getRoleDisplayName(roleId) {
+            return DETAIL_ROLE_OPTIONS.find(option => option.id === roleId)?.name ||
+                ROLES.find(role => role.id === roleId)?.name ||
+                'Selected role';
+        }
+
+        function getRoleFitSummary(candidate, roleId) {
+            const cutline = ROLE_CUTLINES[roleId];
+            if (!cutline) {
+                return { rating: 'Medium', passes: 0, total: 0, strengths: [], risks: [] };
+            }
+
+            const scored = cutline.requirements.map(req => {
+                const score = req.construct ? candidate.scores[req.construct] : candidate.composites[req.composite];
+                const percentile = scoreToPercentile(score);
+                return {
+                    req,
+                    score,
+                    percentile,
+                    construct: req.construct ? getConstructById(req.construct) : null
+                };
+            });
+
+            const passes = scored.filter(item => item.percentile >= item.req.threshold).length;
+            const total = scored.length;
+            const passRatio = total ? passes / total : 0;
+            let rating = 'Medium';
+            if (passRatio >= 0.8) rating = 'High';
+            if (passRatio < 0.5) rating = 'Low';
+
+            const strengths = scored.filter(item => item.construct).sort((a, b) => b.percentile - a.percentile);
+            const risks = scored.filter(item => item.construct).sort((a, b) => a.percentile - b.percentile);
+
+            return { rating, passes, total, strengths, risks };
+        }
+
+        function getRoleInsights(candidate, roleId) {
+            const summary = getRoleFitSummary(candidate, roleId);
+            const strengths = summary.strengths.slice(0, 2);
+            const riskZones = summary.risks.filter(r => r.percentile < 60).slice(0, 2);
+            const fallbackRisks = summary.risks.slice(0, 2);
+
+            const why = strengths.map(s => `${s.construct.name} (${ordinal(s.percentile)}) supports ${s.construct.predicts.toLowerCase()}.`);
+            while (why.length < 2 && summary.strengths[why.length]) {
+                const item = summary.strengths[why.length];
+                if (item?.construct) {
+                    why.push(`${item.construct.name} (${ordinal(item.percentile)}) reinforces ${item.construct.predicts.toLowerCase()}.`);
+                } else {
+                    break;
+                }
+            }
+
+            const conditions = [];
+            const needsStructure = candidate.composites.reliability < 70;
+            const needsRamp = candidate.composites.learningVelocity < 65;
+            if (needsStructure) conditions.push('Set clear SOP check-ins and peer verification for early runs.');
+            if (needsRamp) conditions.push('Use a staged ramp with rising task complexity and deliberate practice.');
+            if (conditions.length < 2 && summary.risks[0]?.construct) {
+                conditions.push(`Target coaching on ${summary.risks[0].construct.name.toLowerCase()} to stabilize early output.`);
+            }
+            if (conditions.length < 2) {
+                conditions.push('Pair with a senior operator for initial setups and first-article validation.');
+            }
+
+            const watchoutsSource = riskZones.length ? riskZones : fallbackRisks;
+            const watchouts = watchoutsSource.length ?
+                watchoutsSource.map(r => `${r.construct.name} (${ordinal(r.percentile)}) may require closer monitoring.`) :
+                ['No critical watch-outs flagged; monitor early shift reliability.'];
+
             return {
-                overallTalent: getOverallPotential(candidate),
-                primaryRole,
-                secondaryRole,
-                deploymentConfidence: getDeploymentConfidence(candidate),
-                bestUse: getBestUseOfCandidate(candidate),
-                riskFlags: getRiskFlags(candidate)
+                rating: summary.rating,
+                strengths,
+                riskZones: watchoutsSource,
+                why,
+                conditions: conditions.slice(0, 2),
+                watchouts: watchouts.slice(0, 2),
+                summary
             };
+        }
+
+        function buildExecutiveSummary(candidate, primaryRole, primaryRoleId) {
+            const primaryFit = getRoleFitSummary(candidate, primaryRoleId);
+            const recommendation = getRecommendation(candidate, primaryFit);
+            return {
+                recommendation,
+                primaryRoleFit: `${primaryRole} — ${primaryFit.rating}`,
+                rampProjection: getRampProjection(candidate),
+                primaryRisks: getRiskFlags(candidate),
+                idealManager: getIdealManager(candidate),
+                nextSteps: getNextSteps(candidate, primaryRoleId, recommendation, primaryFit)
+            };
+        }
+
+        function getRecommendation(candidate, roleFit) {
+            const strongIntegrity = candidate.composites.behavioralIntegrity >= 65;
+            const strongReliability = candidate.composites.reliability >= 65;
+            if (roleFit.rating === 'High' && strongIntegrity && strongReliability) return 'Proceed';
+            if (roleFit.rating === 'Low' || candidate.composites.behavioralIntegrity < 55) return 'Hold';
+            return 'Conditional';
+        }
+
+        function getRampProjection(candidate) {
+            const learning = candidate.composites.learningVelocity;
+            const reliability = candidate.composites.reliability;
+            let pace = 'standard (8-12 weeks)';
+            if (learning >= 75 && reliability >= 70) pace = 'accelerated (6-8 weeks)';
+            if (learning < 60 || reliability < 60) pace = 'extended (12-16 weeks)';
+            return `Projected time to consistent productivity relative to top industry performers: ${pace}.`;
+        }
+
+        function getIdealManager(candidate) {
+            const guidance = [];
+            guidance.push(candidate.composites.learningVelocity >= 70 ?
+                'Fast feedback cadence with stretch tasks after early wins.' :
+                'Structured ramp with clear sequencing before increasing complexity.');
+            guidance.push(candidate.composites.reliability >= 70 ?
+                'Autonomy once SOP compliance is stable and repeatable.' :
+                'Frequent check-ins with explicit quality gates and sign-offs.');
+            return guidance;
+        }
+
+        function getAssessmentInconsistency(candidate) {
+            if (candidate.composites.learningVelocity >= 70 && candidate.composites.reliability < 60) {
+                return 'high learning velocity paired with lower reliability';
+            }
+            if (candidate.composites.technicalAptitude >= 75 && candidate.composites.behavioralIntegrity < 60) {
+                return 'strong technical aptitude paired with integrity risk';
+            }
+            if (candidate.composites.cognitiveCore >= 75 && candidate.composites.manufacturingTechnical < 60) {
+                return 'cognitive strength paired with weaker manufacturing execution';
+            }
+            return '';
+        }
+
+        function getNextSteps(candidate, primaryRoleId, recommendation, primaryFit) {
+            const steps = [];
+            const roleName = ROLES.find(r => r.id === primaryRoleId)?.name || 'the role';
+            const leadStrength = primaryFit.strengths?.[0]?.construct?.name;
+            const action = recommendation === 'Proceed' ? 'Proceed with' :
+                (recommendation === 'Hold' ? 'Hold until' : 'Proceed conditionally with');
+            const focus = leadStrength ? ` focused on ${leadStrength.toLowerCase()}` : '';
+            steps.push(`${action} a role-aligned work sample for ${roleName}${focus}.`);
+
+            const inconsistency = getAssessmentInconsistency(candidate);
+            if (inconsistency) {
+                steps.push(`Probe ${inconsistency} against the job description and shift demands.`);
+            } else {
+                steps.push('Validate role-critical exposure and supervision expectations against the job description.');
+            }
+            return steps;
         }
 
         function getOverallPotential(candidate) {
             const band = getBand(candidate.composites.aci).label;
-            if (band === 'Elite') return 'Elite-tier operator with high upside for precision manufacturing and metrology roles.';
+            if (band === 'Elite Readiness') return 'Top-tier operator with high upside for precision manufacturing and metrology roles.';
             if (band === 'Strong') return 'Strong operational performer with consistent learning velocity and low error risk.';
             if (band === 'Developing') return 'Developing talent with targeted coaching potential for production-facing roles.';
             return 'High-risk placement without close supervision and structured development.';
@@ -3501,7 +3867,10 @@
             if (candidate.composites.learningVelocity < 55) {
                 risks.push('Learning velocity below target for rapid ramp expectations.');
             }
-            return risks.length > 0 ? risks : 'None identified';
+            if (risks.length === 0) {
+                return ['No primary risks flagged; validate role-specific exposure and safety compliance.'];
+            }
+            return risks.slice(0, 3);
         }
 
         function getBestUseOfCandidate(candidate) {
@@ -3524,12 +3893,12 @@
                 <div class="chart-container executive-summary">
                     <h3 class="chart-title">Executive Summary</h3>
                     <div class="summary-grid">
-                        ${renderSummaryRow('Overall Talent Potential', summary.overallTalent)}
-                        ${renderSummaryRow('Primary Role Fit', summary.primaryRole)}
-                        ${renderSummaryRow('Secondary / Adjacent Role Fit', summary.secondaryRole)}
-                        ${renderSummaryRow('Deployment Confidence', summary.deploymentConfidence)}
-                        ${renderSummaryRow('Best Use of Candidate', summary.bestUse)}
-                        ${renderSummaryRow('Risk Flags', summary.riskFlags)}
+                        ${renderSummaryRow('Recommendation', summary.recommendation)}
+                        ${renderSummaryRow('Primary Role Fit', summary.primaryRoleFit)}
+                        ${renderSummaryRow('Ramp Projection', summary.rampProjection)}
+                        ${renderSummaryRow('Primary Risks', summary.primaryRisks)}
+                        ${renderSummaryRow('Ideal Manager / Environment', summary.idealManager)}
+                        ${renderSummaryRow('Next Steps', summary.nextSteps)}
                     </div>
                 </div>
             `;
@@ -3547,16 +3916,242 @@
             `;
         }
 
-        function renderRoleFitMapping(roleRankings) {
-            const roleNames = ROLES.map(role => role.name).join(', ');
+        function renderRoleFitMapping(candidate, roleRankings, selectedRoleId, roleInsights) {
             const primaryId = roleRankings[0]?.role?.id;
             const secondaryId = roleRankings[1]?.role?.id;
             return `
                 <div class="chart-container role-fit-mapping">
-                    <h3 class="chart-title">Role Fit Mapping</h3>
-                    <div class="role-fit-text">These cognitive strengths support success in: ${roleNames}.</div>
+                    <h3 class="chart-title">Intended Role</h3>
+                    <div class="role-selector">
+                        <label class="control-label" for="intended-role-select">Intended Role</label>
+                        <select id="intended-role-select">
+                            ${DETAIL_ROLE_OPTIONS.map(option => `
+                                <option value="${option.id}" ${option.id === selectedRoleId ? 'selected' : ''}>${option.name}</option>
+                            `).join('')}
+                        </select>
+                    </div>
+                    <div class="summary-grid role-fit-grid">
+                        ${renderSummaryRow('Role Fit', roleInsights.rating)}
+                        ${renderSummaryRow('Why', roleInsights.why)}
+                        ${renderSummaryRow('Conditions for Success', roleInsights.conditions)}
+                        ${renderSummaryRow('Watch-outs', roleInsights.watchouts)}
+                    </div>
+                    <div class="role-fit-text">Adjacent roles with strong alignment:</div>
                     <div class="role-chips">
                         ${ROLES.map(role => `<span class="role-chip ${role.id === primaryId || role.id === secondaryId ? 'primary' : ''}">${role.name}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderRadarCallouts(roleInsights) {
+            const strengths = roleInsights.strengths.map(s => s.construct.name).join(', ') || 'No standout strengths identified';
+            const risks = roleInsights.riskZones.map(r => r.construct.name).join(', ') || 'No material risk zones identified';
+            return `
+                <div class="radar-callouts">
+                    <div class="radar-callout">
+                        <div class="callout-label">Top strengths</div>
+                        <div class="callout-value">${strengths}</div>
+                    </div>
+                    <div class="radar-callout">
+                        <div class="callout-label">Risk zones</div>
+                        <div class="callout-value">${risks}</div>
+                    </div>
+                    <div class="radar-callout">
+                        <div class="callout-label">Benchmark reference</div>
+                        <div class="callout-value">Top-quartile performers</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getValidationItems(candidate, roleId, roleInsights) {
+            const cutline = ROLE_CUTLINES[roleId];
+            const constructs = (cutline?.requirements || [])
+                .filter(req => req.construct)
+                .map(req => getConstructById(req.construct))
+                .filter(Boolean);
+            const fallback = roleInsights?.strengths?.map(item => item.construct).filter(Boolean) || [];
+            const unique = [...constructs, ...fallback].filter((construct, index, arr) => arr.findIndex(c => c.id === construct.id) === index);
+            const selected = unique.slice(0, 3);
+
+            return selected.map(construct => ({
+                title: construct.name,
+                validate: construct.measures.replace(/\.$/, ''),
+                why: construct.matters,
+                prompt: `Describe a recent time you had to ${construct.predicts.toLowerCase()}. What did you check first?`,
+                positive: `Uses a clear method and verification steps tied to ${construct.predicts.toLowerCase()}.`,
+                watch: `Skips verification or relies on assumptions despite ${construct.predicts.toLowerCase()}.`
+            }));
+        }
+
+        function renderValidationRow(label, value) {
+            return `
+                <div class="validation-row">
+                    <div class="validation-label">${label}</div>
+                    <div class="validation-value">${value}</div>
+                </div>
+            `;
+        }
+
+        function renderValidationProtocol(items, roleId) {
+            const roleName = getRoleDisplayName(roleId);
+            return `
+                <div class="chart-container detail-section validation-protocol">
+                    <h3 class="chart-title">Targeted Validation Protocol</h3>
+                    <div class="validation-role">Aligned to ${roleName}</div>
+                    <div class="validation-list">
+                        ${items.map(item => `
+                            <div class="validation-item">
+                                <div class="validation-item-title">${item.title}</div>
+                                ${renderValidationRow('What to Validate', item.validate)}
+                                ${renderValidationRow('Why It Matters for the Selected Role', item.why)}
+                                ${renderValidationRow('Validation Prompt', item.prompt)}
+                                ${renderValidationRow('Positive Signal', item.positive)}
+                                ${renderValidationRow('Watch Signal', item.watch)}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function getOnboardingPlan(candidate, roleId, roleInsights) {
+            const roleName = getRoleDisplayName(roleId);
+            const strength = roleInsights.strengths[0]?.construct?.name || 'core technical reasoning';
+            const risk = roleInsights.riskZones[0]?.construct?.name || 'reliability under load';
+
+            const managerGuidance = [
+                candidate.composites.learningVelocity >= 70 ?
+                    'Fast feedback cadence with stretch tasks after early wins.' :
+                    'Structured ramp with explicit sequencing and quality gates.',
+                candidate.composites.reliability >= 70 ?
+                    'Autonomy once SOP compliance is stable and repeatable.' :
+                    'Frequent check-ins with escalation expectations and peer verification.'
+            ];
+
+            const onboardingWeeks = [
+                { label: 'Week 1', text: `Shadow ${roleName} workflows and review safety, SOP, and ${strength.toLowerCase()} tasks.` },
+                { label: 'Week 2', text: `Guided execution with supervisor sign-off; emphasize ${risk.toLowerCase()} checks.` },
+                { label: 'Week 3', text: 'Independent runs with daily QA review and structured error-recovery drills.' },
+                { label: 'Week 4', text: 'Own a full setup cycle and document corrective actions with minimal supervision.' }
+            ];
+
+            const successMetrics = [
+                'First-pass yield holds at or above team baseline.',
+                'SOP and quality gate adherence remains consistent across shifts.',
+                'Ramp velocity meets role expectations with declining rework.'
+            ];
+
+            return { roleName, managerGuidance, onboardingWeeks, successMetrics };
+        }
+
+        function renderOnboardingPlan(plan, roleId) {
+            return `
+                <div class="chart-container detail-section onboarding-plan">
+                    <h3 class="chart-title">Onboarding & Deployment Plan</h3>
+                    <div class="onboarding-grid">
+                        <div class="onboarding-block">
+                            <div class="onboarding-title">Manager Guidance</div>
+                            <ul class="summary-list">
+                                ${plan.managerGuidance.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="onboarding-block">
+                            <div class="onboarding-title">30-Day Onboarding Plan</div>
+                            <div class="onboarding-weeks">
+                                ${plan.onboardingWeeks.map(week => `
+                                    <div class="onboarding-week">
+                                        <div class="week-label">${week.label}</div>
+                                        <div class="week-text">${week.text}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="onboarding-block">
+                            <div class="onboarding-title">Early Success Metrics</div>
+                            <ul class="summary-list">
+                                ${plan.successMetrics.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getQuartileThreshold(scores) {
+            if (!scores.length) return 0;
+            const sorted = [...scores].sort((a, b) => a - b);
+            const index = Math.floor(0.75 * (sorted.length - 1));
+            return sorted[index];
+        }
+
+        function getBenchmarkComparison(candidate, roleId) {
+            const cohortScores = state.candidates.map(c => c.composites.aci);
+            const higher = cohortScores.filter(score => score > candidate.composites.aci).length;
+            const rank = higher + 1;
+            const total = cohortScores.length;
+            const topPercent = Math.max(1, Math.round((rank / total) * 100));
+
+            const cutline = ROLE_CUTLINES[roleId];
+            let passes = 0;
+            let totalReq = 0;
+            const gaps = [];
+            if (cutline) {
+                cutline.requirements.forEach(req => {
+                    totalReq += 1;
+                    const score = req.construct ? candidate.scores[req.construct] : candidate.composites[req.composite];
+                    const percentile = scoreToPercentile(score);
+                    if (percentile >= req.threshold) {
+                        passes += 1;
+                    } else {
+                        const label = req.construct ?
+                            (getConstructById(req.construct)?.name || req.construct) :
+                            (COMPOSITE_LABELS[req.composite] || req.composite.replace(/([A-Z])/g, ' $1').trim());
+                        gaps.push(label);
+                    }
+                });
+            }
+
+            const learningThreshold = getQuartileThreshold(state.candidates.map(c => c.composites.learningVelocity));
+            const reliabilityThreshold = getQuartileThreshold(state.candidates.map(c => c.composites.reliability));
+
+            return {
+                rank,
+                total,
+                topPercent,
+                passes,
+                totalReq,
+                gaps: gaps.slice(0, 2),
+                learningVelocity: candidate.composites.learningVelocity,
+                reliability: candidate.composites.reliability,
+                learningThreshold,
+                reliabilityThreshold
+            };
+        }
+
+        function renderBenchmarkComparison(benchmark, roleId) {
+            const alignment = benchmark.totalReq ?
+                `Meets ${benchmark.passes} of ${benchmark.totalReq} thresholds${benchmark.gaps.length ? `; gaps: ${benchmark.gaps.join(', ')}` : ''}.` :
+                'Role thresholds unavailable.';
+            const rampRelative = benchmark.learningVelocity >= benchmark.learningThreshold ? 'above' : 'below';
+            const reliabilityRelative = benchmark.reliability >= benchmark.reliabilityThreshold ? 'above' : 'below';
+            return `
+                <div class="chart-container detail-section benchmark-comparison">
+                    <h3 class="chart-title">Benchmark / Cohort Comparison</h3>
+                    <div class="benchmark-grid">
+                        <div class="benchmark-item">
+                            <div class="benchmark-label">Standing vs assessed cohort</div>
+                            <div class="benchmark-value">Top ${benchmark.topPercent}% (rank ${benchmark.rank} of ${benchmark.total})</div>
+                        </div>
+                        <div class="benchmark-item">
+                            <div class="benchmark-label">Alignment vs role benchmark thresholds</div>
+                            <div class="benchmark-value">${alignment}</div>
+                        </div>
+                        <div class="benchmark-item">
+                            <div class="benchmark-label">Relative ramp and reliability vs top performers</div>
+                            <div class="benchmark-value">Learning velocity ${rampRelative} top-quartile; reliability ${reliabilityRelative} top-quartile performers.</div>
+                        </div>
                     </div>
                 </div>
             `;
@@ -3762,6 +4357,7 @@
                 const angle = (Math.PI * 2 * i) / constructs.length - Math.PI / 2;
                 const x = centerX + Math.cos(angle) * radius;
                 const y = centerY + Math.sin(angle) * radius;
+                const construct = constructs[i];
                 svg += `<line x1="${centerX}" y1="${centerY}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
 
                 const labelRadius = radius + 16;
@@ -3769,7 +4365,7 @@
                 const labelY = centerY + Math.sin(angle) * labelRadius;
                 const textAnchor = Math.abs(Math.cos(angle)) < 0.1 ? 'middle' :
                                    Math.cos(angle) > 0 ? 'start' : 'end';
-                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle">${labels[i]}</text>`;
+                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle"><title>${construct.measures}</title>${labels[i]}</text>`;
             }
 
             const dataPoints = [];
