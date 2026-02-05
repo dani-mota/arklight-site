@@ -998,6 +998,31 @@
             position: relative;
         }
 
+        .radar-axis {
+            stroke-width: 1;
+            opacity: 0.35;
+        }
+
+        .radar-axis.category-cognitive { stroke: var(--accent-blue); }
+        .radar-axis.category-technical { stroke: var(--accent-green); }
+        .radar-axis.category-integrity { stroke: var(--accent-yellow); }
+
+        .radar-label {
+            opacity: 0.8;
+        }
+
+        .radar-label.category-cognitive { fill: var(--accent-blue); }
+        .radar-label.category-technical { fill: var(--accent-green); }
+        .radar-label.category-integrity { fill: var(--accent-yellow); }
+
+        .radar-point {
+            opacity: 0.9;
+        }
+
+        .radar-point.category-cognitive { fill: var(--accent-blue); }
+        .radar-point.category-technical { fill: var(--accent-green); }
+        .radar-point.category-integrity { fill: var(--accent-yellow); }
+
         .radar-tooltip {
             position: absolute;
             background: var(--bg-secondary);
@@ -1024,6 +1049,48 @@
 
         .radar-tooltip-line {
             margin: 0;
+        }
+
+        .radar-legend {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .radar-legend-item {
+            border: 1px solid var(--border-primary);
+            padding: 12px 16px;
+        }
+
+        .radar-legend-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .radar-legend-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        .radar-legend-swatch.cognitive { background: var(--accent-blue); }
+        .radar-legend-swatch.technical { background: var(--accent-green); }
+        .radar-legend-swatch.integrity { background: var(--accent-yellow); }
+
+        .radar-legend-title {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .radar-legend-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         /* Horizontal Bar Chart */
@@ -3635,6 +3702,7 @@
                         <h3 class="chart-title">Cognitive Profile</h3>
                         <div class="radar-chart" id="radar-chart"></div>
                         ${renderRadarCallouts(roleInsights)}
+                        ${renderRadarLegend()}
                         <p class="chart-note">Benchmarks are derived from partnerships with leading advanced manufacturing and defense-adjacent organizations, informed by structured interviews and performance analysis of top operators across public and private sectors.</p>
                     </div>
                 </div>
@@ -3990,6 +4058,44 @@
                         <div class="callout-label">Benchmark reference</div>
                         <div class="callout-value">Top-quartile performers</div>
                     </div>
+                </div>
+            `;
+        }
+
+        function renderRadarLegend() {
+            const legendItems = [
+                {
+                    id: 'cognitive',
+                    title: 'Cognitive Core',
+                    measures: 'Core cognitive abilities that determine learning speed, decision quality, error avoidance, and long-term performance ceiling.',
+                    predicts: 'Training speed, crisis judgment, analytic rigor, and recovery resilience.'
+                },
+                {
+                    id: 'technical',
+                    title: 'Technical Aptitude',
+                    measures: 'How well a candidate thinks and operates inside real, constrained technical systems.',
+                    predicts: 'Execution quality, troubleshooting speed, and operational reliability.'
+                },
+                {
+                    id: 'integrity',
+                    title: 'Behavioral Integrity & Mission Alignment',
+                    measures: 'Behavior under constraint, not personality.',
+                    predicts: 'Trustworthiness, retention, and alignment with high-stakes missions.'
+                }
+            ];
+
+            return `
+                <div class="radar-legend">
+                    ${legendItems.map(item => `
+                        <div class="radar-legend-item">
+                            <div class="radar-legend-header">
+                                <span class="radar-legend-swatch ${item.id}"></span>
+                                <div class="radar-legend-title">${item.title}</div>
+                            </div>
+                            <div class="radar-legend-text">Measures: ${item.measures}</div>
+                            <div class="radar-legend-text">Predicts: ${item.predicts}</div>
+                        </div>
+                    `).join('')}
                 </div>
             `;
         }
@@ -4439,6 +4545,8 @@
             const constructs = [...CONSTRUCTS.cognitive, ...CONSTRUCTS.technical, ...CONSTRUCTS.integrity];
             const scores = constructs.map(c => candidate.scores[c.id]);
             const labels = constructs.map(c => c.id);
+            const cognitiveCount = CONSTRUCTS.cognitive.length;
+            const technicalCount = CONSTRUCTS.technical.length;
 
             const width = 320;
             const height = 320;
@@ -4466,14 +4574,15 @@
                 const x = centerX + Math.cos(angle) * radius;
                 const y = centerY + Math.sin(angle) * radius;
                 const construct = constructs[i];
-                svg += `<line x1="${centerX}" y1="${centerY}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
+                const category = i < cognitiveCount ? 'cognitive' : i < cognitiveCount + technicalCount ? 'technical' : 'integrity';
+                svg += `<line x1="${centerX}" y1="${centerY}" x2="${x}" y2="${y}" class="radar-axis category-${category}"/>`;
 
                 const labelRadius = radius + 16;
                 const labelX = centerX + Math.cos(angle) * labelRadius;
                 const labelY = centerY + Math.sin(angle) * labelRadius;
                 const textAnchor = Math.abs(Math.cos(angle)) < 0.1 ? 'middle' :
                                    Math.cos(angle) > 0 ? 'start' : 'end';
-                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" fill="rgba(255,255,255,0.4)" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle" class="radar-label" data-construct-index="${i}">${labels[i]}</text>`;
+                svg += `<text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" font-size="9" font-family="var(--font-mono)" dominant-baseline="middle" class="radar-label category-${category}" data-construct-index="${i}">${labels[i]}</text>`;
             }
 
             const dataPoints = [];
@@ -4492,7 +4601,8 @@
                 const value = scores[i] / 100;
                 const x = centerX + Math.cos(angle) * radius * value;
                 const y = centerY + Math.sin(angle) * radius * value;
-                svg += `<circle cx="${x}" cy="${y}" r="3" fill="white"/>`;
+                const category = i < cognitiveCount ? 'cognitive' : i < cognitiveCount + technicalCount ? 'technical' : 'integrity';
+                svg += `<circle cx="${x}" cy="${y}" r="3" class="radar-point category-${category}"/>`;
             }
 
             svg += '</svg>';
