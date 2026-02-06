@@ -4305,12 +4305,7 @@
                             <option value="cam-programmer">CAM Programmer</option>
                             <option value="quality-metrology">CMM Programmer</option>
                             <option value="strategic-sourcing">Strategic Sourcing Manager</option>
-                            <option value="cnc-machinist">CNC Machinist (5-Axis)</option>
-                            <option value="cnc-programmer">CNC Programmer</option>
-                            <option value="mfg-systems">Manufacturing Systems Technician</option>
-                            <option value="production-assembly">Production Assembly Technician</option>
-                            <option value="automation-robotics">Automation &amp; Robotics Technician (Factory)</option>
-                            <option value="mfg-engineer">Manufacturing Engineer (Production-Facing)</option>
+                            <option value="mfg-engineer">Manufacturing Engineer (Production)</option>
                         </select>
                     </div>
                     <div class="control-group">
@@ -4797,12 +4792,7 @@
             { id: 'cam-programmer', name: 'CAM Programmer', abbr: 'CAM Prog' },
             { id: 'quality-metrology', name: 'CMM Programmer', abbr: 'CMM Prog' },
             { id: 'strategic-sourcing', name: 'Strategic Sourcing Manager', abbr: 'Sourcing' },
-            { id: 'cnc-machinist', name: 'CNC Machinist (5-Axis)', abbr: 'CNC 5X' },
-            { id: 'cnc-programmer', name: 'CNC Programmer', abbr: 'CNC Prog' },
-            { id: 'mfg-systems', name: 'Manufacturing Systems Technician', abbr: 'Mfg Sys' },
-            { id: 'production-assembly', name: 'Production Assembly Technician', abbr: 'Assembly' },
-            { id: 'automation-robotics', name: 'Automation & Robotics Technician (Factory)', abbr: 'Automation' },
-            { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production-Facing)', abbr: 'Mfg Eng' }
+            { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production)', abbr: 'Mfg Eng' }
         ];
 
         const DETAIL_ROLE_OPTIONS = [
@@ -4811,12 +4801,7 @@
             { id: 'cam-programmer', name: 'CAM Programmer' },
             { id: 'quality-metrology', name: 'CMM Programmer' },
             { id: 'strategic-sourcing', name: 'Strategic Sourcing Manager' },
-            { id: 'cnc-machinist', name: 'CNC Machinist (5-Axis)' },
-            { id: 'cnc-programmer', name: 'CNC Programmer' },
-            { id: 'mfg-systems', name: 'Manufacturing Systems Technician' },
-            { id: 'production-assembly', name: 'Production Assembly Technician' },
-            { id: 'automation-robotics', name: 'Automation & Robotics Technician (Factory)' },
-            { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production-Facing)' }
+            { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production)' }
         ];
 
         const ROLE_CUTLINES = {
@@ -4856,33 +4841,6 @@
                     { composite: 'behavioralIntegrity', threshold: 70 }
                 ]
             },
-            'cnc-machinist': {
-                requirements: [
-                    { construct: 'PRAD', threshold: 60 },
-                    { construct: 'SPV', threshold: 65 },
-                    { construct: 'RRCP', threshold: 65 },
-                    { construct: 'ASWL', threshold: 60 },
-                    { composite: 'manufacturingTechnical', threshold: 60 }
-                ]
-            },
-            'cnc-programmer': {
-                requirements: [
-                    { construct: 'DLCT', threshold: 65 },
-                    { construct: 'TMAQ', threshold: 65 },
-                    { construct: 'SRD', threshold: 60 },
-                    { construct: 'SPV', threshold: 60 },
-                    { composite: 'technicalAptitude', threshold: 60 }
-                ]
-            },
-            'mfg-systems': {
-                requirements: [
-                    { construct: 'SRD', threshold: 60 },
-                    { construct: 'FIDS', threshold: 60 },
-                    { construct: 'ASWL', threshold: 60 },
-                    { construct: 'RRCP', threshold: 65 },
-                    { composite: 'manufacturingTechnical', threshold: 60 }
-                ]
-            },
             'quality-metrology': {
                 requirements: [
                     { construct: 'PRAD', threshold: 70 },
@@ -4890,23 +4848,6 @@
                     { construct: 'MAC', threshold: 60 },
                     { construct: 'RRCP', threshold: 65 },
                     { composite: 'behavioralIntegrity', threshold: 70 }
-                ]
-            },
-            'production-assembly': {
-                requirements: [
-                    { construct: 'RRCP', threshold: 65 },
-                    { construct: 'ASWL', threshold: 60 },
-                    { construct: 'ICI', threshold: 60 },
-                    { composite: 'behavioralIntegrity', threshold: 65 }
-                ]
-            },
-            'automation-robotics': {
-                requirements: [
-                    { construct: 'SRD', threshold: 65 },
-                    { construct: 'DLCT', threshold: 65 },
-                    { construct: 'FIDS', threshold: 60 },
-                    { construct: 'SPV', threshold: 60 },
-                    { composite: 'technicalAptitude', threshold: 60 }
                 ]
             },
             'mfg-engineer': {
@@ -4945,41 +4886,11 @@
                 topPerformerBenchmark: 88,
                 priorityConstructs: ['ER', 'CMR', 'MAC', 'TCDQ', 'ERCS', 'VCS', 'MAI', 'BCC', 'SRD', 'PRAD', 'TMAQ', 'RRCP', 'ASWL']
             },
-            'cnc-machinist': {
-                weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
-                cutlines: { high: 80, medium: 65 },
-                topPerformerBenchmark: 85,
-                priorityConstructs: ['PRAD', 'SPV', 'RRCP', 'ASWL', 'TMAQ', 'MAC']
-            },
-            'cnc-programmer': {
-                weights: { cognitive: 0.35, technical: 0.50, behavioral: 0.15 },
-                cutlines: { high: 84, medium: 70 },
-                topPerformerBenchmark: 90,
-                priorityConstructs: ['DLCT', 'TMAQ', 'SRD', 'PRAD', 'FIDS']
-            },
-            'mfg-systems': {
-                weights: { cognitive: 0.35, technical: 0.45, behavioral: 0.20 },
-                cutlines: { high: 82, medium: 68 },
-                topPerformerBenchmark: 88,
-                priorityConstructs: ['SRD', 'FIDS', 'ASWL', 'RRCP', 'SPV']
-            },
             'quality-metrology': {
                 weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
                 cutlines: { high: 84, medium: 70 },
                 topPerformerBenchmark: 90,
                 priorityConstructs: ['SPV', 'MAC', 'RRCP', 'TMAQ', 'ICI', 'SRD', 'ASWL', 'CMR']
-            },
-            'production-assembly': {
-                weights: { cognitive: 0.30, technical: 0.35, behavioral: 0.35 },
-                cutlines: { high: 80, medium: 65 },
-                topPerformerBenchmark: 85,
-                priorityConstructs: ['RRCP', 'ASWL', 'ICI', 'VCS', 'BCC']
-            },
-            'automation-robotics': {
-                weights: { cognitive: 0.35, technical: 0.50, behavioral: 0.15 },
-                cutlines: { high: 84, medium: 70 },
-                topPerformerBenchmark: 90,
-                priorityConstructs: ['SRD', 'DLCT', 'FIDS', 'SPV', 'TMAQ']
             },
             'mfg-engineer': {
                 weights: { cognitive: 0.45, technical: 0.40, behavioral: 0.15 },
@@ -5322,7 +5233,7 @@
         const state = {
             currentView: 'overview',
             selectedCandidate: null,
-            selectedRole: 'cnc-machinist',
+            selectedRole: 'cnc-setup-operator',
             lastRoleSeedCandidate: null,
             roleHintDismissed: false,
             sortBy: 'aci',
@@ -5585,7 +5496,7 @@
 
             const aciBand = getBand(candidate.composites.aci);
             const roleRankings = getRoleRankings(candidate);
-            const primaryRoleId = candidate.primaryRole || roleRankings[0]?.role?.id || 'mfg-systems';
+            const primaryRoleId = candidate.primaryRole || roleRankings[0]?.role?.id || 'cnc-setup-operator';
             if (state.lastRoleSeedCandidate !== candidate.id) {
                 state.selectedRole = primaryRoleId;
                 state.lastRoleSeedCandidate = candidate.id;
@@ -6098,11 +6009,6 @@
             const primaryRoleId = getRoleRankings(candidate)[0]?.role?.id;
             const bestUseByRole = {
                 'quality-metrology': 'Lead CMM programming and first-article inspection; drive gage R&R, SPC calls, and containment when drift appears.',
-                'cnc-machinist': 'Deploy on 5-axis machining cells for complex geometries; own setup validation, tool offsets, and in-process inspection.',
-                'cnc-programmer': 'Own CAM toolpath development and post-processor validation; partner on fixture strategy and cycle-time optimization.',
-                'mfg-systems': 'Stabilize machining and inspection cells line-side; handle fault isolation, fixture health, and repeatability checks.',
-                'production-assembly': 'Execute high-mix assembly with strict work instructions and quality gates; reliable for detail-critical builds.',
-                'automation-robotics': 'Support robot cell programming, recovery, and fault isolation for automated transfer and inspection.',
                 'mfg-engineer': 'Bridge process planning and production execution; optimize setups, tolerance stackups, and quality escape prevention.'
             };
             return bestUseByRole[primaryRoleId] ||
