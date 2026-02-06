@@ -1414,6 +1414,16 @@
             flex-wrap: wrap;
         }
 
+        .role-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+
+        .role-hint.pulsing {
+            animation: roleHintPulse 2.5s ease-in-out infinite;
+        }
+
         .role-fit-grid {
             margin-bottom: 20px;
         }
@@ -1423,6 +1433,18 @@
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 16px;
+        }
+
+        @keyframes roleHintPulse {
+            0% { opacity: 0.55; }
+            50% { opacity: 1; }
+            100% { opacity: 0.55; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .role-hint.pulsing {
+                animation: none;
+            }
         }
 
         .detail-section {
@@ -4273,10 +4295,14 @@
                         <label class="control-label" for="role-filter">Role</label>
                         <select id="role-filter">
                             <option value="all">All Roles</option>
+                            <option value="cnc-setup-operator">CNC Setup &amp; Operator</option>
+                            <option value="tooling-engineer">Tooling Engineer</option>
+                            <option value="cam-programmer">CAM Programmer</option>
+                            <option value="quality-metrology">CMM Programmer</option>
+                            <option value="strategic-sourcing">Strategic Sourcing Manager</option>
                             <option value="cnc-machinist">CNC Machinist (5-Axis)</option>
                             <option value="cnc-programmer">CNC Programmer</option>
                             <option value="mfg-systems">Manufacturing Systems Technician</option>
-                            <option value="quality-metrology">Quality / Metrology Technician</option>
                             <option value="production-assembly">Production Assembly Technician</option>
                             <option value="automation-robotics">Automation &amp; Robotics Technician (Factory)</option>
                             <option value="mfg-engineer">Manufacturing Engineer (Production-Facing)</option>
@@ -4761,21 +4787,70 @@
         };
 
         const ROLES = [
+            { id: 'cnc-setup-operator', name: 'CNC Setup & Operator', abbr: 'CNC Setup' },
+            { id: 'tooling-engineer', name: 'Tooling Engineer', abbr: 'Tooling Eng' },
+            { id: 'cam-programmer', name: 'CAM Programmer', abbr: 'CAM Prog' },
+            { id: 'quality-metrology', name: 'CMM Programmer', abbr: 'CMM Prog' },
+            { id: 'strategic-sourcing', name: 'Strategic Sourcing Manager', abbr: 'Sourcing' },
             { id: 'cnc-machinist', name: 'CNC Machinist (5-Axis)', abbr: 'CNC 5X' },
             { id: 'cnc-programmer', name: 'CNC Programmer', abbr: 'CNC Prog' },
             { id: 'mfg-systems', name: 'Manufacturing Systems Technician', abbr: 'Mfg Sys' },
-            { id: 'quality-metrology', name: 'Quality / Metrology Technician', abbr: 'Quality' },
             { id: 'production-assembly', name: 'Production Assembly Technician', abbr: 'Assembly' },
             { id: 'automation-robotics', name: 'Automation & Robotics Technician (Factory)', abbr: 'Automation' },
             { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production-Facing)', abbr: 'Mfg Eng' }
         ];
 
         const DETAIL_ROLE_OPTIONS = [
+            { id: 'cnc-setup-operator', name: 'CNC Setup & Operator' },
+            { id: 'tooling-engineer', name: 'Tooling Engineer' },
+            { id: 'cam-programmer', name: 'CAM Programmer' },
+            { id: 'quality-metrology', name: 'CMM Programmer' },
+            { id: 'strategic-sourcing', name: 'Strategic Sourcing Manager' },
             { id: 'cnc-machinist', name: 'CNC Machinist (5-Axis)' },
-            { id: 'quality-metrology', name: 'CMM Programmer' }
+            { id: 'cnc-programmer', name: 'CNC Programmer' },
+            { id: 'mfg-systems', name: 'Manufacturing Systems Technician' },
+            { id: 'production-assembly', name: 'Production Assembly Technician' },
+            { id: 'automation-robotics', name: 'Automation & Robotics Technician (Factory)' },
+            { id: 'mfg-engineer', name: 'Manufacturing Engineer (Production-Facing)' }
         ];
 
         const ROLE_CUTLINES = {
+            'cnc-setup-operator': {
+                requirements: [
+                    { construct: 'ICI', threshold: 65 },
+                    { construct: 'RRCP', threshold: 65 },
+                    { construct: 'ASWL', threshold: 60 },
+                    { construct: 'PRAD', threshold: 60 },
+                    { composite: 'manufacturingTechnical', threshold: 60 }
+                ]
+            },
+            'tooling-engineer': {
+                requirements: [
+                    { construct: 'SPV', threshold: 65 },
+                    { construct: 'TMAQ', threshold: 65 },
+                    { construct: 'SRD', threshold: 60 },
+                    { construct: 'FIDS', threshold: 60 },
+                    { composite: 'technicalAptitude', threshold: 65 }
+                ]
+            },
+            'cam-programmer': {
+                requirements: [
+                    { construct: 'SPV', threshold: 70 },
+                    { construct: 'RRCP', threshold: 65 },
+                    { construct: 'MAC', threshold: 60 },
+                    { construct: 'SRD', threshold: 65 },
+                    { composite: 'technicalAptitude', threshold: 65 }
+                ]
+            },
+            'strategic-sourcing': {
+                requirements: [
+                    { construct: 'ER', threshold: 70 },
+                    { construct: 'CMR', threshold: 65 },
+                    { construct: 'MAC', threshold: 65 },
+                    { construct: 'VCS', threshold: 65 },
+                    { composite: 'behavioralIntegrity', threshold: 70 }
+                ]
+            },
             'cnc-machinist': {
                 requirements: [
                     { construct: 'PRAD', threshold: 60 },
@@ -4841,6 +4916,30 @@
         };
 
         const ROLE_BENCHMARKS = {
+            'cnc-setup-operator': {
+                weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
+                cutlines: { high: 80, medium: 65 },
+                topPerformerBenchmark: 85,
+                priorityConstructs: ['ICI', 'RRCP', 'ASWL', 'PRAD', 'SPV', 'MAC', 'ER']
+            },
+            'tooling-engineer': {
+                weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
+                cutlines: { high: 82, medium: 68 },
+                topPerformerBenchmark: 88,
+                priorityConstructs: ['SPV', 'TMAQ', 'SRD', 'FIDS', 'RRCP', 'MAC', 'ER', 'CMR']
+            },
+            'cam-programmer': {
+                weights: { cognitive: 0.35, technical: 0.50, behavioral: 0.15 },
+                cutlines: { high: 84, medium: 70 },
+                topPerformerBenchmark: 90,
+                priorityConstructs: ['SPV', 'RRCP', 'MAC', 'ICI', 'SRD', 'ERCS', 'TMAQ', 'ASWL']
+            },
+            'strategic-sourcing': {
+                weights: { cognitive: 0.35, technical: 0.25, behavioral: 0.40 },
+                cutlines: { high: 82, medium: 68 },
+                topPerformerBenchmark: 88,
+                priorityConstructs: ['ER', 'CMR', 'MAC', 'TCDQ', 'ERCS', 'VCS', 'MAI', 'BCC', 'SRD', 'PRAD', 'TMAQ', 'RRCP', 'ASWL']
+            },
             'cnc-machinist': {
                 weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
                 cutlines: { high: 80, medium: 65 },
@@ -4863,7 +4962,7 @@
                 weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
                 cutlines: { high: 84, medium: 70 },
                 topPerformerBenchmark: 90,
-                priorityConstructs: ['PRAD', 'TMAQ', 'MAC', 'RRCP', 'VCS']
+                priorityConstructs: ['SPV', 'MAC', 'RRCP', 'TMAQ', 'ICI', 'SRD', 'ASWL', 'CMR']
             },
             'production-assembly': {
                 weights: { cognitive: 0.30, technical: 0.35, behavioral: 0.35 },
@@ -4883,16 +4982,6 @@
                 topPerformerBenchmark: 90,
                 priorityConstructs: ['FI', 'ER', 'CMR', 'TCDQ', 'SRD']
             }
-        };
-
-        const ROLE_CONTEXT = {
-            'cnc-machinist': '5-axis machining environments demand tight tolerance control, disciplined setup verification, and calm execution under cycle time pressure. Employers expect ownership of first-article validation, tool offsets, and in-process inspection across complex parts.',
-            'cnc-programmer': 'CNC programming teams rely on accurate toolpath planning that balances surface finish, tool life, and cycle time. Employers expect close collaboration with setup and tooling to validate posts, fixtures, and first-run results.',
-            'mfg-systems': 'Manufacturing systems technicians stabilize production cells by isolating faults, restoring equipment health, and keeping throughput steady. Employers expect fast triage, clear documentation of fixes, and disciplined follow-through on repeatability checks.',
-            'quality-metrology': 'CMM programming roles demand precise measurement strategy, repeatable probe paths, and disciplined SPC alignment. Employers expect ownership of first-article inspection programs, gage R&R coordination, and clear reporting of drift.',
-            'production-assembly': 'High-mix assembly operations depend on strict work instruction adherence and reliable execution across shifts. Employers expect steady quality gate compliance, clean handoffs, and early escalation when deviations appear.',
-            'automation-robotics': 'Automation and robotics technicians keep cells running by tuning programs, recovering from faults, and safeguarding handoffs. Employers expect structured recovery steps, clear lockout discipline, and consistent validation after adjustments.',
-            'mfg-engineer': 'Production-facing manufacturing engineers bridge process planning and shop-floor execution with tight tolerance ownership. Employers expect clear setup documentation, continuous cycle-time improvement, and rapid root-cause resolution.'
         };
 
         const COMPOSITE_LABELS = {
@@ -5070,12 +5159,15 @@
 
             roleScores.sort((a, b) => b.fitScore - a.fitScore);
             const recommendedRoles = roleScores.slice(0, 2).filter(r => r.passes >= r.total - 1).map(r => r.role.id);
+            const resolvedRoles = recommendedRoles.length > 0 ? recommendedRoles : [roleScores[0].role.id];
+            const primaryRole = resolvedRoles[0];
 
             return {
                 ...candidate,
                 scores,
                 composites,
-                recommendedRoles: recommendedRoles.length > 0 ? recommendedRoles : [roleScores[0].role.id],
+                recommendedRoles: resolvedRoles,
+                primaryRole,
                 roleScores
             };
         }
@@ -5098,6 +5190,13 @@
             behavioralAlignment: ['VCS', 'BCC', 'MAI']
         };
 
+        const COMPOSITE_CONSTRUCT_MAP = {
+            cognitiveCore: DOMAIN_CONSTRUCTS.cognitiveCore,
+            technicalAptitude: DOMAIN_CONSTRUCTS.technicalAptitude,
+            behavioralIntegrity: CONSTRUCTS.integrity.map(c => c.id),
+            manufacturingTechnical: ['SRD', 'SPV', 'ASWL', 'FIDS', 'RRCP']
+        };
+
         function computeDomainAverages(candidate) {
             const scores = candidate?.scores || {};
             const averageFor = (ids) => {
@@ -5114,7 +5213,7 @@
         }
 
         function getPrimaryRole(candidate) {
-            const roleId = candidate?.recommendedRoles?.[0];
+            const roleId = candidate?.primaryRole || candidate?.recommendedRoles?.[0];
             return ROLES.find(role => role.id === roleId);
         }
 
@@ -5219,6 +5318,8 @@
             currentView: 'overview',
             selectedCandidate: null,
             selectedRole: 'cnc-machinist',
+            lastRoleSeedCandidate: null,
+            roleHintDismissed: false,
             sortBy: 'aci',
             sortDirection: 'desc',
             roleFilter: 'all',
@@ -5479,11 +5580,15 @@
 
             const aciBand = getBand(candidate.composites.aci);
             const roleRankings = getRoleRankings(candidate);
-            const primaryRoleId = roleRankings[0]?.role?.id || 'mfg-systems';
+            const primaryRoleId = candidate.primaryRole || roleRankings[0]?.role?.id || 'mfg-systems';
+            if (state.lastRoleSeedCandidate !== candidate.id) {
+                state.selectedRole = primaryRoleId;
+                state.lastRoleSeedCandidate = candidate.id;
+            }
             const detailRoleId = getDetailRoleId(primaryRoleId);
             const summary = buildExecutiveSummary(candidate, primaryRoleId, detailRoleId);
             const roleInsights = getRoleInsights(candidate, detailRoleId);
-            const roleContext = getRoleContext(detailRoleId);
+            const professionalContext = expandBackgroundToTwoSentences(candidate.background);
             const displayAciLabel = (aciBand.label === 'Elite Readiness') ? 'Elite' : aciBand.label;
             const validationItems = getValidationItems(candidate, detailRoleId, roleInsights);
             const onboardingPlan = getOnboardingPlan(candidate, detailRoleId, roleInsights);
@@ -5509,7 +5614,7 @@
                         <div class="detail-candidate-background">${candidate.background}</div>
                         <div class="detail-professional-context">
                             <div class="detail-context-label">Professional Context</div>
-                            <div class="detail-context-text">${roleContext}</div>
+                            <div class="detail-context-text">${professionalContext}</div>
                         </div>
                     </div>
                     <div class="detail-aci-score">
@@ -5532,7 +5637,7 @@
                         <div class="radar-chart" id="radar-chart"></div>
                         ${renderRadarCallouts(roleInsights)}
                         ${renderRadarLegend()}
-                        <p class="chart-note">Benchmarks are derived from partnerships with leading advanced manufacturing and defense-adjacent organizations, informed by structured interviews and performance analysis of top operators across public and private sectors.</p>
+                        <p class="chart-note">Benchmarks are derived from extensive behavioral and aptitude testing of top performers who support the American industrial base across the public and private sector.</p>
                     </div>
                 </div>
 
@@ -5556,7 +5661,7 @@
             const roleSelect = container.querySelector('#intended-role-select');
             if (roleSelect) {
                 roleSelect.addEventListener('change', (e) => {
-                    setState({ selectedRole: e.target.value });
+                    setState({ selectedRole: e.target.value, roleHintDismissed: true });
                 });
             }
         }
@@ -5597,15 +5702,122 @@
                 'Selected role';
         }
 
-        function getRoleContext(roleId) {
-            return ROLE_CONTEXT[roleId] ||
-                'Operational roles demand consistent execution and disciplined quality control. Employers expect clear communication, steady throughput, and early escalation when variance appears.';
+        function expandBackgroundToTwoSentences(backgroundString) {
+            const raw = (backgroundString || '').trim();
+            if (!raw) {
+                return 'Background information not provided. Review resume and references for operational history.';
+            }
+
+            const lower = raw.toLowerCase();
+            const branchMap = {
+                'air force': 'Air Force',
+                'army': 'Army',
+                'navy': 'Navy',
+                'marine corps': 'Marine Corps',
+                'marines': 'Marine Corps',
+                'coast guard': 'Coast Guard',
+                'space force': 'Space Force',
+                'national guard': 'National Guard'
+            };
+
+            let branch = '';
+            Object.keys(branchMap).forEach(key => {
+                if (!branch && lower.includes(key)) {
+                    branch = branchMap[key];
+                }
+            });
+
+            const statusKeywords = [
+                'honorable discharge',
+                'active duty',
+                'veteran',
+                'reserve',
+                'retired'
+            ];
+            const hasStatus = statusKeywords.some(keyword => lower.includes(keyword));
+
+            const segments = raw.split(',').map(item => item.trim()).filter(Boolean);
+            const primary = segments[0] || raw;
+            const additional = segments.slice(1).join(', ');
+            const rolePhrase = additional ? `${primary}, ${additional}` : primary;
+
+            const jobSignals = {
+                technical: /(technician|engineer|engineering|programmer|mechatronics|electronics|avionics|nuclear|cybersecurity|it support|qc|quality|metrology|automation|robotics|hvac)/i,
+                operations: /(operator|assembly|manufacturing|production|machinist|maintenance|warehouse|line cook|cook|facility)/i,
+                leadership: /(supervisor|lead|manager)/i,
+                research: /(research|lab|assistant|physics)/i,
+                training: /(community college|coursework|bootcamp|internship|degree|bachelor|bs|ba|as)/i
+            };
+
+            let roleType = 'hands-on professional';
+            if (jobSignals.leadership.test(raw)) {
+                roleType = 'operational leadership';
+            } else if (jobSignals.technical.test(raw) && jobSignals.operations.test(raw)) {
+                roleType = 'technical and operational';
+            } else if (jobSignals.technical.test(raw)) {
+                roleType = 'technical';
+            } else if (jobSignals.operations.test(raw)) {
+                roleType = 'operational';
+            } else if (jobSignals.research.test(raw)) {
+                roleType = 'technical and analytical';
+            } else if (jobSignals.training.test(raw)) {
+                roleType = 'training-focused';
+            }
+
+            let environment = 'structured professional settings';
+            if (branch) {
+                environment = `${branch} service settings`;
+            } else if (hasStatus) {
+                environment = 'service settings';
+            } else if (/(military|avionics|nuclear|defense|aerospace|security)/i.test(raw)) {
+                environment = 'regulated, safety-critical settings';
+            } else if (/(manufacturing|production|operator|machinist|assembly|quality|qc|metrology|automation|robotics|maintenance|warehouse)/i.test(raw)) {
+                environment = 'procedure-driven operational settings';
+            } else if (jobSignals.training.test(raw) || jobSignals.research.test(raw)) {
+                environment = 'training and applied learning settings';
+            } else if (/(it support|cybersecurity)/i.test(raw)) {
+                environment = 'controlled technical settings';
+            }
+
+            let accountability = 'high-accountability expectations';
+            if (/(nuclear|avionics|defense|aerospace|quality|qc|inspection)/i.test(raw)) {
+                accountability = 'safety and quality-critical accountability';
+            } else if (jobSignals.leadership.test(raw)) {
+                accountability = 'leadership accountability';
+            } else if (jobSignals.technical.test(raw)) {
+                accountability = 'technical accountability';
+            } else if (jobSignals.operations.test(raw)) {
+                accountability = 'procedure-driven accountability';
+            } else if (hasStatus) {
+                accountability = 'standards-driven accountability';
+            }
+
+            const sentenceOne = `Background includes ${rolePhrase}, reflecting ${roleType} work in ${environment} with ${accountability}.`;
+            const sentenceTwo = 'This background suggests disciplined execution, careful documentation, and reliable follow-through in routine work.';
+
+            return `${sentenceOne} ${sentenceTwo}`;
         }
 
         function getFitLevelClass(level) {
             if (level === 'High') return 'high';
             if (level === 'Low') return 'low';
             return 'medium';
+        }
+
+        function getRoleMinimums(roleId) {
+            const minimums = { constructs: {}, composites: {} };
+            const cutline = ROLE_CUTLINES[roleId];
+            if (cutline?.requirements?.length) {
+                cutline.requirements.forEach(req => {
+                    if (req.construct) {
+                        minimums.constructs[req.construct] = req.threshold;
+                    }
+                    if (req.composite) {
+                        minimums.composites[req.composite] = req.threshold;
+                    }
+                });
+            }
+            return minimums;
         }
 
         function computeRoleFitFromBenchmarks(candidate, roleId) {
@@ -5675,12 +5887,56 @@
 
         function getRoleInsights(candidate, roleId) {
             const summary = getRoleFitSummary(candidate, roleId);
-            const strengths = summary.strengths.slice(0, 2);
-            const riskZones = summary.risks.slice(0, 2);
+            const benchmark = summary.benchmark || ROLE_BENCHMARKS[roleId];
+            const priorityIds = benchmark?.priorityConstructs || [];
+            const strongThreshold = benchmark?.cutlines?.medium ?? 65;
+            const minimums = getRoleMinimums(roleId);
 
-            const why = strengths.map(s => `${s.construct.name} (${s.score}) supports ${s.construct.predicts.toLowerCase()}.`);
-            while (why.length < 2 && summary.strengths[why.length]) {
-                const item = summary.strengths[why.length];
+            const prioritized = priorityIds.map(id => {
+                const construct = getConstructById(id);
+                const score = candidate.scores[id];
+                if (!construct || typeof score !== 'number') return null;
+                return {
+                    construct,
+                    score,
+                    minThreshold: minimums.constructs[id] ?? strongThreshold
+                };
+            }).filter(Boolean);
+
+            const strengths = prioritized
+                .filter(item => item.score >= item.minThreshold)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3);
+
+            const compositeShortfalls = Object.keys(minimums.composites)
+                .filter(comp => typeof candidate.composites[comp] === 'number' && candidate.composites[comp] < minimums.composites[comp]);
+
+            const getCompositeGapForConstruct = (constructId) => {
+                let maxGap = 0;
+                compositeShortfalls.forEach(comp => {
+                    const group = COMPOSITE_CONSTRUCT_MAP[comp] || [];
+                    if (!group.includes(constructId)) return;
+                    const gap = minimums.composites[comp] - candidate.composites[comp];
+                    if (gap > maxGap) maxGap = gap;
+                });
+                return maxGap;
+            };
+
+            const riskZones = prioritized
+                .map(item => {
+                    const constructGap = item.score < item.minThreshold ? item.minThreshold - item.score : 0;
+                    const compositeGap = getCompositeGapForConstruct(item.construct.id);
+                    const gap = Math.max(constructGap, compositeGap);
+                    if (gap <= 0) return null;
+                    return { ...item, gap };
+                })
+                .filter(Boolean)
+                .sort((a, b) => b.gap - a.gap)
+                .slice(0, 3);
+
+            const why = strengths.slice(0, 2).map(s => `${s.construct.name} (${s.score}) supports ${s.construct.predicts.toLowerCase()}.`);
+            while (why.length < 2 && prioritized[why.length]) {
+                const item = prioritized[why.length];
                 if (item?.construct) {
                     why.push(`${item.construct.name} (${item.score}) strengthens ${item.construct.predicts.toLowerCase()}.`);
                 } else {
@@ -5885,6 +6141,7 @@
                                 <option value="${option.id}" ${option.id === selectedRoleId ? 'selected' : ''}>${option.name}</option>
                             `).join('')}
                         </select>
+                        <div class="role-hint ${state.roleHintDismissed ? '' : 'pulsing'}">See how this candidate performs in other roles you are hiring for.</div>
                     </div>
                     <div class="summary-grid role-fit-grid">
                         ${renderSummaryRow('Role Fit', fitLabel)}
@@ -5901,8 +6158,10 @@
         }
 
         function renderRadarCallouts(roleInsights) {
-            const strengths = roleInsights.strengths.map(s => s.construct.name).join(', ') || 'No standout strengths identified';
-            const risks = roleInsights.riskZones.map(r => r.construct.name).join(', ') || 'No material risk zones identified';
+            const strengths = roleInsights.strengths.map(s => `${s.construct.name} (${s.construct.id})`).join(', ') || 'No standout strengths identified';
+            const risks = roleInsights.riskZones.length ?
+                roleInsights.riskZones.map(r => `${r.construct.name} (${r.construct.id})`).join(', ') :
+                'No material gaps against the primary role benchmark.';
             return `
                 <div class="radar-callouts">
                     <div class="radar-callout">
@@ -5915,7 +6174,7 @@
                     </div>
                     <div class="radar-callout">
                         <div class="callout-label">Benchmark reference</div>
-                        <div class="callout-value">Top-quartile performers</div>
+                        <div class="callout-value">Benchmarks are derived from extensive behavioral and aptitude testing of top performers who support the American industrial base across the public and private sector.</div>
                     </div>
                 </div>
             `;
@@ -5951,8 +6210,8 @@
                                 <span class="radar-legend-swatch ${item.id}"></span>
                                 <div class="radar-legend-title">${item.title}</div>
                             </div>
-                            <div class="radar-legend-text">Measures: ${item.measures}</div>
-                            <div class="radar-legend-text">Predicts: ${item.predicts}</div>
+                            <div class="radar-legend-text"><strong>Measures</strong>: ${item.measures}</div>
+                            <div class="radar-legend-text"><strong>Predicts</strong>: ${item.predicts}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -6213,8 +6472,8 @@
                                 ${construct.name}
                                 <span class="construct-abbr">${construct.id}</span>
                             </div>
-                            <div class="construct-measures">Measures: ${construct.measures}</div>
-                            <div class="construct-predicts">Predicts: ${construct.predicts}</div>
+                            <div class="construct-measures"><strong>Measures</strong>: ${construct.measures}</div>
+                            <div class="construct-predicts"><strong>Predicts</strong>: ${construct.predicts}</div>
                             <div class="construct-operational">Operational value: ${construct.operationalValue}</div>
                         </div>
                         <div class="construct-scores">
