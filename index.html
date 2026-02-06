@@ -4907,6 +4907,8 @@
             demo: 'demo',
             investors: 'investors'
         };
+        const INVESTOR_PASSWORD = 'Investor123';
+        const INVESTOR_ACCESS_KEY = 'investor-access-granted';
 
         const views = Array.from(document.querySelectorAll('main[data-view]'));
         const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
@@ -4929,6 +4931,26 @@
             const offset = (header ? Math.ceil(header.getBoundingClientRect().height) : 104) + 16;
             const top = window.scrollY + target.getBoundingClientRect().top - offset;
             window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' });
+        }
+
+        function hasInvestorAccess() {
+            return window.sessionStorage.getItem(INVESTOR_ACCESS_KEY) === 'true';
+        }
+
+        function grantInvestorAccess() {
+            window.sessionStorage.setItem(INVESTOR_ACCESS_KEY, 'true');
+        }
+
+        function ensureInvestorAccess() {
+            if (hasInvestorAccess()) return true;
+            const entered = window.prompt('Enter password for the Investor page:');
+            if (entered === null) return false;
+            if (entered === INVESTOR_PASSWORD) {
+                grantInvestorAccess();
+                return true;
+            }
+            window.alert('Incorrect password.');
+            return false;
         }
 
         function setView(name) {
@@ -4962,6 +4984,14 @@
                 return;
             }
             const next = resolveView(raw);
+            if (next === 'investors' && !ensureInvestorAccess()) {
+                if (window.location.hash !== '#home') {
+                    window.location.hash = '#home';
+                } else {
+                    setView('home');
+                }
+                return;
+            }
             setView(next);
             if (next === 'investors') {
                 if (raw !== 'investors') {
