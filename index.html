@@ -3686,11 +3686,85 @@
         }
 
         #view-investors.defense-theme .investor-layout {
-            gap: 48px;
+            display: block;
+            position: relative;
+        }
+
+        #view-investors.defense-theme .investor-content {
+            width: 100%;
+        }
+
+        #view-investors.defense-theme .toc-trigger-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 18px;
+        }
+
+        #view-investors.defense-theme .toc-trigger {
+            border-color: rgba(117, 140, 88, 0.6);
+            background: transparent;
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay.is-open {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        #view-investors.defense-theme .investor-toc-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc-backdrop {
+            opacity: 1;
         }
 
         #view-investors.defense-theme .investor-toc {
-            padding-top: 8px;
+            position: relative;
+            margin: 0 auto;
+            width: calc(100% - 96px);
+            max-width: 1400px;
+            padding: 22px 48px 28px;
+            background: rgba(0, 0, 0, 0.92);
+            border-bottom: 1px solid var(--defense-line);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+            transform: translateY(-110%);
+            transition: transform var(--transition-medium);
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc {
+            transform: translateY(0);
+        }
+
+        #view-investors.defense-theme .toc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        #view-investors.defense-theme .toc-close {
+            border: 1px solid rgba(117, 140, 88, 0.6);
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 11px;
         }
 
         #view-investors.defense-theme .toc-link {
@@ -3880,13 +3954,9 @@
                 padding-top: 80px;
             }
 
-            #view-investors.defense-theme .investor-layout {
-                grid-template-columns: 1fr;
-            }
-
             #view-investors.defense-theme .investor-toc {
-                position: relative;
-                top: 0;
+                width: calc(100% - 48px);
+                padding: 20px 24px 24px;
             }
         }
 
@@ -3903,6 +3973,12 @@
 
             #view-investors.defense-theme .investor-scroll-arrow {
                 animation: none;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay,
+            #view-investors.defense-theme .investor-toc-backdrop,
+            #view-investors.defense-theme .investor-toc {
+                transition: none;
             }
         }
 </style>
@@ -4216,24 +4292,33 @@
             </section>
 
             <div class="investor-layout">
-                <aside class="investor-toc" aria-label="Investor table of contents" data-reveal style="--reveal-delay: 0.1s;">
-                    <div class="toc-title">Contents</div>
-                    <div class="toc-list">
-                        <a class="toc-link" href="#investors-executive-summary" data-target="investors-executive-summary">Executive Summary</a>
-                        <a class="toc-link" href="#investors-problem" data-target="investors-problem">The Problem</a>
-                        <a class="toc-link" href="#investors-opportunity" data-target="investors-opportunity">The Opportunity</a>
-                        <a class="toc-link" href="#investors-solution" data-target="investors-solution">The Solution</a>
-                        <a class="toc-link" href="#investors-market" data-target="investors-market">The Market</a>
-                        <a class="toc-link" href="#investors-plan" data-target="investors-plan">Plan, Use of Funds &amp; Milestones</a>
-                        <a class="toc-link" href="#investors-model" data-target="investors-model">Business Model</a>
-                        <a class="toc-link" href="#investors-traction" data-target="investors-traction">Traction</a>
-                        <a class="toc-link" href="#investors-team" data-target="investors-team">Team</a>
-                        <a class="toc-link" href="#investors-arc" data-target="investors-arc">Product Deep Dive: ARC Assessment (fka NAIB)</a>
-                        <a class="toc-link" href="#investors-factory" data-target="investors-factory">Product Deep Dive: Talent Factory</a>
-                    </div>
-                </aside>
+                <div class="investor-toc-overlay" data-toc-overlay>
+                    <div class="investor-toc-backdrop" data-toc-close></div>
+                    <aside class="investor-toc" aria-label="Investor table of contents">
+                        <div class="toc-header">
+                            <div class="toc-title">Contents</div>
+                            <button class="toc-close" type="button" data-toc-close aria-label="Close table of contents">Close</button>
+                        </div>
+                        <div class="toc-list">
+                            <a class="toc-link" href="#investors-executive-summary" data-target="investors-executive-summary">Executive Summary</a>
+                            <a class="toc-link" href="#investors-problem" data-target="investors-problem">The Problem</a>
+                            <a class="toc-link" href="#investors-opportunity" data-target="investors-opportunity">The Opportunity</a>
+                            <a class="toc-link" href="#investors-solution" data-target="investors-solution">The Solution</a>
+                            <a class="toc-link" href="#investors-market" data-target="investors-market">The Market</a>
+                            <a class="toc-link" href="#investors-plan" data-target="investors-plan">Plan, Use of Funds &amp; Milestones</a>
+                            <a class="toc-link" href="#investors-model" data-target="investors-model">Business Model</a>
+                            <a class="toc-link" href="#investors-traction" data-target="investors-traction">Traction</a>
+                            <a class="toc-link" href="#investors-team" data-target="investors-team">Team</a>
+                            <a class="toc-link" href="#investors-arc" data-target="investors-arc">Product Deep Dive: ARC Assessment (fka NAIB)</a>
+                            <a class="toc-link" href="#investors-factory" data-target="investors-factory">Product Deep Dive: Talent Factory</a>
+                        </div>
+                    </aside>
+                </div>
 
                 <div class="investor-content">
+                    <div class="toc-trigger-row" data-reveal>
+                        <button class="button secondary toc-trigger" type="button" data-toc-open aria-label="Open table of contents">Contents</button>
+                    </div>
                     <section id="investors-executive-summary" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Executive Summary</h2>
@@ -4736,6 +4821,9 @@
         const copyButtons = Array.from(investorView.querySelectorAll('[data-copy]'));
         const heroScroll = investorView.querySelector('[data-scroll-target]');
         const lastEdited = investorView.querySelector('#investor-last-edited');
+        const tocOverlay = investorView.querySelector('[data-toc-overlay]');
+        const tocOpeners = Array.from(investorView.querySelectorAll('[data-toc-open]'));
+        const tocClosers = Array.from(investorView.querySelectorAll('[data-toc-close]'));
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         function setActiveSection(id) {
@@ -4759,6 +4847,11 @@
             target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
         }
 
+        function setTocOpen(isOpen) {
+            if (!tocOverlay) return;
+            tocOverlay.classList.toggle('is-open', isOpen);
+        }
+
         tocLinks.forEach(link => {
             link.addEventListener('click', (event) => {
                 const targetId = link.dataset.target;
@@ -4768,7 +4861,26 @@
                     window.location.hash = targetId;
                 }
                 scrollToSection(targetId);
+                setTocOpen(false);
             });
+        });
+
+        tocOpeners.forEach(button => {
+            button.addEventListener('click', () => {
+                setTocOpen(true);
+            });
+        });
+
+        tocClosers.forEach(button => {
+            button.addEventListener('click', () => {
+                setTocOpen(false);
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                setTocOpen(false);
+            }
         });
 
         if (heroScroll) {
