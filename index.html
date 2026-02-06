@@ -1486,6 +1486,10 @@
         }
 
         .validation-role {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
             font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 16px;
@@ -5660,10 +5664,15 @@
             setupConstructListeners();
 
             const roleSelect = container.querySelector('#intended-role-select');
+            const validationRoleSelect = container.querySelector('#validation-role-select');
+            const handleRoleChange = (e) => {
+                setState({ selectedRole: e.target.value, roleHintDismissed: true });
+            };
             if (roleSelect) {
-                roleSelect.addEventListener('change', (e) => {
-                    setState({ selectedRole: e.target.value, roleHintDismissed: true });
-                });
+                roleSelect.addEventListener('change', handleRoleChange);
+            }
+            if (validationRoleSelect) {
+                validationRoleSelect.addEventListener('change', handleRoleChange);
             }
         }
 
@@ -6249,11 +6258,17 @@
         }
 
         function renderValidationProtocol(items, roleId) {
-            const roleName = getRoleDisplayName(roleId);
             return `
                 <div class="chart-container detail-section validation-protocol">
                     <h3 class="chart-title">Targeted Validation Protocol</h3>
-                    <div class="validation-role">Aligned to ${roleName}</div>
+                    <div class="validation-role">
+                        <span>Aligned to</span>
+                        <select id="validation-role-select">
+                            ${DETAIL_ROLE_OPTIONS.map(option => `
+                                <option value="${option.id}" ${option.id === roleId ? 'selected' : ''}>${option.name}</option>
+                            `).join('')}
+                        </select>
+                    </div>
                     <div class="validation-list">
                         ${items.map(item => `
                             <div class="validation-item">
