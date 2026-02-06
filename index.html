@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Arklight</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #000000;
@@ -3607,23 +3604,14 @@
             --defense-line-strong: rgba(244, 244, 228, 0.6);
             --defense-shadow: rgba(0, 0, 0, 0.45);
             --defense-corner: 28px;
-            --defense-serif: "DM Serif Display", "Times New Roman", serif;
-            --defense-sans: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
-            --defense-mono: "IBM Plex Mono", "SF Mono", "Fira Code", monospace;
             color: rgb(var(--defense-white));
         }
 
         #view-investors.defense-theme .investor-hero {
             padding: 110px 0 70px;
             gap: 32px;
-        }
-
-        #view-investors.defense-theme .investor-eyebrow {
-            font-family: var(--defense-mono);
-            font-size: 0.7rem;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: rgb(var(--defense-gray));
+            min-height: 70vh;
+            justify-content: space-between;
         }
 
         #view-investors.defense-theme .investor-hero .rule {
@@ -3633,23 +3621,21 @@
         }
 
         #view-investors.defense-theme .investor-quote {
-            font-family: var(--defense-sans);
-            font-size: clamp(44px, 6.5vw, 96px);
-            letter-spacing: -0.035em;
-            line-height: 0.98;
             color: rgb(var(--defense-white));
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        #view-investors.defense-theme .investor-quote-row {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         #view-investors.defense-theme .investor-quote-text {
             display: inline-block;
-        }
-
-        #view-investors.defense-theme .investor-quote-attribution {
-            font-family: var(--defense-mono);
-            font-size: 0.28em;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-            color: rgb(var(--defense-gray));
         }
 
         #view-investors.defense-theme .investor-flag .flag-field {
@@ -3673,15 +3659,19 @@
         #view-investors.defense-theme .investor-meta-label,
         #view-investors.defense-theme .micro-label,
         #view-investors.defense-theme .toc-title {
-            font-family: var(--defense-mono);
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
             color: rgb(var(--defense-gray));
         }
 
-        #view-investors.defense-theme .investor-meta-value {
-            font-family: var(--defense-sans);
-            font-size: 0.95rem;
+        #view-investors.defense-theme .investor-hero-footer {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--defense-line);
+            color: var(--text-secondary);
         }
 
         #view-investors.defense-theme .investor-scroll {
@@ -3704,9 +3694,6 @@
         }
 
         #view-investors.defense-theme .toc-link {
-            font-family: var(--defense-mono);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
             color: rgba(209, 208, 193, 0.75);
             padding-left: 20px;
             border-left: none;
@@ -3753,15 +3740,7 @@
             margin-bottom: 20px;
         }
 
-        #view-investors.defense-theme .section-title {
-            font-family: var(--defense-sans);
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            text-transform: none;
-        }
-
         #view-investors.defense-theme .copy-link {
-            font-family: var(--defense-mono);
             border: 1px solid rgba(117, 140, 88, 0.6);
             color: rgb(var(--defense-gray));
         }
@@ -3774,17 +3753,7 @@
         #view-investors.defense-theme .info-text,
         #view-investors.defense-theme .detail-body,
         #view-investors.defense-theme .team-bio {
-            font-family: var(--defense-serif);
-            font-size: 1rem;
-            line-height: 1.65;
             color: rgba(244, 244, 228, 0.92);
-        }
-
-        #view-investors.defense-theme .card-title {
-            font-family: var(--defense-mono);
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: rgba(209, 208, 193, 0.8);
         }
 
         #view-investors.defense-theme .bullet-list {
@@ -3812,11 +3781,6 @@
             background: rgba(117, 140, 88, 0.12);
             border: 1px solid rgba(117, 140, 88, 0.45);
             border-radius: 18px;
-        }
-
-        #view-investors.defense-theme .stat-value {
-            font-family: var(--defense-sans);
-            font-size: clamp(1.8rem, 3.5vw, 3rem);
         }
 
         #view-investors.defense-theme .investor-card,
@@ -3887,17 +3851,17 @@
             transform: none;
         }
 
-        #view-investors.defense-theme [data-reveal="wipe"]::after {
-            content: "";
+        #view-investors.defense-theme .wipe-cover {
             position: absolute;
             inset: 0;
             background: rgb(var(--defense-green));
             transform: translateX(0);
             transition: transform 0.6s ease;
             transition-delay: calc(var(--reveal-delay, 0s) + 0.08s);
+            pointer-events: none;
         }
 
-        #view-investors.defense-theme [data-reveal="wipe"].is-visible::after {
+        #view-investors.defense-theme [data-reveal="wipe"].is-visible .wipe-cover {
             transform: translateX(102%);
         }
 
@@ -3933,7 +3897,7 @@
                 transition: none;
             }
 
-            #view-investors.defense-theme [data-reveal="wipe"]::after {
+            #view-investors.defense-theme .wipe-cover {
                 display: none;
             }
 
@@ -4235,49 +4199,19 @@
 
         <main id="view-investors" class="page-view main-content defense-theme" data-view="investors">
             <section class="investor-hero">
-                <p class="investor-eyebrow" data-reveal style="--reveal-delay: 0.05s;">Investor Briefing</p>
-                <div class="rule" data-reveal="line" style="--reveal-delay: 0.1s;"></div>
                 <div class="investor-quote-row">
                     <h1 class="investor-quote">
-                        <span class="investor-quote-text" data-reveal="wipe" style="--reveal-delay: 0.15s;">“ The industrial base of a nation is the foundation of its strength. ”</span>
-                        <span class="investor-quote-attribution" data-reveal style="--reveal-delay: 0.25s;">&nbsp;&nbsp;- Dwight D. Eisenhower</span>
+                        <span class="investor-quote-text" data-reveal="wipe" style="--reveal-delay: 0.1s;"><span class="wipe-cover" aria-hidden="true"></span>“ The industrial base of a nation is the foundation of its strength. ”</span>
+                        <span class="investor-quote-attribution" data-reveal style="--reveal-delay: 0.2s;">&nbsp;&nbsp;- Dwight D. Eisenhower</span>
                     </h1>
-                    <svg class="investor-flag" viewBox="0 0 64 40" aria-hidden="true" focusable="false" data-reveal style="--reveal-delay: 0.2s;">
-                        <rect class="flag-field" x="1" y="1" width="62" height="38" rx="3"></rect>
-                        <rect class="flag-canton" x="1" y="1" width="26" height="18"></rect>
-                        <g class="flag-stars">
-                            <circle class="flag-star" cx="6" cy="6" r="1.1"></circle>
-                            <circle class="flag-star" cx="12" cy="6" r="1.1"></circle>
-                            <circle class="flag-star" cx="18" cy="6" r="1.1"></circle>
-                            <circle class="flag-star" cx="6" cy="11" r="1.1"></circle>
-                            <circle class="flag-star" cx="12" cy="11" r="1.1"></circle>
-                            <circle class="flag-star" cx="18" cy="11" r="1.1"></circle>
-                            <circle class="flag-star" cx="6" cy="16" r="1.1"></circle>
-                            <circle class="flag-star" cx="12" cy="16" r="1.1"></circle>
-                            <circle class="flag-star" cx="18" cy="16" r="1.1"></circle>
-                        </g>
-                        <rect class="flag-stripe" x="1" y="21" width="62" height="4"></rect>
-                        <rect class="flag-stripe" x="1" y="28" width="62" height="4"></rect>
-                        <rect class="flag-stripe" x="1" y="35" width="62" height="3"></rect>
-                    </svg>
                 </div>
-                <div class="rule" data-reveal="line" style="--reveal-delay: 0.3s;"></div>
-                <div class="investor-meta">
-                    <div class="investor-meta-item" data-reveal style="--reveal-delay: 0.35s;">
-                        <div class="investor-meta-label">Scroll to read</div>
-                        <button class="investor-scroll" type="button" data-scroll-target="investors-executive-summary" aria-label="Scroll to Executive Summary">
-                            <span class="investor-scroll-arrow">↓</span>
-                            <span class="investor-meta-value">Executive Summary</span>
-                        </button>
-                    </div>
-                    <div class="investor-meta-item" data-reveal style="--reveal-delay: 0.4s;">
-                        <div class="investor-meta-label">Team</div>
-                        <div class="investor-meta-value">Dani Mota<br>Josh Soto<br>Ray Bryant</div>
-                    </div>
-                    <div class="investor-meta-item" data-reveal style="--reveal-delay: 0.45s;">
-                        <div class="investor-meta-label">Last edited</div>
-                        <div class="investor-meta-value" id="investor-last-edited">February 5, 2026</div>
-                    </div>
+                <div class="investor-hero-footer" data-reveal style="--reveal-delay: 0.25s;">
+                    <button class="investor-scroll" type="button" data-scroll-target="investors-executive-summary" aria-label="Scroll to Executive Summary">
+                        <span class="investor-scroll-arrow">↓</span>
+                        <span class="investor-scroll-text">Scroll to read</span>
+                    </button>
+                    <div class="investor-meta-value">Dani Mota · Josh Soto · Ray Bryant</div>
+                    <div class="investor-meta-value">Last edited <span id="investor-last-edited">February 5, 2026</span></div>
                 </div>
             </section>
 
@@ -4872,11 +4806,19 @@
         if (revealItems.length) {
             if (prefersReduced) {
                 revealItems.forEach(item => item.classList.add('is-visible'));
+                const reducedCovers = investorView.querySelectorAll('.wipe-cover');
+                reducedCovers.forEach(cover => cover.remove());
             } else {
                 const revealObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (!entry.isIntersecting) return;
                         entry.target.classList.add('is-visible');
+                        if (entry.target.dataset.reveal === 'wipe') {
+                            const cover = entry.target.querySelector('.wipe-cover');
+                            if (cover) {
+                                cover.addEventListener('transitionend', () => cover.remove(), { once: true });
+                            }
+                        }
                         revealObserver.unobserve(entry.target);
                     });
                 }, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
