@@ -19,6 +19,7 @@
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.4);
             --text-dim: rgba(255, 255, 255, 0.25);
+            --text-strong: rgba(255, 255, 255, 0.85);
             --accent-primary: #ffffff;
             --accent-blue: #3b82f6;
             --accent-green: #22c55e;
@@ -140,7 +141,7 @@
 
         .button.secondary {
             border-color: var(--border-primary);
-            color: var(--text-muted);
+            color: var(--text-strong);
         }
 
         .home-section {
@@ -515,7 +516,7 @@
             font-size: 12px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--text-secondary);
+            color: var(--text-strong);
         }
 
         .detail-card summary::-webkit-details-marker {
@@ -986,7 +987,7 @@
         .section-title {
             font-size: 12px;
             font-weight: 500;
-            color: var(--text-muted);
+            color: var(--text-strong);
             text-transform: uppercase;
             letter-spacing: 0.15em;
         }
@@ -1691,7 +1692,7 @@
         .chart-title {
             font-size: 10px;
             font-weight: 500;
-            color: var(--text-dim);
+            color: var(--text-strong);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 32px;
@@ -1968,7 +1969,7 @@
         }
 
         .construct-section-toggle {
-            color: var(--text-dim);
+            color: var(--text-secondary);
             font-size: 10px;
             transition: transform var(--transition-fast);
         }
@@ -2089,8 +2090,8 @@
 
         .construct-expand-btn {
             background: none;
-            border: 1px solid var(--border-primary);
-            color: var(--text-dim);
+            border: 1px solid var(--border-secondary);
+            color: var(--text-secondary);
             cursor: pointer;
             padding: 8px 12px;
             font-size: 10px;
