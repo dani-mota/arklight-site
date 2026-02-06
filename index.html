@@ -3705,12 +3705,15 @@
 
         #view-investors.defense-theme .investor-content {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
 
         #view-investors.defense-theme .toc-trigger-row {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 18px;
+            margin-bottom: 0;
         }
 
         #view-investors.defense-theme .toc-trigger {
@@ -3819,14 +3822,22 @@
             border: 1px solid rgba(28, 92, 112, 0.24);
             border-radius: var(--defense-corner);
             box-shadow: 0 24px 60px var(--defense-shadow);
-            padding: clamp(28px, 4vw, 60px);
+            width: 100%;
+            max-width: none;
+            padding: clamp(40px, 5vw, 84px) clamp(28px, 5vw, 92px);
             min-height: calc(100vh - 136px);
             min-height: calc(100dvh - 136px);
-            margin-bottom: 18px;
+            margin-bottom: 0;
             scroll-margin-top: calc(var(--investor-header-offset) + 20px);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+
+        #view-investors.defense-theme .investor-section > * {
+            width: 100%;
+            max-width: none;
         }
 
         #view-investors.defense-theme .investor-section:hover,
@@ -3838,7 +3849,24 @@
         #view-investors.defense-theme .investor-section-header {
             border-bottom: 1px solid rgba(28, 92, 112, 0.28);
             padding-bottom: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        #view-investors.defense-theme .stat-grid,
+        #view-investors.defense-theme .investor-card-grid,
+        #view-investors.defense-theme .team-grid {
+            width: 100%;
+        }
+
+        #view-investors.defense-theme .stat-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        #view-investors.defense-theme .investor-card-grid,
+        #view-investors.defense-theme .team-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
         }
 
         #view-investors.defense-theme .investor-section .section-title {
@@ -3904,8 +3932,8 @@
         #view-investors.defense-theme .investor-card,
         #view-investors.defense-theme .team-card,
         #view-investors.defense-theme .detail-card {
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(28, 92, 112, 0.26);
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(28, 92, 112, 0.2);
             border-radius: 20px;
         }
 
@@ -4014,8 +4042,32 @@
             }
 
             #view-investors.defense-theme .investor-section {
+                padding: 30px 22px;
                 min-height: calc(100vh - 120px);
                 min-height: calc(100dvh - 120px);
+            }
+
+            #view-investors.defense-theme .stat-grid,
+            #view-investors.defense-theme .investor-card-grid,
+            #view-investors.defense-theme .team-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            #view-investors.defense-theme .investor-content {
+                gap: 16px;
+            }
+
+            #view-investors.defense-theme .investor-section {
+                padding: 24px 16px;
+            }
+
+            #view-investors.defense-theme .stat-grid,
+            #view-investors.defense-theme .investor-card-grid,
+            #view-investors.defense-theme .team-grid {
+                grid-template-columns: 1fr;
             }
         }
 
