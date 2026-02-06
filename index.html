@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arklight Project</title>
+    <title>Project Arklight</title>
     <style>
         :root {
             --bg-primary: #000000;
@@ -1277,6 +1277,25 @@
             line-height: 1.7;
         }
 
+        .detail-professional-context {
+            margin-top: 24px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .detail-context-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .detail-context-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         .detail-aci-score {
             text-align: right;
             padding-left: 80px;
@@ -1354,6 +1373,14 @@
             color: var(--text-secondary);
             line-height: 1.6;
         }
+
+        .fit-level {
+            font-weight: 500;
+        }
+
+        .fit-level.high { color: var(--accent-green); }
+        .fit-level.medium { color: var(--accent-yellow); }
+        .fit-level.low { color: var(--accent-red); }
 
         .summary-list {
             list-style: none;
@@ -3544,7 +3571,7 @@
                                 <circle cx="14" cy="14" r="2" fill="white"/>
                             </svg>
                         </div>
-                        <span class="logo-text">Arklight Project</span>
+                        <span class="logo-text">Project Arklight</span>
                     </div>
                 </div>
                 <nav class="global-nav" aria-label="Primary">
@@ -4813,6 +4840,61 @@
             }
         };
 
+        const ROLE_BENCHMARKS = {
+            'cnc-machinist': {
+                weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
+                cutlines: { high: 80, medium: 65 },
+                topPerformerBenchmark: 85,
+                priorityConstructs: ['PRAD', 'SPV', 'RRCP', 'ASWL', 'TMAQ', 'MAC']
+            },
+            'cnc-programmer': {
+                weights: { cognitive: 0.35, technical: 0.50, behavioral: 0.15 },
+                cutlines: { high: 84, medium: 70 },
+                topPerformerBenchmark: 90,
+                priorityConstructs: ['DLCT', 'TMAQ', 'SRD', 'PRAD', 'FIDS']
+            },
+            'mfg-systems': {
+                weights: { cognitive: 0.35, technical: 0.45, behavioral: 0.20 },
+                cutlines: { high: 82, medium: 68 },
+                topPerformerBenchmark: 88,
+                priorityConstructs: ['SRD', 'FIDS', 'ASWL', 'RRCP', 'SPV']
+            },
+            'quality-metrology': {
+                weights: { cognitive: 0.40, technical: 0.45, behavioral: 0.15 },
+                cutlines: { high: 84, medium: 70 },
+                topPerformerBenchmark: 90,
+                priorityConstructs: ['PRAD', 'TMAQ', 'MAC', 'RRCP', 'VCS']
+            },
+            'production-assembly': {
+                weights: { cognitive: 0.30, technical: 0.35, behavioral: 0.35 },
+                cutlines: { high: 80, medium: 65 },
+                topPerformerBenchmark: 85,
+                priorityConstructs: ['RRCP', 'ASWL', 'ICI', 'VCS', 'BCC']
+            },
+            'automation-robotics': {
+                weights: { cognitive: 0.35, technical: 0.50, behavioral: 0.15 },
+                cutlines: { high: 84, medium: 70 },
+                topPerformerBenchmark: 90,
+                priorityConstructs: ['SRD', 'DLCT', 'FIDS', 'SPV', 'TMAQ']
+            },
+            'mfg-engineer': {
+                weights: { cognitive: 0.45, technical: 0.40, behavioral: 0.15 },
+                cutlines: { high: 84, medium: 70 },
+                topPerformerBenchmark: 90,
+                priorityConstructs: ['FI', 'ER', 'CMR', 'TCDQ', 'SRD']
+            }
+        };
+
+        const ROLE_CONTEXT = {
+            'cnc-machinist': '5-axis machining environments demand tight tolerance control, disciplined setup verification, and calm execution under cycle time pressure. Employers expect ownership of first-article validation, tool offsets, and in-process inspection across complex parts.',
+            'cnc-programmer': 'CNC programming teams rely on accurate toolpath planning that balances surface finish, tool life, and cycle time. Employers expect close collaboration with setup and tooling to validate posts, fixtures, and first-run results.',
+            'mfg-systems': 'Manufacturing systems technicians stabilize production cells by isolating faults, restoring equipment health, and keeping throughput steady. Employers expect fast triage, clear documentation of fixes, and disciplined follow-through on repeatability checks.',
+            'quality-metrology': 'CMM programming roles demand precise measurement strategy, repeatable probe paths, and disciplined SPC alignment. Employers expect ownership of first-article inspection programs, gage R&R coordination, and clear reporting of drift.',
+            'production-assembly': 'High-mix assembly operations depend on strict work instruction adherence and reliable execution across shifts. Employers expect steady quality gate compliance, clean handoffs, and early escalation when deviations appear.',
+            'automation-robotics': 'Automation and robotics technicians keep cells running by tuning programs, recovering from faults, and safeguarding handoffs. Employers expect structured recovery steps, clear lockout discipline, and consistent validation after adjustments.',
+            'mfg-engineer': 'Production-facing manufacturing engineers bridge process planning and shop-floor execution with tight tolerance ownership. Employers expect clear setup documentation, continuous cycle-time improvement, and rapid root-cause resolution.'
+        };
+
         const COMPOSITE_LABELS = {
             aci: 'ACI Overall',
             cognitiveCore: 'Cognitive Core',
@@ -5000,6 +5082,10 @@
 
         function clampScore(score) {
             return Math.max(20, Math.min(99, Math.round(score)));
+        }
+
+        function clamp01(value) {
+            return Math.max(0, Math.min(1, value));
         }
 
         function average(arr) {
@@ -5393,11 +5479,12 @@
 
             const aciBand = getBand(candidate.composites.aci);
             const roleRankings = getRoleRankings(candidate);
-            const primaryRole = roleRankings[0]?.role?.name || 'Manufacturing Systems Technician';
             const primaryRoleId = roleRankings[0]?.role?.id || 'mfg-systems';
-            const summary = buildExecutiveSummary(candidate, primaryRole, primaryRoleId);
             const detailRoleId = getDetailRoleId(primaryRoleId);
+            const summary = buildExecutiveSummary(candidate, primaryRoleId, detailRoleId);
             const roleInsights = getRoleInsights(candidate, detailRoleId);
+            const roleContext = getRoleContext(detailRoleId);
+            const displayAciLabel = (aciBand.label === 'Elite Readiness') ? 'Elite' : aciBand.label;
             const validationItems = getValidationItems(candidate, detailRoleId, roleInsights);
             const onboardingPlan = getOnboardingPlan(candidate, detailRoleId, roleInsights);
             const benchmark = getBenchmarkComparison(candidate, detailRoleId);
@@ -5420,16 +5507,17 @@
                             </span>
                         </div>
                         <div class="detail-candidate-background">${candidate.background}</div>
+                        <div class="detail-professional-context">
+                            <div class="detail-context-label">Professional Context</div>
+                            <div class="detail-context-text">${roleContext}</div>
+                        </div>
                     </div>
                     <div class="detail-aci-score">
                         <div class="detail-aci-label">Arklight Cognitive Index</div>
                         <div class="detail-aci-value">${candidate.composites.aci}</div>
                         <div class="detail-aci-percentile">${ordinal(candidate.composites.aci)} Percentile</div>
-                        <div class="detail-aci-band">${aciBand.label}</div>
-                        <div class="detail-aci-microcopy">
-                            <div>Predicts: learning velocity, reliability, error recovery under production constraints</div>
-                            <div>Does not replace: interviews, hands-on trials, or manager judgment</div>
-                        </div>
+                        <div class="detail-aci-band">${displayAciLabel}</div>
+                        <div class="detail-aci-microcopy">ACI estimates the average weighted score relevant to the roles assigned to the candidate. Does not replace interviews, hands-on trials, or manager judgment.</div>
                     </div>
                 </div>
 
@@ -5509,73 +5597,119 @@
                 'Selected role';
         }
 
-        function getRoleFitSummary(candidate, roleId) {
-            const cutline = ROLE_CUTLINES[roleId];
-            if (!cutline) {
-                return { rating: 'Medium', passes: 0, total: 0, strengths: [], risks: [] };
+        function getRoleContext(roleId) {
+            return ROLE_CONTEXT[roleId] ||
+                'Operational roles demand consistent execution and disciplined quality control. Employers expect clear communication, steady throughput, and early escalation when variance appears.';
+        }
+
+        function getFitLevelClass(level) {
+            if (level === 'High') return 'high';
+            if (level === 'Low') return 'low';
+            return 'medium';
+        }
+
+        function computeRoleFitFromBenchmarks(candidate, roleId) {
+            const benchmark = ROLE_BENCHMARKS[roleId];
+            const domains = computeDomainAverages(candidate);
+            if (!benchmark || !domains) {
+                return {
+                    roleScore: 0,
+                    fitLevel: 'Medium',
+                    roleFitScore: 0,
+                    domainAverages: domains,
+                    benchmark: null
+                };
             }
 
-            const scored = cutline.requirements.map(req => {
-                const score = req.construct ? candidate.scores[req.construct] : candidate.composites[req.composite];
-                const percentile = scoreToPercentile(score);
+            // Fit is computed by matching candidate domain averages to the selected role's benchmark weights and cutlines.
+            const cognitive = domains.cognitiveCore ?? 0;
+            const technical = domains.technicalAptitude ?? 0;
+            const behavioral = domains.behavioralAlignment ?? 0;
+            const roleScore = Math.round(
+                (cognitive * benchmark.weights.cognitive) +
+                (technical * benchmark.weights.technical) +
+                (behavioral * benchmark.weights.behavioral)
+            );
+
+            let fitLevel = 'Low';
+            if (roleScore >= benchmark.cutlines.high) fitLevel = 'High';
+            if (roleScore >= benchmark.cutlines.medium && roleScore < benchmark.cutlines.high) fitLevel = 'Medium';
+
+            const roleFitScore = roleScore >= benchmark.cutlines.medium ?
+                clamp01((roleScore - benchmark.cutlines.medium) / (benchmark.cutlines.high - benchmark.cutlines.medium)) :
+                0;
+
+            return { roleScore, fitLevel, roleFitScore, domainAverages: domains, benchmark };
+        }
+
+        function getRoleFitSummary(candidate, roleId) {
+            const fit = computeRoleFitFromBenchmarks(candidate, roleId);
+            const benchmark = fit.benchmark;
+            if (!benchmark) {
+                return { rating: 'Medium', roleFitScore: 0, strengths: [], risks: [], benchmark: null };
+            }
+
+            const prioritized = (benchmark.priorityConstructs || []).map(id => {
+                const construct = getConstructById(id);
+                const score = candidate.scores[id];
+                if (!construct || typeof score !== 'number') return null;
                 return {
-                    req,
+                    construct,
                     score,
-                    percentile,
-                    construct: req.construct ? getConstructById(req.construct) : null
+                    percentile: scoreToPercentile(score)
                 };
-            });
+            }).filter(Boolean);
 
-            const passes = scored.filter(item => item.percentile >= item.req.threshold).length;
-            const total = scored.length;
-            const passRatio = total ? passes / total : 0;
-            let rating = 'Medium';
-            if (passRatio >= 0.8) rating = 'High';
-            if (passRatio < 0.5) rating = 'Low';
+            const strengths = [...prioritized].sort((a, b) => b.score - a.score);
+            const risks = [...prioritized].sort((a, b) => a.score - b.score);
 
-            const strengths = scored.filter(item => item.construct).sort((a, b) => b.percentile - a.percentile);
-            const risks = scored.filter(item => item.construct).sort((a, b) => a.percentile - b.percentile);
-
-            return { rating, passes, total, strengths, risks };
+            return {
+                rating: fit.fitLevel,
+                roleScore: fit.roleScore,
+                roleFitScore: fit.roleFitScore,
+                strengths,
+                risks,
+                benchmark
+            };
         }
 
         function getRoleInsights(candidate, roleId) {
             const summary = getRoleFitSummary(candidate, roleId);
             const strengths = summary.strengths.slice(0, 2);
-            const riskZones = summary.risks.filter(r => r.percentile < 60).slice(0, 2);
-            const fallbackRisks = summary.risks.slice(0, 2);
+            const riskZones = summary.risks.slice(0, 2);
 
-            const why = strengths.map(s => `${s.construct.name} (${ordinal(s.percentile)}) supports ${s.construct.predicts.toLowerCase()}.`);
+            const why = strengths.map(s => `${s.construct.name} (${s.score}) supports ${s.construct.predicts.toLowerCase()}.`);
             while (why.length < 2 && summary.strengths[why.length]) {
                 const item = summary.strengths[why.length];
                 if (item?.construct) {
-                    why.push(`${item.construct.name} (${ordinal(item.percentile)}) reinforces ${item.construct.predicts.toLowerCase()}.`);
+                    why.push(`${item.construct.name} (${item.score}) strengthens ${item.construct.predicts.toLowerCase()}.`);
                 } else {
                     break;
                 }
             }
 
             const conditions = [];
-            const needsStructure = candidate.composites.reliability < 70;
-            const needsRamp = candidate.composites.learningVelocity < 65;
-            if (needsStructure) conditions.push('Set clear SOP check-ins and peer verification for early runs.');
-            if (needsRamp) conditions.push('Use a staged ramp with rising task complexity and deliberate practice.');
-            if (conditions.length < 2 && summary.risks[0]?.construct) {
-                conditions.push(`Target coaching on ${summary.risks[0].construct.name.toLowerCase()} to stabilize early output.`);
+            if (candidate.composites.reliability < 70) {
+                conditions.push('Use checklists and explicit stop rules on high-risk work.');
+            }
+            if (candidate.composites.learningVelocity < 70) {
+                conditions.push('Confirm understanding before first-run execution and document SOP checkpoints.');
+            }
+            if (conditions.length < 2 && strengths[0]) {
+                conditions.push(`Anchor ${strengths[0].construct.name.toLowerCase()} strengths with short feedback loops and first-article sign-off.`);
             }
             if (conditions.length < 2) {
-                conditions.push('Pair with a senior operator for initial setups and first-article validation.');
+                conditions.push('Pair with a senior operator for first-run validation and early QA sign-off.');
             }
 
-            const watchoutsSource = riskZones.length ? riskZones : fallbackRisks;
-            const watchouts = watchoutsSource.length ?
-                watchoutsSource.map(r => `${r.construct.name} (${ordinal(r.percentile)}) may require closer monitoring.`) :
+            const watchouts = riskZones.length ?
+                riskZones.map(r => `Monitor ${r.construct.predicts.toLowerCase()} on early runs given lower ${r.construct.name.toLowerCase()}.`) :
                 ['No critical watch-outs flagged; monitor early shift reliability.'];
 
             return {
                 rating: summary.rating,
                 strengths,
-                riskZones: watchoutsSource,
+                riskZones,
                 why,
                 conditions: conditions.slice(0, 2),
                 watchouts: watchouts.slice(0, 2),
@@ -5583,16 +5717,18 @@
             };
         }
 
-        function buildExecutiveSummary(candidate, primaryRole, primaryRoleId) {
+        function buildExecutiveSummary(candidate, primaryRoleId, selectedRoleId) {
             const primaryFit = getRoleFitSummary(candidate, primaryRoleId);
+            const selectedFit = getRoleFitSummary(candidate, selectedRoleId);
             const recommendation = getRecommendation(candidate, primaryFit);
+            const primaryRoleName = getRoleDisplayName(primaryRoleId);
+            const fitClass = getFitLevelClass(primaryFit.rating);
             return {
                 recommendation,
-                primaryRoleFit: `${primaryRole} — ${primaryFit.rating}`,
-                rampProjection: getRampProjection(candidate),
+                primaryRoleFit: `${primaryRoleName} · <span class="fit-level ${fitClass}">${primaryFit.rating}</span>`,
+                rampProjection: getRampProjection(selectedFit.roleFitScore),
                 primaryRisks: getRiskFlags(candidate),
-                idealManager: getIdealManager(candidate),
-                nextSteps: getNextSteps(candidate, primaryRoleId, recommendation, primaryFit)
+                hiringManager: getHiringManagerGuidance(candidate, selectedRoleId)
             };
         }
 
@@ -5604,24 +5740,27 @@
             return 'Conditional';
         }
 
-        function getRampProjection(candidate) {
-            const learning = candidate.composites.learningVelocity;
-            const reliability = candidate.composites.reliability;
-            let pace = 'standard (8-12 weeks)';
-            if (learning >= 75 && reliability >= 70) pace = 'accelerated (6-8 weeks)';
-            if (learning < 60 || reliability < 60) pace = 'extended (12-16 weeks)';
-            return `Projected time to consistent productivity relative to top industry performers: ${pace}.`;
+        function getRampProjection(roleFitScore) {
+            const rampMinWeeks = 2;
+            const rampMaxWeeks = 14;
+            const rawWeeks = Math.round(rampMaxWeeks - (roleFitScore * (rampMaxWeeks - rampMinWeeks)));
+            const clampedWeeks = Math.max(rampMinWeeks, Math.min(rampMaxWeeks, rawWeeks));
+            return `Based on assessment scores, Arklight projects a full capacity ramp relative to top industry performers by ${clampedWeeks} weeks.`;
         }
 
-        function getIdealManager(candidate) {
+        function getHiringManagerGuidance(candidate, roleId) {
+            const insights = getRoleInsights(candidate, roleId);
             const guidance = [];
             guidance.push(candidate.composites.learningVelocity >= 70 ?
-                'Fast feedback cadence with stretch tasks after early wins.' :
-                'Structured ramp with clear sequencing before increasing complexity.');
+                'Give direct feedback in short cycles and raise task complexity after clean early wins.' :
+                'Use short cycles with explicit SOP checkpoints before increasing complexity.');
             guidance.push(candidate.composites.reliability >= 70 ?
-                'Autonomy once SOP compliance is stable and repeatable.' :
-                'Frequent check-ins with explicit quality gates and sign-offs.');
-            return guidance;
+                'Confirm understanding before first-run execution and grant autonomy once QA sign-offs are consistent.' :
+                'Keep checklists visible and require first-run sign-offs until repeatability is stable.');
+            if (insights.riskZones[0]?.construct) {
+                guidance.push(`Double-check ${insights.riskZones[0].construct.name.toLowerCase()} on early runs and document corrections.`);
+            }
+            return guidance.slice(0, 3);
         }
 
         function getAssessmentInconsistency(candidate) {
@@ -5713,8 +5852,7 @@
                         ${renderSummaryRow('Primary Role Fit', summary.primaryRoleFit)}
                         ${renderSummaryRow('Ramp Projection', summary.rampProjection)}
                         ${renderSummaryRow('Primary Risks', summary.primaryRisks)}
-                        ${renderSummaryRow('Ideal Manager / Environment', summary.idealManager)}
-                        ${renderSummaryRow('Next Steps', summary.nextSteps)}
+                        ${renderSummaryRow('For Hiring Manager', summary.hiringManager)}
                     </div>
                 </div>
             `;
@@ -5735,6 +5873,8 @@
         function renderRoleFitMapping(candidate, roleRankings, selectedRoleId, roleInsights) {
             const primaryId = roleRankings[0]?.role?.id;
             const secondaryId = roleRankings[1]?.role?.id;
+            const fitClass = getFitLevelClass(roleInsights.rating);
+            const fitLabel = `<span class="fit-level ${fitClass}">${roleInsights.rating}</span>`;
             return `
                 <div class="chart-container role-fit-mapping">
                     <h3 class="chart-title">Intended Role</h3>
@@ -5747,7 +5887,7 @@
                         </select>
                     </div>
                     <div class="summary-grid role-fit-grid">
-                        ${renderSummaryRow('Role Fit', roleInsights.rating)}
+                        ${renderSummaryRow('Role Fit', fitLabel)}
                         ${renderSummaryRow('Why', roleInsights.why)}
                         ${renderSummaryRow('Conditions for Success', roleInsights.conditions)}
                         ${renderSummaryRow('Watch-outs', roleInsights.watchouts)}
