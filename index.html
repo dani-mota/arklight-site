@@ -3699,7 +3699,10 @@
         }
 
         #view-investors.defense-theme .investor-layout {
-            display: block;
+            display: grid;
+            grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
             position: relative;
         }
 
@@ -3711,7 +3714,7 @@
         }
 
         #view-investors.defense-theme .toc-trigger-row {
-            display: flex;
+            display: none;
             justify-content: flex-end;
             margin-bottom: 0;
         }
@@ -3723,12 +3726,14 @@
         }
 
         #view-investors.defense-theme .investor-toc-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 90;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 260ms ease;
+            position: sticky;
+            top: var(--investor-header-offset);
+            inset: auto;
+            z-index: 8;
+            pointer-events: auto;
+            opacity: 1;
+            transition: none;
+            align-self: start;
         }
 
         #view-investors.defense-theme .investor-toc-overlay.is-open {
@@ -3737,12 +3742,7 @@
         }
 
         #view-investors.defense-theme .investor-toc-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(4, 8, 12, 0.46);
-            backdrop-filter: blur(5px);
-            opacity: 0;
-            transition: opacity 260ms ease;
+            display: none;
         }
 
         #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc-backdrop {
@@ -3750,20 +3750,19 @@
         }
 
         #view-investors.defense-theme .investor-toc {
-            position: absolute;
-            top: var(--investor-header-offset);
-            left: 32px;
-            right: 32px;
-            margin: 0 auto;
-            width: auto;
-            max-width: 1400px;
-            padding: 22px 40px 26px;
-            background: rgba(8, 20, 26, 0.96);
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            margin: 0;
+            width: 100%;
+            max-width: none;
+            padding: 18px 18px 20px;
+            background: rgba(8, 20, 26, 0.9);
             border: 1px solid rgba(191, 210, 219, 0.2);
-            border-top: none;
-            box-shadow: 0 24px 44px rgba(0, 0, 0, 0.26);
-            transform: translateY(-116%);
-            transition: transform 300ms ease;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+            transform: none;
+            transition: none;
         }
 
         #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc {
@@ -3779,6 +3778,7 @@
         }
 
         #view-investors.defense-theme .toc-close {
+            display: none;
             border: 1px solid rgba(191, 210, 219, 0.45);
             background: transparent;
             color: rgba(246, 248, 249, 0.85);
@@ -4015,6 +4015,43 @@
         }
 
         @media (max-width: 1023px) {
+            #view-investors.defense-theme .investor-layout {
+                display: block;
+            }
+
+            #view-investors.defense-theme .toc-trigger-row {
+                display: flex;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay {
+                position: fixed;
+                inset: 0;
+                top: auto;
+                z-index: 90;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 260ms ease;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay.is-open {
+                pointer-events: auto;
+                opacity: 1;
+            }
+
+            #view-investors.defense-theme .investor-toc-backdrop {
+                display: block;
+                position: absolute;
+                inset: 0;
+                background: rgba(4, 8, 12, 0.46);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                transition: opacity 260ms ease;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc-backdrop {
+                opacity: 1;
+            }
+
             #view-investors.defense-theme .investor-hero {
                 padding-top: 80px;
                 min-height: calc(100vh - 130px);
@@ -4036,9 +4073,29 @@
             }
 
             #view-investors.defense-theme .investor-toc {
+                position: absolute;
+                top: var(--investor-header-offset);
                 left: 16px;
                 right: 16px;
+                margin: 0 auto;
+                width: auto;
+                max-width: 1400px;
                 padding: 20px 24px 24px;
+                background: rgba(8, 20, 26, 0.96);
+                border-top: none;
+                box-shadow: 0 24px 44px rgba(0, 0, 0, 0.26);
+                transform: translateY(-116%);
+                transition: transform 300ms ease;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc {
+                transform: translateY(0);
+            }
+
+            #view-investors.defense-theme .toc-close {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
             }
 
             #view-investors.defense-theme .investor-section {
