@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Arklight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #000000;
@@ -3584,6 +3587,360 @@
                 font-size: 20px;
             }
         }
+
+        /* Investor - Defense Reformation inspired theme */
+        body[data-view="investors"] {
+            background:
+                radial-gradient(1200px circle at 15% -10%, rgba(117, 140, 88, 0.25), transparent 60%),
+                radial-gradient(900px circle at 85% 0%, rgba(209, 208, 193, 0.12), transparent 55%),
+                linear-gradient(180deg, #050505 0%, #000000 55%, #050505 100%);
+            background-attachment: fixed;
+        }
+
+        #view-investors.defense-theme {
+            --defense-black: 0 0 0;
+            --defense-black-light: 34 34 35;
+            --defense-gray: 209 208 193;
+            --defense-green: 117 140 88;
+            --defense-white: 244 244 228;
+            --defense-line: rgba(117, 140, 88, 0.5);
+            --defense-line-strong: rgba(244, 244, 228, 0.6);
+            --defense-shadow: rgba(0, 0, 0, 0.45);
+            --defense-corner: 28px;
+            --defense-serif: "DM Serif Display", "Times New Roman", serif;
+            --defense-sans: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+            --defense-mono: "IBM Plex Mono", "SF Mono", "Fira Code", monospace;
+            color: rgb(var(--defense-white));
+        }
+
+        #view-investors.defense-theme .investor-hero {
+            padding: 110px 0 70px;
+            gap: 32px;
+        }
+
+        #view-investors.defense-theme .investor-eyebrow {
+            font-family: var(--defense-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: rgb(var(--defense-gray));
+        }
+
+        #view-investors.defense-theme .investor-hero .rule {
+            height: 0;
+            border-bottom: 1px dashed var(--defense-line);
+            background: none;
+        }
+
+        #view-investors.defense-theme .investor-quote {
+            font-family: var(--defense-sans);
+            font-size: clamp(44px, 6.5vw, 96px);
+            letter-spacing: -0.035em;
+            line-height: 0.98;
+            color: rgb(var(--defense-white));
+        }
+
+        #view-investors.defense-theme .investor-quote-text {
+            display: inline-block;
+        }
+
+        #view-investors.defense-theme .investor-quote-attribution {
+            font-family: var(--defense-mono);
+            font-size: 0.28em;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgb(var(--defense-gray));
+        }
+
+        #view-investors.defense-theme .investor-flag .flag-field {
+            fill: rgb(var(--defense-black-light));
+            stroke: rgba(117, 140, 88, 0.6);
+        }
+
+        #view-investors.defense-theme .investor-flag .flag-canton {
+            fill: rgba(117, 140, 88, 0.2);
+        }
+
+        #view-investors.defense-theme .investor-flag .flag-star {
+            fill: rgb(var(--defense-green));
+            opacity: 0.75;
+        }
+
+        #view-investors.defense-theme .investor-flag .flag-stripe {
+            fill: rgba(209, 208, 193, 0.4);
+        }
+
+        #view-investors.defense-theme .investor-meta-label,
+        #view-investors.defense-theme .micro-label,
+        #view-investors.defense-theme .toc-title {
+            font-family: var(--defense-mono);
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgb(var(--defense-gray));
+        }
+
+        #view-investors.defense-theme .investor-meta-value {
+            font-family: var(--defense-sans);
+            font-size: 0.95rem;
+        }
+
+        #view-investors.defense-theme .investor-scroll {
+            border: 1px solid rgba(117, 140, 88, 0.6);
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: border-color var(--transition-fast), color var(--transition-fast);
+        }
+
+        #view-investors.defense-theme .investor-scroll-arrow {
+            animation: defense-bounce 1s linear infinite;
+        }
+
+        #view-investors.defense-theme .investor-layout {
+            gap: 48px;
+        }
+
+        #view-investors.defense-theme .investor-toc {
+            padding-top: 8px;
+        }
+
+        #view-investors.defense-theme .toc-link {
+            font-family: var(--defense-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(209, 208, 193, 0.75);
+            padding-left: 20px;
+            border-left: none;
+            position: relative;
+        }
+
+        #view-investors.defense-theme .toc-link::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            border: 1px solid rgba(117, 140, 88, 0.8);
+            background: transparent;
+        }
+
+        #view-investors.defense-theme .toc-link.active {
+            color: rgb(var(--defense-white));
+        }
+
+        #view-investors.defense-theme .toc-link.active::before {
+            background: rgb(var(--defense-green));
+        }
+
+        #view-investors.defense-theme .investor-section {
+            background: linear-gradient(180deg, rgba(34, 34, 35, 0.9), rgba(0, 0, 0, 0.92));
+            border: 1px solid rgba(117, 140, 88, 0.35);
+            border-radius: var(--defense-corner);
+            box-shadow: 0 30px 80px var(--defense-shadow);
+            padding: 32px;
+        }
+
+        #view-investors.defense-theme .investor-section:hover {
+            transform: translateY(-3px);
+            border-color: rgba(117, 140, 88, 0.65);
+        }
+
+        #view-investors.defense-theme .investor-section-header {
+            border-bottom: 1px dashed var(--defense-line);
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+        }
+
+        #view-investors.defense-theme .section-title {
+            font-family: var(--defense-sans);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            text-transform: none;
+        }
+
+        #view-investors.defense-theme .copy-link {
+            font-family: var(--defense-mono);
+            border: 1px solid rgba(117, 140, 88, 0.6);
+            color: rgb(var(--defense-gray));
+        }
+
+        #view-investors.defense-theme .copy-link:hover {
+            border-color: rgba(244, 244, 228, 0.6);
+            color: rgb(var(--defense-white));
+        }
+
+        #view-investors.defense-theme .info-text,
+        #view-investors.defense-theme .detail-body,
+        #view-investors.defense-theme .team-bio {
+            font-family: var(--defense-serif);
+            font-size: 1rem;
+            line-height: 1.65;
+            color: rgba(244, 244, 228, 0.92);
+        }
+
+        #view-investors.defense-theme .card-title {
+            font-family: var(--defense-mono);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(209, 208, 193, 0.8);
+        }
+
+        #view-investors.defense-theme .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #view-investors.defense-theme .bullet-list li {
+            position: relative;
+            padding-left: 18px;
+        }
+
+        #view-investors.defense-theme .bullet-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            border: 1px solid rgba(117, 140, 88, 0.9);
+        }
+
+        #view-investors.defense-theme .stat-tile {
+            background: rgba(117, 140, 88, 0.12);
+            border: 1px solid rgba(117, 140, 88, 0.45);
+            border-radius: 18px;
+        }
+
+        #view-investors.defense-theme .stat-value {
+            font-family: var(--defense-sans);
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+        }
+
+        #view-investors.defense-theme .investor-card,
+        #view-investors.defense-theme .team-card,
+        #view-investors.defense-theme .detail-card {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px dashed rgba(209, 208, 193, 0.35);
+            border-radius: 20px;
+        }
+
+        #view-investors.defense-theme .detail-card summary {
+            font-family: var(--defense-mono);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        #view-investors.defense-theme .investor-table {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(117, 140, 88, 0.4);
+        }
+
+        #view-investors.defense-theme .investor-table th {
+            font-family: var(--defense-mono);
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgb(var(--defense-gray));
+            background: rgba(117, 140, 88, 0.16);
+        }
+
+        #view-investors.defense-theme .investor-table td {
+            border-top: 1px solid rgba(117, 140, 88, 0.25);
+        }
+
+        #view-investors.defense-theme [data-reveal] {
+            opacity: 0;
+            transform: translate3d(0, 18px, 0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition-delay: var(--reveal-delay, 0s);
+        }
+
+        #view-investors.defense-theme [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateZ(0);
+        }
+
+        #view-investors.defense-theme .investor-section.is-visible:hover {
+            transform: translateY(-3px);
+        }
+
+        #view-investors.defense-theme .investor-card.is-visible:hover {
+            transform: translateY(-3px);
+        }
+
+        #view-investors.defense-theme [data-reveal="line"] {
+            opacity: 1;
+            transform: scaleX(0);
+            transform-origin: left center;
+        }
+
+        #view-investors.defense-theme [data-reveal="line"].is-visible {
+            transform: scaleX(1);
+        }
+
+        #view-investors.defense-theme [data-reveal="wipe"] {
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            transform: none;
+        }
+
+        #view-investors.defense-theme [data-reveal="wipe"]::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgb(var(--defense-green));
+            transform: translateX(0);
+            transition: transform 0.6s ease;
+            transition-delay: calc(var(--reveal-delay, 0s) + 0.08s);
+        }
+
+        #view-investors.defense-theme [data-reveal="wipe"].is-visible::after {
+            transform: translateX(102%);
+        }
+
+        @keyframes defense-bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(3px);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            #view-investors.defense-theme .investor-hero {
+                padding-top: 80px;
+            }
+
+            #view-investors.defense-theme .investor-layout {
+                grid-template-columns: 1fr;
+            }
+
+            #view-investors.defense-theme .investor-toc {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #view-investors.defense-theme [data-reveal] {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            #view-investors.defense-theme [data-reveal="wipe"]::after {
+                display: none;
+            }
+
+            #view-investors.defense-theme .investor-scroll-arrow {
+                animation: none;
+            }
+        }
 </style>
 </head>
 <body>
@@ -3876,15 +4233,16 @@
         
         </main>
 
-        <main id="view-investors" class="page-view main-content" data-view="investors">
+        <main id="view-investors" class="page-view main-content defense-theme" data-view="investors">
             <section class="investor-hero">
-                <div class="rule"></div>
+                <p class="investor-eyebrow" data-reveal style="--reveal-delay: 0.05s;">Investor Briefing</p>
+                <div class="rule" data-reveal="line" style="--reveal-delay: 0.1s;"></div>
                 <div class="investor-quote-row">
                     <h1 class="investor-quote">
-                        <span class="investor-quote-text">“ The industrial base of a nation is the foundation of its strength. ”</span>
-                        <span class="investor-quote-attribution">&nbsp;&nbsp;- Dwight D. Eisenhower</span>
+                        <span class="investor-quote-text" data-reveal="wipe" style="--reveal-delay: 0.15s;">“ The industrial base of a nation is the foundation of its strength. ”</span>
+                        <span class="investor-quote-attribution" data-reveal style="--reveal-delay: 0.25s;">&nbsp;&nbsp;- Dwight D. Eisenhower</span>
                     </h1>
-                    <svg class="investor-flag" viewBox="0 0 64 40" aria-hidden="true" focusable="false">
+                    <svg class="investor-flag" viewBox="0 0 64 40" aria-hidden="true" focusable="false" data-reveal style="--reveal-delay: 0.2s;">
                         <rect class="flag-field" x="1" y="1" width="62" height="38" rx="3"></rect>
                         <rect class="flag-canton" x="1" y="1" width="26" height="18"></rect>
                         <g class="flag-stars">
@@ -3903,20 +4261,20 @@
                         <rect class="flag-stripe" x="1" y="35" width="62" height="3"></rect>
                     </svg>
                 </div>
-                <div class="rule"></div>
+                <div class="rule" data-reveal="line" style="--reveal-delay: 0.3s;"></div>
                 <div class="investor-meta">
-                    <div class="investor-meta-item">
+                    <div class="investor-meta-item" data-reveal style="--reveal-delay: 0.35s;">
                         <div class="investor-meta-label">Scroll to read</div>
                         <button class="investor-scroll" type="button" data-scroll-target="investors-executive-summary" aria-label="Scroll to Executive Summary">
                             <span class="investor-scroll-arrow">↓</span>
                             <span class="investor-meta-value">Executive Summary</span>
                         </button>
                     </div>
-                    <div class="investor-meta-item">
+                    <div class="investor-meta-item" data-reveal style="--reveal-delay: 0.4s;">
                         <div class="investor-meta-label">Team</div>
                         <div class="investor-meta-value">Dani Mota<br>Josh Soto<br>Ray Bryant</div>
                     </div>
-                    <div class="investor-meta-item">
+                    <div class="investor-meta-item" data-reveal style="--reveal-delay: 0.45s;">
                         <div class="investor-meta-label">Last edited</div>
                         <div class="investor-meta-value" id="investor-last-edited">February 5, 2026</div>
                     </div>
@@ -3924,7 +4282,7 @@
             </section>
 
             <div class="investor-layout">
-                <aside class="investor-toc" aria-label="Investor table of contents">
+                <aside class="investor-toc" aria-label="Investor table of contents" data-reveal style="--reveal-delay: 0.1s;">
                     <div class="toc-title">Contents</div>
                     <div class="toc-list">
                         <a class="toc-link" href="#investors-executive-summary" data-target="investors-executive-summary">Executive Summary</a>
@@ -3942,7 +4300,7 @@
                 </aside>
 
                 <div class="investor-content">
-                    <section id="investors-executive-summary" class="investor-section" data-section>
+                    <section id="investors-executive-summary" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Executive Summary</h2>
                             <button class="copy-link" type="button" data-copy="investors-executive-summary" aria-label="Copy link to Executive Summary">Copy link</button>
@@ -3955,40 +4313,40 @@
                             <li>Core constraint: shortage of skilled, mission-ready talent.</li>
                         </ul>
                         <div class="stat-grid">
-                            <div class="stat-tile">
+                            <div class="stat-tile" data-reveal>
                                 <div class="stat-value">200:1</div>
                                 <div class="stat-label">Shipbuilding capacity gap</div>
                             </div>
-                            <div class="stat-tile">
+                            <div class="stat-tile" data-reveal>
                                 <div class="stat-value">15,000+</div>
                                 <div class="stat-label">Aerospace backlog</div>
                             </div>
-                            <div class="stat-tile">
+                            <div class="stat-tile" data-reveal>
                                 <div class="stat-value">7 years</div>
                                 <div class="stat-label">Submarine delays</div>
                             </div>
                         </div>
                     </section>
 
-                    <section id="investors-problem" class="investor-section" data-section>
+                    <section id="investors-problem" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">The Problem</h2>
                             <button class="copy-link" type="button" data-copy="investors-problem" aria-label="Copy link to The Problem">Copy link</button>
                         </div>
                         <div class="investor-card-grid">
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="info-text">Wartime economy and production gap (shipbuilding 200:1; 14,000+ aircraft backlogged).</p>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="info-text">Structural talent collapse (2M unfilled roles today; 3.8M projected by 2033; 50% retirement-eligible; median machinist 44+).</p>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="info-text">Economic immobilization (stalled capital: $52B CHIPS and $369B IRA; $1.7T education debt).</p>
                             </div>
                         </div>
                     </section>
 
-                    <section id="investors-opportunity" class="investor-section" data-section>
+                    <section id="investors-opportunity" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">The Opportunity</h2>
                             <button class="copy-link" type="button" data-copy="investors-opportunity" aria-label="Copy link to The Opportunity">Copy link</button>
@@ -4003,26 +4361,26 @@
                         </ul>
                     </section>
 
-                    <section id="investors-solution" class="investor-section" data-section>
+                    <section id="investors-solution" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">The Solution</h2>
                             <button class="copy-link" type="button" data-copy="investors-solution" aria-label="Copy link to The Solution">Copy link</button>
                         </div>
                         <div class="investor-card-grid">
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">Product I</p>
                                 <p class="info-text">NAIB/ARC talent signal layer</p>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">Product II</p>
                                 <p class="info-text">Talent Factory</p>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">Moat</p>
                                 <p class="info-text">Vertically owns Physical, Data, and Talent layers</p>
                             </div>
                         </div>
-                        <details class="detail-card">
+                        <details class="detail-card" data-reveal>
                             <summary>Details</summary>
                             <div class="detail-body">
                                 <ul class="bullet-list compact">
@@ -4034,7 +4392,7 @@
                         </details>
                     </section>
 
-                    <section id="investors-market" class="investor-section" data-section>
+                    <section id="investors-market" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">The Market</h2>
                             <button class="copy-link" type="button" data-copy="investors-market" aria-label="Copy link to The Market">Copy link</button>
@@ -4046,22 +4404,22 @@
                             <li>Distributed manufacturing capacity (via acquisition of firms without succession plans)</li>
                         </ul>
                         <div class="stat-grid">
-                            <div class="stat-tile">
+                            <div class="stat-tile" data-reveal>
                                 <div class="stat-value">TAM $503B</div>
                                 <div class="stat-label">Total U.S. manufacturing SMB enterprise value plus embedded talent-infrastructure opportunity, representing the full asset base where labor readiness and production capacity are structurally constrained.</div>
                             </div>
-                            <div class="stat-tile">
+                            <div class="stat-tile" data-reveal>
                                 <div class="stat-value">SAM $71.8B</div>
                                 <div class="stat-label">Focused subset of manufacturing SMBs within target geographies, subsectors, and succession-driven ownership profiles where acquisitions and NAIB deployment are operationally feasible.</div>
                             </div>
-                            <div class="stat-tile">
+                            <div class="stat-tile" data-reveal>
                                 <div class="stat-value">SOM $450M</div>
                                 <div class="stat-label">Realistically obtainable outcome over 5 to 7 years through disciplined rollup execution and NAIB integration, capturing under 1% of the serviceable market.</div>
                             </div>
                         </div>
                     </section>
 
-                    <section id="investors-plan" class="investor-section" data-section>
+                    <section id="investors-plan" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Plan, Use of Funds &amp; Milestones</h2>
                             <button class="copy-link" type="button" data-copy="investors-plan" aria-label="Copy link to Plan, Use of Funds &amp; Milestones">Copy link</button>
@@ -4073,7 +4431,7 @@
                             <li>Given the wartime-economy, there is a plethora of capital and friendly financing options from the Department of War, Department of Labor, CHIPS Act, IRA Act, and state programs, not including private financing and alternatives.</li>
                         </ul>
                         <div class="investor-card-grid">
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">NAIB MVP Built &amp; Commercialized</p>
                                 <ul class="bullet-list compact">
                                     <li>Build and deploy the NAIB MVP to assess aptitude, learning velocity, and integrity against real industrial roles</li>
@@ -4081,7 +4439,7 @@
                                     <li>Generate initial revenue and performance data validating NAIB as a trusted talent signal</li>
                                 </ul>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">Talent Factory Commercial Agreements Secured</p>
                                 <ul class="bullet-list compact">
                                     <li>Sign commercial agreements with the government and private partners on Talent Factory.</li>
@@ -4090,7 +4448,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <details class="detail-card">
+                        <details class="detail-card" data-reveal>
                             <summary>Use of funds</summary>
                             <div class="detail-body">
                                 <ul class="bullet-list compact">
@@ -4103,12 +4461,12 @@
                         </details>
                     </section>
 
-                    <section id="investors-model" class="investor-section" data-section>
+                    <section id="investors-model" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Business Model</h2>
                             <button class="copy-link" type="button" data-copy="investors-model" aria-label="Copy link to Business Model">Copy link</button>
                         </div>
-                        <table class="investor-table">
+                        <table class="investor-table" data-reveal>
                             <thead>
                                 <tr>
                                     <th>Product</th>
@@ -4134,12 +4492,12 @@
                         </ul>
                     </section>
 
-                    <section id="investors-traction" class="investor-section" data-section>
+                    <section id="investors-traction" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Traction</h2>
                             <button class="copy-link" type="button" data-copy="investors-traction" aria-label="Copy link to Traction">Copy link</button>
                         </div>
-                        <table class="investor-table">
+                        <table class="investor-table" data-reveal>
                             <thead>
                                 <tr>
                                     <th>Partner validation</th>
@@ -4160,23 +4518,23 @@
                         <p class="info-text" style="margin-top: 12px;">Alignment with the $17B Maritime Industrial Base.</p>
                     </section>
 
-                    <section id="investors-team" class="investor-section" data-section>
+                    <section id="investors-team" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Team</h2>
                             <button class="copy-link" type="button" data-copy="investors-team" aria-label="Copy link to Team">Copy link</button>
                         </div>
                         <div class="team-grid">
-                            <div class="team-card">
+                            <div class="team-card" data-reveal>
                                 <div class="team-name">Dani Mota</div>
                                 <div class="team-role">Chief Executive Officer, Founder</div>
                                 <div class="team-bio">Scaled a fintech from &lt;15 to 80+ staff and a $250M valuation; former board member of a university foundation.</div>
                             </div>
-                            <div class="team-card">
+                            <div class="team-card" data-reveal>
                                 <div class="team-name">Josh Soto</div>
                                 <div class="team-role">Founder</div>
                                 <div class="team-bio">Former military intelligence and ex-A16Z operator who rebuilt a failing K-12 school into an AI-enabled school; driving AI strategy at Cisco as an executive.</div>
                             </div>
-                            <div class="team-card">
+                            <div class="team-card" data-reveal>
                                 <div class="team-name">Ray Bryant</div>
                                 <div class="team-role">Founder</div>
                                 <div class="team-bio">Serial entrepreneur, and PE partner with multiple successful exits as both a founder and investor. Currently a professor and startup advisor.</div>
@@ -4184,7 +4542,7 @@
                         </div>
                     </section>
 
-                    <section id="investors-arc" class="investor-section" data-section>
+                    <section id="investors-arc" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Product Deep Dive: ARC Assessment (fka NAIB)</h2>
                             <button class="copy-link" type="button" data-copy="investors-arc" aria-label="Copy link to Product Deep Dive: ARC Assessment">Copy link</button>
@@ -4198,18 +4556,18 @@
                         </ul>
                     </section>
 
-                    <section id="investors-factory" class="investor-section" data-section>
+                    <section id="investors-factory" class="investor-section" data-section data-reveal>
                         <div class="investor-section-header">
                             <h2 class="section-title">Product Deep Dive: Talent Factory</h2>
                             <button class="copy-link" type="button" data-copy="investors-factory" aria-label="Copy link to Product Deep Dive: Talent Factory">Copy link</button>
                         </div>
                         <div class="investor-card-grid">
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">I. Heritage Shop</p>
                                 <p class="info-text">Reality: Traditional shops rely on tribal knowledge, aging operators, and outdated infrastructure.</p>
                                 <p class="info-text">Risk: As veteran workers retire, critical skills disappear, driving inconsistent quality, slower production, and margin erosion.</p>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">II. Modernized Hub</p>
                                 <p class="info-text">Upgrade: Arklight acquires or builds shops and installs a digital-first, high-performance operating model.</p>
                                 <p class="info-text">Objective:</p>
@@ -4219,7 +4577,7 @@
                                     <li>Scale: Turn a local shop into a reliable node in the supply chain</li>
                                 </ul>
                             </div>
-                            <div class="investor-card">
+                            <div class="investor-card" data-reveal>
                                 <p class="card-title">III. Talent Factory</p>
                                 <p class="info-text">Integration: Production and training become one system.</p>
                                 <p class="info-text">How it works:</p>
@@ -4508,6 +4866,23 @@
         sections.forEach(section => observer.observe(section));
         if (sections.length) {
             setActiveSection(sections[0].id);
+        }
+
+        const revealItems = Array.from(investorView.querySelectorAll('[data-reveal]'));
+        if (revealItems.length) {
+            if (prefersReduced) {
+                revealItems.forEach(item => item.classList.add('is-visible'));
+            } else {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    });
+                }, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
+
+                revealItems.forEach(item => revealObserver.observe(item));
+            }
         }
 
         function copyText(text) {
