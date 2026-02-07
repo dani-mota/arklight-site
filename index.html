@@ -4155,6 +4155,236 @@
                 transition: none;
             }
         }
+
+        /* Investor refinements mapped to Arklight palette and full-width layout */
+        body[data-view="investors"] {
+            background:
+                radial-gradient(1200px circle at 10% -8%, rgba(34, 197, 94, 0.16), transparent 58%),
+                radial-gradient(1000px circle at 88% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
+                linear-gradient(180deg, #000000 0%, #050505 62%, #000000 100%);
+            background-attachment: fixed;
+            scroll-snap-type: y proximity;
+        }
+
+        #view-investors.defense-theme {
+            --defense-black: 0 0 0;
+            --defense-black-light: 12 12 12;
+            --defense-teal: 34 197 94;
+            --defense-orange: 34 197 94;
+            --defense-gray: 208 208 208;
+            --defense-white: 255 255 255;
+            --defense-line: rgba(34, 197, 94, 0.28);
+            --defense-line-strong: rgba(255, 255, 255, 0.34);
+            --defense-shadow: rgba(0, 0, 0, 0.3);
+            --defense-corner: 0;
+            max-width: none;
+            width: 100%;
+            padding-left: clamp(16px, 4vw, 56px);
+            padding-right: clamp(16px, 4vw, 56px);
+        }
+
+        #view-investors.defense-theme .investor-hero {
+            max-width: none;
+            width: 100%;
+            min-height: calc(100vh - var(--investor-header-offset) - 12px);
+            min-height: calc(100dvh - var(--investor-header-offset) - 12px);
+            scroll-snap-align: start;
+        }
+
+        #view-investors.defense-theme .investor-quote {
+            max-width: none;
+        }
+
+        #view-investors.defense-theme .investor-hero-footer {
+            border-top-color: rgba(255, 255, 255, 0.28);
+        }
+
+        #view-investors.defense-theme .investor-layout {
+            display: block;
+        }
+
+        #view-investors.defense-theme .investor-content {
+            width: 100%;
+            gap: clamp(20px, 2.6vw, 34px);
+        }
+
+        #view-investors.defense-theme .toc-trigger-row {
+            display: flex;
+            position: sticky;
+            top: calc(var(--investor-header-offset) - 8px);
+            z-index: 14;
+            margin-bottom: 6px;
+        }
+
+        #view-investors.defense-theme .toc-trigger {
+            border-color: rgba(255, 255, 255, 0.32);
+            background: rgba(0, 0, 0, 0.82);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 94;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 260ms ease;
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay.is-open {
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        #view-investors.defense-theme .investor-toc-backdrop {
+            display: block;
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.56);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 260ms ease;
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc-backdrop {
+            opacity: 1;
+        }
+
+        #view-investors.defense-theme .investor-toc {
+            position: absolute;
+            top: var(--investor-header-offset);
+            right: clamp(16px, 3.5vw, 56px);
+            left: auto;
+            width: min(420px, calc(100vw - 32px));
+            max-width: calc(100vw - 32px);
+            padding: 20px 24px 24px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            box-shadow: 0 28px 48px rgba(0, 0, 0, 0.42);
+            transform: translateY(-110%);
+            transition: transform 300ms ease;
+        }
+
+        #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc {
+            transform: translateY(0);
+        }
+
+        #view-investors.defense-theme .toc-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #view-investors.defense-theme .toc-link {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        #view-investors.defense-theme .toc-link::before {
+            border-color: rgba(34, 197, 94, 0.9);
+        }
+
+        #view-investors.defense-theme .toc-link.active::before {
+            background: rgb(var(--defense-teal));
+        }
+
+        #view-investors.defense-theme .investor-section {
+            border-radius: var(--defense-corner);
+            box-shadow: none;
+            border-color: rgba(34, 197, 94, 0.28);
+            min-height: calc(100vh - var(--investor-header-offset) - 12px);
+            min-height: calc(100dvh - var(--investor-header-offset) - 12px);
+            padding: clamp(34px, 4.4vw, 88px) clamp(20px, 4.4vw, 92px);
+            scroll-margin-top: calc(var(--investor-header-offset) + 14px);
+            scroll-snap-align: start;
+        }
+
+        #view-investors.defense-theme .investor-section-header {
+            border-bottom-color: rgba(34, 197, 94, 0.28);
+        }
+
+        #view-investors.defense-theme .copy-link {
+            border-color: rgba(34, 197, 94, 0.32);
+            color: rgba(10, 24, 14, 0.78);
+        }
+
+        #view-investors.defense-theme .copy-link:hover {
+            border-color: rgba(34, 197, 94, 0.6);
+            color: rgba(10, 16, 12, 0.96);
+        }
+
+        #view-investors.defense-theme .bullet-list li::before {
+            border-color: rgba(34, 197, 94, 0.95);
+        }
+
+        #view-investors.defense-theme .stat-tile {
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.34);
+        }
+
+        #view-investors.defense-theme .investor-card,
+        #view-investors.defense-theme .team-card,
+        #view-investors.defense-theme .detail-card {
+            border-color: rgba(34, 197, 94, 0.22);
+        }
+
+        #view-investors.defense-theme .investor-table {
+            border-color: rgba(34, 197, 94, 0.28);
+        }
+
+        #view-investors.defense-theme .investor-table th {
+            background: rgba(34, 197, 94, 0.09);
+            color: rgba(8, 28, 14, 0.88);
+        }
+
+        #view-investors.defense-theme .investor-table td {
+            border-top-color: rgba(34, 197, 94, 0.22);
+        }
+
+        #view-investors.defense-theme .wipe-cover {
+            background: rgb(var(--defense-teal));
+        }
+
+        body[data-view="investors"].investor-toc-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 1023px) {
+            #view-investors.defense-theme {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            #view-investors.defense-theme .investor-toc {
+                right: 16px;
+                left: 16px;
+                width: auto;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            #view-investors.defense-theme .toc-trigger-row {
+                top: calc(var(--investor-header-offset) - 2px);
+            }
+
+            #view-investors.defense-theme .investor-section {
+                min-height: calc(100vh - var(--investor-header-offset) - 6px);
+                min-height: calc(100dvh - var(--investor-header-offset) - 6px);
+                padding: 24px 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body[data-view="investors"] {
+                scroll-snap-type: none;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay,
+            #view-investors.defense-theme .investor-toc,
+            #view-investors.defense-theme .investor-toc-backdrop {
+                transition: none;
+            }
+        }
 </style>
 </head>
 <body>
@@ -4984,6 +5214,8 @@
                     investorContent.scrollTop = 0;
                 }
                 window.scrollTo({ top: 0, behavior: 'auto' });
+            } else {
+                document.body.classList.remove('investor-toc-open');
             }
         }
 
@@ -5030,8 +5262,12 @@
         const tocOverlay = investorView.querySelector('[data-toc-overlay]');
         const tocOpeners = Array.from(investorView.querySelectorAll('[data-toc-open]'));
         const tocClosers = Array.from(investorView.querySelectorAll('[data-toc-close]'));
+        const heroSection = investorView.querySelector('.investor-hero');
+        const heroQuote = investorView.querySelector('.investor-quote');
+        const heroFooter = investorView.querySelector('.investor-hero-footer');
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         let investorScrollOffset = 120;
+        let heroRaf = 0;
 
         function syncInvestorHeaderOffset() {
             const header = document.querySelector('.header');
@@ -5041,6 +5277,29 @@
 
         syncInvestorHeaderOffset();
         window.addEventListener('resize', syncInvestorHeaderOffset);
+
+        function updateHeroScrollEffects() {
+            heroRaf = 0;
+            if (prefersReduced || !heroSection || !heroQuote || !heroFooter) return;
+            const rect = heroSection.getBoundingClientRect();
+            const travel = Math.max(rect.height * 0.85, 1);
+            const progress = Math.max(0, Math.min(1, (0 - rect.top) / travel));
+            heroQuote.style.transform = `translate3d(0, ${progress * 26}px, 0)`;
+            heroQuote.style.opacity = `${1 - progress * 0.28}`;
+            heroFooter.style.transform = `translate3d(0, ${progress * 18}px, 0)`;
+            heroFooter.style.opacity = `${1 - progress * 0.34}`;
+        }
+
+        function queueHeroScrollEffects() {
+            if (heroRaf) return;
+            heroRaf = window.requestAnimationFrame(updateHeroScrollEffects);
+        }
+
+        if (!prefersReduced && heroSection && heroQuote && heroFooter) {
+            window.addEventListener('scroll', queueHeroScrollEffects, { passive: true });
+            window.addEventListener('resize', queueHeroScrollEffects);
+            queueHeroScrollEffects();
+        }
 
         function setActiveSection(id) {
             sections.forEach(section => {
@@ -5067,6 +5326,7 @@
         function setTocOpen(isOpen) {
             if (!tocOverlay) return;
             tocOverlay.classList.toggle('is-open', isOpen);
+            document.body.classList.toggle('investor-toc-open', isOpen && document.body.dataset.view === 'investors');
         }
 
         tocLinks.forEach(link => {
