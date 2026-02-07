@@ -55,6 +55,12 @@
             overflow-x: hidden;
         }
 
+        .app-container,
+        .page-view,
+        .main-content {
+            background: #000000;
+        }
+
         ::selection {
             background: rgba(255, 255, 255, 0.2);
         }
@@ -4175,7 +4181,6 @@
         body[data-view="investors"] {
             background:
                 radial-gradient(1200px circle at 10% -8%, rgba(34, 197, 94, 0.16), transparent 58%),
-                radial-gradient(1000px circle at 88% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
                 linear-gradient(180deg, #000000 0%, #050505 62%, #000000 100%);
             background-attachment: fixed;
             scroll-snap-type: y proximity;
@@ -4304,6 +4309,8 @@
         }
 
         #view-investors.defense-theme .investor-section {
+            background: #000000;
+            color: rgba(255, 255, 255, 0.9);
             border-radius: var(--defense-corner);
             box-shadow: none;
             border-color: rgba(34, 197, 94, 0.28);
@@ -4318,14 +4325,32 @@
             border-bottom-color: rgba(34, 197, 94, 0.28);
         }
 
+        #view-investors.defense-theme .investor-section .section-title,
+        #view-investors.defense-theme .info-text,
+        #view-investors.defense-theme .detail-body,
+        #view-investors.defense-theme .team-bio,
+        #view-investors.defense-theme .bullet-list,
+        #view-investors.defense-theme .stat-label,
+        #view-investors.defense-theme .stat-value,
+        #view-investors.defense-theme .team-name,
+        #view-investors.defense-theme .investor-table td {
+            color: rgba(255, 255, 255, 0.86);
+        }
+
+        #view-investors.defense-theme .micro-label,
+        #view-investors.defense-theme .card-title,
+        #view-investors.defense-theme .team-role {
+            color: rgba(34, 197, 94, 0.86);
+        }
+
         #view-investors.defense-theme .copy-link {
             border-color: rgba(34, 197, 94, 0.32);
-            color: rgba(10, 24, 14, 0.78);
+            color: rgba(255, 255, 255, 0.86);
         }
 
         #view-investors.defense-theme .copy-link:hover {
             border-color: rgba(34, 197, 94, 0.6);
-            color: rgba(10, 16, 12, 0.96);
+            color: rgba(255, 255, 255, 1);
         }
 
         #view-investors.defense-theme .bullet-list li::before {
@@ -4340,16 +4365,22 @@
         #view-investors.defense-theme .investor-card,
         #view-investors.defense-theme .team-card,
         #view-investors.defense-theme .detail-card {
+            background: rgba(0, 0, 0, 0.9);
             border-color: rgba(34, 197, 94, 0.22);
         }
 
+        #view-investors.defense-theme .detail-card summary {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
         #view-investors.defense-theme .investor-table {
+            background: rgba(0, 0, 0, 0.94);
             border-color: rgba(34, 197, 94, 0.28);
         }
 
         #view-investors.defense-theme .investor-table th {
             background: rgba(34, 197, 94, 0.09);
-            color: rgba(8, 28, 14, 0.88);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         #view-investors.defense-theme .investor-table td {
