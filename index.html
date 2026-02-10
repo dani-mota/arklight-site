@@ -152,7 +152,10 @@
 
         .coming-soon-cta {
             align-self: flex-start;
-            width: auto;
+            display: inline-flex;
+            width: fit-content;
+            padding-inline: 14px;
+            white-space: nowrap;
         }
 
         .home-section {
@@ -4226,20 +4229,20 @@
         }
 
         #view-investors.defense-theme .investor-layout {
-            display: block;
+            display: grid;
+            grid-template-columns: minmax(130px, 172px) minmax(0, 1fr);
+            gap: clamp(16px, 2.2vw, 28px);
+            align-items: start;
         }
 
         #view-investors.defense-theme .investor-content {
             width: 100%;
             gap: clamp(20px, 2.6vw, 34px);
+            min-width: 0;
         }
 
         #view-investors.defense-theme .toc-trigger-row {
-            display: flex;
-            position: sticky;
-            top: calc(var(--investor-header-offset) - 8px);
-            z-index: 14;
-            margin-bottom: 6px;
+            display: none;
         }
 
         #view-investors.defense-theme .toc-trigger {
@@ -4249,12 +4252,14 @@
         }
 
         #view-investors.defense-theme .investor-toc-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 94;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 260ms ease;
+            position: sticky;
+            top: calc(var(--investor-header-offset) + 8px);
+            inset: auto;
+            z-index: 10;
+            pointer-events: auto;
+            opacity: 1;
+            transition: none;
+            align-self: start;
         }
 
         #view-investors.defense-theme .investor-toc-overlay.is-open {
@@ -4263,13 +4268,7 @@
         }
 
         #view-investors.defense-theme .investor-toc-backdrop {
-            display: block;
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.56);
-            backdrop-filter: blur(4px);
-            opacity: 0;
-            transition: opacity 260ms ease;
+            display: none;
         }
 
         #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc-backdrop {
@@ -4277,36 +4276,64 @@
         }
 
         #view-investors.defense-theme .investor-toc {
-            position: absolute;
-            top: var(--investor-header-offset);
-            right: clamp(16px, 3.5vw, 56px);
+            position: relative;
+            top: auto;
+            right: auto;
             left: auto;
-            width: min(420px, calc(100vw - 32px));
-            max-width: calc(100vw - 32px);
-            padding: 20px 24px 24px;
-            background: rgba(0, 0, 0, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.24);
-            box-shadow: 0 28px 48px rgba(0, 0, 0, 0.42);
-            transform: translateY(-110%);
-            transition: transform 300ms ease;
+            width: 100%;
+            max-width: 172px;
+            padding: 0;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            transform: none;
+            transition: none;
         }
 
         #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc {
             transform: translateY(0);
         }
 
+        #view-investors.defense-theme .toc-header {
+            margin-bottom: 10px;
+        }
+
+        #view-investors.defense-theme .toc-title {
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0;
+        }
+
+        #view-investors.defense-theme .toc-list {
+            gap: 6px;
+        }
+
         #view-investors.defense-theme .toc-close {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: none;
         }
 
         #view-investors.defense-theme .toc-link {
-            color: rgba(255, 255, 255, 0.78);
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 11px;
+            line-height: 1.35;
+            padding: 3px 0 3px 12px;
+            letter-spacing: 0.01em;
+        }
+
+        #view-investors.defense-theme .toc-link:hover {
+            color: rgba(255, 255, 255, 0.82);
         }
 
         #view-investors.defense-theme .toc-link::before {
-            border-color: rgba(34, 197, 94, 0.9);
+            width: 4px;
+            height: 4px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.32);
+        }
+
+        #view-investors.defense-theme .toc-link.active {
+            color: rgba(255, 255, 255, 0.92);
         }
 
         #view-investors.defense-theme .toc-link.active::before {
@@ -4406,11 +4433,83 @@
                 padding-right: 16px;
             }
 
+            #view-investors.defense-theme .investor-layout {
+                display: block;
+            }
+
+            #view-investors.defense-theme .toc-trigger-row {
+                display: flex;
+                position: sticky;
+                top: calc(var(--investor-header-offset) - 8px);
+                z-index: 14;
+                margin-bottom: 6px;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay {
+                position: fixed;
+                inset: 0;
+                top: auto;
+                z-index: 94;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 260ms ease;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay.is-open {
+                pointer-events: auto;
+                opacity: 1;
+            }
+
+            #view-investors.defense-theme .investor-toc-backdrop {
+                display: block;
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.56);
+                backdrop-filter: blur(4px);
+                opacity: 0;
+                transition: opacity 260ms ease;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc-backdrop {
+                opacity: 1;
+            }
+
             #view-investors.defense-theme .investor-toc {
+                position: absolute;
+                top: var(--investor-header-offset);
                 right: 16px;
                 left: 16px;
                 width: auto;
                 max-width: none;
+                padding: 20px 24px 24px;
+                background: rgba(0, 0, 0, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.24);
+                box-shadow: 0 28px 48px rgba(0, 0, 0, 0.42);
+                transform: translateY(-110%);
+                transition: transform 300ms ease;
+            }
+
+            #view-investors.defense-theme .investor-toc-overlay.is-open .investor-toc {
+                transform: translateY(0);
+            }
+
+            #view-investors.defense-theme .toc-close {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #view-investors.defense-theme .toc-link {
+                font-size: 13px;
+                line-height: 1.45;
+                padding: 4px 0 4px 20px;
+            }
+
+            #view-investors.defense-theme .toc-link::before {
+                width: 8px;
+                height: 8px;
+                border: 1px solid rgba(34, 197, 94, 0.9);
+                background: transparent;
             }
         }
 
@@ -4464,7 +4563,7 @@
                     <div class="nav-links">
                         <a class="global-link" href="#home" data-nav="home">Home</a>
                         <a class="global-link" href="#partners" data-nav="partners">Partners</a>
-                        <a class="global-link" href="#investors" data-nav="investors">Investors</a>
+                        <a class="global-link" href="#investors" data-nav="investors" data-investor-link>Investors</a>
                     </div>
                     <a class="nav-cta" href="#demo" data-nav="demo">Demo</a>
                 </nav>
@@ -4488,7 +4587,7 @@
                     Project Arklight partners with the American industrial base to build the talent and workforce infrastructure required to sustain long-term industrial leadership.
                 </p>
                 <div class="home-ctas">
-                    <a class="button secondary" href="#investors">For Investors</a>
+                    <a class="button secondary" href="#investors" data-investor-link>For Investors</a>
                     <a class="button secondary" href="#partners">For Partners</a>
                 </div>
             </section>
@@ -5197,6 +5296,7 @@
 
         <script>
     (function() {
+        const INVESTOR_PAGE_ENABLED = false;
         const viewMap = {
             home: 'home',
             partners: 'partners',
@@ -5208,12 +5308,20 @@
 
         const views = Array.from(document.querySelectorAll('main[data-view]'));
         const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
+        const investorEntryLinks = Array.from(document.querySelectorAll('[data-investor-link]'));
         const investorView = document.getElementById('view-investors');
         const investorContent = investorView ? investorView.querySelector('.investor-content') : null;
 
+        if (!INVESTOR_PAGE_ENABLED) {
+            investorEntryLinks.forEach((link) => {
+                link.hidden = true;
+                link.tabIndex = -1;
+            });
+        }
+
         function resolveView(raw) {
             if (raw.startsWith('investors')) {
-                return 'investors';
+                return INVESTOR_PAGE_ENABLED ? 'investors' : 'home';
             }
             return viewMap[raw] || 'home';
         }
@@ -5279,6 +5387,14 @@
             const raw = window.location.hash.replace('#', '').trim();
             if (!raw) {
                 window.location.hash = '#home';
+                return;
+            }
+            if (!INVESTOR_PAGE_ENABLED && raw.startsWith('investors')) {
+                if (window.location.hash !== '#home') {
+                    window.location.hash = '#home';
+                } else {
+                    setView('home');
+                }
                 return;
             }
             const next = resolveView(raw);
