@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Arklight</title>
-<meta name="description" content="Evolving the American Workforce for the Era of AI, Robotics, and National Security.">
+<title>For Partners — Project Arklight</title>
+<meta name="description" content="Project Arklight partners with defense, aerospace, and advanced manufacturing companies to identify elite talent and develop a workforce trained on real-world production.">
 <meta name="theme-color" content="#fafaf9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,6 +83,30 @@ a{color:inherit;text-decoration:none}
 @media(max-width:768px){.section{padding:80px 24px}}
 .section-inner{max-width:1080px;margin:0 auto}
 
+/* SECTION HEADERS */
+.section-header{text-align:center;margin-bottom:56px}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.section-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,40px);color:var(--white);font-weight:400;max-width:640px;margin:0 auto}
+
+/* CARD GRIDS */
+.challenges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:900px){.challenges-grid{grid-template-columns:1fr}}
+.delivers-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+@media(max-width:1100px){.delivers-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.delivers-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.delivers-grid{grid-template-columns:1fr}}
+
+/* CARDS */
+.card{background:var(--bg-card);padding:40px 28px;position:relative;transition:all .4s}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
+.card:hover::before{background:var(--red)}
+.card:hover{background:var(--bg-elevated)}
+.card-icon{width:32px;height:32px;margin-bottom:20px}
+.card-icon svg{width:24px;height:24px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.card-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
+.card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+@media(max-width:768px){.card{padding:28px 20px}}
+
 /* PRODUCT BLOCKS */
 .product-block{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border:1px solid var(--gray-800)}
 .product-block.reversed{direction:rtl}
@@ -99,6 +123,8 @@ a{color:inherit;text-decoration:none}
 .product-cta{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px 28px;border:1.5px solid var(--red);color:var(--white);background:none;transition:all .3s;cursor:pointer;font-family:var(--sans);display:inline-flex;align-items:center;gap:10px;align-self:flex-start}
 .product-cta:hover{background:var(--red);color:#fff}
 .product-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.product-cta.muted{border-color:var(--gray-600);color:var(--gray-400);cursor:default}
+.product-cta.muted:hover{background:none;color:var(--gray-400)}
 
 /* ACI visual */
 .pv-aci{background:linear-gradient(135deg,rgba(230,57,70,.04) 0%,var(--bg-card) 60%)}
@@ -114,23 +140,6 @@ a{color:inherit;text-decoration:none}
 .pv-tf-bar{flex:1;height:6px;background:var(--gray-800);position:relative;overflow:hidden}
 .pv-tf-bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--red);width:0%;transition:width 1.5s cubic-bezier(.4,0,.2,1)}
 
-/* VALUES */
-.values-header{text-align:center;margin-bottom:56px}
-.values-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
-.values-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,40px);color:var(--white);font-weight:400;max-width:640px;margin:0 auto}
-.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-@media(max-width:1000px){.values-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.values-grid{grid-template-columns:1fr}}
-.value-card{background:var(--bg-card);padding:40px 28px;position:relative;transition:all .4s}
-.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
-.value-card:hover::before{background:var(--red)}
-.value-card:hover{background:var(--bg-elevated)}
-.value-icon{width:32px;height:32px;margin-bottom:20px}
-.value-icon svg{width:24px;height:24px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.value-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
-.value-body{font-size:13px;color:var(--gray-400);line-height:1.65}
-@media(max-width:768px){.value-card{padding:28px 20px}}
-
 /* FOOTER */
 .footer{padding:40px 48px;text-align:center;border-top:1px solid var(--gray-800)}
 .footer-brand{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
@@ -140,22 +149,23 @@ a{color:inherit;text-decoration:none}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
 .reveal.visible{opacity:1;transform:none}
-.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
+.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}.reveal-d4{transition-delay:.48s}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#hero" class="nav-brand">Project Arklight</a>
+  <a href="/" class="nav-brand">Project Arklight</a>
   <ul class="nav-links">
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#delivers">Solutions</a></li>
     <li><a href="#aci">ACI</a></li>
     <li><a href="#factory">Talent Factory</a></li>
-    <li><a href="#values">Vision</a></li>
   </ul>
   <div class="nav-right">
-    <a href="#" class="nav-cta" style="border-color:var(--gray-600);background:none;color:var(--white)">ACI Demo</a>
-    <a href="arklight.html" class="nav-cta">For Investors</a>
+    <a href="arklight.html" class="nav-cta" style="border-color:var(--gray-600);background:none;color:var(--white)">For Investors</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
       <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -168,12 +178,12 @@ a{color:inherit;text-decoration:none}
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#challenges" class="mm-link">Challenges</a>
+  <a href="#delivers" class="mm-link">Solutions</a>
   <a href="#aci" class="mm-link">ACI</a>
   <a href="#factory" class="mm-link">Talent Factory</a>
-  <a href="#values" class="mm-link">Vision</a>
-  <a href="#" class="mm-link">ACI Demo</a>
   <a href="arklight.html" class="mm-link">For Investors</a>
-  <a href="partners.html" class="mm-link" style="color:var(--gray-400)">For Partners</a>
+  <a href="/" class="mm-link" style="color:var(--gray-400)">Home</a>
   <button class="mm-theme" id="mmThemeBtn">
     <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
     Theme
@@ -182,35 +192,99 @@ a{color:inherit;text-decoration:none}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-eyebrow">Project Arklight</div>
+  <div class="hero-eyebrow">For Partners</div>
   <h1 class="hero-title">
-    <span class="t-main">Evolving the American Workforce for the Era of <span class="t-red" style="font-style:italic">AI, Robotics, and National Security</span></span>
+    <span class="t-main">Your Workforce, Evolved for the <span class="t-red" style="font-style:italic">AI and Robotics Era</span></span>
   </h1>
   <div class="hero-line"></div>
-  <p class="hero-desc">The workforce that built the last century won't sustain the next one. Project Arklight is building the system to develop the next generation of Americans who will lead in advanced manufacturing, defense, and emerging technology, partnering with the companies defining what comes next.</p>
+  <p class="hero-desc">Project Arklight partners with the next generation of defense, aerospace, and advanced manufacturing companies to identify elite talent through AI-native assessment and develop a workforce trained on real-world production and emerging technology.</p>
   <div class="hero-ctas">
-    <a href="arklight.html" class="hero-cta hero-cta-primary">
-      For Investors
+    <a href="#contact" class="hero-cta hero-cta-primary">
+      Get in Touch
       <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="partners.html" class="hero-cta hero-cta-secondary">
-      For Partners
+    <a href="#challenges" class="hero-cta hero-cta-secondary">
+      Learn More
       <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
     </a>
   </div>
   <div class="scroll-ind"><span>Scroll</span></div>
 </section>
 
-<!-- ACI SECTION -->
+<!-- CHALLENGES SECTION -->
+<section class="section" id="challenges">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">The Problem</div>
+      <h2 class="section-title">The Challenges You Face</h2>
+    </div>
+    <div class="challenges-grid">
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="card-title">Talent Scarcity</div>
+        <div class="card-body">4 million roles projected unfilled by 2030. AI, robotics, and advanced manufacturing are accelerating faster than the workforce can keep up.</div>
+      </div>
+      <div class="card reveal reveal-d1">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="card-title">Wrong Signals</div>
+        <div class="card-body">Resumes and interviews can't identify who will thrive in high-stakes, rapidly evolving technical environments. The cost of a mis-hire is 2x annual salary.</div>
+      </div>
+      <div class="card reveal reveal-d2">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <div class="card-title">Stalled Growth</div>
+        <div class="card-body">Billions in contracts and production capacity sit idle because the workforce pipeline was built for an era that no longer exists.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT ARKLIGHT DELIVERS -->
+<section class="section" id="delivers" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">The Solution</div>
+      <h2 class="section-title">What Arklight Delivers</h2>
+    </div>
+    <div class="delivers-grid">
+      <div class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg></div>
+        <div class="card-title">Elite Talent Identification</div>
+        <div class="card-body">AI-native assessment surfaces high-potential candidates that traditional hiring misses entirely.</div>
+      </div>
+      <div class="card reveal reveal-d1">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <div class="card-title">Day-One Readiness</div>
+        <div class="card-body">A workforce trained through real production — not classrooms — designed to arrive ready to perform from day one.</div>
+      </div>
+      <div class="card reveal reveal-d2">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <div class="card-title">Future-Proof Skills</div>
+        <div class="card-body">Training spans advanced manufacturing, AI-native operations, and emerging IT — cybersecurity, networking, and beyond.</div>
+      </div>
+      <div class="card reveal reveal-d3">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
+        <div class="card-title">Scalable Workforce</div>
+        <div class="card-body">As the Arklight network grows, talent capacity scales in step with your production demands.</div>
+      </div>
+      <div class="card reveal reveal-d4">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div class="card-title">Contracts Unlocked</div>
+        <div class="card-body">Stop leaving revenue on the table. Meet production timelines with a workforce built for the AI era.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACI PRODUCT DEMO -->
 <section class="section" id="aci">
   <div class="section-inner">
     <div class="product-block reveal">
       <div class="product-content">
         <div class="product-eyebrow">Arklight Cognitive Index</div>
-        <h2 class="product-title">Find the Talent Everyone Else Misses</h2>
-        <p class="product-body">Resumes and interviews were built for a different era. The Arklight Cognitive Index is a rigorous, AI-native evaluation that quantifies aptitude, learning velocity, and mission readiness, identifying high-potential Americans that traditional hiring overlooks. We're selecting design partners who are leading the next era of manufacturing and operations.</p>
+        <h2 class="product-title">See What Resumes Can't Show You</h2>
+        <p class="product-body">The Arklight Cognitive Index puts every candidate through a rigorous, AI-native evaluation — quantifying aptitude, learning velocity, and mission readiness for roles in advanced manufacturing, defense, and emerging technology. We're selecting design partners who want to help define how the next era of talent is identified and developed.</p>
         <a href="#" class="product-cta">
-          Explore ACI
+          See What's Under the Hood
           <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -221,7 +295,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- TALENT FACTORY SECTION -->
+<!-- TALENT FACTORY -->
 <section class="section" id="factory" style="padding-top:0">
   <div class="section-inner">
     <div class="product-block reversed reveal">
@@ -235,51 +309,18 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="product-content">
         <div class="product-eyebrow">The Talent Factory</div>
-        <h2 class="product-title">Where Production Meets Preparation</h2>
-        <p class="product-body">Our vision: manufacturing facilities that execute real government and commercial contracts while training the next generation of American workers in advanced manufacturing, AI-native business operations, and emerging IT, cybersecurity, networking, and beyond. No classrooms. No theory. Production and education become one system.</p>
-        <a href="#" class="product-cta">
-          Learn More
-          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALUES SECTION -->
-<section class="section" id="values">
-  <div class="section-inner">
-    <div class="values-header reveal">
-      <div class="values-eyebrow">Our Vision</div>
-      <h2 class="values-title">What we believe. Why it matters.</h2>
-    </div>
-    <div class="values-grid">
-      <div class="value-card reveal">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
-        <div class="value-title">America First</div>
-        <div class="value-body">For those who believe the U.S. must lead in manufacturing, defense, and technology, and that a stronger workforce is the foundation of national sovereignty.</div>
-      </div>
-      <div class="value-card reveal reveal-d1">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
-        <div class="value-title">Reimagine Education</div>
-        <div class="value-body">The traditional education pipeline is broken. Arklight replaces degrees-as-proxy with real-world production experience, AI-native evaluation, and skills that matter on day one.</div>
-      </div>
-      <div class="value-card reveal reveal-d2">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
-        <div class="value-title">Defense &amp; Industrial Opportunity</div>
-        <div class="value-body">Trillions in government contracts and industrial expansion are stalled by one constraint: talent. Arklight unlocks that capacity for companies building the future.</div>
-      </div>
-      <div class="value-card reveal reveal-d3">
-        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-        <div class="value-title">The Next Generation</div>
-        <div class="value-body">A new path for ambitious Americans who want to build real things, trained in advanced manufacturing, AI-native operations, and cybersecurity through actual production work.</div>
+        <h2 class="product-title">Real Contracts. Real Training. A New Workforce.</h2>
+        <p class="product-body">Where Arklight is headed: manufacturing facilities that execute real government and commercial contracts while developing the next generation of workers in advanced manufacturing, AI-native operations, and emerging IT. Our design partners will help shape this model from the ground up.</p>
+        <span class="product-cta muted">
+          Coming Soon
+        </span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" id="contact">
   <div class="footer-brand">Project Arklight</div>
   <div class="footer-copy">Project Arklight, 2025</div>
 </footer>
