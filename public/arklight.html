@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Arklight</title>
+<meta name="description" content="The nation that builds the best people builds the future. We stopped building them.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+/* DARK THEME */
+[data-theme="dark"]{--black:#000;--bg:#000;--bg-card:#0d0d0d;--bg-elevated:#111;--white:#fff;--gray-100:#f0f0f0;--gray-200:#d4d4d4;--gray-300:#a3a3a3;--gray-400:#737373;--gray-500:#525252;--gray-600:#404040;--gray-700:#2a2a2a;--gray-800:#1a1a1a;--gray-900:#0f0f0f;--red:#e63946;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(0,0,0,.92);--sel-bg:var(--red);--sel-c:#fff;color-scheme:dark}
+/* LIGHT THEME */
+[data-theme="light"]{--black:#fafaf9;--bg:#fafaf9;--bg-card:#fff;--bg-elevated:#f5f5f4;--white:#1a1a1a;--gray-100:#2e2e2e;--gray-200:#3a3a3a;--gray-300:#525252;--gray-400:#737373;--gray-500:#a3a3a3;--gray-600:#d4d4d4;--gray-700:#e5e5e5;--gray-800:#f0f0f0;--gray-900:#f5f5f4;--red:#d62839;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(250,250,249,.95);--sel-bg:var(--red);--sel-c:#fff;color-scheme:light}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gray-600) var(--black)}
+body{background:var(--bg);color:var(--gray-200);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+::selection{background:var(--sel-bg);color:var(--sel-c)}
+a{color:inherit;text-decoration:none}
+
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:9999;width:0;transition:width 50ms linear}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.nav.scrolled{padding:16px 48px;background:var(--nav-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--gray-700)}
+.nav-brand{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.nav-links{display:flex;gap:36px;align-items:center;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-cta{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1px solid var(--gray-600);padding:7px 16px;transition:all .3s;display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:none;white-space:nowrap;font-family:var(--sans)}
+.nav-cta:hover{border-color:var(--white);background:var(--white);color:var(--black)}
+.nav-cta svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.nav-cta.cta-primary{background:var(--red);border-color:var(--red);color:#fff}
+.nav-cta.cta-primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+/* Share toast */
+.share-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-elevated);border:1px solid var(--gray-700);color:var(--white);padding:12px 24px;font-size:13px;font-weight:500;z-index:10000;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;display:flex;align-items:center;gap:10px}
+.share-toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.share-toast svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;flex-shrink:0}
+/* Share modal */
+.share-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10001;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:20px}
+.share-overlay.open{opacity:1;pointer-events:all}
+.share-modal{background:var(--bg-card);border:1px solid var(--gray-700);width:100%;max-width:480px;padding:0;position:relative;transform:translateY(20px) scale(.97);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.share-overlay.open .share-modal{transform:translateY(0) scale(1)}
+.share-modal-header{padding:28px 32px 0;display:flex;align-items:flex-start;justify-content:space-between}
+.share-modal-title{font-family:var(--serif);font-size:22px;color:var(--white);font-weight:400}
+.share-modal-close{background:none;border:none;cursor:pointer;padding:4px;color:var(--gray-400);transition:color .2s}
+.share-modal-close:hover{color:var(--white)}
+.share-modal-close svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+.share-modal-sub{padding:8px 32px 0;font-size:13px;color:var(--gray-400);line-height:1.5}
+.share-modal-body{padding:20px 32px 28px}
+.email-input-wrap{border:1px solid var(--gray-700);background:var(--bg);padding:8px 12px;min-height:52px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;cursor:text;transition:border-color .2s}
+.email-input-wrap:focus-within{border-color:var(--red)}
+.email-chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg-elevated);border:1px solid var(--gray-700);padding:4px 10px;font-size:12px;color:var(--gray-200);font-family:var(--sans);animation:chipIn .2s ease}
+@keyframes chipIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.email-chip button{background:none;border:none;cursor:pointer;padding:0;color:var(--gray-500);display:flex;align-items:center;transition:color .2s}
+.email-chip button:hover{color:var(--red)}
+.email-chip button svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.email-input{border:none;outline:none;background:transparent;color:var(--white);font-size:13px;font-family:var(--sans);flex:1;min-width:140px;padding:4px 0}
+.email-input::placeholder{color:var(--gray-500)}
+.share-modal-hint{font-size:11px;color:var(--gray-500);margin-top:8px}
+.share-modal-footer{padding:0 32px 28px;display:flex;gap:12px;justify-content:flex-end}
+.share-btn-secondary{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);border:1px solid var(--gray-700);padding:10px 20px;cursor:pointer;background:none;font-family:var(--sans);transition:all .2s}
+.share-btn-secondary:hover{border-color:var(--gray-400);color:var(--white)}
+.share-btn-primary{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);border:1px solid var(--red);padding:10px 24px;cursor:pointer;font-family:var(--sans);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.share-btn-primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.share-btn-primary:disabled{opacity:.4;cursor:not-allowed}
+.share-btn-primary svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.share-sent{text-align:center;padding:40px 32px}
+.share-sent-icon{width:48px;height:48px;margin:0 auto 16px;border-radius:50%;background:rgba(230,57,70,.1);display:flex;align-items:center;justify-content:center}
+.share-sent-icon svg{width:24px;height:24px;stroke:var(--red);fill:none;stroke-width:2}
+.share-sent-title{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:8px;font-weight:400}
+.share-sent-sub{font-size:13px;color:var(--gray-400)}
+@media(max-width:768px){.share-modal{max-width:100%}.share-modal-header{padding:24px 20px 0}.share-modal-sub{padding:8px 20px 0}.share-modal-body{padding:16px 20px 24px}.share-modal-footer{padding:0 20px 24px}.share-sent{padding:32px 20px}}
+@media(max-width:768px){.nav-cta{display:none}}
+/* Mid-range nav optimization */
+@media(max-width:1200px){.nav-links{gap:20px}.nav-links a{font-size:10px;letter-spacing:.08em}.nav-cta{font-size:9px;padding:6px 12px;gap:5px}.nav-cta svg{width:11px;height:11px}}
+@media(max-width:1050px){.nav{padding:20px 32px}.nav.scrolled{padding:14px 32px}.nav-links{gap:14px}.nav-links a{font-size:9px}.nav-cta{padding:5px 10px;font-size:8px}.nav-brand{font-size:10px;letter-spacing:.2em}}
+@media(max-width:900px){.nav-links{display:none}.nav-cta{display:none}.nav-toggle{display:block}.theme-toggle{display:none}}
+@media(max-width:768px){.nav{padding:18px 24px}.nav.scrolled{padding:14px 24px}.nav-toggle{display:block}}
+.theme-toggle{background:none;border:1px solid var(--gray-700);border-radius:50%;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--gray-400)}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:var(--gray-400);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.theme-toggle:hover svg{stroke:var(--white)}
+.theme-toggle .icon-moon{display:block}.theme-toggle .icon-sun{display:none}
+[data-theme="light"] .theme-toggle .icon-moon{display:none}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--white);margin:5px 0;transition:all .3s}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--serif);font-size:22px;color:var(--white);padding:6px 0;transition:color .2s}
+.mobile-menu a:active{color:var(--red)}
+.mobile-menu .mm-theme{margin-top:16px;font-size:12px;color:var(--gray-400);display:flex;align-items:center;gap:8px;cursor:pointer;background:none;border:1px solid var(--gray-700);padding:10px 20px;transition:all .3s}
+@media(max-width:768px){.nav{padding:18px 24px}.nav.scrolled{padding:14px 24px}}
+@media(min-width:901px){.mobile-menu{display:none!important}}
+@media(max-width:900px){.nav-toggle{display:block}.theme-toggle{display:none}}
+
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 48px 100px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(transparent,var(--black))}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-400);margin-bottom:48px;opacity:0;animation:fi .8s ease .3s forwards}
+.hero-title{font-family:var(--serif);line-height:1.1;margin-bottom:48px;max-width:900px;opacity:0;animation:fi 1s ease .5s forwards}
+.hero-title .t-main{display:block;font-size:clamp(36px,6vw,72px);color:var(--white);font-weight:400;letter-spacing:-.02em}
+.hero-title .t-red{color:var(--red)}
+.hero-line{width:48px;height:1px;background:var(--gray-500);margin:0 auto 40px;opacity:0;animation:fi .6s ease .8s forwards}
+.hero-sub{font-size:clamp(14px,1.8vw,18px);color:var(--gray-300);max-width:560px;line-height:1.7;font-weight:300;opacity:0;animation:fi .8s ease 1s forwards}
+.hero-sub strong{color:var(--white);font-weight:500}
+.hero-meta{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);margin-top:56px;opacity:0;animation:fi .6s ease 1.2s forwards}
+.hero-meta span{color:var(--gray-300)}
+.scroll-ind{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fi .6s ease 1.5s forwards}
+.scroll-ind .line{width:1px;height:32px;position:relative;overflow:hidden;background:var(--gray-700)}
+.scroll-ind .line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:60%;background:var(--red);animation:sp 2s ease infinite}
+.scroll-ind span{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-500)}
+@keyframes fi{to{opacity:1}}
+@keyframes sp{0%{top:-60%}100%{top:160%}}
+
+.content{max-width:720px;margin:0 auto;padding:0 48px}
+.content-wide{max-width:1080px;margin:0 auto;padding:0 48px}
+.content-full{max-width:1200px;margin:0 auto;padding:0 48px}
+.spacer{height:120px}.spacer-sm{height:80px}.spacer-lg{height:160px}
+.divider{max-width:720px;margin:0 auto;padding:0 48px}
+.divider-wide{max-width:1080px;margin:0 auto;padding:0 48px}
+.divider hr{border:none;height:1px;background:var(--gray-700)}
+.divider-wide hr{border:none;height:1px;background:var(--gray-700)}
+
+.sec-label{font-size:10px;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:16px}
+.sec-label::before{content:'';width:24px;height:1px;background:var(--red)}
+.sec-num{font-family:var(--serif);font-size:72px;color:var(--gray-800);line-height:.9;margin-bottom:-8px}
+.sec-title{font-family:var(--serif);font-size:clamp(28px,4.5vw,48px);color:var(--white);line-height:1.15;margin-bottom:48px;font-weight:400}
+.sec-title em{font-style:italic;color:var(--red)}
+.sec-sub{font-size:17px;color:var(--gray-400);line-height:1.7;font-weight:300;margin-top:-32px;margin-bottom:48px;max-width:640px}
+.body{font-size:17px;color:var(--gray-300);line-height:1.8;margin-bottom:28px;font-weight:300}
+.body strong{color:var(--white);font-weight:500}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}
+
+/* === VESSEL VIZ === */
+.vessel-section{padding:120px 48px;text-align:center}
+.vessel-grid-wrap{position:relative;margin:56px auto 40px;max-width:960px}
+.vessel-label-row{display:flex;align-items:center;margin-bottom:12px}
+.vessel-label{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
+.vessel-label.china{color:var(--red)}.vessel-label.usa{color:var(--white)}
+.vessel-grid{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-start;margin-bottom:20px;min-height:80px}
+.vessel{width:14px;height:14px;opacity:0;transform:scale(0);transition:opacity .15s ease,transform .15s ease}
+.vessel.active{opacity:1;transform:scale(1)}
+.vessel svg{width:100%;height:100%;fill:var(--red)}
+.vessel-usa-row{display:flex;justify-content:flex-start;gap:4px;margin-bottom:32px;min-height:20px}
+.vessel-usa{width:14px;height:14px;opacity:0;transform:scale(0);transition:opacity .15s ease,transform .15s ease}
+.vessel-usa.active{opacity:1;transform:scale(1)}
+.vessel-usa svg{width:100%;height:100%;fill:var(--white)}
+.vessel-section-title{font-size:10px;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--gray-500);margin-bottom:32px}
+.vessel-vs{display:flex;align-items:center;justify-content:center;gap:40px;margin:40px 0;flex-wrap:wrap}
+.vessel-count{text-align:center}
+.vessel-count .num{font-family:var(--serif);font-size:clamp(48px,8vw,96px);line-height:1;font-weight:400}
+.vessel-count .num.china-num{color:var(--red)}.vessel-count .num.usa-num{color:var(--white)}
+.vessel-count .country{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-400);margin-top:8px}
+.vessel-vs-divider{font-family:var(--serif);font-size:clamp(24px,4vw,48px);color:var(--gray-500);font-style:italic}
+.vessel-supporting{font-size:15px;color:var(--gray-400);max-width:680px;margin:0 auto;line-height:1.7;font-weight:300}
+.vessel-supporting strong{color:var(--white);font-weight:500}
+
+/* === DATA POINTS === */
+.data-stack{margin:48px 0}
+.data-point{padding:24px 0;border-bottom:1px solid var(--gray-800);display:flex;align-items:baseline;gap:24px}
+.data-point:first-child{border-top:1px solid var(--gray-800)}
+.data-stat{font-family:var(--serif);font-size:clamp(32px,5vw,48px);color:var(--red);min-width:140px;text-align:right;line-height:1;flex-shrink:0;font-weight:400}
+.data-desc{font-size:16px;color:var(--gray-300);line-height:1.6;font-weight:300}
+@media(max-width:600px){.data-point{flex-direction:column;gap:8px}.data-stat{text-align:left;min-width:auto}}
+
+/* === BOTTOM LINE === */
+.bottom-line{background:var(--bg-card);border-left:2px solid var(--red);padding:28px 36px;margin:48px 0;font-size:17px;color:var(--white);line-height:1.7;font-weight:400}
+
+/* === CONSEQUENCE COLUMNS === */
+.consequence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0}
+@media(max-width:900px){.consequence-grid{grid-template-columns:1fr}}
+.consequence-col{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 32px;position:relative;overflow:hidden}
+.consequence-col::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.consequence-col-title{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:28px}
+.consequence-item{padding:16px 0;border-bottom:1px solid var(--gray-800)}
+.consequence-item:last-child{border-bottom:none}
+.consequence-item .ci-stat{font-family:var(--serif);font-size:24px;color:var(--white);line-height:1.2;margin-bottom:4px;font-weight:400}
+.consequence-item .ci-desc{font-size:13px;color:var(--gray-400);line-height:1.5}
+
+/* === CALLOUT === */
+.callout{text-align:center;padding:80px 48px;position:relative;overflow:hidden}
+.callout-bg{font-family:var(--serif);font-size:clamp(80px,18vw,180px);color:var(--gray-900);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;user-select:none;pointer-events:none}
+.callout-text{font-family:var(--serif);font-size:clamp(22px,3.5vw,36px);color:var(--white);line-height:1.35;max-width:700px;margin:0 auto;position:relative;z-index:1;font-weight:400}
+.callout-text em{color:var(--red);font-style:italic}
+
+/* === ACT BANNER === */
+.act-banner{text-align:center;padding:100px 48px;border-top:1px solid var(--gray-800);border-bottom:1px solid var(--gray-800)}
+.act-banner-label{font-size:10px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.act-banner-title{font-family:var(--serif);font-size:clamp(28px,5vw,56px);color:var(--white);font-weight:400;line-height:1.15;max-width:700px;margin:0 auto}
+
+/* === LANE COMPARISON (Slide 6) === */
+.lanes-wrap{margin:56px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}
+.lanes{display:flex;flex-direction:column;gap:20px;min-width:900px}
+.lane{position:relative;display:flex;align-items:stretch}
+.lane-label{width:110px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding-right:16px}
+.lane-label-name{font-family:var(--serif);font-size:14px;color:var(--gray-400);font-weight:400;white-space:nowrap}
+.lane-label-sub{font-size:9px;color:var(--gray-600);letter-spacing:.15em;text-transform:uppercase;margin-top:2px}
+.lane-bar{display:flex;align-items:center;gap:0;position:relative}
+.lane-step{padding:10px 16px;font-size:12px;font-weight:500;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center;gap:0;line-height:1.3;border-right:1px solid rgba(128,128,128,.08)}
+.lane-step:last-child{border-right:none}
+.lane-step::after{content:'\2192';margin-left:14px;opacity:.3;font-size:11px}
+.lane-step:last-child::after{display:none}
+.lane-uni .lane-label-name{color:var(--gray-500)}
+.lane-uni .lane-bar{width:100%;background:var(--gray-900);border:1px solid var(--gray-800);min-height:64px}
+.lane-uni .lane-step{color:var(--gray-500);font-weight:400;font-size:12px}
+.lane-uni .lane-step::after{color:var(--gray-700)}
+.lane-trade .lane-label-name{color:var(--gray-500)}
+.lane-trade .lane-bar{width:36%;background:var(--bg-card);border:1px solid var(--gray-800);min-height:48px}
+.lane-trade .lane-step{color:var(--gray-400);font-weight:400;font-size:11px;padding:8px 12px}
+.lane-trade .lane-step::after{color:var(--gray-700)}
+.lane-ark .lane-label-name{color:var(--red);font-size:15px}
+.lane-ark .lane-label-sub{color:var(--red);opacity:.6}
+.lane-ark .lane-bar{width:36%;background:linear-gradient(135deg,rgba(230,57,70,.12) 0%,rgba(230,57,70,.04) 100%);border:1.5px solid var(--red);min-height:64px;box-shadow:0 0 40px rgba(230,57,70,.08),inset 0 0 30px rgba(230,57,70,.04);position:relative;overflow:hidden}
+.lane-ark .lane-bar::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(230,57,70,.03) 60px,rgba(230,57,70,.03) 61px);pointer-events:none}
+.lane-ark .lane-step{color:var(--white);font-weight:600;font-size:12px;padding:10px 14px;letter-spacing:.03em}
+.lane-ark .lane-step::after{color:var(--red);opacity:.6}
+.lane-ark .lane-step .step-sub{display:block;font-size:9px;font-weight:400;color:var(--gray-300);letter-spacing:.05em;margin-top:1px}
+@media(max-width:768px){
+  .lanes-wrap{overflow-x:visible;margin:32px 0}
+  .lanes{min-width:0;gap:6px;flex-direction:row}
+  .lane{flex-direction:column;align-items:stretch;flex:1;min-width:0}
+  .lane-label{width:100%;padding-right:0;padding-bottom:6px;text-align:center}
+  .lane-label-name{font-size:11px;white-space:normal;line-height:1.3}
+  .lane-label-sub{font-size:7px;margin-top:2px}
+  .lane-bar{width:100%!important;flex-direction:column;min-height:auto!important;overflow:visible}
+  .lane-uni .lane-bar,.lane-trade .lane-bar,.lane-ark .lane-bar{width:100%!important}
+  .lane-ark .lane-bar::before{display:none}
+  .lane-step{padding:7px 6px;font-size:9px;white-space:normal;border-right:none;border-bottom:1px solid rgba(128,128,128,.08);text-align:center;line-height:1.35;letter-spacing:0}
+  .lane-step:last-child{border-bottom:none}
+  .lane-step::after{display:none}
+  .lane-uni .lane-step{font-size:9px;padding:7px 6px}
+  .lane-trade .lane-step{font-size:9px;padding:7px 6px}
+  .lane-ark .lane-step{font-size:9px;padding:7px 6px;letter-spacing:0}
+  .lane-ark .lane-step .step-sub{font-size:7px;margin-top:2px;letter-spacing:0}
+}
+@media(max-width:400px){
+  .lane-label-name{font-size:10px}
+  .lane-step{font-size:8px;padding:6px 4px}
+  .lane-ark .lane-step .step-sub{font-size:7px}
+}
+
+/* === THREE COLUMNS (ACI, reusable) === */
+.three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0}
+@media(max-width:900px){.three-cols{grid-template-columns:1fr}}
+.col-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:36px 28px;position:relative}
+.col-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.col-card-title{font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:16px;font-weight:400}
+.col-card-body{font-size:14px;color:var(--gray-400);line-height:1.7}
+
+/* === LOGO ROW === */
+.logo-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:48px;margin:32px 0;padding:32px 0}
+.logo-img{height:44px;width:auto;opacity:.55;transition:opacity .3s;flex-shrink:0;object-fit:contain}
+.logo-img:hover{opacity:.85}
+.logo-img.tall{height:52px}
+.logo-img.wide{height:36px}
+[data-theme="light"] .logo-img{filter:none}
+[data-theme="dark"] .logo-img.invert-dark{filter:brightness(0) invert(1);opacity:.4}
+[data-theme="dark"] .logo-img.invert-dark:hover{opacity:.7}
+@media(max-width:768px){.logo-row{gap:28px;padding:24px 0}.logo-img{height:32px}.logo-img.tall{height:38px}.logo-img.wide{height:28px}}
+
+/* === STAGE EVOLUTION (Slide 8) === */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:48px 0;position:relative}
+@media(max-width:900px){.stages{grid-template-columns:1fr}}
+.stage{background:var(--bg-card);padding:40px 32px;position:relative}
+.stage::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.stage:nth-child(1)::before{background:var(--gray-600)}
+.stage:nth-child(2)::before{background:var(--gray-400)}
+.stage:nth-child(3)::before{background:var(--red)}
+.stage-num{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
+.stage:nth-child(3) .stage-num{color:var(--red)}
+.stage-title{font-family:var(--serif);font-size:22px;color:var(--white);margin-bottom:16px;font-weight:400}
+.stage-body{font-size:14px;color:var(--gray-400);line-height:1.7}
+.stage-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--gray-500);z-index:2}
+@media(max-width:900px){.stage-arrow{display:none}}
+
+/* === FLYWHEEL (Slide 9) === */
+.flywheel-wrap{position:relative;max-width:680px;margin:56px auto;padding:60px 0}
+.flywheel-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2}
+.flywheel-center-label{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--red)}
+.flywheel-center-title{font-family:var(--serif);font-size:18px;color:var(--white);margin-top:4px;font-weight:400}
+.flywheel-ring{width:100%;aspect-ratio:1;border:1px solid var(--gray-700);border-radius:50%;position:relative}
+.flywheel-ring::after{content:'';position:absolute;inset:30%;border:1px dashed var(--gray-800);border-radius:50%}
+.fw-node{position:absolute;width:240px;background:var(--bg-card);border:1px solid var(--gray-800);padding:20px;z-index:3}
+.fw-node::before{display:none}
+.fw-node-num{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.fw-node-title{font-family:var(--serif);font-size:16px;color:var(--white);margin-bottom:8px;font-weight:400}
+.fw-node-body{font-size:12px;color:var(--gray-400);line-height:1.6}
+.fw-node.n1{top:-20px;left:50%;transform:translateX(-50%)}
+.fw-node.n2{top:50%;right:-40px;transform:translateY(-50%)}
+.fw-node.n3{bottom:-20px;left:50%;transform:translateX(-50%)}
+.fw-node.n4{top:50%;left:-40px;transform:translateY(-50%)}
+@media(max-width:900px){
+  .flywheel-ring{display:none}
+  .flywheel-center{position:relative;top:auto;left:auto;transform:none;margin-bottom:0;padding:20px;background:var(--bg-card);border:1.5px solid var(--red);text-align:center}
+  .flywheel-wrap{padding:0}
+  .fw-node{position:relative;width:100%;top:auto;left:auto;right:auto;bottom:auto;transform:none;margin-bottom:0;border-bottom:1px solid var(--gray-800)}
+  .fw-node:last-child{border-bottom:none}
+}
+
+/* === BENCHMARK LINE === */
+.benchmark{background:var(--bg-card);border:1px solid var(--gray-800);padding:28px 36px;margin:32px 0;text-align:center;font-size:14px;color:var(--gray-300);line-height:1.7;position:relative}
+.benchmark::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:2px;background:var(--red)}
+
+/* === SIDE DOTS === */
+.side-dots{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:14px}
+.s-dot{width:6px;height:6px;border-radius:50%;border:1px solid var(--gray-500);background:transparent;cursor:pointer;transition:all .3s;position:relative}
+.s-dot.active{background:var(--red);border-color:var(--red);transform:scale(1.4)}
+.s-dot:hover{border-color:var(--red)}
+.s-dot .tip{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--bg-elevated);border:1px solid var(--gray-700);padding:4px 10px;font-size:10px;color:var(--gray-300);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.s-dot:hover .tip{opacity:1}
+@media(max-width:1100px){.side-dots{display:none}}
+
+.footer{padding:56px 48px;border-top:1px solid var(--gray-800);text-align:center}
+.footer-author{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px}
+.footer-author span{color:var(--red)}
+.footer-date{font-size:11px;color:var(--gray-600);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .content,.content-wide,.content-full,.divider,.divider-wide{padding:0 20px}
+  .hero{padding:100px 20px 60px}
+  .hero-eyebrow{font-size:9px;letter-spacing:.2em;margin-bottom:28px}
+  .hero-title .t-main{font-size:clamp(26px,8vw,44px)}
+  .hero-sub{font-size:14px;max-width:320px}
+  .hero-meta{margin-top:32px;font-size:10px}
+  .scroll-ind{bottom:16px}
+  .vessel-section{padding:60px 20px}
+  .callout{padding:48px 20px}
+  .act-banner{padding:60px 20px}
+  .spacer{height:60px}.spacer-lg{height:80px}
+  .footer{padding:32px 20px}
+  .bottom-line{padding:18px 20px;font-size:15px}
+  .vessel-grid{gap:3px}.vessel{width:10px;height:10px}.vessel-usa{width:10px;height:10px}
+  .vessel-vs{gap:16px}
+  .data-point{flex-direction:column;gap:4px;padding:14px 0}
+  .data-stat{text-align:left;min-width:auto;font-size:clamp(26px,8vw,34px)}
+  .sec-num{font-size:48px}
+  .sec-title{font-size:clamp(22px,6vw,30px);margin-bottom:28px}
+  .sec-sub{font-size:14px;margin-top:-16px;margin-bottom:24px}
+  .consequence-grid{grid-template-columns:1fr}
+  .consequence-col{padding:24px 20px}
+  .stages{grid-template-columns:1fr}
+  .stage{padding:24px 20px}
+  .stage-arrow{display:none}
+  .flywheel-ring{display:none}
+  .flywheel-center{position:relative;top:auto;left:auto;transform:none;margin-bottom:0;padding:20px;background:var(--bg-card);border:1.5px solid var(--red);text-align:center}
+  .flywheel-wrap{padding:0}
+  .fw-node{position:relative;width:100%;top:auto;left:auto;right:auto;bottom:auto;transform:none;margin-bottom:0;border-bottom:1px solid var(--gray-800)}
+  .fw-node:last-child{border-bottom:none}
+  .fw-node-title{font-size:15px}
+  .fw-node-body{font-size:12px}
+  .side-dots{display:none}
+  .body{font-size:15px}
+  .vessel-supporting{font-size:14px}
+}
+@media(max-width:400px){
+  .hero-title .t-main{font-size:24px}
+  .sec-title{font-size:20px}
+  .sec-num{font-size:40px}
+  .vessel{width:8px;height:8px}.vessel-grid{gap:2px}.vessel-usa{width:8px;height:8px}
+  .cf-card-stat{font-size:13px}
+  .cf-card-body{font-size:11px}
+  .traction-name{font-size:16px}
+  .team-name{font-size:16px}
+  .split-col-title{font-size:16px}
+  .market-layer-title{font-size:16px}
+  .market-bar-h-value{font-size:18px}
+  .bottom-line{font-size:14px}
+}
+/* === ACT 3 COMPONENTS === */
+/* Convergence grid (Slide 10) */
+.converge-section{max-width:860px;margin:56px auto}
+.converge-grid{display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:auto auto auto;gap:0;align-items:center}
+.converge-center{grid-column:2;grid-row:1/4;display:flex;align-items:center;justify-content:center;padding:0 32px;position:relative}
+.converge-center-box{text-align:center;background:var(--bg);border:1.5px solid var(--red);padding:20px 28px;box-shadow:0 0 60px rgba(230,57,70,.12);position:relative;z-index:2}
+.converge-center-label{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.converge-center-title{font-family:var(--serif);font-size:16px;color:var(--white);font-weight:400;white-space:nowrap}
+/* Pulse ring behind center */
+.converge-center::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160px;height:160px;border-radius:50%;border:1px solid rgba(230,57,70,.08);pointer-events:none}
+.converge-center::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:50%;border:1px solid rgba(230,57,70,.04);pointer-events:none}
+/* Force cards */
+.cf-card{padding:24px 0}
+.cf-card-label{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.cf-card-stat{font-family:var(--serif);font-size:15px;color:var(--white);font-weight:400;line-height:1.3;margin-bottom:6px}
+.cf-card-body{font-size:12px;color:var(--gray-400);line-height:1.55}
+/* Positions */
+.cf-tl{grid-column:1;grid-row:1;text-align:right;padding-right:0}
+.cf-tr{grid-column:3;grid-row:1;text-align:left;padding-left:0}
+.cf-bl{grid-column:1;grid-row:3;text-align:right;padding-right:0}
+.cf-br{grid-column:3;grid-row:3;text-align:left;padding-left:0}
+/* Connector lines from cards toward center */
+.cf-line{display:block;height:1px;margin:0}
+.cf-tl .cf-line,.cf-bl .cf-line{margin-left:auto;width:40px;background:linear-gradient(to right,transparent,var(--red))}
+.cf-tr .cf-line,.cf-br .cf-line{margin-right:auto;width:40px;background:linear-gradient(to left,transparent,var(--red))}
+/* Spacer row */
+.converge-spacer{grid-column:1/4;grid-row:2;height:8px}
+@media(max-width:768px){
+  .converge-section{margin:32px auto}
+  .converge-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:0}
+  .converge-center{grid-column:1;grid-row:1;padding:0 0 20px;justify-content:flex-start}
+  .converge-center-box{padding:16px 20px;width:100%}
+  .converge-center-title{font-size:14px}
+  .converge-center::before,.converge-center::after{display:none}
+  .cf-card{padding:0;margin-bottom:12px}
+  .cf-tl,.cf-tr,.cf-bl,.cf-br{grid-column:1;text-align:left;padding:16px 20px;border-left:3px solid var(--gray-700);background:var(--bg-card)}
+  .cf-tl{grid-row:2;border-left-color:var(--red)}
+  .cf-tr{grid-row:3}.cf-bl{grid-row:4}.cf-br{grid-row:5}
+  .cf-card-stat{font-size:14px}
+  .cf-card-body{font-size:12px}
+  .converge-spacer{display:none}
+  .cf-line{display:none}
+}
+
+/* Traction columns */
+.traction-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:48px 0}
+@media(max-width:900px){.traction-grid{grid-template-columns:1fr}}
+.traction-col{background:var(--bg-card);padding:36px 28px;position:relative;border-top:3px solid var(--red)}
+.traction-name{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:16px;font-weight:400}
+.traction-body{font-size:13px;color:var(--gray-400);line-height:1.7}
+.traction-body ul{list-style:none;padding:0;margin:0}
+.traction-body li{padding:8px 0 8px 16px;border-bottom:1px solid var(--gray-800);position:relative;font-size:13px;color:var(--gray-400);line-height:1.6}
+.traction-body li:last-child{border-bottom:none}
+.traction-body li::before{content:'';position:absolute;left:0;top:16px;width:4px;height:4px;background:var(--red);border-radius:50%}
+@media(max-width:768px){.traction-col{padding:24px 20px}.traction-name{font-size:18px}.traction-body li{font-size:12px;padding:7px 0 7px 14px}}
+
+/* Risk rows */
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
+@media(max-width:900px){.risk-grid{grid-template-columns:1fr}}
+.risk-item{padding:20px 0;border-top:1px solid var(--gray-800)}
+.risk-label{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px}
+.risk-label span{color:var(--red)}
+.risk-body{font-size:13px;color:var(--gray-400);line-height:1.6}
+@media(max-width:768px){.risk-grid{gap:12px}.risk-body{font-size:12px}.risk-label{font-size:9px}}
+
+/* Team logo bar */
+.team-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin:32px 0;padding:24px 0;border-top:1px solid var(--gray-800);border-bottom:1px solid var(--gray-800)}
+.team-logo{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-500);padding:6px 0}
+@media(max-width:768px){.team-logos{gap:16px}.team-logo{font-size:10px;letter-spacing:.1em}}
+
+/* Team profiles */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0}
+@media(max-width:900px){.team-grid{grid-template-columns:1fr;gap:20px}}
+.team-card{padding:0}
+.team-name{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:4px;font-weight:400}
+.team-role{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.team-bio{font-size:14px;color:var(--gray-400);line-height:1.7}
+@media(max-width:768px){.team-name{font-size:18px}.team-bio{font-size:13px}.team-role{margin-bottom:12px}}
+
+/* Two-layer market (Slide 13) */
+.market-layers{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:48px 0}
+@media(max-width:900px){.market-layers{grid-template-columns:1fr}}
+.market-layer{background:var(--bg-card);padding:36px 32px;position:relative}
+.market-layer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.market-layer:nth-child(1)::before{background:var(--red)}
+.market-layer:nth-child(2)::before{background:var(--gray-500)}
+.market-layer-label{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.market-layer:nth-child(2) .market-layer-label{color:var(--gray-400)}
+.market-layer-title{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:14px;font-weight:400}
+.market-layer-body{font-size:14px;color:var(--gray-400);line-height:1.7}
+@media(max-width:768px){.market-layer{padding:24px 20px}.market-layer-title{font-size:18px}.market-layer-body{font-size:13px}}
+/* Intersection callout */
+.market-intersection{background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(230,57,70,.02) 100%);border:1px solid var(--red);padding:32px 36px;margin:-1px 0 0;text-align:center;position:relative}
+.market-intersection::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid var(--bg)}
+.market-intersection p{font-size:15px;color:var(--white);line-height:1.7;max-width:640px;margin:0 auto;font-weight:400}
+@media(max-width:768px){.market-intersection{padding:24px 20px}.market-intersection p{font-size:14px}}
+/* Market horizontal bars */
+.market-bars-h{margin:48px 0;max-width:720px}
+.market-bar-h{margin-bottom:16px}
+.market-bar-h:last-child{margin-bottom:0}
+.market-bar-h-top{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.market-bar-h-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500)}
+.market-bar-h-value{font-family:var(--serif);font-size:24px;color:var(--white);font-weight:400}
+.market-bar-h-desc{font-size:12px;color:var(--gray-500);margin-left:auto}
+.market-bar-h-track{width:100%;height:8px;background:var(--gray-800);position:relative;overflow:hidden}
+.market-bar-h-fill{height:100%;position:absolute;left:0;top:0}
+.bar-h-tam{width:100%;background:var(--red);opacity:.25}
+.bar-h-sam{width:14.3%;background:var(--red);opacity:.55}
+.bar-h-som{width:0.85%;background:var(--red);min-width:6px}
+@media(max-width:768px){.market-bar-h-value{font-size:20px}.market-bar-h-desc{display:none}}
+
+/* Two-column split */
+.split{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin:48px 0}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.split-col{background:var(--bg-card);padding:36px 32px;position:relative}
+.split-col::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.split-col:nth-child(1)::before{background:var(--red)}
+.split-col:nth-child(2)::before{background:var(--gray-500)}
+.split-col-label{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.split-col:nth-child(2) .split-col-label{color:var(--gray-400)}
+.split-col-title{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:16px;font-weight:400}
+.split-item{padding:12px 0;border-bottom:1px solid var(--gray-800);font-size:14px;color:var(--gray-300);line-height:1.6}
+.split-item:last-child{border-bottom:none}
+.split-item strong{color:var(--white);font-weight:500}
+@media(max-width:768px){.split-col{padding:24px 20px}.split-col-title{font-size:18px}.split-item{font-size:13px;padding:10px 0}}
+
+/* Strategic advantages */
+.strat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
+@media(max-width:900px){.strat-grid{grid-template-columns:1fr}}
+.strat-item{padding-top:16px;border-top:1px solid var(--gray-800)}
+.strat-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.strat-body{font-size:13px;color:var(--gray-400);line-height:1.6}
+@media(max-width:768px){.strat-grid{gap:16px}.strat-body{font-size:12px}.strat-label{font-size:9px}}
+
+/* The Ask - closing statement */
+.closing{background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(230,57,70,.02) 100%);border:1px solid var(--red);padding:48px 40px;margin:56px 0;text-align:center;position:relative;overflow:hidden}
+.closing::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.closing p{font-size:17px;color:var(--white);line-height:1.7;max-width:720px;margin:0 auto;font-weight:400}
+@media(max-width:768px){.closing{padding:32px 20px}.closing p{font-size:15px}}
+
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{background:#000!important;color:#d4d4d4!important}
+  .nav,.progress-bar,.side-dots,.scroll-ind,.share-toast,.mobile-menu{display:none!important}
+  .hero{min-height:auto;padding:80px 48px 60px;page-break-after:always}
+  .reveal{opacity:1!important;transform:none!important}
+  .vessel,.vessel-usa{opacity:1!important;transform:scale(1)!important}
+  .spacer{height:40px}.spacer-lg{height:60px}
+  .act-banner{page-break-before:always}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" class="mm-link">Home</a>
+  <a href="#slide2" class="mm-link">The Crisis</a>
+  <a href="#slide3" class="mm-link">The System</a>
+  <a href="#slide4" class="mm-link">Consequences</a>
+  <a href="#slide5" class="mm-link">The Belief</a>
+  <a href="#slide6" class="mm-link">The Insight</a>
+  <a href="#slide7" class="mm-link">ACI</a>
+  <a href="#slide8" class="mm-link">Talent Factory</a>
+  <a href="#slide9" class="mm-link">The Flywheel</a>
+  <a href="#slide10" class="mm-link">Why Now</a>
+  <a href="#slide11" class="mm-link">Traction</a>
+  <a href="#slide12" class="mm-link">The Team</a>
+  <a href="#slide13" class="mm-link">The Market</a>
+  <a href="#slide14" class="mm-link">Business Model</a>
+  <a href="#slide15" class="mm-link">The Ask</a>
+  <button class="mm-theme" id="mmShareBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    Share
+  </button>
+  <button class="mm-theme" id="mmPdfBtn" style="border-color:var(--red);color:var(--red)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download PDF
+  </button>
+  <button class="mm-theme" id="mmThemeBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    Switch Theme
+  </button>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Project Arklight</a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#slide2">The Crisis</a></li>
+    <li><a href="#slide5">The System</a></li>
+    <li><a href="#slide7">ACI</a></li>
+    <li><a href="#slide11">Traction</a></li>
+    <li><a href="#slide15">The Ask</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cta" id="shareBtn" aria-label="Share">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+    <button class="nav-cta cta-primary" id="pdfBtn" aria-label="Download PDF">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download PDF
+    </button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Share toast notification -->
+<div class="share-toast" id="shareToast">
+  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="shareToastMsg">Link copied to clipboard</span>
+</div>
+
+<!-- Share modal -->
+<div class="share-overlay" id="shareOverlay">
+  <div class="share-modal">
+    <div class="share-modal-header">
+      <div class="share-modal-title">Share this document</div>
+      <button class="share-modal-close" id="shareClose"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="share-modal-sub">Send Project Arklight to colleagues, investors, or partners.</div>
+    <div id="shareFormView">
+      <div class="share-modal-body">
+        <div class="email-input-wrap" id="emailWrap">
+          <div id="emailChips"></div>
+          <input type="email" class="email-input" id="emailInput" placeholder="Enter email address..." autocomplete="off">
+        </div>
+        <div class="share-modal-hint">Press Enter to add multiple recipients</div>
+      </div>
+      <div class="share-modal-footer">
+        <button class="share-btn-secondary" id="shareCopyLink">Copy Link</button>
+        <button class="share-btn-primary" id="shareSendBtn" disabled>
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send
+        </button>
+      </div>
+    </div>
+    <div id="shareSentView" style="display:none">
+      <div class="share-sent">
+        <div class="share-sent-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="share-sent-title">Sent successfully</div>
+        <div class="share-sent-sub" id="sentToMsg">Sent to 3 recipients</div>
+      </div>
+      <div class="share-modal-footer">
+        <button class="share-btn-primary" id="shareDoneBtn">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="side-dots">
+  <div class="s-dot active" data-target="hero"><span class="tip">Home</span></div>
+  <div class="s-dot" data-target="slide2"><span class="tip">The Crisis</span></div>
+  <div class="s-dot" data-target="slide3"><span class="tip">The System</span></div>
+  <div class="s-dot" data-target="slide4"><span class="tip">Consequences</span></div>
+  <div class="s-dot" data-target="slide5"><span class="tip">The Belief</span></div>
+  <div class="s-dot" data-target="slide6"><span class="tip">The Insight</span></div>
+  <div class="s-dot" data-target="slide7"><span class="tip">ACI</span></div>
+  <div class="s-dot" data-target="slide8"><span class="tip">Talent Factory</span></div>
+  <div class="s-dot" data-target="slide9"><span class="tip">The Flywheel</span></div>
+  <div class="s-dot" data-target="slide10"><span class="tip">Why Now</span></div>
+  <div class="s-dot" data-target="slide11"><span class="tip">Traction</span></div>
+  <div class="s-dot" data-target="slide12"><span class="tip">The Team</span></div>
+  <div class="s-dot" data-target="slide13"><span class="tip">The Market</span></div>
+  <div class="s-dot" data-target="slide14"><span class="tip">Business Model</span></div>
+  <div class="s-dot" data-target="slide15"><span class="tip">The Ask</span></div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ACT 1                                                          -->
+<!-- ============================================================ -->
+
+<!-- SLIDE 1 -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Written by Daniel Mota / Project Arklight Founder &amp; CEO</div>
+  <h1 class="hero-title">
+    <span class="t-main">The nation that builds the best people builds the future.</span>
+    <span class="t-main t-red" style="margin-top:8px">We stopped building them.</span>
+  </h1>
+  <div class="hero-line"></div>
+  <p class="hero-sub"><strong>Project Arklight</strong>: Building the workforce that builds the Arsenal of Democracy</p>
+  <div class="hero-meta">Act 1 / <span>Feel the Crisis</span></div>
+  <div class="scroll-ind"><div class="line"></div><span>Scroll</span></div>
+</section>
+
+<!-- SLIDE 2 -->
+<div class="spacer-lg"></div>
+<section class="content-wide" id="slide2">
+  <div class="reveal"><div class="sec-label">Act 1 / Section 2</div><div class="sec-num">02</div><h2 class="sec-title">China redesigned their entire education system as a <em>strategic weapon.</em></h2></div>
+</section>
+<section class="vessel-section" id="vessel-viz">
+  <div class="vessel-grid-wrap reveal">
+    <div class="vessel-section-title" style="text-align:center">Military Shipbuilding Capacity, 2024</div>
+    <div class="vessel-label-row"><span class="vessel-label china">China: 232 Vessels</span></div>
+    <div class="vessel-grid" id="vesselGrid"></div>
+    <div class="vessel-label-row"><span class="vessel-label usa">United States: 1 Vessel</span></div>
+    <div class="vessel-usa-row" id="vesselUSA"></div>
+    <div class="vessel-vs">
+      <div class="vessel-count"><div class="num china-num" id="chinaCount">0</div><div class="country">China</div></div>
+      <div class="vessel-vs-divider">vs.</div>
+      <div class="vessel-count"><div class="num usa-num">1</div><div class="country">United States</div></div>
+    </div>
+  </div>
+  <p class="vessel-supporting reveal">In 2024, China produced over 230 military-capable vessels. The United States produced one. The difference is not industrial capacity. <strong>It is the workforce behind it.</strong></p>
+</section>
+
+<div class="spacer"></div><div class="divider"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 3 -->
+<section class="content" id="slide3">
+  <div class="reveal"><div class="sec-label">Act 1 / Section 3</div><div class="sec-num">03</div><h2 class="sec-title">Our institutions are paid to enroll students, <em>not to make them capable.</em></h2></div>
+  <p class="body reveal">The U.S. education system is optimized for enrollment and completion. Not employment. Not competence. Not readiness. Schools get funded when students show up. Not when they can perform.</p>
+  <div class="data-stack">
+    <div class="data-point reveal"><div class="data-stat">43%</div><div class="data-desc">of ACT test-takers met <strong>zero</strong> college readiness benchmarks</div></div>
+    <div class="data-point reveal reveal-d1"><div class="data-stat">45%</div><div class="data-desc">of 12th graders scored below basic in math</div></div>
+    <div class="data-point reveal reveal-d2"><div class="data-stat">1 in 3</div><div class="data-desc">college students require <strong>remedial coursework</strong> before starting</div></div>
+    <div class="data-point reveal reveal-d3"><div class="data-stat">89%</div><div class="data-desc">of companies are actively <strong>avoiding hiring recent graduates</strong></div></div>
+    <div class="data-point reveal reveal-d4"><div class="data-stat">75%</div><div class="data-desc">of HR leaders say college is <strong>not preparing people for jobs at all</strong></div></div>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 4 -->
+<section class="content-full" id="slide4">
+  <div class="reveal"><div class="sec-label">Act 1 / Section 4</div><div class="sec-num">04</div><h2 class="sec-title">The bill has come due. And <em>we cannot pay it with money.</em></h2></div>
+  <div class="consequence-grid">
+    <div class="consequence-col reveal"><div class="consequence-col-title">Defense</div>
+      <div class="consequence-item"><div class="ci-stat">7 years behind</div><div class="ci-desc">Submarine programs behind schedule</div></div>
+      <div class="consequence-item"><div class="ci-stat">14,000+</div><div class="ci-desc">Aircraft backlogged</div></div>
+      <div class="consequence-item"><div class="ci-stat">232 : 1</div><div class="ci-desc">China outproduces U.S. in shipbuilding</div></div>
+      <div class="consequence-item"><div class="ci-stat">Critical</div><div class="ci-desc">Weapon systems delayed by workforce shortages</div></div>
+    </div>
+    <div class="consequence-col reveal reveal-d1"><div class="consequence-col-title">Industry</div>
+      <div class="consequence-item"><div class="ci-stat">2M+</div><div class="ci-desc">Manufacturing roles unfilled today</div></div>
+      <div class="consequence-item"><div class="ci-stat">3.8M</div><div class="ci-desc">Projected unfilled by 2033</div></div>
+      <div class="consequence-item"><div class="ci-stat">50%</div><div class="ci-desc">Skilled workforce approaching retirement</div></div>
+      <div class="consequence-item"><div class="ci-stat">201 : 1</div><div class="ci-desc">Demand-to-supply imbalance in core trades</div></div>
+    </div>
+    <div class="consequence-col reveal reveal-d2"><div class="consequence-col-title">Capital</div>
+      <div class="consequence-item"><div class="ci-stat">$52B</div><div class="ci-desc">CHIPS Act funding, workforce is the bottleneck</div></div>
+      <div class="consequence-item"><div class="ci-stat">$369B</div><div class="ci-desc">IRA spending constrained by labor availability</div></div>
+      <div class="consequence-item"><div class="ci-stat">$200B+</div><div class="ci-desc">Manufacturing construction with no one to staff it</div></div>
+      <div class="consequence-item"><div class="ci-stat">$1.5T</div><div class="ci-desc">Economic value immobilized by talent scarcity</div></div>
+    </div>
+  </div>
+  <div class="callout reveal"><span class="callout-bg">8 DAYS</span><p class="callout-text">"[United States would] run out of missiles in just <em>eight days</em> in a war against China for Taiwan."<span style="display:block;font-family:var(--sans);font-size:12px;color:var(--gray-500);margin-top:12px;font-style:normal;letter-spacing:.1em;text-transform:uppercase">Palmer Luckey, Founder of Anduril</span></p></div>
+</section>
+
+<div class="spacer-lg"></div>
+
+
+<!-- ============================================================ -->
+<!-- ACT 2                                                          -->
+<!-- ============================================================ -->
+
+<div class="act-banner" id="act2">
+  <div class="act-banner-label">Act 2</div>
+  <div class="act-banner-title">The New Industrial Talent Infrastructure</div>
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- SLIDE 5: THE BELIEF -->
+<section class="content" id="slide5" style="text-align:center">
+  <div class="reveal">
+    <div class="sec-label" style="justify-content:center">Act 2 / Section 5</div>
+    <div class="sec-num" style="text-align:center">05</div>
+    <h2 class="sec-title" style="text-align:center;max-width:760px;margin-left:auto;margin-right:auto">We believe America's industrial future will be built by a <em>new kind of institution.</em></h2>
+    <p class="sec-sub" style="text-align:center;margin-left:auto;margin-right:auto;max-width:620px">Not a school. Not a staffing agency. Not a training program. A system designed from the ground up to produce mission-ready industrial talent at scale.</p>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 6: THE INSIGHT -->
+<section class="content-full" id="slide6">
+  <div class="reveal"><div class="sec-label">Act 2 / Section 6</div><div class="sec-num">06</div><h2 class="sec-title">You cannot train industrial talent <em>outside of industry.</em></h2></div>
+
+  <div class="lanes-wrap">
+  <div class="lanes">
+    <div class="lane lane-uni reveal">
+      <div class="lane-label"><div class="lane-label-name">The University</div><div class="lane-label-sub">4 Years</div></div>
+      <div class="lane-bar">
+        <span class="lane-step">4 Years</span><span class="lane-step">Lecture Halls</span><span class="lane-step">Outdated Theory</span><span class="lane-step">No Benchmark</span><span class="lane-step">Graduate</span><span class="lane-step">Retrain on Job</span><span class="lane-step">6-18 Mo. Before Productive</span>
+      </div>
+    </div>
+    <div class="lane lane-trade reveal reveal-d1">
+      <div class="lane-label"><div class="lane-label-name">Trade School</div><div class="lane-label-sub">6-12 Months</div></div>
+      <div class="lane-bar">
+        <span class="lane-step">6-12 Months</span><span class="lane-step">Task Training</span><span class="lane-step">Machine Operation</span><span class="lane-step">No Academic Depth</span><span class="lane-step">Follows Instructions</span>
+      </div>
+    </div>
+    <div class="lane lane-ark reveal reveal-d2">
+      <div class="lane-label"><div class="lane-label-name">Arklight</div><div class="lane-label-sub">1 Year</div></div>
+      <div class="lane-bar">
+        <span class="lane-step">1 Year</span><span class="lane-step">Real Production</span><span class="lane-step">Live Contracts</span><span class="lane-step">Arklight OS (Applied Math &amp; Engineering)</span><span class="lane-step">Benchmarked Against Elite</span><span class="lane-step">Understands the System</span><span class="lane-step">Mission-Ready</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="bottom-line reveal">Benchmarked against the best. Accelerated by AI. <strong>Forged in real production.</strong></div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 7: ACI -->
+<section class="content-wide" id="slide7">
+  <div class="reveal">
+    <div class="sec-label">Act 2 / Section 7</div>
+    <div class="sec-num">07</div>
+    <h2 class="sec-title">We identify the talent <em>everyone else misses.</em></h2>
+    <p class="sec-sub">Arklight Cognitive Index: Identifying high-potential Americans that traditional hiring overlooks.</p>
+  </div>
+
+  <!-- Research foundation -->
+  <div class="reveal">
+    <div style="font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-500);margin-bottom:16px;text-align:center">Research Foundation</div>
+    <div class="logo-row">
+      <img class="logo-img wide invert-dark" src="harvard.png" alt="Harvard University">
+      <img class="logo-img tall" src="stanford.png" alt="Stanford University">
+      <img class="logo-img tall" src="fbi.png" alt="FBI">
+      <img class="logo-img tall" src="army.svg" alt="U.S. Army">
+      <img class="logo-img tall" src="war.png" alt="U.S. Department of War">
+    </div>
+    <p style="font-size:13px;color:var(--gray-500);text-align:center;margin-top:12px;margin-bottom:48px">Built on 80+ years of accumulated research across 30+ academic and military studies.</p>
+  </div>
+
+  <!-- Three columns -->
+  <div style="font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px">What ACI Measures</div>
+  <div class="three-cols">
+    <div class="col-card reveal">
+      <div class="col-card-title">Cognitive Capability</div>
+      <div class="col-card-body">Predicts and measures whether someone can solve and master complex work, regardless of background or credentials.</div>
+    </div>
+    <div class="col-card reveal reveal-d1">
+      <div class="col-card-title">Behavioral &amp; Integrity</div>
+      <div class="col-card-body">Analyzes and predicts an individual's decision-making under pressure, when conditions are hard, stakes are real, and no one is watching.</div>
+    </div>
+    <div class="col-card reveal reveal-d2">
+      <div class="col-card-title">Technical Aptitude</div>
+      <div class="col-card-body">Quantifies a candidate's ability for technical tasks and workflows, to operate in high-precision environments.</div>
+    </div>
+  </div>
+
+  <div class="benchmark reveal">Every candidate benchmarked against top operators in the U.S. industrial base. Resumes show where someone has been. ACI reveals what they're capable of becoming.</div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 8: THE TALENT FACTORY -->
+<section class="content-full" id="slide8">
+  <div class="reveal">
+    <div class="sec-label">Act 2 / Section 8</div>
+    <div class="sec-num">08</div>
+    <h2 class="sec-title">A factory that trains <em>while it produces.</em></h2>
+    <p class="sec-sub" style="max-width:580px">The Talent Factory: Where real contracts build real operators.</p>
+  </div>
+
+  <div class="split">
+    <div class="split-col reveal">
+      <div class="split-col-label">The Experience</div>
+      <div class="split-col-title">What Happens Inside</div>
+      <div class="split-item">Operators train inside live production from day one</div>
+      <div class="split-item">Students fulfill real-world manufacturing contracts as they learn</div>
+      <div class="split-item">Arklight OS delivers applied math and engineering in real time, in context, as the work demands</div>
+      <div class="split-item">ACI tracks progress continuously against the elite benchmark</div>
+      <div class="split-item">Every part produced is a lesson. Every contract fulfilled is a test.</div>
+    </div>
+    <div class="split-col reveal reveal-d1">
+      <div class="split-col-label">The Result</div>
+      <div class="split-col-title">What Comes Out</div>
+      <div class="split-item">Operators who understand the system, not just the task</div>
+      <div class="split-item">Technical depth compressed from four years into one</div>
+      <div class="split-item">Readiness quantified across cognitive, behavioral, and technical dimensions</div>
+      <div class="split-item">Performance validated against the best operators in the industrial base</div>
+      <div class="split-item">Productive and revenue-generating from day one</div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 9: THE INTEGRATED SYSTEM -->
+<section class="content-wide" id="slide9">
+  <div class="reveal" style="text-align:center">
+    <div class="sec-label" style="justify-content:center">Act 2 / Section 9</div>
+    <div class="sec-num" style="text-align:center">09</div>
+    <h2 class="sec-title" style="text-align:center">One system. No gaps. <em>Gets smarter every cycle.</em></h2>
+    <p class="sec-sub" style="text-align:center;margin-left:auto;margin-right:auto">Assessment, training, production, and performance data in a single loop.</p>
+  </div>
+
+  <!-- Flywheel -->
+  <div class="flywheel-wrap reveal">
+    <div class="flywheel-center">
+      <div class="flywheel-center-label">Core</div>
+      <div class="flywheel-center-title">Compounding Advantage</div>
+    </div>
+    <div class="flywheel-ring"></div>
+    <div class="fw-node n1">
+      <div class="fw-node-num">Assess</div>
+      <div class="fw-node-title">Measure What Resumes Can't</div>
+      <div class="fw-node-body">ACI quantifies cognitive capability, behavior, and technical aptitude against elite benchmarks before training begins.</div>
+    </div>
+    <div class="fw-node n2">
+      <div class="fw-node-num">Train</div>
+      <div class="fw-node-title">Learn by Producing</div>
+      <div class="fw-node-body">Operators train inside live production, fulfilling real contracts while Arklight OS compresses applied math and engineering into the work.</div>
+    </div>
+    <div class="fw-node n3">
+      <div class="fw-node-num">Deploy</div>
+      <div class="fw-node-title">Mission-Ready From Day One</div>
+      <div class="fw-node-body">Operators whose readiness has been quantified across every dimension are placed with employer partners, productive immediately.</div>
+    </div>
+    <div class="fw-node n4">
+      <div class="fw-node-num">Learn</div>
+      <div class="fw-node-title">The System Gets Smarter</div>
+      <div class="fw-node-body">Real-world performance data flows back, refining assessment accuracy, sharpening training, and raising the benchmark every cycle.</div>
+    </div>
+  </div>
+
+  <div class="content"><div class="bottom-line reveal">ACI can be sold standalone. The Talent Factory can operate independently. Together, they create a closed-loop system <strong>that no one else can replicate.</strong></div></div>
+</section>
+
+<div class="spacer-lg"></div>
+
+<!-- ============================================================ -->
+<!-- ACT 3: THE PROOF AND THE ASK                                  -->
+<!-- ============================================================ -->
+
+<div class="act-banner" id="act3">
+  <div class="act-banner-label">Act 3</div>
+  <div class="act-banner-title">The Proof and The Ask</div>
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- SLIDE 10: WHY NOW -->
+<section class="content-full" id="slide10">
+  <div class="reveal"><div class="sec-label">Act 3 / Section 10</div><div class="sec-num">10</div><h2 class="sec-title">Every force is converging on the same point. And the window <em>will not stay open.</em></h2></div>
+
+  <div class="converge-section reveal">
+    <div class="converge-grid">
+      <!-- Top Left: Policy Mandate -->
+      <div class="cf-card cf-tl">
+        <div class="cf-card-label">Policy Mandate</div>
+        <div class="cf-card-stat">$52B CHIPS. $369B IRA. Historic defense spending.</div>
+        <div class="cf-card-body">The money is here, waiting for the workforce to deploy it.</div>
+        <div class="cf-line"></div>
+      </div>
+
+      <!-- Center -->
+      <div class="converge-center">
+        <div class="converge-center-box">
+          <div class="converge-center-label">Convergence</div>
+          <div class="converge-center-title">Talent Infrastructure. Now.</div>
+        </div>
+      </div>
+
+      <!-- Top Right: Geopolitical Urgency -->
+      <div class="cf-card cf-tr">
+        <div class="cf-line"></div>
+        <div class="cf-card-label">Geopolitical Urgency</div>
+        <div class="cf-card-stat">China. Russia. Iran. Venezuela.</div>
+        <div class="cf-card-body">Four simultaneous threat vectors. Industrial capacity is now a national security requirement. Bipartisan. Accelerating.</div>
+      </div>
+
+      <!-- Spacer row -->
+      <div class="converge-spacer"></div>
+
+      <!-- Bottom Left: Demographic Collapse -->
+      <div class="cf-card cf-bl">
+        <div class="cf-card-label">Demographic Collapse</div>
+        <div class="cf-card-stat">90% of the defense industrial base is SMBs.</div>
+        <div class="cf-card-body">Led by owners approaching retirement. A demographic cliff is coming. No one is filling the supply chain behind them.</div>
+        <div class="cf-line"></div>
+      </div>
+
+      <!-- Bottom Right: Market Need -->
+      <div class="cf-card cf-br">
+        <div class="cf-line"></div>
+        <div class="cf-card-label">Market Need</div>
+        <div class="cf-card-stat">89% avoiding recent graduates.</div>
+        <div class="cf-card-body">$100B+ in workforce spend shifting away from traditional education.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content"><div class="bottom-line reveal">Whoever builds it first will define <strong>how American industry operates for decades.</strong></div></div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 11: TRACTION -->
+<section class="content-full" id="slide11">
+  <div class="reveal"><div class="sec-label">Act 3 / Section 11</div><div class="sec-num">11</div><h2 class="sec-title">We're not guessing. We're <em>already in the room.</em></h2><p class="sec-sub">Institutional demand validated at the highest levels of the U.S. defense industrial base, with 20+ additional companies in active conversations.</p></div>
+  <div class="traction-grid">
+    <div class="traction-col reveal"><div class="traction-name">Hadrian</div><div class="traction-body"><ul><li>Weekly design mapping with talent leadership</li><li>Curriculum co-development underway</li><li>Willingness to co-design Talent Factory for all factories</li></ul></div></div>
+    <div class="traction-col reveal reveal-d1"><div class="traction-name">Anduril</div><div class="traction-body"><ul><li>Chairman introduced Arklight to talent leaders</li><li>Multiple buy-in across teams</li><li>Corporate-level commitment, $1.5B+ project scope</li></ul></div></div>
+    <div class="traction-col reveal reveal-d2"><div class="traction-name">U.S. Navy</div><div class="traction-body"><ul><li>Maritime Industrial Base alignment, $17B national program</li><li>Designing program partnership</li><li>Head of program wants Arklight as part of MIB initiative</li></ul></div></div>
+  </div>
+  <div class="risk-grid">
+    <div class="risk-item reveal"><div class="risk-label">Demand Risk: <span>Neutralized</span></div><div class="risk-body">Active engagement with Tier-1 employers and $17B+ government programs.</div></div>
+    <div class="risk-item reveal reveal-d1"><div class="risk-label">Credibility Risk: <span>Neutralized</span></div><div class="risk-body">The level of access and trust granted by prime defense-adjacent partners.</div></div>
+    <div class="risk-item reveal reveal-d2"><div class="risk-label">Execution Risk: <span>Neutralized</span></div><div class="risk-body">Co-designing the curriculum inside live production environments.</div></div>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 12: THE TEAM -->
+<section class="content-full" id="slide12">
+  <div class="reveal"><div class="sec-label">Act 3 / Section 12</div><div class="sec-num">12</div><h2 class="sec-title">Operators who've built before. Building again <em>for what matters most.</em></h2></div>
+  <div class="team-logos reveal">
+    <span class="team-logo">a16z</span>
+    <span class="team-logo">Apple</span>
+    <span class="team-logo">U.S. Army</span>
+    <span class="team-logo">AWS</span>
+    <span class="team-logo">SAP</span>
+    <span class="team-logo">EY</span>
+    <span class="team-logo">Cisco</span>
+    <span class="team-logo">VMware</span>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-name">Dani Mota</div>
+      <div class="team-role">CEO &amp; Founder</div>
+      <div class="team-bio">Built an AI fintech into a global startup serving JP Morgan and financial institutions across Asia and LATAM. $250M valuation. Former university foundation board member. Knows how to scale companies and how education systems actually work.</div>
+    </div>
+    <div class="team-card reveal reveal-d1">
+      <div class="team-name">Josh Soto</div>
+      <div class="team-role">Founder</div>
+      <div class="team-bio">Military intelligence. Former CMO of a16z ($42B AUM). Took a failing K-12 school and rebuilt it with AI. Now leading AI strategy at Cisco. Defense, education, and enterprise tech in one operator.</div>
+    </div>
+    <div class="team-card reveal reveal-d2">
+      <div class="team-name">Ray Bryant</div>
+      <div class="team-role">Founder</div>
+      <div class="team-bio">Serial founder. PE partner. Multiple exits. Professor at Jessup University, former board member of Jessup Foundation. Capital markets fluency meets institutional depth.</div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 13: THE MARKET -->
+<section class="content-full" id="slide13">
+  <div class="reveal"><div class="sec-label">Act 3 / Section 13</div><div class="sec-num">13</div><h2 class="sec-title">We don't compete in one market. We capture <em>value from two.</em></h2></div>
+
+  <div class="market-layers">
+    <div class="market-layer reveal">
+      <div class="market-layer-label">Layer 1</div>
+      <div class="market-layer-title">Talent Infrastructure</div>
+      <div class="market-layer-body">$100B+ in annual workforce spend actively shifting away from traditional education. Defense contractors, advanced manufacturers, and government programs all searching for outcome-driven alternatives. No one owns the talent layer for industrial America.</div>
+    </div>
+    <div class="market-layer reveal reveal-d1">
+      <div class="market-layer-label">Layer 2</div>
+      <div class="market-layer-title">Manufacturing Ownership</div>
+      <div class="market-layer-body">90% of the defense industrial base is SMBs. Owners retiring. No succession plans. Profitable shops with aging infrastructure and disappearing knowledge. A massive acquisition opportunity hiding in plain sight.</div>
+    </div>
+  </div>
+
+  <div class="market-bars-h reveal">
+    <div class="market-bar-h">
+      <div class="market-bar-h-top"><span class="market-bar-h-label">TAM</span><span class="market-bar-h-value">$503B</span><span class="market-bar-h-desc">Total addressable asset base</span></div>
+      <div class="market-bar-h-track"><div class="market-bar-h-fill bar-h-tam"></div></div>
+    </div>
+    <div class="market-bar-h">
+      <div class="market-bar-h-top"><span class="market-bar-h-label">SAM</span><span class="market-bar-h-value">$71.8B</span><span class="market-bar-h-desc">Target geographies &amp; subsectors</span></div>
+      <div class="market-bar-h-track"><div class="market-bar-h-fill bar-h-sam"></div></div>
+    </div>
+    <div class="market-bar-h">
+      <div class="market-bar-h-top"><span class="market-bar-h-label">SOM</span><span class="market-bar-h-value">$430M</span><span class="market-bar-h-desc">Capturable in 5-7 years, under 1% penetration</span></div>
+      <div class="market-bar-h-track"><div class="market-bar-h-fill bar-h-som"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 14: BUSINESS MODEL -->
+<section class="content-full" id="slide14">
+  <div class="reveal"><div class="sec-label">Act 3 / Section 14</div><div class="sec-num">14</div><h2 class="sec-title">Two revenue engines. <em>One compounding system.</em></h2></div>
+  <div class="split">
+    <div class="split-col reveal">
+      <div class="split-col-label">Revenue Engine 1</div>
+      <div class="split-col-title">ACI (SaaS)</div>
+      <div class="split-item"><strong>High-margin recurring revenue</strong> replacing legacy hiring infrastructure.</div>
+      <div class="split-item"><strong>Tiered revenue:</strong> $1-2,000 per assessment or $250K-$1M per year enterprise licenses.</div>
+      <div class="split-item"><strong>Outcome upside:</strong> Bonuses for hires who exceed productivity and retention benchmarks.</div>
+      <div class="split-item"><strong>Locked demand:</strong> Multi-year contracts provide predictable, high-margin cash flow.</div>
+    </div>
+    <div class="split-col reveal reveal-d1">
+      <div class="split-col-label">Revenue Engine 2</div>
+      <div class="split-col-title">Talent Factory (Hybrid Industrial)</div>
+      <div class="split-item"><strong>Self-funding infrastructure</strong> converting training into production revenue.</div>
+      <div class="split-item"><strong>Contract fulfillment:</strong> Real manufacturing revenue generated during the training cycle.</div>
+      <div class="split-item"><strong>Placement fees:</strong> Revenue earned upon successful operator deployment to partners.</div>
+      <div class="split-item"><strong>Manufacturing upside:</strong> Acquired shops generate revenue independent of training.</div>
+    </div>
+  </div>
+  <div class="strat-grid">
+    <div class="strat-item reveal"><div class="strat-label">Demand-First Acquisition</div><div class="strat-body">Shops acquired only after ACI generates recurring revenue and commercial agreements are secured. All acquisitions target already profitable facilities.</div></div>
+    <div class="strat-item reveal reveal-d1"><div class="strat-label">Non-Dilutive Growth</div><div class="strat-body">Expansion funded through federal and state industrial programs: CHIPS, IRA, DoW-aligned capital, preserving equity.</div></div>
+    <div class="strat-item reveal reveal-d2"><div class="strat-label">Contract-Backed Scale</div><div class="strat-body">Every Talent Factory launched against contracted demand with defined roles, throughput targets, and performance benchmarks.</div></div>
+  </div>
+</section>
+
+<div class="spacer"></div><div class="divider-wide"><hr></div><div class="spacer"></div>
+
+<!-- SLIDE 15: THE ASK -->
+<section class="content-full" id="slide15">
+  <div class="reveal" style="text-align:center"><div class="sec-label" style="justify-content:center">Act 3 / Section 15</div><div class="sec-num" style="text-align:center">15</div><h2 class="sec-title" style="text-align:center">$300K to prove <em>what we already know.</em></h2><p class="sec-sub" style="text-align:center;margin-left:auto;margin-right:auto">Pre-seed round. $3M post-money valuation.</p></div>
+  <div class="split">
+    <div class="split-col reveal">
+      <div class="split-col-label">Use of Funds</div>
+      <div class="split-col-title">Where the capital goes</div>
+      <div class="split-item">Build and commercialize the ACI MVP.</div>
+      <div class="split-item">Secure initial pilot deployments with defense manufacturers.</div>
+      <div class="split-item">Expand industrial partnerships and advisory network.</div>
+      <div class="split-item">Legal, compliance, and operational infrastructure.</div>
+    </div>
+    <div class="split-col reveal reveal-d1">
+      <div class="split-col-label">What This Round Proves</div>
+      <div class="split-col-title">Validation milestones</div>
+      <div class="split-item">That ACI can identify industrial talent better than resumes and interviews.</div>
+      <div class="split-item">That employers will pay for performance-based talent signals.</div>
+      <div class="split-item">That the Talent Factory model has demand from real manufacturers.</div>
+      <div class="split-item">That Arklight is the team and the system to solve this.</div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer-lg"></div>
+
+<!-- CLOSING -->
+<section class="hero" id="closing" style="min-height:90vh">
+  <div class="hero-eyebrow" style="opacity:1;animation:none">Project Arklight</div>
+  <h1 class="hero-title" style="opacity:1;animation:none">
+    <span class="t-main">The nation that builds the best people <span class="t-red" style="font-style:italic">builds the future.</span></span>
+  </h1>
+  <div class="hero-line" style="opacity:1;animation:none"></div>
+  <p class="hero-sub" style="opacity:1;animation:none"><strong>We're building them.</strong> Join us.</p>
+  <div style="margin-top:56px;text-align:center;opacity:1">
+    <div style="font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-500);margin-bottom:12px">Contact</div>
+    <div style="font-family:var(--serif);font-size:clamp(18px,2.5vw,24px);color:var(--white);font-weight:400">Dani Mota</div>
+    <a id="contactEmail" style="font-size:14px;color:var(--red);letter-spacing:.05em;margin-top:8px;display:inline-block;transition:opacity .3s;cursor:pointer" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'"></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-author">Written by <span>Daniel Mota</span> / Project Arklight Founder &amp; CEO</div>
+  <div class="footer-date">Project Arklight, 2025</div>
+</footer>
+
+<script>
+// Progress bar + nav scroll
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('progress').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
+},{passive:true});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Side dots
+const secs=['hero','slide2','slide3','slide4','slide5','slide6','slide7','slide8','slide9','slide10','slide11','slide12','slide13','slide14','slide15'],dots=document.querySelectorAll('.s-dot');
+window.addEventListener('scroll',()=>{let c=0;secs.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<window.innerHeight/2)c=i});dots.forEach((d,i)=>d.classList.toggle('active',i===c))},{passive:true});
+dots.forEach(d=>d.addEventListener('click',()=>document.getElementById(d.dataset.target).scrollIntoView({behavior:'smooth'})));
+
+// Smooth anchors
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}));
+
+// Hero parallax (desktop only)
+if(window.innerWidth>768){
+  window.addEventListener('scroll',()=>{const h=document.querySelector('.hero'),s=window.scrollY;if(s<window.innerHeight){h.style.transform='translateY('+s*.25+'px)';h.style.opacity=1-(s/window.innerHeight)*.5}},{passive:true});
+}
+
+// Vessel visualization
+const grid=document.getElementById('vesselGrid');
+const usaRow=document.getElementById('vesselUSA');
+const vesselSVG='<svg viewBox="0 0 24 24"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.14.52-.05.78L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"/></svg>';
+const allVessels=[];
+for(let i=0;i<232;i++){const v=document.createElement('div');v.className='vessel';v.innerHTML=vesselSVG;grid.appendChild(v);allVessels.push(v)}
+const uv=document.createElement('div');uv.className='vessel-usa';uv.innerHTML=vesselSVG;usaRow.appendChild(uv);
+let va=false;
+const vo=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting&&!va){va=true;animateFleet()}})},{threshold:0.2});
+vo.observe(grid);
+function animateFleet(){
+  const dur=2000,el=document.getElementById('chinaCount'),st=performance.now();
+  let lastCount=0;
+  function tick(now){
+    const p=Math.min((now-st)/dur,1);
+    const eased=1-Math.pow(1-p,3);
+    const count=Math.round(eased*232);
+    el.textContent=count;
+    // Activate vessels up to current count
+    for(let i=lastCount;i<count;i++){allVessels[i].classList.add('active')}
+    lastCount=count;
+    if(p<1){requestAnimationFrame(tick)}
+    else{
+      // Ensure all are active, then show USA vessel
+      allVessels.forEach(v=>v.classList.add('active'));
+      setTimeout(()=>{document.querySelector('.vessel-usa').classList.add('active')},200);
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+// Theme toggle
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  document.querySelector('meta[name="theme-color"]').content=next==='dark'?'#000000':'#fafaf9';
+  try{localStorage.setItem('arklight-theme',next)}catch(e){}
+}
+document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+document.getElementById('mmThemeBtn').addEventListener('click',toggleTheme);
+try{const saved=localStorage.getItem('arklight-theme');if(saved){document.documentElement.setAttribute('data-theme',saved);document.querySelector('meta[name="theme-color"]').content=saved==='dark'?'#000000':'#fafaf9'}}catch(e){}
+
+// Mobile menu
+const navToggle=document.getElementById('navToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+navToggle.addEventListener('click',()=>{
+  navToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{
+  navToggle.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}));
+
+// Toast notification
+function showToast(msg){
+  const t=document.getElementById('shareToast');
+  document.getElementById('shareToastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// Share modal
+const shareOverlay=document.getElementById('shareOverlay');
+const emailInput=document.getElementById('emailInput');
+const emailChips=document.getElementById('emailChips');
+const shareSendBtn=document.getElementById('shareSendBtn');
+const shareFormView=document.getElementById('shareFormView');
+const shareSentView=document.getElementById('shareSentView');
+let emails=[];
+
+function openShareModal(){
+  emails=[];emailChips.innerHTML='';emailInput.value='';
+  shareSendBtn.disabled=true;
+  shareFormView.style.display='';shareSentView.style.display='none';
+  shareOverlay.classList.add('open');
+  setTimeout(()=>emailInput.focus(),300);
+}
+function closeShareModal(){shareOverlay.classList.remove('open')}
+function addEmail(val){
+  const e=val.trim().toLowerCase();
+  if(!e||emails.includes(e))return;
+  emails.push(e);
+  const chip=document.createElement('span');chip.className='email-chip';
+  chip.innerHTML=e+'<button aria-label="Remove"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+  chip.querySelector('button').addEventListener('click',()=>{emails=emails.filter(x=>x!==e);chip.remove();shareSendBtn.disabled=emails.length===0});
+  emailChips.appendChild(chip);
+  emailInput.value='';
+  shareSendBtn.disabled=false;
+}
+emailInput.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();addEmail(emailInput.value)}
+  if(e.key==='Backspace'&&!emailInput.value&&emails.length){const last=emailChips.lastElementChild;if(last){emails.pop();last.remove();shareSendBtn.disabled=emails.length===0}}
+});
+emailInput.addEventListener('blur',()=>{if(emailInput.value.trim())addEmail(emailInput.value)});
+document.getElementById('emailWrap').addEventListener('click',()=>emailInput.focus());
+shareSendBtn.addEventListener('click',()=>{
+  shareSendBtn.innerHTML='Sending...';shareSendBtn.disabled=true;
+  setTimeout(()=>{
+    shareFormView.style.display='none';shareSentView.style.display='';
+    document.getElementById('sentToMsg').textContent='Sent to '+emails.length+(emails.length===1?' recipient':' recipients');
+  },800);
+});
+document.getElementById('shareDoneBtn').addEventListener('click',closeShareModal);
+document.getElementById('shareClose').addEventListener('click',closeShareModal);
+shareOverlay.addEventListener('click',e=>{if(e.target===shareOverlay)closeShareModal()});
+document.getElementById('shareCopyLink').addEventListener('click',()=>{navigator.clipboard.writeText(window.location.href).catch(()=>{});closeShareModal();showToast('Link copied to clipboard')});
+
+document.getElementById('shareBtn').addEventListener('click',openShareModal);
+document.getElementById('mmShareBtn').addEventListener('click',()=>{navToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';setTimeout(openShareModal,200)});
+
+// PDF Download
+function doPDF(){
+  window.print();
+}
+document.getElementById('pdfBtn').addEventListener('click',doPDF);
+document.getElementById('mmPdfBtn').addEventListener('click',()=>{navToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';setTimeout(doPDF,300)});
+
+// Contact email (built via JS to avoid email scraping)
+(function(){var a=document.getElementById('contactEmail');if(a){var u='dani';var d='arklight.us';a.href='mai'+'lto:'+u+'@'+d;a.textContent=u+'@'+d}})();
+</script>
+</body>
+</html>

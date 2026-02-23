@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Arklight</title>
+<meta name="description" content="Evolving the American Workforce for the Era of AI, Robotics, and National Security.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[data-theme="dark"]{--black:#000;--bg:#000;--bg-card:#0d0d0d;--bg-elevated:#111;--white:#fff;--gray-100:#f0f0f0;--gray-200:#d4d4d4;--gray-300:#a3a3a3;--gray-400:#737373;--gray-500:#525252;--gray-600:#404040;--gray-700:#2a2a2a;--gray-800:#1a1a1a;--gray-900:#0f0f0f;--red:#e63946;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(0,0,0,.92);color-scheme:dark}
+[data-theme="light"]{--black:#fafaf9;--bg:#fafaf9;--bg-card:#fff;--bg-elevated:#f5f5f4;--white:#1a1a1a;--gray-100:#2e2e2e;--gray-200:#3a3a3a;--gray-300:#525252;--gray-400:#737373;--gray-500:#a3a3a3;--gray-600:#d4d4d4;--gray-700:#e5e5e5;--gray-800:#f0f0f0;--gray-900:#f5f5f4;--red:#d62839;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(250,250,249,.95);color-scheme:light}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gray-600) var(--black)}
+body{background:var(--bg);color:var(--gray-200);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.nav.scrolled{padding:16px 48px;background:var(--nav-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--gray-700)}
+.nav-brand{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-cta{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);border:1px solid var(--red);padding:7px 16px;transition:all .3s;display:inline-flex;align-items:center;gap:7px;cursor:pointer;white-space:nowrap;font-family:var(--sans)}
+.nav-cta:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.theme-toggle{background:none;border:1px solid var(--gray-700);border-radius:50%;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--gray-400)}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:var(--gray-400);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.theme-toggle:hover svg{stroke:var(--white)}
+.theme-toggle .icon-moon{display:block}.theme-toggle .icon-sun{display:none}
+[data-theme="light"] .theme-toggle .icon-moon{display:none}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--white);margin:5px 0;transition:all .3s}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+@media(max-width:1100px){.nav-links{gap:18px}.nav-links a{font-size:10px}.nav-cta{font-size:9px;padding:6px 12px}}
+@media(max-width:900px){.nav-links{display:none}.nav-cta{display:none}.nav-toggle{display:block}.theme-toggle{display:none}}
+@media(max-width:768px){.nav{padding:18px 24px}.nav.scrolled{padding:14px 24px}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--serif);font-size:22px;color:var(--white);padding:6px 0;transition:color .2s}
+.mobile-menu a:active{color:var(--red)}
+.mobile-menu .mm-theme{margin-top:16px;font-size:12px;color:var(--gray-400);display:flex;align-items:center;gap:8px;cursor:pointer;background:none;border:1px solid var(--gray-700);padding:10px 20px;transition:all .3s}
+@media(min-width:901px){.mobile-menu{display:none!important}}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:1001;transition:width .1s}
+
+/* HERO */
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 48px 100px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(transparent,var(--black))}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-400);margin-bottom:48px;opacity:0;animation:fi .8s ease .3s forwards}
+.hero-title{font-family:var(--serif);line-height:1.1;margin-bottom:40px;max-width:900px;opacity:0;animation:fi 1s ease .5s forwards}
+.hero-title .t-main{display:block;font-size:clamp(32px,5.5vw,64px);color:var(--white);font-weight:400;letter-spacing:-.02em}
+.hero-title .t-red{color:var(--red)}
+.hero-desc{font-size:clamp(14px,1.6vw,17px);color:var(--gray-300);max-width:620px;line-height:1.7;font-weight:300;opacity:0;animation:fi .8s ease .8s forwards;margin-bottom:48px}
+.hero-line{width:48px;height:1px;background:var(--gray-500);margin:0 auto 32px;opacity:0;animation:fi .6s ease .7s forwards}
+.hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center;opacity:0;animation:fi .8s ease 1s forwards}
+.hero-cta{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 32px;transition:all .3s;cursor:pointer;font-family:var(--sans);display:inline-flex;align-items:center;gap:10px}
+.hero-cta-primary{background:var(--red);border:1.5px solid var(--red);color:#fff}
+.hero-cta-primary:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.hero-cta-secondary{background:none;border:1.5px solid var(--gray-500);color:var(--white)}
+.hero-cta-secondary:hover{border-color:var(--white);background:var(--white);color:var(--black)}
+.hero-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes fi{to{opacity:1}}
+.scroll-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fi .6s ease 1.4s forwards}
+.scroll-ind span{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-500)}
+.scroll-ind::after{content:'';width:1px;height:32px;background:linear-gradient(var(--gray-500),transparent);animation:scrollPulse 2s ease infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+@media(max-width:768px){.hero{padding:120px 24px 80px}.hero-ctas{flex-direction:column;width:100%;max-width:320px}.hero-cta{width:100%;justify-content:center}}
+
+/* SECTIONS */
+.section{padding:120px 48px;position:relative}
+@media(max-width:768px){.section{padding:80px 24px}}
+.section-inner{max-width:1080px;margin:0 auto}
+
+/* PRODUCT BLOCKS */
+.product-block{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border:1px solid var(--gray-800)}
+.product-block.reversed{direction:rtl}
+.product-block.reversed>*{direction:ltr}
+@media(max-width:900px){.product-block,.product-block.reversed{grid-template-columns:1fr;direction:ltr}.product-block.reversed>*{direction:ltr}}
+.product-content{padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.product-content{padding:36px 24px}}
+.product-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:320px;border-left:1px solid var(--gray-800)}
+.product-block.reversed .product-visual{border-left:none;border-right:1px solid var(--gray-800)}
+@media(max-width:900px){.product-visual{border-left:none!important;border-right:none!important;border-top:1px solid var(--gray-800)}}
+.product-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.product-title{font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:var(--white);font-weight:400;line-height:1.2;margin-bottom:20px}
+.product-body{font-size:14px;color:var(--gray-300);line-height:1.7;font-weight:300;margin-bottom:32px}
+.product-cta{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px 28px;border:1.5px solid var(--red);color:var(--white);background:none;transition:all .3s;cursor:pointer;font-family:var(--sans);display:inline-flex;align-items:center;gap:10px;align-self:flex-start}
+.product-cta:hover{background:var(--red);color:#fff}
+.product-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ACI visual */
+.pv-aci{background:linear-gradient(135deg,rgba(230,57,70,.04) 0%,var(--bg-card) 60%)}
+.pv-aci-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;padding:40px;width:100%}
+.pv-aci-cell{aspect-ratio:1;border:1px solid var(--gray-800);position:relative;transition:all .8s}
+.pv-aci-cell.lit{border-color:var(--red);background:rgba(230,57,70,.15);box-shadow:0 0 12px rgba(230,57,70,.1)}
+
+/* Talent Factory visual */
+.pv-tf{background:linear-gradient(135deg,var(--bg-card) 0%,rgba(230,57,70,.04) 100%)}
+.pv-tf-inner{padding:40px;width:100%;display:flex;flex-direction:column;gap:16px}
+.pv-tf-row{display:flex;align-items:center;gap:16px}
+.pv-tf-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);width:56px;flex-shrink:0;text-align:right}
+.pv-tf-bar{flex:1;height:6px;background:var(--gray-800);position:relative;overflow:hidden}
+.pv-tf-bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--red);width:0%;transition:width 1.5s cubic-bezier(.4,0,.2,1)}
+
+/* VALUES */
+.values-header{text-align:center;margin-bottom:56px}
+.values-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.values-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,40px);color:var(--white);font-weight:400;max-width:640px;margin:0 auto}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+@media(max-width:1000px){.values-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.values-grid{grid-template-columns:1fr}}
+.value-card{background:var(--bg-card);padding:40px 28px;position:relative;transition:all .4s}
+.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
+.value-card:hover::before{background:var(--red)}
+.value-card:hover{background:var(--bg-elevated)}
+.value-icon{width:32px;height:32px;margin-bottom:20px}
+.value-icon svg{width:24px;height:24px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.value-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
+.value-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+@media(max-width:768px){.value-card{padding:28px 20px}}
+
+/* FOOTER */
+.footer{padding:40px 48px;text-align:center;border-top:1px solid var(--gray-800)}
+.footer-brand{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
+.footer-copy{font-size:12px;color:var(--gray-600)}
+@media(max-width:768px){.footer{padding:32px 24px}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-brand">Project Arklight</a>
+  <ul class="nav-links">
+    <li><a href="#aci">ACI</a></li>
+    <li><a href="#factory">Talent Factory</a></li>
+    <li><a href="#values">Vision</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#" class="nav-cta" style="border-color:var(--gray-600);background:none;color:var(--white)">ACI Demo</a>
+    <a href="arklight.html" class="nav-cta">For Investors</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#aci" class="mm-link">ACI</a>
+  <a href="#factory" class="mm-link">Talent Factory</a>
+  <a href="#values" class="mm-link">Vision</a>
+  <a href="#" class="mm-link">ACI Demo</a>
+  <a href="arklight.html" class="mm-link">For Investors</a>
+  <a href="#" class="mm-link" style="color:var(--gray-400)">For Partners</a>
+  <button class="mm-theme" id="mmThemeBtn">
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+    Theme
+  </button>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Project Arklight</div>
+  <h1 class="hero-title">
+    <span class="t-main">Evolving the American Workforce for the Era of <span class="t-red" style="font-style:italic">AI, Robotics, and National Security</span></span>
+  </h1>
+  <div class="hero-line"></div>
+  <p class="hero-desc">The workforce that built the last century won't sustain the next one. Project Arklight is building the system to develop the next generation of Americans who will lead in advanced manufacturing, defense, and emerging technology, partnering with the companies defining what comes next.</p>
+  <div class="hero-ctas">
+    <a href="arklight.html" class="hero-cta hero-cta-primary">
+      For Investors
+      <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#" class="hero-cta hero-cta-secondary">
+      For Partners
+      <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="scroll-ind"><span>Scroll</span></div>
+</section>
+
+<!-- ACI SECTION -->
+<section class="section" id="aci">
+  <div class="section-inner">
+    <div class="product-block reveal">
+      <div class="product-content">
+        <div class="product-eyebrow">Arklight Cognitive Index</div>
+        <h2 class="product-title">Find the Talent Everyone Else Misses</h2>
+        <p class="product-body">Resumes and interviews were built for a different era. The Arklight Cognitive Index is a rigorous, AI-native evaluation that quantifies aptitude, learning velocity, and mission readiness, identifying high-potential Americans that traditional hiring overlooks. We're selecting design partners who are leading the next era of manufacturing and operations.</p>
+        <a href="#" class="product-cta">
+          Explore ACI
+          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="product-visual pv-aci">
+        <div class="pv-aci-grid" id="aciGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TALENT FACTORY SECTION -->
+<section class="section" id="factory" style="padding-top:0">
+  <div class="section-inner">
+    <div class="product-block reversed reveal">
+      <div class="product-visual pv-tf">
+        <div class="pv-tf-inner">
+          <div class="pv-tf-row"><div class="pv-tf-label">Assess</div><div class="pv-tf-bar"><div class="pv-tf-bar-fill" data-w="95"></div></div></div>
+          <div class="pv-tf-row"><div class="pv-tf-label">Train</div><div class="pv-tf-bar"><div class="pv-tf-bar-fill" data-w="78"></div></div></div>
+          <div class="pv-tf-row"><div class="pv-tf-label">Deploy</div><div class="pv-tf-bar"><div class="pv-tf-bar-fill" data-w="88"></div></div></div>
+          <div class="pv-tf-row"><div class="pv-tf-label">Learn</div><div class="pv-tf-bar"><div class="pv-tf-bar-fill" data-w="65"></div></div></div>
+        </div>
+      </div>
+      <div class="product-content">
+        <div class="product-eyebrow">The Talent Factory</div>
+        <h2 class="product-title">Where Production Meets Preparation</h2>
+        <p class="product-body">Our vision: manufacturing facilities that execute real government and commercial contracts while training the next generation of American workers in advanced manufacturing, AI-native business operations, and emerging IT, cybersecurity, networking, and beyond. No classrooms. No theory. Production and education become one system.</p>
+        <a href="#" class="product-cta">
+          Learn More
+          <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES SECTION -->
+<section class="section" id="values">
+  <div class="section-inner">
+    <div class="values-header reveal">
+      <div class="values-eyebrow">Our Vision</div>
+      <h2 class="values-title">What we believe. Why it matters.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+        <div class="value-title">America First</div>
+        <div class="value-body">For those who believe the U.S. must lead in manufacturing, defense, and technology, and that a stronger workforce is the foundation of national sovereignty.</div>
+      </div>
+      <div class="value-card reveal reveal-d1">
+        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+        <div class="value-title">Reimagine Education</div>
+        <div class="value-body">The traditional education pipeline is broken. Arklight replaces degrees-as-proxy with real-world production experience, AI-native evaluation, and skills that matter on day one.</div>
+      </div>
+      <div class="value-card reveal reveal-d2">
+        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <div class="value-title">Defense &amp; Industrial Opportunity</div>
+        <div class="value-body">Trillions in government contracts and industrial expansion are stalled by one constraint: talent. Arklight unlocks that capacity for companies building the future.</div>
+      </div>
+      <div class="value-card reveal reveal-d3">
+        <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <div class="value-title">The Next Generation</div>
+        <div class="value-body">A new path for ambitious Americans who want to build real things, trained in advanced manufacturing, AI-native operations, and cybersecurity through actual production work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Project Arklight</div>
+  <div class="footer-copy">Project Arklight, 2025</div>
+</footer>
+
+<script>
+// Progress bar + nav scroll
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('progress').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
+},{passive:true});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Theme toggle
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  try{localStorage.setItem('arklight-theme',next);document.querySelector('meta[name="theme-color"]').content=next==='dark'?'#000000':'#fafaf9'}catch(e){}
+}
+document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+document.getElementById('mmThemeBtn').addEventListener('click',toggleTheme);
+try{const saved=localStorage.getItem('arklight-theme');if(saved){document.documentElement.setAttribute('data-theme',saved);document.querySelector('meta[name="theme-color"]').content=saved==='dark'?'#000000':'#fafaf9'}}catch(e){}
+
+// Mobile menu
+const navToggle=document.getElementById('navToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+navToggle.addEventListener('click',()=>{
+  navToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{
+  navToggle.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}));
+
+// ACI grid animation
+(function(){
+  const grid=document.getElementById('aciGrid');
+  if(!grid)return;
+  for(let i=0;i<36;i++){const c=document.createElement('div');c.className='pv-aci-cell';grid.appendChild(c)}
+  const cells=grid.querySelectorAll('.pv-aci-cell');
+  function pulse(){
+    cells.forEach(c=>c.classList.remove('lit'));
+    const count=4+Math.floor(Math.random()*6);
+    const indices=new Set();
+    while(indices.size<count)indices.add(Math.floor(Math.random()*36));
+    indices.forEach(i=>cells[i].classList.add('lit'));
+  }
+  pulse();setInterval(pulse,2200);
+})();
+
+// Talent Factory bar animation
+const tfObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){
+  el.target.querySelectorAll('.pv-tf-bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%'});
+  tfObs.unobserve(el.target);
+}})},{threshold:0.3});
+const tfSection=document.querySelector('.pv-tf');
+if(tfSection)tfObs.observe(tfSection);
+
+// Hero parallax
+window.addEventListener('scroll',()=>{const h=document.querySelector('.hero'),s=window.scrollY;if(s<window.innerHeight){h.style.transform='translateY('+s*.2+'px)';h.style.opacity=1-(s/window.innerHeight)*.4}},{passive:true});
+</script>
+</body>
+</html>
