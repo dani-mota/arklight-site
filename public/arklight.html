@@ -218,9 +218,9 @@ a{color:inherit;text-decoration:none}
 .lane-trade .lane-step::after{color:var(--gray-500)}
 .lane-ark .lane-label-name{color:var(--red);font-size:15px}
 .lane-ark .lane-label-sub{color:var(--red);opacity:.6}
-.lane-ark .lane-bar{width:100%;background:linear-gradient(135deg,rgba(230,57,70,.14) 0%,rgba(230,57,70,.06) 100%);border:1.5px solid var(--red);min-height:68px;box-shadow:0 0 40px rgba(230,57,70,.1),inset 0 0 30px rgba(230,57,70,.06);position:relative;overflow:hidden}
+.lane-ark .lane-bar{width:100%;background:linear-gradient(135deg,rgba(230,57,70,.14) 0%,rgba(230,57,70,.06) 100%);border:1.5px solid var(--red);min-height:68px;box-shadow:0 0 40px rgba(230,57,70,.1),inset 0 0 30px rgba(230,57,70,.06);position:relative;overflow:visible}
 .lane-ark .lane-bar::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(230,57,70,.03) 60px,rgba(230,57,70,.03) 61px);pointer-events:none}
-.lane-ark .lane-step{color:var(--white);font-weight:600;font-size:12px;padding:10px 14px;letter-spacing:.03em}
+.lane-ark .lane-step{color:var(--white);font-weight:600;font-size:12px;padding:10px 10px;letter-spacing:.03em;flex:1;white-space:normal;text-align:center}
 .lane-ark .lane-step::after{color:var(--red);opacity:.6}
 .lane-ark .lane-step .step-sub{display:block;font-size:9px;font-weight:400;color:var(--gray-300);letter-spacing:.05em;margin-top:1px}
 @media(max-width:768px){
