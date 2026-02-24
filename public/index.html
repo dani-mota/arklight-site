@@ -72,12 +72,7 @@ a{color:inherit;text-decoration:none}
 .hero-cta-secondary:hover{border-color:var(--white);background:var(--white);color:var(--black)}
 .hero-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @keyframes fi{to{opacity:1}}
-.scroll-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fi .6s ease 1.4s forwards;transition:opacity .4s}
-.scroll-ind.hidden{opacity:0!important;pointer-events:none}
-.scroll-ind span{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-500)}
-.scroll-ind::after{content:'';width:1px;height:32px;background:linear-gradient(var(--gray-500),transparent);animation:scrollPulse 2s ease infinite}
-@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
-@media(max-width:768px){.hero{padding:120px 24px 80px}.hero-ctas{flex-direction:column;width:100%;max-width:320px}.hero-cta{width:100%;justify-content:center}.scroll-ind{bottom:20px}}
+@media(max-width:768px){.hero{padding:120px 24px 80px}.hero-ctas{flex-direction:column;width:100%;max-width:320px}.hero-cta{width:100%;justify-content:center}}
 
 /* SECTIONS */
 .section{padding:120px 48px;position:relative}
@@ -233,7 +228,6 @@ a{color:inherit;text-decoration:none}
       <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
     </a>
   </div>
-  <div class="scroll-ind"><span>Scroll</span></div>
 </section>
 
 <!-- ACI SECTION -->
@@ -443,8 +437,7 @@ const tfSection=document.querySelector('.pv-tf');
 if(tfSection)tfObs.observe(tfSection);
 
 // Hero parallax + scroll indicator
-const scrollInd=document.querySelector('.scroll-ind');
-window.addEventListener('scroll',()=>{const h=document.querySelector('.hero'),s=window.scrollY;if(s<window.innerHeight){h.style.transform='translateY('+s*.2+'px)';h.style.opacity=1-(s/window.innerHeight)*.4}if(scrollInd)scrollInd.classList.toggle('hidden',s>80)},{passive:true});
+window.addEventListener('scroll',()=>{const h=document.querySelector('.hero'),s=window.scrollY;if(s<window.innerHeight){h.style.transform='translateY('+s*.2+'px)';h.style.opacity=1-(s/window.innerHeight)*.4}},{passive:true});
 
 // Contact form
 const contactForm=document.getElementById('contactForm');
