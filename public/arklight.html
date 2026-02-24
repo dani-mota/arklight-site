@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#fafaf9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 /* DARK THEME */
@@ -434,6 +434,7 @@ a{color:inherit;text-decoration:none}
 .redacted{background:var(--red);color:transparent;padding:3px 14px;cursor:pointer;position:relative;font-style:normal;display:inline-block;user-select:none;-webkit-user-select:none;-moz-user-select:none;border-radius:1px;line-height:1.4;transition:background .3s}
 .redacted::selection{background:transparent;color:transparent}
 .redacted:hover{background:var(--red-dark)}
+.redacted-label{color:#fff;font-family:'Black Ops One',cursive;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:4px 16px}
 .redacted-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);background:var(--bg-card);border:1px solid var(--gray-700);padding:40px;max-width:420px;width:90%;z-index:10002;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.4,0,.2,1);text-align:center}
 .redacted-popup.show{opacity:1;pointer-events:all;transform:translate(-50%,-50%) scale(1)}
 .redacted-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10001;opacity:0;pointer-events:none;transition:opacity .3s}
@@ -1076,7 +1077,7 @@ a{color:inherit;text-decoration:none}
       <div class="split-item"><strong>High-margin recurring revenue</strong> replacing legacy hiring infrastructure.</div>
       <div class="split-item"><strong>Tiered revenue:</strong> <span class="redacted">[Redacted]</span> per year enterprise licenses.</div>
       <div class="split-item"><strong>Outcome upside:</strong> <span class="redacted">[Redacted]</span></div>
-      <div class="split-item"><strong>Locked demand:</strong> Multi-year contracts provide predictable, high-margin cash flow.</div>
+      <div class="split-item"><strong>Locked demand:</strong> <span class="redacted redacted-label">[REDACTED]</span> provide predictable, high-margin cash flow.</div>
     </div>
     <div class="split-col reveal reveal-d1">
       <div class="split-col-label">Revenue Engine 2</div>
