@@ -59,6 +59,14 @@ a{color:inherit;text-decoration:none}
 .email-input{border:none;outline:none;background:transparent;color:var(--white);font-size:13px;font-family:var(--sans);flex:1;min-width:140px;padding:4px 0}
 .email-input::placeholder{color:var(--gray-500)}
 .share-modal-hint{font-size:11px;color:var(--gray-500);margin-top:8px}
+.share-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.share-field label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400)}
+.share-field input{border:1px solid var(--gray-700);background:var(--bg);color:var(--white);padding:10px 12px;font-size:13px;font-family:var(--sans);outline:none;transition:border-color .2s}
+.share-field input:focus{border-color:var(--red)}
+.share-field input::placeholder{color:var(--gray-500)}
+.share-field-row{display:flex;gap:12px}
+.share-field-row .share-field{flex:1}
+@media(max-width:480px){.share-field-row{flex-direction:column;gap:0}}
 .share-modal-footer{padding:0 32px 28px;display:flex;gap:12px;justify-content:flex-end}
 .share-btn-secondary{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);border:1px solid var(--gray-700);padding:10px 20px;cursor:pointer;background:none;font-family:var(--sans);transition:all .2s}
 .share-btn-secondary:hover{border-color:var(--gray-400);color:var(--white)}
@@ -563,11 +571,11 @@ a{color:inherit;text-decoration:none}
   <a href="partners.html" class="mm-link">Partners</a>
   <a href="arklight.html" class="mm-link">Investors</a>
   <a href="#" class="mm-link">ACI Demo</a>
-  <button class="mm-theme" id="mmShareBtn" style="display:none">
+  <button class="mm-theme" id="mmShareBtn">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
     Share
   </button>
-  <button class="mm-theme" id="mmPdfBtn" style="display:none">
+  <button class="mm-theme" id="mmPdfBtn" style="border-color:var(--red);color:var(--red)">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download PDF
   </button>
@@ -586,11 +594,11 @@ a{color:inherit;text-decoration:none}
   </ul>
   <div class="nav-right">
     <a href="#" class="nav-cta" style="border-color:var(--gray-600);background:none;color:var(--white)">ACI Demo</a>
-    <button class="nav-cta" id="shareBtn" aria-label="Share" style="display:none">
+    <button class="nav-cta" id="shareBtn" aria-label="Share">
       <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
       Share
     </button>
-    <button class="nav-cta cta-primary" id="pdfBtn" aria-label="Download PDF" style="display:none">
+    <button class="nav-cta cta-primary" id="pdfBtn" aria-label="Download PDF">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download PDF
     </button>
@@ -618,11 +626,28 @@ a{color:inherit;text-decoration:none}
     <div class="share-modal-sub">Send Project Arklight to colleagues, investors, or partners.</div>
     <div id="shareFormView">
       <div class="share-modal-body">
-        <div class="email-input-wrap" id="emailWrap">
-          <div id="emailChips"></div>
-          <input type="email" class="email-input" id="emailInput" placeholder="Enter email address..." autocomplete="off">
+        <div class="share-field-row">
+          <div class="share-field">
+            <label for="shareFirstName">First Name</label>
+            <input type="text" id="shareFirstName" placeholder="First name" autocomplete="given-name">
+          </div>
+          <div class="share-field">
+            <label for="shareLastName">Last Name</label>
+            <input type="text" id="shareLastName" placeholder="Last name" autocomplete="family-name">
+          </div>
         </div>
-        <div class="share-modal-hint">Press Enter to add multiple recipients</div>
+        <div class="share-field">
+          <label for="shareCompany">Company</label>
+          <input type="text" id="shareCompany" placeholder="Company name" autocomplete="organization">
+        </div>
+        <div class="share-field">
+          <label>Recipients</label>
+          <div class="email-input-wrap" id="emailWrap">
+            <div id="emailChips"></div>
+            <input type="email" class="email-input" id="emailInput" placeholder="Enter email address..." autocomplete="off">
+          </div>
+          <div class="share-modal-hint">Press Enter to add multiple recipients</div>
+        </div>
       </div>
       <div class="share-modal-footer">
         <button class="share-btn-secondary" id="shareCopyLink">Copy Link</button>
@@ -1260,43 +1285,70 @@ const emailChips=document.getElementById('emailChips');
 const shareSendBtn=document.getElementById('shareSendBtn');
 const shareFormView=document.getElementById('shareFormView');
 const shareSentView=document.getElementById('shareSentView');
+const shareFirstName=document.getElementById('shareFirstName');
+const shareLastName=document.getElementById('shareLastName');
+const shareCompany=document.getElementById('shareCompany');
+const sendBtnOrigHTML='<svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send';
 let emails=[];
+
+function validateForm(){
+  const fn=shareFirstName.value.trim();
+  const ln=shareLastName.value.trim();
+  const co=shareCompany.value.trim();
+  shareSendBtn.disabled=!(fn&&ln&&co&&emails.length>0);
+}
 
 function openShareModal(){
   emails=[];emailChips.innerHTML='';emailInput.value='';
+  shareFirstName.value='';shareLastName.value='';shareCompany.value='';
   shareSendBtn.disabled=true;
+  shareSendBtn.innerHTML=sendBtnOrigHTML;
   shareFormView.style.display='';shareSentView.style.display='none';
   shareOverlay.classList.add('open');
-  setTimeout(()=>emailInput.focus(),300);
+  setTimeout(()=>shareFirstName.focus(),300);
 }
 function closeShareModal(){shareOverlay.classList.remove('open')}
 function addEmail(val){
   const e=val.trim().toLowerCase();
   if(!e||emails.includes(e))return;
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){showToast('Please enter a valid email address');return}
   emails.push(e);
   const chip=document.createElement('span');chip.className='email-chip';
   chip.innerHTML=e+'<button aria-label="Remove"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
-  chip.querySelector('button').addEventListener('click',()=>{emails=emails.filter(x=>x!==e);chip.remove();shareSendBtn.disabled=emails.length===0});
+  chip.querySelector('button').addEventListener('click',()=>{emails=emails.filter(x=>x!==e);chip.remove();validateForm()});
   emailChips.appendChild(chip);
   emailInput.value='';
-  shareSendBtn.disabled=false;
+  validateForm();
 }
+shareFirstName.addEventListener('input',validateForm);
+shareLastName.addEventListener('input',validateForm);
+shareCompany.addEventListener('input',validateForm);
 emailInput.addEventListener('keydown',e=>{
   if(e.key==='Enter'){e.preventDefault();addEmail(emailInput.value)}
-  if(e.key==='Backspace'&&!emailInput.value&&emails.length){const last=emailChips.lastElementChild;if(last){emails.pop();last.remove();shareSendBtn.disabled=emails.length===0}}
+  if(e.key==='Backspace'&&!emailInput.value&&emails.length){const last=emailChips.lastElementChild;if(last){emails.pop();last.remove();validateForm()}}
 });
 emailInput.addEventListener('blur',()=>{if(emailInput.value.trim())addEmail(emailInput.value)});
 document.getElementById('emailWrap').addEventListener('click',()=>emailInput.focus());
-shareSendBtn.addEventListener('click',()=>{
+shareSendBtn.addEventListener('click',async()=>{
+  const firstName=shareFirstName.value.trim();
+  const lastName=shareLastName.value.trim();
+  const company=shareCompany.value.trim();
   shareSendBtn.innerHTML='Sending...';shareSendBtn.disabled=true;
-  setTimeout(()=>{
+  try{
+    const resp=await fetch('/api/share',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName,lastName,company,emails})});
+    const data=await resp.json();
+    if(!resp.ok)throw new Error(data.error||'Send failed');
     shareFormView.style.display='none';shareSentView.style.display='';
-    document.getElementById('sentToMsg').textContent='Sent to '+emails.length+(emails.length===1?' recipient':' recipients');
-  },800);
+    document.getElementById('sentToMsg').textContent='Sent to '+data.sent+(data.sent===1?' recipient':' recipients');
+  }catch(err){
+    shareSendBtn.innerHTML=sendBtnOrigHTML;shareSendBtn.disabled=false;
+    showToast('Failed to send. Please try again.');
+  }
 });
 document.getElementById('shareDoneBtn').addEventListener('click',closeShareModal);
 document.getElementById('shareClose').addEventListener('click',closeShareModal);
 shareOverlay.addEventListener('click',e=>{if(e.target===shareOverlay)closeShareModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&shareOverlay.classList.contains('open'))closeShareModal()});
 document.getElementById('shareCopyLink').addEventListener('click',()=>{navigator.clipboard.writeText(window.location.href).catch(()=>{});closeShareModal();showToast('Link copied to clipboard')});
 
 document.getElementById('shareBtn').addEventListener('click',openShareModal);
@@ -1304,7 +1356,12 @@ document.getElementById('mmShareBtn').addEventListener('click',()=>{navToggle.cl
 
 // PDF Download
 function doPDF(){
-  window.print();
+  const a=document.createElement('a');
+  a.href='/pitch-deck.pdf';
+  a.download='Project Arklight Public Pitch Deck.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 document.getElementById('pdfBtn').addEventListener('click',doPDF);
 document.getElementById('mmPdfBtn').addEventListener('click',()=>{navToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';setTimeout(doPDF,300)});
