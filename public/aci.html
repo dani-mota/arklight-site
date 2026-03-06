@@ -125,17 +125,41 @@ a{color:inherit;text-decoration:none}
 .manifesto-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);color:var(--white);font-weight:400;line-height:1.2}
 .manifesto-body{font-size:14px;color:var(--gray-400);line-height:1.7}
 
-/* WHO ACI IS FOR — horizontal rows */
-.sector-list{margin-top:48px}
-.sector-row{display:grid;grid-template-columns:56px 160px 1fr;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid var(--gray-800);transition:all .3s}
-.sector-row:last-child{border-bottom:none}
-.sector-row:hover{padding-left:8px}
-@media(max-width:768px){.sector-row{grid-template-columns:40px 1fr;gap:16px}.sector-row-body{grid-column:1/-1}}
-.sector-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gray-800);background:var(--bg-card);flex-shrink:0;transition:border-color .3s}
-.sector-row:hover .sector-icon{border-color:var(--red)}
-.sector-icon svg{width:20px;height:20px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.sector-title{font-family:var(--serif);font-size:18px;color:var(--white);font-weight:400}
-.sector-body{font-size:13px;color:var(--gray-400);line-height:1.6}
+/* WHO ACI IS FOR — big visual cards */
+.sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
+@media(max-width:900px){.sector-grid{grid-template-columns:1fr}}
+.sector-card{background:var(--bg-card);border:1px solid var(--gray-800);position:relative;overflow:hidden;transition:all .5s}
+.sector-card:hover{background:var(--bg-elevated)}
+.sector-card:hover .sector-visual svg{transform:scale(1.08)}
+.sector-visual{position:relative;width:100%;height:220px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sector-visual svg{transition:transform .6s cubic-bezier(.4,0,.2,1)}
+@media(max-width:768px){.sector-visual{height:180px}}
+.sector-info{padding:32px;border-top:1px solid var(--gray-800)}
+.sector-title{font-family:var(--serif);font-size:22px;color:var(--white);font-weight:400;margin-bottom:10px}
+.sector-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+
+/* Sector visual backgrounds */
+.sv-defense{background:radial-gradient(ellipse at 30% 60%,rgba(214,40,57,.06) 0%,transparent 70%)}
+.sv-ai{background:radial-gradient(ellipse at 70% 40%,rgba(214,40,57,.06) 0%,transparent 70%)}
+.sv-space{background:radial-gradient(ellipse at 50% 30%,rgba(214,40,57,.06) 0%,transparent 70%)}
+.sv-mfg{background:radial-gradient(ellipse at 60% 70%,rgba(214,40,57,.06) 0%,transparent 70%)}
+
+/* Sector animations */
+@keyframes radar{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes orbit{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes pulse-node{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes convey{0%{transform:translateX(-20px);opacity:0}30%{opacity:1}70%{opacity:1}100%{transform:translateX(20px);opacity:0}}
+.radar-sweep{transform-origin:center;animation:radar 4s linear infinite}
+.orbit-ring{transform-origin:center;animation:orbit 12s linear infinite}
+.orbit-ring-2{animation-duration:8s;animation-direction:reverse}
+.pulse-n1{animation:pulse-node 2s ease infinite}
+.pulse-n2{animation:pulse-node 2s ease .5s infinite}
+.pulse-n3{animation:pulse-node 2s ease 1s infinite}
+.pulse-n4{animation:pulse-node 2s ease 1.5s infinite}
+.convey-1{animation:convey 3s ease infinite}
+.convey-2{animation:convey 3s ease .75s infinite}
+.convey-3{animation:convey 3s ease 1.5s infinite}
+.convey-4{animation:convey 3s ease 2.25s infinite}
 
 /* CREDIBILITY STRIP */
 .cred-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
@@ -371,35 +395,199 @@ a{color:inherit;text-decoration:none}
       <h2 class="section-title">For Companies Building for National Security</h2>
       <p class="section-body">ACI was designed for organizations operating in environments where the cost of a mis-hire is operational, security-relevant, or mission-critical. If your company builds within the national security ecosystem — and the tools you've tried weren't built for your stakes — we should talk.</p>
     </div>
-    <div class="sector-list">
-      <div class="sector-row reveal">
-        <div class="sector-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    <div class="sector-grid">
+
+      <!-- DEFENSE — Fighter jet with radar sweep -->
+      <div class="sector-card reveal">
+        <div class="sector-visual sv-defense">
+          <svg width="260" height="180" viewBox="0 0 260 180" fill="none">
+            <!-- Radar circles -->
+            <circle cx="130" cy="90" r="70" stroke="var(--gray-800)" stroke-width="1"/>
+            <circle cx="130" cy="90" r="45" stroke="var(--gray-800)" stroke-width="1"/>
+            <circle cx="130" cy="90" r="20" stroke="var(--gray-800)" stroke-width="1"/>
+            <!-- Radar sweep -->
+            <g class="radar-sweep" style="transform-origin:130px 90px">
+              <line x1="130" y1="90" x2="130" y2="20" stroke="var(--red)" stroke-width="1.5" opacity=".7"/>
+              <path d="M130 90 L125 25 A70 70 0 0 1 130 20Z" fill="var(--red)" opacity=".08"/>
+              <path d="M130 90 L128 30 A70 70 0 0 1 130 20Z" fill="var(--red)" opacity=".15"/>
+            </g>
+            <!-- Fighter jet silhouette -->
+            <g transform="translate(105,68)">
+              <path d="M25 0 L30 8 L50 18 L50 20 L30 16 L28 22 L34 26 L34 28 L24 25 L22 28 L20 25 L16 28 L16 26 L22 22 L20 16 L0 20 L0 18 L20 8 L25 0Z" fill="var(--red)" opacity=".6"/>
+            </g>
+            <!-- Blips -->
+            <circle cx="155" cy="55" r="3" fill="var(--red)" opacity=".5" class="pulse-n1"/>
+            <circle cx="100" cy="70" r="2.5" fill="var(--red)" opacity=".4" class="pulse-n2"/>
+            <circle cx="165" cy="105" r="2" fill="var(--red)" opacity=".3" class="pulse-n3"/>
+          </svg>
         </div>
-        <div class="sector-title">Defense</div>
-        <div class="sector-body">Scaling production workforces for autonomous systems, precision munitions, naval vessels, and next-generation platforms.</div>
-      </div>
-      <div class="sector-row reveal reveal-d1">
-        <div class="sector-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.95-2 4-4 8-2-4-4-6.05-4-8a4 4 0 014-4z"/><path d="M12 18v4"/><path d="M8 22h8"/><circle cx="12" cy="6" r="1"/></svg>
+        <div class="sector-info">
+          <div class="sector-title">Defense</div>
+          <div class="sector-body">Scaling production workforces for autonomous systems, precision munitions, naval vessels, and next-generation platforms.</div>
         </div>
-        <div class="sector-title">AI</div>
-        <div class="sector-body">Building safety, operations, and infrastructure teams for AI systems with national security implications.</div>
       </div>
-      <div class="sector-row reveal reveal-d2">
-        <div class="sector-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 014 10 14.5 14.5 0 01-4 10 14.5 14.5 0 01-4-10A14.5 14.5 0 0112 2"/><path d="M2 12h20"/></svg>
+
+      <!-- AI — Neural network with pulsing nodes -->
+      <div class="sector-card reveal reveal-d1">
+        <div class="sector-visual sv-ai">
+          <svg width="260" height="180" viewBox="0 0 260 180" fill="none">
+            <!-- Connection lines -->
+            <line x1="65" y1="50" x2="130" y2="35" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="65" y1="50" x2="130" y2="90" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="65" y1="50" x2="130" y2="145" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="65" y1="130" x2="130" y2="35" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="65" y1="130" x2="130" y2="90" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="65" y1="130" x2="130" y2="145" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="130" y1="35" x2="195" y2="70" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="130" y1="35" x2="195" y2="110" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="130" y1="90" x2="195" y2="70" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="130" y1="90" x2="195" y2="110" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="130" y1="145" x2="195" y2="70" stroke="var(--gray-700)" stroke-width="1"/>
+            <line x1="130" y1="145" x2="195" y2="110" stroke="var(--gray-700)" stroke-width="1"/>
+            <!-- Active signal lines -->
+            <line x1="65" y1="50" x2="130" y2="90" stroke="var(--red)" stroke-width="1.5" opacity=".4" class="pulse-n1"/>
+            <line x1="130" y1="90" x2="195" y2="70" stroke="var(--red)" stroke-width="1.5" opacity=".4" class="pulse-n2"/>
+            <line x1="65" y1="130" x2="130" y2="35" stroke="var(--red)" stroke-width="1.5" opacity=".3" class="pulse-n3"/>
+            <line x1="130" y1="35" x2="195" y2="110" stroke="var(--red)" stroke-width="1.5" opacity=".3" class="pulse-n4"/>
+            <!-- Nodes — input layer -->
+            <circle cx="65" cy="50" r="8" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+            <circle cx="65" cy="50" r="4" fill="var(--red)" opacity=".5" class="pulse-n1"/>
+            <circle cx="65" cy="130" r="8" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+            <circle cx="65" cy="130" r="4" fill="var(--red)" opacity=".5" class="pulse-n3"/>
+            <!-- Hidden layer -->
+            <circle cx="130" cy="35" r="10" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+            <circle cx="130" cy="35" r="5" fill="var(--red)" opacity=".4" class="pulse-n2"/>
+            <circle cx="130" cy="90" r="12" fill="var(--bg-card)" stroke="var(--red)" stroke-width="2"/>
+            <circle cx="130" cy="90" r="6" fill="var(--red)" opacity=".6" class="pulse-n1"/>
+            <circle cx="130" cy="145" r="10" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+            <circle cx="130" cy="145" r="5" fill="var(--red)" opacity=".4" class="pulse-n4"/>
+            <!-- Output layer -->
+            <circle cx="195" cy="70" r="8" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+            <circle cx="195" cy="70" r="4" fill="var(--red)" opacity=".5" class="pulse-n2"/>
+            <circle cx="195" cy="110" r="8" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+            <circle cx="195" cy="110" r="4" fill="var(--red)" opacity=".5" class="pulse-n4"/>
+            <!-- Labels -->
+            <text x="40" y="92" fill="var(--gray-500)" font-size="8" font-family="var(--sans)" text-anchor="middle" letter-spacing=".1em">IN</text>
+            <text x="220" y="92" fill="var(--gray-500)" font-size="8" font-family="var(--sans)" text-anchor="middle" letter-spacing=".1em">OUT</text>
+          </svg>
         </div>
-        <div class="sector-title">Space</div>
-        <div class="sector-body">Expanding manufacturing, assembly, and operations teams for satellite systems, launch vehicles, and space infrastructure.</div>
-      </div>
-      <div class="sector-row reveal reveal-d3">
-        <div class="sector-icon">
-          <svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h.01M15 12h.01"/></svg>
+        <div class="sector-info">
+          <div class="sector-title">AI</div>
+          <div class="sector-body">Building safety, operations, and infrastructure teams for AI systems with national security implications.</div>
         </div>
-        <div class="sector-title">Advanced Manufacturing</div>
-        <div class="sector-body">Hiring precision machinists, technicians, engineers, and quality specialists into regulated, high-consequence production environments.</div>
       </div>
+
+      <!-- SPACE — Satellite with orbiting rings -->
+      <div class="sector-card reveal reveal-d2">
+        <div class="sector-visual sv-space">
+          <svg width="260" height="180" viewBox="0 0 260 180" fill="none">
+            <!-- Stars -->
+            <circle cx="40" cy="30" r="1" fill="var(--gray-600)"/>
+            <circle cx="220" cy="25" r="1.2" fill="var(--gray-600)"/>
+            <circle cx="180" cy="155" r="1" fill="var(--gray-600)"/>
+            <circle cx="55" cy="150" r=".8" fill="var(--gray-600)"/>
+            <circle cx="240" cy="90" r="1" fill="var(--gray-600)"/>
+            <circle cx="20" cy="80" r=".8" fill="var(--gray-600)"/>
+            <circle cx="100" cy="160" r="1" fill="var(--gray-600)"/>
+            <circle cx="210" cy="60" r=".8" fill="var(--gray-600)"/>
+            <!-- Orbit rings -->
+            <g class="orbit-ring" style="transform-origin:130px 90px">
+              <ellipse cx="130" cy="90" rx="75" ry="30" stroke="var(--gray-800)" stroke-width="1" stroke-dasharray="4 4"/>
+            </g>
+            <g class="orbit-ring orbit-ring-2" style="transform-origin:130px 90px">
+              <ellipse cx="130" cy="90" rx="55" ry="50" stroke="var(--gray-800)" stroke-width="1" stroke-dasharray="3 6" transform="rotate(60 130 90)"/>
+            </g>
+            <!-- Satellite body -->
+            <g transform="translate(115,75)">
+              <!-- Main body -->
+              <rect x="8" y="8" width="14" height="14" rx="2" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+              <!-- Solar panels -->
+              <rect x="-18" y="10" width="24" height="10" rx="1" fill="var(--red)" opacity=".3" stroke="var(--red)" stroke-width="1"/>
+              <rect x="24" y="10" width="24" height="10" rx="1" fill="var(--red)" opacity=".3" stroke="var(--red)" stroke-width="1"/>
+              <!-- Panel lines -->
+              <line x1="-12" y1="10" x2="-12" y2="20" stroke="var(--red)" stroke-width=".5" opacity=".5"/>
+              <line x1="-6" y1="10" x2="-6" y2="20" stroke="var(--red)" stroke-width=".5" opacity=".5"/>
+              <line x1="0" y1="10" x2="0" y2="20" stroke="var(--red)" stroke-width=".5" opacity=".5"/>
+              <line x1="30" y1="10" x2="30" y2="20" stroke="var(--red)" stroke-width=".5" opacity=".5"/>
+              <line x1="36" y1="10" x2="36" y2="20" stroke="var(--red)" stroke-width=".5" opacity=".5"/>
+              <line x1="42" y1="10" x2="42" y2="20" stroke="var(--red)" stroke-width=".5" opacity=".5"/>
+              <!-- Antenna -->
+              <line x1="15" y1="8" x2="15" y2="2" stroke="var(--red)" stroke-width="1"/>
+              <circle cx="15" cy="1" r="2" fill="var(--red)" opacity=".5" class="pulse-n1"/>
+              <!-- Signal indicator -->
+              <circle cx="15" cy="15" r="3" fill="var(--red)" opacity=".4" class="pulse-n2"/>
+            </g>
+            <!-- Signal waves from antenna -->
+            <circle cx="130" cy="76" r="8" stroke="var(--red)" stroke-width=".5" opacity=".2" class="pulse-n1"/>
+            <circle cx="130" cy="76" r="16" stroke="var(--red)" stroke-width=".5" opacity=".1" class="pulse-n2"/>
+            <!-- Earth curve at bottom -->
+            <path d="M40 180 Q130 140 220 180" stroke="var(--gray-800)" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="sector-info">
+          <div class="sector-title">Space</div>
+          <div class="sector-body">Expanding manufacturing, assembly, and operations teams for satellite systems, launch vehicles, and space infrastructure.</div>
+        </div>
+      </div>
+
+      <!-- ADVANCED MANUFACTURING — Assembly line with conveyor -->
+      <div class="sector-card reveal reveal-d3">
+        <div class="sector-visual sv-mfg">
+          <svg width="260" height="180" viewBox="0 0 260 180" fill="none">
+            <!-- Conveyor belt -->
+            <line x1="30" y1="120" x2="230" y2="120" stroke="var(--gray-700)" stroke-width="2"/>
+            <line x1="30" y1="125" x2="230" y2="125" stroke="var(--gray-800)" stroke-width="1"/>
+            <!-- Conveyor rollers -->
+            <circle cx="50" cy="122.5" r="4" stroke="var(--gray-700)" stroke-width="1" fill="var(--bg-card)"/>
+            <circle cx="90" cy="122.5" r="4" stroke="var(--gray-700)" stroke-width="1" fill="var(--bg-card)"/>
+            <circle cx="130" cy="122.5" r="4" stroke="var(--gray-700)" stroke-width="1" fill="var(--bg-card)"/>
+            <circle cx="170" cy="122.5" r="4" stroke="var(--gray-700)" stroke-width="1" fill="var(--bg-card)"/>
+            <circle cx="210" cy="122.5" r="4" stroke="var(--gray-700)" stroke-width="1" fill="var(--bg-card)"/>
+            <!-- Robot arm 1 -->
+            <g transform="translate(80,40)">
+              <rect x="-3" y="0" width="6" height="10" rx="1" fill="var(--gray-700)"/>
+              <line x1="0" y1="10" x2="0" y2="45" stroke="var(--gray-600)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="0" y1="45" x2="15" y2="65" stroke="var(--gray-600)" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="0" cy="45" r="3" fill="var(--red)" opacity=".5"/>
+              <path d="M12 62 L18 58 L20 68 L14 68Z" fill="var(--red)" opacity=".6"/>
+            </g>
+            <!-- Robot arm 2 -->
+            <g transform="translate(170,35)">
+              <rect x="-3" y="0" width="6" height="10" rx="1" fill="var(--gray-700)"/>
+              <line x1="0" y1="10" x2="0" y2="50" stroke="var(--gray-600)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="0" y1="50" x2="-12" y2="70" stroke="var(--gray-600)" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="0" cy="50" r="3" fill="var(--red)" opacity=".5"/>
+              <path d="M-14 67 L-18 63 L-8 63 L-10 69Z" fill="var(--red)" opacity=".6"/>
+            </g>
+            <!-- Products on conveyor -->
+            <g class="convey-1">
+              <rect x="55" y="106" width="14" height="14" rx="1" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1" opacity=".7"/>
+            </g>
+            <g class="convey-2">
+              <rect x="105" y="106" width="14" height="14" rx="1" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1" opacity=".7"/>
+            </g>
+            <g class="convey-3">
+              <rect x="155" y="106" width="14" height="14" rx="1" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1" opacity=".7"/>
+            </g>
+            <g class="convey-4">
+              <rect x="205" y="106" width="14" height="14" rx="1" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1" opacity=".7"/>
+            </g>
+            <!-- Sparks from robot arms -->
+            <circle cx="95" cy="105" r="2" fill="var(--red)" opacity=".6" class="pulse-n1"/>
+            <circle cx="158" cy="105" r="2" fill="var(--red)" opacity=".6" class="pulse-n3"/>
+            <!-- Status indicators -->
+            <rect x="30" y="40" width="8" height="4" rx="1" fill="var(--red)" opacity=".4" class="pulse-n2"/>
+            <rect x="222" y="40" width="8" height="4" rx="1" fill="var(--red)" opacity=".4" class="pulse-n4"/>
+            <!-- Ceiling rail -->
+            <line x1="30" y1="38" x2="230" y2="38" stroke="var(--gray-800)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="sector-info">
+          <div class="sector-title">Advanced Manufacturing</div>
+          <div class="sector-body">Hiring precision machinists, technicians, engineers, and quality specialists into regulated, high-consequence production environments.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
