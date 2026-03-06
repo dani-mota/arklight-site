@@ -115,15 +115,18 @@ a{color:inherit;text-decoration:none}
 .numbered-card-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
 .numbered-card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
 
-/* WHAT MAKES ACI DIFFERENT — manifesto rows */
-.manifesto{margin-top:48px}
-.manifesto-row{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start;padding:48px 0;border-bottom:1px solid var(--gray-800)}
-.manifesto-row:first-child{padding-top:0}
-.manifesto-row:last-child{border-bottom:none;padding-bottom:0}
-.manifesto-row.flipped{direction:rtl}.manifesto-row.flipped>*{direction:ltr}
-@media(max-width:900px){.manifesto-row,.manifesto-row.flipped{grid-template-columns:1fr;gap:16px;direction:ltr}.manifesto-row.flipped>*{direction:ltr}}
-.manifesto-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);color:var(--white);font-weight:400;line-height:1.2}
-.manifesto-body{font-size:14px;color:var(--gray-400);line-height:1.7}
+/* WHAT MAKES ACI DIFFERENT — conviction blocks */
+.convictions{margin-top:56px;display:flex;flex-direction:column;gap:0}
+.conviction{display:grid;grid-template-columns:4px 1fr 1.6fr;gap:0;align-items:stretch;transition:all .4s}
+.conviction+.conviction{margin-top:40px}
+.conviction-bar{background:var(--gray-800);transition:background .5s}
+.conviction:hover .conviction-bar{background:var(--red)}
+.conviction-title-wrap{padding:24px 32px;display:flex;align-items:flex-start}
+.conviction-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);color:var(--white);font-weight:400;line-height:1.25}
+.conviction-body-wrap{padding:24px 32px 24px 0;border-bottom:1px solid var(--gray-800);display:flex;align-items:flex-start}
+.conviction:last-child .conviction-body-wrap{border-bottom:none}
+.conviction-body{font-size:14px;color:var(--gray-400);line-height:1.75}
+@media(max-width:900px){.conviction{grid-template-columns:3px 1fr;gap:0}.conviction-body-wrap{grid-column:2;padding:0 24px 24px;border-bottom:1px solid var(--gray-800)}.conviction-title-wrap{padding:24px 24px 8px}}
 
 /* WHO ACI IS FOR — big visual cards */
 .sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
@@ -366,22 +369,26 @@ a{color:inherit;text-decoration:none}
       <div class="section-eyebrow">What Makes ACI Different</div>
       <h2 class="section-title">Built Different Because the Problem Is Different</h2>
     </div>
-    <div class="manifesto">
-      <div class="manifesto-row reveal">
-        <div class="manifesto-title">Behavioral Integrity as a Core Dimension</div>
-        <div class="manifesto-body">The hardest thing to assess isn't whether they're smart enough. It's whether they'll follow the procedure when no one is watching. Whether they'll return the tools. Whether they'll flag an anomaly instead of overlooking it. Most assessment platforms don't touch this. ACI measures it as a first-class dimension.</div>
+    <div class="convictions">
+      <div class="conviction reveal">
+        <div class="conviction-bar"></div>
+        <div class="conviction-title-wrap"><div class="conviction-title">Behavioral Integrity as a Core Dimension</div></div>
+        <div class="conviction-body-wrap"><div class="conviction-body">The hardest thing to assess isn't whether they're smart enough. It's whether they'll follow the procedure when no one is watching. Whether they'll return the tools. Whether they'll flag an anomaly instead of overlooking it. Most assessment platforms don't touch this. ACI measures it as a first-class dimension.</div></div>
       </div>
-      <div class="manifesto-row flipped reveal">
-        <div class="manifesto-title">Depth Over Speed</div>
-        <div class="manifesto-body">The market is racing toward shorter assessments. Five minutes. Three minutes. We went the other direction — because your roles deserve it. ACI is a thorough, structured investigation. The candidates right for your environment will invest in a serious evaluation. The ones who won't? That's signal, too.</div>
+      <div class="conviction reveal">
+        <div class="conviction-bar"></div>
+        <div class="conviction-title-wrap"><div class="conviction-title">Depth Over Speed</div></div>
+        <div class="conviction-body-wrap"><div class="conviction-body">The market is racing toward shorter assessments. Five minutes. Three minutes. We went the other direction — because your roles deserve it. ACI is a thorough, structured investigation. The candidates right for your environment will invest in a serious evaluation. The ones who won't? That's signal, too.</div></div>
       </div>
-      <div class="manifesto-row reveal">
-        <div class="manifesto-title">Methodology, Not Just Technology</div>
-        <div class="manifesto-body">Most AI assessment tools are technology looking for a problem. ACI is methodology first, technology second. The architecture is rooted in decades of research into identifying talent for high-stakes roles. The AI serves the methodology — not the other way around.</div>
+      <div class="conviction reveal">
+        <div class="conviction-bar"></div>
+        <div class="conviction-title-wrap"><div class="conviction-title">Methodology, Not Just Technology</div></div>
+        <div class="conviction-body-wrap"><div class="conviction-body">Most AI assessment tools are technology looking for a problem. ACI is methodology first, technology second. The architecture is rooted in decades of research into identifying talent for high-stakes roles. The AI serves the methodology — not the other way around.</div></div>
       </div>
-      <div class="manifesto-row flipped reveal">
-        <div class="manifesto-title">Purpose-Built for Critical Environments</div>
-        <div class="manifesto-body">ACI wasn't adapted from a consumer hiring platform. It was built from the ground up for environments where assessment must be deeper, more rigorous, and designed for stakes that most tools were never intended to handle. Your environment cannot afford to guess.</div>
+      <div class="conviction reveal">
+        <div class="conviction-bar"></div>
+        <div class="conviction-title-wrap"><div class="conviction-title">Purpose-Built for Critical Environments</div></div>
+        <div class="conviction-body-wrap"><div class="conviction-body">ACI wasn't adapted from a consumer hiring platform. It was built from the ground up for environments where assessment must be deeper, more rigorous, and designed for stakes that most tools were never intended to handle. Your environment cannot afford to guess.</div></div>
       </div>
     </div>
   </div>
