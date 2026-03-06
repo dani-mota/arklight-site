@@ -89,45 +89,53 @@ a{color:inherit;text-decoration:none}
 .stat-number{font-family:var(--serif);font-size:clamp(28px,3vw,40px);color:var(--red);font-weight:400;margin-bottom:8px;line-height:1.1}
 .stat-label{font-size:13px;color:var(--gray-400);line-height:1.5}
 
-/* FEATURE BLOCK */
-.feature-block{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:48px}
-@media(max-width:900px){.feature-block{grid-template-columns:1fr;gap:40px}}
-.feature-text p{font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300;margin-bottom:24px}
-.feature-text p:last-child{margin-bottom:0}
+/* WHAT ACI IS — split layout */
+.split-section{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:48px;border:1px solid var(--gray-800)}
+@media(max-width:900px){.split-section{grid-template-columns:1fr}}
+.split-left{padding:48px;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.split-left{padding:32px 24px}}
+.split-right{border-left:1px solid var(--gray-800);display:flex;flex-direction:column}
+@media(max-width:900px){.split-right{border-left:none;border-top:1px solid var(--gray-800)}}
+.split-feature{padding:32px 40px;position:relative;transition:background .4s}
+.split-feature+.split-feature{border-top:1px solid var(--gray-800)}
+.split-feature::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--gray-800);transition:background .4s}
+.split-feature:hover::before{background:var(--red)}
+.split-feature:hover{background:var(--bg-elevated)}
+.split-feature-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.split-feature-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+.split-headline{font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:var(--white);font-weight:400;line-height:1.2;margin-bottom:20px}
+.split-body{font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300}
 
-/* FEATURE CARDS */
-.feature-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
-@media(max-width:768px){.feature-cards{grid-template-columns:1fr}}
-.feature-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 32px;position:relative;transition:all .4s}
-.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
-.feature-card:hover::before{background:var(--red)}
-.feature-card:hover{background:var(--bg-elevated)}
-.feature-card-title{font-family:var(--serif);font-size:18px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
-.feature-card-body{font-size:13px;color:var(--gray-400);line-height:1.7}
+/* WHAT YOU RECEIVE — numbered cards */
+.numbered-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+@media(max-width:900px){.numbered-grid{grid-template-columns:1fr}}
+.numbered-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 28px;position:relative;transition:all .4s}
+.numbered-card:hover{background:var(--bg-elevated)}
+.numbered-card-num{font-family:var(--serif);font-size:48px;color:var(--red);opacity:.3;line-height:1;margin-bottom:16px;font-weight:400}
+.numbered-card-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.numbered-card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
 
-/* RECEIVES CARDS - 3-col */
-.receives-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
-@media(max-width:900px){.receives-grid{grid-template-columns:1fr}}
-.receives-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 28px;position:relative;transition:all .4s}
-.receives-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
-.receives-card:hover::before{background:var(--red)}
-.receives-card:hover{background:var(--bg-elevated)}
-.receives-card-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
-.receives-card-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
-.receives-card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+/* WHAT MAKES ACI DIFFERENT — manifesto rows */
+.manifesto{margin-top:48px}
+.manifesto-row{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start;padding:48px 0;border-bottom:1px solid var(--gray-800)}
+.manifesto-row:first-child{padding-top:0}
+.manifesto-row:last-child{border-bottom:none;padding-bottom:0}
+.manifesto-row.flipped{direction:rtl}.manifesto-row.flipped>*{direction:ltr}
+@media(max-width:900px){.manifesto-row,.manifesto-row.flipped{grid-template-columns:1fr;gap:16px;direction:ltr}.manifesto-row.flipped>*{direction:ltr}}
+.manifesto-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,28px);color:var(--white);font-weight:400;line-height:1.2}
+.manifesto-body{font-size:14px;color:var(--gray-400);line-height:1.7}
 
-/* VERTICAL GRID - 4 col */
-.vertical-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
-@media(max-width:1000px){.vertical-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.vertical-grid{grid-template-columns:1fr}}
-.vertical-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 28px;position:relative;transition:all .4s}
-.vertical-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
-.vertical-card:hover::before{background:var(--red)}
-.vertical-card:hover{background:var(--bg-elevated)}
-.vertical-card-icon{margin-bottom:20px}
-.vertical-card-icon svg{width:24px;height:24px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.vertical-card-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
-.vertical-card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+/* WHO ACI IS FOR — horizontal rows */
+.sector-list{margin-top:48px}
+.sector-row{display:grid;grid-template-columns:56px 160px 1fr;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid var(--gray-800);transition:all .3s}
+.sector-row:last-child{border-bottom:none}
+.sector-row:hover{padding-left:8px}
+@media(max-width:768px){.sector-row{grid-template-columns:40px 1fr;gap:16px}.sector-row-body{grid-column:1/-1}}
+.sector-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gray-800);background:var(--bg-card);flex-shrink:0;transition:border-color .3s}
+.sector-row:hover .sector-icon{border-color:var(--red)}
+.sector-icon svg{width:20px;height:20px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.sector-title{font-family:var(--serif);font-size:18px;color:var(--white);font-weight:400}
+.sector-body{font-size:13px;color:var(--gray-400);line-height:1.6}
 
 /* CREDIBILITY STRIP */
 .cred-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
@@ -229,7 +237,7 @@ a{color:inherit;text-decoration:none}
 <!-- HERO -->
 <section class="aci-hero" id="hero">
   <div class="aci-hero-eyebrow">Arklight Cognitive Index</div>
-  <h1 class="aci-hero-title">Your Environment Can't Afford to Guess. <span style="font-style:italic;color:var(--red)">Now It Doesn't Have To.</span></h1>
+  <h1 class="aci-hero-title">Your Company Can't Afford to Guess. <span style="font-style:italic;color:var(--red)">Now It Doesn't Have To.</span></h1>
   <div class="aci-hero-line"></div>
   <p class="aci-hero-desc">ACI is assessment intelligence for companies building for national security. We predict who will succeed in your critical environment — and how to deploy them — before you invest a single interview hour.</p>
   <div class="aci-hero-ctas">
@@ -274,21 +282,26 @@ a{color:inherit;text-decoration:none}
   <div class="section-inner">
     <div class="reveal">
       <div class="section-eyebrow">What ACI Is</div>
-      <h2 class="section-title">An Assessment Built for Environments Where Getting It Wrong Isn't an Option</h2>
-      <p class="section-body">Not a quiz. Not a video recording. Not a chatbot. ACI is an adaptive, voice-first investigation conducted by an AI evaluator — built on the same aptitude science the military and intelligence community have used for decades.</p>
+      <h2 class="section-title">An Assessment Built for Companies Where Getting It Wrong Isn't an Option</h2>
     </div>
-    <div class="receives-grid">
-      <div class="receives-card reveal">
-        <div class="receives-card-eyebrow">Adaptive & Conversational</div>
-        <div class="receives-card-body">When a candidate gives a concerning answer, the system follows up. When unexpected strength emerges, it probes deeper. It adapts to the person in front of it in real time.</div>
+    <div class="split-section reveal">
+      <div class="split-left">
+        <h3 class="split-headline">ACI is an adaptive, next-generation intelligence assessment investigation.</h3>
+        <p class="split-body">Built on the same aptitude science the military and intelligence community have used for decades.</p>
       </div>
-      <div class="receives-card reveal reveal-d1">
-        <div class="receives-card-eyebrow">Military-Grade Methodology</div>
-        <div class="receives-card-body">We didn't start with a consumer hiring tool. We started with the question: how do you assess someone for a role where the stakes are existential?</div>
-      </div>
-      <div class="receives-card reveal reveal-d2">
-        <div class="receives-card-eyebrow">Built for Scale</div>
-        <div class="receives-card-body">The depth of the best human evaluator, at a consistency no human team can sustain across thousands of candidates.</div>
+      <div class="split-right">
+        <div class="split-feature">
+          <div class="split-feature-eyebrow">Adaptive & Conversational</div>
+          <div class="split-feature-body">When a candidate gives a concerning answer, the system follows up. When unexpected strength emerges, it probes deeper. It adapts to the person in front of it in real time.</div>
+        </div>
+        <div class="split-feature">
+          <div class="split-feature-eyebrow">Military-Grade Methodology</div>
+          <div class="split-feature-body">We didn't start with a consumer hiring tool. We started with the question: how do you assess someone for a role where the stakes are existential?</div>
+        </div>
+        <div class="split-feature">
+          <div class="split-feature-eyebrow">Built for Scale</div>
+          <div class="split-feature-body">The depth of the best human evaluator, at a consistency no human team can sustain across thousands of candidates.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -299,21 +312,24 @@ a{color:inherit;text-decoration:none}
   <div class="section-inner">
     <div class="reveal">
       <div class="section-eyebrow">What You Receive</div>
-      <h2 class="section-title">Not a Score. A Deployment Plan.</h2>
+      <h2 class="section-title">Not Just a Score. A Deployment Plan.</h2>
       <p class="section-body">Who to advance. What to ask them. How to set them up for success on day one.</p>
     </div>
-    <div class="receives-grid">
-      <div class="receives-card reveal">
-        <div class="receives-card-eyebrow">For the TA Leader</div>
-        <div class="receives-card-body">Defensible assessment data that replaces gut calls. Audit-ready. Scalable.</div>
+    <div class="numbered-grid">
+      <div class="numbered-card reveal">
+        <div class="numbered-card-num">01</div>
+        <div class="numbered-card-eyebrow">For the TA Leader</div>
+        <div class="numbered-card-body">Defensible assessment data that replaces gut calls. Audit-ready. Scalable.</div>
       </div>
-      <div class="receives-card reveal reveal-d1">
-        <div class="receives-card-eyebrow">For the Recruiter</div>
-        <div class="receives-card-body">Stack-ranked candidates with clear signals. Decisions in days, not weeks.</div>
+      <div class="numbered-card reveal reveal-d1">
+        <div class="numbered-card-num">02</div>
+        <div class="numbered-card-eyebrow">For the Recruiter</div>
+        <div class="numbered-card-body">Stack-ranked candidates with clear signals. Decisions in days, not weeks.</div>
       </div>
-      <div class="receives-card reveal reveal-d2">
-        <div class="receives-card-eyebrow">For Operations</div>
-        <div class="receives-card-body">New hires arrive with an onboarding plan built around who they actually are.</div>
+      <div class="numbered-card reveal reveal-d2">
+        <div class="numbered-card-num">03</div>
+        <div class="numbered-card-eyebrow">For Operations</div>
+        <div class="numbered-card-body">New hires arrive with an onboarding plan built around who they actually are.</div>
       </div>
     </div>
   </div>
@@ -326,22 +342,22 @@ a{color:inherit;text-decoration:none}
       <div class="section-eyebrow">What Makes ACI Different</div>
       <h2 class="section-title">Built Different Because the Problem Is Different</h2>
     </div>
-    <div class="feature-cards">
-      <div class="feature-card reveal">
-        <div class="feature-card-title">Behavioral Integrity as a Core Dimension</div>
-        <div class="feature-card-body">The hardest thing to assess isn't whether they're smart enough. It's whether they'll follow the procedure when no one is watching. Whether they'll return the tools. Whether they'll flag an anomaly instead of overlooking it. Most assessment platforms don't touch this. ACI measures it as a first-class dimension.</div>
+    <div class="manifesto">
+      <div class="manifesto-row reveal">
+        <div class="manifesto-title">Behavioral Integrity as a Core Dimension</div>
+        <div class="manifesto-body">The hardest thing to assess isn't whether they're smart enough. It's whether they'll follow the procedure when no one is watching. Whether they'll return the tools. Whether they'll flag an anomaly instead of overlooking it. Most assessment platforms don't touch this. ACI measures it as a first-class dimension.</div>
       </div>
-      <div class="feature-card reveal reveal-d1">
-        <div class="feature-card-title">Depth Over Speed</div>
-        <div class="feature-card-body">The market is racing toward shorter assessments. Five minutes. Three minutes. We went the other direction — because your roles deserve it. ACI is a thorough, structured investigation. The candidates right for your environment will invest in a serious evaluation. The ones who won't? That's signal, too.</div>
+      <div class="manifesto-row flipped reveal">
+        <div class="manifesto-title">Depth Over Speed</div>
+        <div class="manifesto-body">The market is racing toward shorter assessments. Five minutes. Three minutes. We went the other direction — because your roles deserve it. ACI is a thorough, structured investigation. The candidates right for your environment will invest in a serious evaluation. The ones who won't? That's signal, too.</div>
       </div>
-      <div class="feature-card reveal reveal-d2">
-        <div class="feature-card-title">Methodology, Not Just Technology</div>
-        <div class="feature-card-body">Most AI assessment tools are technology looking for a problem. ACI is methodology first, technology second. The architecture is rooted in decades of research into identifying talent for high-stakes roles. The AI serves the methodology — not the other way around.</div>
+      <div class="manifesto-row reveal">
+        <div class="manifesto-title">Methodology, Not Just Technology</div>
+        <div class="manifesto-body">Most AI assessment tools are technology looking for a problem. ACI is methodology first, technology second. The architecture is rooted in decades of research into identifying talent for high-stakes roles. The AI serves the methodology — not the other way around.</div>
       </div>
-      <div class="feature-card reveal reveal-d3">
-        <div class="feature-card-title">Purpose-Built for Critical Environments</div>
-        <div class="feature-card-body">ACI wasn't adapted from a consumer hiring platform. It was built from the ground up for environments where assessment must be deeper, more rigorous, and designed for stakes that most tools were never intended to handle. Your environment cannot afford to guess.</div>
+      <div class="manifesto-row flipped reveal">
+        <div class="manifesto-title">Purpose-Built for Critical Environments</div>
+        <div class="manifesto-body">ACI wasn't adapted from a consumer hiring platform. It was built from the ground up for environments where assessment must be deeper, more rigorous, and designed for stakes that most tools were never intended to handle. Your environment cannot afford to guess.</div>
       </div>
     </div>
   </div>
@@ -355,34 +371,34 @@ a{color:inherit;text-decoration:none}
       <h2 class="section-title">For Companies Building for National Security</h2>
       <p class="section-body">ACI was designed for organizations operating in environments where the cost of a mis-hire is operational, security-relevant, or mission-critical. If your company builds within the national security ecosystem — and the tools you've tried weren't built for your stakes — we should talk.</p>
     </div>
-    <div class="vertical-grid">
-      <div class="vertical-card reveal">
-        <div class="vertical-card-icon">
+    <div class="sector-list">
+      <div class="sector-row reveal">
+        <div class="sector-icon">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         </div>
-        <div class="vertical-card-title">Defense</div>
-        <div class="vertical-card-body">Scaling production workforces for autonomous systems, precision munitions, naval vessels, and next-generation platforms.</div>
+        <div class="sector-title">Defense</div>
+        <div class="sector-body">Scaling production workforces for autonomous systems, precision munitions, naval vessels, and next-generation platforms.</div>
       </div>
-      <div class="vertical-card reveal reveal-d1">
-        <div class="vertical-card-icon">
+      <div class="sector-row reveal reveal-d1">
+        <div class="sector-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.95-2 4-4 8-2-4-4-6.05-4-8a4 4 0 014-4z"/><path d="M12 18v4"/><path d="M8 22h8"/><circle cx="12" cy="6" r="1"/></svg>
         </div>
-        <div class="vertical-card-title">AI</div>
-        <div class="vertical-card-body">Building safety, operations, and infrastructure teams for AI systems with national security implications.</div>
+        <div class="sector-title">AI</div>
+        <div class="sector-body">Building safety, operations, and infrastructure teams for AI systems with national security implications.</div>
       </div>
-      <div class="vertical-card reveal reveal-d2">
-        <div class="vertical-card-icon">
+      <div class="sector-row reveal reveal-d2">
+        <div class="sector-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 014 10 14.5 14.5 0 01-4 10 14.5 14.5 0 01-4-10A14.5 14.5 0 0112 2"/><path d="M2 12h20"/></svg>
         </div>
-        <div class="vertical-card-title">Space</div>
-        <div class="vertical-card-body">Expanding manufacturing, assembly, and operations teams for satellite systems, launch vehicles, and space infrastructure.</div>
+        <div class="sector-title">Space</div>
+        <div class="sector-body">Expanding manufacturing, assembly, and operations teams for satellite systems, launch vehicles, and space infrastructure.</div>
       </div>
-      <div class="vertical-card reveal reveal-d3">
-        <div class="vertical-card-icon">
+      <div class="sector-row reveal reveal-d3">
+        <div class="sector-icon">
           <svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h.01M15 12h.01"/></svg>
         </div>
-        <div class="vertical-card-title">Advanced Manufacturing</div>
-        <div class="vertical-card-body">Hiring precision machinists, technicians, engineers, and quality specialists into regulated, high-consequence production environments.</div>
+        <div class="sector-title">Advanced Manufacturing</div>
+        <div class="sector-body">Hiring precision machinists, technicians, engineers, and quality specialists into regulated, high-consequence production environments.</div>
       </div>
     </div>
   </div>
