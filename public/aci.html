@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACI — Arklight Cognitive Index</title>
+<meta name="description" content="Assessment intelligence for companies building for national security. We predict who will succeed in your critical environment before you invest a single interview hour.">
+<meta name="theme-color" content="#fafaf9">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[data-theme="dark"]{--black:#000;--bg:#000;--bg-card:#0d0d0d;--bg-elevated:#111;--white:#fff;--gray-100:#f0f0f0;--gray-200:#d4d4d4;--gray-300:#a3a3a3;--gray-400:#737373;--gray-500:#525252;--gray-600:#404040;--gray-700:#2a2a2a;--gray-800:#1a1a1a;--gray-900:#0f0f0f;--red:#e63946;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(0,0,0,.92);color-scheme:dark}
+[data-theme="light"]{--black:#fafaf9;--bg:#fafaf9;--bg-card:#fff;--bg-elevated:#f5f5f4;--white:#1a1a1a;--gray-100:#2e2e2e;--gray-200:#3a3a3a;--gray-300:#525252;--gray-400:#737373;--gray-500:#a3a3a3;--gray-600:#d4d4d4;--gray-700:#e5e5e5;--gray-800:#f0f0f0;--gray-900:#f5f5f4;--red:#d62839;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(250,250,249,.95);color-scheme:light}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gray-600) var(--black)}
+body{background:var(--bg);color:var(--gray-200);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.nav.scrolled{padding:16px 48px;background:var(--nav-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--gray-700)}
+.nav-brand{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-cta{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);border:1px solid var(--red);padding:7px 16px;transition:all .3s;display:inline-flex;align-items:center;gap:7px;cursor:pointer;white-space:nowrap;font-family:var(--sans)}
+.nav-cta:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.theme-toggle{background:none;border:1px solid var(--gray-700);border-radius:50%;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--gray-400)}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:var(--gray-400);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.theme-toggle:hover svg{stroke:var(--white)}
+.theme-toggle .icon-moon{display:block}.theme-toggle .icon-sun{display:none}
+[data-theme="light"] .theme-toggle .icon-moon{display:none}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--white);margin:5px 0;transition:all .3s}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+@media(max-width:1100px){.nav-links{gap:18px}.nav-links a{font-size:10px}.nav-cta{font-size:9px;padding:6px 12px}}
+@media(max-width:900px){.nav-links{display:none}.nav-cta{display:none}.nav-toggle{display:block}.theme-toggle{display:none}}
+@media(max-width:768px){.nav{padding:18px 24px}.nav.scrolled{padding:14px 24px}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--serif);font-size:22px;color:var(--white);padding:6px 0;transition:color .2s}
+.mobile-menu a:active{color:var(--red)}
+.mobile-menu .mm-theme{margin-top:16px;font-size:12px;color:var(--gray-400);display:flex;align-items:center;gap:8px;cursor:pointer;background:none;border:1px solid var(--gray-700);padding:10px 20px;transition:all .3s}
+@media(min-width:901px){.mobile-menu{display:none!important}}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:1001;transition:width .1s}
+
+/* HERO */
+.aci-hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 48px 100px;position:relative}
+.aci-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--black))}
+.aci-hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:48px;opacity:0;animation:fi .8s ease .3s forwards}
+.aci-hero-title{font-family:var(--serif);font-size:clamp(28px,5vw,56px);color:var(--white);font-weight:400;letter-spacing:-.02em;line-height:1.1;margin-bottom:40px;max-width:860px;opacity:0;animation:fi 1s ease .5s forwards}
+.aci-hero-desc{font-size:clamp(14px,1.6vw,17px);color:var(--gray-300);max-width:680px;line-height:1.7;font-weight:300;opacity:0;animation:fi .8s ease .8s forwards;margin-bottom:48px}
+.aci-hero-line{width:48px;height:1px;background:var(--gray-500);margin:0 auto 32px;opacity:0;animation:fi .6s ease .7s forwards}
+.aci-hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center;opacity:0;animation:fi .8s ease 1s forwards}
+.aci-cta{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 32px;transition:all .3s;cursor:pointer;font-family:var(--sans);display:inline-flex;align-items:center;gap:10px}
+.aci-cta-primary{background:var(--red);border:1.5px solid var(--red);color:#fff}
+.aci-cta-primary:hover{background:#fff;border-color:#fff;color:var(--red);transform:scale(1.03)}
+.aci-cta-secondary{background:none;border:1.5px solid var(--gray-500);color:var(--white)}
+.aci-cta-secondary:hover{border-color:var(--white);background:var(--white);color:var(--black)}
+.aci-cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes fi{to{opacity:1}}
+@media(max-width:768px){.aci-hero{padding:120px 24px 80px}.aci-hero-ctas{flex-direction:column;width:100%;max-width:320px}.aci-cta{width:100%;justify-content:center}}
+
+/* SECTIONS */
+.section{padding:120px 48px;position:relative}
+@media(max-width:768px){.section{padding:80px 24px}}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.section-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,40px);color:var(--white);font-weight:400;line-height:1.2;margin-bottom:24px}
+.section-body{font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300;max-width:720px;margin-bottom:40px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+@media(max-width:768px){.stats-grid{grid-template-columns:1fr;gap:0}}
+.stat-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 32px;text-align:center;transition:all .4s}
+.stat-card:hover{background:var(--bg-elevated)}
+.stat-number{font-family:var(--serif);font-size:clamp(28px,3vw,40px);color:var(--red);font-weight:400;margin-bottom:8px;line-height:1.1}
+.stat-label{font-size:13px;color:var(--gray-400);line-height:1.5}
+
+/* FEATURE BLOCK */
+.feature-block{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:48px}
+@media(max-width:900px){.feature-block{grid-template-columns:1fr;gap:40px}}
+.feature-text p{font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300;margin-bottom:24px}
+.feature-text p:last-child{margin-bottom:0}
+
+/* FEATURE CARDS */
+.feature-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
+@media(max-width:768px){.feature-cards{grid-template-columns:1fr}}
+.feature-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 32px;position:relative;transition:all .4s}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
+.feature-card:hover::before{background:var(--red)}
+.feature-card:hover{background:var(--bg-elevated)}
+.feature-card-title{font-family:var(--serif);font-size:18px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
+.feature-card-body{font-size:13px;color:var(--gray-400);line-height:1.7}
+
+/* RECEIVES CARDS - 3-col */
+.receives-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+@media(max-width:900px){.receives-grid{grid-template-columns:1fr}}
+.receives-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 28px;position:relative;transition:all .4s}
+.receives-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
+.receives-card:hover::before{background:var(--red)}
+.receives-card:hover{background:var(--bg-elevated)}
+.receives-card-eyebrow{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.receives-card-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
+.receives-card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+
+/* VERTICAL GRID - 4 col */
+.vertical-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+@media(max-width:1000px){.vertical-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.vertical-grid{grid-template-columns:1fr}}
+.vertical-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 28px;position:relative;transition:all .4s}
+.vertical-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-800);transition:background .4s}
+.vertical-card:hover::before{background:var(--red)}
+.vertical-card:hover{background:var(--bg-elevated)}
+.vertical-card-icon{margin-bottom:20px}
+.vertical-card-icon svg{width:24px;height:24px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.vertical-card-title{font-family:var(--serif);font-size:17px;color:var(--white);font-weight:400;margin-bottom:12px;line-height:1.25}
+.vertical-card-body{font-size:13px;color:var(--gray-400);line-height:1.65}
+
+/* CREDIBILITY STRIP */
+.cred-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+@media(max-width:1000px){.cred-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cred-strip{grid-template-columns:1fr}}
+.cred-item{background:var(--bg-card);border:1px solid var(--gray-800);padding:32px 24px;text-align:center;transition:all .4s}
+.cred-item:hover{background:var(--bg-elevated)}
+.cred-item-icon{margin-bottom:16px}
+.cred-item-icon svg{width:28px;height:28px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cred-item-body{font-size:13px;color:var(--gray-300);line-height:1.6}
+
+/* CONTACT */
+.contact{padding:120px 48px;position:relative}
+@media(max-width:768px){.contact{padding:80px 24px}}
+.contact-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:900px){.contact-inner{grid-template-columns:1fr;gap:48px}}
+.contact-content{display:flex;flex-direction:column;justify-content:center}
+.contact-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.contact-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,36px);color:var(--white);font-weight:400;line-height:1.2;margin-bottom:20px}
+.contact-body{font-size:14px;color:var(--gray-300);line-height:1.7;font-weight:300;margin-bottom:32px}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.contact-detail svg{width:18px;height:18px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.contact-detail span{font-size:13px;color:var(--gray-300)}
+.contact-form{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px}
+@media(max-width:768px){.contact-form{padding:28px 20px}}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:0}
+.form-group.full{margin-bottom:16px}
+.form-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400)}
+.form-input,.form-select,.form-textarea{background:var(--bg);border:1px solid var(--gray-700);color:var(--white);font-family:var(--sans);font-size:14px;padding:12px 16px;transition:border-color .3s;outline:none;width:100%}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--gray-500)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--red)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+.form-select option{background:var(--bg-card);color:var(--white)}
+.form-textarea{resize:vertical;min-height:120px}
+.form-submit{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 32px;background:var(--red);border:1.5px solid var(--red);color:#fff;cursor:pointer;font-family:var(--sans);transition:all .3s;display:inline-flex;align-items:center;gap:10px;margin-top:8px;width:100%;justify-content:center}
+.form-submit:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.form-submit svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success.show{display:block}
+.form-success-icon{width:48px;height:48px;margin:0 auto 16px;border-radius:50%;background:rgba(230,57,70,.1);display:flex;align-items:center;justify-content:center}
+.form-success-icon svg{width:24px;height:24px;stroke:var(--red);fill:none;stroke-width:2}
+.form-success-title{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:8px;font-weight:400}
+.form-success-body{font-size:13px;color:var(--gray-400)}
+.form-fields.hide{display:none}
+
+/* FOOTER */
+.footer{padding:40px 48px;text-align:center;border-top:1px solid var(--gray-800)}
+.footer-brand{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
+.footer-copy{font-size:12px;color:var(--gray-600)}
+@media(max-width:768px){.footer{padding:32px 24px}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
+
+/* DIVIDER */
+.section-divider{width:48px;height:1px;background:var(--gray-700);margin:0 auto}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-brand">Project Arklight</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="aci">ACI</a></li>
+    <li><a href="partners">Partners</a></li>
+    <li><a href="arklight">Investors</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="nav-cta">Request a Demo</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="mm-link">Home</a>
+  <a href="aci" class="mm-link">ACI</a>
+  <a href="partners" class="mm-link">Partners</a>
+  <a href="arklight" class="mm-link">Investors</a>
+  <a href="#contact" class="mm-link">Request a Demo</a>
+  <button class="mm-theme" id="mmThemeBtn">
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+    Theme
+  </button>
+</div>
+
+<!-- HERO -->
+<section class="aci-hero" id="hero">
+  <div class="aci-hero-eyebrow">Arklight Cognitive Index</div>
+  <h1 class="aci-hero-title">Your Environment Can't Afford to Guess. <span style="font-style:italic;color:var(--red)">Now It Doesn't Have To.</span></h1>
+  <div class="aci-hero-line"></div>
+  <p class="aci-hero-desc">ACI is assessment intelligence for companies building for national security. We predict who will succeed in your critical environment — and how to deploy them — before you invest a single interview hour.</p>
+  <div class="aci-hero-ctas">
+    <a href="#contact" class="aci-cta aci-cta-primary">
+      Request a Demo
+      <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="/" class="aci-cta aci-cta-secondary">
+      Back to Arklight.us
+      <svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="section" id="problem">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">The Problem</div>
+      <h2 class="section-title">The Tools You Have Weren't Built for Your World</h2>
+      <p class="section-body">Five-minute AI screens. One-way video recordings. Generic personality tests. They were built for volume hiring. Your environment demands depth.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-number">$50K–$150K+</div>
+        <div class="stat-label">Cost of a single mis-hire in a critical environment</div>
+      </div>
+      <div class="stat-card reveal reveal-d1">
+        <div class="stat-number">2.1M</div>
+        <div class="stat-label">Manufacturing jobs projected unfilled by 2030</div>
+      </div>
+      <div class="stat-card reveal reveal-d2">
+        <div class="stat-number">38–40 Days</div>
+        <div class="stat-label">Average hiring cycle that still ends in "we're not sure"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT ACI IS -->
+<section class="section" id="what-aci-is" style="padding-top:0">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What ACI Is</div>
+      <h2 class="section-title">An Assessment Built for Environments Where Getting It Wrong Isn't an Option</h2>
+      <p class="section-body">Not a quiz. Not a video recording. Not a chatbot. ACI is an adaptive, voice-first investigation conducted by an AI evaluator — built on the same aptitude science the military and intelligence community have used for decades.</p>
+    </div>
+    <div class="receives-grid">
+      <div class="receives-card reveal">
+        <div class="receives-card-eyebrow">Adaptive & Conversational</div>
+        <div class="receives-card-body">When a candidate gives a concerning answer, the system follows up. When unexpected strength emerges, it probes deeper. It adapts to the person in front of it in real time.</div>
+      </div>
+      <div class="receives-card reveal reveal-d1">
+        <div class="receives-card-eyebrow">Military-Grade Methodology</div>
+        <div class="receives-card-body">We didn't start with a consumer hiring tool. We started with the question: how do you assess someone for a role where the stakes are existential?</div>
+      </div>
+      <div class="receives-card reveal reveal-d2">
+        <div class="receives-card-eyebrow">Built for Scale</div>
+        <div class="receives-card-body">The depth of the best human evaluator, at a consistency no human team can sustain across thousands of candidates.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU RECEIVE -->
+<section class="section" id="what-you-receive" style="padding-top:0">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What You Receive</div>
+      <h2 class="section-title">Not a Score. A Deployment Plan.</h2>
+      <p class="section-body">Who to advance. What to ask them. How to set them up for success on day one.</p>
+    </div>
+    <div class="receives-grid">
+      <div class="receives-card reveal">
+        <div class="receives-card-eyebrow">For the TA Leader</div>
+        <div class="receives-card-body">Defensible assessment data that replaces gut calls. Audit-ready. Scalable.</div>
+      </div>
+      <div class="receives-card reveal reveal-d1">
+        <div class="receives-card-eyebrow">For the Recruiter</div>
+        <div class="receives-card-body">Stack-ranked candidates with clear signals. Decisions in days, not weeks.</div>
+      </div>
+      <div class="receives-card reveal reveal-d2">
+        <div class="receives-card-eyebrow">For Operations</div>
+        <div class="receives-card-body">New hires arrive with an onboarding plan built around who they actually are.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES ACI DIFFERENT -->
+<section class="section" id="different" style="padding-top:0">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What Makes ACI Different</div>
+      <h2 class="section-title">Built Different Because the Problem Is Different</h2>
+    </div>
+    <div class="feature-cards">
+      <div class="feature-card reveal">
+        <div class="feature-card-title">Behavioral Integrity as a Core Dimension</div>
+        <div class="feature-card-body">The hardest thing to assess isn't whether they're smart enough. It's whether they'll follow the procedure when no one is watching. Whether they'll return the tools. Whether they'll flag an anomaly instead of overlooking it. Most assessment platforms don't touch this. ACI measures it as a first-class dimension.</div>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-card-title">Depth Over Speed</div>
+        <div class="feature-card-body">The market is racing toward shorter assessments. Five minutes. Three minutes. We went the other direction — because your roles deserve it. ACI is a thorough, structured investigation. The candidates right for your environment will invest in a serious evaluation. The ones who won't? That's signal, too.</div>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-card-title">Methodology, Not Just Technology</div>
+        <div class="feature-card-body">Most AI assessment tools are technology looking for a problem. ACI is methodology first, technology second. The architecture is rooted in decades of research into identifying talent for high-stakes roles. The AI serves the methodology — not the other way around.</div>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-card-title">Purpose-Built for Critical Environments</div>
+        <div class="feature-card-body">ACI wasn't adapted from a consumer hiring platform. It was built from the ground up for environments where assessment must be deeper, more rigorous, and designed for stakes that most tools were never intended to handle. Your environment cannot afford to guess.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO ACI IS FOR -->
+<section class="section" id="who" style="padding-top:0">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Who ACI Is For</div>
+      <h2 class="section-title">For Companies Building for National Security</h2>
+      <p class="section-body">ACI was designed for organizations operating in environments where the cost of a mis-hire is operational, security-relevant, or mission-critical. If your company builds within the national security ecosystem — and the tools you've tried weren't built for your stakes — we should talk.</p>
+    </div>
+    <div class="vertical-grid">
+      <div class="vertical-card reveal">
+        <div class="vertical-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div class="vertical-card-title">Defense</div>
+        <div class="vertical-card-body">Scaling production workforces for autonomous systems, precision munitions, naval vessels, and next-generation platforms.</div>
+      </div>
+      <div class="vertical-card reveal reveal-d1">
+        <div class="vertical-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.95-2 4-4 8-2-4-4-6.05-4-8a4 4 0 014-4z"/><path d="M12 18v4"/><path d="M8 22h8"/><circle cx="12" cy="6" r="1"/></svg>
+        </div>
+        <div class="vertical-card-title">AI</div>
+        <div class="vertical-card-body">Building safety, operations, and infrastructure teams for AI systems with national security implications.</div>
+      </div>
+      <div class="vertical-card reveal reveal-d2">
+        <div class="vertical-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 014 10 14.5 14.5 0 01-4 10 14.5 14.5 0 01-4-10A14.5 14.5 0 0112 2"/><path d="M2 12h20"/></svg>
+        </div>
+        <div class="vertical-card-title">Space</div>
+        <div class="vertical-card-body">Expanding manufacturing, assembly, and operations teams for satellite systems, launch vehicles, and space infrastructure.</div>
+      </div>
+      <div class="vertical-card reveal reveal-d3">
+        <div class="vertical-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h.01M15 12h.01"/></svg>
+        </div>
+        <div class="vertical-card-title">Advanced Manufacturing</div>
+        <div class="vertical-card-body">Hiring precision machinists, technicians, engineers, and quality specialists into regulated, high-consequence production environments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY STRIP -->
+<section class="section" id="credibility" style="padding-top:0">
+  <div class="section-inner">
+    <div class="cred-strip">
+      <div class="cred-item reveal">
+        <div class="cred-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div class="cred-item-body">Rooted in decades of military and intelligence community aptitude science.</div>
+      </div>
+      <div class="cred-item reveal reveal-d1">
+        <div class="cred-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="cred-item-body">Measures what others ignore: procedural discipline and judgment under pressure.</div>
+      </div>
+      <div class="cred-item reveal reveal-d2">
+        <div class="cred-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+        </div>
+        <div class="cred-item-body">Not just who to hire. How to deploy them for success on day one.</div>
+      </div>
+      <div class="cred-item reveal reveal-d3">
+        <div class="cred-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="cred-item-body">Designed from the ground up for critical environments. Not adapted from consumer HR tech.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION / CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-content reveal">
+      <div class="contact-eyebrow">Get Started</div>
+      <h2 class="contact-title">See What Assessment Intelligence Looks Like</h2>
+      <p class="contact-body">We're selecting design partners who are defining the next era of American capability in defense, AI, space, and advanced manufacturing. Request a demo and we'll walk you through the platform in the context of your specific environment, your roles, and your stakes.</p>
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>contact@arklight.us</span>
+      </div>
+      <div class="contact-detail">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>United States</span>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-d1">
+      <form id="contactForm">
+        <div class="form-fields" id="formFields">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="john@company.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="org">Organization</label>
+              <input class="form-input" type="text" id="org" name="organization" placeholder="Company Inc.">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="interest">I'm Interested In</label>
+              <select class="form-select" id="interest" name="interest">
+                <option value="" disabled>Select one</option>
+                <option value="aci-demo" selected>ACI Demo</option>
+                <option value="partnership">Partnership</option>
+                <option value="investment">Investment</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your environment, roles, and hiring challenges..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Request a Demo
+            <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="form-success-title">Demo Requested</div>
+          <div class="form-success-body">Thank you. We'll reach out shortly to schedule your walkthrough.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Project Arklight</div>
+  <div class="footer-copy">Project Arklight, 2025</div>
+</footer>
+
+<script>
+// Progress bar + nav scroll
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('progress').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
+},{passive:true});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Theme toggle
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  try{localStorage.setItem('arklight-theme',next);document.querySelector('meta[name="theme-color"]').content=next==='dark'?'#000000':'#fafaf9'}catch(e){}
+}
+document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+document.getElementById('mmThemeBtn').addEventListener('click',toggleTheme);
+try{const saved=localStorage.getItem('arklight-theme');if(saved){document.documentElement.setAttribute('data-theme',saved);document.querySelector('meta[name="theme-color"]').content=saved==='dark'?'#000000':'#fafaf9'}}catch(e){}
+
+// Mobile menu
+const navToggle=document.getElementById('navToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+navToggle.addEventListener('click',()=>{
+  navToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{
+  navToggle.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}));
+
+// Hero parallax
+window.addEventListener('scroll',()=>{const h=document.querySelector('.aci-hero'),s=window.scrollY;if(s<window.innerHeight){h.style.transform='translateY('+s*.2+'px)';h.style.opacity=1-(s/window.innerHeight)*.4}},{passive:true});
+
+// Contact form
+const contactForm=document.getElementById('contactForm');
+if(contactForm){contactForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('formFields').classList.add('hide');
+  document.getElementById('formSuccess').classList.add('show');
+});}
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
