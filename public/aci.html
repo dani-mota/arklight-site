@@ -164,15 +164,22 @@ a{color:inherit;text-decoration:none}
 .convey-3{animation:convey 3s ease 1.5s infinite}
 .convey-4{animation:convey 3s ease 2.25s infinite}
 
-/* CREDIBILITY STRIP */
-.cred-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-@media(max-width:1000px){.cred-strip{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.cred-strip{grid-template-columns:1fr}}
-.cred-item{background:var(--bg-card);border:1px solid var(--gray-800);padding:32px 24px;text-align:center;transition:all .4s}
-.cred-item:hover{background:var(--bg-elevated)}
-.cred-item-icon{margin-bottom:16px}
-.cred-item-icon svg{width:28px;height:28px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.cred-item-body{font-size:13px;color:var(--gray-300);line-height:1.6}
+/* SOLUTIONS */
+.solutions-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
+@media(max-width:900px){.solutions-grid{grid-template-columns:1fr}}
+.solution-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:48px 40px;transition:all .4s;position:relative}
+.solution-card:hover{background:var(--bg-elevated)}
+.solution-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gray-800);transition:background .4s}
+.solution-card:hover::before{background:var(--red)}
+.solution-icon{width:40px;height:40px;margin-bottom:24px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gray-700);border-radius:8px}
+.solution-icon svg{width:20px;height:20px;fill:none;stroke:var(--red);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.solution-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.solution-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,24px);color:var(--white);font-weight:400;line-height:1.25;margin-bottom:16px}
+.solution-desc{font-size:14px;color:var(--gray-300);line-height:1.7;font-weight:300;margin-bottom:28px}
+.solution-features{list-style:none;display:flex;flex-direction:column;gap:12px}
+.solution-features li{font-size:13px;color:var(--gray-400);line-height:1.6;padding-left:20px;position:relative}
+.solution-features li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:1px;background:var(--red)}
+@media(max-width:768px){.solution-card{padding:32px 24px}}
 
 /* CONTACT */
 .contact{padding:120px 48px;position:relative}
@@ -309,7 +316,7 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="split-section reveal">
       <div class="split-left">
-        <h3 class="split-headline">ACI is an adaptive, next-generation intelligence assessment investigation.</h3>
+        <h3 class="split-headline">ACI is an adaptive intelligence assessment.</h3>
         <p class="split-body">Built on the same aptitude science the military and intelligence community have used for decades.</p>
       </div>
       <div class="split-right">
@@ -366,11 +373,6 @@ a{color:inherit;text-decoration:none}
       <h2 class="section-title">Built Different Because the Problem Is Different</h2>
     </div>
     <div class="convictions">
-      <div class="conviction reveal">
-        <div class="conviction-bar"></div>
-        <div class="conviction-title-wrap"><div class="conviction-title">Behavioral Integrity as a Core Dimension</div></div>
-        <div class="conviction-body-wrap"><div class="conviction-body">The hardest thing to assess isn't whether they're smart enough. It's whether they'll follow the procedure when no one is watching. Whether they'll return the tools. Whether they'll flag an anomaly instead of overlooking it. Most assessment platforms don't touch this. ACI measures it as a first-class dimension.</div></div>
-      </div>
       <div class="conviction reveal">
         <div class="conviction-bar"></div>
         <div class="conviction-title-wrap"><div class="conviction-title">Depth Over Speed</div></div>
@@ -595,33 +597,42 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- CREDIBILITY STRIP -->
-<section class="section" id="credibility" style="padding-top:0">
+<!-- SOLUTIONS -->
+<section class="section" id="solutions" style="padding-top:0">
   <div class="section-inner">
-    <div class="cred-strip">
-      <div class="cred-item reveal">
-        <div class="cred-item-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-        </div>
-        <div class="cred-item-body">Rooted in decades of military and intelligence community aptitude science.</div>
-      </div>
-      <div class="cred-item reveal reveal-d1">
-        <div class="cred-item-icon">
-          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
-        <div class="cred-item-body">Measures what others ignore: procedural discipline and judgment under pressure.</div>
-      </div>
-      <div class="cred-item reveal reveal-d2">
-        <div class="cred-item-icon">
+    <div class="reveal">
+      <div class="section-eyebrow">Solutions</div>
+      <h2 class="section-title">Two Modes. One Platform.</h2>
+      <p class="section-body">ACI adapts to where you are in the talent lifecycle — whether you're bringing new people in or developing the ones you already have.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card reveal">
+        <div class="solution-icon">
           <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
         </div>
-        <div class="cred-item-body">Not just who to hire. How to deploy them for success on day one.</div>
+        <div class="solution-label">Hiring</div>
+        <div class="solution-title">Candidate Assessment</div>
+        <div class="solution-desc">Evaluate candidates before you invest a single interview hour. ACI gives your hiring team a structured, objective signal on who belongs in your environment — and who doesn't.</div>
+        <ul class="solution-features">
+          <li>Pre-interview screening that measures cognitive ability, procedural discipline, and judgment under pressure</li>
+          <li>Structured candidate profiles with clear advance/decline signals — no more gut calls</li>
+          <li>Targeted interview guides generated from each candidate's assessment, so your team asks the right questions</li>
+          <li>Stack-ranked candidate pools with defensible, audit-ready data</li>
+        </ul>
       </div>
-      <div class="cred-item reveal reveal-d3">
-        <div class="cred-item-icon">
-          <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      <div class="solution-card reveal reveal-d1">
+        <div class="solution-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <div class="cred-item-body">Designed from the ground up for critical environments. Not adapted from consumer HR tech.</div>
+        <div class="solution-label">Workforce</div>
+        <div class="solution-title">Internal Talent Development</div>
+        <div class="solution-desc">Assess your existing workforce to surface high-potential operators, inform leadership decisions, and build development plans rooted in real capability data — not tenure or title.</div>
+        <ul class="solution-features">
+          <li>Identify who is ready for promotion, cross-training, or increased responsibility</li>
+          <li>Build targeted development plans based on individual cognitive and behavioral profiles</li>
+          <li>Benchmark team capability across departments, shifts, or sites</li>
+          <li>Reduce attrition by placing people in roles that match their strengths</li>
+        </ul>
       </div>
     </div>
   </div>
