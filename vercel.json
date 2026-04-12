@@ -3,6 +3,13 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/arklight",
+      "destination": "/investors",
+      "permanent": true
+    }
+  ],
 "headers": [
     {
       "source": "/(.*)",

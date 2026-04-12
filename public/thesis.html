@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The People Problem — Project Arklight</title>
+<meta name="description" content="The nation that builds the best people builds the future. An investment thesis on America's talent infrastructure crisis.">
+<meta name="theme-color" content="#fafaf9">
+<meta property="og:title" content="The People Problem — Project Arklight">
+<meta property="og:description" content="The nation that builds the best people builds the future. An investment thesis on America's talent infrastructure crisis.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[data-theme="dark"]{--black:#000;--bg:#000;--bg-card:#0d0d0d;--bg-elevated:#111;--white:#fff;--gray-100:#f0f0f0;--gray-200:#d4d4d4;--gray-300:#a3a3a3;--gray-400:#737373;--gray-500:#525252;--gray-600:#404040;--gray-700:#2a2a2a;--gray-800:#1a1a1a;--gray-900:#0f0f0f;--red:#e63946;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(0,0,0,.92);--sel-bg:var(--red);--sel-c:#fff;color-scheme:dark}
+[data-theme="light"]{--black:#fafaf9;--bg:#fafaf9;--bg-card:#fff;--bg-elevated:#f5f5f4;--white:#1a1a1a;--gray-100:#2e2e2e;--gray-200:#3a3a3a;--gray-300:#525252;--gray-400:#737373;--gray-500:#a3a3a3;--gray-600:#d4d4d4;--gray-700:#e5e5e5;--gray-800:#f0f0f0;--gray-900:#f5f5f4;--red:#d62839;--red-dark:#b91c2c;--sans:'DM Sans',system-ui,-apple-system,sans-serif;--serif:'DM Serif Display',Georgia,serif;--nav-bg:rgba(250,250,249,.95);--sel-bg:var(--red);--sel-c:#fff;color-scheme:light}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gray-600) var(--black)}
+body{background:var(--bg);color:var(--gray-200);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+::selection{background:var(--sel-bg);color:var(--sel-c)}
+a{color:inherit;text-decoration:none}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:9999;width:0;transition:width 50ms linear}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.nav.scrolled{padding:16px 48px;background:var(--nav-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--gray-700)}
+.nav-brand{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.nav-links{display:flex;gap:36px;align-items:center;list-style:none}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-cta{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);border:1px solid var(--gray-600);padding:7px 16px;transition:all .3s;display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:none;white-space:nowrap;font-family:var(--sans)}
+.nav-cta:hover{border-color:var(--white);background:var(--white);color:var(--black)}
+.theme-toggle{background:none;border:1px solid var(--gray-700);border-radius:50%;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--gray-400)}
+.theme-toggle svg{width:16px;height:16px;fill:none;stroke:var(--gray-400);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.theme-toggle:hover svg{stroke:var(--white)}
+.theme-toggle .icon-moon{display:block}.theme-toggle .icon-sun{display:none}
+[data-theme="light"] .theme-toggle .icon-moon{display:none}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;-webkit-tap-highlight-color:transparent}
+.nav-toggle span{display:block;width:20px;height:1.5px;background:var(--white);margin:5px 0;transition:all .3s}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+@media(max-width:1200px){.nav-links{gap:20px}.nav-links a{font-size:10px;letter-spacing:.08em}.nav-cta{font-size:9px;padding:6px 12px;gap:5px}}
+@media(max-width:1050px){.nav{padding:20px 32px}.nav.scrolled{padding:14px 32px}.nav-links{gap:14px}.nav-links a{font-size:9px}.nav-cta{padding:5px 10px;font-size:8px}.nav-brand{font-size:10px;letter-spacing:.2em}}
+@media(max-width:900px){.nav-links{display:none}.nav-cta{display:none}.nav-toggle{display:block}.theme-toggle{display:none}}
+@media(max-width:768px){.nav{padding:18px 24px}.nav.scrolled{padding:14px 24px}.nav-toggle{display:block}}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--serif);font-size:22px;color:var(--white);padding:6px 0;transition:color .2s}
+.mobile-menu a:active{color:var(--red)}
+.mobile-menu .mm-theme{margin-top:16px;font-size:12px;color:var(--gray-400);display:flex;align-items:center;gap:8px;cursor:pointer;background:none;border:1px solid var(--gray-700);padding:10px 20px;transition:all .3s}
+@media(min-width:901px){.mobile-menu{display:none!important}}
+
+/* HERO */
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 48px 100px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(transparent,var(--black))}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-400);margin-bottom:48px;opacity:0;animation:fi .8s ease .3s forwards}
+.hero-title{font-family:var(--serif);line-height:1.1;margin-bottom:48px;max-width:900px;opacity:0;animation:fi 1s ease .5s forwards}
+.hero-title .t-main{display:block;font-size:clamp(36px,6vw,72px);color:var(--white);font-weight:400;letter-spacing:-.02em}
+.hero-title .t-red{color:var(--red)}
+.hero-line{width:48px;height:1px;background:var(--gray-500);margin:0 auto 40px;opacity:0;animation:fi .6s ease .8s forwards}
+.hero-sub{font-size:clamp(14px,1.8vw,18px);color:var(--gray-300);max-width:620px;line-height:1.7;font-weight:300;opacity:0;animation:fi .8s ease 1s forwards}
+.hero-sub strong{color:var(--white);font-weight:500}
+.hero-meta{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);margin-top:56px;opacity:0;animation:fi .6s ease 1.2s forwards}
+.hero-meta span{color:var(--gray-300)}
+.scroll-ind{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fi .6s ease 1.5s forwards}
+.scroll-ind .line{width:1px;height:32px;position:relative;overflow:hidden;background:var(--gray-700)}
+.scroll-ind .line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:60%;background:var(--red);animation:sp 2s ease infinite}
+.scroll-ind span{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-500)}
+@keyframes fi{to{opacity:1}}
+@keyframes sp{0%{top:-60%}100%{top:160%}}
+
+/* LAYOUT */
+.content{max-width:720px;margin:0 auto;padding:0 48px}
+.content-wide{max-width:1080px;margin:0 auto;padding:0 48px}
+.content-full{max-width:1200px;margin:0 auto;padding:0 48px}
+.spacer{height:120px}.spacer-sm{height:80px}.spacer-lg{height:160px}
+.divider{max-width:720px;margin:0 auto;padding:0 48px}
+.divider-wide{max-width:1080px;margin:0 auto;padding:0 48px}
+.divider hr{border:none;height:1px;background:var(--gray-700)}
+.divider-wide hr{border:none;height:1px;background:var(--gray-700)}
+
+/* SECTION HEADERS */
+.sec-label{font-size:10px;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:16px}
+.sec-label::before{content:'';width:24px;height:1px;background:var(--red)}
+.sec-num{font-family:var(--serif);font-size:72px;color:var(--gray-800);line-height:.9;margin-bottom:-8px}
+.sec-title{font-family:var(--serif);font-size:clamp(28px,4.5vw,48px);color:var(--white);line-height:1.15;margin-bottom:48px;font-weight:400}
+.sec-title em{font-style:italic;color:var(--red)}
+.sec-sub{font-size:17px;color:var(--gray-400);line-height:1.7;font-weight:300;margin-top:-32px;margin-bottom:48px;max-width:640px}
+.body{font-size:17px;color:var(--gray-300);line-height:1.8;margin-bottom:28px;font-weight:300}
+.body strong{color:var(--white);font-weight:500}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.scroll-ind .line::after{animation:none}}
+
+/* SIDE DOTS */
+.side-dots{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:14px}
+.s-dot{width:6px;height:6px;border-radius:50%;border:1px solid var(--gray-500);background:transparent;cursor:pointer;transition:all .3s;position:relative}
+.s-dot.active{background:var(--red);border-color:var(--red);transform:scale(1.4)}
+.s-dot:hover{border-color:var(--red)}
+.s-dot .tip{position:absolute;right:18px;top:50%;transform:translateY(-50%);background:var(--bg-elevated);border:1px solid var(--gray-700);padding:4px 10px;font-size:10px;color:var(--gray-300);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.s-dot:hover .tip{opacity:1}
+@media(max-width:1100px){.side-dots{display:none}}
+
+/* DATA POINTS */
+.data-stack{margin:48px 0}
+.data-point{padding:24px 0;border-bottom:1px solid var(--gray-800);display:flex;align-items:baseline;gap:24px}
+.data-point:first-child{border-top:1px solid var(--gray-800)}
+.data-stat{font-family:var(--serif);font-size:clamp(32px,5vw,48px);color:var(--red);min-width:140px;text-align:right;line-height:1;flex-shrink:0;font-weight:400}
+.data-desc{font-size:16px;color:var(--gray-300);line-height:1.6;font-weight:300}
+@media(max-width:600px){.data-point{flex-direction:column;gap:8px}.data-stat{text-align:left;min-width:auto}}
+
+/* BOTTOM LINE */
+.bottom-line{background:var(--bg-card);border-left:2px solid var(--red);padding:28px 36px;margin:48px 0;font-size:17px;color:var(--white);line-height:1.7;font-weight:400}
+
+/* CONSEQUENCE / STAT COLUMNS */
+.consequence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:48px 0}
+@media(max-width:900px){.consequence-grid{grid-template-columns:1fr}}
+.consequence-col{background:var(--bg-card);border:1px solid var(--gray-800);padding:40px 32px;position:relative;overflow:hidden}
+.consequence-col::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.consequence-col-title{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:28px}
+.consequence-item{padding:16px 0;border-bottom:1px solid var(--gray-800)}
+.consequence-item:last-child{border-bottom:none}
+.consequence-item .ci-stat{font-family:var(--serif);font-size:24px;color:var(--white);line-height:1.2;margin-bottom:4px;font-weight:400}
+.consequence-item .ci-desc{font-size:13px;color:var(--gray-400);line-height:1.5}
+
+/* CALLOUT */
+.callout{text-align:center;padding:80px 48px;position:relative;overflow:hidden}
+.callout-bg{font-family:var(--serif);font-size:clamp(80px,18vw,180px);color:var(--gray-900);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;user-select:none;pointer-events:none}
+.callout-text{font-family:var(--serif);font-size:clamp(22px,3.5vw,36px);color:var(--white);line-height:1.35;max-width:700px;margin:0 auto;position:relative;z-index:1;font-weight:400}
+.callout-text em{color:var(--red);font-style:italic}
+
+/* ACT BANNER */
+.act-banner{text-align:center;padding:100px 48px;border-top:1px solid var(--gray-800);border-bottom:1px solid var(--gray-800)}
+.act-banner-label{font-size:10px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.act-banner-title{font-family:var(--serif);font-size:clamp(28px,5vw,56px);color:var(--white);font-weight:400;line-height:1.15;max-width:700px;margin:0 auto}
+
+/* ====================== */
+/* TIMELINE               */
+/* ====================== */
+.timeline{position:relative;margin:64px 0}
+.timeline-track{position:absolute;top:24px;left:0;right:0;height:2px;background:var(--gray-800)}
+.timeline-fill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gray-400),var(--gray-400) 40%,var(--red) 100%);width:100%}
+.timeline-nodes{display:flex;justify-content:space-between;position:relative;z-index:1}
+.timeline-node{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:180px;flex:1}
+.timeline-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--gray-400);background:var(--bg);margin-bottom:20px;transition:all .4s;position:relative;z-index:2}
+.timeline-node.warning .timeline-dot{border-color:var(--red);background:var(--red)}
+.timeline-node.crisis .timeline-dot{border-color:var(--red);background:var(--red);box-shadow:0 0 20px rgba(230,57,70,.3)}
+.timeline-year{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px}
+.timeline-node.warning .timeline-year,.timeline-node.crisis .timeline-year{color:var(--red)}
+.timeline-label{font-family:var(--serif);font-size:16px;color:var(--white);font-weight:400;margin-bottom:8px;line-height:1.2}
+.timeline-desc{font-size:12px;color:var(--gray-400);line-height:1.5;font-weight:300}
+@media(max-width:900px){
+  .timeline-track{top:0;left:24px;right:auto;width:2px;height:100%}
+  .timeline-fill{width:100%;height:100%}
+  .timeline-nodes{flex-direction:column;gap:48px;padding-left:56px}
+  .timeline-node{flex-direction:row;align-items:flex-start;text-align:left;max-width:none;gap:0;flex:none}
+  .timeline-dot{position:absolute;left:19px;margin-bottom:0;flex-shrink:0}
+  .timeline-year{margin-bottom:4px}
+  .timeline-label{font-size:15px}
+}
+
+/* ====================== */
+/* STAT COMPARISON        */
+/* ====================== */
+.stat-compare{display:flex;justify-content:center;align-items:center;gap:48px;margin:64px 0;flex-wrap:wrap}
+.stat-compare-item{text-align:center}
+.stat-compare-num{font-family:var(--serif);font-size:clamp(48px,8vw,96px);line-height:1;font-weight:400}
+.stat-compare-num.positive{color:var(--white)}
+.stat-compare-num.negative{color:var(--red)}
+.stat-compare-label{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-400);margin-top:8px}
+.stat-compare-vs{font-family:var(--serif);font-size:clamp(24px,4vw,48px);color:var(--gray-500);font-style:italic}
+.stat-compare-caption{text-align:center;font-size:14px;color:var(--gray-400);line-height:1.6;max-width:600px;margin:0 auto;font-weight:300}
+
+/* ====================== */
+/* EXPANDABLE CARDS       */
+/* ====================== */
+.expand-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:48px 0}
+@media(max-width:1100px){.expand-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.expand-grid{grid-template-columns:1fr}}
+.expand-card{background:var(--bg-card);border:1px solid var(--gray-800);cursor:pointer;overflow:hidden;transition:border-color .3s}
+.expand-card:hover{border-color:var(--gray-600)}
+.expand-card.open{border-color:var(--red);grid-column:1/-1}
+.expand-card-header{position:relative;padding:32px 24px;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end}
+.expand-card-header::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.7) 100%);z-index:1}
+.expand-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.3;transition:opacity .4s}
+.expand-card:hover .expand-card-bg{opacity:.4}
+.expand-card-title{font-family:var(--serif);font-size:18px;color:var(--white);font-weight:400;position:relative;z-index:2;line-height:1.2}
+.expand-card-num{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--red);position:relative;z-index:2;margin-bottom:8px}
+.expand-card-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),padding .3s}
+.expand-card.open .expand-card-body{max-height:2000px;padding:32px 28px}
+.expand-card-body .body{font-size:15px;line-height:1.7;margin-bottom:20px}
+.expand-card-body .data-stack{margin:24px 0}
+.expand-card-body .data-point{padding:16px 0}
+.expand-card-body .data-stat{font-size:clamp(24px,4vw,36px);min-width:100px}
+.expand-card-body .footnote{font-size:11px;color:var(--gray-500);line-height:1.5;margin-top:16px;font-style:italic}
+
+/* stat grid inside expand cards */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+@media(max-width:768px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.stat-grid{grid-template-columns:1fr}}
+.stat-tile{background:var(--bg);border:1px solid var(--gray-800);padding:20px 16px;text-align:center}
+.stat-tile .st-num{font-family:var(--serif);font-size:28px;color:var(--red);font-weight:400;margin-bottom:4px;line-height:1}
+.stat-tile .st-desc{font-size:11px;color:var(--gray-400);line-height:1.4}
+
+/* ====================== */
+/* PIPELINE STAGES        */
+/* ====================== */
+.pipeline{position:relative;margin:48px 0;padding-left:40px}
+.pipeline-line{position:absolute;top:0;bottom:0;left:16px;width:2px;background:var(--gray-800)}
+.pipeline-stage{position:relative;margin-bottom:64px}
+.pipeline-stage:last-child{margin-bottom:0}
+.pipeline-stage-dot{position:absolute;left:-34px;top:0;width:12px;height:12px;border-radius:50%;border:2px solid var(--gray-500);background:var(--bg);z-index:2}
+.pipeline-stage-header{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.pipeline-stage-icon{font-size:18px;line-height:1}
+.pipeline-stage-name{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-300)}
+.pipeline-stage-time{font-size:10px;color:var(--gray-500);letter-spacing:.1em}
+.pipeline-stage-num{font-size:10px;font-weight:600;color:var(--gray-600);letter-spacing:.1em;margin-left:auto}
+.pipeline-stage-desc{font-size:15px;color:var(--gray-400);line-height:1.6;margin-bottom:24px;font-weight:300}
+.pipeline-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:768px){.pipeline-cards{grid-template-columns:1fr}}
+.pipeline-card{background:var(--bg-card);border:1px solid var(--gray-800);padding:20px 16px;position:relative}
+.pipeline-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gray-700)}
+.pipeline-card.bottleneck{border:1.5px solid var(--red)}
+.pipeline-card.bottleneck::before{background:var(--red)}
+.bottleneck-label{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);background:rgba(230,57,70,.1);padding:2px 8px;display:inline-block;margin-bottom:8px}
+.pipeline-card-title{font-family:var(--serif);font-size:15px;color:var(--white);font-weight:400;margin-bottom:6px}
+.pipeline-card-desc{font-size:12px;color:var(--gray-400);line-height:1.5}
+.pipeline-commentary{font-size:14px;color:var(--gray-400);line-height:1.7;margin-top:16px;font-weight:300;font-style:italic}
+
+/* Broken pipeline visual */
+.broken-pipeline{display:flex;align-items:center;gap:24px;margin:56px 0;justify-content:center;flex-wrap:wrap}
+.broken-segment{background:var(--bg-card);border:1px solid var(--gray-800);padding:14px 24px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-400);position:relative}
+.broken-segment::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.broken-gap{width:20px;height:2px;background:repeating-linear-gradient(90deg,var(--gray-700) 0,var(--gray-700) 4px,transparent 4px,transparent 8px)}
+@media(max-width:768px){.broken-pipeline{flex-direction:column;gap:8px}.broken-gap{width:2px;height:20px;background:repeating-linear-gradient(180deg,var(--gray-700) 0,var(--gray-700) 4px,transparent 4px,transparent 8px)}}
+
+/* ====================== */
+/* WINDOW / FORCES        */
+/* ====================== */
+.forces-list{margin:48px 0}
+.force-item{border-bottom:1px solid var(--gray-800);cursor:pointer;transition:background .2s}
+.force-item:first-child{border-top:1px solid var(--gray-800)}
+.force-item:hover{background:rgba(255,255,255,.015)}
+.force-header{display:flex;align-items:center;gap:16px;padding:24px 0}
+.force-num{font-family:var(--serif);font-size:28px;color:var(--gray-800);min-width:40px;font-weight:400}
+.force-item.open .force-num{color:var(--red)}
+.force-name{font-family:var(--serif);font-size:20px;color:var(--white);font-weight:400;flex:1}
+.force-toggle{width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--gray-500);transition:transform .3s,color .3s;flex-shrink:0}
+.force-item.open .force-toggle{transform:rotate(45deg);color:var(--red)}
+.force-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+.force-item.open .force-body{max-height:600px}
+.force-content{padding:0 0 28px 56px;font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300}
+.force-content strong{color:var(--white);font-weight:500}
+
+/* ====================== */
+/* CLOSED-LOOP DIAGRAM    */
+/* ====================== */
+.loop-wrap{position:relative;max-width:640px;margin:64px auto;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.loop-ring{position:absolute;inset:0;border:1px dashed var(--gray-700);border-radius:50%}
+.loop-ring-inner{position:absolute;inset:40px;border:1px solid var(--gray-800);border-radius:50%}
+.loop-center{text-align:center;z-index:2}
+.loop-center-label{font-size:9px;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.loop-center-title{font-family:var(--serif);font-size:18px;color:var(--white);font-weight:400}
+.loop-node{position:absolute;z-index:3;text-align:center;max-width:160px}
+.loop-node-dot{width:10px;height:10px;border-radius:50%;background:var(--red);margin:0 auto 10px;box-shadow:0 0 20px rgba(230,57,70,.3)}
+.loop-node-name{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--white);margin-bottom:4px}
+.loop-node-desc{font-size:11px;color:var(--gray-400);line-height:1.4}
+.loop-node.top{top:-20px;left:50%;transform:translateX(-50%)}
+.loop-node.right{right:-30px;top:50%;transform:translateY(-50%)}
+.loop-node.bottom{bottom:-20px;left:50%;transform:translateX(-50%)}
+.loop-node.left{left:-30px;top:50%;transform:translateY(-50%)}
+/* Arrows between nodes */
+.loop-arrow{position:absolute;z-index:1}
+.loop-arrow svg{width:24px;height:24px;stroke:var(--red);fill:none;stroke-width:1.5}
+
+/* Mobile: convert loop to vertical list */
+@media(max-width:768px){
+  .loop-wrap{aspect-ratio:auto;flex-direction:column;gap:0}
+  .loop-ring,.loop-ring-inner,.loop-arrow{display:none}
+  .loop-center{order:-1;margin-bottom:32px}
+  .loop-node{position:static;transform:none;max-width:none;text-align:left;padding:20px 0;border-bottom:1px solid var(--gray-800);display:flex;align-items:flex-start;gap:16px;width:100%}
+  .loop-node-dot{margin:4px 0 0}
+  .loop-node .ln-text{flex:1}
+}
+
+/* ====================== */
+/* CONVICTION / CLOSING   */
+/* ====================== */
+.conviction{border-top:1px solid var(--gray-800);padding:80px 0;margin-top:80px}
+.conviction .body{font-style:italic;color:var(--gray-300)}
+.conviction .body strong{font-style:normal}
+.conviction-sig{margin-top:48px;display:flex;flex-direction:column;gap:4px}
+.conviction-name{font-family:var(--serif);font-size:20px;color:var(--white);font-weight:400}
+.conviction-role{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+
+.arklight-reveal{text-align:center;padding:80px 0;margin-top:40px}
+.arklight-reveal-brand{font-size:11px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--white);margin-bottom:24px;opacity:0;transition:opacity 1s ease}
+.arklight-reveal-brand.visible{opacity:1}
+.arklight-reveal-cta{font-size:14px;color:var(--gray-400);font-weight:300}
+.arklight-reveal-cta a{color:var(--red);border-bottom:1px solid transparent;transition:border-color .3s}
+.arklight-reveal-cta a:hover{border-color:var(--red)}
+
+/* FOOTER */
+.footer{padding:56px 48px;border-top:1px solid var(--gray-800);text-align:center}
+.footer-author{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px}
+.footer-author span{color:var(--red)}
+.footer-date{font-size:11px;color:var(--gray-600);letter-spacing:.15em}
+
+/* FOOTNOTES */
+sup{font-size:10px;color:var(--gray-500);cursor:help;position:relative;top:-4px}
+sup a{color:var(--gray-500);text-decoration:none;border-bottom:1px dotted var(--gray-600);transition:color .2s}
+sup a:hover{color:var(--red)}
+.footnotes{margin-top:48px;padding-top:32px;border-top:1px solid var(--gray-800)}
+.footnotes ol{list-style:none;counter-reset:fn}
+.footnotes li{counter-increment:fn;font-size:11px;color:var(--gray-500);line-height:1.6;margin-bottom:6px;padding-left:24px;position:relative}
+.footnotes li::before{content:'[' counter(fn) ']';position:absolute;left:0;color:var(--gray-600)}
+
+/* MOBILE OVERRIDES */
+@media(max-width:768px){
+  .content,.content-wide,.content-full,.divider,.divider-wide{padding:0 20px}
+  .hero{padding:100px 20px 60px}
+  .hero-eyebrow{font-size:9px;letter-spacing:.2em;margin-bottom:28px}
+  .hero-title .t-main{font-size:clamp(26px,8vw,44px)}
+  .hero-sub{font-size:clamp(13px,3.5vw,14px);max-width:320px}
+  .hero-meta{margin-top:32px;font-size:10px}
+  .scroll-ind{bottom:16px}
+  .callout{padding:48px 20px}
+  .act-banner{padding:60px 20px}
+  .spacer{height:60px}.spacer-lg{height:80px}
+  .footer{padding:32px 20px}
+  .bottom-line{padding:18px 20px;font-size:15px}
+  .data-point{flex-direction:column;gap:4px;padding:14px 0}
+  .data-stat{text-align:left;min-width:auto;font-size:clamp(26px,8vw,34px)}
+  .sec-num{font-size:40px}
+  .sec-title{font-size:clamp(22px,6vw,30px);margin-bottom:28px}
+  .sec-sub{font-size:14px;margin-top:-16px;margin-bottom:24px}
+  .consequence-grid{grid-template-columns:1fr}
+  .consequence-col{padding:24px 20px}
+  .side-dots{display:none}
+  .body{font-size:15px}
+  .stat-compare{gap:24px}
+  .stat-compare-num{font-size:clamp(36px,10vw,60px)}
+  .expand-card-header{min-height:100px;padding:20px 16px}
+  .expand-card.open .expand-card-body{padding:20px 16px}
+  .pipeline{padding-left:32px}
+  .pipeline-line{left:12px}
+  .pipeline-stage-dot{left:-26px}
+  .force-content{padding-left:0}
+}
+@media(max-width:480px){
+  .content,.content-wide,.content-full{padding:0 16px}
+  .sec-title{font-size:20px;margin-bottom:20px}
+  .sec-num{font-size:32px}
+  .sec-sub{font-size:13px}
+  .act-banner{padding:40px 16px}
+  .act-banner-title{font-size:24px}
+  .hero-title .t-main{font-size:24px}
+}
+
+/* PRINT */
+@media print{
+  body{background:#000;color:#d4d4d4}
+  .nav,.progress-bar,.side-dots,.scroll-ind,.mobile-menu{display:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .expand-card.open .expand-card-body{max-height:none}
+  .force-item.open .force-body{max-height:none}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="mm-link">Home</a>
+  <a href="/aci" class="mm-link">ACI</a>
+  <a href="/trade-school" class="mm-link">Trade School 2.0</a>
+  <a href="/partners" class="mm-link">Partners</a>
+  <a href="/investors" class="mm-link">Investors</a>
+  <button class="mm-theme" id="mmThemeBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    Switch Theme
+  </button>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="/" class="nav-brand">Project Arklight</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/aci">ACI</a></li>
+    <li><a href="/trade-school">Trade School 2.0</a></li>
+    <li><a href="/partners">Partners</a></li>
+    <li><a href="/investors">Investors</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/aci#contact" class="nav-cta">ACI Demo</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Side Dots Navigation -->
+<div class="side-dots">
+  <div class="s-dot active" data-target="s-hero"><span class="tip">Home</span></div>
+  <div class="s-dot" data-target="s-foundation"><span class="tip">The Foundation</span></div>
+  <div class="s-dot" data-target="s-crisis"><span class="tip">How Bad Is It?</span></div>
+  <div class="s-dot" data-target="s-pipeline"><span class="tip">The Pipeline</span></div>
+  <div class="s-dot" data-target="s-window"><span class="tip">The Window</span></div>
+  <div class="s-dot" data-target="s-solution"><span class="tip">The Answer</span></div>
+</div>
+
+
+<!-- ============================== -->
+<!-- HERO                           -->
+<!-- ============================== -->
+<section class="hero" id="s-hero">
+  <div class="hero-eyebrow">An Investment Thesis</div>
+  <h1 class="hero-title">
+    <span class="t-main">The Nation That Builds the <span class="t-red">Best People</span> Builds the Future.</span>
+  </h1>
+  <div class="hero-line"></div>
+  <p class="hero-sub">Capital builds nothing. Technology builds nothing. Machines build nothing. <strong>People build everything.</strong> And the system that produces them determines whether a nation rises — or declines.</p>
+  <div class="hero-meta">Project Arklight · <span>2026</span></div>
+  <div class="scroll-ind">
+    <div class="line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ============================== -->
+<!-- SECTION 1: THE FOUNDATION      -->
+<!-- ============================== -->
+<div class="spacer-lg"></div>
+<section id="s-foundation">
+  <div class="content-wide">
+    <div class="reveal">
+      <div class="sec-label">The Foundation</div>
+      <div class="sec-num">01</div>
+      <h2 class="sec-title">America's <em>Workforce</em> Arc</h2>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="content-full">
+    <div class="reveal reveal-d1">
+      <div class="timeline">
+        <div class="timeline-track"><div class="timeline-fill"></div></div>
+        <div class="timeline-nodes">
+          <div class="timeline-node">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1944</div>
+            <div class="timeline-label">GI Bill</div>
+            <div class="timeline-desc">8 million veterans trained. Created the American middle class and the most skilled workforce on Earth.</div>
+          </div>
+          <div class="timeline-node">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1950s–60s</div>
+            <div class="timeline-label">Vocational Golden Age</div>
+            <div class="timeline-desc">National network of trade schools, apprenticeships, and employer-sponsored training. Manufacturing peaks at 19.5M workers.</div>
+          </div>
+          <div class="timeline-node warning">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1970s–80s</div>
+            <div class="timeline-label">The Pivot</div>
+            <div class="timeline-desc">"Go to college" becomes national policy. Vocational education defunded and stigmatized. Manufacturing begins offshoring.</div>
+          </div>
+          <div class="timeline-node warning">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-label">The Hollowing</div>
+            <div class="timeline-desc">Manufacturing collapses from 17M to 12M. Defense workforce falls from 3M to 1.1M. Institutional knowledge disappears.</div>
+          </div>
+          <div class="timeline-node crisis">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">Today</div>
+            <div class="timeline-label">The Crisis</div>
+            <div class="timeline-desc">1.9M jobs at risk of going unfilled. Average skilled operator is 63. $3T in reshoring investment with no workforce to execute it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <!-- Body copy -->
+  <div class="content">
+    <div class="reveal">
+      <p class="body">There is a pattern in the rise and fall of industrial powers. It's not about resources. It's not about geography. It's not about capital.</p>
+      <p class="body"><strong>It's about people.</strong></p>
+      <p class="body">The United States became the most powerful industrial nation in history not because of its natural resources — other nations had those — but because it built the most sophisticated system for producing skilled, capable people ever created.</p>
+      <p class="body">Then, starting in the 1970s, America made a choice. It decided that the path to prosperity ran through the university, not the shop floor. Vocational education was defunded. Trade schools were stigmatized. "Go to college" became the only acceptable answer.</p>
+      <p class="body">The consequences of that choice are now arriving. And they are arriving all at once.</p>
+    </div>
+  </div>
+
+  <div class="spacer-sm"></div>
+
+  <!-- Stat comparison -->
+  <div class="content-wide">
+    <div class="reveal">
+      <div class="stat-compare">
+        <div class="stat-compare-item">
+          <div class="stat-compare-num positive" data-count="19500000" data-format="M" data-decimals="1">19.5M</div>
+          <div class="stat-compare-label">Manufacturing workers at peak (1979)</div>
+        </div>
+        <div class="stat-compare-vs">→</div>
+        <div class="stat-compare-item">
+          <div class="stat-compare-num negative" data-count="12700000" data-format="M" data-decimals="1">12.7M</div>
+          <div class="stat-compare-label">Manufacturing workers today</div>
+        </div>
+      </div>
+      <p class="stat-compare-caption">The decline is not about automation replacing workers. It's about a nation that stopped investing in the systems that produce them.<sup><a href="#fn1">[1][2]</a></sup></p>
+    </div>
+  </div>
+</section>
+
+
+<div class="spacer-lg"></div>
+<div class="divider-wide"><hr></div>
+<div class="spacer-lg"></div>
+
+
+<!-- ============================== -->
+<!-- SECTION 2: HOW BAD IS IT?      -->
+<!-- ============================== -->
+<section id="s-crisis">
+  <div class="content">
+    <div class="reveal">
+      <div class="sec-label">The Crisis</div>
+      <div class="sec-num">02</div>
+      <h2 class="sec-title">How Bad <em>Is It?</em></h2>
+      <p class="sec-sub">Bad. The defense industrial workforce has collapsed by two-thirds. Half the skilled manufacturing workforce will retire within the decade. $3 trillion in reshoring investment is constrained by a single bottleneck: there aren't enough qualified people.</p>
+    </div>
+  </div>
+
+  <div class="content-full">
+    <p class="reveal body" style="text-align:center;max-width:640px;margin:0 auto 16px;font-size:13px;color:var(--gray-500)">Click on each issue below to learn more</p>
+    <div class="expand-grid reveal">
+      <!-- Card 1: National Security -->
+      <div class="expand-card" data-card="security">
+        <div class="expand-card-header">
+          <div class="expand-card-bg" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2280%22 fill=%22%23222%22 text-anchor=%22middle%22 dy=%22.3em%22>★</text></svg>')"></div>
+          <div class="expand-card-num">01</div>
+          <div class="expand-card-title">National Security</div>
+        </div>
+        <div class="expand-card-body">
+          <p class="body">The defense industrial base — the network of companies, workers, and supply chains that produce everything the U.S. military uses — is in structural crisis. Not a funding crisis. <strong>A people crisis.</strong></p>
+          <p class="body">The workforce has collapsed from 3 million workers in the mid-1980s to 1.1 million today. The Navy needs 250,000 new workers this decade. It is not on track to find them.</p>
+          <div class="data-stack">
+            <div class="data-point"><div class="data-stat">7 yrs</div><div class="data-desc">Submarine programs behind schedule</div></div>
+            <div class="data-point"><div class="data-stat">14,000+</div><div class="data-desc">Aircraft backlogged</div></div>
+            <div class="data-point"><div class="data-stat">232 : 1</div><div class="data-desc">China vs. U.S. shipbuilding capacity (2024)</div></div>
+          </div>
+          <p class="footnote">[6] CSIS, "Renewing the United States' Skilled Technical Workforce," July 2025 · [7] Advanced Manufacturing / SME · [8] CRS submarine production reports · [9] CSIS China Power Project</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Education Collapse -->
+      <div class="expand-card" data-card="education">
+        <div class="expand-card-header">
+          <div class="expand-card-bg" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2260%22 fill=%22%23222%22 text-anchor=%22middle%22 dy=%22.3em%22>📚</text></svg>')"></div>
+          <div class="expand-card-num">02</div>
+          <div class="expand-card-title">The Education Collapse</div>
+        </div>
+        <div class="expand-card-body">
+          <p class="body">The United States operates a <strong>$1.8 trillion higher education system</strong>. It was designed to produce the workforce. It produces credentials instead.</p>
+          <div class="stat-grid">
+            <div class="stat-tile"><div class="st-num">89%</div><div class="st-desc">of companies actively avoiding recent graduates</div></div>
+            <div class="stat-tile"><div class="st-num">75%</div><div class="st-desc">of HR leaders say college isn't preparing people for work</div></div>
+            <div class="stat-tile"><div class="st-num">43%</div><div class="st-desc">of ACT takers met zero college readiness benchmarks</div></div>
+            <div class="stat-tile"><div class="st-num">45%</div><div class="st-desc">of 12th graders scored below basic in math</div></div>
+            <div class="stat-tile"><div class="st-num">1 in 3</div><div class="st-desc">college students require remedial coursework</div></div>
+            <div class="stat-tile"><div class="st-num">$1.77T</div><div class="st-desc">in student loan debt across 43 million borrowers</div></div>
+          </div>
+          <p class="body">Universities are funded on enrollment and completion — not employment, not competence, not readiness. The entire system is optimized for inputs, not outcomes.</p>
+          <p class="footnote">[10] Intelligent.com employer survey · [11] ACT Inc., national results · [12] NAEP, 12th grade math · [13] NCES, remedial coursework data · [14] IBISWorld, Trade & Technical Schools, 2025 · [15] Federal Reserve Bank of New York</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Demographic Cliff -->
+      <div class="expand-card" data-card="demographic">
+        <div class="expand-card-header">
+          <div class="expand-card-bg" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2260%22 fill=%22%23222%22 text-anchor=%22middle%22 dy=%22.3em%22>⏳</text></svg>')"></div>
+          <div class="expand-card-num">03</div>
+          <div class="expand-card-title">The Demographic Cliff</div>
+        </div>
+        <div class="expand-card-body">
+          <p class="body">This is not a future problem. <strong>It is happening now.</strong></p>
+          <div class="data-stack">
+            <div class="data-point"><div class="data-stat">26%</div><div class="data-desc">of the existing U.S. manufacturing workforce expected to retire by 2030 — leaving more than 1.5 million roles vacant</div></div>
+            <div class="data-point"><div class="data-stat">63</div><div class="data-desc">Average age of a machine shop operator in America</div></div>
+            <div class="data-point"><div class="data-stat">1.9M</div><div class="data-desc">Manufacturing jobs expected to go unfilled this decade</div></div>
+          </div>
+          <p class="body">The most critical knowledge in manufacturing — diagnosing a machine vibration by sound, adjusting feeds and speeds by feel — is tacit. It lives in workers who are approaching retirement. When they leave, it vanishes.</p>
+          <p class="body"><strong>90% of the defense industrial base</strong> consists of small and medium businesses. Most are led by owners approaching retirement with no succession plan.</p>
+          <p class="footnote">[16] ManufacturingTomorrow / MIE Solutions, March 2026 · [17] Deloitte and The Manufacturing Institute workforce projections · [18] DoD, defense industrial base composition</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Industrial Bottleneck -->
+      <div class="expand-card" data-card="bottleneck">
+        <div class="expand-card-header">
+          <div class="expand-card-bg" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2260%22 fill=%22%23222%22 text-anchor=%22middle%22 dy=%22.3em%22>🏗</text></svg>')"></div>
+          <div class="expand-card-num">04</div>
+          <div class="expand-card-title">The Industrial Bottleneck</div>
+        </div>
+        <div class="expand-card-body">
+          <p class="body">America is spending trillions to rebuild its industrial base. But spending is not building. <strong>Building requires builders.</strong></p>
+          <div class="data-stack">
+            <div class="data-point"><div class="data-stat">$52B</div><div class="data-desc">CHIPS and Science Act</div></div>
+            <div class="data-point"><div class="data-stat">$369B</div><div class="data-desc">Inflation Reduction Act</div></div>
+            <div class="data-point"><div class="data-stat">$200B+</div><div class="data-desc">Manufacturing construction</div></div>
+            <div class="data-point"><div class="data-stat">$3T+</div><div class="data-desc">Total reshoring investment</div></div>
+          </div>
+          <div class="bottom-line">Every one of these investments is constrained by the same factor. Capital is available. Technology is available. Demand is available. The missing input is <strong>human capability</strong> — and it cannot be purchased, only built.</div>
+          <p class="footnote">[19] CHIPS and Science Act, 2022 · [20] Inflation Reduction Act, 2022 · [21] CSIS, skilled workforce analysis · [22] SIA/Oxford Economics semiconductor workforce projection</p>
+        </div>
+      </div>
+
+      <!-- Card 5: The Invisible Cost -->
+      <div class="expand-card" data-card="cost">
+        <div class="expand-card-header">
+          <div class="expand-card-bg" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-size=%2260%22 fill=%22%23222%22 text-anchor=%22middle%22 dy=%22.3em%22>💰</text></svg>')"></div>
+          <div class="expand-card-num">05</div>
+          <div class="expand-card-title">The Invisible Cost</div>
+        </div>
+        <div class="expand-card-body">
+          <p class="body">The cost of the talent gap is rarely quantified. It should be.</p>
+          <div class="data-stack">
+            <div class="data-point"><div class="data-stat">495K</div><div class="data-desc">Manufacturing jobs open right now (Jan 2026)</div></div>
+            <div class="data-point"><div class="data-stat">$50–100K</div><div class="data-desc">Estimated annual cost per unfilled role</div></div>
+            <div class="data-point"><div class="data-stat">$95–190B</div><div class="data-desc">Annual cost of the manufacturing talent gap</div></div>
+          </div>
+          <p class="body">For context: the entire U.S. venture capital industry deployed approximately <strong>$170 billion in 2024</strong>. The annual cost of the manufacturing talent gap is comparable to the entire annual output of American venture capital.</p>
+          <p class="body">Manufacturing value-added output reached <strong>$2.95 trillion annually</strong>. For every $1.00 spent in manufacturing, total economic impact is $2.69.</p>
+          <p class="footnote">[23] BLS JOLTS, January 2026 · [24] SHRM cost-per-vacancy methodology · [25] PitchBook/NVCA Venture Monitor · [26] BEA, GDP by Industry, Q3 2025 · [27] NAM, economic multiplier data</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="spacer-lg"></div>
+<div class="divider-wide"><hr></div>
+<div class="spacer-lg"></div>
+
+
+<!-- ============================== -->
+<!-- SECTION 3: THE PIPELINE        -->
+<!-- ============================== -->
+<section id="s-pipeline">
+  <div class="content">
+    <div class="reveal">
+      <div class="sec-label">The System</div>
+      <div class="sec-num">03</div>
+      <h2 class="sec-title">How America Builds <em>Industrial Talent</em></h2>
+      <p class="sec-sub">The talent pipeline involves a chain of disconnected institutions — each optimized for its own metrics, none accountable for the final outcome.</p>
+    </div>
+  </div>
+
+  <div class="content-wide">
+    <div class="pipeline reveal">
+      <div class="pipeline-line"></div>
+
+      <!-- Stage 01: Education -->
+      <div class="pipeline-stage reveal reveal-d1">
+        <div class="pipeline-stage-dot"></div>
+        <div class="pipeline-stage-header">
+          <div class="pipeline-stage-name">Education</div>
+          <div class="pipeline-stage-time">K–12 + College · 4–6 Years</div>
+          <div class="pipeline-stage-num">01</div>
+        </div>
+        <div class="pipeline-stage-desc">The first stage is formal education. In theory, foundational knowledge. In practice, disconnected from industrial reality.</div>
+        <div class="pipeline-cards">
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Learn</div>
+            <div class="pipeline-card-desc">Lecture-based instruction in theoretical concepts with minimal hands-on application.</div>
+          </div>
+          <div class="pipeline-card bottleneck">
+            <div class="bottleneck-label">Bottleneck</div>
+            <div class="pipeline-card-title">Test</div>
+            <div class="pipeline-card-desc">Assessment based on memorization and standardized testing. No measurement of practical capability.</div>
+          </div>
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Credential</div>
+            <div class="pipeline-card-desc">Degree issued based on completion, not competence. No benchmark against industry standards.</div>
+          </div>
+        </div>
+        <div class="pipeline-commentary">A 4.0 GPA tells an employer nothing about performance in a high-precision manufacturing environment.</div>
+      </div>
+
+      <!-- Stage 02: Training -->
+      <div class="pipeline-stage reveal reveal-d2">
+        <div class="pipeline-stage-dot"></div>
+        <div class="pipeline-stage-header">
+          <div class="pipeline-stage-name">Training</div>
+          <div class="pipeline-stage-time">Trade Schools · 6–18 Months</div>
+          <div class="pipeline-stage-num">02</div>
+        </div>
+        <div class="pipeline-stage-desc">Task-level skill development. Practical — but narrow.</div>
+        <div class="pipeline-cards">
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Enroll</div>
+            <div class="pipeline-card-desc">Student selects a trade and enters a program. No diagnostic to determine aptitude or optimal placement.</div>
+          </div>
+          <div class="pipeline-card bottleneck">
+            <div class="bottleneck-label">Bottleneck</div>
+            <div class="pipeline-card-title">Practice</div>
+            <div class="pipeline-card-desc">Hands-on training on specific machines. Builds task competence but not system understanding.</div>
+          </div>
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Certificate</div>
+            <div class="pipeline-card-desc">Completion-based credential. No standardized benchmarking across programs.</div>
+          </div>
+        </div>
+        <div class="pipeline-commentary">Trade schools produce operators who can follow instructions but rarely understand why the process works.</div>
+      </div>
+
+      <!-- Stage 03: Hiring -->
+      <div class="pipeline-stage reveal reveal-d3">
+        <div class="pipeline-stage-dot"></div>
+        <div class="pipeline-stage-header">
+          <div class="pipeline-stage-name">Hiring</div>
+          <div class="pipeline-stage-time">Staffing & Recruiting · Weeks to Months</div>
+          <div class="pipeline-stage-num">03</div>
+        </div>
+        <div class="pipeline-stage-desc">A $188.7 billion industry built on resumes, interviews, and gut instinct.</div>
+        <div class="pipeline-cards">
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Source</div>
+            <div class="pipeline-card-desc">Job postings, staffing agencies, job fairs, referrals. Fishing in a shrinking pool.</div>
+          </div>
+          <div class="pipeline-card bottleneck">
+            <div class="bottleneck-label">Bottleneck</div>
+            <div class="pipeline-card-title">Screen</div>
+            <div class="pipeline-card-desc">Resume review, interviews. Built on credentials and self-reported experience — not measured capability.</div>
+          </div>
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Hire</div>
+            <div class="pipeline-card-desc">Offer extended based on the best available option, not the best possible match.</div>
+          </div>
+        </div>
+        <div class="pipeline-commentary">Resumes show where someone has been. They reveal nothing about what someone is capable of becoming.</div>
+      </div>
+
+      <!-- Stage 04: On-the-Job -->
+      <div class="pipeline-stage reveal reveal-d4">
+        <div class="pipeline-stage-dot"></div>
+        <div class="pipeline-stage-header">
+          <div class="pipeline-stage-name">On-the-Job</div>
+          <div class="pipeline-stage-time">Ramp-Up · 6–18 Months</div>
+          <div class="pipeline-stage-num">04</div>
+        </div>
+        <div class="pipeline-stage-desc">Even after hiring, new workers are rarely productive immediately.</div>
+        <div class="pipeline-cards">
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Shadow</div>
+            <div class="pipeline-card-desc">New hire observes experienced operators. Absorbs tacit knowledge through proximity.</div>
+          </div>
+          <div class="pipeline-card bottleneck">
+            <div class="bottleneck-label">Bottleneck</div>
+            <div class="pipeline-card-title">Ramp</div>
+            <div class="pipeline-card-desc">Gradual assumption of responsibilities. 6–18 months before full productivity.</div>
+          </div>
+          <div class="pipeline-card">
+            <div class="pipeline-card-title">Perform</div>
+            <div class="pipeline-card-desc">Worker reaches baseline competence. No system tracks development or predicts trajectory.</div>
+          </div>
+        </div>
+        <div class="pipeline-commentary">The bottleneck is knowledge transfer. The most critical knowledge lives in workers who are, on average, 63 years old.</div>
+      </div>
+    </div>
+
+    <!-- Broken Pipeline -->
+    <div class="reveal" style="margin-top:64px">
+      <div class="broken-pipeline">
+        <div class="broken-segment">Education</div>
+        <div class="broken-gap"></div>
+        <div class="broken-segment">Training</div>
+        <div class="broken-gap"></div>
+        <div class="broken-segment">Hiring</div>
+        <div class="broken-gap"></div>
+        <div class="broken-segment">On-the-Job</div>
+      </div>
+    </div>
+
+    <div class="content reveal" style="margin-top:40px">
+      <div class="bottom-line">Four stages. Four sets of institutions. Four different incentive structures. <strong>Zero integration.</strong> No data flows from hiring outcomes back to education. No signal from job performance back to training. The pipeline doesn't learn. The pipeline doesn't improve. <strong>The pipeline doesn't even know it's failing.</strong></div>
+    </div>
+  </div>
+</section>
+
+
+<div class="spacer-lg"></div>
+<div class="divider-wide"><hr></div>
+<div class="spacer-lg"></div>
+
+
+<!-- ============================== -->
+<!-- SECTION 4: THE WINDOW          -->
+<!-- ============================== -->
+<section id="s-window">
+  <div class="content">
+    <div class="reveal">
+      <div class="sec-label">The Opportunity</div>
+      <div class="sec-num">04</div>
+      <h2 class="sec-title">The <em>Window</em></h2>
+      <p class="sec-sub">Five structural forces are converging simultaneously — for the first time — creating a narrow window to build something that has never existed before.</p>
+    </div>
+  </div>
+
+  <div class="content-wide">
+    <div class="forces-list reveal">
+      <div class="force-item">
+        <div class="force-header">
+          <div class="force-num">01</div>
+          <div class="force-name">The Workforce Cliff Is Here</div>
+          <div class="force-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="force-body">
+          <div class="force-content">Not a projection. <strong>26% of the manufacturing workforce retires by 2030.</strong> The defense industrial workforce has already fallen from 3 million to 1.1 million. 495,000 manufacturing jobs are open right now. The knowledge loss is happening in real time.</div>
+        </div>
+      </div>
+      <div class="force-item">
+        <div class="force-header">
+          <div class="force-num">02</div>
+          <div class="force-name">AI Can Finally Encode Human Judgment</div>
+          <div class="force-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="force-body">
+          <div class="force-content">For the first time, AI can meaningfully assess cognitive capability, behavioral patterns, and technical aptitude through natural interaction. Voice-first AI can conduct psychometric evaluation that previously required days of in-person observation. <strong>The technology to build an intelligent talent system did not exist five years ago. It does now.</strong></div>
+        </div>
+      </div>
+      <div class="force-item">
+        <div class="force-header">
+          <div class="force-num">03</div>
+          <div class="force-name">The Capital Is Waiting for the Workforce</div>
+          <div class="force-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="force-body">
+          <div class="force-content"><strong>$52B CHIPS Act. $369B IRA. $3T+ reshoring investment.</strong> Record defense spending. The capital to rebuild American industry is deployed. It is waiting for workers.</div>
+        </div>
+      </div>
+      <div class="force-item">
+        <div class="force-header">
+          <div class="force-num">04</div>
+          <div class="force-name">Bipartisan Political Consensus</div>
+          <div class="force-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="force-body">
+          <div class="force-content">Industrial policy has become one of the few areas of genuine bipartisan agreement. The DoD has invested <strong>$130M+ in industrial skills initiatives</strong>. Manufacturing USA combines $1B federal + $2B industry investment. This policy environment doesn't depend on which party holds power.</div>
+        </div>
+      </div>
+      <div class="force-item">
+        <div class="force-header">
+          <div class="force-num">05</div>
+          <div class="force-name">The Investor Paradigm Shift</div>
+          <div class="force-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="force-body">
+          <div class="force-content">Defense tech VC funding hit <strong>$49.1B in 2025</strong> — nearly doubling year-over-year. Hadrian reached $1.6B valuation. Atomic Industries raised $52M. The market has validated AI manufacturing at scale. What hasn't been funded is <strong>the talent layer every one of these companies needs</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content reveal">
+    <div class="bottom-line"><strong>Whoever builds the talent infrastructure first will define how American industry operates for decades.</strong> The window is open. It will not stay open.</div>
+  </div>
+</section>
+
+
+<div class="spacer-lg"></div>
+<div class="divider-wide"><hr></div>
+<div class="spacer-lg"></div>
+
+
+<!-- ============================== -->
+<!-- SECTION 5: THE ANSWER          -->
+<!-- ============================== -->
+<section id="s-solution">
+  <div class="content">
+    <div class="reveal">
+      <div class="sec-label">The Answer</div>
+      <div class="sec-num">05</div>
+      <h2 class="sec-title">What If the System Was Designed to <em>Actually Work?</em></h2>
+      <p class="sec-sub">What would it look like if someone built a talent infrastructure system from scratch — designed not around institutional convenience, but around the actual requirements of industrial performance?</p>
+    </div>
+  </div>
+
+  <!-- Closed-loop diagram -->
+  <div class="content-wide">
+    <div class="reveal">
+      <div class="loop-wrap">
+        <div class="loop-ring"></div>
+        <div class="loop-ring-inner"></div>
+        <div class="loop-center">
+          <div class="loop-center-label">Closed Loop</div>
+          <div class="loop-center-title">Talent<br>Infrastructure</div>
+        </div>
+        <div class="loop-node top">
+          <div class="loop-node-dot"></div>
+          <div class="ln-text">
+            <div class="loop-node-name">Diagnose</div>
+            <div class="loop-node-desc">AI-driven assessment of cognitive capability, behavioral integrity, and technical aptitude</div>
+          </div>
+        </div>
+        <div class="loop-node right">
+          <div class="loop-node-dot"></div>
+          <div class="ln-text">
+            <div class="loop-node-name">Develop</div>
+            <div class="loop-node-desc">Training inside live production. Real contracts fulfilled as part of the learning cycle</div>
+          </div>
+        </div>
+        <div class="loop-node bottom">
+          <div class="loop-node-dot"></div>
+          <div class="ln-text">
+            <div class="loop-node-name">Deploy</div>
+            <div class="loop-node-desc">Mission-ready operators placed into roles optimized for their profile, not their resume</div>
+          </div>
+        </div>
+        <div class="loop-node left">
+          <div class="loop-node-dot"></div>
+          <div class="ln-text">
+            <div class="loop-node-name">Learn</div>
+            <div class="loop-node-desc">Performance data flows back. Assessment sharpens. The system gets smarter every cycle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Node descriptions -->
+  <div class="content">
+    <div class="spacer-sm"></div>
+    <div class="reveal">
+      <p class="body"><strong>Diagnose</strong> — An AI system that quantifies cognitive capability, behavioral integrity, and technical aptitude through natural interaction. Built on 80+ years of psychometric research. Every candidate benchmarked against top operators. The system sees potential that credentials obscure.</p>
+    </div>
+    <div class="reveal reveal-d1">
+      <p class="body"><strong>Develop</strong> — Training inside live production. Real manufacturing contracts fulfilled as part of the learning cycle. The diagnostic identifies weaknesses; training prescribes interventions. Four years of capability compressed into one. Every part produced is a lesson.</p>
+    </div>
+    <div class="reveal reveal-d2">
+      <p class="body"><strong>Deploy</strong> — Operators whose readiness has been quantified across every dimension, placed into roles optimized for their profile. Employers receive deployment intelligence: not resumes, but precise assessment of who will perform, where, and why.</p>
+    </div>
+    <div class="reveal reveal-d3">
+      <p class="body"><strong>Learn</strong> — Real-world performance data flows back into the system. Assessment accuracy improves. Training prescriptions sharpen. Deployment matching gets more precise. <strong>Every cycle compounds the system's advantage.</strong></p>
+    </div>
+
+    <div class="reveal reveal-d4">
+      <div class="bottom-line">No one can replicate this by building a better assessment tool or a better trade school. It requires the integrated system — and the <strong>data flywheel</strong> that comes from operating it.</div>
+    </div>
+  </div>
+
+  <!-- Conviction Close -->
+  <div class="content">
+    <div class="conviction reveal">
+      <p class="body">I started this company because I saw, from the inside, how the system fails.</p>
+      <p class="body">I served on a university foundation board. I watched an institution collect tuition from students it was not preparing for the world they would enter. I watched the incentive structure reward enrollment, not outcomes. I watched graduates leave with debt and no applicable capability.</p>
+      <p class="body">At the same time, I watched the most sophisticated defense and manufacturing companies in America struggle to find the skilled people they needed. Not because capable people don't exist. <strong>But because no system exists to find them, develop them, and deploy them.</strong></p>
+      <p class="body">The talent is there. It's in the veteran who served six years and has no credential to show for the judgment she built. It's in the kid from a rural county who can diagnose a machine by sound but never took the SAT. It's in the career changer who was told manufacturing was a dead end and believed it.</p>
+      <p class="body">They're invisible to the current system. They shouldn't be.</p>
+      <p class="body" style="font-style:normal;color:var(--white);font-weight:400"><strong>The nation that builds the best people builds the future. We stopped building them.</strong></p>
+      <p class="body" style="font-style:normal;color:var(--white)">We're building the system that starts again.</p>
+      <div class="conviction-sig">
+        <div class="conviction-name">Daniel Mota</div>
+        <div class="conviction-role">Founder & CEO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arklight Reveal -->
+  <div class="arklight-reveal reveal">
+    <div class="arklight-reveal-brand" id="arklightBrand">Project Arklight</div>
+    <p class="arklight-reveal-cta">If this resonates, we should talk. → <a href="mailto:contact@arklight.us" id="contactEmail">contact@arklight.us</a></p>
+  </div>
+</section>
+
+<!-- Footnotes -->
+<div class="content">
+  <div class="footnotes reveal">
+    <ol>
+      <li>National Academies of Sciences, "Building America's Skilled Technical Workforce," 2017</li>
+      <li>Bureau of Labor Statistics, Historical Employment Data (NAICS 31–33)</li>
+      <li>U.S. Department of Veterans Affairs, GI Bill History</li>
+      <li>Bureau of Labor Statistics, Employment Situation, February 2026</li>
+      <li>Federal Reserve Bank of New York, Student Loan Debt Statistics</li>
+      <li>CSIS, "Renewing the United States' Skilled Technical Workforce," July 2025</li>
+      <li>Advanced Manufacturing / SME, "The State of Aerospace & Defense," 2025</li>
+      <li>CRS submarine production reports</li>
+      <li>CSIS China Power Project</li>
+      <li>Intelligent.com employer survey</li>
+      <li>ACT Inc., national results</li>
+      <li>NAEP, 12th grade math</li>
+      <li>NCES, remedial coursework data</li>
+      <li>IBISWorld, Trade & Technical Schools, 2025</li>
+      <li>Federal Reserve Bank of New York</li>
+      <li>ManufacturingTomorrow / MIE Solutions, March 2026</li>
+      <li>Deloitte and The Manufacturing Institute workforce projections</li>
+      <li>DoD, defense industrial base composition</li>
+      <li>CHIPS and Science Act, 2022</li>
+      <li>Inflation Reduction Act, 2022</li>
+      <li>CSIS, skilled workforce analysis</li>
+      <li>SIA/Oxford Economics semiconductor workforce projection</li>
+      <li>BLS JOLTS, January 2026</li>
+      <li>SHRM cost-per-vacancy methodology</li>
+      <li>PitchBook/NVCA Venture Monitor</li>
+      <li>BEA, GDP by Industry, Q3 2025</li>
+      <li>NAM, economic multiplier data</li>
+    </ol>
+  </div>
+</div>
+
+<div class="spacer"></div>
+
+<footer class="footer">
+  <div class="footer-author">Written by <span>Daniel Mota</span> / Project Arklight Founder &amp; CEO</div>
+  <div class="footer-date">Project Arklight, 2026</div>
+</footer>
+
+<script>
+// Progress bar + nav scroll
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('progress').style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);
+},{passive:true});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Side dots
+const secs=['s-hero','s-foundation','s-crisis','s-pipeline','s-window','s-solution'],dots=document.querySelectorAll('.s-dot');
+window.addEventListener('scroll',()=>{let c=0;secs.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<window.innerHeight/2)c=i});dots.forEach((d,i)=>d.classList.toggle('active',i===c))},{passive:true});
+dots.forEach(d=>d.addEventListener('click',()=>document.getElementById(d.dataset.target).scrollIntoView({behavior:'smooth'})));
+
+// Hero parallax (desktop only)
+if(window.innerWidth>768){
+  window.addEventListener('scroll',()=>{const h=document.querySelector('.hero'),s=window.scrollY;if(s<window.innerHeight){h.style.transform='translateY('+s*.25+'px)';h.style.opacity=1-(s/window.innerHeight)*.5}},{passive:true});
+}
+
+// Theme toggle
+function toggleTheme(){
+  const html=document.documentElement;
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  document.querySelector('meta[name="theme-color"]').content=next==='dark'?'#000000':'#fafaf9';
+  try{localStorage.setItem('arklight-theme',next)}catch(e){}
+}
+document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+document.getElementById('mmThemeBtn').addEventListener('click',toggleTheme);
+try{const saved=localStorage.getItem('arklight-theme');if(saved){document.documentElement.setAttribute('data-theme',saved);document.querySelector('meta[name="theme-color"]').content=saved==='dark'?'#000000':'#fafaf9'}}catch(e){}
+
+// Mobile menu
+const navToggle=document.getElementById('navToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+navToggle.addEventListener('click',()=>{
+  navToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{
+  navToggle.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}));
+
+// Expandable cards (accordion)
+document.querySelectorAll('.expand-card').forEach(card=>{
+  card.addEventListener('click',e=>{
+    // Don't toggle if clicking inside the body (allow text selection, link clicks)
+    if(e.target.closest('.expand-card-body')&&card.classList.contains('open'))return;
+    const wasOpen=card.classList.contains('open');
+    document.querySelectorAll('.expand-card.open').forEach(c=>c.classList.remove('open'));
+    if(!wasOpen)card.classList.add('open');
+  });
+});
+
+// Force items (accordion)
+document.querySelectorAll('.force-item').forEach(item=>{
+  item.querySelector('.force-header').addEventListener('click',()=>{
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.force-item.open').forEach(f=>f.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+
+// Stat count-up animation
+function countUp(el,target,suffix,duration){
+  duration=duration||2000;suffix=suffix||'';
+  let start=null;
+  function step(ts){
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/duration,1);
+    const eased=1-Math.pow(1-p,3);
+    const val=Math.round(eased*target);
+    el.textContent=val.toLocaleString()+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Trigger count-up for stat elements
+const countObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el=entry.target;
+      const raw=el.dataset.count;
+      if(raw){
+        const target=parseInt(raw);
+        const fmt=el.dataset.format;
+        const dec=parseInt(el.dataset.decimals)||0;
+        if(fmt==='M'){
+          let start=null;
+          const duration=2000;
+          function step(ts){
+            if(!start)start=ts;
+            const p=Math.min((ts-start)/duration,1);
+            const eased=1-Math.pow(1-p,3);
+            const val=(eased*target/1000000).toFixed(dec);
+            el.textContent=val+'M';
+            if(p<1)requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }else{
+          countUp(el,target,'',2000);
+        }
+      }
+      countObs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
+
+// Arklight reveal brand animation
+const brandObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');brandObs.unobserve(entry.target)}
+  });
+},{threshold:0.5});
+const brand=document.getElementById('arklightBrand');
+if(brand)brandObs.observe(brand);
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
