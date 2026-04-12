@@ -116,17 +116,14 @@ a{color:inherit;text-decoration:none}
 @media(max-width:768px){.problem-card{padding:36px 24px}}
 
 /* RECEIVE SPLIT */
-.receive-split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start}
-.receive-left{position:sticky;top:120px;padding-right:64px;border-right:1px solid var(--gray-800)}
-.receive-left-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,42px);color:var(--white);font-weight:400;line-height:1.15;margin-bottom:24px}
-.receive-left-desc{font-size:15px;color:var(--gray-400);line-height:1.7;font-weight:300}
-.receive-right{display:flex;flex-direction:column}
-.receive-item{padding:40px 0 40px 48px;border-bottom:1px solid var(--gray-800);transition:all .4s}
-.receive-item:first-child{padding-top:0}
-.receive-item:last-child{border-bottom:none}
-.receive-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
-.receive-desc{font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300}
-@media(max-width:900px){.receive-split{grid-template-columns:1fr}.receive-left{position:static;padding-right:0;border-right:none;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--gray-800)}.receive-item{padding-left:0}}
+.receive-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:48px}
+.receive-card{padding:32px;border:1px solid var(--gray-800);border-radius:12px;transition:all .4s}
+.receive-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.receive-card-title{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.receive-card-body{font-size:15px;color:var(--gray-300);line-height:1.7;font-weight:300}
+@media(max-width:1100px){.receive-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.receive-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.receive-grid{grid-template-columns:1fr}}
 
 /* SECTOR GRID (Who Is For) */
 .sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
@@ -397,32 +394,26 @@ a{color:inherit;text-decoration:none}
       <div class="section-eyebrow">What You Receive</div>
       <h2 class="section-title">Elite Talent &mdash; Verified, Mission-Driven, Built to Your Spec.</h2>
     </div>
-    <div class="receive-split reveal">
-      <div class="receive-left">
-        <h2 class="receive-left-title">Your next hire arrives with a year of verified production data.</h2>
-        <p class="receive-left-desc">You didn't pay for it. You didn't wait four years. You told us what elite looks like &mdash; and we built it.</p>
+    <div class="receive-grid">
+      <div class="receive-card reveal">
+        <div class="receive-card-title">Verified Production Data</div>
+        <div class="receive-card-body">Your next hire arrives with 6&ndash;12 months of real production data. Verified against quality audits, not a GPA. You didn't pay for it. You didn't wait four years.</div>
       </div>
-      <div class="receive-right">
-        <div class="receive-item">
-          <div class="receive-eyebrow">Full Performance Data</div>
-          <div class="receive-desc">6&ndash;12 months of real production data on every candidate. Verified against quality audits, not a GPA.</div>
-        </div>
-        <div class="receive-item">
-          <div class="receive-eyebrow">Built to Your Spec</div>
-          <div class="receive-desc">Every graduate is trained on your tolerances, your materials, and your equipment &mdash; Day 1 ready, not Day 180.</div>
-        </div>
-        <div class="receive-item">
-          <div class="receive-eyebrow">Mission-Driven Operators</div>
-          <div class="receive-desc">We only develop elite operators who want to serve this country by working with the best in industry.</div>
-        </div>
-        <div class="receive-item">
-          <div class="receive-eyebrow">Priority Pipeline Access</div>
-          <div class="receive-desc">You helped design the program. You get first pick of every graduating cohort.</div>
-        </div>
-        <div class="receive-item">
-          <div class="receive-eyebrow">Zero Cost</div>
-          <div class="receive-desc">For pilot partners, there's no cost &mdash; your only investment is your expertise.</div>
-        </div>
+      <div class="receive-card reveal reveal-d1">
+        <div class="receive-card-title">Full Performance Data</div>
+        <div class="receive-card-body">6&ndash;12 months of real production data on every candidate. Verified against quality audits, not a GPA.</div>
+      </div>
+      <div class="receive-card reveal reveal-d2">
+        <div class="receive-card-title">Built to Your Spec</div>
+        <div class="receive-card-body">Every graduate is trained on your tolerances, your materials, and your equipment &mdash; Day 1 ready, not Day 180.</div>
+      </div>
+      <div class="receive-card reveal reveal-d3">
+        <div class="receive-card-title">Mission-Driven Operators</div>
+        <div class="receive-card-body">We only develop elite operators who want to serve this country by working with the best in industry.</div>
+      </div>
+      <div class="receive-card reveal reveal-d4">
+        <div class="receive-card-title">Zero Cost</div>
+        <div class="receive-card-body">For pilot partners, there's no cost &mdash; your only investment is your expertise. You get first pick of every graduating cohort.</div>
       </div>
     </div>
   </div>
