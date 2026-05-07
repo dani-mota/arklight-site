@@ -1,0 +1,283 @@
+/* =================================================================
+   ARKLIGHT — Components
+   Depends on colors_and_type.css
+   ================================================================= */
+
+/* ---------- BUTTONS ---------------------------------------------- */
+.ark-btn{
+  position: relative;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 12px 20px;
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  transition: all var(--dur-base) var(--ease-out);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  height: 40px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ark-btn svg{width:16px;height:16px;position:relative;z-index:2;}
+.ark-btn > *{position:relative;z-index:2;}
+
+/* Shared sheen layer — used by primary + secondary */
+.ark-btn::before{
+  content:'';
+  position:absolute;
+  top:0;left:-120%;width:70%;height:100%;
+  background:linear-gradient(115deg,
+    transparent 30%,
+    rgba(255,255,255,.18) 48%,
+    rgba(255,255,255,.55) 50%,
+    rgba(255,255,255,.18) 52%,
+    transparent 70%);
+  transform:skewX(-12deg);
+  transition:left 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events:none;
+  mix-blend-mode:screen;
+  z-index:1;
+}
+.ark-btn:hover::before{left:140%;}
+
+/* Top highlight rim — Apple liquid-glass signature */
+.ark-btn::after{
+  content:'';
+  position:absolute;
+  top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,.6) 50%, transparent 100%);
+  pointer-events:none;
+  z-index:3;
+  opacity:.8;
+  transition:opacity var(--dur-base) var(--ease-out);
+}
+.ark-btn:hover::after{opacity:1;}
+
+/* ── Primary — white, black text, Palantir-style inverse ───────
+   White body, black text — the inverse of the secondary. Inherits
+   the shared sheen sweep + top rim from .ark-btn base, same as
+   secondary does. Lifts on hover. */
+.ark-btn-primary{
+  color:#0A0B0D;
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,1) 0%,
+      rgba(248,249,251,1) 50%,
+      rgba(235,238,242,1) 100%);
+  border:1px solid rgba(12,20,32,.15);
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,.9) inset,
+    0 -1px 0 0 rgba(12,20,32,.08) inset,
+    0 4px 12px -4px rgba(0,0,0,.35),
+    0 1px 2px rgba(0,0,0,.2);
+  font-weight:500;
+}
+.ark-btn-primary:hover{
+  transform:translateY(-1px);
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,1) 0%,
+      rgba(253,254,255,1) 50%,
+      rgba(244,247,250,1) 100%);
+  border-color:rgba(12,20,32,.2);
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,1) inset,
+    0 -1px 0 0 rgba(12,20,32,.1) inset,
+    0 10px 22px -6px rgba(0,0,0,.4),
+    0 2px 4px rgba(0,0,0,.2),
+    0 0 0 3px rgba(255,255,255,.08);
+}
+.ark-btn-primary:active{
+  transform:translateY(0);
+  background:#EDEFF3;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.3) inset,
+    0 1px 2px rgba(0,0,0,.15);
+}
+/* Override sheen to be darker since body is white */
+.ark-btn-primary::before{
+  background:linear-gradient(115deg,
+    transparent 30%,
+    rgba(12,20,32,.04) 48%,
+    rgba(12,20,32,.12) 50%,
+    rgba(12,20,32,.04) 52%,
+    transparent 70%);
+  mix-blend-mode:multiply;
+}
+.ark-btn-primary::after{
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,1) 50%, transparent 100%);
+  opacity:1;
+}
+
+/* ── Secondary — clear glass, same sheen, neutral tint ──────────── */
+.ark-btn-secondary{
+  color:#F4F6F8;
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,.08) 0%,
+      rgba(255,255,255,.04) 50%,
+      rgba(255,255,255,.02) 100%);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(12px) saturate(140%);
+  box-shadow:
+    0 4px 12px -4px rgba(0,0,0,.4),
+    inset 0 1px 0 0 rgba(255,255,255,.18),
+    inset 0 8px 16px -8px rgba(255,255,255,.08);
+}
+.ark-btn-secondary:hover{
+  transform:translateY(-1px);
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,.14) 0%,
+      rgba(255,255,255,.08) 50%,
+      rgba(255,255,255,.04) 100%);
+  border-color:rgba(255,255,255,.28);
+  box-shadow:
+    0 10px 20px -6px rgba(0,0,0,.45),
+    0 0 0 3px rgba(255,255,255,.05),
+    inset 0 1px 0 0 rgba(255,255,255,.3),
+    inset 0 8px 16px -8px rgba(255,255,255,.14);
+}
+.ark-btn-secondary:active{
+  transform:translateY(0);
+  box-shadow:
+    0 2px 6px -2px rgba(0,0,0,.4),
+    inset 0 2px 4px rgba(0,0,0,.25);
+}
+
+/* ── Ghost — no glass, just hover wash ──────────────────────────── */
+.ark-btn-ghost{
+  background: transparent;
+  color: var(--text-1);
+  border-color: transparent;
+}
+.ark-btn-ghost::before, .ark-btn-ghost::after{display:none;}
+.ark-btn-ghost:hover{
+  color: var(--text-0);
+  background: rgba(255,255,255,.05);
+}
+
+/* Icon-only */
+.ark-btn-icon{
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Sizes */
+.ark-btn-sm{height:32px;padding:8px 14px;font-size:var(--text-xs);}
+.ark-btn-lg{height:48px;padding:14px 24px;font-size:var(--text-md);}
+
+/* ---------- BADGES ---------------------------------------------- */
+.ark-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: var(--radius-1);
+  border: 1px solid;
+  white-space: nowrap;
+  line-height: 1;
+}
+.ark-badge-violet{background:var(--violet-glow-lo);color:var(--violet-200);border-color:rgba(110,142,168,.32);}
+.ark-badge-blue{background:var(--blue-glow-lo);color:var(--blue-200);border-color:rgba(110,142,168,.32);}
+.ark-badge-amber{background:rgba(245,161,74,.10);color:var(--amber-400);border-color:rgba(245,161,74,.28);}
+.ark-badge-verify{background:rgba(127,216,138,.08);color:var(--verify-400);border-color:rgba(127,216,138,.28);}
+.ark-badge-ember{background:rgba(229,90,74,.08);color:var(--ember-400);border-color:rgba(229,90,74,.28);}
+.ark-badge-neutral{background:rgba(255,250,235,.04);color:var(--text-2);border-color:var(--border-1);}
+
+.ark-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;}
+.ark-dot-live{
+  animation: ark-pulse 2s var(--ease-in-out) infinite;
+}
+@keyframes ark-pulse{
+  0%,100%{opacity:1;box-shadow:0 0 0 0 currentColor;}
+  50%{opacity:.6;box-shadow:0 0 0 4px transparent;}
+}
+
+/* ---------- INPUTS ---------------------------------------------- */
+.ark-input{
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  color: var(--text-0);
+  background: var(--canvas-2);
+  border: 1px solid var(--border-1);
+  border-radius: var(--radius-2);
+  padding: 10px 14px;
+  width: 100%;
+  transition: border-color var(--dur-fast) var(--ease-quick), background var(--dur-fast) var(--ease-quick);
+  height: 40px;
+}
+.ark-input:focus{
+  outline: none;
+  border-color: var(--violet-400);
+  box-shadow: 0 0 0 3px var(--violet-glow-lo);
+  background: var(--canvas-1);
+}
+.ark-input::placeholder{color: var(--text-3);}
+
+/* ---------- TAG / CHIP ----------------------------------------- */
+.ark-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-1);
+  background: var(--canvas-2);
+  border: 1px solid var(--border-1);
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* ---------- DIVIDER -------------------------------------------- */
+.ark-divider{height:1px;background:var(--border-0);border:0;margin:0;}
+
+/* ---------- VOLUMETRIC LIGHT BACKDROP (signature hero treatment) - */
+.ark-hero-bg{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ark-hero-bg::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 30%, var(--violet-glow) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 85% 80%, rgba(143,102,255,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(245,161,74,.06) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Grid overlay — precision, drafting table */
+.ark-grid-overlay{
+  background-image:
+    linear-gradient(rgba(255,250,235,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,250,235,.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ---------- CORNER BRACKETS (architectural drafting marker) ----- */
+.ark-brackets{position:relative;}
+.ark-brackets::before,
+.ark-brackets::after{
+  content:'';
+  position:absolute;
+  width:10px;height:10px;
+  border:1px solid var(--text-2);
+}
+.ark-brackets::before{top:-1px;left:-1px;border-right:0;border-bottom:0;}
+.ark-brackets::after{bottom:-1px;right:-1px;border-left:0;border-top:0;}

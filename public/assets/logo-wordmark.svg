@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 72" width="420" height="72">
+  <defs>
+    
+  </defs>
+  
+  <g stroke="#b9d7d0" stroke-width="1.5" fill="none" transform="translate(36, 36)">
+    <circle r="22" opacity="0.9"></circle>
+    <circle r="14" opacity="0.55"></circle>
+    <circle r="4" fill="#b9d7d0" stroke="none"></circle>
+    <line x1="-30" y1="0" x2="-24" y2="0" opacity="0.7"></line>
+    <line x1="24" y1="0" x2="30" y2="0" opacity="0.7"></line>
+    <line x1="0" y1="-30" x2="0" y2="-24" opacity="0.7"></line>
+    <line x1="0" y1="24" x2="0" y2="30" opacity="0.7"></line>
+  </g>
+  <text class="mark" x="82" y="50">ARKLIGHT</text>
+</svg>
