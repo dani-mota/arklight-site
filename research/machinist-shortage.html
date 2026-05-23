@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>The Electrician Gap · Arklight Workforce Intelligence</title>
-<meta name="description" content="A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000/year. The labor cliff binding America's reindustrialization."/>
+<title>The Machinist Gap · Arklight Workforce Intelligence</title>
+<meta name="description" content="Bottom-up demand of ~56,000 machinists per year against a hire-ready supply of ~16,000. The BLS equilibrium model misses the defense/fab/reshoring workload by ~2.5×."/>
 <link rel="stylesheet" href="../styles/colors_and_type.css"/>
 <link rel="stylesheet" href="../styles/components.css"/>
 <link rel="stylesheet" href="../styles/site.css"/>
@@ -38,21 +38,23 @@
   <div class="vb-head-row">
     <div>
       <div class="vb-eyebrow">Arklight · Trade School 2.0 — Workforce Intelligence</div>
-      <h1 class="vb-title">The Electrician Gap <span>/ SOC 47-2111</span></h1>
+      <h1 class="vb-title">The Machinist Gap <span>/ SOC 51-4041 + 4111 + 9161 + 9162</span></h1>
     </div>
     <div class="vb-meta">
-      National Brief · v2<br/>
+      National Brief · v3<br/>
       Updated <b>May 2026</b><br/>
-      Model: 3-layer demand
+      Model: bottom-up workload
     </div>
   </div>
 </section>
 
 <div class="vb-lead-wrap">
   <p class="vb-lead">
-    A job-ready supply of <b>~10,000 credentialed electricians per year</b> against demand approaching
-    <b>~100,000 per year</b>, structurally widening. Government data anchors the replacement floor; the
-    AI / data-center / fab buildout is modeled bottom-up on top of it. Modeled trajectories are flagged.
+    A hire-ready supply of <b>~16,000 machinists per year</b> against bottom-up demand of
+    <b>~56,000 per year</b>, structurally widening. The official BLS model says the gap is near
+    zero — it assumes equilibrium and bakes in automation that defense, chip-fab, and reshoring
+    workloads do not actually deliver. Demand here is built from the actual workload, not from
+    BLS openings. Modeled trajectories are flagged.
   </p>
 </div>
 
@@ -60,46 +62,46 @@
 
   <div class="vb-panel">
     <div class="vb-panel-head"><span class="vb-panel-num">01</span><h2 class="vb-panel-title">Supply vs. Demand</h2></div>
-    <p class="vb-panel-sub">Annual, journey-level · base case</p>
+    <p class="vb-panel-sub">Annual, broad-definition · base case</p>
     <div class="vb-chart">
-      <div class="vb-callout" style="top:30px;right:34px;">Gap ≈ 87,000</div>
+      <div class="vb-callout" style="top:30px;right:34px;">Gap ≈ 40,000</div>
       <canvas id="c1"></canvas>
     </div>
     <div class="vb-keyfig">
-      <div><div class="k">Supply</div><div class="v blue">~10K</div></div>
-      <div><div class="k">Demand</div><div class="v amber">~97K</div></div>
-      <div><div class="k">Unmet</div><div class="v ember">~89%</div></div>
+      <div><div class="k">Supply</div><div class="v blue">~16K</div></div>
+      <div><div class="k">Demand</div><div class="v amber">~56K</div></div>
+      <div><div class="k">Unmet</div><div class="v ember">~71%</div></div>
     </div>
   </div>
 
   <div class="vb-panel">
-    <div class="vb-panel-head"><span class="vb-panel-num">02</span><h2 class="vb-panel-title">The Gap Is Widening</h2></div>
-    <p class="vb-panel-sub">Annual unfilled seats · 2022 → 2030 (modeled)</p>
+    <div class="vb-panel-head"><span class="vb-panel-num">02</span><h2 class="vb-panel-title">Official vs. Real Gap</h2></div>
+    <p class="vb-panel-sub">Annual unfilled seats · BLS framing vs. bottom-up</p>
     <div class="vb-chart"><canvas id="c2"></canvas></div>
-    <p class="vb-flag">Trajectory is modeled. Endpoints anchored to current ~87K gap and the published cumulative envelope; intermediate years illustrative.</p>
+    <p class="vb-flag">BLS assumes supply = demand by construction and bakes in automation offsets the floor doesn't deliver. The ~2.5× divergence is the headline finding, not noise.</p>
   </div>
 
   <div class="vb-panel">
     <div class="vb-panel-head"><span class="vb-panel-num">03</span><h2 class="vb-panel-title">Retirement Wave</h2></div>
-    <p class="vb-panel-sub">Cumulative electrician retirements, 10-yr · ~20K/yr</p>
+    <p class="vb-panel-sub">Cumulative machinist retirements, 10-yr · ~13K/yr</p>
     <div class="vb-chart"><canvas id="c3"></canvas></div>
     <div class="vb-keyfig">
-      <div><div class="k">Per year</div><div class="v amber">~20K</div></div>
-      <div><div class="k">10-yr total</div><div class="v ember">~200K</div></div>
-      <div><div class="k">Union age 50–70</div><div class="v">~30%</div></div>
+      <div><div class="k">Retiring/yr</div><div class="v amber">~13K</div></div>
+      <div><div class="k">10-yr total</div><div class="v ember">~131K</div></div>
+      <div><div class="k">Age 50–64</div><div class="v">~39%</div></div>
     </div>
   </div>
 
   <div class="vb-panel">
     <div class="vb-panel-head"><span class="vb-panel-num">04</span><h2 class="vb-panel-title">Employment Projection</h2></div>
-    <p class="vb-panel-sub">Total employed · BLS 2024 → 2034 (+9%)</p>
+    <p class="vb-panel-sub">Machinists + tool &amp; die · BLS 2024 → 2034 (−2%)</p>
     <div class="vb-chart"><canvas id="c4"></canvas></div>
-    <p class="vb-flag">BLS Employment Projections (Aug 2025). This is the organic-growth FLOOR — it excludes the AI/fab step-change layered into demand above.</p>
+    <p class="vb-flag">BLS projects a 2% DECLINE — the model's equilibrium assumption is exactly why it misses the defense/fab/reshoring step-change layered into demand above.</p>
   </div>
 
   <div class="vb-panel wide">
     <div class="vb-panel-head"><span class="vb-panel-num">05</span><h2 class="vb-panel-title">Economic Impact by Industry</h2></div>
-    <p class="vb-panel-sub">Unfilled seats &amp; direct cost of vacancy · base-case gap allocated by BLS OEWS employment share</p>
+    <p class="vb-panel-sub">Unfilled seats &amp; direct cost of vacancy · ~40K base-case gap allocated by BLS OEWS employment share</p>
     <div class="vb-chart tall"><canvas id="c5"></canvas></div>
   </div>
 
@@ -108,8 +110,8 @@
     <p class="vb-panel-sub">Lost / delayed output · $B per year</p>
     <div class="vb-chart"><canvas id="c6"></canvas></div>
     <div class="vb-keyfig">
-      <div><div class="k">Base envelope</div><div class="v amber">$20–28B</div></div>
-      <div><div class="k">Per unfilled seat</div><div class="v">~$150K–400K/yr</div></div>
+      <div><div class="k">Value-added</div><div class="v amber">$9.6B</div></div>
+      <div><div class="k">Gross-output</div><div class="v ember">$19–23B</div></div>
     </div>
   </div>
 
@@ -118,9 +120,9 @@
     <p class="vb-panel-sub">Downstream jobs blocked nationally · per year</p>
     <div class="vb-chart"><canvas id="c7"></canvas></div>
     <div class="vb-keyfig">
-      <div><div class="k">Base</div><div class="v blue">~250K</div></div>
-      <div><div class="k">Aggressive</div><div class="v ember">~350–400K</div></div>
-      <div><div class="k">Jobs / seat</div><div class="v">~2–4×</div></div>
+      <div><div class="k">EPI 3.4×</div><div class="v blue">~136K</div></div>
+      <div><div class="k">NAM 4.8×</div><div class="v ember">~192K</div></div>
+      <div><div class="k">Jobs / seat</div><div class="v">~3.4–4.8×</div></div>
     </div>
   </div>
 
@@ -128,7 +130,7 @@
 
 <section class="vb-sources">
   <div class="vb-sources-inner">
-    <b>SOURCES &amp; METHOD.</b> Demand built in three layers: replacement floor + organic growth (BLS Employment Projections / OEWS, 2024 base) plus an incremental project-driven layer modeled bottom-up from 2025–26 signals (hyperscaler capex ~$700–725B for 2026; data-center load 25–33 GW → 70–100+ GW by 2030 per S&amp;P / McKinsey / Goldman / LBNL; CHIPS fabs; IBEW clean-energy project tracker; DOE grid estimates). Supply from NCES IPEDS (CIP 46.0302), DOL RAPIDS, and NECA. Cost-of-vacancy and multiplier figures are labeled estimates with stated assumptions (BEA value-added per FTE; IMPLAN Type-I multipliers 1.6–2.2, weighted to 3–5× on critical-path AI/fab builds). <b>Modeled trajectories (panels 02, 04) are flagged in-panel.</b> Treat the range and direction as robust; treat any single point estimate as directional. — Full sourcing in the companion brief.
+    <b>SOURCES &amp; METHOD.</b> Demand built bottom-up from actual workload, NOT anchored on BLS openings: replacement/attrition from the aging workforce (~38K/yr; 38.8% of machinists age 50–64 per ACS 2023) + defense industrial base net-new (~7K/yr; BlueForge Alliance 140K skilled trades over 10 yrs, GD Electric Boat 8K hires in 2026, HII 6K+ craft hires in 2024) + semiconductor/CHIPS (~1.5K/yr; SIA/Oxford 26,400 fab technicians by 2030) + reshoring/FDI (~9.5K/yr; Reshoring Initiative 244K mfg jobs announced 2024). Broad-definition stock ~480–500K across SOC 51-4041, 51-4111, 51-9161, 51-9162 (BLS OEWS May 2024). Supply from NCES IPEDS (CIPs 48.0501/0503/0507/0510), DOL RAPIDS, and military transitions, with a mandatory readiness discount (informal/OJT entrants are not hire-ready day one). Cost-of-vacancy on BEA value-added per FTE by NAICS; multipliers NAM 4.8× / EPI 3.4×. <b>Modeled trajectories (panels 03, 04) are flagged in-panel.</b> Reconciles with Deloitte/Manufacturing Institute's 1.9M-unfilled-by-2033 (all-manufacturing): machinists are ~3.7% of the 13M mfg workforce but an over-indexed slice due to concentration in defense/aerospace/fab-metal and a 3–5 yr training ramp. Treat the range and direction as robust; treat any single point estimate as directional. — Full sourcing in the companion brief.
   </div>
 </section>
 
@@ -167,8 +169,8 @@
     data:{
       labels:['Supply','Demand'],
       datasets:[
-        { type:'bar', data:[10000, 97000], backgroundColor:[blue, amber], borderWidth:0, barPercentage:0.55, categoryPercentage:0.7 },
-        { type:'line', data:[10000, 97000], borderColor:ember, borderWidth:2, borderDash:[5,4], pointRadius:[4,4], pointBackgroundColor:ember, pointBorderColor:ember, fill:false, tension:0 }
+        { type:'bar', data:[16000, 56000], backgroundColor:[blue, amber], borderWidth:0, barPercentage:0.55, categoryPercentage:0.7 },
+        { type:'line', data:[16000, 56000], borderColor:ember, borderWidth:2, borderDash:[5,4], pointRadius:[4,4], pointBackgroundColor:ember, pointBorderColor:ember, fill:false, tension:0 }
       ]
     },
     options:{
@@ -181,26 +183,19 @@
     }
   });
 
-  // 02 Gap widening
+  // 02 Official vs Real
   new Chart(document.getElementById('c2'), {
-    type:'line',
+    type:'bar',
     data:{
-      labels:['2022','2023','2024','2025','2026','2027','2028','2029','2030'],
-      datasets:[{
-        data:[48000,55000,63000,74000,87000,99000,112000,124000,138000],
-        borderColor:ember, borderWidth:2.5,
-        backgroundColor:(ctx)=>{const c=ctx.chart.ctx;const g=c.createLinearGradient(0,0,0,300);g.addColorStop(0,'rgba(229,90,74,0.30)');g.addColorStop(1,'rgba(229,90,74,0.0)');return g;},
-        fill:true, tension:0.35,
-        pointRadius:(ctx)=> ctx.dataIndex===4?5:0,
-        pointBackgroundColor:amber, pointBorderColor:amber
-      }]
+      labels:['BLS\nequilibrium','BLS openings\n− supply','Bottom-up\nworkload'],
+      datasets:[{ data:[500, 16500, 40000], backgroundColor:[steel, steel, ember], borderWidth:0, barPercentage:0.6, categoryPercentage:0.8 }]
     },
     options:{
       maintainAspectRatio:false,
-      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>'~'+ctx.raw.toLocaleString()+' unfilled', title:ctx=>ctx[0].label+(ctx[0].label==='2026'?' (now)':'')} }},
+      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=> ctx.dataIndex===0 ? '~0 (no shortage by design)' : '~'+ctx.raw.toLocaleString()+' unfilled/yr'} }},
       scales:{
-        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:fmtK}, title:{display:true,text:'UNFILLED SEATS / YR',color:faint,font:{size:9}}},
-        x:{grid:{display:false}, ticks:{color:dim}}
+        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:fmtK}, title:{display:true,text:'ANNUAL GAP',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:ink,font:{family:sans,size:10.5,weight:'500'},maxRotation:0,autoSkip:false}}
       }
     }
   });
@@ -211,7 +206,7 @@
     data:{
       labels:['1','2','3','4','5','6','7','8','9','10'],
       datasets:[{
-        data:[20,40,60,80,100,120,140,160,180,200],
+        data:[13,26,39,52,66,79,92,105,118,131],
         backgroundColor:(ctx)=> ctx.dataIndex>=8 ? ember : amber,
         borderWidth:0, barPercentage:0.78, categoryPercentage:0.9
       }]
@@ -226,38 +221,38 @@
     }
   });
 
-  // 04 Employment projection
+  // 04 Employment projection (-2% over 10yr)
   new Chart(document.getElementById('c4'), {
     type:'line',
     data:{
       labels:['2024','2026','2028','2030','2032','2034'],
       datasets:[{
-        data:[818.7, 834.2, 849.7, 865.2, 880.6, 896.1],
-        borderColor:blue, borderWidth:2.5,
-        backgroundColor:(ctx)=>{const c=ctx.chart.ctx;const g=c.createLinearGradient(0,0,0,300);g.addColorStop(0,'rgba(110,142,168,0.28)');g.addColorStop(1,'rgba(110,142,168,0.0)');return g;},
+        data:[461, 459, 457, 455, 453, 452],
+        borderColor:ember, borderWidth:2.5,
+        backgroundColor:(ctx)=>{const c=ctx.chart.ctx;const g=c.createLinearGradient(0,0,0,300);g.addColorStop(0,'rgba(229,90,74,0.22)');g.addColorStop(1,'rgba(229,90,74,0.0)');return g;},
         fill:true, tension:0.3,
         pointRadius:(ctx)=> (ctx.dataIndex===0||ctx.dataIndex===5)?5:0,
-        pointBackgroundColor:blue
+        pointBackgroundColor:ember
       }]
     },
     options:{
       maintainAspectRatio:false,
-      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>ctx.raw.toFixed(1)+'K employed ('+(ctx.raw*1000).toLocaleString()+')'} }},
+      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>ctx.raw+'K employed ('+(ctx.raw*1000).toLocaleString()+')'} }},
       scales:{
-        y:{min:780, max:920, grid:{color:grid}, ticks:{callback:v=>v+'K'}, title:{display:true,text:'TOTAL EMPLOYED',color:faint,font:{size:9}}},
+        y:{min:430, max:480, grid:{color:grid}, ticks:{callback:v=>v+'K'}, title:{display:true,text:'TOTAL EMPLOYED',color:faint,font:{size:9}}},
         x:{grid:{display:false}, ticks:{color:dim}}
       }
     }
   });
 
-  // 05 Economic impact by industry
+  // 05 Economic impact by industry (40K allocated)
   new Chart(document.getElementById('c5'), {
     type:'bar',
     data:{
-      labels:['Electrical\ncontractors','Self-\nemployed','Manufacturing\n(semis/EV)','Data centers\n(nonres bldg)','Power gen/\ntrans/dist','Employment\nservices','Govt /\ndefense'],
+      labels:['Machine\nshops (332710)','Aerospace\nparts (3364)','Fab metal\n(332 ex shops)','Machinery\n(333)','Motor veh.\nparts (3363)','Ship &\nboat (3366)','Other'],
       datasets:[
-        { label:'Unfilled seats', data:[56500,7000,5200,4400,3500,2600,2600], backgroundColor:amber, borderWidth:0, yAxisID:'y', barPercentage:0.9 },
-        { label:'Direct cost ($B/yr)', data:[8.5,1.1,1.1,1.6,1.4,0.4,0.5], backgroundColor:blue, borderWidth:0, yAxisID:'y1', barPercentage:0.9 }
+        { label:'Unfilled seats', data:[13000,7000,6200,5400,3200,2400,2800], backgroundColor:amber, borderWidth:0, yAxisID:'y', barPercentage:0.9 },
+        { label:'Direct cost ($B/yr)', data:[3.1,1.9,1.5,1.3,0.7,0.6,0.5], backgroundColor:blue, borderWidth:0, yAxisID:'y1', barPercentage:0.9 }
       ]
     },
     options:{
@@ -274,19 +269,19 @@
     }
   });
 
-  // 06 Total direct cost
+  // 06 Direct cost: VA floor + gross-output range
   new Chart(document.getElementById('c6'), {
     type:'bar',
     data:{
-      labels:['Base case','Aggressive'],
+      labels:['Value-added','Gross-output'],
       datasets:[
-        {label:'Low', data:[15,22], backgroundColor:amber, stack:'s', borderWidth:0, barPercentage:0.5},
-        {label:'High band', data:[13,6], backgroundColor:ember, stack:'s', borderWidth:0, barPercentage:0.5}
+        {label:'Low', data:[9.6, 19], backgroundColor:amber, stack:'s', borderWidth:0, barPercentage:0.5},
+        {label:'High band', data:[0, 4], backgroundColor:ember, stack:'s', borderWidth:0, barPercentage:0.5}
       ]
     },
     options:{
       maintainAspectRatio:false,
-      plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=> ctx.datasetIndex===0 ? 'Low end: $'+ctx.raw+'B' : '+ up to $'+(ctx.parsed.y)+'B more', footer:ctx=>{const t=ctx.reduce((a,c)=>a+c.parsed.y,0);return 'Range top: $'+t+'B/yr';}}}},
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=> ctx.datasetIndex===0 ? 'Floor: $'+ctx.raw+'B' : '+ up to $'+(ctx.parsed.y)+'B more', footer:ctx=>{const t=ctx.reduce((a,c)=>a+c.parsed.y,0);return 'Range top: $'+t+'B/yr';}}}},
       scales:{
         y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:v=>'$'+v+'B'}, stacked:true, title:{display:true,text:'LOST OUTPUT $B/YR',color:faint,font:{size:9}}},
         x:{grid:{display:false}, stacked:true, ticks:{color:ink,font:{family:sans,size:13,weight:'600'}}}
@@ -298,8 +293,8 @@
   new Chart(document.getElementById('c7'), {
     type:'bar',
     data:{
-      labels:['Base case','Aggressive'],
-      datasets:[{ data:[250000, 385000], backgroundColor:[blue, ember], borderWidth:0, barPercentage:0.5 }]
+      labels:['EPI (3.4×)','NAM (4.8×)'],
+      datasets:[{ data:[136000, 192000], backgroundColor:[blue, ember], borderWidth:0, barPercentage:0.5 }]
     },
     options:{
       maintainAspectRatio:false,

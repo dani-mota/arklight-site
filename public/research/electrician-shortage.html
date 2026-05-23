@@ -3,79 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>The Electrician Shortage Isn't Coming. It's Here. · Arklight Research</title>
-<meta name="description" content="By 2030 the U.S. will be short ~80,000 electricians. Original Arklight research on the structural labor cliff binding America's reindustrialization."/>
+<title>The Electrician Gap · Arklight Workforce Intelligence</title>
+<meta name="description" content="A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000/year. The labor cliff binding America's reindustrialization."/>
 <link rel="stylesheet" href="../styles/colors_and_type.css"/>
 <link rel="stylesheet" href="../styles/components.css"/>
 <link rel="stylesheet" href="../styles/site.css"/>
-<style>
-  /* ============== ARTICLE SHELL ============== */
-  body{background:#05080E;}
-  .rs-head{position:relative;padding:140px 72px 72px;background:radial-gradient(ellipse 60% 60% at 0% 0%, rgba(245,161,74,.1) 0%, transparent 60%),#05080E;border-bottom:1px solid rgba(200,217,228,.08);}
-  .rs-back{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.55);text-decoration:none;margin-bottom:36px;transition:color .2s;}
-  .rs-back:hover{color:var(--amber-400);}
-  .rs-head-meta{display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
-  .rs-head-meta .tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-400);padding:5px 9px;border:1px solid rgba(245,161,74,.4);border-radius:2px;background:rgba(245,161,74,.06);}
-  .rs-head-meta .date,.rs-head-meta .id{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);}
-  .rs-head h1{font-family:var(--font-display);font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:-.035em;color:#F4F8FB;margin:0 0 24px;font-weight:500;max-width:1100px;}
-  .rs-head h1 em{font-style:normal;color:rgba(200,217,228,.78);font-weight:300;}
-  .rs-head .lead{font-size:19px;line-height:1.55;color:rgba(232,241,246,.78);max-width:760px;margin:0 0 40px;}
-  .rs-byline{display:flex;align-items:center;gap:24px;padding-top:24px;border-top:1px solid rgba(200,217,228,.08);max-width:760px;}
-  .rs-byline .author{font-family:var(--font-display);font-size:15px;color:#F4F8FB;font-weight:500;}
-  .rs-byline .role{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-400);margin-top:4px;}
-  .rs-byline .read-time{margin-left:auto;font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.5);}
-  @media (max-width:900px){.rs-head{padding:120px 32px 56px;}}
-
-  /* ============== ARTICLE BODY ============== */
-  .rs-body{max-width:780px;margin:0 auto;padding:80px 32px;}
-  .rs-body p{font-size:18px;line-height:1.65;color:rgba(232,241,246,.84);margin:0 0 24px;font-weight:400;}
-  .rs-body p.lede{font-size:21px;line-height:1.55;color:#F4F8FB;font-weight:400;}
-  .rs-body h2{font-family:var(--font-display);font-size:32px;font-weight:500;letter-spacing:-.025em;color:#F4F8FB;margin:64px 0 24px;line-height:1.1;}
-  .rs-body h3{font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.015em;color:#F4F8FB;margin:48px 0 16px;}
-  .rs-body strong{color:var(--amber-400);font-weight:500;}
-  .rs-body blockquote{margin:36px 0;padding:20px 24px;border-left:3px solid var(--amber-400);background:rgba(245,161,74,.06);font-family:var(--font-display);font-size:22px;line-height:1.4;color:#F4F8FB;letter-spacing:-.01em;}
-  .rs-body ul{padding-left:0;list-style:none;margin:24px 0;}
-  .rs-body ul li{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:10px 0;font-size:17px;line-height:1.55;color:rgba(232,241,246,.82);border-bottom:1px solid rgba(200,217,228,.08);}
-  .rs-body ul li::before{content:'◆';color:var(--amber-400);font-size:10px;padding-top:6px;}
-  .rs-body ul li:last-child{border-bottom:0;}
-
-  /* ============== EMBEDDED CHARTS ============== */
-  .rs-chart{position:relative;margin:48px -64px;padding:32px;background:rgba(14,28,48,.5);border:1px solid rgba(200,217,228,.14);border-radius:6px;}
-  .rs-chart::before,.rs-chart::after{content:'';position:absolute;width:12px;height:12px;border:1px solid rgba(200,217,228,.4);}
-  .rs-chart::before{top:-1px;left:-1px;border-right:0;border-bottom:0;}
-  .rs-chart::after{bottom:-1px;right:-1px;border-left:0;border-top:0;}
-  .rs-chart-head{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;margin-bottom:20px;border-bottom:1px solid rgba(200,217,228,.1);}
-  .rs-chart-fig{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-400);margin-bottom:8px;}
-  .rs-chart-title{font-family:var(--font-display);font-size:17px;font-weight:500;color:#F4F8FB;letter-spacing:-.01em;}
-  .rs-chart-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.55);margin-top:6px;}
-  .rs-chart-source{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.4);text-align:right;line-height:1.6;}
-  .rs-chart-canvas{position:relative;height:320px;}
-  .rs-chart-cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:rgba(200,217,228,.55);margin-top:18px;padding-top:14px;border-top:1px solid rgba(200,217,228,.08);line-height:1.5;}
-  @media (max-width:900px){.rs-chart{margin:32px 0;}.rs-body{padding:56px 24px;}}
-
-  /* ============== KEY STATS BAR ============== */
-  .rs-keystats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(200,217,228,.1);background:rgba(14,28,48,.3);margin:48px -64px;}
-  .rs-keystats .cell{padding:32px 24px;border-right:1px solid rgba(200,217,228,.08);}
-  .rs-keystats .cell:last-child{border-right:0;}
-  .rs-keystats .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);margin-bottom:12px;}
-  .rs-keystats .v{font-family:var(--font-display);font-size:32px;font-weight:500;letter-spacing:-.025em;color:#F4F8FB;line-height:1;}
-  .rs-keystats .v.amber{color:var(--amber-400);}
-  .rs-keystats .sub{font-family:var(--font-body);font-size:12px;color:rgba(232,241,246,.6);margin-top:8px;line-height:1.4;}
-  @media (max-width:900px){.rs-keystats{grid-template-columns:repeat(2,1fr);margin:32px 0;}.rs-keystats .cell:nth-child(2){border-right:0;}}
-
-  /* ============== CTA ============== */
-  .rs-cta{padding:96px 72px;background:radial-gradient(ellipse 60% 50% at 80% 50%, rgba(245,161,74,.1) 0%, transparent 60%),#06090F;border-top:1px solid rgba(200,217,228,.08);}
-  .rs-cta-inner{max-width:880px;margin:0 auto;text-align:center;}
-  .rs-cta .num{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;color:var(--amber-400);text-transform:uppercase;margin-bottom:22px;}
-  .rs-cta h3{font-family:var(--font-display);font-size:clamp(32px,4.2vw,52px);font-weight:500;line-height:1.05;letter-spacing:-.025em;color:#F4F8FB;margin:0 0 22px;}
-  .rs-cta h3 em{font-style:normal;color:rgba(200,217,228,.7);font-weight:300;}
-  .rs-cta p{font-size:16px;line-height:1.6;color:rgba(232,241,246,.7);margin:0 0 36px;}
-  .rs-cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-  @media (max-width:900px){.rs-cta{padding:64px 32px;}}
-
-  [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
-  [data-reveal].in{opacity:1;transform:none;}
-</style>
+<link rel="stylesheet" href="../styles/brief.css"/>
 <link rel="stylesheet" href="../styles/home.css"/>
 </head>
 <body>
@@ -100,146 +33,102 @@
   <a href="../index.html#engage" class="mobile-menu-cta">Partner With Us</a>
 </div>
 
-<!-- ═════════ ARTICLE HEAD ═════════ -->
-<section class="rs-head">
-  <a href="../content-research.html" class="rs-back">← All Research</a>
-  <div class="rs-head-meta">
-    <span class="tag">◆ Featured Research</span>
-    <span class="date">2026.05.18</span>
-    <span class="id">ARK-R-001</span>
-  </div>
-  <h1>The electrician shortage<br/><em>isn't coming. It's here.</em></h1>
-  <p class="lead">By 2030, the U.S. will be short roughly 80,000 electricians. The math is already locked in: aging journeymen, declining apprenticeship completion, and a demand curve bent steeply upward by data-center, EV, and reindustrialization buildout. The deficit is structural — and it is binding the things America says it wants to build.</p>
-  <div class="rs-byline">
+<section class="vb-head">
+  <a href="../content-research.html" class="vb-back">← All Content &amp; Research</a>
+  <div class="vb-head-row">
     <div>
-      <div class="author">Dani Mota</div>
-      <div class="role">Founder · Project Arklight</div>
+      <div class="vb-eyebrow">Arklight · Trade School 2.0 — Workforce Intelligence</div>
+      <h1 class="vb-title">The Electrician Gap <span>/ SOC 47-2111</span></h1>
     </div>
-    <span class="read-time">7 min read</span>
+    <div class="vb-meta">
+      National Brief · v2<br/>
+      Updated <b>May 2026</b><br/>
+      Model: 3-layer demand
+    </div>
   </div>
 </section>
 
-<!-- ═════════ BODY ═════════ -->
-<article class="rs-body">
+<div class="vb-lead-wrap">
+  <p class="vb-lead">
+    A job-ready supply of <b>~10,000 credentialed electricians per year</b> against demand approaching
+    <b>~100,000 per year</b>, structurally widening. Government data anchors the replacement floor; the
+    AI / data-center / fab buildout is modeled bottom-up on top of it. Modeled trajectories are flagged.
+  </p>
+</div>
 
-  <p class="lede">There is no version of the next decade where the U.S. builds the data centers, the chip fabs, the shipyards, and the grid upgrades it has already committed to — without dramatically more electricians than it currently has any plan to produce.</p>
+<div class="vb-grid">
 
-  <p>Most workforce conversations treat the electrician shortage as a near-term hiring problem. A hot labor market. A pandemic distortion. Something that resolves with higher wages and a bit of patience. The data says otherwise. The shortage is structural, demographic, and accelerating — and the country has already missed the window where it could have been solved with conventional means.</p>
-
-  <p>Below is what the numbers actually show.</p>
-
-  <!-- KEY STATS -->
-  <div class="rs-keystats" data-reveal>
-    <div class="cell"><div class="k">Median age</div><div class="v">42</div><div class="sub">vs. 38 across all U.S. trades</div></div>
-    <div class="cell"><div class="k">Annual gap by 2030</div><div class="v amber">80k</div><div class="sub">demand minus available workers</div></div>
-    <div class="cell"><div class="k">Apprenticeship drop-off</div><div class="v">38%</div><div class="sub">never complete year 4</div></div>
-    <div class="cell"><div class="k">Projected wage growth</div><div class="v">+34%</div><div class="sub">real, 2025–2030</div></div>
+  <div class="vb-panel">
+    <div class="vb-panel-head"><span class="vb-panel-num">01</span><h2 class="vb-panel-title">Supply vs. Demand</h2></div>
+    <p class="vb-panel-sub">Annual, journey-level · base case</p>
+    <div class="vb-chart">
+      <div class="vb-callout" style="top:30px;right:34px;">Gap ≈ 87,000</div>
+      <canvas id="c1"></canvas>
+    </div>
+    <div class="vb-keyfig">
+      <div><div class="k">Supply</div><div class="v blue">~10K</div></div>
+      <div><div class="k">Demand</div><div class="v amber">~97K</div></div>
+      <div><div class="k">Unmet</div><div class="v ember">~89%</div></div>
+    </div>
   </div>
 
-  <h2>1. Demand is bending faster than supply</h2>
+  <div class="vb-panel">
+    <div class="vb-panel-head"><span class="vb-panel-num">02</span><h2 class="vb-panel-title">The Gap Is Widening</h2></div>
+    <p class="vb-panel-sub">Annual unfilled seats · 2022 → 2030 (modeled)</p>
+    <div class="vb-chart"><canvas id="c2"></canvas></div>
+    <p class="vb-flag">Trajectory is modeled. Endpoints anchored to current ~87K gap and the published cumulative envelope; intermediate years illustrative.</p>
+  </div>
 
-  <p>Between 2015 and 2023, U.S. electrician demand grew at roughly <strong>2.0% per year</strong>. Between 2024 and 2030, it is on track to grow at <strong>4.6% per year</strong> — driven primarily by three things at once: AI data-center buildout, transmission and grid modernization, and the electrification of light vehicles and industrial heat.</p>
-
-  <p>Meanwhile, supply has grown at roughly 1.2% per year and is decelerating as retirements accelerate.</p>
-
-  <!-- CHART 1 -->
-  <figure class="rs-chart" data-reveal>
-    <div class="rs-chart-head">
-      <div>
-        <div class="rs-chart-fig">Figure 1</div>
-        <div class="rs-chart-title">Electrician supply vs. demand</div>
-        <div class="rs-chart-sub">U.S. · 2015–2030 · workers (000s)</div>
-      </div>
-      <div class="rs-chart-source">SOURCE · BLS · DOE · ARK est.<br/>ARK-R-001 · F1</div>
+  <div class="vb-panel">
+    <div class="vb-panel-head"><span class="vb-panel-num">03</span><h2 class="vb-panel-title">Retirement Wave</h2></div>
+    <p class="vb-panel-sub">Cumulative electrician retirements, 10-yr · ~20K/yr</p>
+    <div class="vb-chart"><canvas id="c3"></canvas></div>
+    <div class="vb-keyfig">
+      <div><div class="k">Per year</div><div class="v amber">~20K</div></div>
+      <div><div class="k">10-yr total</div><div class="v ember">~200K</div></div>
+      <div><div class="k">Union age 50–70</div><div class="v">~30%</div></div>
     </div>
-    <div class="rs-chart-canvas"><canvas id="chart1"></canvas></div>
-    <div class="rs-chart-cap">The gap opens around 2024 and widens through the decade. By 2030, demand exceeds supply by roughly 80,000 — and the slope is still steepening.</div>
-  </figure>
+  </div>
 
-  <h2>2. The workforce is aging out</h2>
+  <div class="vb-panel">
+    <div class="vb-panel-head"><span class="vb-panel-num">04</span><h2 class="vb-panel-title">Employment Projection</h2></div>
+    <p class="vb-panel-sub">Total employed · BLS 2024 → 2034 (+9%)</p>
+    <div class="vb-chart"><canvas id="c4"></canvas></div>
+    <p class="vb-flag">BLS Employment Projections (Aug 2025). This is the organic-growth FLOOR — it excludes the AI/fab step-change layered into demand above.</p>
+  </div>
 
-  <p>The median U.S. electrician is 42 years old, with <strong>22% of the workforce already over 55</strong>. Retirement-rate math says the country will lose roughly 26,000 journeymen per year through 2032, replaced by an apprenticeship pipeline that completes only ~18,000 per year. That's a steady-state deficit before demand growth.</p>
+  <div class="vb-panel wide">
+    <div class="vb-panel-head"><span class="vb-panel-num">05</span><h2 class="vb-panel-title">Economic Impact by Industry</h2></div>
+    <p class="vb-panel-sub">Unfilled seats &amp; direct cost of vacancy · base-case gap allocated by BLS OEWS employment share</p>
+    <div class="vb-chart tall"><canvas id="c5"></canvas></div>
+  </div>
 
-  <!-- CHART 2 -->
-  <figure class="rs-chart" data-reveal>
-    <div class="rs-chart-head">
-      <div>
-        <div class="rs-chart-fig">Figure 2</div>
-        <div class="rs-chart-title">Age distribution · electricians</div>
-        <div class="rs-chart-sub">U.S. workforce · 2025 · share of total</div>
-      </div>
-      <div class="rs-chart-source">SOURCE · BLS CPS<br/>ARK-R-001 · F2</div>
+  <div class="vb-panel">
+    <div class="vb-panel-head"><span class="vb-panel-num">06</span><h2 class="vb-panel-title">Total Direct Cost</h2></div>
+    <p class="vb-panel-sub">Lost / delayed output · $B per year</p>
+    <div class="vb-chart"><canvas id="c6"></canvas></div>
+    <div class="vb-keyfig">
+      <div><div class="k">Base envelope</div><div class="v amber">$20–28B</div></div>
+      <div><div class="k">Per unfilled seat</div><div class="v">~$150K–400K/yr</div></div>
     </div>
-    <div class="rs-chart-canvas"><canvas id="chart2"></canvas></div>
-    <div class="rs-chart-cap">The under-25 cohort has compressed from 11.2% (2010) to 6.8% (2025). One in five working electricians is within ten years of retirement.</div>
-  </figure>
+  </div>
 
-  <h2>3. The apprenticeship system is leaking</h2>
-
-  <p>The U.S. registered roughly 78,000 new electrical apprentices in 2024. That sounds healthy until you trace completion: <strong>38% never finish year 4</strong>, and of those who do, ~15% leave the trade within five years for adjacent work (project management, supervision, or out of the field entirely).</p>
-
-  <p>Run the math: 78k starts × 62% completion × 85% retention = ~41k net new journeymen, against ~67k annual replacement demand. The leak is in year 2, where wage progression flattens and the apprentice often discovers they can earn comparable money in less physically demanding work.</p>
-
-  <!-- CHART 3 -->
-  <figure class="rs-chart" data-reveal>
-    <div class="rs-chart-head">
-      <div>
-        <div class="rs-chart-fig">Figure 3</div>
-        <div class="rs-chart-title">Apprenticeship funnel</div>
-        <div class="rs-chart-sub">Cohort survival · year-over-year · %</div>
-      </div>
-      <div class="rs-chart-source">SOURCE · DOL · NCCER<br/>ARK-R-001 · F3</div>
+  <div class="vb-panel">
+    <div class="vb-panel-head"><span class="vb-panel-num">07</span><h2 class="vb-panel-title">Total Multiplier Loss</h2></div>
+    <p class="vb-panel-sub">Downstream jobs blocked nationally · per year</p>
+    <div class="vb-chart"><canvas id="c7"></canvas></div>
+    <div class="vb-keyfig">
+      <div><div class="k">Base</div><div class="v blue">~250K</div></div>
+      <div><div class="k">Aggressive</div><div class="v ember">~350–400K</div></div>
+      <div><div class="k">Jobs / seat</div><div class="v">~2–4×</div></div>
     </div>
-    <div class="rs-chart-canvas"><canvas id="chart3"></canvas></div>
-    <div class="rs-chart-cap">Year 2 is where the system bleeds — wage progression flattens, hours stay brutal, and 21% of remaining apprentices leave between year 2 and year 3.</div>
-  </figure>
+  </div>
 
-  <h2>4. The demand isn't evenly distributed</h2>
+</div>
 
-  <p>Aggregate numbers hide the binding constraint. The shortage is concentrated in three buildout categories that don't substitute for each other: data centers, transmission, and EV/charging infrastructure. Each requires different skill loadouts and certifications.</p>
-
-  <!-- CHART 4 -->
-  <figure class="rs-chart" data-reveal>
-    <div class="rs-chart-head">
-      <div>
-        <div class="rs-chart-fig">Figure 4</div>
-        <div class="rs-chart-title">Demand by buildout category</div>
-        <div class="rs-chart-sub">Incremental electrician-years · 2025–2030</div>
-      </div>
-      <div class="rs-chart-source">SOURCE · DOE · industry filings · ARK est.<br/>ARK-R-001 · F4</div>
-    </div>
-    <div class="rs-chart-canvas"><canvas id="chart4"></canvas></div>
-    <div class="rs-chart-cap">Data-center buildout alone accounts for ~38% of incremental demand through 2030. Transmission upgrades and EV infrastructure split most of the rest.</div>
-  </figure>
-
-  <blockquote>"You can't appropriate your way out of a labor cliff. The capital is there. The contracts are there. The people aren't."</blockquote>
-
-  <h2>What it means</h2>
-
-  <p>Three implications follow:</p>
-
-  <ul>
-    <li><strong>Bid math from 2022 doesn't work.</strong> The fully loaded marginal electrician will run ~$148/hr by 2028 in tier-1 metros. GCs and developers using 2022 unit economics are quietly underwriting losses.</li>
-    <li><strong>The 4-year apprenticeship is the wrong instrument.</strong> Not because it produces bad operators — it produces excellent ones — but because the country cannot wait four years to begin closing a gap that is already binding. The pipeline needs to run in parallel, not sequentially.</li>
-    <li><strong>The training-system shortage is the root cause.</strong> The talent exists. The buildings, the curricula, the partner-employer relationships, and the modern pedagogy do not. This is what Trade School 2.0 was designed to address.</li>
-  </ul>
-
-  <p>None of this is a story about "the trades being uncool." Wages in the field are up 41% real over the last decade. Interest is up. Applications to electrical programs are up. The bottleneck is not demand for the work. It is the institution responsible for turning that demand into operators.</p>
-
-  <p>That institution has not been rebuilt in seventy years. We're building it now.</p>
-
-</article>
-
-<!-- ═════════ CTA ═════════ -->
-<section class="rs-cta">
-  <div class="rs-cta-inner">
-    <div class="num">Continue reading</div>
-    <h3>Want the data behind this brief?<br/><em>Or the next one before it ships?</em></h3>
-    <p>Subscribe for the monthly Arklight briefing — original workforce research, sector deep-dives, and field notes. Or partner with us to do something about the gap.</p>
-    <div class="rs-cta-actions">
-      <a href="../content-research.html#subscribe" class="ark-btn ark-btn-secondary ark-btn-lg">Subscribe</a>
-      <a href="../index.html#engage" class="ark-btn ark-btn-primary ark-btn-lg">Partner With Us <span class="arrow"></span></a>
-    </div>
+<section class="vb-sources">
+  <div class="vb-sources-inner">
+    <b>SOURCES &amp; METHOD.</b> Demand built in three layers: replacement floor + organic growth (BLS Employment Projections / OEWS, 2024 base) plus an incremental project-driven layer modeled bottom-up from 2025–26 signals (hyperscaler capex ~$700–725B for 2026; data-center load 25–33 GW → 70–100+ GW by 2030 per S&amp;P / McKinsey / Goldman / LBNL; CHIPS fabs; IBEW clean-energy project tracker; DOE grid estimates). Supply from NCES IPEDS (CIP 46.0302), DOL RAPIDS, and NECA. Cost-of-vacancy and multiplier figures are labeled estimates with stated assumptions (BEA value-added per FTE; IMPLAN Type-I multipliers 1.6–2.2, weighted to 3–5× on critical-path AI/fab builds). <b>Modeled trajectories (panels 02, 04) are flagged in-panel.</b> Treat the range and direction as robust; treat any single point estimate as directional. — Full sourcing in the companion brief.
   </div>
 </section>
 
@@ -251,7 +140,7 @@
       <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,217,228,.45);">Austin · United States · Est. 2025</p>
     </div>
     <div class="footer-col"><h5>Program</h5><a href="../product.html">Trade School 2.0</a><a href="../product.html#aci">Arklight Competence Index</a><a href="../product.html#pipeline">Operator Pipeline</a></div>
-    <div class="footer-col"><h5>Read</h5><a href="../content-research.html">Content &amp; Research</a><a href="../research/electrician-shortage.html">Electrician shortage</a></div>
+    <div class="footer-col"><h5>Read</h5><a href="../content-research.html">Content &amp; Research</a><a href="../research/electrician-shortage.html">Electrician gap</a><a href="../research/metal-fab-shortage.html">Metal-fab gap</a><a href="../research/machinist-shortage.html">Machinist gap</a></div>
     <div class="footer-col"><h5>Engage</h5><a href="../index.html#engage">Partner With Us</a><a href="mailto:contact@arklight.us">contact@arklight.us</a></div>
   </div>
   <div class="footer-bar"><span><strong>ARKLIGHT</strong> · Project Arklight</span><span>N 30.27° · W 97.74°</span><span>© 2026</span></div>
@@ -260,125 +149,175 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script>
 (() => {
-  const AMBER = '#F5A14A';
-  const AMBER_FILL = 'rgba(245,161,74,0.18)';
-  const BLUE = '#6E8EA8';
-  const BLUE_FILL = 'rgba(110,142,168,0.18)';
-  const GRID = 'rgba(200,217,228,0.08)';
-  const TICK = 'rgba(200,217,228,0.6)';
-  const MONO = "'JetBrains Mono', ui-monospace, monospace";
+  const ink='#F4F8FB', dim='#C8D9E4', faint='rgba(200,217,228,.55)', grid='rgba(200,217,228,.08)';
+  const amber='#F5A14A', blue='#6E8EA8', ember='#E55A4A', steel='#4A6A8A';
+  const mono="'JetBrains Mono', ui-monospace, monospace";
+  const sans="'Inter Tight', sans-serif";
 
   if (!window.Chart) return;
-  Chart.defaults.font.family = MONO;
-  Chart.defaults.font.size = 10;
-  Chart.defaults.color = TICK;
-  Chart.defaults.borderColor = GRID;
+  Chart.defaults.color = faint;
+  Chart.defaults.font.family = mono;
+  Chart.defaults.font.size = 11;
 
-  const baseOpts = (yLabel) => ({
-    responsive: true, maintainAspectRatio: false,
-    interaction: { intersect: false, mode: 'index' },
-    plugins: {
-      legend: { position: 'bottom', align: 'start', labels: { boxWidth: 8, boxHeight: 8, padding: 14, color: '#C8D9E4', font: { family: MONO, size: 10 } } },
-      tooltip: {
-        backgroundColor: 'rgba(7,16,28,0.95)', borderColor: 'rgba(200,217,228,0.18)', borderWidth: 1,
-        titleFont: { family: MONO, size: 10 }, bodyFont: { family: MONO, size: 11 }, padding: 12,
-        displayColors: true, boxWidth: 8, boxHeight: 8,
-      }
-    },
-    scales: {
-      x: { grid: { color: GRID, drawTicks: false }, border: { color: GRID }, ticks: { color: TICK, font: { family: MONO, size: 10 } } },
-      y: { grid: { color: GRID, drawTicks: false }, border: { display: false }, ticks: { color: TICK, font: { family: MONO, size: 10 }, callback: yLabel } }
-    }
-  });
+  const fmtK = v => v>=1000 ? (v/1000).toFixed(0)+'K' : v;
 
-  // CHART 1 — supply vs demand
-  new Chart(document.getElementById('chart1'), {
-    type: 'line',
-    data: {
-      labels: ['2015','2017','2019','2021','2023','2025','2027','2029','2030'],
-      datasets: [
-        { label: 'Demand', data: [712,740,768,802,838,884,938,998,1032], borderColor: AMBER, backgroundColor: AMBER_FILL, borderWidth: 2, fill: true, tension: 0.35, pointRadius: 0, pointHoverRadius: 4 },
-        { label: 'Supply', data: [710,728,742,758,772,790,812,830,838], borderColor: BLUE, backgroundColor: BLUE_FILL, borderWidth: 2, borderDash: [4,4], fill: true, tension: 0.35, pointRadius: 0, pointHoverRadius: 4 }
+  // 01 Supply vs Demand
+  new Chart(document.getElementById('c1'), {
+    type:'bar',
+    data:{
+      labels:['Supply','Demand'],
+      datasets:[
+        { type:'bar', data:[10000, 97000], backgroundColor:[blue, amber], borderWidth:0, barPercentage:0.55, categoryPercentage:0.7 },
+        { type:'line', data:[10000, 97000], borderColor:ember, borderWidth:2, borderDash:[5,4], pointRadius:[4,4], pointBackgroundColor:ember, pointBorderColor:ember, fill:false, tension:0 }
       ]
     },
-    options: { ...baseOpts(v => v + 'k'),
-      plugins: { ...baseOpts(v=>v+'k').plugins, tooltip: { ...baseOpts(v=>v+'k').plugins.tooltip, callbacks: { label: (ctx) => `  ${ctx.dataset.label}: ${ctx.parsed.y}k` } } },
-      scales: { ...baseOpts(v=>v+'k').scales, y: { ...baseOpts(v=>v+'k').scales.y, min: 680, max: 1080 } }
+    options:{
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>ctx.raw.toLocaleString()+' workers/yr'} }},
+      scales:{
+        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:fmtK}, title:{display:true,text:'WORKERS / YEAR',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:ink,font:{family:sans,size:13,weight:'600'}}}
+      }
     }
   });
 
-  // CHART 2 — age distribution
-  new Chart(document.getElementById('chart2'), {
-    type: 'bar',
-    data: {
-      labels: ['16–24','25–34','35–44','45–54','55–64','65+'],
-      datasets: [{ label: 'Share of workforce', data: [6.8, 23.4, 27.1, 20.9, 17.6, 4.2], backgroundColor: ['#6E8EA8','#6E8EA8','#6E8EA8','#6E8EA8','#F5A14A','#F5A14A'], borderRadius: 2, borderSkipped: false, barPercentage: 0.65 }]
+  // 02 Gap widening
+  new Chart(document.getElementById('c2'), {
+    type:'line',
+    data:{
+      labels:['2022','2023','2024','2025','2026','2027','2028','2029','2030'],
+      datasets:[{
+        data:[48000,55000,63000,74000,87000,99000,112000,124000,138000],
+        borderColor:ember, borderWidth:2.5,
+        backgroundColor:(ctx)=>{const c=ctx.chart.ctx;const g=c.createLinearGradient(0,0,0,300);g.addColorStop(0,'rgba(229,90,74,0.30)');g.addColorStop(1,'rgba(229,90,74,0.0)');return g;},
+        fill:true, tension:0.35,
+        pointRadius:(ctx)=> ctx.dataIndex===4?5:0,
+        pointBackgroundColor:amber, pointBorderColor:amber
+      }]
     },
-    options: { ...baseOpts(v => v + '%'),
-      plugins: { ...baseOpts(v=>v+'%').plugins, legend: { display: false }, tooltip: { ...baseOpts(v=>v+'%').plugins.tooltip, callbacks: { label: (ctx) => `  ${ctx.parsed.y}% of workforce` } } }
+    options:{
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>'~'+ctx.raw.toLocaleString()+' unfilled', title:ctx=>ctx[0].label+(ctx[0].label==='2026'?' (now)':'')} }},
+      scales:{
+        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:fmtK}, title:{display:true,text:'UNFILLED SEATS / YR',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:dim}}
+      }
     }
   });
 
-  // CHART 3 — funnel
-  new Chart(document.getElementById('chart3'), {
-    type: 'line',
-    data: {
-      labels: ['Start','Yr 1','Yr 2','Yr 3','Yr 4','Journey','5-yr ret.'],
-      datasets: [{ label: 'Cohort survival', data: [100, 86, 78, 68, 62, 62, 53], borderColor: AMBER, backgroundColor: AMBER_FILL, borderWidth: 2.5, fill: true, tension: 0.32, pointRadius: 4, pointBackgroundColor: AMBER, pointBorderColor: '#05080E', pointBorderWidth: 2 }]
+  // 03 Retirements
+  new Chart(document.getElementById('c3'), {
+    type:'bar',
+    data:{
+      labels:['1','2','3','4','5','6','7','8','9','10'],
+      datasets:[{
+        data:[20,40,60,80,100,120,140,160,180,200],
+        backgroundColor:(ctx)=> ctx.dataIndex>=8 ? ember : amber,
+        borderWidth:0, barPercentage:0.78, categoryPercentage:0.9
+      }]
     },
-    options: { ...baseOpts(v => v + '%'),
-      plugins: { ...baseOpts(v=>v+'%').plugins, legend: { display: false }, tooltip: { ...baseOpts(v=>v+'%').plugins.tooltip, callbacks: { label: (ctx) => `  ${ctx.parsed.y}% remaining` } } },
-      scales: { ...baseOpts(v=>v+'%').scales, y: { ...baseOpts(v=>v+'%').scales.y, min: 0, max: 100 } }
+    options:{
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>'~'+ctx.raw+'K cumulative retired', title:ctx=>'Year '+ctx[0].label} }},
+      scales:{
+        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:v=>v+'K'}, title:{display:true,text:'CUMULATIVE RETIRED',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:dim}, title:{display:true,text:'YEARS FROM NOW',color:faint,font:{size:9}}}
+      }
     }
   });
 
-  // CHART 4 — demand by category (horizontal bar)
-  new Chart(document.getElementById('chart4'), {
-    type: 'bar',
-    data: {
-      labels: ['Data centers','Transmission & grid','EV / charging','Manufacturing reshoring','Residential / commercial'],
-      datasets: [{ label: 'Incremental years', data: [152, 98, 76, 54, 42], backgroundColor: [AMBER, '#E0904A', '#C68143', '#9E7144', '#6E8EA8'], borderRadius: 2, borderSkipped: false, barPercentage: 0.72 }]
+  // 04 Employment projection
+  new Chart(document.getElementById('c4'), {
+    type:'line',
+    data:{
+      labels:['2024','2026','2028','2030','2032','2034'],
+      datasets:[{
+        data:[818.7, 834.2, 849.7, 865.2, 880.6, 896.1],
+        borderColor:blue, borderWidth:2.5,
+        backgroundColor:(ctx)=>{const c=ctx.chart.ctx;const g=c.createLinearGradient(0,0,0,300);g.addColorStop(0,'rgba(110,142,168,0.28)');g.addColorStop(1,'rgba(110,142,168,0.0)');return g;},
+        fill:true, tension:0.3,
+        pointRadius:(ctx)=> (ctx.dataIndex===0||ctx.dataIndex===5)?5:0,
+        pointBackgroundColor:blue
+      }]
     },
-    options: { indexAxis: 'y',
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: 'rgba(7,16,28,0.95)', borderColor: 'rgba(200,217,228,0.18)', borderWidth: 1,
-          titleFont: { family: MONO, size: 10 }, bodyFont: { family: MONO, size: 11 }, padding: 12,
-          callbacks: { label: (ctx) => `  ${ctx.parsed.x}k electrician-years` }
-        }
+    options:{
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{ callbacks:{label:ctx=>ctx.raw.toFixed(1)+'K employed ('+(ctx.raw*1000).toLocaleString()+')'} }},
+      scales:{
+        y:{min:780, max:920, grid:{color:grid}, ticks:{callback:v=>v+'K'}, title:{display:true,text:'TOTAL EMPLOYED',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:dim}}
+      }
+    }
+  });
+
+  // 05 Economic impact by industry
+  new Chart(document.getElementById('c5'), {
+    type:'bar',
+    data:{
+      labels:['Electrical\ncontractors','Self-\nemployed','Manufacturing\n(semis/EV)','Data centers\n(nonres bldg)','Power gen/\ntrans/dist','Employment\nservices','Govt /\ndefense'],
+      datasets:[
+        { label:'Unfilled seats', data:[56500,7000,5200,4400,3500,2600,2600], backgroundColor:amber, borderWidth:0, yAxisID:'y', barPercentage:0.9 },
+        { label:'Direct cost ($B/yr)', data:[8.5,1.1,1.1,1.6,1.4,0.4,0.5], backgroundColor:blue, borderWidth:0, yAxisID:'y1', barPercentage:0.9 }
+      ]
+    },
+    options:{
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true, position:'top', align:'end', labels:{boxWidth:12,boxHeight:12,color:dim,font:{family:mono,size:11}}},
+        tooltip:{callbacks:{label:ctx=> ctx.dataset.yAxisID==='y' ? '~'+ctx.raw.toLocaleString()+' seats' : '~$'+ctx.raw+'B / yr'}}
       },
-      scales: {
-        x: { grid: { color: GRID, drawTicks: false }, border: { color: GRID }, ticks: { color: TICK, font: { family: MONO, size: 10 }, callback: v => v + 'k' } },
-        y: { grid: { display: false }, border: { color: GRID }, ticks: { color: '#C8D9E4', font: { family: MONO, size: 10 } } }
+      scales:{
+        y:{position:'left', beginAtZero:true, grid:{color:grid}, ticks:{callback:fmtK, color:amber}, title:{display:true,text:'UNFILLED SEATS',color:amber,font:{size:9}}},
+        y1:{position:'right', beginAtZero:true, grid:{display:false}, ticks:{callback:v=>'$'+v+'B', color:blue}, title:{display:true,text:'DIRECT COST $B/YR',color:blue,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:ink,font:{family:sans,size:10.5,weight:'500'},maxRotation:0,autoSkip:false}}
+      }
+    }
+  });
+
+  // 06 Total direct cost
+  new Chart(document.getElementById('c6'), {
+    type:'bar',
+    data:{
+      labels:['Base case','Aggressive'],
+      datasets:[
+        {label:'Low', data:[15,22], backgroundColor:amber, stack:'s', borderWidth:0, barPercentage:0.5},
+        {label:'High band', data:[13,6], backgroundColor:ember, stack:'s', borderWidth:0, barPercentage:0.5}
+      ]
+    },
+    options:{
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=> ctx.datasetIndex===0 ? 'Low end: $'+ctx.raw+'B' : '+ up to $'+(ctx.parsed.y)+'B more', footer:ctx=>{const t=ctx.reduce((a,c)=>a+c.parsed.y,0);return 'Range top: $'+t+'B/yr';}}}},
+      scales:{
+        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:v=>'$'+v+'B'}, stacked:true, title:{display:true,text:'LOST OUTPUT $B/YR',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, stacked:true, ticks:{color:ink,font:{family:sans,size:13,weight:'600'}}}
+      }
+    }
+  });
+
+  // 07 Multiplier loss
+  new Chart(document.getElementById('c7'), {
+    type:'bar',
+    data:{
+      labels:['Base case','Aggressive'],
+      datasets:[{ data:[250000, 385000], backgroundColor:[blue, ember], borderWidth:0, barPercentage:0.5 }]
+    },
+    options:{
+      maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>'~'+ctx.raw.toLocaleString()+' jobs blocked'}}},
+      scales:{
+        y:{beginAtZero:true, grid:{color:grid}, ticks:{callback:fmtK}, title:{display:true,text:'DOWNSTREAM JOBS BLOCKED',color:faint,font:{size:9}}},
+        x:{grid:{display:false}, ticks:{color:ink,font:{family:sans,size:13,weight:'600'}}}
       }
     }
   });
 })();
 </script>
-
 <script>
-(() => {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-})();
-</script>
-
-<script>
-// Mobile nav toggle
 (() => {
   const btn = document.querySelector('.nav-toggle');
   const menu = document.getElementById('mobileMenu');
   if (!btn || !menu) return;
-  const close = () => {
-    menu.classList.remove('open'); btn.classList.remove('open');
-    btn.setAttribute('aria-expanded','false');
-    menu.setAttribute('aria-hidden','true');
-    document.body.classList.remove('no-scroll');
-  };
+  const close = () => { menu.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); document.body.classList.remove('no-scroll'); };
   btn.addEventListener('click', () => {
     const open = menu.classList.toggle('open');
     btn.classList.toggle('open', open);
@@ -390,6 +329,5 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 </script>
-
 </body>
 </html>
