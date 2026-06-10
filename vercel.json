@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/mission", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/talent-factory",
