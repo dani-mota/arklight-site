@@ -3,195 +3,85 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Content & Research · Arklight</title>
-<meta name="description" content="Field notes, essays, and original research on the American skilled-workforce gap — from Arklight."/>
-<link rel="stylesheet" href="styles/colors_and_type.css"/>
-<link rel="stylesheet" href="styles/components.css"/>
-<link rel="stylesheet" href="styles/site.css"/>
-<style>
-  /* ============== PAGE HEAD (short hero, no video) ============== */
-  .cr-head{position:relative;padding:160px 72px 72px;background:radial-gradient(ellipse 60% 60% at 0% 0%, rgba(245,161,74,.08) 0%, transparent 60%),#05080E;border-bottom:1px solid rgba(200,217,228,.08);overflow:hidden;}
-  .cr-head .hud-coord{position:absolute;top:96px;right:72px;font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(200,217,228,.7);text-transform:uppercase;}
-  .cr-head .hud-coord::before{content:'●';color:var(--amber-400);margin-right:8px;font-size:8px;filter:drop-shadow(0 0 6px var(--amber-glow));animation:ark-pulse 2s infinite;}
-  .cr-head-inner{max-width:1100px;}
-  .cr-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.28em;color:var(--amber-400);text-transform:uppercase;margin-bottom:28px;padding:7px 12px;border:1px solid rgba(245,161,74,.35);border-radius:2px;background:rgba(245,161,74,.06);}
-  .cr-eyebrow::before{content:'';width:6px;height:6px;background:var(--amber-400);box-shadow:0 0 8px var(--amber-glow);animation:ark-pulse 2s infinite;border-radius:50%;}
-  .cr-head h1{font-family:var(--font-display);font-size:clamp(48px,6.4vw,88px);line-height:.98;letter-spacing:-.035em;color:#F4F8FB;margin:0 0 24px;font-weight:500;}
-  .cr-head h1 em{font-style:normal;color:rgba(200,217,228,.78);font-weight:300;}
-  .cr-head .lead{font-size:18px;line-height:1.55;color:rgba(232,241,246,.74);max-width:680px;margin:0 0 36px;}
-  .cr-head-meta{display:flex;gap:32px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(200,217,228,.08);font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.55);}
-  .cr-head-meta b{display:block;font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.01em;color:#F4F8FB;margin-top:6px;}
-  @media (max-width:900px){.cr-head{padding:120px 32px 56px;}.cr-head .hud-coord{display:none;}}
-
-  /* ============== FILTER STRIP ============== */
-  .cr-filter{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px 72px;background:rgba(5,8,14,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,217,228,.08);}
-  .cr-filter-chips{display:flex;gap:6px;flex-wrap:wrap;}
-  .cr-chip{cursor:pointer;padding:8px 14px;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,217,228,.6);background:transparent;border:1px solid rgba(200,217,228,.14);border-radius:3px;transition:all .18s;}
-  .cr-chip:hover{color:#F4F8FB;border-color:rgba(200,217,228,.32);}
-  .cr-chip.active{background:var(--amber-400);color:#05080E;border-color:var(--amber-400);}
-  .cr-filter-meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);}
-  @media (max-width:900px){.cr-filter{padding:14px 24px;}.cr-filter-meta{display:none;}}
-
-  /* ============== FEATURED RESEARCH ============== */
-  .cr-featured-bg{background:#05080E;padding:96px 72px;}
-  .cr-featured{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;max-width:1440px;margin:0 auto;}
-  .cr-featured-meta{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
-  .cr-featured-meta .tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-400);padding:5px 9px;border:1px solid rgba(245,161,74,.4);border-radius:2px;background:rgba(245,161,74,.06);}
-  .cr-featured-meta .date{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);}
-  .cr-featured h2{font-family:var(--font-display);font-size:clamp(36px,4.4vw,60px);font-weight:500;line-height:1.02;letter-spacing:-.03em;color:#F4F8FB;margin:0 0 22px;}
-  .cr-featured h2 em{font-style:normal;color:rgba(200,217,228,.78);font-weight:300;}
-  .cr-featured .summary{font-size:16px;line-height:1.6;color:rgba(232,241,246,.72);margin:0 0 28px;max-width:560px;}
-  .cr-featured-stats{display:grid;grid-template-columns:repeat(3,auto);gap:36px;padding:22px 0;margin-bottom:30px;border-top:1px solid rgba(200,217,228,.08);border-bottom:1px solid rgba(200,217,228,.08);}
-  .cr-featured-stats .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);margin-bottom:6px;}
-  .cr-featured-stats .v{font-family:var(--font-display);font-size:28px;font-weight:500;letter-spacing:-.02em;color:#F4F8FB;}
-  .cr-featured-stats .v.amber{color:var(--amber-400);}
-  .cr-featured-cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#F4F8FB;text-decoration:none;padding:14px 22px;background:transparent;border:1px solid rgba(200,217,228,.32);border-radius:2px;transition:all .18s;}
-  .cr-featured-cta:hover{background:var(--amber-400);color:#05080E;border-color:var(--amber-400);}
-  .cr-featured-cta .arrow{display:inline-block;width:14px;height:1px;background:currentColor;position:relative;transform:translateY(-1px);}
-  .cr-featured-cta .arrow::after{content:'';position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);}
-
-  .cr-featured-chart{position:relative;padding:32px;background:rgba(14,28,48,.5);border:1px solid rgba(200,217,228,.14);border-radius:6px;backdrop-filter:blur(20px);min-height:420px;}
-  .cr-featured-chart::before,.cr-featured-chart::after{content:'';position:absolute;width:12px;height:12px;border:1px solid rgba(200,217,228,.4);}
-  .cr-featured-chart::before{top:-1px;left:-1px;border-right:0;border-bottom:0;}
-  .cr-featured-chart::after{bottom:-1px;right:-1px;border-left:0;border-top:0;}
-  .cr-chart-head{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;margin-bottom:20px;border-bottom:1px solid rgba(200,217,228,.1);}
-  .cr-chart-title{font-family:var(--font-display);font-size:16px;font-weight:500;color:#F4F8FB;letter-spacing:-.01em;}
-  .cr-chart-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.55);margin-top:6px;}
-  .cr-chart-source{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.4);text-align:right;}
-  .cr-chart-canvas{position:relative;height:320px;}
-  @media (max-width:1000px){.cr-featured{grid-template-columns:1fr;gap:48px;}.cr-featured-bg{padding:64px 32px;}}
-
-  /* ============== RESEARCH GRID ============== */
-  .cr-sec{padding:120px 72px;}
-  .cr-sec-head{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:end;margin-bottom:56px;max-width:1440px;margin-left:auto;margin-right:auto;}
-  .cr-sec-head .num{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;color:var(--amber-400);text-transform:uppercase;margin-bottom:18px;}
-  .cr-sec-head h3{font-family:var(--font-display);font-size:clamp(34px,4.2vw,56px);font-weight:500;line-height:1;letter-spacing:-.03em;color:#F4F8FB;margin:0;}
-  .cr-sec-head h3 em{font-style:normal;color:rgba(200,217,228,.7);font-weight:300;}
-  .cr-sec-head .meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(200,217,228,.55);text-transform:uppercase;text-align:right;line-height:1.8;}
-  @media (max-width:900px){.cr-sec{padding:80px 32px;}.cr-sec-head{grid-template-columns:1fr;gap:18px;}.cr-sec-head .meta{text-align:left;}}
-
-  .cr-research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(200,217,228,.1);background:rgba(14,28,48,.3);max-width:1440px;margin:0 auto;}
-  .cr-research-card{padding:36px 32px;border-right:1px solid rgba(200,217,228,.08);position:relative;transition:background .3s;text-decoration:none;color:inherit;display:flex;flex-direction:column;cursor:pointer;}
-  .cr-research-card:last-child{border-right:0;}
-  .cr-research-card:hover{background:rgba(245,161,74,.04);}
-  .cr-research-card:hover .cr-card-title{color:var(--amber-400);}
-  .cr-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
-  .cr-card-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.55);padding:4px 9px;border:1px solid rgba(200,217,228,.16);border-radius:2px;}
-  .cr-card-date{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.45);}
-  .cr-card-mini{height:120px;margin-bottom:20px;position:relative;}
-  .cr-card-title{font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.015em;color:#F4F8FB;margin:0 0 12px;line-height:1.15;transition:color .25s;}
-  .cr-card-blurb{font-size:14px;line-height:1.55;color:rgba(232,241,246,.66);margin:0 0 24px;flex:1;}
-  .cr-card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(200,217,228,.08);font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);}
-  .cr-card-foot .read{color:var(--amber-400);}
-  @media (max-width:1000px){.cr-research-grid{grid-template-columns:1fr;}.cr-research-card{border-right:0;border-bottom:1px solid rgba(200,217,228,.08);}.cr-research-card:last-child{border-bottom:0;}}
-
-  /* ============== ESSAYS GRID ============== */
-  .cr-feed-bg{background:radial-gradient(ellipse 50% 50% at 100% 0%, rgba(74,115,154,.1) 0%, transparent 60%),#06090F;border-top:1px solid rgba(200,217,228,.08);}
-  .cr-essays{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(200,217,228,.1);background:rgba(14,28,48,.25);max-width:1440px;margin:0 auto;}
-  .cr-essay{padding:32px 28px;border-right:1px solid rgba(200,217,228,.08);border-bottom:1px solid rgba(200,217,228,.08);transition:background .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;}
-  .cr-essay:nth-child(3n){border-right:0;}
-  .cr-essays .cr-essay:nth-last-child(-n+3):not(:nth-child(3n+1):nth-last-child(2)):not(:nth-child(3n+1):nth-last-child(3)){}
-  .cr-essay:hover{background:rgba(245,161,74,.04);}
-  .cr-essay:hover .cr-essay-title{color:var(--amber-400);}
-  .cr-essay-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
-  .cr-essay-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.55);padding:4px 9px;border:1px solid rgba(200,217,228,.16);border-radius:2px;}
-  .cr-essay-date{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,217,228,.45);}
-  .cr-essay-title{font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.015em;color:#F4F8FB;margin:0 0 14px;line-height:1.18;transition:color .25s;}
-  .cr-essay-blurb{font-size:14px;line-height:1.55;color:rgba(232,241,246,.66);margin:0 0 24px;flex:1;}
-  .cr-essay-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(200,217,228,.08);font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(200,217,228,.5);}
-  .cr-essay-foot .read{color:var(--amber-400);}
-  @media (max-width:1100px){.cr-essays{grid-template-columns:repeat(2,1fr);}.cr-essay:nth-child(3n){border-right:1px solid rgba(200,217,228,.08);}.cr-essay:nth-child(2n){border-right:0;}}
-  @media (max-width:700px){.cr-essays{grid-template-columns:1fr;}.cr-essay{border-right:0!important;}}
-
-  /* ============== SUBSCRIBE STRIP ============== */
-  .cr-subscribe{padding:96px 72px;background:#05080E;border-top:1px solid rgba(200,217,228,.08);}
-  .cr-subscribe-inner{max-width:760px;margin:0 auto;text-align:center;}
-  .cr-subscribe .num{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;color:var(--amber-400);text-transform:uppercase;margin-bottom:22px;}
-  .cr-subscribe h3{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:500;line-height:1.05;letter-spacing:-.025em;color:#F4F8FB;margin:0 0 18px;}
-  .cr-subscribe h3 em{font-style:normal;color:rgba(200,217,228,.7);font-weight:300;}
-  .cr-subscribe p{font-size:15px;line-height:1.6;color:rgba(232,241,246,.66);margin:0 0 28px;}
-  .cr-subscribe-form{display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
-  .cr-subscribe-form input{flex:1;min-width:240px;font-family:var(--font-body);font-size:14px;color:#F4F8FB;background:rgba(7,16,28,.6);border:1px solid rgba(200,217,228,.14);border-radius:3px;padding:14px 16px;outline:none;transition:border-color .2s;}
-  .cr-subscribe-form input:focus{border-color:rgba(245,161,74,.5);}
-  .cr-subscribe-form input::placeholder{color:rgba(200,217,228,.32);}
-  @media (max-width:900px){.cr-subscribe{padding:64px 32px;}}
-
-  /* reveal */
-  [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
-  [data-reveal].in{opacity:1;transform:none;}
-  [data-reveal-delay="1"]{transition-delay:.06s;}
-  [data-reveal-delay="2"]{transition-delay:.12s;}
-  [data-reveal-delay="3"]{transition-delay:.18s;}
-  [data-reveal-delay="4"]{transition-delay:.24s;}
-</style>
-<link rel="stylesheet" href="styles/home.css"/>
+<title>Content &amp; Research | Project Arklight</title>
+<meta name="description" content="Original research and field notes on the American skilled-workforce gap — from Project Arklight."/>
+<meta name="og:title" content="Content & Research | Project Arklight"/>
+<meta name="og:description" content="Original research and field notes on the American skilled-workforce gap."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="icon" type="image/svg+xml" href="/trade-school/favicon.svg"/>
+<link rel="stylesheet" href="/styles/cr.css"/>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="index.html" class="brand"><div class="brand-mark"></div><div class="brand-word">ARKLIGHT</div></a>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="product.html">Trade School 2.0</a>
-    <a href="content-research.html" class="active">Content &amp; Research</a>
-  </nav>
-  <div class="top-meta">
-    <span class="loc">Austin · USA</span>
-    <a href="index.html#engage" class="ark-btn ark-btn-primary ark-btn-sm">Partner With Us</a>
+<!-- ═════════ HEADER ═════════ -->
+<header class="cr-header">
+  <div class="cr-header_inner">
+    <a href="/" class="cr-logo">
+      <svg viewBox="0 0 63 63" aria-hidden="true"><path d="M47.7,0h-.79c0,8.48-6.9,15.38-15.38,15.38S16.16,8.48,16.16,0h-.79c0,8.48-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38s-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38s15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38ZM31.54,46.94c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38,15.38,6.9,15.38,15.38-6.9,15.38-15.38,15.38Z"></path></svg>
+      <span class="cr-logo_word">Project Arklight</span>
+    </a>
+    <nav class="cr-nav">
+      <a href="/">Home</a>
+      <a href="/trade-school">Trade School</a>
+      <a href="/content-research" class="active">Content &amp; Research</a>
+    </nav>
+    <a href="/trade-school#contact" class="cr-cta">Partner With Us →</a>
+    <button class="cr-burger" data-cr-burger aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
-</div>
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <a href="index.html">Home</a>
-  <a href="product.html">Trade School 2.0</a>
-  <a href="content-research.html" class="active">Content &amp; Research</a>
-  <a href="index.html#engage" class="mobile-menu-cta">Partner With Us</a>
+</header>
+<div class="cr-mobile" data-cr-mobile>
+  <a href="/">Home</a>
+  <a href="/trade-school">Trade School</a>
+  <a href="/content-research" class="active">Content &amp; Research</a>
+  <a href="/trade-school#contact" class="cr-mobile_cta">Partner With Us →</a>
+  <div class="cr-mobile_meta"><span>Project Arklight</span><span>Austin, Texas</span></div>
 </div>
 
-<!-- ═════════ PAGE HEAD ═════════ -->
-<section class="cr-head">
-  <div class="hud-coord">CONTENT · RESEARCH · REV 2026.05</div>
-  <div class="cr-head-inner">
-    <div class="cr-eyebrow">Field Intelligence</div>
-    <h1>Content &amp;<br/>Research.<br/><em>The numbers behind<br/>the labor cliff.</em></h1>
-    <p class="lead">Original research on the American skilled-workforce gap, plus the field notes we publish along the way. Read first. Then partner with us to do something about it.</p>
-    <div class="cr-head-meta">
-      <div>Research briefings<b>3 live · May 2026</b></div>
-      <div>Essays published<b>7 · 2026</b></div>
-      <div>Sectors covered<b>Electricians · Fabricators · Machinists</b></div>
-    </div>
+<!-- ═════════ HERO ═════════ -->
+<section class="cr-hero">
+  <div class="cr-eyebrow"><span class="bar"></span><span>Field Intelligence</span></div>
+  <h1>Content &amp; Research.<br/><em>The numbers behind the labor cliff.</em></h1>
+  <p class="cr-hero_lead">Original research on the American skilled-workforce gap, plus the field notes we publish along the way. Read first. Then partner with us to do something about it.</p>
+  <div class="cr-hero_meta">
+    <div><div class="k">Research briefings</div><div class="v">3 live · May 2026</div></div>
+    <div><div class="k">Essays published</div><div class="v">7 · 2026</div></div>
+    <div><div class="k">Sectors covered</div><div class="v">Electricians · Fabricators · Machinists</div></div>
   </div>
 </section>
 
-<!-- ═════════ FILTER STRIP ═════════ -->
+<!-- ═════════ FILTER ═════════ -->
 <div class="cr-filter">
-  <div class="cr-filter-chips">
-    <button class="cr-chip active" data-filter="all">All</button>
-    <button class="cr-chip" data-filter="research">Research</button>
-    <button class="cr-chip" data-filter="essays">Essays</button>
+  <div class="cr-filter_inner">
+    <div class="cr-chips">
+      <button class="cr-chip active" data-filter="all">All</button>
+      <button class="cr-chip" data-filter="research">Research</button>
+      <button class="cr-chip" data-filter="essays">Essays</button>
+    </div>
+    <div class="cr-filter_meta">Feed · Live</div>
   </div>
-  <div class="cr-filter-meta">FEED · LIVE</div>
 </div>
 
-<!-- ═════════ FEATURED RESEARCH ═════════ -->
+<!-- ═════════ FEATURED ═════════ -->
 <section class="cr-featured-bg" data-section="research">
   <div class="cr-featured">
-    <div class="cr-featured-body" data-reveal>
-      <div class="cr-featured-meta">
-        <span class="tag">◆ Featured Research</span>
-        <span class="date">2026.05.18</span>
+    <div data-reveal>
+      <div class="cr-featured_meta">
+        <span class="cr-featured_tag">◆ Featured Research</span>
+        <span class="cr-featured_date">2026.05.18</span>
       </div>
       <h2>Electricians<br/><em>labor shortage.</em></h2>
-      <p class="summary">A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000 per year, structurally widening. Government data anchors the replacement floor; the AI / data-center / fab buildout layered on top is modeled bottom-up. The deficit is structural — and it is binding what America says it wants to build.</p>
-      <div class="cr-featured-stats">
-        <div><div class="k">Supply / yr</div><div class="v">~10K<span style="display:block;font-family:var(--font-body);font-size:11px;font-weight:400;color:rgba(232,241,246,.55);margin-top:4px;letter-spacing:0;text-transform:none;">credentialed</span></div></div>
-        <div><div class="k">Demand / yr</div><div class="v amber">~97K<span style="display:block;font-family:var(--font-body);font-size:11px;font-weight:400;color:rgba(232,241,246,.55);margin-top:4px;letter-spacing:0;text-transform:none;">3-layer model</span></div></div>
-        <div><div class="k">Direct cost</div><div class="v">$20–28B<span style="display:block;font-family:var(--font-body);font-size:11px;font-weight:400;color:rgba(232,241,246,.55);margin-top:4px;letter-spacing:0;text-transform:none;">lost / delayed / yr</span></div></div>
+      <p class="cr-featured_summary">A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000 per year, structurally widening. Government data anchors the replacement floor; the AI / data-center / fab buildout layered on top is modeled bottom-up. The deficit is structural — and it is binding what America says it wants to build.</p>
+      <div class="cr-featured_stats">
+        <div><div class="k">Supply / yr</div><div class="v">~10K<small>credentialed</small></div></div>
+        <div><div class="k">Demand / yr</div><div class="v rust">~97K<small>3-layer model</small></div></div>
+        <div><div class="k">Direct cost</div><div class="v">$20–28B<small>lost / delayed / yr</small></div></div>
       </div>
-      <a href="research/electrician-shortage.html" class="cr-featured-cta">Read the full briefing <span class="arrow"></span></a>
+      <a href="/research/electrician-shortage" class="cr-cta-inline">Read the full briefing <span class="arrow">→</span></a>
     </div>
 
-    <div class="cr-featured-chart" data-reveal data-reveal-delay="2">
+    <div class="cr-featured_chart" data-reveal data-reveal-delay="2">
       <div class="cr-chart-head">
         <div>
           <div class="cr-chart-title">Supply vs. demand · annual</div>
@@ -199,304 +89,194 @@
         </div>
         <div class="cr-chart-source">SOURCE · 3-LAYER MODEL<br/>ARK-R-001</div>
       </div>
-      <div class="cr-chart-canvas" style="position:relative;"><div id="featuredCallout" style="position:absolute;top:14px;right:14px;font-family:var(--font-mono);background:#E55A4A;color:#fff;font-weight:500;font-size:11px;padding:5px 10px;border-radius:2px;letter-spacing:.06em;z-index:5;box-shadow:0 4px 14px rgba(0,0,0,.5);text-transform:uppercase;">Gap ≈ 87,000</div><canvas id="featuredChart"></canvas></div>
+      <div class="cr-chart-canvas"><canvas id="featuredChart"></canvas></div>
     </div>
   </div>
 </section>
 
 <!-- ═════════ RESEARCH GRID ═════════ -->
-<section class="cr-sec" data-section="research" style="background:#05080E;">
-  <div class="cr-sec-head">
+<section class="cr-sec" data-section="research">
+  <div class="cr-sec_head">
     <div>
       <div class="num">01 · Research</div>
       <h3>Briefings.<br/><em>Evidence first.</em></h3>
     </div>
     <div class="meta">ARK-R SERIES<br/>MONTHLY</div>
   </div>
-
-  <div class="cr-research-grid">
-    <a href="research/electrician-shortage.html" class="cr-research-card" data-reveal data-reveal-delay="1">
-      <div class="cr-card-head">
-        <span class="cr-card-tag">Electricians</span>
-        <span class="cr-card-date">2026.05</span>
-      </div>
-      <div class="cr-card-mini"><canvas data-mini="electrician"></canvas></div>
-      <h4 class="cr-card-title">Electricians labor shortage.</h4>
-      <p class="cr-card-blurb">~10K credentialed supply vs. ~97K demand per year — a structurally widening shortfall driven by AI, data-center, and fab buildout. ~87,000-seat annual gap, $20–28B in lost output.</p>
-      <div class="cr-card-foot"><span>ARK-R-001</span><span class="read">Read →</span></div>
+  <div class="cr-grid">
+    <a href="/research/electrician-shortage" class="cr-card" data-reveal data-reveal-delay="1">
+      <div class="cr-card_head"><span class="cr-card_tag">Electricians</span><span class="cr-card_date">2026.05</span></div>
+      <div class="cr-card_mini"><canvas data-mini="electrician"></canvas></div>
+      <h4 class="cr-card_title">Electricians labor shortage.</h4>
+      <p class="cr-card_blurb">~10K credentialed supply vs. ~97K demand per year — a structurally widening shortfall driven by AI, data-center, and fab buildout. ~87,000-seat annual gap, $20–28B in lost output.</p>
+      <div class="cr-card_foot"><span>ARK-R-001</span><span class="read">Read →</span></div>
     </a>
-
-    <a href="research/metal-fab-shortage.html" class="cr-research-card" data-reveal data-reveal-delay="2">
-      <div class="cr-card-head">
-        <span class="cr-card-tag">Fabricators</span>
-        <span class="cr-card-date">2026.05</span>
-      </div>
-      <div class="cr-card-mini"><canvas data-mini="metalfab"></canvas></div>
-      <h4 class="cr-card-title">Fabricators labor shortage.</h4>
-      <p class="cr-card-blurb">Welders, ironworkers, fabricators, shipfitters. ~37K/yr supply against ~85K/yr demand — triangulated three ways. The constraint binding Columbia, Virginia, AUKUS, and CHIPS.</p>
-      <div class="cr-card-foot"><span>ARK-R-002</span><span class="read">Read →</span></div>
+    <a href="/research/metal-fab-shortage" class="cr-card" data-reveal data-reveal-delay="2">
+      <div class="cr-card_head"><span class="cr-card_tag">Fabricators</span><span class="cr-card_date">2026.05</span></div>
+      <div class="cr-card_mini"><canvas data-mini="metalfab"></canvas></div>
+      <h4 class="cr-card_title">Fabricators labor shortage.</h4>
+      <p class="cr-card_blurb">Welders, ironworkers, fabricators, shipfitters. ~37K/yr supply against ~85K/yr demand — triangulated three ways. The constraint binding Columbia, Virginia, AUKUS, and CHIPS.</p>
+      <div class="cr-card_foot"><span>ARK-R-002</span><span class="read">Read →</span></div>
     </a>
-
-    <a href="research/machinist-shortage.html" class="cr-research-card" data-reveal data-reveal-delay="3">
-      <div class="cr-card-head">
-        <span class="cr-card-tag">Machinists</span>
-        <span class="cr-card-date">2026.05</span>
-      </div>
-      <div class="cr-card-mini"><canvas data-mini="machinist"></canvas></div>
-      <h4 class="cr-card-title">Machinists labor shortage.</h4>
-      <p class="cr-card-blurb">BLS says equilibrium. Bottom-up workload says ~56K/yr demand vs. ~16K/yr supply — 2.5× divergence. The official model bakes in automation that defense and fab loads don't deliver.</p>
-      <div class="cr-card-foot"><span>ARK-R-003</span><span class="read">Read →</span></div>
+    <a href="/research/machinist-shortage" class="cr-card" data-reveal data-reveal-delay="3">
+      <div class="cr-card_head"><span class="cr-card_tag">Machinists</span><span class="cr-card_date">2026.05</span></div>
+      <div class="cr-card_mini"><canvas data-mini="machinist"></canvas></div>
+      <h4 class="cr-card_title">Machinists labor shortage.</h4>
+      <p class="cr-card_blurb">BLS says equilibrium. Bottom-up workload says ~56K/yr demand vs. ~16K/yr supply — 2.5× divergence. The official model bakes in automation that defense and fab loads don't deliver.</p>
+      <div class="cr-card_foot"><span>ARK-R-003</span><span class="read">Read →</span></div>
     </a>
   </div>
 </section>
 
-<!-- ═════════ ESSAYS ═════════ -->
-<section class="cr-sec cr-feed-bg" data-section="essays">
-  <div class="cr-sec-head">
-    <div>
-      <div class="num">02 · Essays</div>
-      <h3>Field notes.<br/><em>Long-form, on the record.</em></h3>
+<!-- ═════════ ESSAYS GRID ═════════ -->
+<section class="cr-sec alt-bg" data-section="essays">
+  <div class="cr-sec_inner">
+    <div class="cr-sec_head">
+      <div>
+        <div class="num">02 · Essays</div>
+        <h3>Field notes.<br/><em>Long-form, on the record.</em></h3>
+      </div>
+      <div class="meta">ARK-E SERIES<br/>WEEKLY</div>
     </div>
-    <div class="meta">ARK-E SERIES<br/>WEEKLY</div>
-  </div>
-
-  <div class="cr-essays">
-    <a href="content/measuring-competency.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · ACI</span>
-        <span class="cr-essay-date">2026.05.21</span>
-      </div>
-      <h4 class="cr-essay-title">Measuring competency when the stakes are real.</h4>
-      <p class="cr-essay-blurb">Ten percent of the people do ninety percent of the company. If we all know it, why don't we identify them before we hire? Three findings from the military's playbook — and what we built into ACI.</p>
-      <div class="cr-essay-foot"><span>ARK-E-007</span><span class="read">Read →</span></div>
-    </a>
-
-    <a href="content/trades-arent-alternative.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · Policy</span>
-        <span class="cr-essay-date">2026.04.26</span>
-      </div>
-      <h4 class="cr-essay-title">The trades aren't an alternative to college. They're a copy of it.</h4>
-      <p class="cr-essay-blurb">The moment a trade school plugs into Title IV, it inherits the entire university incentive structure. We took a system where employers carried the risk and converted it into one where teenagers do.</p>
-      <div class="cr-essay-foot"><span>ARK-E-006</span><span class="read">Read →</span></div>
-    </a>
-
-    <a href="content/trade-school-needed.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · Build</span>
-        <span class="cr-essay-date">2026.04.20</span>
-      </div>
-      <h4 class="cr-essay-title">The Trade School 2.0 America needs.</h4>
-      <p class="cr-essay-blurb">Trade School 2.0 is not a school attached to a factory. It is a factory with a school inside it. Three moves: acquire, automate, embed. Here's exactly what we're building.</p>
-      <div class="cr-essay-foot"><span>ARK-E-005</span><span class="read">Read →</span></div>
-    </a>
-
-    <a href="content/education-decay.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · Defense</span>
-        <span class="cr-essay-date">2026.04.14</span>
-      </div>
-      <h4 class="cr-essay-title">Education decay is a national security risk.</h4>
-      <p class="cr-essay-blurb">A factory has 20 open roles. Most applicants can't pass the entry math test. The shortage started in a fourth grade classroom fifteen years ago. NAEP scores at all-time lows. The bill is due.</p>
-      <div class="cr-essay-foot"><span>ARK-E-004</span><span class="read">Read →</span></div>
-    </a>
-
-    <a href="content/universities-cant-produce.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · Education</span>
-        <span class="cr-essay-date">2026.04.09</span>
-      </div>
-      <h4 class="cr-essay-title">Why universities can't produce the talent reindustrialization needs.</h4>
-      <p class="cr-essay-blurb">Universities aren't failing. They're optimizing — for the wrong objective function. Title IV pays them to enroll students. No one pays them to produce talent. Reform from within is structurally impossible.</p>
-      <div class="cr-essay-foot"><span>ARK-E-003</span><span class="read">Read →</span></div>
-    </a>
-
-    <a href="content/iran-war-workforce.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · Geopolitics</span>
-        <span class="cr-essay-date">2026.04.06</span>
-      </div>
-      <h4 class="cr-essay-title">The Iran War just exposed America's AI workforce crisis.</h4>
-      <p class="cr-essay-blurb">A war in the Middle East cut off 33% of the world's helium supply — the gas that makes semiconductor manufacturing possible. America was already 67,000 workers short of what it needs to win the chip race.</p>
-      <div class="cr-essay-foot"><span>ARK-E-002</span><span class="read">Read →</span></div>
-    </a>
-
-    <a href="content/china-weaponized-classrooms.html" class="cr-essay">
-      <div class="cr-essay-head">
-        <span class="cr-essay-tag">Essay · Geopolitics</span>
-        <span class="cr-essay-date">2026.04.03</span>
-      </div>
-      <h4 class="cr-essay-title">How China weaponized classrooms.</h4>
-      <p class="cr-essay-blurb">China has turned its education system — from first-grade textbooks to elite overseas research programs — into a unified national security instrument. The U.S. doesn't account for it. We're underestimating how fast they'll close gaps.</p>
-      <div class="cr-essay-foot"><span>ARK-E-001</span><span class="read">Read →</span></div>
-    </a>
+    <div class="cr-grid">
+      <a href="/content/measuring-competency" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · ACI</span><span class="cr-card_date">2026.05.21</span></div>
+        <h4 class="cr-card_title">Measuring competency when the stakes are real.</h4>
+        <p class="cr-card_blurb">Ten percent of the people do ninety percent of the company. If we all know it, why don't we identify them before we hire? Three findings from the military's playbook — and what we built into ACI.</p>
+        <div class="cr-card_foot"><span>ARK-E-007</span><span class="read">Read →</span></div>
+      </a>
+      <a href="/content/trades-arent-alternative" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · Policy</span><span class="cr-card_date">2026.04.26</span></div>
+        <h4 class="cr-card_title">The trades aren't an alternative to college. They're a copy of it.</h4>
+        <p class="cr-card_blurb">The moment a trade school plugs into Title IV, it inherits the entire university incentive structure. We took a system where employers carried the risk and converted it into one where teenagers do.</p>
+        <div class="cr-card_foot"><span>ARK-E-006</span><span class="read">Read →</span></div>
+      </a>
+      <a href="/content/trade-school-needed" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · Build</span><span class="cr-card_date">2026.04.20</span></div>
+        <h4 class="cr-card_title">The Trade School 2.0 America needs.</h4>
+        <p class="cr-card_blurb">Trade School 2.0 is not a school attached to a factory. It is a factory with a school inside it. Three moves: acquire, automate, embed. Here's exactly what we're building.</p>
+        <div class="cr-card_foot"><span>ARK-E-005</span><span class="read">Read →</span></div>
+      </a>
+      <a href="/content/education-decay" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · Defense</span><span class="cr-card_date">2026.04.14</span></div>
+        <h4 class="cr-card_title">Education decay is a national security risk.</h4>
+        <p class="cr-card_blurb">A factory has 20 open roles. Most applicants can't pass the entry math test. The shortage started in a fourth grade classroom fifteen years ago. NAEP scores at all-time lows. The bill is due.</p>
+        <div class="cr-card_foot"><span>ARK-E-004</span><span class="read">Read →</span></div>
+      </a>
+      <a href="/content/universities-cant-produce" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · Education</span><span class="cr-card_date">2026.04.09</span></div>
+        <h4 class="cr-card_title">Why universities can't produce the talent reindustrialization needs.</h4>
+        <p class="cr-card_blurb">Universities aren't failing. They're optimizing — for the wrong objective function. Title IV pays them to enroll students. No one pays them to produce talent. Reform from within is structurally impossible.</p>
+        <div class="cr-card_foot"><span>ARK-E-003</span><span class="read">Read →</span></div>
+      </a>
+      <a href="/content/iran-war-workforce" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · Geopolitics</span><span class="cr-card_date">2026.04.06</span></div>
+        <h4 class="cr-card_title">The Iran War just exposed America's AI workforce crisis.</h4>
+        <p class="cr-card_blurb">A war in the Middle East cut off 33% of the world's helium supply — the gas that makes semiconductor manufacturing possible. America was already 67,000 workers short of what it needs to win the chip race.</p>
+        <div class="cr-card_foot"><span>ARK-E-002</span><span class="read">Read →</span></div>
+      </a>
+      <a href="/content/china-weaponized-classrooms" class="cr-card" data-reveal>
+        <div class="cr-card_head"><span class="cr-card_tag">Essay · Geopolitics</span><span class="cr-card_date">2026.04.03</span></div>
+        <h4 class="cr-card_title">How China weaponized classrooms.</h4>
+        <p class="cr-card_blurb">China has turned its education system — from first-grade textbooks to elite overseas research programs — into a unified national security instrument. The U.S. doesn't account for it. We're underestimating how fast they'll close gaps.</p>
+        <div class="cr-card_foot"><span>ARK-E-001</span><span class="read">Read →</span></div>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- ═════════ SUBSCRIBE ═════════ -->
 <section class="cr-subscribe">
-  <div class="cr-subscribe-inner">
+  <div class="cr-subscribe_inner">
     <div class="num">03 · Briefing</div>
     <h3>The monthly briefing.<br/><em>Data, in your inbox.</em></h3>
     <p>One research drop per month. Workforce data, sector breakdowns, and the field notes that didn't make the cut on X. No filler.</p>
-    <form class="cr-subscribe-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
+    <form class="cr-subscribe_form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
       <input type="email" name="email" required placeholder="you@company.com"/>
-      <button type="submit" class="ark-btn ark-btn-primary ark-btn-lg">Subscribe <span class="arrow"></span></button>
+      <button type="submit">Subscribe →</button>
     </form>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="brand" style="margin-bottom:20px;"><div class="brand-mark"></div><div class="brand-word">ARKLIGHT</div></div>
-      <p>Evolving the American workforce for the era of AI, robotics, and national security.</p>
-      <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,217,228,.45);">Austin · United States · Est. 2025</p>
+<!-- ═════════ FOOTER ═════════ -->
+<footer class="cr-footer">
+  <div class="cr-footer_inner">
+    <div class="cr-footer_top">
+      <div class="cr-footer_brand">
+        <a href="/" class="cr-logo">
+          <svg viewBox="0 0 63 63" aria-hidden="true"><path d="M47.7,0h-.79c0,8.48-6.9,15.38-15.38,15.38S16.16,8.48,16.16,0h-.79c0,8.48-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38s-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38s15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38ZM31.54,46.94c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38,15.38,6.9,15.38,15.38-6.9,15.38-15.38,15.38Z"></path></svg>
+          <span class="cr-logo_word">Project Arklight</span>
+        </a>
+        <p>Building American talent for the new industrial age — operators assessed, trained, and deployed to spec.</p>
+        <p class="loc">Austin, Texas · Est. 2025</p>
+      </div>
+      <div class="cr-footer_col"><h5>Program</h5><a href="/trade-school">Trade School 2.0</a><a href="/trade-school#contact">Partner With Us</a></div>
+      <div class="cr-footer_col"><h5>Research</h5><a href="/research/electrician-shortage">Electricians</a><a href="/research/metal-fab-shortage">Fabricators</a><a href="/research/machinist-shortage">Machinists</a></div>
+      <div class="cr-footer_col"><h5>Connect</h5><a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer">X / Twitter</a><a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:dani@arklight.us">dani@arklight.us</a></div>
     </div>
-    <div class="footer-col"><h5>Program</h5><a href="product.html">Trade School 2.0</a><a href="product.html#aci">Arklight Competence Index</a><a href="product.html#pipeline">Operator Pipeline</a></div>
-    <div class="footer-col"><h5>Read</h5><a href="content-research.html">Content &amp; Research</a><a href="research/electrician-shortage.html">Electricians</a><a href="research/metal-fab-shortage.html">Fabricators</a><a href="research/machinist-shortage.html">Machinists</a></div>
-    <div class="footer-col"><h5>Engage</h5><a href="index.html#engage">Partner With Us</a><a href="mailto:contact@arklight.us">contact@arklight.us</a></div>
+    <div class="cr-footer_bar">
+      <span>© 2026 Project Arklight</span>
+      <span>Austin, Texas · N 30.27° W 97.74°</span>
+      <a href="https://www.arklight.us/privacy-terms">Privacy &amp; Terms</a>
+    </div>
   </div>
-  <div class="footer-bar"><span><strong>ARKLIGHT</strong> · Project Arklight</span><span>N 30.27° · W 97.74°</span><span>© 2026</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="/styles/cr.js"></script>
 <script>
-(() => {
-  // Shared chart theming
-  const AMBER = '#F5A14A';
-  const AMBER_FILL = 'rgba(245,161,74,0.18)';
-  const BLUE = '#6E8EA8';
-  const BLUE_FILL = 'rgba(110,142,168,0.18)';
-  const GRID = 'rgba(200,217,228,0.08)';
-  const TICK = 'rgba(200,217,228,0.55)';
-  const MONO = "'JetBrains Mono', ui-monospace, monospace";
+(function () {
+  if (!window.Chart || !window.CR) return;
+  CR.applyChartTheme();
+  var C = CR.colors;
 
-  if (window.Chart) {
-    Chart.defaults.font.family = MONO;
-    Chart.defaults.font.size = 10;
-    Chart.defaults.color = TICK;
-    Chart.defaults.borderColor = GRID;
-  }
-
-  const EMBER = '#E55A4A';
-  const fmtK = v => v>=1000 ? (v/1000).toFixed(0)+'K' : v;
-
-  // FEATURED CHART — Supply vs Demand bars + gap line overlay
-  const fc = document.getElementById('featuredChart');
-  if (fc && window.Chart) {
+  // Featured: supply vs demand
+  var fc = document.getElementById('featuredChart');
+  if (fc) {
     new Chart(fc, {
       type: 'bar',
       data: {
-        labels: ['Supply','Demand'],
+        labels: ['Supply', 'Demand'],
         datasets: [
-          { type:'bar', data:[10000, 97000], backgroundColor:[BLUE, AMBER], borderWidth:0, barPercentage:0.55, categoryPercentage:0.7 },
-          { type:'line', data:[10000, 97000], borderColor:EMBER, borderWidth:2, borderDash:[5,4], pointRadius:[4,4], pointBackgroundColor:EMBER, pointBorderColor:EMBER, fill:false, tension:0 }
+          { type: 'bar', data: [10000, 97000], backgroundColor: [C.steel, C.rust], borderWidth: 0, barPercentage: 0.55, categoryPercentage: 0.7 },
+          { type: 'line', data: [10000, 97000], borderColor: C.ember, borderWidth: 2, borderDash: [5, 4], pointRadius: 4, pointBackgroundColor: C.ember, pointBorderColor: C.ember, fill: false, tension: 0 }
         ]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: 'rgba(7,16,28,0.95)', borderColor: 'rgba(200,217,228,0.18)', borderWidth: 1,
-            titleFont: { family: MONO, size: 10 }, bodyFont: { family: MONO, size: 11 }, padding: 12,
-            callbacks: { label: (ctx) => `  ${ctx.raw.toLocaleString()} workers/yr` }
-          }
-        },
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: CR.tooltip(' workers/yr') },
         scales: {
-          x: { grid: { display: false }, ticks: { color: '#F4F8FB', font: { family: "'Inter Tight',sans-serif", size: 13, weight: '600' } } },
-          y: { beginAtZero: true, grid: { color: GRID }, ticks: { color: TICK, font: { family: MONO, size: 10 }, callback: fmtK }, title: { display: true, text: 'WORKERS / YEAR', color: TICK, font: { family: MONO, size: 9, weight: '400' } } }
+          x: { grid: { display: false }, ticks: { color: C.ink, font: { family: C.body, size: 13, weight: '600' } } },
+          y: { beginAtZero: true, grid: { color: C.grid }, ticks: { color: C.tick, callback: CR.fmtK }, title: { display: true, text: 'WORKERS / YEAR', color: C.tick, font: { family: C.mono, size: 9 } } }
         }
       }
     });
   }
 
-  // MINI CHARTS on research cards
-  const miniBase = (data, color, fill) => ({
-    type: 'line',
-    data: { labels: data.map((_,i)=>i), datasets: [{ data, borderColor: color, backgroundColor: fill, borderWidth: 1.5, fill: true, tension: 0.4, pointRadius: 0 }] },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { enabled: false } },
-      scales: { x: { display: false }, y: { display: false } },
-      elements: { line: { borderJoinStyle: 'round' } }
-    }
-  });
-  const miniBar = (data, color) => ({
-    type: 'bar',
-    data: { labels: data.map((_,i)=>i), datasets: [{ data, backgroundColor: color, borderRadius: 1, borderSkipped: false, barPercentage: 0.7, categoryPercentage: 0.85 }] },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { enabled: false } },
-      scales: { x: { display: false }, y: { display: false } }
-    }
-  });
-
-  if (window.Chart) {
-    const minis = {
-      electrician: miniBase([48,55,63,74,87,99,112,124,138], AMBER, AMBER_FILL),
-      metalfab:    miniBase([31,36,41,45,48,53,58,63,69], AMBER, AMBER_FILL),
-      machinist:   miniBar([13,26,39,52,66,79,92,105,118,131], AMBER),
+  // Mini charts on cards
+  var miniLine = function (data) {
+    return {
+      type: 'line',
+      data: { labels: data.map(function (_, i) { return i; }), datasets: [{ data: data, borderColor: C.rust, backgroundColor: C.rustFill, borderWidth: 1.5, fill: true, tension: 0.4, pointRadius: 0 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } }, elements: { line: { borderJoinStyle: 'round' } } }
     };
-    document.querySelectorAll('canvas[data-mini]').forEach(c => {
-      const key = c.dataset.mini;
-      if (minis[key]) new Chart(c, minis[key]);
-    });
-  }
-})();
-</script>
-
-<script>
-// Filter chips: show/hide sections by data-section
-(() => {
-  const chips = document.querySelectorAll('.cr-chip');
-  const sections = document.querySelectorAll('[data-section]');
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const f = chip.dataset.filter;
-      chips.forEach(c => c.classList.toggle('active', c === chip));
-      sections.forEach(sec => {
-        const tag = sec.dataset.section;
-        sec.style.display = (f === 'all' || f === tag) ? '' : 'none';
-      });
-    });
-  });
-})();
-</script>
-
-<script>
-// reveal
-(() => {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-})();
-</script>
-
-<script>
-// Mobile nav toggle
-(() => {
-  const btn = document.querySelector('.nav-toggle');
-  const menu = document.getElementById('mobileMenu');
-  if (!btn || !menu) return;
-  const close = () => {
-    menu.classList.remove('open'); btn.classList.remove('open');
-    btn.setAttribute('aria-expanded','false');
-    menu.setAttribute('aria-hidden','true');
-    document.body.classList.remove('no-scroll');
   };
-  btn.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', String(open));
-    menu.setAttribute('aria-hidden', String(!open));
-    document.body.classList.toggle('no-scroll', open);
+  var miniBar = function (data) {
+    return {
+      type: 'bar',
+      data: { labels: data.map(function (_, i) { return i; }), datasets: [{ data: data, backgroundColor: C.steel, borderRadius: 1, borderSkipped: false, barPercentage: 0.7, categoryPercentage: 0.85 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
+    };
+  };
+  var minis = {
+    electrician: miniLine([48, 55, 63, 74, 87, 99, 112, 124, 138]),
+    metalfab: miniLine([31, 36, 41, 45, 48, 53, 58, 63, 69]),
+    machinist: miniBar([13, 26, 39, 52, 66, 79, 92, 105, 118, 131])
+  };
+  document.querySelectorAll('canvas[data-mini]').forEach(function (c) {
+    var k = c.dataset.mini;
+    if (minis[k]) new Chart(c, minis[k]);
   });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 </script>
 
