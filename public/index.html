@@ -20,39 +20,22 @@ button[data-modal-manifesto-trigger]:hover{transform:translateY(-2px)}
 button[data-modal-manifesto-trigger]:hover .ark-cta-arr{transform:translateX(6px)}
 /* Unified footer (matches the Content & Research / standalone footer) */
 .cr-footer{background:#F5F3ED;border-top:1px solid rgba(20,18,15,.08);font-family:'Inter Tight',sans-serif}
-.cr-footer_inner{max-width:1240px;margin:0 auto;padding:88px 24px 32px;position:relative;overflow:hidden}
-.cr-footer_title{font-size:clamp(28px,4vw,46px);font-weight:600;letter-spacing:-.03em;color:#15140F;margin:0 0 44px;max-width:18ch}
-.cr-footer_nav{display:flex;flex-wrap:wrap;gap:8px 36px;margin:0 0 28px;padding:0;list-style:none}
-.cr-footer_nav a{display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:500;color:#46443E;padding:8px 0;text-decoration:none;transition:color .2s}
-.cr-footer_nav a:hover{color:#2E5A86}
-.cr-footer_ico{display:inline-flex;width:16px;height:16px;color:#B85416}
-.cr-footer_ico .cr-reticle{width:16px;height:16px}
-.cr-footer_social{display:flex;gap:24px;padding-top:24px;border-top:1px solid rgba(20,18,15,.08)}
-.cr-footer_social a{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:500;color:#46443E;text-decoration:none;transition:color .2s}
-.cr-footer_social a:hover{color:#2E5A86}
-.cr-footer_logo{position:absolute;top:84px;right:24px;color:#15140F;opacity:.9}
-.cr-footer_logo .cr-reticle{width:64px;height:64px}
-.cr-footer_wm{font-family:'Inter Tight',sans-serif;font-weight:600;letter-spacing:-.04em;line-height:.9;font-size:clamp(34px,11.6vw,152px);color:#15140F;white-space:nowrap;margin:64px 0 0}
-.cr-footer_bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(20,18,15,.08);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A867C}
-.cr-footer_meta{display:flex;gap:28px;margin:0}
-.cr-footer_bottom a{color:#8A867C;text-decoration:none}
-.cr-footer_bottom a:hover{color:#2E5A86}
-.cr-footer .cr-reticle{display:block;color:inherit}
-@media(max-width:680px){.cr-footer_logo{display:none}.cr-footer_bottom{flex-direction:column;align-items:flex-start;gap:14px}.cr-footer_meta{flex-direction:column;gap:4px}}
-
-.cr-footer{background:#0B0A08;border-top:1px solid rgba(255,255,255,.10)}
-.cr-footer_title{color:#F4F3EF}
-.cr-footer_nav a{color:rgba(244,243,239,.74)}
-.cr-footer_nav a:hover{color:#fff}
-.cr-footer_ico{color:#F5A14A}
-.cr-footer_social{border-top:1px solid rgba(255,255,255,.10)}
-.cr-footer_social a{color:rgba(244,243,239,.74)}
-.cr-footer_social a:hover{color:#fff}
-.cr-footer_logo{color:rgba(244,243,239,.92)}
-.cr-footer_wm{color:#F4F3EF}
-.cr-footer_bottom{border-top:1px solid rgba(255,255,255,.10);color:rgba(244,243,239,.5)}
-.cr-footer_bottom a{color:rgba(244,243,239,.5)}
-.cr-footer_bottom a:hover{color:#fff}
+.cr-footer_inner{max-width:1240px;margin:0 auto;padding:72px 24px 28px}
+.cr-footer_top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.cr-footer .cr-logo{display:inline-flex;align-items:center;gap:11px;color:#15140F;text-decoration:none}
+.cr-footer .cr-logo .cr-reticle{width:26px;height:26px;display:block;color:inherit}
+.cr-footer .cr-logo_word{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.cr-footer_brand .cr-logo{margin-bottom:18px}
+.cr-footer_brand p{font-size:14px;line-height:1.6;color:#46443E;max-width:34ch;margin:0 0 14px}
+.cr-footer_brand .loc{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8A867C}
+.cr-footer_col h5{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8A867C;margin:0 0 16px;font-weight:500}
+.cr-footer_col a{display:block;font-size:14px;color:#46443E;padding:6px 0;text-decoration:none;transition:color .2s}
+.cr-footer_col a:hover{color:#2E5A86}
+.cr-footer_bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:48px;padding-top:22px;border-top:1px solid rgba(20,18,15,.08);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A867C}
+.cr-footer_bar a{color:#8A867C;text-decoration:none}
+.cr-footer_bar a:hover{color:#2E5A86}
+@media(max-width:760px){.cr-footer_top{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.cr-footer_top{grid-template-columns:1fr}}
 /* Show the header logo (reticle + wordmark) to match the rest of the site */
 .c-header_logo{opacity:1!important;transform:none!important;pointer-events:auto!important}
 .c-header_logo-icon{display:inline-flex!important;visibility:visible!important;width:1.55rem;height:1.55rem}
@@ -94,21 +77,22 @@ button[data-modal-manifesto-trigger]:hover .ark-cta-arr{transform:translateX(6px
 .c-logo{display:none!important}
 </style> <section id="contact" class="ark-contact"> <div class="ark-contact_inner"> <div class="ark-contact_head"><span class="bar"></span><p class="ark-contact_eyebrow">Contact</p></div> <h2 class="ark-contact_title">Build with us.</h2> <div class="ark-contact_grid"> <div class="ark-contact_info"> <p class="ark-contact_lead">Partnerships, hiring pipelines, press, or investment. Tell us what you’re building and we’ll get back to you.</p> <div class="ark-contact_meta"> <dl> <dt>Email</dt><dd><a href="mailto:dani@arklight.us">dani@arklight.us</a></dd> <dt>For</dt><dd>Partners · Employers · Press</dd> <dt>Based</dt><dd>Austin, Texas</dd> </dl> </div> </div> <form class="ark-contact_form" id="ark-contact-form" novalidate> <div class="ark-contact_row"> <label class="ark-field"><span>Name</span><input name="name" type="text" autocomplete="name" required></label> <label class="ark-field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label> </div> <label class="ark-field"><span>Organization <em>(optional)</em></span><input name="org" type="text" autocomplete="organization"></label> <label class="ark-field"><span>Message</span><textarea name="message" rows="5" required></textarea></label> <div class="ark-contact_actions"> <button type="submit" class="ark-contact_submit">Send message <span aria-hidden="true">→</span></button> <p class="ark-contact_status" role="status" aria-live="polite"></p> </div> </form> </div> </div> </section> <script id="ark-contact-js">(function(){function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}function smooth(toY,dur){var sY=window.scrollY||window.pageYOffset,d=toY-sY,st=null;function step(ts){if(st===null)st=ts;var p=Math.min((ts-st)/dur,1);window.scrollTo(0,sY+d*ease(p));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#contact"]');if(!a)return;var el=document.getElementById('contact');if(el){e.preventDefault();var y=el.getBoundingClientRect().top+(window.scrollY||window.pageYOffset)-24;smooth(y,850);}});var f=document.getElementById('ark-contact-form');if(f){f.addEventListener('submit',function(e){e.preventDefault();var s=f.querySelector('.ark-contact_status');var btn=f.querySelector('button');var d={name:f.elements['name'].value,email:f.elements['email'].value,org:f.elements['org'].value,message:f.elements['message'].value};btn.disabled=true;s.style.color='var(--text-2,#8F8E89)';s.textContent='Sending...';fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});}).then(function(res){if(res.ok){f.reset();s.style.color='var(--verify-400,#7FD88A)';s.textContent='Thanks, we will be in touch shortly.';}else{s.style.color='#E55A4A';s.textContent=(res.j&&res.j.error)||'Something went wrong.';}btn.disabled=false;}).catch(function(){s.style.color='#E55A4A';s.textContent='Network error. Email dani@arklight.us';btn.disabled=false;});});}})();</script> <footer class="cr-footer">
   <div class="cr-footer_inner">
-    <a href="/" data-no-swup class="cr-footer_logo" aria-label="Project Arklight"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></a>
-    <h2 class="cr-footer_title">Building American talent</h2>
-    <nav class="cr-footer_nav">
-      <a href="/" data-no-swup><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Home</a>
-      <a href="/trade-school" data-no-swup><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Trade School</a>
-      <a href="/content-research" data-no-swup><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Content &amp; Research</a>
-      <a href="/trade-school#contact" data-no-swup><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Partner With Us</a>
-    </nav>
-    <div class="cr-footer_social">
-      <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer">X &#8599;</a>
-      <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+    <div class="cr-footer_top">
+      <div class="cr-footer_brand">
+        <a href="/" data-no-swup class="cr-logo">
+          <svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg>
+          <span class="cr-logo_word">Project Arklight</span>
+        </a>
+        <p>Building American talent for the new industrial age &mdash; operators assessed, trained, and deployed to spec.</p>
+        <p class="loc">Austin, Texas &middot; Est. 2025</p>
+      </div>
+      <div class="cr-footer_col"><h5>Program</h5><a href="/trade-school" data-no-swup>Trade School 2.0</a><a href="/trade-school#contact" data-no-swup>Partner With Us</a></div>
+      <div class="cr-footer_col"><h5>Research</h5><a href="/research/electrician-shortage" data-no-swup>Electricians</a><a href="/research/metal-fab-shortage" data-no-swup>Fabricators</a><a href="/research/machinist-shortage" data-no-swup>Machinists</a></div>
+      <div class="cr-footer_col"><h5>Connect</h5><a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer">X / Twitter</a><a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="/trade-school#contact" data-no-swup>Contact</a></div>
     </div>
-    <div class="cr-footer_wm" aria-hidden="true">Project Arklight</div>
-    <div class="cr-footer_bottom">
-      <p class="cr-footer_meta"><span>Project Arklight</span><span>Austin, Texas <c-clock class="c-clock">00:00</c-clock></span><span>N 30.27&deg; W 97.74&deg;</span></p>
+    <div class="cr-footer_bar">
+      <span>&copy; 2026 Project Arklight</span>
+      <span>Austin, Texas &middot; N 30.27&deg; W 97.74&deg;</span>
       <a href="/privacy-terms" data-no-swup>Privacy &amp; Terms</a>
     </div>
   </div>
