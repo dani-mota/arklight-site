@@ -1,0 +1,40 @@
+/* ============================================================
+   Essay extras — figures, tables, FAQ, sources.
+   Used by the long-form Content & Research essays. Layered on
+   top of cr.css (uses its tokens); does not modify shared CSS.
+   ============================================================ */
+
+/* ---------- figures (charts) ---------- */
+.rs-figure{margin:40px 0}
+.rs-figure img{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:var(--canvas-1)}
+.rs-figure figcaption{margin:12px 2px 0;font-size:13px;line-height:1.55;color:var(--ink-2)}
+
+/* ---------- comparison tables ---------- */
+.rs-table-wrap{margin:36px 0;overflow-x:auto}
+.rs-table{width:100%;border-collapse:collapse;font-size:15px;border:1px solid var(--line);background:var(--canvas-1)}
+.rs-table th,.rs-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.5}
+.rs-table thead th{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--canvas-2)}
+.rs-table tbody th{font-weight:600;color:var(--ink-0)}
+.rs-table td{color:var(--ink-1)}
+.rs-table tbody tr:last-child th,.rs-table tbody tr:last-child td{border-bottom:0}
+.rs-table strong{color:var(--ink-0)}
+.rs-table_note{margin:12px 2px 0;font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.rs-table_note a{color:var(--steel);text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- FAQ ---------- */
+.rs-faq{max-width:680px;margin:0 auto;padding:64px 24px 0}
+.rs-faq_h{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin:0 0 8px}
+.rs-faq_item{padding:24px 0;border-top:1px solid var(--line)}
+.rs-faq_item:last-child{border-bottom:1px solid var(--line)}
+.rs-faq_q{font-size:19px;font-weight:600;letter-spacing:-.015em;color:var(--ink-0);margin:0 0 10px;line-height:1.3}
+.rs-faq_a{font-size:16px;line-height:1.65;color:var(--ink-1);margin:0}
+.rs-faq_a a{color:var(--steel);text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(46,90,134,.35)}
+.rs-faq_a a:hover{text-decoration-color:var(--steel)}
+
+/* ---------- sources ---------- */
+.rs-sources{max-width:680px;margin:0 auto;padding:48px 24px 0}
+.rs-sources_h{font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+.rs-sources ol{margin:0;padding:0;list-style:none}
+.rs-sources li{font-size:14.5px;line-height:1.5;padding:11px 0;border-top:1px solid var(--line-soft)}
+.rs-sources a{color:var(--steel);text-decoration:none}
+.rs-sources a:hover{text-decoration:underline;text-underline-offset:2px}

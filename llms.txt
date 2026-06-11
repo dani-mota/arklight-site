@@ -1,0 +1,29 @@
+# Project Arklight
+
+> Project Arklight builds Trade School 2.0 — a software-enabled trade school that assesses, trains, and deploys elite, production-ready industrial operators for the companies rebuilding America’s industrial base. This site hosts the program overview plus original research briefings (ARK-R) and essays (ARK-E) on the U.S. skilled-workforce gap. Based in Austin, Texas.
+
+## Main
+- [Project Arklight | Building American talent](https://www.arklight.us/): Building the talent to rebuild America’s industrial base.
+- [Trade School 2.0](https://www.arklight.us/trade-school): The elite talent pipeline for the companies America’s reindustrialization depends on.
+- [Content & Research](https://www.arklight.us/content-research): Original research and field notes on the American skilled-workforce gap — from Project Arklight.
+
+## Research briefings (ARK-R)
+- [Electricians Labor Shortage](https://www.arklight.us/research/electrician-shortage): A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000/year. The labor cliff binding America's reindustrialization.
+- [Fabricators Labor Shortage](https://www.arklight.us/research/metal-fab-shortage): The metal-fab cluster employs ~600K nationally. A supply of ~37K/yr meets demand of ~85K/yr — a structurally widening shortfall binding shipbuilding, defense fab, and reshoring.
+- [Machinists Labor Shortage](https://www.arklight.us/research/machinist-shortage): Bottom-up demand of ~56,000 machinists per year against a hire-ready supply of ~16,000. The BLS equilibrium model misses the defense/fab/reshoring workload by ~2.5×.
+
+## Essays (ARK-E)
+- [Build, Buy, or Rent Your Industrial Workforce — The Honest Comparison](https://www.arklight.us/content/build-buy-rent-industrial-workforce): Staffing agencies rent workers. Poaching buys them. Neither makes more. Here's the case for building your industrial workforce — with the numbers.
+- [Apprenticeship vs. College: The Honest Math (2026 Data)](https://www.arklight.us/content/apprenticeship-vs-college): A data-backed comparison of apprenticeships and four-year college — cost, debt, earnings, and job security. The numbers, with sources.
+- [Are the Skilled Trades AI-Proof? What the Data Says (2026)](https://www.arklight.us/content/are-skilled-trades-ai-proof): Can AI replace electricians, welders, and machinists? The automation data, the nuance, and what it means for the trades that build America.
+- [How to Build a Manufacturing Apprenticeship Program (2026 Employer Guide)](https://www.arklight.us/content/build-manufacturing-apprenticeship-program): A step-by-step guide for manufacturers building an apprenticeship pipeline — structure, cost, registration, and how to staff a floor that can't find workers.
+- [Measuring Competency When the Stakes Are Real](https://www.arklight.us/content/measuring-competency): Ten percent of the people do ninety percent of the company. Three findings from the military's playbook on measuring competency — and what we built into ACI.
+- [The Trades Aren't an Alternative to College. They're a Copy of It.](https://www.arklight.us/content/trades-arent-alternative): The moment a trade school plugs into Title IV, it inherits the entire university incentive structure. We took a system where employers carried the risk and converted it into one where teenagers do.
+- [The Trade School 2.0 America Needs](https://www.arklight.us/content/trade-school-needed): Trade School 2.0 is not a school attached to a factory. It is a factory with a school inside it. Acquire. Automate. Embed. Here's exactly what we're building.
+- [Education Decay Is a National Security Risk](https://www.arklight.us/content/education-decay): The defense pipeline's binding constraint started in a fourth grade classroom fifteen years ago. NAEP scores at all-time lows. ASVAB scores down 9%. The bill is due.
+- [Why Universities Can't Produce the Talent Reindustrialization Needs](https://www.arklight.us/content/universities-cant-produce): Universities aren't failing. They're optimizing — for the wrong objective function. Title IV pays them to enroll students, not to produce talent.
+- [The Iran War Just Exposed America's AI Workforce Crisis](https://www.arklight.us/content/iran-war-workforce): A war in the Middle East cut off 33% of the world's helium supply — the gas that makes semiconductor manufacturing possible. America was already 67,000 workers short.
+- [How China Weaponized Classrooms](https://www.arklight.us/content/china-weaponized-classrooms): China has turned its entire education system — from first-grade textbooks to elite overseas research programs — into a single, unified national security instrument.
+
+## Other
+- [Privacy & Terms](https://www.arklight.us/privacy-terms): Privacy Policy and Terms of Service for Project Arklight.
