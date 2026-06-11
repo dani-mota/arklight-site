@@ -196,6 +196,8 @@ img{max-width:100%;display:block}
 .cr-footer_meta{display:flex;gap:28px;margin:0}
 .cr-footer_bottom a{color:rgba(244,243,239,.5)}
 .cr-footer_bottom a:hover{color:#fff}
+.cr-footer_inner{overflow:hidden}
+.cr-footer_wm{font-family:var(--font-body);font-weight:600;letter-spacing:-.03em;line-height:.82;font-size:clamp(40px,8.2vw,118px);color:#F4F3EF;white-space:nowrap;margin:64px 0 0}
 @media(max-width:680px){.cr-footer_logo{display:none}.cr-footer_bottom{flex-direction:column;align-items:flex-start;gap:14px}.cr-footer_meta{flex-direction:column;gap:4px}}
 
 /* ============================================================
