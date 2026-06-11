@@ -1,13 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="79" height="79"><svg id="SvgjsSvg1045" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 79 79">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #000;
-        stroke-width: 0px;
-      }
-    </style>
-  </defs>
-  <path class="cls-1" d="M59.7,0h-1c0,10.6-8.6,19.3-19.3,19.3S20.2,10.6,20.2,0h-1c0,10.6-8.6,19.3-19.3,19.3v1c10.6,0,19.3,8.6,19.3,19.3S10.6,58.8,0,58.8v1c10.6,0,19.3,8.6,19.3,19.3h1c0-10.6,8.6-19.3,19.3-19.3s19.3,8.6,19.3,19.3h1c0-10.6,8.6-19.3,19.3-19.3v-1c-10.6,0-19.3-8.6-19.3-19.3s8.6-19.3,19.3-19.3v-1c-10.6,0-19.3-8.6-19.3-19.3ZM39.5,58.8c-10.6,0-19.3-8.6-19.3-19.3s8.6-19.3,19.3-19.3,19.3,8.6,19.3,19.3-8.6,19.3-19.3,19.3Z"></path>
-</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
-@media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
-</style></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="13" fill="#15140F"/>
+  <g fill="none" stroke="#F5F3ED" stroke-width="3">
+    <circle cx="32" cy="32" r="18"/>
+    <circle cx="32" cy="32" r="10.5" opacity="0.55"/>
+    <line x1="32" y1="6" x2="32" y2="13"/>
+    <line x1="32" y1="51" x2="32" y2="58"/>
+    <line x1="6" y1="32" x2="13" y2="32"/>
+    <line x1="51" y1="32" x2="58" y2="32"/>
+  </g>
+  <circle cx="32" cy="32" r="3.6" fill="#F5F3ED"/>
+</svg>

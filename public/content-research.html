@@ -16,28 +16,27 @@
 <body>
 
 <!-- ═════════ HEADER ═════════ -->
-<header class="cr-header">
-  <div class="cr-header_inner">
-    <a href="/" class="cr-logo">
-      <svg viewBox="0 0 63 63" aria-hidden="true"><path d="M47.7,0h-.79c0,8.48-6.9,15.38-15.38,15.38S16.16,8.48,16.16,0h-.79c0,8.48-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38s-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38s15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38ZM31.54,46.94c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38,15.38,6.9,15.38,15.38-6.9,15.38-15.38,15.38Z"></path></svg>
+<header class="cr-header" data-cr-header>
+  <div class="cr-header_bar">
+    <a href="/" class="cr-logo" aria-label="Project Arklight, home">
+      <svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg>
       <span class="cr-logo_word">Project Arklight</span>
     </a>
-    <nav class="cr-nav">
-      <a href="/">Home</a>
-      <a href="/trade-school">Trade School</a>
-      <a href="/content-research" class="active">Content &amp; Research</a>
-    </nav>
-    <a href="/trade-school#contact" class="cr-cta">Partner With Us →</a>
-    <button class="cr-burger" data-cr-burger aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="cr-burger" data-cr-burger aria-label="Toggle menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+  <div class="cr-menu" data-cr-menu>
+    <div class="cr-menu_overlay" data-cr-close></div>
+    <div class="cr-menu_inner">
+      <nav class="cr-menu_nav">
+        <a href="/">Home</a>
+        <a href="/trade-school">Trade School</a>
+        <a href="/content-research" class="active">Content &amp; Research</a>
+        <a href="/trade-school#contact">Partner With Us</a>
+      </nav>
+      <p class="cr-menu_details"><span>Project Arklight</span><span>Austin, Texas <span data-cr-clock>&mdash;</span></span></p>
+    </div>
   </div>
 </header>
-<div class="cr-mobile" data-cr-mobile>
-  <a href="/">Home</a>
-  <a href="/trade-school">Trade School</a>
-  <a href="/content-research" class="active">Content &amp; Research</a>
-  <a href="/trade-school#contact" class="cr-mobile_cta">Partner With Us →</a>
-  <div class="cr-mobile_meta"><span>Project Arklight</span><span>Austin, Texas</span></div>
-</div>
 
 <!-- ═════════ HERO ═════════ -->
 <section class="cr-hero">
@@ -201,22 +200,20 @@
 <!-- ═════════ FOOTER ═════════ -->
 <footer class="cr-footer">
   <div class="cr-footer_inner">
-    <div class="cr-footer_top">
-      <div class="cr-footer_brand">
-        <a href="/" class="cr-logo">
-          <svg viewBox="0 0 63 63" aria-hidden="true"><path d="M47.7,0h-.79c0,8.48-6.9,15.38-15.38,15.38S16.16,8.48,16.16,0h-.79c0,8.48-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38s-6.9,15.38-15.38,15.38v.79c8.48,0,15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38s15.38,6.9,15.38,15.38h.79c0-8.48,6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38v-.79c-8.48,0-15.38-6.9-15.38-15.38ZM31.54,46.94c-8.48,0-15.38-6.9-15.38-15.38s6.9-15.38,15.38-15.38,15.38,6.9,15.38,15.38-6.9,15.38-15.38,15.38Z"></path></svg>
-          <span class="cr-logo_word">Project Arklight</span>
-        </a>
-        <p>Building American talent for the new industrial age — operators assessed, trained, and deployed to spec.</p>
-        <p class="loc">Austin, Texas · Est. 2025</p>
-      </div>
-      <div class="cr-footer_col"><h5>Program</h5><a href="/trade-school">Trade School 2.0</a><a href="/trade-school#contact">Partner With Us</a></div>
-      <div class="cr-footer_col"><h5>Research</h5><a href="/research/electrician-shortage">Electricians</a><a href="/research/metal-fab-shortage">Fabricators</a><a href="/research/machinist-shortage">Machinists</a></div>
-      <div class="cr-footer_col"><h5>Connect</h5><a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer">X / Twitter</a><a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:dani@arklight.us">dani@arklight.us</a></div>
+    <a href="/" class="cr-footer_logo" aria-label="Project Arklight"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></a>
+    <h2 class="cr-footer_title">Building American talent</h2>
+    <nav class="cr-footer_nav">
+      <a href="/"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Home</a>
+      <a href="/trade-school"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Trade School</a>
+      <a href="/content-research"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Content &amp; Research</a>
+      <a href="/trade-school#contact"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Partner With Us</a>
+    </nav>
+    <div class="cr-footer_social">
+      <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer">X &#8599;</a>
+      <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
     </div>
-    <div class="cr-footer_bar">
-      <span>© 2026 Project Arklight</span>
-      <span>Austin, Texas · N 30.27° W 97.74°</span>
+    <div class="cr-footer_bottom">
+      <p class="cr-footer_meta"><span>Project Arklight</span><span>Austin, Texas <span data-cr-clock>&mdash;</span></span><span>N 30.27&deg; W 97.74&deg;</span></p>
       <a href="https://www.arklight.us/privacy-terms">Privacy &amp; Terms</a>
     </div>
   </div>

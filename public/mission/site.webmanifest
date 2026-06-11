@@ -1,6 +1,6 @@
 {
-  "name": "General Matter",
-  "short_name": "GM",
+  "name": "Project Arklight",
+  "short_name": "Arklight",
   "icons": [
     {
       "src": "/mission/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#15140F",
+  "background_color": "#F5F3ED",
   "display": "standalone"
 }
