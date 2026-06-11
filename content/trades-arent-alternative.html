@@ -19,31 +19,17 @@
 <meta property="og:type" content="article"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="/styles/chrome.css"/>
 <link rel="stylesheet" href="/styles/cr.css"/>
 </head>
 <body>
 
-<header class="cr-header" data-cr-header>
-  <div class="cr-header_bar">
-    <a href="/" class="cr-logo" aria-label="Project Arklight, home">
-      <svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg>
-      <span class="cr-logo_word">Project Arklight</span>
-    </a>
-    <button class="cr-burger" data-cr-burger aria-label="Toggle menu" aria-expanded="false"><span></span><span></span></button>
-  </div>
-  <div class="cr-menu" data-cr-menu>
-    <div class="cr-menu_overlay" data-cr-close></div>
-    <div class="cr-menu_inner">
-      <nav class="cr-menu_nav">
-        <a href="/">Home</a>
-        <a href="/trade-school">Trade School</a>
-        <a href="/content-research" class="active">Content &amp; Research</a>
-        <a href="/trade-school#contact">Partner With Us</a>
-      </nav>
-      <p class="cr-menu_details"><span>Project Arklight</span><span>Austin, Texas <span data-cr-clock>&mdash;</span></span></p>
-    </div>
-  </div>
-</header>
+<c-header class="c-header"> <header class="c-header_inner"> <a href="/" class="c-header_logo"> <span class="c-icon c-header_logo-icon" data-astro-cid-xaas34xa> <svg class="svg-logo-icon" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo-icon" data-astro-cid-xaas34xa></use> </svg> <span class="u-sr-only" data-astro-cid-xaas34xa>Project Arklight</span> </span>  <span class="c-header_logo-text | u-h2">Project Arklight</span> </a> <button class="c-header_toggler | u-h2-regular" data-header-toggler> <span></span> <span></span> <!-- <span aria-hidden="true">
+                Menu
+            </span>
+            <span aria-hidden="true">
+                Close
+            </span> --> <span class="u-sr-only">Toggle menu</span> </button> <div class="c-menu" aria-hidden="true" data-header-menu> <div class="c-menu_overlay" data-header-menu-overlay> <span class="u-sr-only">Close Menu</span> </div> <div class="c-menu_inner"> <ul class="c-nav u-h1"> <li class="c-nav_item"><a href="/" class="c-nav_link"><span class="c-nav_label">Home</span></a></li> <li class="c-nav_item"><a href="/trade-school" data-no-swup class="c-nav_link"><span class="c-nav_label">Trade School</span></a></li> <li class="c-nav_item"><a href="/content-research" data-no-swup class="c-nav_link"><span class="c-nav_label">Content &amp; Research</span></a></li> <li class="c-nav_item"><a href="/trade-school#contact" class="c-nav_link"><span class="c-nav_label">Partner With Us</span></a></li> </ul>     <p class="c-details"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  </div> </div> </header> </c-header>
 
 <section class="rs-head">
   <a href="/content-research" class="rs-back">← All Content &amp; Research</a>
@@ -175,28 +161,9 @@
   </div>
 </section>
 
-<footer class="cr-footer">
-  <div class="cr-footer_inner">
-    <a href="/" class="cr-footer_logo" aria-label="Project Arklight"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></a>
-    <h2 class="cr-footer_title">Building American talent</h2>
-    <nav class="cr-footer_nav">
-      <a href="/"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Home</a>
-      <a href="/trade-school"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Trade School</a>
-      <a href="/content-research"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Content &amp; Research</a>
-      <a href="/trade-school#contact"><span class="cr-footer_ico"><svg class="cr-reticle" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="13.5"/><circle cx="20" cy="20" r="7.5" opacity=".55"/><line x1="20" y1="1.6" x2="20" y2="6.6"/><line x1="20" y1="33.4" x2="20" y2="38.4"/><line x1="1.6" y1="20" x2="6.6" y2="20"/><line x1="33.4" y1="20" x2="38.4" y2="20"/></g><circle cx="20" cy="20" r="2.7" fill="currentColor"/></svg></span>Partner With Us</a>
-    </nav>
-    <div class="cr-footer_social">
-      <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer">X &#8599;</a>
-      <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
-    </div>
-    <div class="cr-footer_wm" aria-hidden="true">Project Arklight</div>
-    <div class="cr-footer_bottom">
-      <p class="cr-footer_meta"><span>Project Arklight</span><span>Austin, Texas <span data-cr-clock>&mdash;</span></span><span>N 30.27&deg; W 97.74&deg;</span></p>
-      <a href="/privacy-terms">Privacy &amp; Terms</a>
-    </div>
-  </div>
-</footer>
+<div class="c-footer" data-scroll data-scroll-css-progress data-scroll-position="start, end" data-scroll-offset="0, 100%"> <span class="c-logo-trigger -bottom" data-scroll data-scroll-event-progress="scroll.logoExpand" data-scroll-position="start, end" data-scroll-offset="0, 100%"></span>  <footer class="c-footer_wrap"> <div class="c-footer_inner | u-container -bleed"> <h2 class="c-footer_title | u-h2">Building American talent</h2> <ul class="c-nav u-h2-regular"> <li class="c-nav_item"> <a href="/" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Home</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school" data-no-swup class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Trade School</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school#contact" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Contact</span> </a> </li> </ul>   <ul class="c-footer_nav | u-h2-regular"> <li>   </li> <li> <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>X</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a> <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>LinkedIn</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a>  </li> </ul> <a href="/" class="c-footer_logo"> <span class="c-icon" data-astro-cid-xaas34xa> <svg class="svg-logo" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo" data-astro-cid-xaas34xa></use> </svg>  </span>  <span class="u-sr-only">Go to homepage</span> </a> <div class="c-footer_bottom"> <p class="c-details -columns"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  <ul class="c-footer_nav"> <li> <a href="/privacy-terms"> Privacy &amp; Terms </a> </li> </ul> </div> </div> <div class="ark-foot-wm" aria-hidden="true">Project Arklight</div></footer> </div>
 
+<script src="/styles/chrome.js"></script>
 <script src="/styles/cr.js"></script>
 
 </body>
