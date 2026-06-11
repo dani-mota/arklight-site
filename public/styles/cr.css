@@ -179,19 +179,24 @@ img{max-width:100%;display:block}
    FOOTER
    ============================================================ */
 /* Mirrors the home / trade-school c-footer: headline, reticle nav, socials, big mark, bottom bar. */
-.cr-footer{background:var(--canvas-0);border-top:1px solid var(--line-soft)}
-.cr-footer_inner{max-width:var(--maxw);margin:0 auto;padding:72px 24px 28px}
-.cr-footer_top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
-.cr-footer_brand .cr-logo{margin-bottom:18px}
-.cr-footer_brand p{font-size:14px;line-height:1.6;color:var(--ink-1);max-width:34ch;margin:0 0 14px}
-.cr-footer_brand .loc{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.cr-footer_col h5{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;font-weight:500}
-.cr-footer_col a{display:block;font-size:14px;color:var(--ink-1);padding:6px 0;transition:color .2s}
-.cr-footer_col a:hover{color:var(--steel)}
-.cr-footer_bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:48px;padding-top:22px;border-top:1px solid var(--line-soft);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.cr-footer_bar a:hover{color:var(--steel)}
-@media(max-width:760px){.cr-footer_top{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:480px){.cr-footer_top{grid-template-columns:1fr}}
+.cr-footer{background:#0B0A08;border-top:1px solid rgba(255,255,255,.08);font-family:var(--font-body)}
+.cr-footer_inner{max-width:var(--maxw);margin:0 auto;padding:clamp(84px,13vh,150px) 24px 40px;position:relative}
+.cr-footer_title{font-size:clamp(36px,6.4vw,84px);font-weight:600;letter-spacing:-.03em;line-height:1;color:#F4F3EF;margin:0 0 56px;max-width:13ch}
+.cr-footer_nav{display:flex;flex-direction:column;gap:2px;margin:0 0 40px;padding:0;list-style:none}
+.cr-footer_nav a{display:inline-flex;align-items:center;gap:14px;font-size:clamp(22px,2.6vw,34px);font-weight:500;letter-spacing:-.01em;color:rgba(244,243,239,.82);padding:6px 0;transition:color .2s;width:fit-content}
+.cr-footer_nav a:hover{color:#fff}
+.cr-footer_ico{display:inline-flex;width:20px;height:20px;color:#F5A14A}
+.cr-footer_ico .cr-reticle{width:20px;height:20px}
+.cr-footer_social{display:flex;gap:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
+.cr-footer_social a{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:500;color:rgba(244,243,239,.82);transition:color .2s}
+.cr-footer_social a:hover{color:#fff}
+.cr-footer_logo{position:absolute;top:clamp(84px,13vh,150px);right:24px;color:rgba(244,243,239,.92)}
+.cr-footer_logo .cr-reticle{width:72px;height:72px}
+.cr-footer_bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:72px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,243,239,.5)}
+.cr-footer_meta{display:flex;gap:28px;margin:0}
+.cr-footer_bottom a{color:rgba(244,243,239,.5)}
+.cr-footer_bottom a:hover{color:#fff}
+@media(max-width:680px){.cr-footer_logo{display:none}.cr-footer_bottom{flex-direction:column;align-items:flex-start;gap:14px}.cr-footer_meta{flex-direction:column;gap:4px}}
 
 /* ============================================================
    ARTICLE (essays) — rs-* layout, new brand
