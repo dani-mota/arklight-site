@@ -92,8 +92,9 @@ img{max-width:100%;display:block}
 .cr-hero_meta .v{font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--ink-0)}
 
 /* ---------- filter strip ---------- */
-.cr-filter{position:sticky;top:67px;z-index:20;background:rgba(245,243,237,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
-.cr-filter_inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+.cr-filter{position:sticky;top:0;z-index:40;background:rgba(245,243,237,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:background .4s cubic-bezier(.38,.005,.215,1),border-color .4s,box-shadow .4s}
+.cr-filter.is-stuck{background:rgba(245,243,237,.86);border-bottom-color:var(--line-soft);box-shadow:0 6px 24px -18px rgba(20,18,15,.5)}
+.cr-filter_inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 24px}
 .cr-chips{display:flex;gap:6px;flex-wrap:wrap}
 .cr-chip{cursor:pointer;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);background:transparent;border:1px solid var(--line);border-radius:2px;padding:8px 14px;transition:all .18s}
 .cr-chip:hover{color:var(--ink-0);border-color:rgba(20,18,15,.28)}

@@ -118,11 +118,22 @@
     };
   };
 
+  /* ---------- filter bar: smooth "stuck" state when pinned to the top ---------- */
+  function initFilterStuck() {
+    var fil = document.querySelector('.cr-filter');
+    if (!fil) return;
+    function upd() { fil.classList.toggle('is-stuck', fil.getBoundingClientRect().top <= 0); }
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd);
+    upd();
+  }
+
   function init() {
     initMenu();
     initReveal();
     initFilters();
     initClock();
+    initFilterStuck();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
