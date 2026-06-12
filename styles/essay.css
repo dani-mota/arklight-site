@@ -38,3 +38,14 @@
 .rs-sources li{font-size:14.5px;line-height:1.5;padding:11px 0;border-top:1px solid var(--line-soft)}
 .rs-sources a{color:var(--steel);text-decoration:none}
 .rs-sources a:hover{text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- About Project Arklight (essay closer) ---------- */
+.rs-about{max-width:680px;margin:0 auto;padding:60px 24px 0}
+.rs-about_inner{border-top:2px solid var(--rust);padding-top:24px}
+.rs-about_h{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
+.rs-about_lead{font-size:19px;line-height:1.45;font-weight:600;letter-spacing:-.015em;color:var(--ink-0);margin:0 0 12px}
+.rs-about_body{font-size:15.5px;line-height:1.72;color:var(--ink-1);margin:0 0 18px}
+.rs-about_links{margin:0;font-family:var(--font-mono);font-size:13px;line-height:1.9;letter-spacing:.01em}
+.rs-about_links a{display:inline-block;color:var(--steel);text-decoration:none;margin-right:28px}
+.rs-about_links a:last-child{margin-right:0}
+.rs-about_links a:hover{text-decoration:underline;text-underline-offset:3px}
