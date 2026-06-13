@@ -108,3 +108,6 @@ html.is-scrolling-down .c-header:not(.has-menu-open) .c-header_logo{opacity:0;tr
 .ark-foot-wm{position:absolute;left:var(--grid-margin);bottom:var(--grid-margin);font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(40px,8.2vw,118px);letter-spacing:-.03em;line-height:1.12;color:#F4F3EF;white-space:nowrap;pointer-events:none;z-index:0;max-width:calc(100% - 2 * var(--grid-margin));overflow:hidden}
 .c-footer ul,.c-footer .c-nav,.c-footer_nav,.c-menu .c-nav{list-style:none;margin:0;padding:0}
 .c-footer li,.c-menu li{margin:0}
+/* Footer nav: remove the hover spark icon and its label shift */
+.c-footer_wrap .c-nav_icon{display:none}
+.c-footer_wrap .c-nav_link:hover .c-nav_label,.c-footer_wrap .c-nav_link.is-current .c-nav_label{transform:none}
