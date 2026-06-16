@@ -39,7 +39,7 @@ body{
 }
 body.no-scroll{overflow:hidden}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 
 /* ---------- shared eyebrow ---------- */
 .cr-eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 16px}
@@ -298,7 +298,17 @@ img{max-width:100%;display:block}
 .vb-keyfig .v.blue{color:var(--steel)}
 .vb-keyfig .v.ember{color:#C0432B}
 .vb-flag{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;color:var(--ink-3);margin:16px 0 0;line-height:1.55;padding-left:14px;border-left:2px solid rgba(184,84,22,.4)}
-@media(max-width:760px){.vb-grid{grid-template-columns:1fr}}
+@media(max-width:760px){
+  .vb-grid{grid-template-columns:1fr;gap:16px}
+  .vb-panel{padding:22px 18px 20px}
+  /* single-column now: give charts more vertical room so they read cleanly */
+  .vb-chart{height:300px}
+  .vb-chart.tall{height:360px}
+}
+@media(max-width:440px){
+  .vb-chart{height:260px}
+  .vb-chart.tall{height:320px}
+}
 
 .vb-method{max-width:var(--maxw);margin:0 auto;padding:0 24px 96px}
 .vb-method_inner{background:var(--canvas-2);border:1px solid rgba(20,18,15,.10);border-radius:8px;padding:36px}
