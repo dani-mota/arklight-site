@@ -6,7 +6,7 @@
 
 /* ---------- figures (charts) ---------- */
 .rs-figure{margin:40px 0}
-.rs-figure img{width:100%;display:block;border:1px solid var(--line);border-radius:8px;background:var(--canvas-1)}
+.rs-figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;background:var(--canvas-1)}
 .rs-figure figcaption{margin:12px 2px 0;font-size:13px;line-height:1.55;color:var(--ink-2)}
 
 /* ---------- comparison tables ---------- */
