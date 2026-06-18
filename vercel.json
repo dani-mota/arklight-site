@@ -2,7 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/mission", "destination": "/", "permanent": true }
+    { "source": "/mission", "destination": "/", "permanent": true },
+    { "source": "/product", "destination": "/trade-school", "permanent": true }
   ],
   "rewrites": [
     {
