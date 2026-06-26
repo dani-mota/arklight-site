@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="data:,">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XH6JFV56FJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>America Is About to Build Reactors It Can't Staff | Project Arklight</title>
+<meta name="description" content="The U.S. has committed to roughly quadrupling nuclear power by 2050 — the workforce must grow from ~100K to ~375K while ~40% can retire within ten years and each operator takes two to four years to train. A workforce intelligence brief on the nuclear talent gap, and why it's the supply side that's failing."/>
+<link rel="canonical" href="https://www.arklight.us/research/nuclear-shortage"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Project Arklight"/>
+<meta property="og:title" content="America Is About to Build Reactors It Can't Staff"/>
+<meta property="og:description" content="~100K nuclear workers today vs ~375K needed by 2050, behind an 18–24 month licensing gate the training system isn't built to scale past. The nuclear talent shortage."/>
+<meta property="og:url" content="https://www.arklight.us/research/nuclear-shortage"/>
+<meta property="og:image" content="https://www.arklight.us/research/img/og-nuclear-shortage.png"/>
+<meta property="og:image:secure_url" content="https://www.arklight.us/research/img/og-nuclear-shortage.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:alt" content="Project Arklight — America is about to build reactors it can't staff. The talent gap binding America's nuclear build-out: BLS forecasts −8% while the build-out needs +275%."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="America Is About to Build Reactors It Can't Staff"/>
+<meta name="twitter:description" content="~100K nuclear workers today vs ~375K needed by 2050, behind an 18–24 month licensing gate the training system isn't built to scale past."/>
+<meta name="twitter:image" content="https://www.arklight.us/research/img/og-nuclear-shortage.png"/>
+<meta name="author" content="Dani Mota"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="/styles/chrome.css"/>
+<link rel="stylesheet" href="/styles/cr.css"/>
+<link rel="stylesheet" href="/styles/essay.css"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "America Is About to Build Reactors It Can't Staff",
+    "description": "The U.S. has committed to roughly quadrupling nuclear power by 2050. The workforce must grow from ~100K to ~375K while ~40% can retire within ten years and each operator takes two to four years to train. The nuclear talent shortage, and why it's the supply side that's failing.",
+    "datePublished": "2026-06-23",
+    "dateModified": "2026-06-23",
+    "author": { "@type": "Person", "name": "Dani Mota", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Project Arklight" } },
+    "publisher": { "@type": "Organization", "name": "Project Arklight", "url": "https://www.arklight.us" },
+    "articleSection": "Content & Research",
+    "isPartOf": "ARK-R-004",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.arklight.us/research/nuclear-shortage" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arklight.us/" },
+      { "@type": "ListItem", "position": 2, "name": "Content & Research", "item": "https://www.arklight.us/content-research" },
+      { "@type": "ListItem", "position": 3, "name": "America Is About to Build Reactors It Can't Staff", "item": "https://www.arklight.us/research/nuclear-shortage" }
+    ]
+  }
+]
+</script>
+<style>
+/* Nuclear workforce brief — full module layout, Arklight cream brand.
+   Tokens scoped to .nbrief so they don't touch the essay About/CTA closers. */
+.nbrief{
+  --bg:#F5F3ED;
+  --panel:#FBFAF6;
+  --panel-2:#EFEDE6;
+  --line:rgba(20,18,15,.12);
+  --line-bright:rgba(20,18,15,.22);
+  --ink:#15140F;
+  --ink-dim:#46443E;
+  --ink-faint:#8A867C;
+  --amber:#B85416;
+  --amber-bright:#C8631F;
+  --phosphor:#2E5A86;
+  --warn:#C0432B;
+  --cool:#2E5A86;
+}
+.nbrief *{box-sizing:border-box;margin:0;padding:0}
+.nbrief{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter Tight',system-ui,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.nbrief .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+.nbrief .mono{font-family:'JetBrains Mono',monospace}
+
+/* ---------- HERO ---------- */
+.nbrief .hero{
+  border-bottom:1px solid var(--line);
+  padding:56px 0 52px;
+  position:relative;
+  overflow:hidden;
+}
+.nbrief .hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 90% at 88% -10%, rgba(184,84,22,0.06), transparent 60%);
+  pointer-events:none;
+}
+.nbrief .hero-back{position:relative;z-index:1;display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:28px;transition:color .2s}
+.nbrief .hero-back:hover{color:var(--amber)}
+.nbrief .eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:0.34em;text-transform:uppercase;
+  color:var(--amber);display:flex;gap:14px;align-items:center;margin-bottom:26px;
+}
+.nbrief .eyebrow::before{content:"";width:34px;height:1px;background:var(--amber)}
+.nbrief .hero h1{
+  font-size:clamp(34px,6vw,58px);line-height:1.02;font-weight:700;
+  letter-spacing:-0.025em;max-width:16ch;color:var(--ink);
+}
+.nbrief .hero h1 em{font-style:normal;color:var(--amber)}
+.nbrief .hero .lede{
+  margin-top:24px;max-width:62ch;font-size:18px;color:var(--ink-dim);
+}
+.nbrief .hero .meta{
+  margin-top:32px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint);
+  letter-spacing:0.04em;
+}
+.nbrief .hero .meta span{color:var(--ink-dim)}
+
+/* ---------- THE PARADOX BANNER ---------- */
+.nbrief .paradox{
+  margin-top:44px;border:1px solid var(--line-bright);border-radius:4px;
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;
+}
+.nbrief .paradox::after{
+  content:"VS";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;
+  color:var(--ink-faint);background:var(--bg);border:1px solid var(--line-bright);
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;letter-spacing:0.05em;
+}
+.nbrief .paradox .side{padding:28px 30px}
+.nbrief .paradox .side:first-child{border-right:1px solid var(--line)}
+.nbrief .paradox .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px}
+.nbrief .paradox .tag.cool{color:var(--cool)}
+.nbrief .paradox .tag.amber{color:var(--amber)}
+.nbrief .paradox .big{font-size:30px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:var(--ink)}
+.nbrief .paradox .sub{font-size:14px;color:var(--ink-dim);margin-top:8px}
+
+/* ---------- SECTIONS ---------- */
+.nbrief section{padding:60px 0;border-bottom:1px solid var(--line)}
+.nbrief .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+.nbrief .sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--amber);
+  font-weight:600;letter-spacing:0.1em;flex:none;padding-top:4px;
+}
+.nbrief .sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--ink)}
+.nbrief .sec-intro{max-width:70ch;color:var(--ink-dim);font-size:16.5px;margin-bottom:36px;padding-left:42px}
+@media(max-width:640px){.nbrief .sec-intro{padding-left:0}}
+
+/* ---------- STAT STRIP ---------- */
+.nbrief .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.nbrief .stat{background:var(--panel);padding:24px 22px}
+.nbrief .stat .v{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:var(--amber);letter-spacing:-0.01em}
+.nbrief .stat .v.warn{color:var(--warn)}
+.nbrief .stat .v.phos{color:var(--phosphor)}
+.nbrief .stat .l{font-size:12.5px;color:var(--ink-dim);margin-top:8px;line-height:1.4}
+.nbrief .stat .src{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);margin-top:10px;letter-spacing:0.04em}
+
+/* ---------- GAP CHART ---------- */
+.nbrief .chart-card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:30px 30px 24px}
+.nbrief .chart-title{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:28px}
+.nbrief .bars{display:flex;flex-direction:column;gap:22px}
+.nbrief .barrow{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center}
+.nbrief .barrow .name{font-size:13px;color:var(--ink-dim);text-align:right;line-height:1.25}
+.nbrief .barrow .name b{color:var(--ink);display:block;font-size:13.5px;font-weight:600}
+.nbrief .track{position:relative;height:38px;background:var(--panel-2);border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+.nbrief .fill{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;padding-left:14px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#fff;border-radius:0;white-space:nowrap}
+.nbrief .fill.cur{background:linear-gradient(90deg,#9aa7b3,#b4c0cb);color:var(--ink)}
+.nbrief .fill.need{background:linear-gradient(90deg,var(--amber),var(--amber-bright))}
+.nbrief .legend{display:flex;gap:24px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-dim);letter-spacing:0.04em}
+.nbrief .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.nbrief .swatch-cur{background:#9aa7b3}
+.nbrief .swatch-need{background:var(--amber)}
+
+/* ---------- DRIVERS ---------- */
+.nbrief .drivers{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.nbrief .driver{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:24px 24px;position:relative;transition:border-color .2s}
+.nbrief .driver:hover{border-color:var(--line-bright)}
+.nbrief .driver .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.nbrief .driver h3{font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--ink)}
+.nbrief .driver p{font-size:14.5px;color:var(--ink-dim)}
+.nbrief .driver .fig{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--phosphor);margin-top:12px;font-weight:500}
+
+/* ---------- PIPELINE / TIMELINE ---------- */
+.nbrief .pipe{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line-bright);margin-left:8px;padding-left:0}
+.nbrief .stage{position:relative;padding:0 0 30px 34px}
+.nbrief .stage:last-child{padding-bottom:0}
+.nbrief .stage::before{
+  content:"";position:absolute;left:-8px;top:4px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--amber);
+}
+.nbrief .stage .dur{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);letter-spacing:0.06em;font-weight:600}
+.nbrief .stage h4{font-size:16.5px;font-weight:700;margin:5px 0 5px;color:var(--ink)}
+.nbrief .stage p{font-size:14px;color:var(--ink-dim);max-width:64ch}
+
+/* ---------- TABLE ---------- */
+.nbrief .tbl-wrap{border:1px solid var(--line);border-radius:4px;overflow:hidden;overflow-x:auto}
+.nbrief table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.nbrief thead th{
+  background:var(--panel-2);text-align:left;padding:15px 18px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--amber);border-bottom:1px solid var(--line-bright);font-weight:600;
+}
+.nbrief tbody td{padding:14px 18px;border-bottom:1px solid var(--line);color:var(--ink-dim);vertical-align:top}
+.nbrief tbody tr:last-child td{border-bottom:none}
+.nbrief tbody td b{color:var(--ink);font-weight:600}
+.nbrief tbody tr:nth-child(even){background:rgba(20,18,15,0.025)}
+.nbrief .pill{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 9px;border-radius:3px;font-weight:600;white-space:nowrap}
+.nbrief .pill.aas{background:rgba(46,90,134,0.12);color:var(--cool)}
+.nbrief .pill.cert{background:rgba(24,50,79,0.12);color:#18324F}
+.nbrief .pill.bs{background:rgba(184,84,22,0.14);color:var(--amber)}
+.nbrief .pill.mil{background:rgba(192,67,43,0.14);color:var(--warn)}
+
+/* ---------- PLAYBOOK ---------- */
+.nbrief .play{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.nbrief .play:last-child{border-bottom:none}
+.nbrief .play .n{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--amber);line-height:1}
+.nbrief .play h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--ink)}
+.nbrief .play p{font-size:15px;color:var(--ink-dim);max-width:72ch}
+.nbrief .play .lever{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--phosphor);margin-top:10px;letter-spacing:0.03em}
+
+/* ---------- CALLOUT ---------- */
+.nbrief .callout{
+  border:1px solid var(--line-bright);border-left:3px solid var(--amber);
+  background:var(--panel);border-radius:4px;padding:26px 28px;margin-top:8px;
+}
+.nbrief .callout .ct{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.nbrief .callout p{font-size:15.5px;color:var(--ink);max-width:74ch}
+.nbrief .callout p + p{margin-top:12px;color:var(--ink-dim)}
+
+/* ---------- SOURCES FOOTER (scoped so it doesn't touch the site footer) ---------- */
+.nbrief .srcfoot{padding:48px 0 8px}
+.nbrief .srcfoot .src-head{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+.nbrief .srcfoot ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;font-size:13px;color:var(--ink-dim)}
+.nbrief .srcfoot li{font-family:'JetBrains Mono',monospace;font-size:12px;padding-left:16px;position:relative}
+.nbrief .srcfoot li::before{content:"\203A";position:absolute;left:0;color:var(--amber)}
+.nbrief .disc{margin-top:30px;font-size:12.5px;color:var(--ink-faint);max-width:80ch;line-height:1.6}
+
+/* ---------- VERDICT BANNER ---------- */
+.nbrief .verdict-banner{
+  margin-top:44px;border:1px solid var(--warn);border-radius:4px;
+  background:linear-gradient(180deg,rgba(192,67,43,0.07),rgba(192,67,43,0.015));
+  padding:34px 34px 30px;position:relative;overflow:hidden;
+}
+.nbrief .verdict-banner::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--warn);
+}
+.nbrief .vb-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.nbrief .vb-grade{
+  font-family:'JetBrains Mono',monospace;font-weight:800;font-size:44px;letter-spacing:-0.02em;
+  color:var(--warn);line-height:1;text-transform:uppercase;
+}
+.nbrief .vb-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint)}
+.nbrief .vb-tagline{font-size:22px;font-weight:800;letter-spacing:-0.015em;line-height:1.2;color:var(--ink);max-width:30ch}
+.nbrief .vb-tagline em{font-style:normal;color:var(--warn)}
+.nbrief .vb-body{font-size:16px;color:var(--ink-dim);max-width:74ch;margin-top:6px}
+.nbrief .vb-body b{color:var(--ink)}
+
+/* severity meter */
+.nbrief .meter{margin-top:24px}
+.nbrief .meter-track{position:relative;height:46px;border:1px solid var(--line-bright);border-radius:4px;overflow:hidden;background:var(--panel-2);display:flex}
+.nbrief .meter-seg{flex:1;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);border-right:1px solid var(--line);position:relative}
+.nbrief .meter-seg:last-child{border-right:none}
+.nbrief .meter-seg.on-good{background:rgba(46,90,134,0.10);color:var(--phosphor)}
+.nbrief .meter-seg.on-warn{background:rgba(184,84,22,0.12);color:var(--amber)}
+.nbrief .meter-seg.on-bad{background:rgba(192,67,43,0.16);color:var(--warn);font-weight:700}
+.nbrief .meter-seg.on-crisis{color:var(--ink-faint)}
+.nbrief .meter-pin{position:absolute;top:-1px;bottom:-1px;width:3px;background:var(--warn);left:62%;box-shadow:0 0 12px rgba(192,67,43,0.45)}
+.nbrief .meter-cap{display:flex;justify-content:space-between;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:0.04em}
+.nbrief .meter-cap b{color:var(--warn)}
+
+/* deciding-variable row */
+.nbrief .decide{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.nbrief .decide .card{border:1px solid var(--line);border-radius:4px;background:var(--panel);padding:22px 22px}
+.nbrief .decide .card.act{border-color:rgba(46,90,134,0.4)}
+.nbrief .decide .card.wait{border-color:rgba(192,67,43,0.4)}
+.nbrief .decide .ch{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+.nbrief .decide .card.act .ch{color:var(--phosphor)}
+.nbrief .decide .card.wait .ch{color:var(--warn)}
+.nbrief .decide .card h4{font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;color:var(--ink)}
+.nbrief .decide .card p{font-size:14px;color:var(--ink-dim)}
+
+@media(max-width:760px){
+  .nbrief .decide{grid-template-columns:1fr}
+  .nbrief .vb-grade{font-size:36px}
+  .nbrief .meter-seg{font-size:9px;letter-spacing:0.04em}
+}
+
+/* ---------- AGE / COMPOSITION ---------- */
+.nbrief .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.nbrief .comp{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:26px 26px}
+.nbrief .comp .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:18px}
+.nbrief .agebar{display:flex;flex-direction:column;gap:14px}
+.nbrief .ageRow{display:grid;grid-template-columns:64px 1fr 52px;gap:12px;align-items:center}
+.nbrief .ageRow .band{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dim);text-align:right}
+.nbrief .ageRow .at{position:relative;height:24px;background:var(--panel-2);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.nbrief .ageRow .af{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--amber),var(--amber-bright));border-radius:0}
+.nbrief .ageRow .af.warn{background:linear-gradient(90deg,#d2674f,var(--warn))}
+.nbrief .ageRow .pct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);font-weight:600}
+.nbrief .comp-note{font-size:13px;color:var(--ink-faint);margin-top:18px;line-height:1.5}
+
+.nbrief .donut-wrap{display:flex;align-items:center;gap:24px}
+.nbrief .donut{flex:none}
+.nbrief .donut-leg{display:flex;flex-direction:column;gap:11px;font-size:13.5px;color:var(--ink-dim)}
+.nbrief .donut-leg .li{display:flex;align-items:center;gap:10px}
+.nbrief .donut-leg i{width:11px;height:11px;border-radius:2px;flex:none}
+.nbrief .donut-leg b{color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:13px}
+
+/* two-front */
+.nbrief .fronts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.nbrief .front{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:24px 24px;position:relative;overflow:hidden}
+.nbrief .front.top{border-top:3px solid var(--warn)}
+.nbrief .front.bot{border-top:3px solid var(--cool)}
+.nbrief .front .fk{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+.nbrief .front.top .fk{color:var(--warn)}
+.nbrief .front.bot .fk{color:var(--cool)}
+.nbrief .front h3{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;color:var(--ink)}
+.nbrief .front p{font-size:14.5px;color:var(--ink-dim)}
+.nbrief .front .fstat{font-family:'JetBrains Mono',monospace;font-size:13px;margin-top:12px;font-weight:500}
+.nbrief .front.top .fstat{color:var(--warn)}
+.nbrief .front.bot .fstat{color:var(--cool)}
+
+/* verdict scale */
+.nbrief .verdict{display:flex;flex-direction:column;gap:0;margin-top:8px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.nbrief .vrow{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.nbrief .vrow:last-child{border-bottom:none}
+.nbrief .vrow .vl{padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:var(--ink);background:var(--panel-2);border-right:1px solid var(--line);display:flex;align-items:center;font-weight:600}
+.nbrief .vrow .vv{padding:16px 20px;font-size:14.5px;color:var(--ink-dim);background:var(--panel)}
+.nbrief .vrow .vv b{color:var(--ink)}
+.nbrief .tone-ok{color:var(--phosphor)!important}
+.nbrief .tone-warn{color:var(--amber)!important}
+.nbrief .tone-bad{color:var(--warn)!important}
+
+@media(max-width:760px){
+  .nbrief .paradox,.nbrief .drivers,.nbrief .comp-grid,.nbrief .fronts{grid-template-columns:1fr}
+  .nbrief .donut-wrap{flex-direction:column;align-items:flex-start}
+  .nbrief .vrow{grid-template-columns:1fr}
+  .nbrief .vrow .vl{border-right:none;border-bottom:1px solid var(--line)}
+  .nbrief .paradox .side:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  .nbrief .paradox::after{display:none}
+  .nbrief .stats{grid-template-columns:1fr 1fr}
+  .nbrief .srcfoot ul{grid-template-columns:1fr}
+  .nbrief .barrow{grid-template-columns:1fr;gap:8px}
+  .nbrief .barrow .name{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<c-header class="c-header"> <header class="c-header_inner"> <a href="/" class="c-header_logo"> <span class="c-icon c-header_logo-icon" data-astro-cid-xaas34xa> <svg class="svg-logo-icon" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo-icon" data-astro-cid-xaas34xa></use> </svg> <span class="u-sr-only" data-astro-cid-xaas34xa>Project Arklight</span> </span>  <span class="c-header_logo-text | u-h2">Project Arklight</span> </a> <button class="c-header_toggler | u-h2-regular" data-header-toggler> <span></span> <span></span> <span class="u-sr-only">Toggle menu</span> </button> <div class="c-menu" aria-hidden="true" data-header-menu> <div class="c-menu_overlay" data-header-menu-overlay> <span class="u-sr-only">Close Menu</span> </div> <div class="c-menu_inner"> <ul class="c-nav u-h1"> <li class="c-nav_item"><a href="/" class="c-nav_link"><span class="c-nav_label">Home</span></a></li> <li class="c-nav_item"><a href="/trade-school" data-no-swup class="c-nav_link"><span class="c-nav_label">Trade School</span></a></li> <li class="c-nav_item"><a href="/content-research" data-no-swup class="c-nav_link"><span class="c-nav_label">Content &amp; Research</span></a></li> <li class="c-nav_item"><a href="/trade-school#contact" class="c-nav_link"><span class="c-nav_label">Partner With Us</span></a></li> </ul>     <p class="c-details"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  </div> </div> </header> </c-header>
+
+<div class="nbrief">
+
+<header class="hero">
+  <div class="wrap">
+    <a href="/content-research" class="hero-back">← All Content &amp; Research</a>
+    <div class="eyebrow">Workforce Intelligence Brief · Nuclear Sector</div>
+    <h1>America is about to build reactors it can't <em>staff</em>.</h1>
+    <p class="lede">The U.S. has committed to roughly quadrupling nuclear power by 2050. To run those plants, the workforce must grow from about 100,000 today to 375,000. At the same time, 40% of today's workers can retire within ten years. The people don't exist yet, and each one takes two to four years to train. This brief shows how wide the gap is and what it takes to close it in time.</p>
+    <div class="meta">
+      <div>SOC <span>19-4051</span></div>
+      <div>BASE YEAR <span>2024</span></div>
+      <div>HORIZON <span>2030 / 2050</span></div>
+      <div>PREPARED <span>June 2026</span></div>
+    </div>
+
+    <div class="paradox">
+      <div class="side">
+        <div class="tag cool">The official forecast</div>
+        <div class="big">−8%</div>
+        <div class="sub">The Bureau of Labor Statistics expects nuclear technician jobs to <em>fall</em> from 6,000 to 5,500 by 2034. It assumes the fleet keeps shrinking, as it did for twenty years.</div>
+      </div>
+      <div class="side">
+        <div class="tag amber">What the build-out needs</div>
+        <div class="big">+275%</div>
+        <div class="sub">The new federal plan needs the nuclear workforce to nearly quadruple. Operators and technicians are the largest group that has to grow.</div>
+      </div>
+    </div>
+
+    <div class="verdict-banner">
+      <div class="vb-top">
+        <div class="vb-grade">Bad</div>
+        <div>
+          <div class="vb-label">The verdict</div>
+          <div class="vb-tagline">Fixable, but only if we start <em>now</em>.</div>
+        </div>
+      </div>
+      <p class="vb-body">Demand is rising fast, the supply of trained people is thin, and training takes years. That combination is a lasting shortage, not a rough patch. Employers already feel it: <b>63% of nuclear power manufacturers called hiring "very difficult" in 2024</b>, the worst score of any electricity sector. The good news is that the problem is well understood and the fixes are known. The only real question is when we begin.</p>
+
+      <div class="meter">
+        <div class="meter-track">
+          <div class="meter-seg on-good">Good</div>
+          <div class="meter-seg on-warn">Average</div>
+          <div class="meter-seg on-bad">Bad ◄ we are here</div>
+          <div class="meter-seg on-crisis">Crisis</div>
+          <div class="meter-pin"></div>
+        </div>
+        <div class="meter-cap">
+          <span>Stable today · the fleet is staffed</span>
+          <span><b>Start now → manageable · wait 3 years → crisis</b></span>
+        </div>
+      </div>
+
+      <div class="decide">
+        <div class="card act">
+          <div class="ch">If we start now</div>
+          <h4>Manageable</h4>
+          <p>A program that opens in 2026 graduates its first qualified people around <b>2028 to 2030</b>. That is exactly when the new plants come online and the retirements peak. Supply meets demand.</p>
+        </div>
+        <div class="card wait">
+          <div class="ch">If we wait</div>
+          <h4>Crisis</h4>
+          <p>Training time can't be rushed. Wait three years and the first graduates show up <b>after</b> demand has already spiked. The result is delayed projects, higher costs, and a scramble for scarce contract labor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 THE PARADOX -->
+<section id="paradox">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">01</div><h2>Why the official number is misleading</h2></div>
+    <p class="sec-intro">The first thing to settle is the contradiction: the government projects a decline while the policy calls for a boom. Both numbers are real. They just measure different futures, and only one of them describes the country we now live in.</p>
+
+    <div class="callout">
+      <div class="ct">How the two numbers reconcile</div>
+      <p>The −8% forecast looks backward. It models the world as it was in 2024, a shrinking and aging fleet with nothing new being built, and assumes that trend holds. It describes the status quo.</p>
+      <p>But the status quo ended. The federal orders of May 2025, more than $20 billion in private nuclear deals from data-center firms, and the first permits for small reactors all came after that forecast was set. Those events point the other way. When a plan to quadruple capacity meets a workforce projected to shrink, the gap between them is the shortage. Plan against the demand, not the old forecast.</p>
+    </div>
+
+    <div class="stats" style="margin-top:28px">
+      <div class="stat"><div class="v warn">63%</div><div class="l">Of nuclear manufacturers called hiring "very difficult" in 2024, the worst of any electricity sector</div><div class="src">DOE USEER 2025</div></div>
+      <div class="stat"><div class="v warn">~40%</div><div class="l">Of the workforce can retire within ten years, and the wave is starting now</div><div class="src">NEI / DOE</div></div>
+      <div class="stat"><div class="v warn">454</div><div class="l">Nuclear engineering graduates a year, down 25% from a decade ago</div><div class="src">ORISE 2022</div></div>
+      <div class="stat"><div class="v">$104,240</div><div class="l">Median technician pay, among the five highest-paid roles in power generation</div><div class="src">BLS, May 2024</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 THE CURRENT WORKFORCE -->
+<section id="workforce">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">02</div><h2>Who is in these jobs today</h2></div>
+    <p class="sec-intro">Before measuring the gap, look at the people already doing the work. There aren't many of them, they skew older than most fields, and there is no bench behind them. The workforce runs fine as it is. It cannot grow quickly.</p>
+
+    <div class="stats" style="margin-bottom:28px">
+      <div class="stat"><div class="v">67,900</div><div class="l">Total nuclear energy workers in 2024, flat against 68,008 the year before</div><div class="src">DOE USEER 2025</div></div>
+      <div class="stat"><div class="v">~12K</div><div class="l">Operators and technicians specifically, the largest group that runs a plant</div><div class="src">USC Marshall / NCEA</div></div>
+      <div class="stat"><div class="v phos">85%</div><div class="l">Of nuclear jobs are in power generation, not fuel production</div><div class="src">DOE USEER 2025</div></div>
+      <div class="stat"><div class="v">~6,000</div><div class="l">Workers in the narrow "nuclear technician" job code; most plant techs are counted elsewhere</div><div class="src">BLS OEWS</div></div>
+    </div>
+
+    <div class="callout" style="margin-bottom:28px">
+      <div class="ct">How big is the workforce, really</div>
+      <p>It depends on how you count. The "100,000 workers" figure uses the widest definition. The operating fleet itself runs on about 58,000 to 68,000 people. The operators and technicians inside that group number in the low tens of thousands, and the narrowest job code captures just 6,000. However you slice it, this is a <b>small, specialized workforce</b>. That is exactly why a retirement wave hits so hard: there is no deep bench to absorb the losses.</p>
+    </div>
+
+    <div class="comp-grid">
+      <!-- AGE STRUCTURE -->
+      <div class="comp">
+        <div class="k">Age — the retirement exposure</div>
+        <div class="agebar">
+          <div class="ageRow"><div class="band">Under 30</div><div class="at"><div class="af" style="width:24%"></div></div><div class="pct">~20%</div></div>
+          <div class="ageRow"><div class="band">30–60</div><div class="at"><div class="af" style="width:72%"></div></div><div class="pct">~60%</div></div>
+          <div class="ageRow"><div class="band">60+</div><div class="at"><div class="af warn" style="width:24%"></div></div><div class="pct">~20%</div></div>
+        </div>
+        <div class="comp-note">Roughly 60% of workers are between 30 and 60. The risk isn't only the 20% over 60. It's that a third to 40% become eligible to retire within five to ten years.</div>
+      </div>
+
+      <!-- GENDER / UNTAPPED -->
+      <div class="comp">
+        <div class="k">Who's missing — the untapped pool</div>
+        <div class="donut-wrap">
+          <svg class="donut" width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#E1DDD3" stroke-width="16"/>
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#B85416" stroke-width="16"
+              stroke-dasharray="289" stroke-dashoffset="196" transform="rotate(-90 60 60)" stroke-linecap="butt"/>
+            <text x="60" y="56" text-anchor="middle" fill="#15140F" font-family="JetBrains Mono" font-size="22" font-weight="700">32%</text>
+            <text x="60" y="74" text-anchor="middle" fill="#8A867C" font-family="JetBrains Mono" font-size="9" letter-spacing="1">WOMEN</text>
+          </svg>
+          <div class="donut-leg">
+            <div class="li"><i style="background:#B85416"></i>Women in nuclear: <b>32%</b></div>
+            <div class="li"><i style="background:#C8C3B8"></i>Men in nuclear: <b>68%</b></div>
+            <div class="li" style="margin-top:4px;color:var(--ink-faint)">U.S. workforce overall: <b style="color:var(--ink-dim)">47% women</b></div>
+          </div>
+        </div>
+        <div class="comp-note">Women make up 47% of the U.S. workforce but only 32% of nuclear. Closing that 15-point gap is the single largest source of new workers, before counting Navy veterans or transfers from other industries.</div>
+      </div>
+    </div>
+
+    <!-- THE TWO-FRONT PROBLEM -->
+    <div class="sec-head" style="margin-top:8px;margin-bottom:18px"><div class="sec-num" style="opacity:0">02</div><h2 style="font-size:22px">The problem hits from two sides at once</h2></div>
+    <div class="fronts">
+      <div class="front top">
+        <div class="fk">Side 1 · The top</div>
+        <h3>Retirements drain hard-won knowledge</h3>
+        <p>Senior workers are retiring, and they take with them the unwritten know-how of how each plant actually behaves. The people who should replace them, the 10-to-15-year veterans, were never hired, because no plants were built for two decades. Seniors leave, juniors arrive, and there is no one in between.</p>
+        <div class="fstat">~⅓ to 40% can retire within 5–10 years</div>
+      </div>
+      <div class="front bot">
+        <div class="fk">Side 2 · The bottom</div>
+        <h3>Young hires quit too soon</h3>
+        <p>The young workers the industry does hire are leaving faster than before, often pulled away by renewables and tech. You can pour graduates into the bucket, but it has a hole in the bottom. Keeping people is as much the problem as training them.</p>
+        <div class="fstat">Rising turnover under 10 years of service</div>
+      </div>
+    </div>
+
+    <!-- HOW BAD, REALLY -->
+    <div class="sec-head" style="margin-top:48px;margin-bottom:18px"><div class="sec-num" style="opacity:0">02</div><h2 style="font-size:22px">So how bad is it, really?</h2></div>
+    <div class="verdict">
+      <div class="vrow"><div class="vl tone-warn">On paper</div><div class="vv"><b>Stable today — and that's the trap.</b> The running fleet is fully staffed, so nothing looks broken. That false calm is exactly why the institutions that train this workforce are not moving with any urgency, while the demand curve they're supposed to serve is already bending up.</div></div>
+      <div class="vrow"><div class="vl tone-bad">The institutions</div><div class="vv"><b class="tone-bad">Built to match, not to scale.</b> The colleges and programs that produce nuclear technicians and operators size each class to today's jobs, on purpose — and they are not retooling to graduate the 3–4× more people the build-out needs. The supply side is structurally unprepared to meet the talent demand coming at it.</div></div>
+      <div class="vrow"><div class="vl tone-bad">All at once</div><div class="vv"><b class="tone-bad">Demand spikes into a flat pipeline.</b> Quadrupling capacity, ~40% of the workforce retiring, and young hires walking out — all landing at the same time on a training system that isn't expanding. The gap doesn't add. It compounds.</div></div>
+      <div class="vrow"><div class="vl tone-bad">The hard limit</div><div class="vv"><b class="tone-bad">The clock has already started.</b> A licensed operator takes 18–24 months that cannot be shortened, on top of years of schooling. If the workforce-development system doesn't start scaling now, the people simply will not exist when the reactors are ready for them.</div></div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">The takeaway</div>
+      <p><b>So how bad is it? Bad — and the problem is the supply side, not the demand side.</b> America knows how many people it needs, and the money, the reactors, and the policy are all already moving. What it does not have is a workforce-development system preparing to scale at speed. The institutions that make nuclear technicians and operators are still built for a shrinking fleet, and because every credential carries two to four years of lead time, every month they wait is a month that cannot be bought back later.</p>
+      <p>That is what makes it urgent rather than merely difficult. The demand is set; the only variable left is whether the people who build the workforce start scaling <b>now</b> — fast enough, and at enough volume, to put trained crews in front of the reactors before the reactors are waiting on them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DEMAND DRIVERS -->
+<section id="drivers">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">03</div><h2>What is pulling demand up</h2></div>
+    <p class="sec-intro">Four forces are arriving together, and none were priced into the 2024 forecast. They stack rather than trade off: the same technician is needed to restart old plants, build new ones, upgrade the fleet, and power the data centers paying for all of it.</p>
+
+    <div class="drivers">
+      <div class="driver">
+        <div class="k">Force 1 · Policy</div>
+        <h3>The order to quadruple</h3>
+        <p>Executive orders from May 2025 call for capacity to grow from 100 to 400 gigawatts by 2050. That means 10 large reactors under construction by 2030 and upgrades across the existing fleet.</p>
+        <div class="fig">≈ 300 new reactors · ~12 builds a year</div>
+      </div>
+      <div class="driver">
+        <div class="k">Force 2 · Computing</div>
+        <h3>AI's hunger for power</h3>
+        <p>After twenty flat years, AI data centers are reshaping the grid. Tech firms have put more than $20 billion directly into nuclear to lock in steady, around-the-clock power.</p>
+        <div class="fig">$20B+ in private nuclear deals</div>
+      </div>
+      <div class="driver">
+        <div class="k">Force 3 · Demographics</div>
+        <h3>The retirement wave</h3>
+        <p>About 40% of workers can retire within ten years. The mid-career people who should replace them were never hired. When seniors go, decades of plant knowledge go with them.</p>
+        <div class="fig">Losing knowledge, not just headcount</div>
+      </div>
+      <div class="driver">
+        <div class="k">Force 4 · New plants</div>
+        <h3>Small reactors and restarts</h3>
+        <p>Small modular reactors and restarts like Palisades and Three Mile Island need full crews on tight schedules. The government has put more than $800 million into early small-reactor projects, and each new site starts staffing from zero.</p>
+        <div class="fig">Every new site needs a crew from scratch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 THE GAP -->
+<section id="gap">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">04</div><h2>Measuring the operator and technician gap</h2></div>
+    <p class="sec-intro">The best forward-looking model, from USC Marshall and the National Center for Energy Analytics, breaks the workforce into job types. Operators and technicians are the largest group, a fifth to a quarter of staff at a running plant, and the hardest to train.</p>
+
+    <div class="chart-card">
+      <div class="chart-title">Operators &amp; technicians — projected demand</div>
+      <div class="bars">
+        <div class="barrow">
+          <div class="name"><b>2025</b>today</div>
+          <div class="track"><div class="fill cur" style="width:74%">11,500–13,200 workers</div></div>
+        </div>
+        <div class="barrow">
+          <div class="name"><b>2030</b>near-term builds</div>
+          <div class="track"><div class="fill need" style="width:90%">13,400–15,800 workers</div></div>
+        </div>
+        <div class="barrow">
+          <div class="name"><b>2050</b>400 GW plan</div>
+          <div class="track"><div class="fill need" style="width:100%">grows with a 3–4× larger fleet</div></div>
+        </div>
+      </div>
+      <div class="legend">
+        <div><i class="swatch-cur"></i>Today's workforce</div>
+        <div><i class="swatch-need"></i>What's needed</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">The one step that won't speed up</div>
+      <p>The model is blunt about where the wall is. By law, the Nuclear Regulatory Commission requires 18 to 24 months of training to license a single operator, and that timeline cannot be shortened. It is the one bottleneck that sets the pace for the entire build-out.</p>
+      <p>You can speed up money, reactors, and permits. You cannot speed up the making of a licensed operator below roughly two years. That makes training, not funding or regulation, the real limit on how fast America can add nuclear power.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 TIME TO BUILD -->
+<section id="time">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">05</div><h2>How long it takes to train one person</h2></div>
+    <p class="sec-intro">There is no single timeline. Getting in the door is fast. Becoming a licensed operator is slow. To plan at scale, you have to plan each step on its own clock.</p>
+
+    <div class="pipe">
+      <div class="stage">
+        <div class="dur">6–12 MONTHS</div>
+        <h4>Certificate — the quick way in</h4>
+        <p>A one-year community-college certificate, or an equivalent military credential, gets someone to an entry-level job. This is the fastest legitimate on-ramp.</p>
+      </div>
+      <div class="stage">
+        <div class="dur">2 YEARS</div>
+        <h4>Associate degree — the standard credential</h4>
+        <p>The two-year Associate of Applied Science in nuclear technology is the typical entry path. It splits into tracks like instrumentation, electrical, mechanical, and radiation protection. This is the workhorse degree.</p>
+      </div>
+      <div class="stage">
+        <div class="dur">+ 6 MONTHS – 2 YEARS</div>
+        <h4>On-the-job training at a specific plant</h4>
+        <p>Once hired, technicians spend six months to two years learning their plant's systems and safety rules under supervision. The learning never fully stops, because the technology keeps changing.</p>
+      </div>
+      <div class="stage">
+        <div class="dur">18–24 MONTHS · CANNOT BE SHORTENED</div>
+        <h4>Reactor operator license</h4>
+        <p>Becoming a licensed reactor operator means clearing a federal training and licensing process that cannot be rushed. This is the gate that paces the whole build-out.</p>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top:36px">
+      <div class="stat"><div class="v phos">~12mo</div><div class="l">Fastest way in, by certificate or military credential</div><div class="src">NUCP / DoD</div></div>
+      <div class="stat"><div class="v">~2yr</div><div class="l">Standard associate degree to a job</div><div class="src">BLS / NUCP</div></div>
+      <div class="stat"><div class="v warn">18–24mo</div><div class="l">Operator license, the step that can't be shortened</div><div class="src">USC / NCEA</div></div>
+      <div class="stat"><div class="v">3–5yr</div><div class="l">Raw recruit to fully licensed operator</div><div class="src">Composite</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 INSTITUTIONS -->
+<section id="institutions">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">06</div><h2>Who trains this workforce today</h2></div>
+    <p class="sec-intro">Three pipelines feed the industry. The first is a network of about 36 community colleges running a shared, industry-set curriculum. The second is the U.S. Navy, the largest trainer of nuclear operators in the world. The third is a thin layer of four-year degrees. The catch: the college network is built to size each class to the jobs available, on purpose.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Institution</th><th>Program</th><th>Type</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>U.S. Navy — NNPTC</b><br>Goose Creek, SC</td><td>Nuclear Power School + prototype</td><td><span class="pill mil">Military</span></td><td>The world's largest source of nuclear operators, and the main feeder of cleared, trained talent into commercial plants.</td></tr>
+          <tr><td><b>Bismarck State College</b><br>North Dakota</td><td>Nuclear Power Technology</td><td><span class="pill aas">AAS</span> <span class="pill bs">BAS</span></td><td>A founding college of the shared curriculum, with online and on-campus tracks.</td></tr>
+          <tr><td><b>Columbia Basin College</b><br>Washington</td><td>Radiation Protection / Operator / I&amp;C</td><td><span class="pill aas">AAS</span> <span class="pill cert">Cert</span></td><td>Partnered with Energy Northwest and the Hanford site. Offers both a two-year degree and shorter certificates.</td></tr>
+          <tr><td><b>Wharton County Junior College</b><br>Texas</td><td>Nuclear Power Technology</td><td><span class="pill aas">AAS</span> <span class="pill cert">Cert</span></td><td>Four specialty tracks, tied to the South Texas Project plant and Texas A&amp;M.</td></tr>
+          <tr><td><b>Cape Fear Community College</b><br>North Carolina</td><td>Nuclear Technology — reactor field tech</td><td><span class="pill aas">AAS</span> <span class="pill cert">Cert</span></td><td>Hands-on learning at a working plant, plus high-school and Navy transfer routes.</td></tr>
+          <tr><td><b>Augusta Technical College</b><br>Georgia</td><td>Nuclear Engineering Technology</td><td><span class="pill aas">AAS</span></td><td>A 64-credit program near the Vogtle plant, training techs and non-licensed operators.</td></tr>
+          <tr><td><b>Excelsior University</b></td><td>Nuclear Engineering Technology</td><td><span class="pill bs">BS</span></td><td>The largest source of four-year nuclear degrees, built for working adults and veterans.</td></tr>
+          <tr><td><b>Idaho State / Arkansas Tech</b></td><td>Nuclear / energy technology</td><td><span class="pill aas">AAS</span> <span class="pill bs">BS</span></td><td>University programs located near national labs and operating plants.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">The flaw in today's system</div>
+      <p>The college network is built to match supply to demand. Colleges report how many graduates the industry needs, and they train to that number, on purpose. That worked in a flat market. In a booming one it backfires: the system is designed <b>not</b> to overproduce at the exact moment overproduction is the goal. Class sizes are tiny, often a handful to a few dozen per program. The Navy produces scale, but on its own schedule, not the commercial fleet's.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PLAYBOOK -->
+<section id="playbook">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">07</div><h2>How to fix it at scale</h2></div>
+    <p class="sec-intro">If the limit is a two-year training pipeline, the whole problem becomes one of throughput. Widen the entrance, shorten every step that can be shortened, and bring in people who already clear the hardest gates. A serious plan runs all five of these at once.</p>
+
+    <div class="play">
+      <div class="n">01</div>
+      <div>
+        <h3>Recruit Navy veterans and adjacent workers first</h3>
+        <p>The fastest way to qualified technicians is to hire people who already have most of the training. Navy nuclear veterans, and operators from oil, gas, chemicals, and power, clear the security, math, and discipline hurdles that take civilians years. They have the aptitude. What's missing is a clear path that credits what they already know.</p>
+        <div class="lever">Payoff: productive in months, not years</div>
+      </div>
+    </div>
+    <div class="play">
+      <div class="n">02</div>
+      <div>
+        <h3>Break the degree into employable steps</h3>
+        <p>Don't make every recruit finish a two-year degree before they're useful. Start with a 6-to-12-month certificate that produces a working technician, then let them earn the full degree and license while on the job and getting paid. This fills maintenance and outage roles fast while the operator pipeline runs in parallel.</p>
+        <div class="lever">Payoff: earlier pay, fewer dropouts, faster hiring</div>
+      </div>
+    </div>
+    <div class="play">
+      <div class="n">03</div>
+      <div>
+        <h3>Build the school into the plant</h3>
+        <p>Pair every new build, restart, and small reactor with a training program on site, the way a teaching hospital trains doctors on real patients. Students do supervised work on the actual plant, which folds on-the-job training into the degree and guarantees a job at the end. New sites staff from zero today; they should staff from a school built into the site.</p>
+        <div class="lever">Payoff: training and hiring become one motion</div>
+      </div>
+    </div>
+    <div class="play">
+      <div class="n">04</div>
+      <div>
+        <h3>Stop sizing classes to today's jobs</h3>
+        <p>The college network's match-supply-to-demand rule has to be flipped. Programs should be funded to train for the 2050 fleet, not the current one, backed by federal workforce grants like the $49.7 million awarded to 10 universities in April 2026. The risk of a few extra $100,000-a-year technicians is trivial next to the risk of a reactor sitting idle for lack of crew.</p>
+        <div class="lever">Payoff: removes the cap on supply</div>
+      </div>
+    </div>
+    <div class="play">
+      <div class="n">05</div>
+      <div>
+        <h3>Grow fast without lowering the bar</h3>
+        <p>Scale cannot come at the cost of safety, which is what makes nuclear work at all. Hold quality with the shared national curriculum, heavy simulator time, and clear data on every trainee's progress. The two-year licensing gate stays in place; it's a safeguard, not waste. Everything around it is what gets faster.</p>
+        <div class="lever">Payoff: more people, same safety standard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 BOTTOM LINE -->
+<section id="bottomline">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">08</div><h2>The bottom line</h2></div>
+    <div class="callout">
+      <div class="ct">Where this leaves us</div>
+      <p>The verdict is bad, and the official numbers hide it. They forecast a fleet that was shrinking, not the one the country has now committed to build. Demand is set to nearly quadruple the workforce by 2050 while 40% of today's workers retire, and the training system produces only a fraction of what's needed, with two to four years of lead time on every recruit.</p>
+      <p>The limit is not money, reactors, or permits. Those are already moving. The limit is the <b>two-year training pipeline</b>, sitting on top of a school system built to never overproduce. That is the real bottleneck on American nuclear power.</p>
+    </div>
+
+    <div class="verdict-banner" style="margin-top:24px">
+      <div class="vb-top">
+        <div class="vb-grade" style="font-size:30px">Start now</div>
+        <div>
+          <div class="vb-label">The mandate</div>
+          <div class="vb-tagline" style="font-size:19px">Timing is the whole game.</div>
+        </div>
+      </div>
+      <p class="vb-body">To deliver on the federal orders and the private deals already signed, the workforce has to be built ahead of the curve, not behind it. A program that opens in <b>2026 first graduates people around 2028 to 2030</b>, right when the new plants come online and the retirements peak. America has done hard technical training at scale before; the Navy nuclear program proves it. The fixes are known and partly funded. What's missing is speed.</p>
+      <p class="vb-body" style="margin-top:14px;color:var(--ink)"><b>Whoever recruits veterans fast, turns the degree into paid steps, builds the school into the plant, and lifts the supply cap without lowering the safety bar will decide how fast America can power its future.</b></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="srcfoot">
+  <div class="wrap">
+    <div class="src-head">Primary sources</div>
+    <ul>
+      <li>BLS Occupational Outlook Handbook — Nuclear Technicians (SOC 19-4051)</li>
+      <li>BLS Employment Projections / OEWS, May 2024</li>
+      <li>DOE — Workforce Trends in Nuclear Energy (2025/26)</li>
+      <li>USC Marshall / Natl. Center for Energy Analytics workforce study (2026)</li>
+      <li>White House Executive Orders 14300/14301/14302 (May 2025)</li>
+      <li>CSIS &amp; KeyLogic — pathways to 400 GW analyses</li>
+      <li>NEI — Nuclear Uniform Curriculum Program (NUCP)</li>
+      <li>U.S. Navy NNPTC / Nuclear Power School</li>
+      <li>GETI 2026 energy workforce report (Airswift)</li>
+      <li>Program data: Bismarck State, Columbia Basin, WCJC, Cape Fear, Augusta Tech</li>
+    </ul>
+    <p class="disc">A note on the two headline numbers. The −8% BLS forecast and the +275% workforce figure are not in conflict. They describe different futures, one assuming the status quo and one assuming the federal build-out, and the brief treats them that way throughout. The worker counts for operators and technicians come from the USC Marshall and NCEA model and shift with the scenario. Where no single firm number existed for 2050, the brief describes the trajectory rather than inventing false precision. This is a market-intelligence synthesis, not an official government projection.</p>
+  </div>
+</footer>
+
+</div>
+
+<section class="rs-about" aria-label="About Project Arklight">
+  <div class="rs-about_inner">
+    <p class="rs-about_h">About Project Arklight</p>
+    <p class="rs-about_lead">Project Arklight is a workforce-development company rebuilding how America trains skilled industrial labor.</p>
+    <p class="rs-about_body">We run a software-enabled trade school, Trade School 2.0, that assesses, trains, and deploys production-ready operators (electricians, machinists, welders, fabricators) to the companies reshoring American manufacturing and energy. We also publish original research on the skilled-labor gap: where it is, how deep it runs, and what it takes to close it. A shortage of skilled workers is the biggest obstacle to rebuilding American industry — and, as the nuclear build-out shows, the limit is the supply of trained people. Project Arklight exists to remove it.</p>
+    <p class="rs-about_links"><a href="/trade-school">How Trade School 2.0 works &rarr;</a><a href="/content-research">Read the research &rarr;</a></p>
+  </div>
+</section>
+
+<section class="rs-cta">
+  <div class="rs-cta_inner">
+    <div class="num">Trade School 2.0</div>
+    <h3>We build the builders.<br/><em>Build your workforce.</em></h3>
+    <p>You can't scale what you can't staff. We assess, train, and deploy operators who ship to spec on day one — co-designed to your floor, paid on outcomes. Co-design your first cohort.</p>
+    <div class="rs-cta_actions">
+      <a href="/content-research" class="rs-btn rs-btn-secondary">More Content &amp; Research</a>
+      <a href="/trade-school#contact" class="rs-btn rs-btn-primary">Partner With Us →</a>
+    </div>
+  </div>
+</section>
+
+<div class="c-footer" data-scroll data-scroll-css-progress data-scroll-position="start, end" data-scroll-offset="0, 100%"> <span class="c-logo-trigger -bottom" data-scroll data-scroll-event-progress="scroll.logoExpand" data-scroll-position="start, end" data-scroll-offset="0, 100%"></span>  <footer class="c-footer_wrap"> <div class="c-footer_inner | u-container -bleed"> <h2 class="c-footer_title | u-h2">Building American talent</h2> <ul class="c-nav u-h2-regular"> <li class="c-nav_item"> <a href="/" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Home</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school" data-no-swup class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Trade School</span> </a> </li> <li class="c-nav_item"> <a href="/content-research" data-no-swup class="c-nav_link"> <span class="c-nav_label">Content &amp; Research</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school#contact" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Contact</span> </a> </li> </ul>   <ul class="c-footer_nav | u-h2-regular"> <li>   </li> <li> <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>X</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a> <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>LinkedIn</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a>  </li> </ul> <a href="/" class="c-footer_logo"> <span class="c-icon" data-astro-cid-xaas34xa> <svg class="svg-logo" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo" data-astro-cid-xaas34xa></use> </svg>  </span>  <span class="u-sr-only">Go to homepage</span> </a> <div class="c-footer_bottom"> <p class="c-details -columns"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  <ul class="c-footer_nav"> <li> <a href="/privacy-terms"> Privacy &amp; Terms </a> </li> </ul> </div> </div> <div class="ark-foot-wm" aria-hidden="true">Project Arklight</div></footer> </div>
+
+<script src="/styles/chrome.js"></script>
+<script src="/styles/cr.js"></script>
+
+</body>
+</html>

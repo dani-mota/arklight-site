@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="data:,">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XH6JFV56FJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NVIDIA Bet $2B on a Texas Fab — Can It Be Staffed? | Project Arklight</title>
+<meta name="description" content="Coherent is quadrupling its InP photonics fab in Sherman, TX, the lasers AI datacenters run on, backed by a $2B NVIDIA investment and a $50M CHIPS LOI. A workforce and market brief: who can train the 550+ technical roles, how fast the market is growing, and what it costs if the people aren't there."/>
+<link rel="canonical" href="https://www.arklight.us/research/coherent-sherman-fab"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Project Arklight"/>
+<meta property="og:title" content="NVIDIA Bet $2B on a Texas Fab — Can It Be Staffed?"/>
+<meta property="og:description" content="Coherent's Sherman InP photonics expansion gates the AI buildout. The capital is committed; the constraint is ~550 technical roles. Who trains them, and what it costs if they're not there."/>
+<meta property="og:url" content="https://www.arklight.us/research/coherent-sherman-fab"/>
+<meta property="og:image" content="https://www.arklight.us/og/coherent-sherman-fab.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:type" content="image/png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="NVIDIA Bet $2B on a Texas Fab — Can It Be Staffed?"/>
+<meta name="twitter:description" content="Coherent's Sherman InP photonics expansion gates the AI buildout. The constraint is ~550 technical roles. Who trains them, and what it costs if they're not there."/>
+<meta name="twitter:image" content="https://www.arklight.us/og/coherent-sherman-fab.png"/>
+<meta name="author" content="Dani Mota"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="/styles/chrome.css"/>
+<link rel="stylesheet" href="/styles/cr.css"/>
+<link rel="stylesheet" href="/styles/essay.css"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NVIDIA Bet $2B on a Texas Fab — Can It Be Staffed?",
+    "description": "Coherent / NVIDIA Sherman fab workforce and market analysis: who can train the workforce, how fast the InP photonics market is growing, the product's economic output, and the cost if the workforce gap is not filled.",
+    "datePublished": "2026-06-26",
+    "dateModified": "2026-06-26",
+    "author": { "@type": "Person", "name": "Dani Mota", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Project Arklight" } },
+    "publisher": { "@type": "Organization", "name": "Project Arklight", "url": "https://www.arklight.us" },
+    "articleSection": "Content & Research",
+    "isPartOf": "ARK-R-005",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.arklight.us/research/coherent-sherman-fab" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arklight.us/" },
+      { "@type": "ListItem", "position": 2, "name": "Content & Research", "item": "https://www.arklight.us/content-research" },
+      { "@type": "ListItem", "position": 3, "name": "Coherent / NVIDIA Sherman Fab Workforce Brief", "item": "https://www.arklight.us/research/coherent-sherman-fab" }
+    ]
+  }
+]
+</script>
+<style>
+/* Nuclear workforce brief — full module layout, Arklight cream brand.
+   Tokens scoped to .nbrief so they don't touch the essay About/CTA closers. */
+.nbrief{
+  --bg:#F5F3ED;
+  --panel:#FBFAF6;
+  --panel-2:#EFEDE6;
+  --line:rgba(20,18,15,.12);
+  --line-bright:rgba(20,18,15,.22);
+  --ink:#15140F;
+  --ink-dim:#46443E;
+  --ink-faint:#8A867C;
+  --amber:#B85416;
+  --amber-bright:#C8631F;
+  --phosphor:#2E5A86;
+  --warn:#C0432B;
+  --cool:#2E5A86;
+}
+.nbrief *{box-sizing:border-box;margin:0;padding:0}
+.nbrief{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter Tight',system-ui,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.nbrief .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+.nbrief .mono{font-family:'JetBrains Mono',monospace}
+
+/* ---------- HERO ---------- */
+.nbrief .hero{
+  border-bottom:1px solid var(--line);
+  padding:56px 0 52px;
+  position:relative;
+  overflow:hidden;
+}
+.nbrief .hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 90% at 88% -10%, rgba(184,84,22,0.06), transparent 60%);
+  pointer-events:none;
+}
+.nbrief .hero-back{position:relative;z-index:1;display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:28px;transition:color .2s}
+.nbrief .hero-back:hover{color:var(--amber)}
+.nbrief .eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:0.34em;text-transform:uppercase;
+  color:var(--amber);display:flex;gap:14px;align-items:center;margin-bottom:26px;
+}
+.nbrief .eyebrow::before{content:"";width:34px;height:1px;background:var(--amber)}
+.nbrief .hero h1{
+  font-size:clamp(34px,6vw,58px);line-height:1.02;font-weight:700;
+  letter-spacing:-0.025em;max-width:16ch;color:var(--ink);
+}
+.nbrief .hero h1 em{font-style:normal;color:var(--amber)}
+.nbrief .hero .lede{
+  margin-top:24px;max-width:62ch;font-size:18px;color:var(--ink-dim);
+}
+.nbrief .hero .meta{
+  margin-top:32px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-faint);
+  letter-spacing:0.04em;
+}
+.nbrief .hero .meta span{color:var(--ink-dim)}
+
+/* ---------- THE PARADOX BANNER ---------- */
+.nbrief .paradox{
+  margin-top:44px;border:1px solid var(--line-bright);border-radius:4px;
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;
+}
+.nbrief .paradox::after{
+  content:"VS";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;
+  color:var(--ink-faint);background:var(--bg);border:1px solid var(--line-bright);
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;letter-spacing:0.05em;
+}
+.nbrief .paradox .side{padding:28px 30px}
+.nbrief .paradox .side:first-child{border-right:1px solid var(--line)}
+.nbrief .paradox .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px}
+.nbrief .paradox .tag.cool{color:var(--cool)}
+.nbrief .paradox .tag.amber{color:var(--amber)}
+.nbrief .paradox .big{font-size:30px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:var(--ink)}
+.nbrief .paradox .sub{font-size:14px;color:var(--ink-dim);margin-top:8px}
+
+/* ---------- SECTIONS ---------- */
+.nbrief section{padding:60px 0;border-bottom:1px solid var(--line)}
+.nbrief .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+.nbrief .sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--amber);
+  font-weight:600;letter-spacing:0.1em;flex:none;padding-top:4px;
+}
+.nbrief .sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--ink)}
+.nbrief .sec-intro{max-width:70ch;color:var(--ink-dim);font-size:16.5px;margin-bottom:36px;padding-left:42px}
+@media(max-width:640px){.nbrief .sec-intro{padding-left:0}}
+
+/* ---------- STAT STRIP ---------- */
+.nbrief .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.nbrief .stat{background:var(--panel);padding:24px 22px}
+.nbrief .stat .v{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:var(--amber);letter-spacing:-0.01em}
+.nbrief .stat .v.warn{color:var(--warn)}
+.nbrief .stat .v.phos{color:var(--phosphor)}
+.nbrief .stat .l{font-size:12.5px;color:var(--ink-dim);margin-top:8px;line-height:1.4}
+.nbrief .stat .src{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);margin-top:10px;letter-spacing:0.04em}
+
+/* ---------- GAP CHART ---------- */
+.nbrief .chart-card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:30px 30px 24px}
+.nbrief .chart-title{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:28px}
+.nbrief .bars{display:flex;flex-direction:column;gap:22px}
+.nbrief .barrow{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center}
+.nbrief .barrow .name{font-size:13px;color:var(--ink-dim);text-align:right;line-height:1.25}
+.nbrief .barrow .name b{color:var(--ink);display:block;font-size:13.5px;font-weight:600}
+.nbrief .track{position:relative;height:38px;background:var(--panel-2);border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+.nbrief .fill{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;padding-left:14px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#fff;border-radius:0;white-space:nowrap}
+.nbrief .fill.cur{background:linear-gradient(90deg,#9aa7b3,#b4c0cb);color:var(--ink)}
+.nbrief .fill.need{background:linear-gradient(90deg,var(--amber),var(--amber-bright))}
+.nbrief .legend{display:flex;gap:24px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-dim);letter-spacing:0.04em}
+.nbrief .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.nbrief .swatch-cur{background:#9aa7b3}
+.nbrief .swatch-need{background:var(--amber)}
+
+/* ---------- DRIVERS ---------- */
+.nbrief .drivers{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.nbrief .driver{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:24px 24px;position:relative;transition:border-color .2s}
+.nbrief .driver:hover{border-color:var(--line-bright)}
+.nbrief .driver .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.nbrief .driver h3{font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--ink)}
+.nbrief .driver p{font-size:14.5px;color:var(--ink-dim)}
+.nbrief .driver .fig{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--phosphor);margin-top:12px;font-weight:500}
+
+/* ---------- PIPELINE / TIMELINE ---------- */
+.nbrief .pipe{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line-bright);margin-left:8px;padding-left:0}
+.nbrief .stage{position:relative;padding:0 0 30px 34px}
+.nbrief .stage:last-child{padding-bottom:0}
+.nbrief .stage::before{
+  content:"";position:absolute;left:-8px;top:4px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--amber);
+}
+.nbrief .stage .dur{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);letter-spacing:0.06em;font-weight:600}
+.nbrief .stage h4{font-size:16.5px;font-weight:700;margin:5px 0 5px;color:var(--ink)}
+.nbrief .stage p{font-size:14px;color:var(--ink-dim);max-width:64ch}
+
+/* ---------- TABLE ---------- */
+.nbrief .tbl-wrap{border:1px solid var(--line);border-radius:4px;overflow:hidden;overflow-x:auto}
+.nbrief table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.nbrief thead th{
+  background:var(--panel-2);text-align:left;padding:15px 18px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--amber);border-bottom:1px solid var(--line-bright);font-weight:600;
+}
+.nbrief tbody td{padding:14px 18px;border-bottom:1px solid var(--line);color:var(--ink-dim);vertical-align:top}
+.nbrief tbody tr:last-child td{border-bottom:none}
+.nbrief tbody td b{color:var(--ink);font-weight:600}
+.nbrief tbody tr:nth-child(even){background:rgba(20,18,15,0.025)}
+.nbrief .pill{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 9px;border-radius:3px;font-weight:600;white-space:nowrap}
+.nbrief .pill.aas{background:rgba(46,90,134,0.12);color:var(--cool)}
+.nbrief .pill.cert{background:rgba(24,50,79,0.12);color:#18324F}
+.nbrief .pill.bs{background:rgba(184,84,22,0.14);color:var(--amber)}
+.nbrief .pill.mil{background:rgba(192,67,43,0.14);color:var(--warn)}
+
+/* ---------- PLAYBOOK ---------- */
+.nbrief .play{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.nbrief .play:last-child{border-bottom:none}
+.nbrief .play .n{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--amber);line-height:1}
+.nbrief .play h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--ink)}
+.nbrief .play p{font-size:15px;color:var(--ink-dim);max-width:72ch}
+.nbrief .play .lever{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--phosphor);margin-top:10px;letter-spacing:0.03em}
+
+/* ---------- CALLOUT ---------- */
+.nbrief .callout{
+  border:1px solid var(--line-bright);border-left:3px solid var(--amber);
+  background:var(--panel);border-radius:4px;padding:26px 28px;margin-top:8px;
+}
+.nbrief .callout .ct{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.nbrief .callout p{font-size:15.5px;color:var(--ink);max-width:74ch}
+.nbrief .callout p + p{margin-top:12px;color:var(--ink-dim)}
+
+/* ---------- SOURCES FOOTER (scoped so it doesn't touch the site footer) ---------- */
+.nbrief .srcfoot{padding:48px 0 8px}
+.nbrief .srcfoot .src-head{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+.nbrief .srcfoot ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;font-size:13px;color:var(--ink-dim)}
+.nbrief .srcfoot li{font-family:'JetBrains Mono',monospace;font-size:12px;padding-left:16px;position:relative}
+.nbrief .srcfoot li::before{content:"\203A";position:absolute;left:0;color:var(--amber)}
+.nbrief .disc{margin-top:30px;font-size:12.5px;color:var(--ink-faint);max-width:80ch;line-height:1.6}
+
+/* ---------- VERDICT BANNER ---------- */
+.nbrief .verdict-banner{
+  margin-top:44px;border:1px solid var(--warn);border-radius:4px;
+  background:linear-gradient(180deg,rgba(192,67,43,0.07),rgba(192,67,43,0.015));
+  padding:34px 34px 30px;position:relative;overflow:hidden;
+}
+.nbrief .verdict-banner::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--warn);
+}
+.nbrief .vb-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.nbrief .vb-grade{
+  font-family:'JetBrains Mono',monospace;font-weight:800;font-size:44px;letter-spacing:-0.02em;
+  color:var(--warn);line-height:1;text-transform:uppercase;
+}
+.nbrief .vb-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint)}
+.nbrief .vb-tagline{font-size:22px;font-weight:800;letter-spacing:-0.015em;line-height:1.2;color:var(--ink);max-width:30ch}
+.nbrief .vb-tagline em{font-style:normal;color:var(--warn)}
+.nbrief .vb-body{font-size:16px;color:var(--ink-dim);max-width:74ch;margin-top:6px}
+.nbrief .vb-body b{color:var(--ink)}
+
+/* severity meter */
+.nbrief .meter{margin-top:24px}
+.nbrief .meter-track{position:relative;height:46px;border:1px solid var(--line-bright);border-radius:4px;overflow:hidden;background:var(--panel-2);display:flex}
+.nbrief .meter-seg{flex:1;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);border-right:1px solid var(--line);position:relative}
+.nbrief .meter-seg:last-child{border-right:none}
+.nbrief .meter-seg.on-good{background:rgba(46,90,134,0.10);color:var(--phosphor)}
+.nbrief .meter-seg.on-warn{background:rgba(184,84,22,0.12);color:var(--amber)}
+.nbrief .meter-seg.on-bad{background:rgba(192,67,43,0.16);color:var(--warn);font-weight:700}
+.nbrief .meter-seg.on-crisis{color:var(--ink-faint)}
+.nbrief .meter-pin{position:absolute;top:-1px;bottom:-1px;width:3px;background:var(--warn);left:62%;box-shadow:0 0 12px rgba(192,67,43,0.45)}
+.nbrief .meter-cap{display:flex;justify-content:space-between;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:0.04em}
+.nbrief .meter-cap b{color:var(--warn)}
+
+/* deciding-variable row */
+.nbrief .decide{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.nbrief .decide .card{border:1px solid var(--line);border-radius:4px;background:var(--panel);padding:22px 22px}
+.nbrief .decide .card.act{border-color:rgba(46,90,134,0.4)}
+.nbrief .decide .card.wait{border-color:rgba(192,67,43,0.4)}
+.nbrief .decide .ch{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+.nbrief .decide .card.act .ch{color:var(--phosphor)}
+.nbrief .decide .card.wait .ch{color:var(--warn)}
+.nbrief .decide .card h4{font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;color:var(--ink)}
+.nbrief .decide .card p{font-size:14px;color:var(--ink-dim)}
+
+@media(max-width:760px){
+  .nbrief .decide{grid-template-columns:1fr}
+  .nbrief .vb-grade{font-size:36px}
+  .nbrief .meter-seg{font-size:9px;letter-spacing:0.04em}
+}
+
+/* ---------- AGE / COMPOSITION ---------- */
+.nbrief .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.nbrief .comp{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:26px 26px}
+.nbrief .comp .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:18px}
+.nbrief .agebar{display:flex;flex-direction:column;gap:14px}
+.nbrief .ageRow{display:grid;grid-template-columns:64px 1fr 52px;gap:12px;align-items:center}
+.nbrief .ageRow .band{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dim);text-align:right}
+.nbrief .ageRow .at{position:relative;height:24px;background:var(--panel-2);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.nbrief .ageRow .af{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--amber),var(--amber-bright));border-radius:0}
+.nbrief .ageRow .af.warn{background:linear-gradient(90deg,#d2674f,var(--warn))}
+.nbrief .ageRow .pct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);font-weight:600}
+.nbrief .comp-note{font-size:13px;color:var(--ink-faint);margin-top:18px;line-height:1.5}
+
+.nbrief .donut-wrap{display:flex;align-items:center;gap:24px}
+.nbrief .donut{flex:none}
+.nbrief .donut-leg{display:flex;flex-direction:column;gap:11px;font-size:13.5px;color:var(--ink-dim)}
+.nbrief .donut-leg .li{display:flex;align-items:center;gap:10px}
+.nbrief .donut-leg i{width:11px;height:11px;border-radius:2px;flex:none}
+.nbrief .donut-leg b{color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:13px}
+
+/* two-front */
+.nbrief .fronts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.nbrief .front{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:24px 24px;position:relative;overflow:hidden}
+.nbrief .front.top{border-top:3px solid var(--warn)}
+.nbrief .front.bot{border-top:3px solid var(--cool)}
+.nbrief .front .fk{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+.nbrief .front.top .fk{color:var(--warn)}
+.nbrief .front.bot .fk{color:var(--cool)}
+.nbrief .front h3{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;color:var(--ink)}
+.nbrief .front p{font-size:14.5px;color:var(--ink-dim)}
+.nbrief .front .fstat{font-family:'JetBrains Mono',monospace;font-size:13px;margin-top:12px;font-weight:500}
+.nbrief .front.top .fstat{color:var(--warn)}
+.nbrief .front.bot .fstat{color:var(--cool)}
+
+/* verdict scale */
+.nbrief .verdict{display:flex;flex-direction:column;gap:0;margin-top:8px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.nbrief .vrow{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.nbrief .vrow:last-child{border-bottom:none}
+.nbrief .vrow .vl{padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:var(--ink);background:var(--panel-2);border-right:1px solid var(--line);display:flex;align-items:center;font-weight:600}
+.nbrief .vrow .vv{padding:16px 20px;font-size:14.5px;color:var(--ink-dim);background:var(--panel)}
+.nbrief .vrow .vv b{color:var(--ink)}
+.nbrief .tone-ok{color:var(--phosphor)!important}
+.nbrief .tone-warn{color:var(--amber)!important}
+.nbrief .tone-bad{color:var(--warn)!important}
+
+@media(max-width:760px){
+  .nbrief .paradox,.nbrief .drivers,.nbrief .comp-grid,.nbrief .fronts{grid-template-columns:1fr}
+  .nbrief .donut-wrap{flex-direction:column;align-items:flex-start}
+  .nbrief .vrow{grid-template-columns:1fr}
+  .nbrief .vrow .vl{border-right:none;border-bottom:1px solid var(--line)}
+  .nbrief .paradox .side:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  .nbrief .paradox::after{display:none}
+  .nbrief .stats{grid-template-columns:1fr 1fr}
+  .nbrief .srcfoot ul{grid-template-columns:1fr}
+  .nbrief .barrow{grid-template-columns:1fr;gap:8px}
+  .nbrief .barrow .name{text-align:left}
+}
+.nbrief .srcfoot a{color:var(--cool);text-decoration:none}.nbrief .srcfoot a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<c-header class="c-header"> <header class="c-header_inner"> <a href="/" class="c-header_logo"> <span class="c-icon c-header_logo-icon" data-astro-cid-xaas34xa> <svg class="svg-logo-icon" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo-icon" data-astro-cid-xaas34xa></use> </svg> <span class="u-sr-only" data-astro-cid-xaas34xa>Project Arklight</span> </span>  <span class="c-header_logo-text | u-h2">Project Arklight</span> </a> <button class="c-header_toggler | u-h2-regular" data-header-toggler> <span></span> <span></span> <span class="u-sr-only">Toggle menu</span> </button> <div class="c-menu" aria-hidden="true" data-header-menu> <div class="c-menu_overlay" data-header-menu-overlay> <span class="u-sr-only">Close Menu</span> </div> <div class="c-menu_inner"> <ul class="c-nav u-h1"> <li class="c-nav_item"><a href="/" class="c-nav_link"><span class="c-nav_label">Home</span></a></li> <li class="c-nav_item"><a href="/trade-school" data-no-swup class="c-nav_link"><span class="c-nav_label">Trade School</span></a></li> <li class="c-nav_item"><a href="/content-research" data-no-swup class="c-nav_link"><span class="c-nav_label">Content &amp; Research</span></a></li> <li class="c-nav_item"><a href="/trade-school#contact" class="c-nav_link"><span class="c-nav_label">Partner With Us</span></a></li> </ul>     <p class="c-details"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  </div> </div> </header> </c-header>
+
+<div class="nbrief">
+
+<header class="hero">
+  <div class="wrap">
+    <a href="/content-research" class="hero-back">← All Content &amp; Research</a>
+    <div class="eyebrow">Workforce &amp; Market Brief · AI Photonics</div>
+    <h1>NVIDIA bet $2B on a Texas fab. It still has to be <em>staffed</em>.</h1>
+    <p class="lede">Coherent is quadrupling wafer capacity at its indium-phosphide (InP) photonics fab in Sherman, Texas — the lasers that move data between GPUs in every AI datacenter. The capital is committed and the market is exploding. What stands between the two is roughly 550 advanced-manufacturing and technical roles that have to be filled, in a Texoma labor pool Texas Instruments is also drawing on for a $30B megafab. This brief answers four questions: who can train the workforce, how fast the market is growing, what the product is worth, and what it costs if the people aren't there.</p>
+    <div class="meta">
+      <div>SECTOR <span>InP Photonics</span></div>
+      <div>SITE <span>Sherman, TX</span></div>
+      <div>HORIZON <span>2030 / 2033</span></div>
+      <div>PREPARED <span>June 2026</span></div>
+    </div>
+
+    <div class="paradox">
+      <div class="side">
+        <div class="tag cool">The capital</div>
+        <div class="big">$2B+</div>
+        <div class="sub">NVIDIA's March 2026 investment in Coherent, plus a multibillion-dollar purchase commitment and a $50M CHIPS letter of intent — to double the Sherman fab's footprint and quadruple its wafer capacity.</div>
+      </div>
+      <div class="side">
+        <div class="tag amber">The constraint</div>
+        <div class="big">550+</div>
+        <div class="sub">Direct advanced-manufacturing, engineering, and technical roles that must be filled (1,000+ jobs total) — in a town where TI is simultaneously hiring ~3,000 for its own megafab.</div>
+      </div>
+    </div>
+
+    <div class="verdict-banner">
+      <div class="vb-top">
+        <div class="vb-grade">Solvable</div>
+        <div>
+          <div class="vb-label">The verdict</div>
+          <div class="vb-tagline">Trainable in weeks — if the pipeline starts <em>now</em>.</div>
+        </div>
+      </div>
+      <p class="vb-body">This is the hopeful counterpoint to the nuclear workforce story. Unlike a reactor operator — three to five years to license — photonics and semiconductor technicians can be trained in <b>10 days to two years</b>. The gap is real and front-loaded, but it is solvable on fab-build timelines, if the apprenticeship, college-cleanroom, and shared-pipeline moves start now. The cautionary precedent is concrete: <b>TSMC delayed its Arizona fab specifically because it couldn't find enough trained U.S. staff.</b></p>
+
+      <div class="meter">
+        <div class="meter-track">
+          <div class="meter-seg on-good">On track</div>
+          <div class="meter-seg on-warn">Tight ◄ we are here</div>
+          <div class="meter-seg on-bad">At risk</div>
+          <div class="meter-seg on-crisis">Idle fab</div>
+          <div class="meter-pin" style="left:38%"></div>
+        </div>
+        <div class="meter-cap">
+          <span>Capital committed · the fab is funded</span>
+          <span><b>Start now → staffed on schedule · wait → idle capital</b></span>
+        </div>
+      </div>
+
+      <div class="decide">
+        <div class="card act">
+          <div class="ch">If the pipeline starts now</div>
+          <h4>Staffed on schedule</h4>
+          <p>Short-cycle training — 10 days to two years — means a program launched in 2026 graduates technicians as the expanded fab comes online. Capital meets crew, and the wafers ship.</p>
+        </div>
+        <div class="card wait">
+          <div class="ch">If it doesn't</div>
+          <h4>Idle capital</h4>
+          <p>A finished fab produces nothing until it's staffed. TSMC delayed Arizona for exactly this reason — and in Sherman, TI's megafab next door makes the competition for technicians worse, not better.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 THE DEAL -->
+<section id="deal">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">01</div><h2>The deal, in one paragraph</h2></div>
+    <p class="sec-intro">Start with what was actually signed, because the numbers set the stakes for everything that follows.</p>
+
+    <div class="callout">
+      <div class="ct">What Coherent signed</div>
+      <p>Coherent signed a CHIPS Act letter of intent for up to <b>$50M</b> to expand its <b>6-inch indium-phosphide (InP) photonics fab in Sherman, TX</b> — doubling manufacturing space and <b>quadrupling wafer capacity</b>. It builds on ~$20M from the Texas Semiconductor Innovation Fund and the Sherman EDC, and a <b>$2B NVIDIA investment (March 2026)</b> plus a multibillion-dollar purchase commitment. At completion: <b>1,000+ jobs, including 550+ direct advanced-manufacturing, engineering, and technical roles.</b> InP photonics are the lasers that move data between GPUs in AI datacenters.</p>
+    </div>
+
+    <div class="stats" style="margin-top:28px">
+      <div class="stat"><div class="v">$50M</div><div class="l">CHIPS Act letter of intent to expand the Sherman fab</div><div class="src">Coherent, Jun 2026</div></div>
+      <div class="stat"><div class="v phos">$2B</div><div class="l">NVIDIA investment, March 2026, plus a multibillion-dollar purchase commitment</div><div class="src">NVIDIA</div></div>
+      <div class="stat"><div class="v warn">4×</div><div class="l">Wafer-capacity increase; manufacturing space doubled</div><div class="src">Coherent</div></div>
+      <div class="stat"><div class="v">550+</div><div class="l">Direct technical roles to fill, of 1,000+ total jobs</div><div class="src">Coherent / NVIDIA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WHO CAN TRAIN -->
+<section id="institutions">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">02</div><h2>Who can train this workforce</h2></div>
+    <p class="sec-intro">Four tiers feed this fab: a local community-college anchor, a degreed-engineer pipeline, Texas's state-funded accelerators, and a thin national network of photonics-technician programs — the scarce specialty. The institutions exist. The InP-specific piece is what's missing.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Institution</th><th>Program</th><th>Type</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><b>Grayson College</b><br>Sherman / Denison, TX</td><td>Electrical Engineering Technology — semi equipment &amp; automation</td><td><span class="pill aas">AAS</span> <span class="pill cert">Cert</span></td><td>The local anchor — already names Coherent as an employer. Stackable: L1 cert ~6mo, both certs 12mo, AAS 18mo; ~$60k start. Won a $350k TWC grant (Oct 2025) to train process technicians.</td></tr>
+          <tr><td><b>UT Dallas</b></td><td>North Texas Semiconductor Institute</td><td><span class="pill bs">BS</span></td><td>Co-leads a consortium with Grayson; $700k TSIF cleanroom grant. The degreed-engineer pipeline Coherent cites.</td></tr>
+          <tr><td><b>Texas A&amp;M</b></td><td>Photonics / Electrical Engineering</td><td><span class="pill bs">BS</span></td><td>Strong photonics and EE programs feeding North Texas.</td></tr>
+          <tr><td><b>TSTC</b><br>Texas State Technical College</td><td>Accelerated Semiconductor Technician Program</td><td><span class="pill mil">10-week</span></td><td>$3.5M TSIF grant. The fastest in-state on-ramp to a fab-floor role.</td></tr>
+          <tr><td><b>Austin CC + UT Austin</b></td><td>Texas Institute for Electronics — Semiconductor Training Center</td><td><span class="pill aas">AAS</span> <span class="pill cert">Cert</span></td><td>State-backed training center built to the industry's workforce spec.</td></tr>
+          <tr><td><b>Temple College</b></td><td>Stackable cert → AAS → BAS</td><td><span class="pill aas">AAS</span> <span class="pill bs">BAS</span></td><td>Includes military-transition training — a ready source of disciplined recruits.</td></tr>
+          <tr><td><b>Indian Hills CC</b><br>Iowa</td><td>Laser / Electro-Optics Technology</td><td><span class="pill aas">AAS</span></td><td>750+ photonics-technician graduates placed — among the deepest benches in the country.</td></tr>
+          <tr><td><b>Indian River State College</b><br>Florida</td><td>Photonics — home of LASER-TEC</td><td><span class="pill aas">AAS</span> <span class="pill cert">Cert</span></td><td>Coordinates the national photonics-technician curriculum (OP-TEC / LASER-TEC).</td></tr>
+          <tr><td><b>Stonehill College</b><br>Massachusetts</td><td>Photonics certificate + paid internship</td><td><span class="pill cert">9-mo Cert</span></td><td>A fast, work-integrated route into the specialty.</td></tr>
+          <tr><td><b>AIM Photonics Academy</b><br>MIT</td><td>InP / PIC hands-on bootcamps</td><td><span class="pill mil">Bootcamp</span></td><td>The closest existing model for InP-specific upskilling — the module Sherman needs.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">The gap to flag</div>
+      <p>Grayson's curriculum is semiconductor-equipment-<b>generic</b>, not InP/photonics-specific. The missing piece is an <b>AIM-Photonics-style InP module layered on top</b> — funded by the CHIPS and TSIF money already on the table. That single addition is the difference between a generic technician pipeline and one that can actually run an indium-phosphide fab.</p>
+    </div>
+
+    <div class="callout" style="margin-top:16px">
+      <div class="ct">Proven employer playbooks to copy</div>
+      <p>None of this is unprecedented. <b>TSMC Arizona</b> runs a registered technician apprenticeship. <b>Micron + Onondaga CC</b> built a $15M cleanroom stocked with real fab tools. <b>Maricopa's 10-day Quick Start</b> has certified 900+. The school-into-the-plant model already works; Sherman's job is to copy it fast.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 MARKET GROWTH -->
+<section id="market">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">03</div><h2>How fast the market is growing</h2></div>
+    <p class="sec-intro">The fab isn't expanding on a hunch. InP photonics is the supply-constrained input to AI networking, and every credible forecast points the same direction — up and to the right, fast.</p>
+
+    <div class="chart-card">
+      <div class="chart-title">InP photonics market — size</div>
+      <div class="bars">
+        <div class="barrow"><div class="name"><b>2024</b>today</div><div class="track"><div class="fill cur" style="width:20%">$5.8B</div></div></div>
+        <div class="barrow"><div class="name"><b>2033</b>forecast</div><div class="track"><div class="fill need" style="width:100%">$28.4B</div></div></div>
+      </div>
+      <div class="legend"><div><i class="swatch-cur"></i>Today</div><div><i class="swatch-need"></i>2033 forecast · ~19% CAGR</div></div>
+    </div>
+
+    <div class="tbl-wrap" style="margin-top:24px">
+      <table>
+        <thead><tr><th>Market</th><th>Now</th><th>Forecast</th><th>Growth</th></tr></thead>
+        <tbody>
+          <tr><td><b>InP photonics (overall)</b></td><td>$5.8B (2024)</td><td>$28.4B (2033)</td><td>~19% CAGR</td></tr>
+          <tr><td><b>Pluggable optics</b></td><td>~$6B (2023)</td><td>~$25B (2030)</td><td>~4×</td></tr>
+          <tr><td><b>AI-datacenter optics</b></td><td>—</td><td>~$100B/yr by 2030</td><td>LightCounting</td></tr>
+          <tr><td><b>Optical transceivers (global)</b></td><td>—</td><td>~$73B by 2030</td><td>Fuji Keizai</td></tr>
+          <tr><td><b>AI-datacenter InP demand</b></td><td>—</td><td>—</td><td>~85% CAGR, 2026–30</td></tr>
+          <tr><td><b>Co-packaged optics (CPO)</b></td><td>$46M (2024)</td><td>$8.1B (2030)</td><td>~137% CAGR (Yole)*</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stats" style="margin-top:24px">
+      <div class="stat"><div class="v">~19%</div><div class="l">CAGR for InP photonics overall, 2024–2033</div><div class="src">Market aggregators</div></div>
+      <div class="stat"><div class="v phos">~$100B</div><div class="l">AI-datacenter optics market per year by 2030</div><div class="src">LightCounting</div></div>
+      <div class="stat"><div class="v warn">~85%</div><div class="l">CAGR in AI-datacenter InP demand, 2026–2030</div><div class="src">Industry est.</div></div>
+      <div class="stat"><div class="v">4–8</div><div class="l">InP laser chips in every 800G optical module</div><div class="src">LightCounting</div></div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">The direct driver</div>
+      <p>Every <b>800G optical module uses 4–8 InP laser chips</b>, and the industry is moving from 800G to 1.6T as standard in AI datacenters. That transition is the direct reason for Coherent's 4× capacity move.</p>
+      <p>* Estimates conflict widely on the newest segment: Yole pegs co-packaged optics at $8.1B by 2030; 360iResearch sees only $4.7B. Treat the direction as solid and any single point estimate as directional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ECONOMIC OUTPUT -->
+<section id="output">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">04</div><h2>What the product is worth</h2></div>
+    <p class="sec-intro">InP photonics is a small line item that gates a very large one. That leverage is the whole reason a chipmaker put $2B into a single fab.</p>
+
+    <div class="callout">
+      <div class="ct">A small fab that gates a huge market</div>
+      <p>InP photonics is a <b>high-value, supply-constrained input</b> to the entire AI buildout. Most of the world's InP is still made on 3- and 4-inch wafers; Coherent's move to <b>6-inch quadruples usable area and cuts die cost by more than 60%</b> — which is why NVIDIA invested $2B and signed a multibillion-dollar purchase commitment. In effect, a relatively small photonics fab gates a market measured in the <b>tens of billions per year</b>, sitting underneath NVIDIA's pledged <b>~$500B of U.S. AI infrastructure</b>. The leverage ratio — dollars of AI infrastructure enabled per dollar of fab — is extreme.</p>
+    </div>
+
+    <div class="fronts" style="margin-top:24px">
+      <div class="front top">
+        <div class="fk">The input</div>
+        <h3>A supply-constrained bottleneck</h3>
+        <p>Most InP still runs on 3-/4-inch wafers. The 6-inch jump quadruples usable area per wafer and cuts die cost sharply — turning a boutique process into a volume one.</p>
+        <div class="fstat">&gt;60% die-cost reduction</div>
+      </div>
+      <div class="front bot">
+        <div class="fk">What it gates</div>
+        <h3>The AI buildout downstream</h3>
+        <p>InP lasers move the data between GPUs. The optics market they feed is measured in tens of billions a year — and it sits under the half-trillion in U.S. AI infrastructure NVIDIA has pledged.</p>
+        <div class="fstat">~$500B U.S. AI infra pledged</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 RISK -->
+<section id="risk">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">05</div><h2>The cost if the workforce isn't there</h2></div>
+    <p class="sec-intro">The risk is not abstract. It has already happened elsewhere, and Sherman's local conditions make it sharper than the national average.</p>
+
+    <div class="drivers">
+      <div class="driver">
+        <div class="k">Risk 1 · Idle capital</div>
+        <h3>An unstaffed fab produces nothing</h3>
+        <p>A new fab is a hundreds-of-millions-to-billions building that earns zero until it's staffed. The ~$650M Sherman expansion only pays off when the 550+ roles are filled.</p>
+        <div class="fig">~$650M expansion at stake</div>
+      </div>
+      <div class="driver">
+        <div class="k">Risk 2 · Precedent</div>
+        <h3>The TSMC Arizona delay</h3>
+        <p>TSMC pushed back its Arizona fab specifically because it couldn't find enough trained U.S. staff. The workforce risk has already delayed a flagship fab once.</p>
+        <div class="fig">A delay, not a hypothetical</div>
+      </div>
+      <div class="driver">
+        <div class="k">Risk 3 · National shortfall</div>
+        <h3>67,000 short by 2030</h3>
+        <p>SIA and Oxford Economics project the U.S. will be ~67,000 semiconductor workers short by 2030 — 58% of new jobs — of which ~26,400 are technicians, the single largest at-risk category.</p>
+        <div class="fig">~26,400 technicians short</div>
+      </div>
+      <div class="driver">
+        <div class="k">Risk 4 · The town next door</div>
+        <h3>TI's $30B megafab</h3>
+        <p>Texas Instruments is building a $30B+ megafab (~3,000 jobs) in the same town, drawing from the same Texoma technician pool. Sherman's staffing risk is structurally higher than the national average.</p>
+        <div class="fig">TI hiring ~3,000 locally</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">The downstream bottleneck</div>
+      <p>Because InP optics gate AI-cluster networking, a photonics-technician shortfall doesn't just slow one fab — it throttles the broader AI-infrastructure buildout that depends on the supply. The constraint is small and specific, and that is exactly what makes it dangerous.</p>
+    </div>
+
+    <div class="callout" style="margin-top:16px">
+      <div class="ct">The hopeful counterpoint</div>
+      <p>Unlike nuclear operators — three to five years to license — photonics and semiconductor technicians can be trained in <b>10 days to two years</b>. The gap is real and front-loaded, but it is <b>solvable on fab-build timelines</b>, if the apprenticeship, college-cleanroom, and shared-pipeline moves start now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 BOTTOM LINE -->
+<section id="bottomline">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-num">06</div><h2>The bottom line</h2></div>
+    <div class="callout">
+      <div class="ct">Where this leaves us</div>
+      <p>The capital is committed, the market is compounding at double digits, and the product gates the AI buildout. The only variable left is the crew. Unlike the nuclear workforce problem, the training here is fast — so the work is narrow and concrete: layer an InP/photonics module onto Grayson's existing pipeline with the CHIPS and TSIF money already pledged, copy the apprenticeship and cleanroom playbooks that already work, and start now — before TI absorbs the local technician pool.</p>
+      <p>The limit isn't money, demand, or technology. Those are all moving. The limit is <b>550 trained people, on a fab-build clock.</b> That is an eminently winnable race — but only if it starts today.</p>
+    </div>
+
+    <div class="verdict-banner" style="margin-top:24px">
+      <div class="vb-top">
+        <div class="vb-grade" style="font-size:30px">Start now</div>
+        <div>
+          <div class="vb-label">The mandate</div>
+          <div class="vb-tagline" style="font-size:19px">Capital's here. The market's here. Build the crew.</div>
+        </div>
+      </div>
+      <p class="vb-body">A program that stands up an InP-specific technician track in 2026 graduates its first cohorts as the expanded fab comes online — exactly when Coherent and NVIDIA need them. The institutions, the funding, and the proven playbooks all already exist. What's missing is the decision to assemble them before the local labor pool is spoken for.</p>
+      <p class="vb-body" style="margin-top:14px;color:var(--ink)"><b>Whoever stands up the InP module, copies the apprenticeship model, and starts before TI's megafab absorbs the Texoma technician pool will decide whether $2B of committed capital ships wafers — or sits idle.</b></p>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ct">Caveats</div>
+      <p>"World's first 6-inch InP fab" is Coherent's own claim (NVIDIA repeats it as "what it calls"). Prior incentives are cited as ~$20M (Coherent) vs ~$17M (NVIDIA); expansion scale is ~$650M in most press, lower in narrower figures. Photonics-technician demand rests largely on one 2021 AIM/MIT study (~2,200 engineering-technicians/yr; ~20 vs ~140 programs) — no BLS "photonics technician" line item exists. CPO market estimates disagree by an order of magnitude (Yole vs 360iResearch). Wages are BLS OEWS May 2024 medians, with "photonics tech" approximated by electro-mechanical / electronics-technician bands.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="srcfoot">
+  <div class="wrap">
+    <div class="src-head">Primary sources</div>
+    <ul>
+      <li><a href="https://www.coherent.com/news/press-releases/a-chip-letter-of-intent-for-50m-to-expand-world-leading-manufacturing-facility-for-ai-infrastructure" target="_blank" rel="noopener">Coherent — CHIPS letter of intent ($50M Sherman expansion)</a></li>
+      <li><a href="https://blogs.nvidia.com/blog/coherent-texas-ai-optical/" target="_blank" rel="noopener">NVIDIA — Coherent Texas AI optical investment</a></li>
+      <li><a href="https://www.grayson.edu/pathways/electrical-engineering-technology/index.html" target="_blank" rel="noopener">Grayson College — Electrical Engineering Technology</a></li>
+      <li><a href="https://www.grayson.edu/news/2025/10/jet-grant-2025.html" target="_blank" rel="noopener">Grayson College — $350k TWC JET grant (2025)</a></li>
+      <li><a href="https://ntxsi.utdallas.edu/resources/educational-programs/" target="_blank" rel="noopener">UT Dallas — North Texas Semiconductor Institute</a></li>
+      <li><a href="https://communityimpact.com/austin/pflugerville-hutto/education/2026/01/08/tstc-williamson-county-wins-35m-grant-to-train-semiconductor-technicians/" target="_blank" rel="noopener">TSTC — Accelerated Semiconductor Technician Program ($3.5M)</a></li>
+      <li><a href="https://news.utexas.edu/2024/03/28/ut-acc-texas-institute-for-electronics-to-launch-semiconductor-training-center-to-meet-industry-workforce-needs/" target="_blank" rel="noopener">UT Austin / ACC — Texas Institute for Electronics</a></li>
+      <li><a href="https://www.aimphotonics.com/photonics-bootcamp" target="_blank" rel="noopener">AIM Photonics Academy (MIT) — InP/PIC bootcamps</a></li>
+      <li><a href="https://www.optica-opn.org/home/articles/volume_34/february_2023/features/wanted_optics_and_photonics_technicians/" target="_blank" rel="noopener">Optica — Wanted: optics &amp; photonics technicians</a></li>
+      <li><a href="https://www.lightcounting.com/newsletter/en/march-2026-ethernet-optics-382" target="_blank" rel="noopener">LightCounting — Ethernet optics forecast (2026)</a></li>
+      <li><a href="https://www.yolegroup.com/product/report/co-packaged-optics-2025/" target="_blank" rel="noopener">Yole — Co-Packaged Optics 2025</a></li>
+      <li><a href="https://www.semiconductors.org/america-faces-significant-shortage-of-tech-workers-in-semiconductor-industry-and-throughout-u-s-economy/" target="_blank" rel="noopener">SIA / Oxford Economics — U.S. semiconductor workforce shortfall</a></li>
+      <li><a href="https://spectrum.ieee.org/workforce-shortage" target="_blank" rel="noopener">IEEE Spectrum — TSMC Arizona workforce delay</a></li>
+      <li><a href="https://www.ti.com/about-ti/company/ti-at-a-glance/manufacturing/sherman.html" target="_blank" rel="noopener">Texas Instruments — Sherman, TX megafab</a></li>
+    </ul>
+    <p class="disc">Figures are sourced; where estimates conflict, both are shown. This is a market-intelligence synthesis, not an official projection. Photonics-technician demand rests largely on a single 2021 AIM/MIT study and there is no BLS "photonics technician" classification; market sizes are drawn from LightCounting, Yole, Fuji Keizai, and market-research aggregators (2024–2026) and shift with scenario. Incentive and expansion-cost figures vary by source, as noted in the caveats above.</p>
+  </div>
+</footer>
+
+</div>
+
+<section class="rs-about" aria-label="About Project Arklight">
+  <div class="rs-about_inner">
+    <p class="rs-about_h">About Project Arklight</p>
+    <p class="rs-about_lead">Project Arklight is a workforce-development company rebuilding how America trains skilled industrial labor.</p>
+    <p class="rs-about_body">We run a software-enabled trade school, Trade School 2.0, that assesses, trains, and deploys production-ready operators (electricians, machinists, welders, fabricators, and semiconductor/photonics technicians) to the companies reshoring American manufacturing and energy. We also publish original research on the skilled-labor gap: where it is, how deep it runs, and what it takes to close it. As the Sherman fab shows, the limit on the AI buildout isn't capital or demand — it's the supply of trained people. Project Arklight exists to remove it.</p>
+    <p class="rs-about_links"><a href="/trade-school">How Trade School 2.0 works &rarr;</a><a href="/content-research">Read the research &rarr;</a></p>
+  </div>
+</section>
+
+<section class="rs-cta">
+  <div class="rs-cta_inner">
+    <div class="num">Trade School 2.0</div>
+    <h3>We build the builders.<br/><em>Build your workforce.</em></h3>
+    <p>You can't scale what you can't staff. We assess, train, and deploy operators who ship to spec on day one — co-designed to your floor, paid on outcomes. Co-design your first cohort.</p>
+    <div class="rs-cta_actions">
+      <a href="/content-research" class="rs-btn rs-btn-secondary">More Content &amp; Research</a>
+      <a href="/trade-school#contact" class="rs-btn rs-btn-primary">Partner With Us →</a>
+    </div>
+  </div>
+</section>
+
+<div class="c-footer" data-scroll data-scroll-css-progress data-scroll-position="start, end" data-scroll-offset="0, 100%"> <span class="c-logo-trigger -bottom" data-scroll data-scroll-event-progress="scroll.logoExpand" data-scroll-position="start, end" data-scroll-offset="0, 100%"></span>  <footer class="c-footer_wrap"> <div class="c-footer_inner | u-container -bleed"> <h2 class="c-footer_title | u-h2">Building American talent</h2> <ul class="c-nav u-h2-regular"> <li class="c-nav_item"> <a href="/" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Home</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school" data-no-swup class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Trade School</span> </a> </li> <li class="c-nav_item"> <a href="/content-research" data-no-swup class="c-nav_link"> <span class="c-nav_label">Content &amp; Research</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school#contact" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Contact</span> </a> </li> </ul>   <ul class="c-footer_nav | u-h2-regular"> <li>   </li> <li> <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>X</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a> <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>LinkedIn</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a>  </li> </ul> <a href="/" class="c-footer_logo"> <span class="c-icon" data-astro-cid-xaas34xa> <svg class="svg-logo" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo" data-astro-cid-xaas34xa></use> </svg>  </span>  <span class="u-sr-only">Go to homepage</span> </a> <div class="c-footer_bottom"> <p class="c-details -columns"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  <ul class="c-footer_nav"> <li> <a href="/privacy-terms"> Privacy &amp; Terms </a> </li> </ul> </div> </div> <div class="ark-foot-wm" aria-hidden="true">Project Arklight</div></footer> </div>
+
+<script src="/styles/chrome.js"></script>
+<script src="/styles/cr.js"></script>
+
+</body>
+</html>

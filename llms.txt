@@ -8,6 +8,8 @@
 - [Content & Research](https://www.arklight.us/content-research): Original research and field notes on the American skilled-workforce gap — from Project Arklight.
 
 ## Research briefings (ARK-R)
+- [Coherent / NVIDIA Sherman Fab Workforce Brief](https://www.arklight.us/research/coherent-sherman-fab): Coherent is quadrupling its Sherman, TX indium-phosphide (InP) photonics fab — the lasers AI datacenters run on — on a $2B NVIDIA investment and a $50M CHIPS LOI. The constraint is ~550 technical roles, in a Texoma pool TI is also drawing on for a $30B megafab. Who can train them, how fast the market is growing, and the cost if they're not there.
+- [Nuclear Technicians Labor Shortage](https://www.arklight.us/research/nuclear-shortage): ~100,000 workers today vs. ~375,000 needed by 2050 to quadruple the fleet, while ~40% can retire within ten years and a licensed operator takes 18–24 months no money can shorten. The talent gap binding the American nuclear build-out.
 - [Electricians Labor Shortage](https://www.arklight.us/research/electrician-shortage): A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000/year. The labor cliff binding America's reindustrialization.
 - [Fabricators Labor Shortage](https://www.arklight.us/research/metal-fab-shortage): The metal-fab cluster employs ~600K nationally. A supply of ~37K/yr meets demand of ~85K/yr — a structurally widening shortfall binding shipbuilding, defense fab, and reshoring.
 - [Machinists Labor Shortage](https://www.arklight.us/research/machinist-shortage): Bottom-up demand of ~56,000 machinists per year against a hire-ready supply of ~16,000. The BLS equilibrium model misses the defense/fab/reshoring workload by ~2.5×.
