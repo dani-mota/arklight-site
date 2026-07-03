@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="icon" href="data:,">
+<link rel="icon" href="/favicon.svg">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
 <script>
@@ -21,9 +21,11 @@
 <meta property="og:description" content="Coherent's Sherman InP photonics expansion gates the AI buildout. The capital is committed; the constraint is ~550 technical roles. Who trains them, and what it costs if they're not there."/>
 <meta property="og:url" content="https://www.arklight.us/research/coherent-sherman-fab"/>
 <meta property="og:image" content="https://www.arklight.us/og/coherent-sherman-fab.png"/>
+<meta property="og:image:secure_url" content="https://www.arklight.us/og/coherent-sherman-fab.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:type" content="image/png"/>
+<meta property="og:image:alt" content="Project Arklight. NVIDIA bet $2B on a Texas fab — can it be staffed? Coherent's Sherman InP photonics expansion gates the AI buildout on ~550 technical roles."/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="NVIDIA Bet $2B on a Texas Fab. Can It Be Staffed?"/>
 <meta name="twitter:description" content="Coherent's Sherman InP photonics expansion gates the AI buildout. The constraint is ~550 technical roles. Who trains them, and what it costs if they're not there."/>
@@ -353,6 +355,25 @@
   .nbrief .barrow .name{text-align:left}
 }
 .nbrief .srcfoot a{color:var(--cool);text-decoration:none}.nbrief .srcfoot a:hover{text-decoration:underline}
+/* --- mobile spacing + touch-target consistency (consistency audit) --- */
+@media(max-width:640px){
+  .nbrief .wrap{padding:0 18px}
+  .nbrief .chart-card{padding:20px 18px 16px}
+  .nbrief .driver{padding:18px 18px}
+  .nbrief .callout{padding:20px 18px}
+  .nbrief .comp{padding:18px 18px}
+  .nbrief .verdict-banner{padding:22px 20px 20px}
+  .nbrief .decide .card{padding:16px 16px}
+  .nbrief .paradox .side{padding:20px 18px}
+  .nbrief .front{padding:18px 18px}
+}
+@media(max-width:520px){
+  .nbrief .stats{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .nbrief .meter-track{height:auto;min-height:46px}
+  .nbrief .meter-seg{font-size:8px;letter-spacing:0;padding:4px 2px;line-height:1.15}
+}
 </style>
 </head>
 <body>

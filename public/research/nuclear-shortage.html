@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="icon" href="data:,">
+<link rel="icon" href="/favicon.svg">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
 <script>
@@ -20,8 +20,8 @@
 <meta property="og:title" content="America Is About to Build Reactors It Can't Staff"/>
 <meta property="og:description" content="~100K nuclear workers today vs ~375K needed by 2050, behind an 18–24 month licensing gate the training system isn't built to scale past. The nuclear talent shortage."/>
 <meta property="og:url" content="https://www.arklight.us/research/nuclear-shortage"/>
-<meta property="og:image" content="https://www.arklight.us/research/img/og-nuclear-shortage.png"/>
-<meta property="og:image:secure_url" content="https://www.arklight.us/research/img/og-nuclear-shortage.png"/>
+<meta property="og:image" content="https://www.arklight.us/og/nuclear-shortage.png"/>
+<meta property="og:image:secure_url" content="https://www.arklight.us/og/nuclear-shortage.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:type" content="image/png"/>
@@ -29,7 +29,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="America Is About to Build Reactors It Can't Staff"/>
 <meta name="twitter:description" content="~100K nuclear workers today vs ~375K needed by 2050, behind an 18–24 month licensing gate the training system isn't built to scale past."/>
-<meta name="twitter:image" content="https://www.arklight.us/research/img/og-nuclear-shortage.png"/>
+<meta name="twitter:image" content="https://www.arklight.us/og/nuclear-shortage.png"/>
 <meta name="author" content="Dani Mota"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -353,6 +353,25 @@
   .nbrief .srcfoot ul{grid-template-columns:1fr}
   .nbrief .barrow{grid-template-columns:1fr;gap:8px}
   .nbrief .barrow .name{text-align:left}
+}
+/* --- mobile spacing + touch-target consistency (consistency audit) --- */
+@media(max-width:640px){
+  .nbrief .wrap{padding:0 18px}
+  .nbrief .chart-card{padding:20px 18px 16px}
+  .nbrief .driver{padding:18px 18px}
+  .nbrief .callout{padding:20px 18px}
+  .nbrief .comp{padding:18px 18px}
+  .nbrief .verdict-banner{padding:22px 20px 20px}
+  .nbrief .decide .card{padding:16px 16px}
+  .nbrief .paradox .side{padding:20px 18px}
+  .nbrief .front{padding:18px 18px}
+}
+@media(max-width:520px){
+  .nbrief .stats{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .nbrief .meter-track{height:auto;min-height:46px}
+  .nbrief .meter-seg{font-size:8px;letter-spacing:0;padding:4px 2px;line-height:1.15}
 }
 </style>
 </head>

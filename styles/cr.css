@@ -241,7 +241,7 @@ img{max-width:100%;height:auto;display:block}
 .rs-keystats .v{font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--ink-0);line-height:1}
 .rs-keystats .v.amber{color:var(--rust)}
 .rs-keystats .sub{font-size:11px;color:var(--ink-2);margin-top:7px}
-@media(max-width:620px){.rs-keystats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.rs-keystats{grid-template-columns:repeat(2,1fr)}}
 
 .rs-kicker{margin:48px 0;padding:26px 28px;background:var(--canvas-2);border:1px solid rgba(20,18,15,.10);border-radius:8px;font-size:14.5px;line-height:1.6;color:var(--ink-1)}
 .rs-kicker strong{color:var(--ink-0)}
