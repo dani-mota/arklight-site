@@ -8,6 +8,8 @@
 - [Hire industrial operators / build a talent pipeline](https://www.arklight.us/hire): The three ways to staff a manufacturing floor — rent, buy, or build — and how Trade School 2.0 deploys production-ready machinists, fabricators, and technicians in under a year.
 - [Content & Research](https://www.arklight.us/content-research): Original research and field notes on the American skilled-workforce gap — from Project Arklight.
 - [How much do industrial operators make without a degree? (2026)](https://www.arklight.us/content/industrial-operator-salary): Median pay by role for machinists, welders, CNC operators, and technicians — the manufacturing jobs that clear $60K with no degree, and why you earn while you train.
+- [Manufacturing workforce development](https://www.arklight.us/content/manufacturing-workforce-development): For employers — what a workforce-development program is, how to build a talent pipeline (assess, train, deploy), staffing agency vs. workforce partner, and how to scale hiring and cut time-to-productivity.
+- [Clearable manufacturing talent (defense / DIB)](https://www.arklight.us/content/clearable-manufacturing-talent): For defense manufacturers — what ITAR US-Person status and "clearable" mean, why the requirement shrinks an already-short pool, and how to build a clearable, production-ready pipeline.
 
 ## Research briefings (ARK-R)
 - [Coherent / NVIDIA Sherman Fab Workforce Brief](https://www.arklight.us/research/coherent-sherman-fab): Coherent is quadrupling its Sherman, TX indium-phosphide (InP) photonics fab — the lasers AI datacenters run on — on a $2B NVIDIA investment and a $50M CHIPS LOI. The constraint is ~550 technical roles, in a Texoma pool TI is also drawing on for a $30B megafab. Who can train them, how fast the market is growing, and the cost if they're not there.
@@ -16,6 +18,7 @@
 - [Fabricators Labor Shortage](https://www.arklight.us/research/metal-fab-shortage): The metal-fab cluster employs ~600K nationally. A supply of ~37K/yr meets demand of ~85K/yr — a structurally widening shortfall binding shipbuilding, defense fab, and reshoring.
 - [Machinists Labor Shortage](https://www.arklight.us/research/machinist-shortage): Bottom-up demand of ~56,000 machinists per year against a hire-ready supply of ~16,000. The BLS equilibrium model misses the defense/fab/reshoring workload by ~2.5×.
 - [The Arklight Demand Model — Methodology](https://www.arklight.us/research/methodology): The method behind every ARK-R briefing — a bottom-up, three-layer demand model measured against hire-ready supply, and why it diverges from BLS's equilibrium assumption.
+- [The U.S. Skilled Labor Shortage (2026)](https://www.arklight.us/research/skilled-labor-shortage): The pillar overview — up to ~2.1M manufacturing jobs unfilled by 2030, the per-trade gaps from the Arklight Demand Model, the causes, and why reshoring widens the gap. Hubs every ARK-R briefing.
 
 ## Essays (ARK-E)
 - [Build, Buy, or Rent Your Industrial Workforce — The Honest Comparison](https://www.arklight.us/content/build-buy-rent-industrial-workforce): Staffing agencies rent workers. Poaching buys them. Neither makes more. Here's the case for building your industrial workforce — with the numbers.

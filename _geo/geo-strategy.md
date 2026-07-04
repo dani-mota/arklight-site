@@ -143,6 +143,96 @@ numbers inside `<canvas>` — invisible to every answer engine. **There is no ca
 
 ---
 
+## 3.5 Strategy revision — two audiences & the defense-industrial-base wedge (2026-07-04)
+
+**Trigger:** GA showed a `/product` (Trade School 2.0 offer) pageview referred from
+`jira.spacex.corp` — someone inside SpaceX referenced Arklight's *offer* in internal
+work-tracking. That's buyer intent, not casual reading, and it sharpens the whole strategy.
+
+**Two ICPs, served by one research moat:**
+- **Candidates** (individuals) — career / salary / training / "how to become" queries.
+  Top-of-funnel and brand. (Clusters A, D, E, F, H, I, J, K.)
+- **Employers / DIB buyers** (VP Manufacturing, skilled-trades talent acquisition,
+  workforce-development leads at primes, fabs, shipyards) — **the revenue.** They buy
+  production-ready, **clearable, US-person** talent, at volume, fast. (Cluster G + new
+  Cluster M + `/hire` + workforce-development content.)
+- The **shortage research (ARK-R) serves both** — proof-of-pain for buyers, credibility for
+  candidates — and is the mechanism by which primes find and internally share us (the SpaceX
+  Jira link is exactly this).
+
+**What changes:**
+1. Elevate the **employer / workforce-development lane** from one cluster among many to a
+   **co-equal pillar** (the plan had drifted candidate-heavy).
+2. Own the **clearable / US-person / defense-industrial-base talent** angle — a differentiated
+   wedge no generic "trade school" content addresses. Becomes a flagship page/brief.
+3. Prioritize **company- and megaproject-specific briefs** (partially pull Phase 4 forward) —
+   they trigger the internal-referral mechanism that reached us at SpaceX.
+
+**New buyer-side query cluster (M — Employer / Workforce Development):** manufacturing
+workforce development; defense industrial base talent/workforce; how to scale manufacturing
+hiring; apprenticeship program for manufacturers; clearable / ITAR manufacturing talent;
+skilled-trades staffing; reduce time-to-productivity.
+
+**New KPI (add to §10 — ICP engagement):** referrals/sessions from **target-company or
+enterprise domains** (e.g. `*.corp`, prime / fab / shipyard domains) and citations on
+buyer-side queries. One qualified prime touching the product page is worth more than a
+thousand anonymous visits — weight the funnel accordingly.
+
+**Phase impact:** Phase 2.5 now explicitly splits candidate vs buyer and adds a
+workforce-development page + a clearable/DIB brief; Phase 3 authority targets the
+workforce-development ecosystem (workforce boards, econ-dev orgs, DIB trade media); Phase 4
+elevates per-company / per-megaproject briefs.
+
+---
+
+## 3.6 The B2B reality & the two-track build order (from ATP data, 2026-07-04)
+
+**The data (ATP harvest, 200+ questions):** candidate queries are enormous — trade school
+**201K**, welder 165K, CNC machinist 135K, machinist 135K, welder school 49.5K. Buyer queries
+are tiny — "hire machinists" = **0**, workforce development / manufacturing workforce ≈ 50,
+clearable / ITAR talent ≈ 0. **But the buyer queries are a near-total content vacuum.**
+
+**Implication — do NOT chase B2B search volume; there isn't any.** Your revenue buyers
+(SpaceX-type DIB firms) barely search, and buy via relationships and referral. Win B2B two ways:
+1. **Own the zero-competition buyer queries.** Sole credible source ⇒ near-guaranteed AI
+   citation whenever a buyer or their AI asks. Low volume × 100% capture × high deal value.
+2. **Publish research a champion finds and shares internally** (the SpaceX-Jira mechanism).
+   SEO/GEO gets you *found and referred*; sales closes primes. Build for the referral + the
+   citation, not the traffic chart.
+
+**Two-track operating model (A feeds B):**
+- **Track A — Authority & Supply (candidate, high-volume):** career guides, highest-paying-trades,
+  /trade-school. Builds domain authority (lifts Track B's citability), generates the candidate
+  pipeline (= the product sold to buyers), and proves category ownership. Every page bridges to
+  `/hire`.
+- **Track B — Revenue & Referral (B2B/DIB, zero-competition):** clearable-talent,
+  workforce-development, skilled-labor-shortage pillar, `/hire`, and company/megaproject briefs.
+  Low volume, total ownership, referral-optimized.
+
+**Data-informed build order:**
+- **Wave 1 — B2B differentiators (uncontested, buyer-aimed):**
+  `/content/clearable-manufacturing-talent` (the wedge) · `/research/skilled-labor-shortage`
+  (pillar; anchors the Arklight Demand Model; most AI-cited topic) ·
+  `/content/manufacturing-workforce-development` (buyer funnel) · strengthen `/hire`.
+- **Wave 2 — Candidate authority engine (volume + pipeline):**
+  `/content/welder-career-guide` (welder school 49.5K, highest CPC) ·
+  `/content/cnc-machinist-career-guide` (135K) · `/content/highest-paying-trades` (mass volume) ·
+  `/trade-school` restructure around the 4 AI-prompt pillars (cost/financial-aid, job-placement
+  rates, certifications AWS/NIMS, "near me") + college-comparison + own the term "Trade School 2.0".
+- **Wave 3 — FAQ layer + refresh (from real ATP question wording):** FAQ on existing essays,
+  salary-page FAQ, refresh `/content/are-skilled-trades-ai-proof` with 2026 data, build
+  `/content/veteran-transition-manufacturing` + `/content/how-to-become-industrial-operator`.
+- **Wave 4 — Company/megaproject briefs (Phase 4 pulled forward):** the referral engine —
+  SpaceX/Anduril/shipyards/CHIPS. Each is "internal-share" bait.
+
+**Measurement shift (value-weighted, not volume):** judge Track B by **ICP engagement** —
+referrals/visits from enterprise/company domains (the SpaceX signal), buyer-page engagement,
+contact/demo conversions, and AI-citation on buyer queries — NOT traffic. One qualified prime
+on a buyer page ≫ 10,000 anonymous candidate visits. Track A is judged on organic authority,
+AI-citations, and candidate pipeline signups.
+
+---
+
 ## 4. Target query map (the centerpiece — needs your sign-off)
 
 25 high-intent queries Arklight should own, each mapped to the canonical page that should be
@@ -371,8 +461,10 @@ AI referrals.
   `/trade-school` and home.
 - **Phase 2 — coverage:** backfill `Article`+`FAQPage` on the 7 Tier-3 essays; `HowTo` on
   the two how-to essays; FAQ + question headers on nuclear/coherent; methodology page.
-- **Phase 2.5 — demand-side content (ATP-validated):** new pages for salary (F), hire (G),
-  how-to-become (J), veterans (H). Highest commercial value; currently zero coverage.
+- **Phase 2.5 — demand-side content (ATP-validated), split by audience:**
+  - *Candidate:* salary (F, shipped), how-to-become (J), veterans (H).
+  - *Buyer/DIB (elevated):* `/hire` (G, shipped), a **workforce-development** page, and a
+    **clearable / defense-industrial-base talent** brief (the wedge). Highest revenue value.
 - **Phase 3 — authority:** publish the dataset; entity-naming cleanup; off-site pitching.
 - **Phase 4 — go wide:** programmatic per-occupation / per-megaproject briefs on one unified
   template (welders, HVAC, pipefitters, CNC, millwrights; TI megafab, shipyards, CHIPS sites).
