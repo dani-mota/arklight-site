@@ -15,6 +15,7 @@
 - [Electricians Labor Shortage](https://www.arklight.us/research/electrician-shortage): A job-ready supply of ~10,000 credentialed electricians per year against demand approaching ~100,000/year. The labor cliff binding America's reindustrialization.
 - [Fabricators Labor Shortage](https://www.arklight.us/research/metal-fab-shortage): The metal-fab cluster employs ~600K nationally. A supply of ~37K/yr meets demand of ~85K/yr — a structurally widening shortfall binding shipbuilding, defense fab, and reshoring.
 - [Machinists Labor Shortage](https://www.arklight.us/research/machinist-shortage): Bottom-up demand of ~56,000 machinists per year against a hire-ready supply of ~16,000. The BLS equilibrium model misses the defense/fab/reshoring workload by ~2.5×.
+- [The Arklight Demand Model — Methodology](https://www.arklight.us/research/methodology): The method behind every ARK-R briefing — a bottom-up, three-layer demand model measured against hire-ready supply, and why it diverges from BLS's equilibrium assumption.
 
 ## Essays (ARK-E)
 - [Build, Buy, or Rent Your Industrial Workforce — The Honest Comparison](https://www.arklight.us/content/build-buy-rent-industrial-workforce): Staffing agencies rent workers. Poaching buys them. Neither makes more. Here's the case for building your industrial workforce — with the numbers.
