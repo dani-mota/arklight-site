@@ -4,7 +4,8 @@
 
 ## Main
 - [Project Arklight | Building American talent](https://www.arklight.us/): Building the talent to rebuild America’s industrial base.
-- [Trade School 2.0](https://www.arklight.us/trade-school): The elite talent pipeline for the companies America’s reindustrialization depends on. Includes the canonical definition of "Trade School 2.0."
+- [Trade School 2.0](https://www.arklight.us/trade-school): The program — the elite talent pipeline for the companies America’s reindustrialization depends on.
+- [What is Trade School 2.0? (definition)](https://www.arklight.us/content/what-is-trade-school-2-0): The canonical explainer — a software-enabled workforce institution that trains production-ready operators to five-plus years of competency in under a year, and how it differs from a traditional trade school.
 - [Hire industrial operators / build a talent pipeline](https://www.arklight.us/hire): The three ways to staff a manufacturing floor — rent, buy, or build — and how Trade School 2.0 deploys production-ready machinists, fabricators, and technicians in under a year.
 - [Content & Research](https://www.arklight.us/content-research): Original research and field notes on the American skilled-workforce gap — from Project Arklight.
 - [How much do industrial operators make without a degree? (2026)](https://www.arklight.us/content/industrial-operator-salary): Median pay by role for machinists, welders, CNC operators, and technicians — the manufacturing jobs that clear $60K with no degree, and why you earn while you train.
