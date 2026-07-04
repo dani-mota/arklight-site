@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="/favicon.svg">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XH6JFV56FJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>U.S. Skilled-Trades Shortage: The Dataset | Project Arklight</title>
+<meta name="description" content="An open, citable dataset of the U.S. skilled-trades shortage: annual hire-ready supply, bottom-up demand, and the resulting gap for electricians, machinists, and fabricators, computed with the Arklight Demand Model. Free to reuse with attribution. CSV download included."/>
+<link rel="canonical" href="https://www.arklight.us/research/demand-model-dataset"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Project Arklight"/>
+<meta property="og:title" content="U.S. Skilled-Trades Shortage: The Dataset"/>
+<meta property="og:description" content="Annual supply, demand, and gap for U.S. skilled trades, computed with the Arklight Demand Model. Open data, free to reuse with attribution."/>
+<meta property="og:url" content="https://www.arklight.us/research/demand-model-dataset"/>
+<meta property="og:image" content="https://www.arklight.us/og/content-research.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="U.S. Skilled-Trades Shortage: The Dataset"/>
+<meta name="twitter:description" content="Annual supply, demand, and gap for U.S. skilled trades, computed with the Arklight Demand Model. Open data, free to reuse with attribution."/>
+<meta name="twitter:image" content="https://www.arklight.us/og/content-research.png"/>
+<meta name="author" content="Dani Mota"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="/styles/chrome.css"/>
+<link rel="stylesheet" href="/styles/cr.css"/>
+<link rel="stylesheet" href="/styles/essay.css"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": "https://www.arklight.us/research/demand-model-dataset#dataset",
+    "name": "The Arklight Demand Model: U.S. Skilled-Trades Shortage Dataset",
+    "description": "Annual hire-ready supply, bottom-up demand, and the resulting shortage for U.S. skilled trades (electricians, machinists, metal fabricators), computed with the Arklight Demand Model, alongside sourced sector-demand signals for nuclear power, the submarine industrial base, and semiconductor manufacturing.",
+    "url": "https://www.arklight.us/research/demand-model-dataset",
+    "identifier": "ARK-DATA-001",
+    "keywords": ["skilled labor shortage", "electrician shortage", "machinist shortage", "welder shortage", "fabricator shortage", "workforce development", "defense industrial base", "semiconductor workforce", "reshoring", "United States"],
+    "creator": { "@type": "Organization", "name": "Project Arklight", "url": "https://www.arklight.us", "@id": "https://www.arklight.us/#organization", "sameAs": ["https://x.com/projectarklight", "https://www.linkedin.com/company/projectarklight"] },
+    "publisher": { "@id": "https://www.arklight.us/#organization" },
+    "isBasedOn": "https://www.arklight.us/research/methodology",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "creativeWorkStatus": "Published",
+    "datePublished": "2026-07-04",
+    "dateModified": "2026-07-04",
+    "temporalCoverage": "2026/2030",
+    "spatialCoverage": { "@type": "Place", "name": "United States" },
+    "measurementTechnique": "Arklight Demand Model: three-layer bottom-up annual demand (replacement floor, organic growth, project-driven workload) measured against readiness-discounted hire-ready supply from credential pipelines.",
+    "variableMeasured": [
+      { "@type": "PropertyValue", "name": "Annual hire-ready supply", "description": "Production-ready entrants per year from formal credential pipelines, readiness-discounted.", "unitText": "workers per year" },
+      { "@type": "PropertyValue", "name": "Annual demand", "description": "Bottom-up annual demand across replacement, organic growth, and project-driven layers.", "unitText": "workers per year" },
+      { "@type": "PropertyValue", "name": "Annual shortage (gap)", "description": "Annual demand minus annual hire-ready supply.", "unitText": "workers per year" }
+    ],
+    "distribution": [
+      { "@type": "DataDownload", "name": "Arklight Demand Model shortage figures (CSV)", "encodingFormat": "text/csv", "contentUrl": "https://www.arklight.us/data/arklight-demand-model.csv" }
+    ],
+    "citation": "Project Arklight (2026). The Arklight Demand Model: U.S. Skilled-Trades Shortage Dataset. https://www.arklight.us/research/demand-model-dataset"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arklight.us/" },
+      { "@type": "ListItem", "position": 2, "name": "Content & Research", "item": "https://www.arklight.us/content-research" },
+      { "@type": "ListItem", "position": 3, "name": "U.S. Skilled-Trades Shortage Dataset", "item": "https://www.arklight.us/research/demand-model-dataset" }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+
+<c-header class="c-header"> <header class="c-header_inner"> <a href="/" class="c-header_logo"> <span class="c-icon c-header_logo-icon" data-astro-cid-xaas34xa> <svg class="svg-logo-icon" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo-icon" data-astro-cid-xaas34xa></use> </svg> <span class="u-sr-only" data-astro-cid-xaas34xa>Project Arklight</span> </span>  <span class="c-header_logo-text | u-h2">Project Arklight</span> </a> <button class="c-header_toggler | u-h2-regular" data-header-toggler> <span></span> <span></span> <span class="u-sr-only">Toggle menu</span> </button> <div class="c-menu" aria-hidden="true" data-header-menu> <div class="c-menu_overlay" data-header-menu-overlay> <span class="u-sr-only">Close Menu</span> </div> <div class="c-menu_inner"> <ul class="c-nav u-h1"> <li class="c-nav_item"><a href="/" class="c-nav_link"><span class="c-nav_label">Home</span></a></li> <li class="c-nav_item"><a href="/trade-school" data-no-swup class="c-nav_link"><span class="c-nav_label">Trade School</span></a></li> <li class="c-nav_item"><a href="/content-research" data-no-swup class="c-nav_link"><span class="c-nav_label">Content &amp; Research</span></a></li> <li class="c-nav_item"><a href="/trade-school#contact" class="c-nav_link"><span class="c-nav_label">Partner With Us</span></a></li> </ul>     <p class="c-details"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  </div> </div> </header> </c-header>
+
+<section class="rs-head">
+  <a href="/content-research" class="rs-back">← All Content &amp; Research</a>
+  <div class="rs-head_meta">
+    <span class="tag">Dataset</span>
+    <span class="date">2026.07.04</span>
+    <span class="id">ARK-DATA-001</span>
+  </div>
+  <h1>The U.S. skilled-trades<br/><em>shortage, as data.</em></h1>
+  <p class="rs-lead"><strong>The open dataset behind the briefings.</strong> Annual hire-ready supply, bottom-up demand, and the resulting gap for the trades America's reindustrialization runs on, computed with the <a href="/research/methodology">Arklight Demand Model</a>. Free to reuse with attribution. The numbers are below, and the raw file is one click away.</p>
+  <div class="rs-byline">
+    <div>
+      <div class="author">Project Arklight</div>
+      <div class="role">Research · Austin, Texas</div>
+    </div>
+    <span class="read-time">Open data · CC BY 4.0</span>
+  </div>
+</section>
+
+<article class="rs-body">
+
+  <p>Most numbers on this site live inside an argument. This page pulls them out. It is a single, structured, citable table of the shortage, so an analyst, a reporter, or a language model can quote the figure without reading the whole briefing. Every number here is reproduced from a published Arklight briefing and built on one method: <a href="/research/methodology">the Arklight Demand Model</a>.</p>
+
+  <h2>The annual gap, by trade</h2>
+
+  <p>Each row is one trade: how many hire-ready workers the pipeline produces in a year, how many the workload actually demands, and the difference. Supply is readiness-discounted (people who can work a critical-path job on day one, not total credentials issued). Demand is built bottom-up across three layers. The gap is what's left unfilled every year.</p>
+
+  <div class="rs-table-wrap">
+    <table class="rs-table">
+      <thead><tr><th>Trade</th><th>Hire-ready supply / yr</th><th>Demand / yr</th><th>Annual gap</th></tr></thead>
+      <tbody>
+        <tr><th>Electricians</th><td>~10,000</td><td>~97,000</td><td><strong>~87,000</strong></td></tr>
+        <tr><th>Machinists</th><td>~16,000</td><td>~56,000</td><td><strong>~40,000</strong></td></tr>
+        <tr><th>Metal fabricators</th><td>~37,000</td><td>~85,000</td><td><strong>~48,000</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="rs-table_note">Geography: United States. Period: 2026 annualized. Source: Project Arklight, computed with the Arklight Demand Model. Full derivation in the <a href="/research/electrician-shortage">electrician</a>, <a href="/research/machinist-shortage">machinist</a>, and <a href="/research/metal-fab-shortage">fabricator</a> briefings.</p>
+  </div>
+
+  <h2>Download the data</h2>
+
+  <p>The table above, as a machine-readable file. Reuse it in your own analysis, cite it, or feed it to a model. Attribution is the only condition.</p>
+
+  <p class="rs-download"><a href="/data/arklight-demand-model.csv" download class="rs-btn rs-btn-primary">Download CSV →</a> <span class="rs-download_meta">arklight-demand-model.csv · 3 trades · CC BY 4.0</span></p>
+
+  <h2>Sector-demand signals</h2>
+
+  <p>Beyond the three modeled trades, four sector figures recur across the briefings. Unlike the table above, these come from external sources, not the Arklight model, and are collected here for context. Each links to the briefing that sources it.</p>
+
+  <div class="rs-table-wrap">
+    <table class="rs-table">
+      <thead><tr><th>Sector</th><th>Demand signal</th><th>Horizon</th><th>Basis</th></tr></thead>
+      <tbody>
+        <tr><th>U.S. manufacturing</th><td>Up to ~2.1M jobs could go unfilled</td><td>by 2030</td><td>Deloitte &amp; The Manufacturing Institute</td></tr>
+        <tr><th><a href="/research/nuclear-shortage">Nuclear power</a></th><td>~100K today vs. ~375K needed to quadruple the fleet; ~40% eligible to retire within 10 years</td><td>to 2050</td><td>DOE / NEI, via Arklight brief</td></tr>
+        <tr><th><a href="/research/submarine-industrial-base">Submarine base</a></th><td>~100K new skilled trades needed; base ~25% below staffing</td><td>over 10 years</td><td>BlueForge Alliance; GAO</td></tr>
+        <tr><th><a href="/research/chips-fab-workforce">Semiconductors</a></th><td>~67K of ~115K new jobs at risk of going unfilled; technicians the largest slice</td><td>by 2030</td><td>SIA / Oxford Economics</td></tr>
+      </tbody>
+    </table>
+    <p class="rs-table_note">These are demand and workforce-condition signals, not supply-demand-gap computations. Treat them as sourced context; the modeled gap figures are in the first table.</p>
+  </div>
+
+  <h2>How to cite this dataset</h2>
+
+  <p>If you use these figures, please attribute them. A citation also helps the next person trace the number back to its method.</p>
+
+  <div class="rs-cite">
+    <p class="rs-cite_label">Cite as</p>
+    <p class="rs-cite_body">Project Arklight (2026). <em>The Arklight Demand Model: U.S. Skilled-Trades Shortage Dataset.</em> https://www.arklight.us/research/demand-model-dataset</p>
+  </div>
+
+  <h2>Method, license, and caveats</h2>
+
+  <p>The supply-demand-gap figures are computed with the <a href="/research/methodology">Arklight Demand Model</a>: a bottom-up, three-layer demand estimate measured against a readiness-discounted supply, which is why the gaps run several times larger than official openings figures. The model is deliberately conservative on supply and explicit on demand, so each gap is a floor, not a ceiling. Point estimates are directional; the range and direction are robust. The data is released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0</a>: free to reuse, including commercially, with attribution.</p>
+
+</article>
+
+<section class="rs-faq">
+  <p class="rs-faq_h">Frequently asked</p>
+  <div class="rs-faq_item">
+    <h3 class="rs-faq_q">What is this dataset?</h3>
+    <p class="rs-faq_a">An open, citable table of the U.S. skilled-trades shortage: annual hire-ready supply, bottom-up demand, and the resulting annual gap for electricians, machinists, and metal fabricators, computed with the Arklight Demand Model. It also collects four sourced sector-demand signals for nuclear power, the submarine industrial base, and semiconductor manufacturing. A CSV download is included.</p>
+  </div>
+  <div class="rs-faq_item">
+    <h3 class="rs-faq_q">How large is the U.S. skilled-trades shortage?</h3>
+    <p class="rs-faq_a">On the Arklight Demand Model, the annual gap is about 87,000 electricians, 40,000 machinists, and 48,000 metal fabricators. Across all of manufacturing, Deloitte and The Manufacturing Institute estimate up to 2.1 million jobs could go unfilled by 2030. The trade-level figures are modeled bottom-up; the 2.1 million figure is an external projection included for context.</p>
+  </div>
+  <div class="rs-faq_item">
+    <h3 class="rs-faq_q">Can I reuse or cite these numbers?</h3>
+    <p class="rs-faq_a">Yes. The dataset is released under Creative Commons Attribution 4.0 (CC BY 4.0), so it is free to reuse, including commercially, as long as you attribute Project Arklight and, ideally, link back to this page so the figure can be traced to its method.</p>
+  </div>
+  <div class="rs-faq_item">
+    <h3 class="rs-faq_q">How were the gap figures calculated?</h3>
+    <p class="rs-faq_a">Demand is built bottom-up in three layers: a replacement floor (retirements and attrition), organic growth from the BLS baseline, and a project-driven layer modeled from real capital signals such as data-center and fab capex, grid build-out, and defense hiring. Supply is hire-ready entrants from credential pipelines, readiness-discounted. The gap is demand minus supply. Full method is on the Arklight Demand Model page.</p>
+  </div>
+  <div class="rs-faq_item">
+    <h3 class="rs-faq_q">How current is the data?</h3>
+    <p class="rs-faq_a">The trade-level figures are annualized for 2026 and refreshed as the underlying briefings are updated. Sector signals carry their own horizons (2030 for manufacturing and semiconductors, 2050 for nuclear, a rolling ten years for the submarine base). The page shows its last-modified date.</p>
+  </div>
+</section>
+
+<section class="rs-about" aria-label="About Project Arklight">
+  <div class="rs-about_inner">
+    <p class="rs-about_h">About Project Arklight</p>
+    <p class="rs-about_lead">Project Arklight is a workforce-development company rebuilding how America trains skilled industrial labor.</p>
+    <p class="rs-about_body">We run a software-enabled trade school, Trade School 2.0, that assesses, trains, and deploys production-ready operators (electricians, machinists, welders, fabricators) to the companies reshoring American manufacturing. We also publish original research on the skilled-labor gap: where it is, how deep it runs, and what it takes to close it. A shortage of skilled workers is the biggest obstacle to rebuilding American industry, and Project Arklight exists to remove it.</p>
+    <p class="rs-about_links"><a href="/trade-school">How Trade School 2.0 works &rarr;</a><a href="/content-research">Read the research &rarr;</a></p>
+  </div>
+</section>
+
+<section class="rs-cta">
+  <div class="rs-cta_inner">
+    <div class="num">Content &amp; Research</div>
+    <h3>The number is the argument.<br/><em>Now do something with it.</em></h3>
+    <p>These figures are the gap. We built Project Arklight to close it. Read the briefings behind the data, or partner with us.</p>
+    <div class="rs-cta_actions">
+      <a href="/content-research" class="rs-btn rs-btn-secondary">Read the Briefings</a>
+      <a href="/trade-school#contact" class="rs-btn rs-btn-primary">Partner With Us →</a>
+    </div>
+  </div>
+</section>
+
+<div class="c-footer" data-scroll data-scroll-css-progress data-scroll-position="start, end" data-scroll-offset="0, 100%"> <span class="c-logo-trigger -bottom" data-scroll data-scroll-event-progress="scroll.logoExpand" data-scroll-position="start, end" data-scroll-offset="0, 100%"></span>  <footer class="c-footer_wrap"> <div class="c-footer_inner | u-container -bleed"> <h2 class="c-footer_title | u-h2">Building American talent</h2> <ul class="c-nav u-h2-regular"> <li class="c-nav_item"> <a href="/" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Home</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school" data-no-swup class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Trade School</span> </a> </li> <li class="c-nav_item"> <a href="/content-research" data-no-swup class="c-nav_link"> <span class="c-nav_label">Content &amp; Research</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school#contact" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Contact</span> </a> </li> </ul>   <ul class="c-footer_nav | u-h2-regular"> <li>   </li> <li> <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>X</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a> <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>LinkedIn</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a>  </li> </ul> <a href="/" class="c-footer_logo"> <span class="c-icon" data-astro-cid-xaas34xa> <svg class="svg-logo" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo" data-astro-cid-xaas34xa></use> </svg>  </span>  <span class="u-sr-only">Go to homepage</span> </a> <div class="c-footer_bottom"> <p class="c-details -columns"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  <ul class="c-footer_nav"> <li> <a href="/privacy-terms"> Privacy &amp; Terms </a> </li> </ul> </div> </div> <div class="ark-foot-wm" aria-hidden="true">Project Arklight</div></footer> </div>
+
+<script src="/styles/chrome.js"></script>
+<script src="/styles/cr.js"></script>
+
+</body>
+</html>

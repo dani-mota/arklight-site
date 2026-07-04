@@ -1,0 +1,51 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+.frame{width:780px;height:452px;padding:30px 36px 28px}
+.eyebrow{margin-bottom:8px}
+.title{font-size:23px;margin-bottom:22px}
+.grid{flex:1;display:grid;grid-template-columns:152px repeat(5,1fr);grid-template-rows:auto repeat(3,1fr);gap:6px}
+.corner{}
+.colh{font-family:var(--font-mono);font-size:10px;line-height:1.3;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:0 3px 7px}
+.rowh{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;text-align:right;padding-right:16px}
+.rowh b{font-size:15.5px;font-weight:600;color:var(--ink-0);letter-spacing:-.01em}
+.rowh span{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.02em;color:var(--ink-3);margin-top:4px}
+.cell{border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;letter-spacing:-.01em}
+.s{background:var(--rust);color:#FBFAF6}
+.m{background:#F1E2CC;color:#9A6322}
+.w{background:var(--canvas-2);color:var(--ink-3);font-weight:500;border:1px solid var(--line-soft)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="eyebrow">Build · Buy · Rent</div>
+  <h1 class="title">Three ways to get an industrial workforce</h1>
+  <div class="grid">
+    <div class="corner"></div>
+    <div class="colh">Speed to<br>first body</div>
+    <div class="colh">Cost over<br>3 years</div>
+    <div class="colh">Retention<br>&amp; loyalty</div>
+    <div class="colh">Fit to<br>your floor</div>
+    <div class="colh">Scales with<br>demand</div>
+
+    <div class="rowh"><b>Rent</b><span>STAFFING AGENCY</span></div>
+    <div class="cell s">Strong</div>
+    <div class="cell w">Weak</div>
+    <div class="cell w">Weak</div>
+    <div class="cell w">Weak</div>
+    <div class="cell m">Mixed</div>
+
+    <div class="rowh"><b>Buy</b><span>POACH A HIRE</span></div>
+    <div class="cell m">Mixed</div>
+    <div class="cell w">Weak</div>
+    <div class="cell m">Mixed</div>
+    <div class="cell m">Mixed</div>
+    <div class="cell w">Weak</div>
+
+    <div class="rowh"><b>Build</b><span>TRAIN YOUR OWN</span></div>
+    <div class="cell w">Weak</div>
+    <div class="cell s">Strong</div>
+    <div class="cell s">Strong</div>
+    <div class="cell s">Strong</div>
+    <div class="cell s">Strong</div>
+  </div>
+</div>
+</body></html>

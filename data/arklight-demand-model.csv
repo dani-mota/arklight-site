@@ -1,0 +1,4 @@
+trade,hire_ready_supply_per_year,demand_per_year,annual_gap,geography,period,source,methodology
+Electricians,10000,97000,87000,United States,2026,Project Arklight (Arklight Demand Model),https://www.arklight.us/research/methodology
+Machinists,16000,56000,40000,United States,2026,Project Arklight (Arklight Demand Model),https://www.arklight.us/research/methodology
+Metal fabricators,37000,85000,48000,United States,2026,Project Arklight (Arklight Demand Model),https://www.arklight.us/research/methodology

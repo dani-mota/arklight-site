@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{
+  --canvas-0:#F5F3ED;--canvas-1:#FBFAF6;--canvas-2:#EFEDE6;--canvas-3:#E7E4DC;
+  --ink-0:#15140F;--ink-1:#46443E;--ink-2:#787570;--ink-3:#8A867C;
+  --steel:#2E5A86;--rust:#B85416;--navy:#18324F;--amber:#F5A14A;
+  --line:rgba(20,18,15,.12);--line-soft:rgba(20,18,15,.08);
+  --font-body:'Inter Tight',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#fff}
+.frame{background:var(--canvas-1);font-family:var(--font-body);display:flex;flex-direction:column;overflow:hidden}
+.title{font-weight:600;letter-spacing:-.02em;color:var(--ink-0)}
+.eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust)}

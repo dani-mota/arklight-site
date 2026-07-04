@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css">
+<style>
+.frame{width:780px;height:452px;padding:30px 36px 22px}
+.eyebrow{margin-bottom:8px}
+.title{font-size:23px;margin-bottom:2px}
+.sub{font-family:var(--font-mono);font-size:11px;letter-spacing:.02em;color:var(--ink-3);margin-bottom:6px}
+svg{flex:1;width:100%;height:100%}
+.gl{stroke:var(--line-soft);stroke-width:1}
+.axis{stroke:var(--line);stroke-width:1.5}
+.yl{font-family:var(--font-mono);font-size:11px;fill:var(--ink-3)}
+.xl{font-family:var(--font-mono);font-size:11.5px;fill:var(--ink-2)}
+.val{font-family:var(--font-body);font-weight:700;font-size:19px;fill:var(--ink-0);letter-spacing:-.01em}
+.ytitle{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;fill:var(--ink-3)}
+.gap{font-family:var(--font-body);font-weight:700;font-size:13px;fill:var(--rust);letter-spacing:-.005em}
+</style></head>
+<body>
+<div class="frame">
+  <div class="eyebrow">Electricians · ARK-R-001</div>
+  <h1 class="title">You can’t rent or buy what doesn’t exist</h1>
+  <div class="sub">Job-ready supply vs. demand, U.S. electricians per year</div>
+  <svg viewBox="0 0 708 332" preserveAspectRatio="xMidYMid meet">
+    <!-- gridlines + y labels -->
+    <g>
+      <line class="gl" x1="58" y1="290" x2="690" y2="290"/>
+      <line class="gl" x1="58" y1="236" x2="690" y2="236"/>
+      <line class="gl" x1="58" y1="182" x2="690" y2="182"/>
+      <line class="gl" x1="58" y1="128" x2="690" y2="128"/>
+      <line class="gl" x1="58" y1="74"  x2="690" y2="74"/>
+      <line class="gl" x1="58" y1="20"  x2="690" y2="20"/>
+      <text class="yl" x="50" y="294" text-anchor="end">0</text>
+      <text class="yl" x="50" y="240" text-anchor="end">20</text>
+      <text class="yl" x="50" y="186" text-anchor="end">40</text>
+      <text class="yl" x="50" y="132" text-anchor="end">60</text>
+      <text class="yl" x="50" y="78"  text-anchor="end">80</text>
+      <text class="yl" x="50" y="24"  text-anchor="end">100</text>
+    </g>
+    <line class="axis" x1="58" y1="290" x2="690" y2="290"/>
+    <text class="ytitle" transform="rotate(-90 18 155)" x="18" y="155" text-anchor="middle">Thousands / year</text>
+
+    <!-- bars -->
+    <rect x="149" y="263" width="132" height="27" rx="2" fill="#2E5A86"/>
+    <rect x="404" y="28"  width="132" height="262" rx="2" fill="#B85416"/>
+    <text class="val" x="215" y="252" text-anchor="middle">~10K</text>
+    <text class="val" x="470" y="18"  text-anchor="middle">~97K</text>
+
+    <!-- gap bracket -->
+    <g stroke="#F5A14A" stroke-width="2" fill="none">
+      <line x1="562" y1="30" x2="562" y2="261"/>
+      <path d="M557 36 L562 28 L567 36"/>
+      <path d="M557 255 L562 263 L567 255"/>
+    </g>
+    <text class="gap" x="576" y="138">~87K-seat</text>
+    <text class="gap" x="576" y="156">gap, every</text>
+    <text class="gap" x="576" y="174">year</text>
+
+    <!-- x labels -->
+    <text class="xl" x="215" y="309" text-anchor="middle">Job-ready supply</text>
+    <text class="xl" x="215" y="324" text-anchor="middle">per year</text>
+    <text class="xl" x="470" y="309" text-anchor="middle">Demand</text>
+    <text class="xl" x="470" y="324" text-anchor="middle">per year</text>
+  </svg>
+</div>
+</body></html>
