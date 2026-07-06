@@ -54,12 +54,12 @@ Prioritize by **intent + persona-fit + zero-competition — never volume.** Buye
 # PERSONA B — Director of Workforce Development
 *Operational builder. Already sold on building; needs a better method. Value = concrete mechanics, speed, and competency measurement that make their build succeed. Never re-sell "why build."*
 
-### Job B1 — Design the program *(mid — "give me the method")*
-- **Seeds:** `how to build an apprenticeship program` · `manufacturing apprenticeship program` · `how to start a training program manufacturing` · `workforce development program design` · `in-house training program manufacturing`
-- **Questions:** how to build a manufacturing apprenticeship program · how do I start an apprenticeship program · what makes a good training program · how to design a competency-based program
-- **Value:** concrete, step-by-step program mechanics that map to real production requirements — the method they're hunting, not generic curriculum.
-- **Content:** SHARPEN `/content/build-manufacturing-apprenticeship-program` (their exact query).
-- **Payload:** "Build it right."
+### Job B1 — Design the program *(mid — "give me the method, without the bureaucracy")*
+- **Seeds:** `how to build a manufacturing training program` · `in-house operator training program` · `how to build a workforce training program` · `manufacturing upskilling program` · `on-the-job training program manufacturing` · `apprenticeship vs in-house training program`
+- **Questions:** how to build a manufacturing training program · how do I start an in-house training program · what makes a good operator training program · do I need a registered apprenticeship or can I run my own program
+- **Value:** program mechanics that deliver the apprenticeship *outcome* — earn-while-you-learn, production-ready workers — **without the DOL registration hassle buyers avoid.** Mapped to real production requirements, not generic curriculum.
+- **Content:** REFRAME `/content/build-manufacturing-apprenticeship-program` to lead with the employer-run training model (registered apprenticeship becomes one option, not the headline). GAP: *"Apprenticeship vs. in-house training program: which do you actually need?"*
+- **Payload:** "Build it right — without the DOL paperwork."
 
 ### Job B2 — Speed / time-to-competency *(mid — their throughput KPI)*
 - **Seeds:** `time to competency` · `reduce time to productivity` · `how long to train a machinist` · `how long to train a welder` · `accelerate skilled trades training` · `shorten manufacturing training time`
@@ -82,12 +82,8 @@ Prioritize by **intent + persona-fit + zero-competition — never volume.** Buye
 - **Content:** GAP: *"Capturing tribal knowledge before it retires."*
 - **Payload:** "Stop the slow-motion loss."
 
-### Job B5 — Register & fund *(bottom — operational plumbing)*
-- **Seeds:** `registered apprenticeship` · `how to register an apprenticeship program` · `apprenticeship funding` · `apprenticeship tax credit` · `workforce development grants manufacturing` · `DOL apprenticeship requirements`
-- **Questions:** how to register an apprenticeship program · how to fund an apprenticeship program · what grants are available for workforce development · apprenticeship tax credit for employers
-- **Value:** the practical regulatory and funding path — removes the operational friction that stalls their build.
-- **Content:** section of `build-manufacturing-apprenticeship-program`; GAP: *"How to register and fund a manufacturing apprenticeship."*
-- **Payload:** "We know the plumbing too."
+### ~~Job B5 — Register & fund~~ *(CUT 2026-07)*
+**Removed.** Our buyers largely avoid DOL-registered apprenticeships because the registration is a hassle they don't want to take on. Do **not** seed or build around `registered apprenticeship`, DOL registration, or apprenticeship funding/tax-credit mechanics. Instead, own the buyer's real question — *"how do I get the apprenticeship outcome without the apprenticeship bureaucracy?"* — through the reframed **Job B1** (`apprenticeship vs in-house training program`). The registration path is a hassle we help them *skip*, not a topic we lead with.
 
 ---
 
@@ -104,13 +100,15 @@ Prioritize by **intent + persona-fit + zero-competition — never volume.** Buye
 Run these; harvest questions + language, not volume. Grouped by priority.
 
 **Tier 1 — maps to existing pages (sharpen first, fastest to get cited):**
-manufacturing labor shortage · skilled trades shortage · machinist shortage · welder shortage · defense manufacturing workforce shortage · build vs buy talent · staffing agency vs in-house training · how to build a talent pipeline · ITAR cleared workforce · clearable talent · how to build an apprenticeship program · how to measure competency · competency-based training · cost of unfilled manufacturing jobs
+manufacturing labor shortage · skilled trades shortage · machinist shortage · welder shortage · defense manufacturing workforce shortage · build vs buy talent · staffing agency vs in-house training · how to build a talent pipeline · ITAR cleared workforce · clearable talent · how to build a manufacturing training program · how to measure competency · competency-based training · cost of unfilled manufacturing jobs
 
 **Tier 2 — gap content (high-value, build next):**
 time to competency · how long to train a machinist · reduce time to productivity · workforce development ROI · how to de-risk a training program · capture tribal knowledge · knowledge transfer retiring workforce · cost of vacancy manufacturing · how to staff a production ramp
 
-**Tier 3 — operational / bottom-funnel:**
-registered apprenticeship · apprenticeship funding · apprenticeship tax credit · workforce development grants manufacturing · alternative to staffing agency · manufacturing workforce partner
+**Tier 3 — decision-stage / bottom-funnel:**
+alternative to staffing agency · manufacturing workforce partner · how to staff a manufacturing ramp · custom workforce training provider · apprenticeship vs in-house training program
+
+> **Cut:** `registered apprenticeship`, `apprenticeship funding`, `apprenticeship tax credit`, `DOL apprenticeship requirements`, `workforce development grants` — buyers avoid the DOL-registration path (see cut Job B5). We own the *"skip the paperwork"* answer, not the paperwork.
 
 ---
 
@@ -119,4 +117,5 @@ registered apprenticeship · apprenticeship funding · apprenticeship tax credit
 2. **Register:** peer-to-peer, evidence-first, no hype, no adjectives without a number. The only voice that survives their earned skepticism.
 3. **Protagonist rule:** make the buyer the hero who fixed/built it. Never imply they failed and need rescuing.
 4. **Persona A gets evidence + de-risking; Persona B gets method + speed.** Never sell B on "why build"; never hand A hype instead of proof.
-5. **The missing input ATP can't give:** verbatim fear-language from real discovery calls. Feed transcripts back into `icp-buyer-personas.md` as they happen — that is the highest-value upgrade to this whole map.
+5. **Avoid the registered-apprenticeship frame.** Buyers avoid DOL-registered apprenticeships (registration hassle). Lead with employer-run "training program" language; reserve "apprenticeship" for the vs-comparison that resolves in our favor, and own the *"skip the DOL paperwork"* answer.
+6. **The missing input ATP can't give:** verbatim fear-language from real discovery calls. Feed transcripts back into `icp-buyer-personas.md` as they happen — that is the highest-value upgrade to this whole map.

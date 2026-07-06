@@ -153,7 +153,7 @@ Each persona researches the **problem space**, not the solution, and not "buy Ar
 - **Likely gaps to build:** a page on the *cost/consequence of not staffing the ramp*; a *how leaders de-risk building a pipeline* piece; a *build-vs-buy* deep dive framed at their altitude.
 
 ## Persona B — Director of Workforce Development (operational builder, method + speed)
-- **ATP seed language (problem-space):** how to build an apprenticeship program; manufacturing training program design; how to measure competency; reduce time to competency; upskill machinists fast; apprenticeship program cost/ROI; capture tribal knowledge from retiring workforce; registered apprenticeship setup; competency-based training in manufacturing; time-to-competency benchmarks.
+- **ATP seed language (problem-space):** how to build a manufacturing training program; in-house operator training program; how to measure competency; reduce time to competency; upskill machinists fast; apprenticeship vs in-house training program; capture tribal knowledge from retiring workforce; competency-based training in manufacturing; time-to-competency benchmarks. *(Note: buyers avoid DOL-registered apprenticeships — lead with employer-run "training program" language, not "registered apprenticeship." See `atp-seed-strategy.md`.)*
 - **Funnel stage:** mid (already building; hunting a better method).
 - **Emotional payload to hit:** "build it right, faster than you could alone" — equip, never replace.
 - **Existing Arklight pages that serve them:** `/content/build-manufacturing-apprenticeship-program` (their exact query), `/content/measuring-competency` (their exact query), `/content/manufacturing-workforce-development`.
