@@ -30,6 +30,7 @@ module.exports = async function handler(req, res) {
   const safeSource = source_page && String(source_page).trim() ? String(source_page).trim() : null;
   const safeReferrer = referrer && String(referrer).trim() ? String(referrer).trim() : null;
   const firstName = cleanName.split(/\s+/)[0] || cleanName;
+  const sourceLabel = safeSource ? (safeSource.replace(/^https?:\/\/[^/]+/, '') || '/') : 'website';
 
   let emailOk = false;
   let notionOk = false;
@@ -43,7 +44,7 @@ module.exports = async function handler(req, res) {
         from: 'Arklight Mission <share@arklight.us>',
         to: 'dani@arklight.us',
         replyTo: cleanEmail,
-        subject: `New contact — ${cleanName}${safeOrg ? ` · ${safeOrg}` : ''}`,
+        subject: `New lead from ${sourceLabel}: ${cleanName}${safeOrg ? ` (${safeOrg})` : ''}`,
         text:
           `New message from the website contact form:\n\n` +
           `Name: ${cleanName}\n` +
