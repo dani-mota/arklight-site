@@ -493,11 +493,7 @@ window.addEventListener('scroll',()=>{const h=document.querySelector('.hero'),s=
 
 // Contact form
 const contactForm=document.getElementById('contactForm');
-if(contactForm){contactForm.addEventListener('submit',function(e){
-  e.preventDefault();
-  document.getElementById('formFields').classList.add('hide');
-  document.getElementById('formSuccess').classList.add('show');
-});}
+if(contactForm){contactForm.addEventListener('submit',function(e){e.preventDefault();var g=function(id){var el=document.getElementById(id);return el?el.value:'';};var it=g('interest');var ms=g('message');var payload={name:g('name'),email:g('email'),org:g('org'),message:(it?('Interest: '+it+'. '):'')+(ms||'(no message provided)'),source_page:location.href,referrer:document.referrer};document.getElementById('formFields').classList.add('hide');document.getElementById('formSuccess').classList.add('show');fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});if(window.gtag){gtag('event','generate_lead',{source_page:location.href});}});}
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
