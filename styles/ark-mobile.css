@@ -1,0 +1,86 @@
+/* ark-mobile.css — shared mobile/site-chrome corrections.
+ *
+ * Single source of truth for the header, hamburger menu and first-load
+ * splash across BOTH page families:
+ *   - the Astro-built pages (/ and /trade-school) that load their own
+ *     _astro/index.*.css bundle
+ *   - the hand-written standalone pages that load /styles/chrome.css
+ *
+ * Load this LAST in <head> so it wins without needing !important everywhere.
+ */
+
+/* ---------------------------------------------------------------------------
+ * 1. First-load splash
+ * ---------------------------------------------------------------------------
+ * <c-loader> paints a full-viewport beige panel with a lone reticle mark for
+ * ~500ms on every hard navigation. Menu links to /trade-school and
+ * /content-research carry data-no-swup, so that splash fires on every page
+ * switch and reads as a broken page on a phone.
+ *
+ * Hide it, but do NOT remove the element: its connectedCallback is what adds
+ * html.is-ready and calls Scroll.init(). display:none keeps the custom element
+ * connected, so the boot sequence still runs.
+ */
+.c-loader { display: none !important; }
+
+/* ---------------------------------------------------------------------------
+ * 2. Nav links: no sticky hover on touch
+ * ---------------------------------------------------------------------------
+ * .c-nav_link:hover slides the label right by (--icon-width + .25em) and dims
+ * it to .7 opacity. On a touchscreen :hover latches after a tap, so the last
+ * item you touched stays shifted and highlighted — visible as the indented,
+ * blue "Content & Research" row.
+ */
+@media (hover: none) {
+  .c-nav_link:hover { opacity: 1; }
+  .c-nav_link:hover .c-nav_label { transform: none; }
+  .c-nav_link:hover .c-nav_icon { transform: scale(0); }
+}
+
+/* ---------------------------------------------------------------------------
+ * 3. Mobile menu: centered
+ * ------------------------------------------------------------------------ */
+@media (max-width: 699px) {
+  .c-menu_inner {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0;
+    /* room for the fixed close button up top; the meta row is absolute below */
+    padding: calc(var(--header-bar-height) + var(--grid-margin))
+             var(--grid-margin)
+             calc(var(--grid-margin) * 2);
+  }
+
+  .c-menu_inner .c-nav {
+    /* Pin the size in px: the Astro pages use a fluid root font-size (35px)
+       and the standalone pages use 16px, so `rem` renders the same menu at two
+       different sizes. This also keeps "Content & Research" on one line. */
+    --font-size: clamp(26px, 8.2vw, 40px);
+    align-items: center;
+    gap: .3em;
+    width: 100%;
+  }
+
+  .c-menu_inner .c-nav_link {
+    display: block;
+    width: 100%;
+    padding: .1em 0;
+  }
+
+  /* the menu never shows the spark icon, and the hover shift breaks centering */
+  .c-menu_inner .c-nav_icon { display: none; }
+  .c-menu_inner .c-nav_link .c-nav_label { transform: none !important; }
+
+  /* Project Arklight · Austin, Texas · clock — pinned bottom, centered, so the
+     nav can center against the full panel height instead of being pushed up by
+     space-between. */
+  .c-menu_inner .c-details {
+    position: absolute;
+    right: 0;
+    bottom: calc(var(--grid-margin) + env(safe-area-inset-bottom, 0px));
+    left: 0;
+    justify-content: center;
+    text-align: center;
+  }
+}
