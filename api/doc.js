@@ -46,9 +46,11 @@ module.exports = async function handler(req, res) {
     console.log(JSON.stringify({
       event: 'doc_denied', email: session.email, doc: id, ts: new Date().toISOString()
     }));
-    // Not awaited: an attacker must not be able to make us block on (or flood)
-    // a third-party email API by hammering a restricted document.
-    notify(
+    // Awaited: the function freezes on return, so an un-awaited send never
+    // fires and you would silently stop getting tier-2 alerts. notify()
+    // swallows its own errors. Rate limiting is the right guard against
+    // someone hammering this path, not dropping the notification.
+    await notify(
       'Investor room TIER-2 REQUEST: ' + session.email,
       session.email + ' tried to open a restricted document ("' + doc.title + '") at ' +
       new Date().toISOString() + '.\n\nTo grant access, add their email to TIER2_ALLOWLIST in Vercel.'

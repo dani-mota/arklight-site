@@ -40,12 +40,13 @@ module.exports = async function handler(req, res) {
     const link = base + '/api/auth-verify?token=' + encodeURIComponent(token);
 
     if (resend) {
-      // Deliberately NOT awaited, and failures never reach the client.
-      // Awaiting made this branch measurably slower than the "not invited"
-      // branch, and surfacing send errors as a 500 turned the endpoint into a
-      // membership oracle: 500 = on the list, 200 = not. Both are now identical.
-      Promise.resolve(
-        resend.emails.send({
+      // MUST be awaited: a serverless function is frozen the moment it returns,
+      // so a fire-and-forget send simply never happens.
+      // The oracle is closed a different way: failures are swallowed (never
+      // surfaced to the client), and BOTH branches now perform exactly one
+      // awaited email call, so the response is identical in body and in timing.
+      try {
+        await resend.emails.send({
           from: MAIL_FROM,
           to: clean,
           subject: 'Your Project Arklight investor access link',
@@ -65,18 +66,20 @@ module.exports = async function handler(req, res) {
             '<p style="color:#666;font-size:13px">If you did not request this, you can ignore this email.</p>' +
             '<p style="color:#999;font-size:12px;word-break:break-all">Or paste this into your browser:<br>' + link + '</p>' +
             '</div>'
-        })
-      ).catch(function (e) {
+        });
+        console.log(JSON.stringify({ event: 'magic_link_sent', email: clean, ts: new Date().toISOString() }));
+      } catch (e) {
+        // Swallowed on purpose: telling the client the send failed would reveal
+        // that this address is on the invite list.
         console.log(JSON.stringify({ event: 'magic_link_send_failed', email: clean, err: String(e && e.message) }));
-      });
+      }
     }
-    // No second email here: the sign-in notification already tells you when the
-    // link is actually used, and one email per request halves the amount of
-    // inbox traffic an unauthenticated caller can generate.
-    console.log(JSON.stringify({ event: 'magic_link_sent', email: clean, ts: new Date().toISOString() }));
+    // No second email here: the sign-in notification already covers the follow-up,
+    // and one send per request keeps both branches symmetrical.
   } else {
-    // Not invited: tell Dani, grant nothing. Not awaited, for the same reasons.
-    notify(
+    // Not invited: tell Dani, grant nothing. One awaited send, mirroring the
+    // allowlisted branch so the two are indistinguishable by timing.
+    await notify(
       'Investor room ACCESS REQUEST: ' + clean,
       clean + ' tried to access the investor data room at ' + new Date().toISOString() + '.\n\n' +
       'They are NOT on the invite list, so no link was sent.\n\n' +

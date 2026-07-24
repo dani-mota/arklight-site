@@ -28,13 +28,14 @@ module.exports = async function handler(req, res) {
   const session = sign({ k: 'sess', email: payload.email }, SESSION_TTL_DAYS * 24 * 3600 * 1000);
   res.setHeader('Set-Cookie', sessionCookie(session));
 
-  // Not awaited: a slow or failing email provider must not delay (or 504) an
-  // investor's sign-in. The console line above is the durable audit record.
+  // The console line is the durable audit record. The email must be awaited:
+  // the function is frozen once it returns, so an un-awaited send never fires.
+  // notify() swallows its own errors, so this cannot break sign-in.
   console.log(JSON.stringify({
     event: 'sign_in', email: payload.email, ts: new Date().toISOString(),
     ip: req.headers['x-forwarded-for'] || null
   }));
-  notify(
+  await notify(
     'Investor room SIGN-IN: ' + payload.email,
     payload.email + ' signed in to the investor data room at ' + new Date().toISOString() + '.\n\n' +
     'IP: ' + (req.headers['x-forwarded-for'] || 'unknown') + '\n' +
