@@ -8,6 +8,14 @@
 const { verify, sign, sessionCookie, notify, SESSION_TTL_DAYS } = require('./_auth');
 
 module.exports = async function handler(req, res) {
+  // GET only, and only as a real navigation. Without this, an attacker who is
+  // themselves on the allowlist could force a victim's browser to adopt THEIR
+  // session via <img src="/api/auth-verify?token=...">, which would silently
+  // misattribute every subsequent document open in the audit log.
+  if (req.method !== 'GET') return res.status(405).end();
+  const dest = req.headers['sec-fetch-dest'];
+  if (dest && dest !== 'document') return res.status(403).end();
+
   const token = (req.query && req.query.token) || '';
   const payload = verify(token);
 
@@ -20,7 +28,13 @@ module.exports = async function handler(req, res) {
   const session = sign({ k: 'sess', email: payload.email }, SESSION_TTL_DAYS * 24 * 3600 * 1000);
   res.setHeader('Set-Cookie', sessionCookie(session));
 
-  await notify(
+  // Not awaited: a slow or failing email provider must not delay (or 504) an
+  // investor's sign-in. The console line above is the durable audit record.
+  console.log(JSON.stringify({
+    event: 'sign_in', email: payload.email, ts: new Date().toISOString(),
+    ip: req.headers['x-forwarded-for'] || null
+  }));
+  notify(
     'Investor room SIGN-IN: ' + payload.email,
     payload.email + ' signed in to the investor data room at ' + new Date().toISOString() + '.\n\n' +
     'IP: ' + (req.headers['x-forwarded-for'] || 'unknown') + '\n' +

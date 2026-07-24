@@ -8,6 +8,11 @@ const { getSession, clearCookie } = require('./_auth');
 
 module.exports = async function handler(req, res) {
   if (req.method === 'POST') {
+    // Same-site only: otherwise any page could sign your investors out.
+    const site = req.headers['sec-fetch-site'];
+    if (site && site !== 'same-origin' && site !== 'none') {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
     res.setHeader('Set-Cookie', clearCookie());
     return res.status(200).json({ ok: true, signedOut: true });
   }

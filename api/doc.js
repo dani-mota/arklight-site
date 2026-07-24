@@ -24,19 +24,31 @@ module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'private, no-store, max-age=0');
   res.setHeader('X-Content-Type-Options', 'nosniff');
 
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   const session = getSession(req);
   if (!session) return res.status(401).json({ error: 'Not signed in.' });
 
+  // hasOwnProperty, not DOCS[id]: a bare object inherits Object.prototype, so
+  // ids like "constructor" or "__proto__" would otherwise return a truthy value
+  // and slip past both this guard and the tier check below.
   const id = String((req.query && req.query.id) || '');
-  const doc = DOCS[id];
-  if (!doc) return res.status(404).json({ error: 'Not found.' });
+  const doc = Object.prototype.hasOwnProperty.call(DOCS, id) ? DOCS[id] : null;
+  if (!doc || typeof doc.file !== 'string') return res.status(404).json({ error: 'Not found.' });
 
-  // Second wall: restricted documents need an explicit grant.
-  if (doc.tier === 2 && !inList('TIER2_ALLOWLIST', session.email)) {
+  // Second wall, default-deny: anything that is not a clean tier-1 integer is
+  // treated as restricted, so a typo'd or quoted tier fails CLOSED, not open.
+  const tier = Number(doc.tier);
+  if (!Number.isInteger(tier) || tier < 1) return res.status(404).json({ error: 'Not found.' });
+  if (tier >= 2 && !inList('TIER2_ALLOWLIST', session.email)) {
     console.log(JSON.stringify({
       event: 'doc_denied', email: session.email, doc: id, ts: new Date().toISOString()
     }));
-    await notify(
+    // Not awaited: an attacker must not be able to make us block on (or flood)
+    // a third-party email API by hammering a restricted document.
+    notify(
       'Investor room TIER-2 REQUEST: ' + session.email,
       session.email + ' tried to open a restricted document ("' + doc.title + '") at ' +
       new Date().toISOString() + '.\n\nTo grant access, add their email to TIER2_ALLOWLIST in Vercel.'

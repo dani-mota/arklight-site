@@ -333,14 +333,7 @@
           <span class="rec lbl"><span class="dot"></span>SESSION MONITORED</span>
         </div>
       </div>
-      <div class="statstrip">
-        <div><span class="lbl">STAGE</span><b>PRE-SEED</b></div>
-        <div><span class="lbl">INSTRUMENT</span><b>SAFE</b></div>
-        <div><span class="lbl">CAP</span><b>$3.0M</b></div>
-        <div><span class="lbl">DOCS</span><b class="num">46</b></div>
-        <div><span class="lbl">TIER-1</span><b style="color:var(--verify)">CLEARED</b></div>
-        <div><span class="lbl">TIER-2</span><b style="color:var(--ember)">RESTRICTED</b></div>
-      </div>
+      <div class="statstrip" id="statstrip"></div>
     </div>
   </div>
 
@@ -416,7 +409,7 @@
     <div class="bhead">
       <span class="vt">Live Pipeline // Active Engagements</span>
       <span class="live lbl"><span class="d"></span>LIVE</span>
-      <span class="bmeta">17 active · 292 identified · updated 07-13</span>
+      <span class="bmeta" id="bmeta"></span>
       <button class="vclose" data-bclose type="button">Close ✕</button>
     </div>
     <div class="bcols" id="bcols"></div>
@@ -447,34 +440,10 @@
   setInterval(tick,1000); tick();
 
   // ---- data manifest (mirrors the data-room folder) ----
-  var TIERS=[
-    {idx:"01",name:"Pitch & Summary",sub:"Deck · memo",status:"cleared",docs:[
-      {n:"Arklight - Investor Deck.pdf",t:"SYNC 07-08"},
-      {n:"Arklight - Investor Memo.pdf",t:"SYNC 07-11"}]},
-    {idx:"02",name:"Company & Legal",sub:"Formation · bylaws · equity plan",status:"cleared",docs:[
-      {n:"Certificate of Incorporation (DE)",t:"FILED 02-03"},
-      {n:"Bylaws (adopted)",t:"02-03"},
-      {n:"2026 Equity Incentive Plan",t:"02-03"}]},
-    {idx:"03",name:"Team",sub:"Founder & team bios",status:"cleared",docs:[
-      {n:"Arklight - Team Bios.pdf",t:"SYNC 07-13"}]},
-    {idx:"04",name:"Product & Market",sub:"Demos · market · competitive",status:"cleared",docs:[
-      {n:"Arklight OS Product Demo",t:"DEMO"},
-      {n:"Employer Portal Product Demo",t:"DEMO"},
-      {n:"Market Size & Analysis",t:"SYNC"},
-      {n:"Competitor Landscape & Analysis",t:"SYNC"}]},
-    {idx:"05",name:"Traction",sub:"MOU · proposal · live pipeline",status:"cleared",docs:[
-      {n:"Valinor MOU - Signed",t:"SIGNED 06-15"},
-      {n:"Oracle Proposal",t:"06-15"},
-      {n:"Pipeline CRM Tracker",t:"LIVE",board:true}]},
-    {idx:"06",name:"Financials",sub:"Use of funds · model & projections",status:"partial",docs:[
-      {n:"Use of Funds",t:"SYNC"},
-      {n:"Financial Model & Projections",t:"TIER-2",lock:true}]}
-  ];
-  var WALL={idx:"◆",name:"Tier-2 - Restricted",sub:"Executed contracts · detailed cap table · full model",docs:[
-      {n:"Founder vesting & CSPAs (executed)",t:"LOCKED",lock:true},
-      {n:"Signed SAFEs + board consents",t:"LOCKED",lock:true},
-      {n:"Detailed cap table",t:"LOCKED",lock:true},
-      {n:"Full financial model / pro-forma",t:"LOCKED",lock:true}]};
+  // The document manifest, round stats and pipeline are CONFIDENTIAL and are
+  // never shipped in this file. They are fetched from /api/manifest, which
+  // requires a valid session. Nothing below is populated until sign-in.
+  var TIERS=[], WALL=null, PIPELINE=[];
 
   function pill(s){
     var m={cleared:"Cleared",partial:"Partial",restricted:"Restricted"};
@@ -506,37 +475,41 @@
     return el;
   }
 
-  // Every document streams through the gated endpoint /api/doc, which checks the
-  // session cookie, logs the open, and pulls the file from private Blob storage.
-  // The files are NOT on this site. Locally there is no API, so read the
-  // gitignored dev copies directly.
-  var DOC_FILES={
-    deck:"arklight-investor-deck.pdf",
-    memo:"arklight-investor-memo.pdf",
-    cert:"arklight-certificate-of-incorporation.pdf",
-    bylaws:"arklight-bylaws.pdf",
-    plan:"arklight-equity-incentive-plan.pdf",
-    bios:"arklight-team-bios.pdf",
-    market:"arklight-market-analysis.pdf",
-    comp:"arklight-competitive-landscape.pdf",
-    funds:"arklight-use-of-funds.pdf"
-  };
-  function docSrc(id){
-    return LOCAL ? "/data-room-assets/"+DOC_FILES[id] : "/api/doc?id="+id;
-  }
-  TIERS[0].docs[0].src=docSrc("deck");
-  TIERS[0].docs[1].src=docSrc("memo");
-  TIERS[1].docs[0].src=docSrc("cert");    // Company & Legal -> Certificate of Incorporation
-  TIERS[1].docs[1].src=docSrc("bylaws");  // Company & Legal -> Bylaws
-  TIERS[1].docs[2].src=docSrc("plan");    // Company & Legal -> Equity Incentive Plan
-  TIERS[2].docs[0].src=docSrc("bios");    // Team
-  TIERS[3].docs[2].src=docSrc("market");  // Product & Market -> Market Size & Analysis
-  TIERS[3].docs[3].src=docSrc("comp");    // Product & Market -> Competitor Landscape & Analysis
-  TIERS[5].docs[0].src=docSrc("funds");   // Financials -> Use of Funds
-
+  // Documents stream through the gated endpoint /api/doc, which checks the session
+  // cookie, logs the open, and pulls the file from private Blob storage. The server
+  // supplies each row's src in the manifest; the client never maps ids to filenames.
   var feed=document.getElementById("feed");
-  TIERS.forEach(function(t){ feed.appendChild(tierEl(t,false)); });
-  feed.appendChild(tierEl(WALL,true));
+
+  function buildFeed(){
+    feed.innerHTML="";
+    if(!TIERS.length){
+      var note=document.createElement("div");
+      note.className="lbl";
+      note.style.cssText="padding:18px 4px;color:var(--text-2)";
+      note.textContent="// MANIFEST UNAVAILABLE - SIGN IN REQUIRED";
+      feed.appendChild(note);
+      return;
+    }
+    TIERS.forEach(function(t){ feed.appendChild(tierEl(t,false)); });
+    if(WALL) feed.appendChild(tierEl(WALL,true));
+    attachDecode();
+  }
+
+  function renderStats(stats){
+    var strip=document.getElementById("statstrip");
+    if(!strip||!stats) return;
+    strip.innerHTML="";
+    stats.forEach(function(s){
+      var d=document.createElement("div");
+      var k=document.createElement("span"); k.className="lbl"; k.textContent=s.k;
+      var v=document.createElement("b");
+      if(s.num) v.className="num";
+      if(s.tone==="ok") v.style.color="var(--verify)";
+      if(s.tone==="bad") v.style.color="var(--ember)";
+      v.textContent=s.v;
+      d.appendChild(k); d.appendChild(v); strip.appendChild(d);
+    });
+  }
 
   // ---- decode-on-hover (terminal text-scramble) ----
   var REDUCE=matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -575,10 +548,14 @@
     }
     el._raf=requestAnimationFrame(run);
   }
-  feed.querySelectorAll(".nm-t, .doc .dn").forEach(function(el){
-    el.setAttribute("data-txt", el.textContent);
-    el.addEventListener("mouseenter", function(){ scramble(el); });
-  });
+  // Re-attached after each manifest render, since the rows are built dynamically.
+  function attachDecode(){
+    feed.querySelectorAll(".nm-t, .doc .dn").forEach(function(el){
+      if(el.getAttribute("data-txt")) return;
+      el.setAttribute("data-txt", el.textContent);
+      el.addEventListener("mouseenter", function(){ scramble(el); });
+    });
+  }
 
   // toast + activity log
   var toast=document.getElementById("toast"), toastT;
@@ -613,31 +590,8 @@
   }
 
   // ---- live pipeline board (Kanban) ----
-  // Active engagements only (the 14 we're talking to now), mirrored from the CRM.
-  // Update this array to match the live Notion pipeline before sharing.
-  var PIPELINE=[
-    {stage:"Identified", accent:"idle", count:292, summary:"prospects mapped<br>17 now engaged"},
-    {stage:"In Conversation", accent:"steel", cards:[
-      {co:"SpaceX"},
-      {co:"AstroForge"},
-      {co:"Varda Space Industries"},
-      {co:"Impulse Space"},
-      {co:"Armada"},
-      {co:"General Matter"},
-      {co:"Valar Atomics"},
-      {co:"Nominal"},
-      {co:"Neros Technologies"},
-      {co:"Northwood Space"},
-      {co:"Adam Simpson"}]},
-    {stage:"Advanced Conversation + Negotiation", accent:"amber", cards:[
-      {co:"Oracle", contact:"Executive buy-in"},
-      {co:"Hadrian", contact:"Executive buy-in"},
-      {co:"AMCA", contact:"Executive buy-in"},
-      {co:"Anduril Industries", contact:"Executive buy-in"},
-      {co:"Gecko Robotics", contact:"Executive buy-in"}]},
-    {stage:"Pilot / LOI Signed", accent:"verify", cards:[
-      {co:"Valinor", contact:"Signed MOU · 06-15"}]}
-  ];
+  // PIPELINE is confidential (named prospects and deal stages). It is delivered
+  // by /api/manifest to signed-in sessions only and is declared empty above.
   function renderBoard(){
     var wrap=document.getElementById("bcols"); if(!wrap) return;
     wrap.innerHTML=PIPELINE.map(function(col){
@@ -807,9 +761,27 @@
   });
 
   // Already signed in? Skip the gate entirely.
-  fetch("/api/session",{credentials:"same-origin"})
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(s){ if(s && s.ok){ setOperator(s.email); boot(true); } })
+  // /api/manifest is session-gated and returns the operator plus all room content.
+  // A 401 simply means "not signed in" and leaves the gate up.
+  function loadManifest(){
+    return fetch("/api/manifest",{credentials:"same-origin"})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(m){
+        if(!m || !m.ok) return null;
+        TIERS    = m.tiers    || [];
+        WALL     = m.wall     || null;
+        PIPELINE = m.pipeline || [];
+        setOperator(m.email);
+        renderStats(m.stats);
+        var bm=document.getElementById("bmeta");
+        if(bm) bm.textContent = m.pipelineMeta || "";
+        buildFeed();
+        return m;
+      });
+  }
+
+  loadManifest()
+    .then(function(m){ if(m) boot(true); })
     .catch(function(){});
 })();
 </script>

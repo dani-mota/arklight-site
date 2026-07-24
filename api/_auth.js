@@ -52,10 +52,14 @@ function normalizeEmail(email) { return String(email || '').trim().toLowerCase()
 
 function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
-/** Is this email invited? Supports exact addresses and "@domain.com" entries. */
+/**
+ * Is this email invited? Supports exact addresses and "@domain.com" entries.
+ * Self-defending: revalidates shape so a value like "x@evil.com@arklight.us"
+ * can never match a domain entry, regardless of who calls this.
+ */
 function isAllowed(email) {
   const e = normalizeEmail(email);
-  if (!e) return false;
+  if (!e || !isValidEmail(e)) return false;
   const list = (process.env.INVESTOR_ALLOWLIST || '')
     .split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
   return list.some(entry => entry.startsWith('@') ? e.endsWith(entry) : entry === e);
@@ -73,13 +77,24 @@ function clearCookie() {
 function readCookie(req, name) {
   const raw = req.headers.cookie || '';
   const m = raw.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
-  return m ? decodeURIComponent(m[1]) : null;
+  if (!m) return null;
+  // A malformed value (e.g. "%") makes decodeURIComponent throw; treat as absent
+  // rather than letting a URIError escape and 500 the whole request.
+  try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
 }
 
-/** Returns { email } for a valid signed session, else null. */
+/**
+ * Returns { email } for a valid signed session, else null.
+ *
+ * The allowlist is re-checked on EVERY request, not just at sign-in, so removing
+ * someone from INVESTOR_ALLOWLIST revokes their access immediately instead of
+ * letting them keep reading documents until the cookie expires.
+ */
 function getSession(req) {
   const payload = verify(readCookie(req, COOKIE));
-  return payload && payload.k === 'sess' ? payload : null;
+  if (!payload || payload.k !== 'sess' || !payload.email) return null;
+  if (!isAllowed(payload.email)) return null;
+  return payload;
 }
 
 /** Fire-and-forget notification. Never throws. */

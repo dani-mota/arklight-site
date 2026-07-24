@@ -29,8 +29,10 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Access is not configured yet. Please contact dani@arklight.us.' });
   }
 
-  const host = req.headers['x-forwarded-host'] || req.headers.host;
-  const base = 'https://' + host;
+  // Pinned, never derived from request headers. A Host / X-Forwarded-Host value
+  // is attacker-influencable on most stacks, and a poisoned one would send the
+  // investor a genuine, correctly-signed email whose link points at the attacker.
+  const base = process.env.PUBLIC_BASE_URL || 'https://www.arklight.us';
   const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
   if (isAllowed(clean)) {
@@ -38,8 +40,12 @@ module.exports = async function handler(req, res) {
     const link = base + '/api/auth-verify?token=' + encodeURIComponent(token);
 
     if (resend) {
-      try {
-        await resend.emails.send({
+      // Deliberately NOT awaited, and failures never reach the client.
+      // Awaiting made this branch measurably slower than the "not invited"
+      // branch, and surfacing send errors as a 500 turned the endpoint into a
+      // membership oracle: 500 = on the list, 200 = not. Both are now identical.
+      Promise.resolve(
+        resend.emails.send({
           from: MAIL_FROM,
           to: clean,
           subject: 'Your Project Arklight investor access link',
@@ -59,18 +65,18 @@ module.exports = async function handler(req, res) {
             '<p style="color:#666;font-size:13px">If you did not request this, you can ignore this email.</p>' +
             '<p style="color:#999;font-size:12px;word-break:break-all">Or paste this into your browser:<br>' + link + '</p>' +
             '</div>'
-        });
-      } catch (e) {
-        return res.status(500).json({ error: 'Could not send the email. Please try again.' });
-      }
+        })
+      ).catch(function (e) {
+        console.log(JSON.stringify({ event: 'magic_link_send_failed', email: clean, err: String(e && e.message) }));
+      });
     }
-    await notify(
-      'Investor room: link sent to ' + clean,
-      clean + ' requested an access link at ' + new Date().toISOString() + '.'
-    );
+    // No second email here: the sign-in notification already tells you when the
+    // link is actually used, and one email per request halves the amount of
+    // inbox traffic an unauthenticated caller can generate.
+    console.log(JSON.stringify({ event: 'magic_link_sent', email: clean, ts: new Date().toISOString() }));
   } else {
-    // Not invited: tell Dani, grant nothing.
-    await notify(
+    // Not invited: tell Dani, grant nothing. Not awaited, for the same reasons.
+    notify(
       'Investor room ACCESS REQUEST: ' + clean,
       clean + ' tried to access the investor data room at ' + new Date().toISOString() + '.\n\n' +
       'They are NOT on the invite list, so no link was sent.\n\n' +
