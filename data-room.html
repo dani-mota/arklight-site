@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.svg"/>
+<title>Investor Access | Project Arklight</title>
+<meta name="description" content="Secure investor data room for Project Arklight. Access by invitation only."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"/>
+<style>
+  /* ============================================================
+     ARKLIGHT · INVESTOR SITUATION ROOM - design mock
+     Built on the Arklight design system tokens.
+     Committed single visual world: Warm Obsidian console (dark).
+     Fonts fall back to system (SF) here; production swaps to
+     Inter Tight + JetBrains Mono per the brand @font-face.
+     ============================================================ */
+  :root{
+    --canvas-0:#0B0A08; --canvas-1:#111210; --canvas-2:#17181A;
+    --canvas-3:#1E2024; --canvas-4:#282A30;
+    --text-0:#F4F3EF; --text-1:#C9C8C3; --text-2:#A6A5A0; --text-3:#8A8984;
+    --bd-0:rgba(255,250,235,.06); --bd-1:rgba(255,250,235,.10);
+    --bd-2:rgba(255,250,235,.16); --bd-strong:rgba(255,250,235,.28);
+    --blue-200:#9EB8CB; --blue-300:#6E8EA8; --blue-400:#4A739A; --blue-500:#365E85;
+    --blue-glow:rgba(110,142,168,.35); --blue-glow-lo:rgba(110,142,168,.10);
+    --amber:#F5A14A; --amber-glow:rgba(245,161,74,.30);
+    --steel:#A6B0C0;
+    --ember:#E55A4A; --ember-glow:rgba(229,90,74,.28);
+    --verify:#7FD88A; --verify-glow:rgba(127,216,138,.22);
+    --font-display:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --tw:0.18em;   /* tracking-widest for mono labels */
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--canvas-0); color:var(--text-1);
+    font-family:var(--font-display); font-size:15px; line-height:1.45;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  /* subtle field: hairline grid + radial warm glow */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(120% 90% at 50% -10%, var(--blue-glow-lo), transparent 55%),
+      linear-gradient(rgba(255,250,235,.025) 1px,transparent 1px) 0 0/100% 40px,
+      linear-gradient(90deg,rgba(255,250,235,.025) 1px,transparent 1px) 0 0/40px 100%;
+    mask:radial-gradient(130% 100% at 50% 40%,#000 55%,transparent 100%);
+  }
+  /* scanlines + vignette */
+  .fx{position:fixed; inset:0; pointer-events:none; z-index:60}
+  .fx.scan{background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 1px,transparent 1px 3px); opacity:.5; mix-blend-mode:multiply}
+  .fx.vig{box-shadow:inset 0 0 240px 40px rgba(0,0,0,.55)}
+  /* viewport corner brackets */
+  .bracket{position:fixed; width:26px; height:26px; z-index:61; pointer-events:none; border:1.5px solid var(--blue-300); opacity:.55}
+  .bracket.tl{top:16px; left:16px; border-right:0; border-bottom:0}
+  .bracket.tr{top:16px; right:16px; border-left:0; border-bottom:0}
+  .bracket.bl{bottom:16px; left:16px; border-right:0; border-top:0}
+  .bracket.br{bottom:16px; right:16px; border-left:0; border-top:0}
+
+  .mono{font-family:var(--font-mono); font-variant-numeric:tabular-nums}
+  .lbl{font-family:var(--font-mono); text-transform:uppercase; letter-spacing:var(--tw); font-size:10.5px; color:var(--text-2)}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ---- shell ---- */
+  .wrap{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 28px}
+
+  /* ======================= GATE ======================= */
+  #gate{min-height:100vh; display:flex; flex-direction:column}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:26px 4px; gap:16px}
+  .topbar .lbl{color:var(--text-3)}
+  .brand{display:flex; align-items:center; gap:10px}
+  .brand b{font-weight:600; letter-spacing:.02em; color:var(--text-0)}
+  .gatecenter{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:22px; padding:40px 0 80px}
+  .mark{width:210px; max-width:64vw; height:auto; filter:drop-shadow(0 0 26px var(--blue-glow)); margin-bottom:4px}
+  .hmark{height:13px; width:auto; vertical-align:middle; opacity:.95}
+  .eyebrow{color:var(--blue-200)}
+  h1{font-family:var(--font-display); font-weight:600; letter-spacing:-.02em; color:var(--text-0); margin:0; font-size:clamp(32px,6vw,58px); line-height:1.04; text-wrap:balance}
+  .gatesub{max-width:46ch; color:var(--text-2); margin:-6px 0 6px; font-size:14px}
+  form.access{display:flex; gap:10px; width:min(440px,90vw); margin-top:4px}
+  .field{flex:1; display:flex; align-items:center; gap:8px; background:var(--canvas-1); border:1px solid var(--bd-2); border-radius:2px; padding:0 12px; transition:border-color .15s, box-shadow .15s}
+  .field:focus-within{border-color:var(--blue-400); box-shadow:0 0 0 3px var(--blue-glow-lo)}
+  .field .caret{color:var(--blue-300); font-family:var(--font-mono)}
+  .field input{flex:1; background:none; border:0; outline:0; color:var(--text-0); font-family:var(--font-mono); letter-spacing:.14em; text-transform:uppercase; font-size:14px; padding:14px 0}
+  .field input::placeholder{color:var(--text-3); letter-spacing:.14em}
+  button{font-family:var(--font-mono); cursor:pointer}
+  .btn{background:var(--blue-400); color:#F6FAFF; border:1px solid var(--blue-300); border-radius:2px; padding:0 18px; font-size:12px; letter-spacing:var(--tw); text-transform:uppercase; display:flex; align-items:center; gap:8px; transition:background .15s, box-shadow .15s}
+  .btn:hover{background:var(--blue-500); box-shadow:0 0 0 3px var(--blue-glow-lo)}
+  .btn:focus-visible{outline:2px solid var(--blue-200); outline-offset:2px}
+  .gatemsg{min-height:22px; margin-top:4px; max-width:52ch; text-align:center; font-family:var(--font-mono); font-size:12px; line-height:1.55; letter-spacing:.02em; color:var(--blue-200)}
+  .gatemsg.ok{color:var(--verify)}
+  .gatemsg.err{color:var(--ember)}
+  .btn[disabled]{opacity:.5; cursor:not-allowed}
+  .gatefoot{text-align:center; padding:22px 0 30px; color:var(--text-3); display:flex; flex-direction:column; gap:8px}
+  .hint{color:var(--blue-300); opacity:.8}
+
+  /* boot log */
+  #boot{position:fixed; inset:0; z-index:70; background:var(--canvas-0); display:none; flex-direction:column; justify-content:center; padding:0 8vw}
+  #boot.on{display:flex}
+  #boot .line{font-family:var(--font-mono); font-size:13px; color:var(--blue-200); opacity:0; letter-spacing:.02em; padding:3px 0}
+  #boot .line.show{opacity:1}
+  #boot .line .ok{color:var(--verify)}
+  #boot .line .warn{color:var(--amber)}
+  .cursor{display:inline-block; width:8px; height:15px; background:var(--blue-300); margin-left:3px; vertical-align:-2px; animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ======================= ROOM ======================= */
+  #room{display:none}
+  #room.on{display:block; animation:fadein .5s ease both}
+  @keyframes fadein{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+  .roomhead{position:sticky; top:0; z-index:20; background:linear-gradient(var(--canvas-0),rgba(11,10,8,.86)); backdrop-filter:blur(6px); border-bottom:1px solid var(--bd-1)}
+  .roomhead .row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; flex-wrap:wrap}
+  .cdmon{padding:12px; margin-bottom:14px; background:var(--canvas-0); border:1px solid rgba(245,161,74,.22); border-radius:2px; cursor:help}
+  .cdmon .cl{display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--amber); opacity:.92}
+  .cdmon .cl .d{width:5px; height:5px; border-radius:50%; background:var(--amber); box-shadow:0 0 6px var(--amber-glow); animation:pulse 1.5s ease-in-out infinite}
+  .cdmon .cv{font-family:var(--font-mono); font-size:20px; letter-spacing:.04em; color:var(--text-0); font-variant-numeric:tabular-nums; margin-top:7px; line-height:1.05}
+  .cdmon .cs{font-family:var(--font-mono); font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-top:5px}
+  .mdivider{display:flex; align-items:center; gap:10px; margin:20px 0 14px; font-family:var(--font-mono); font-size:8.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-2)}
+  .mdivider::before,.mdivider::after{content:""; height:1px; background:var(--bd-2); flex:1}
+  .roomhead .meta{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+  .dot{width:7px; height:7px; border-radius:50%; display:inline-block}
+  .rec{display:flex; align-items:center; gap:7px; color:var(--ember)}
+  .rec .dot{background:var(--ember); box-shadow:0 0 8px var(--ember-glow); animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  .statstrip{display:flex; gap:0; border-bottom:1px solid var(--bd-1); flex-wrap:wrap}
+  .statstrip div{padding:12px 20px 12px 0; margin-right:20px; display:flex; gap:9px; align-items:baseline}
+  .statstrip b{color:var(--text-0); font-weight:500; font-variant-numeric:tabular-nums}
+
+  .layout{display:grid; grid-template-columns:1fr 300px; gap:28px; padding:26px 0 90px}
+  @media(max-width:860px){.layout{grid-template-columns:1fr} .side{order:-1}}
+
+  .tier{border:1px solid var(--bd-1); border-radius:3px; background:var(--canvas-1); margin-bottom:10px; overflow:hidden}
+  .tier > .head{display:grid; grid-template-columns:38px 1fr auto; align-items:center; gap:14px; padding:15px 16px; cursor:pointer; transition:background .12s}
+  .tier > .head:hover{background:var(--canvas-2)}
+  .tier .idx{font-family:var(--font-mono); color:var(--blue-300); font-size:13px; letter-spacing:.06em}
+  .tier .name{color:var(--text-0); font-weight:500; letter-spacing:.01em; font-size:15px}
+  .tier .name small{display:block; color:var(--text-2); font-weight:400; font-size:12px; margin-top:2px; letter-spacing:0}
+  .tier .name .nm-t{display:inline-block}
+  .nm-t{cursor:default}
+  .sc{color:var(--blue-300)}   /* glyph mid-decode */
+  .tier .right{display:flex; align-items:center; gap:14px}
+  .count{color:var(--text-2); font-family:var(--font-mono); font-size:12px}
+  .chev{color:var(--text-3); transition:transform .18s; font-family:var(--font-mono)}
+  .tier.open .chev{transform:rotate(90deg)}
+
+  .pill{font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:4px 9px; border-radius:2px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
+  .pill .dot{width:6px;height:6px}
+  .pill.cleared{color:var(--verify); background:var(--verify-glow); border:1px solid rgba(127,216,138,.25)}  .pill.cleared .dot{background:var(--verify)}
+  .pill.partial{color:var(--amber); background:var(--amber-glow); border:1px solid rgba(245,161,74,.28)}   .pill.partial .dot{background:var(--amber)}
+  .pill.restricted{color:var(--ember); background:var(--ember-glow); border:1px solid rgba(229,90,74,.30)}  .pill.restricted .dot{background:var(--ember)}
+
+  .docs{display:none; border-top:1px solid var(--bd-1); background:var(--canvas-0)}
+  .tier.open .docs{display:block}
+  .doc{display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:14px; padding:11px 16px 11px 52px; border-bottom:1px solid var(--bd-0); cursor:pointer; transition:background .12s}
+  .doc:last-child{border-bottom:0}
+  .doc:hover{background:var(--canvas-2)}
+  .doc:focus-visible{outline:2px solid var(--blue-300); outline-offset:-2px}
+  .doc[data-open]:hover .act,.doc[data-board]:hover .act{border-color:var(--blue-400); color:var(--blue-200)}
+  .doc[data-req]:hover .act{background:var(--amber-glow)}
+  .doc .dn{color:var(--text-1); font-size:13.5px}
+  .doc .dt{color:var(--text-3); font-family:var(--font-mono); font-size:11px}
+  .doc .act{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; padding:5px 11px; border-radius:2px; border:1px solid var(--bd-2); background:var(--canvas-2); color:var(--text-1)}
+  .doc .act:hover{border-color:var(--blue-400); color:var(--blue-200)}
+  .doc .act.lock{color:var(--amber); border-color:rgba(245,161,74,.30)}
+  .doc .act.lock:hover{background:var(--amber-glow)}
+
+  /* second wall tier */
+  .tier.wall{border-color:rgba(229,90,74,.28); background:linear-gradient(var(--canvas-1),var(--canvas-1)) padding-box, repeating-linear-gradient(45deg,rgba(229,90,74,.10) 0 8px,transparent 8px 16px) border-box; border:1px solid transparent}
+  .tier.wall .idx{color:var(--ember)}
+
+  /* side panel */
+  .side{display:flex; flex-direction:column; gap:16px}
+  .panel{border:1px solid var(--bd-1); border-radius:3px; background:var(--canvas-1); padding:16px}
+  .panel h3{margin:0 0 12px; font-family:var(--font-mono); font-size:10.5px; letter-spacing:var(--tw); text-transform:uppercase; color:var(--text-2); display:flex; align-items:center; gap:8px}
+  .kv{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--bd-0); font-size:13px}
+  .kv:last-child{border-bottom:0}
+  .kv span{color:var(--text-2)} .kv b{color:var(--text-0); font-weight:500; font-family:var(--font-mono)}
+  .log{display:flex; flex-direction:column; gap:0}
+  .log div{font-family:var(--font-mono); font-size:11px; color:var(--text-2); padding:6px 0; border-bottom:1px solid var(--bd-0); display:flex; gap:8px}
+  .log div:last-child{border-bottom:0}
+  .log .tm{color:var(--blue-300)}
+  .log .ok{color:var(--verify)}
+
+  /* ---- SITUATION MONITOR ---- */
+  .mon{border-color:rgba(229,90,74,.22)}
+  .mon .top{display:flex; justify-content:space-between; align-items:center; margin-bottom:2px}
+  .mon .sub{font-family:var(--font-mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin:0 0 14px}
+  .live{display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.16em; color:var(--ember)}
+  .live .d{width:6px; height:6px; border-radius:50%; background:var(--ember); box-shadow:0 0 8px var(--ember-glow); animation:pulse 1.5s ease-in-out infinite}
+  .readi{margin-bottom:14px}
+  .readi .rl{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px}
+  .readi .rl b{font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--ember)}
+  .bars{display:flex; gap:3px}
+  .bars i{flex:1; height:9px; background:var(--bd-2); border-radius:1px}
+  .bars i.on{background:var(--ember); box-shadow:0 0 6px var(--ember-glow)}
+  .cost{padding:12px; margin-bottom:14px; background:var(--canvas-0); border:1px solid var(--bd-1); border-radius:2px}
+  .cost .big{font-family:var(--font-mono); font-size:25px; font-weight:500; color:var(--text-0); letter-spacing:.01em; font-variant-numeric:tabular-nums; line-height:1.05}
+  .cost .cap{font-size:10.5px; color:var(--amber); margin-top:7px; line-height:1.4; letter-spacing:.02em}
+  .cost .cap b{color:var(--amber); font-weight:500}
+  .spark{margin-bottom:6px}
+  .spark svg{display:block; width:100%; height:auto}
+  .spark .sl{display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); margin-top:5px}
+  .spark .sl .dem{color:var(--ember)} .spark .sl .sup{color:var(--blue-300)}
+  .sectors{position:relative; margin-top:12px; border-top:1px solid var(--bd-0); padding-top:10px}
+  .shead{display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-2)}
+  .scan-ind{display:flex; align-items:center; gap:6px; color:var(--blue-300)}
+  .scan-ind i{width:5px; height:5px; border-radius:50%; background:var(--blue-300); box-shadow:0 0 6px var(--blue-glow); animation:pulse 1.3s ease-in-out infinite}
+  .sagg{font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:12px}
+  .sagg b{display:block; color:var(--ember); font-size:20px; font-weight:600; font-variant-numeric:tabular-nums; letter-spacing:.02em; text-shadow:0 0 16px var(--ember-glow); margin:1px 0}
+  .scell{position:relative; padding:4px 0 2px; border-radius:2px; transition:background .3s}
+  .scell.scan{background:var(--canvas-3)}
+  .scell.scan::before,.scell.scan::after{content:""; position:absolute; width:8px; height:8px}
+  .scell.scan::before{left:3px; top:3px; border-left:1.5px solid var(--ember); border-top:1.5px solid var(--ember)}
+  .scell.scan::after{right:3px; bottom:3px; border-right:1.5px solid var(--ember); border-bottom:1.5px solid var(--ember)}
+  .srow{display:grid; grid-template-columns:1fr auto auto; gap:8px; align-items:center; padding:2px 9px; font-family:var(--font-mono)}
+  .srow .snm{font-size:10px; letter-spacing:.06em; color:var(--text-1)}
+  .srow .sfig{font-size:10px; color:var(--text-2); font-variant-numeric:tabular-nums}
+  .scell.scan .sfig{color:var(--ember)}
+  .scell.scan .sfig .sc{color:var(--ember)}
+  .srow .sd{width:6px; height:6px; border-radius:50%}
+  .srow .sd.crit{background:var(--ember); box-shadow:0 0 6px var(--ember-glow); animation:pulse 1.4s ease-in-out infinite}
+  .srow .sd.sev{background:var(--amber); box-shadow:0 0 6px var(--amber-glow)}
+  .sbar{height:3px; background:var(--bd-1); border-radius:2px; margin:4px 9px 3px; overflow:hidden}
+  .sbar i{display:block; height:100%; background:linear-gradient(90deg,var(--amber),var(--ember)); box-shadow:0 0 6px var(--ember-glow)}
+  .scell.scan .sbar i{animation:barpulse 1s ease-in-out infinite}
+  @keyframes barpulse{50%{opacity:.45}}
+
+  /* toast */
+  #toast{position:fixed; bottom:34px; left:50%; transform:translateX(-50%) translateY(20px); z-index:80; background:var(--canvas-3); border:1px solid var(--blue-400); border-radius:2px; padding:12px 18px; font-family:var(--font-mono); font-size:12px; letter-spacing:.06em; color:var(--text-0); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; box-shadow:0 8px 40px rgba(0,0,0,.5)}
+  #toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
+  #toast .ok{color:var(--verify)}
+
+  /* ---- in-room document viewer ---- */
+  .viewer{position:fixed; inset:0; z-index:90; display:none; align-items:center; justify-content:center; padding:24px}
+  .viewer.on{display:flex}
+  .vbackdrop{position:absolute; inset:0; background:#080705}   /* solid: hides the monitor + no blur-repaint jank while scrolling */
+  .vframe{position:relative; z-index:1; width:min(1120px,95vw); height:min(90vh,940px); background:var(--canvas-1); border:1px solid var(--bd-2); border-radius:3px; display:flex; flex-direction:column; box-shadow:0 30px 90px rgba(0,0,0,.6); animation:fadein .28s ease both}
+  .vframe::before,.vframe::after{content:""; position:absolute; width:14px; height:14px; pointer-events:none; opacity:.6}
+  .vframe::before{left:-1px; top:-1px; border-left:1.5px solid var(--blue-300); border-top:1.5px solid var(--blue-300)}
+  .vframe::after{right:-1px; bottom:-1px; border-right:1.5px solid var(--blue-300); border-bottom:1.5px solid var(--blue-300)}
+  .vhead{display:flex; align-items:center; gap:12px; padding:12px 14px; border-bottom:1px solid var(--bd-1)}
+  .vt{font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-0); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .vbadge{font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; color:var(--amber); border:1px solid rgba(245,161,74,.32); background:rgba(245,161,74,.07); padding:4px 9px; border-radius:2px; white-space:nowrap}
+  .vclose{font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; color:var(--text-1); background:var(--canvas-2); border:1px solid var(--bd-2); padding:7px 11px; border-radius:2px}
+  .vclose:hover{border-color:var(--blue-400); color:var(--blue-200)}
+  .vclose:focus-visible{outline:2px solid var(--blue-200); outline-offset:2px}
+  .viewbody{flex:1; width:100%; border:0; background:var(--canvas-0); border-radius:0 0 3px 3px}
+
+  /* ---- live pipeline board (Kanban) ---- */
+  .board{position:fixed; inset:0; z-index:90; display:none; align-items:center; justify-content:center; padding:24px}
+  .board.on{display:flex}
+  .bframe{position:relative; z-index:1; width:min(1240px,96vw); height:min(88vh,860px); background:var(--canvas-1); border:1px solid var(--bd-2); border-radius:3px; display:flex; flex-direction:column; box-shadow:0 30px 90px rgba(0,0,0,.6); animation:fadein .28s ease both}
+  .bframe::before,.bframe::after{content:""; position:absolute; width:14px; height:14px; pointer-events:none; opacity:.6}
+  .bframe::before{left:-1px; top:-1px; border-left:1.5px solid var(--blue-300); border-top:1.5px solid var(--blue-300)}
+  .bframe::after{right:-1px; bottom:-1px; border-right:1.5px solid var(--blue-300); border-bottom:1.5px solid var(--blue-300)}
+  .bhead{display:flex; align-items:center; gap:14px; padding:12px 14px; border-bottom:1px solid var(--bd-1)}
+  .bhead .live{color:var(--verify)}
+  .bhead .live .d{background:var(--verify); box-shadow:0 0 8px var(--verify-glow)}
+  .bmeta{flex:1; font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3)}
+  .bcols{flex:1; display:flex; gap:12px; padding:16px; overflow-x:auto; overflow-y:hidden}
+  .bcol{flex:0 0 210px; display:flex; flex-direction:column; background:var(--canvas-0); border:1px solid var(--bd-1); border-radius:3px; max-height:100%; border-top-width:2px; border-top-style:solid; border-top-color:var(--bd-2)}
+  .bcol.steel{border-top-color:var(--blue-400)}
+  .bcol.amber{border-top-color:var(--amber)}
+  .bcol.verify{border-top-color:var(--verify)}
+  .bcol .ch{display:flex; align-items:flex-start; justify-content:space-between; gap:8px; padding:11px 12px; border-bottom:1px solid var(--bd-1); font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; min-height:38px}
+  .bcol .ch .cn{color:var(--text-1); line-height:1.35}
+  .bcol.idle .ch .cn{color:var(--text-3)}
+  .bcol .ch .cc{color:var(--text-3); font-variant-numeric:tabular-nums; padding:2px 7px; border:1px solid var(--bd-1); border-radius:10px}
+  .bcards{display:flex; flex-direction:column; gap:8px; padding:10px; overflow-y:auto}
+  .bcard{background:var(--canvas-2); border:1px solid var(--bd-1); border-radius:2px; padding:10px 11px; cursor:default; transition:border-color .12s, transform .12s}
+  .bcard:hover{border-color:var(--blue-400); transform:translateY(-1px)}
+  .bcard .co{color:var(--text-0); font-size:13px; font-weight:500; letter-spacing:.01em}
+  .bcard .ct{color:var(--text-2); font-family:var(--font-mono); font-size:10.5px; margin-top:4px; letter-spacing:.02em}
+  .bsum{padding:16px 12px; color:var(--text-3); font-family:var(--font-mono); font-size:10.5px; line-height:1.5; text-align:center}
+  .bsum b{display:block; color:var(--text-1); font-size:22px; margin-bottom:4px; font-variant-numeric:tabular-nums}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="fx scan"></div>
+<div class="fx vig"></div>
+<span class="bracket tl"></span><span class="bracket tr"></span>
+<span class="bracket bl"></span><span class="bracket br"></span>
+
+<!-- ===================== GATE ===================== -->
+<section id="gate">
+  <div class="wrap topbar">
+    <div class="brand">
+      <span class="lbl">ARKLIGHT · SECURE CHANNEL</span>
+    </div>
+    <div class="lbl" id="clk1">--:--:-- UTC</div>
+  </div>
+
+  <div class="wrap gatecenter">
+    <img class="mark" src="/logo/arklight_icon.svg" alt="Project Arklight"/>
+    <div class="lbl eyebrow">Investor Access · Tier-1 Clearance</div>
+    <h1>The Situation Room</h1>
+    <p class="gatesub">Authenticated, per-operator access to Project Arklight's investor materials. Every session is logged. Your credential is unique to you - do not forward it.</p>
+    <form class="access" id="accessForm" autocomplete="off">
+      <label class="field">
+        <span class="caret">&gt;</span>
+        <input id="email" name="email" type="email" placeholder="YOUR EMAIL" aria-label="Your email address" spellcheck="false" autocomplete="email" />
+      </label>
+      <input type="text" name="company_website" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0" />
+      <button class="btn" type="submit" id="gateBtn">Request access <span aria-hidden="true">→</span></button>
+    </form>
+    <div id="gateMsg" class="gatemsg" role="status" aria-live="polite"></div>
+    <div class="gatefoot">
+      <span class="lbl">Access is by invitation · we will email you a secure sign-in link</span>
+      <span class="lbl">Unauthorized access is monitored and prohibited</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BOOT ===================== -->
+<div id="boot"><div id="bootlines"></div></div>
+
+<!-- ===================== ROOM ===================== -->
+<main id="room">
+  <div class="roomhead">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand"><img class="hmark" src="/logo/arklight_icon.svg" alt="Arklight"/> <span class="lbl" style="color:var(--text-3)">// INVESTOR ACCESS</span></div>
+        <div class="meta">
+          <span class="lbl">OPERATOR <b id="operatorId" style="color:var(--blue-200)">ARC-INV-014</b></span>
+          <span class="lbl" id="clk2">--:--:--</span>
+          <span class="rec lbl"><span class="dot"></span>SESSION MONITORED</span>
+        </div>
+      </div>
+      <div class="statstrip">
+        <div><span class="lbl">STAGE</span><b>PRE-SEED</b></div>
+        <div><span class="lbl">INSTRUMENT</span><b>SAFE</b></div>
+        <div><span class="lbl">CAP</span><b>$3.0M</b></div>
+        <div><span class="lbl">DOCS</span><b class="num">46</b></div>
+        <div><span class="lbl">TIER-1</span><b style="color:var(--verify)">CLEARED</b></div>
+        <div><span class="lbl">TIER-2</span><b style="color:var(--ember)">RESTRICTED</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap layout">
+    <div class="feed" id="feed">
+      <div class="lbl" style="padding:2px 0 12px;color:var(--text-1);font-size:11.5px">// DOCUMENT MANIFEST - SELECT TO EXPAND</div>
+      <!-- tiers injected by JS -->
+    </div>
+
+    <aside class="side">
+      <div class="panel mon">
+        <div class="top">
+          <h3 style="margin:0">Situation Monitor</h3>
+          <span class="live"><span class="d"></span>LIVE</span>
+        </div>
+        <p class="sub">US Industrial Base · Workforce</p>
+
+        <div class="readi">
+          <div class="rl"><span class="lbl">Base Readiness</span><b>CRITICAL</b></div>
+          <div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        </div>
+
+        <div class="cost">
+          <div class="big" id="costVal">$0</div>
+          <div class="cap">Economic cost of shortage since you entered.</div>
+        </div>
+
+        <div class="spark">
+          <svg viewBox="0 0 260 58" fill="none" aria-hidden="true">
+            <line x1="0" y1="52" x2="260" y2="52" stroke="var(--bd-1)"/>
+            <path d="M0,40 L65,38 L130,36 L195,35 L260,34 L260,10 L195,15 L130,22 L65,32 L0,36 Z" fill="rgba(229,90,74,.12)"/>
+            <polyline points="0,36 65,32 130,22 195,15 260,10" stroke="var(--ember)" stroke-width="1.75"/>
+            <polyline points="0,40 65,38 130,36 195,35 260,34" stroke="var(--blue-300)" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <circle cx="258" cy="10" r="2.6" fill="var(--ember)"/>
+          </svg>
+          <div class="sl"><span class="dem">▲ Demand</span><span>Gap widening</span><span class="sup">Supply ▬</span></div>
+        </div>
+
+        <div class="mdivider"><span>Geopolitical Horizon</span></div>
+
+        <div class="cdmon" title="Davidson Window: US INDOPACOM (Adm. P. Davidson, 2021 testimony) assessed the PRC could move against Taiwan by 2027 - the semiconductor and defense industrial-base readiness horizon driving the workforce emergency.">
+          <span class="cl"><span class="d"></span>Projected invasion of Taiwan</span>
+          <div class="cv" id="cdVal">000 days 00:00:00</div>
+          <span class="cs">Est. 2027 &middot; Davidson Window</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3><span class="rec" style="color:var(--ember)"><span class="dot" style="background:var(--ember);width:6px;height:6px;border-radius:50%"></span></span> Session Activity</h3>
+        <div class="log" id="log"></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div id="toast"><span class="ok">✓ ACCESS REQUEST TRANSMITTED</span> - operator will be notified</div>
+
+<div id="viewer" class="viewer" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="vbackdrop" data-vclose></div>
+  <div class="vframe">
+    <div class="vhead">
+      <span class="vt" id="vTitle">Document</span>
+      <span class="vbadge">View only</span>
+      <button class="vclose" data-vclose type="button">Close ✕</button>
+    </div>
+    <iframe id="vIframe" class="viewbody" title="Document viewer"></iframe>
+  </div>
+</div>
+
+<div id="board" class="board" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="vbackdrop" data-bclose></div>
+  <div class="bframe">
+    <div class="bhead">
+      <span class="vt">Live Pipeline // Active Engagements</span>
+      <span class="live lbl"><span class="d"></span>LIVE</span>
+      <span class="bmeta">17 active · 292 identified · updated 07-13</span>
+      <button class="vclose" data-bclose type="button">Close ✕</button>
+    </div>
+    <div class="bcols" id="bcols"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // Declared first: docSrc() below depends on it.
+  // On localhost there is no API, so documents are read from the gitignored dev copies.
+  var LOCAL=/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  var pad=function(n){return String(n).padStart(2,"0")};
+  var CD_TARGET=Date.UTC(2027,0,1,0,0,0);   // Davidson Window horizon (tunable)
+  function tick(){
+    var d=new Date();
+    var t=pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());
+    var u=pad(d.getUTCHours())+":"+pad(d.getUTCMinutes())+":"+pad(d.getUTCSeconds())+" UTC";
+    var a=document.getElementById("clk1"), b=document.getElementById("clk2");
+    if(a)a.textContent=u; if(b)b.textContent=t;
+    var cd=document.getElementById("cdVal");
+    if(cd){
+      var ms=CD_TARGET-Date.now(); if(ms<0)ms=0;
+      var s=Math.floor(ms/1000), days=Math.floor(s/86400); s-=days*86400;
+      cd.textContent=days+" days "+pad(Math.floor(s/3600))+":"+pad(Math.floor((s%3600)/60))+":"+pad(s%60);
+    }
+  }
+  setInterval(tick,1000); tick();
+
+  // ---- data manifest (mirrors the data-room folder) ----
+  var TIERS=[
+    {idx:"01",name:"Pitch & Summary",sub:"Deck · memo",status:"cleared",docs:[
+      {n:"Arklight - Investor Deck.pdf",t:"SYNC 07-08"},
+      {n:"Arklight - Investor Memo.pdf",t:"SYNC 07-11"}]},
+    {idx:"02",name:"Company & Legal",sub:"Formation · bylaws · equity plan",status:"cleared",docs:[
+      {n:"Certificate of Incorporation (DE)",t:"FILED 02-03"},
+      {n:"Bylaws (adopted)",t:"02-03"},
+      {n:"2026 Equity Incentive Plan",t:"02-03"}]},
+    {idx:"03",name:"Team",sub:"Founder & team bios",status:"cleared",docs:[
+      {n:"Arklight - Team Bios.pdf",t:"SYNC 07-13"}]},
+    {idx:"04",name:"Product & Market",sub:"Demos · market · competitive",status:"cleared",docs:[
+      {n:"Arklight OS Product Demo",t:"DEMO"},
+      {n:"Employer Portal Product Demo",t:"DEMO"},
+      {n:"Market Size & Analysis",t:"SYNC"},
+      {n:"Competitor Landscape & Analysis",t:"SYNC"}]},
+    {idx:"05",name:"Traction",sub:"MOU · proposal · live pipeline",status:"cleared",docs:[
+      {n:"Valinor MOU - Signed",t:"SIGNED 06-15"},
+      {n:"Oracle Proposal",t:"06-15"},
+      {n:"Pipeline CRM Tracker",t:"LIVE",board:true}]},
+    {idx:"06",name:"Financials",sub:"Use of funds · model & projections",status:"partial",docs:[
+      {n:"Use of Funds",t:"SYNC"},
+      {n:"Financial Model & Projections",t:"TIER-2",lock:true}]}
+  ];
+  var WALL={idx:"◆",name:"Tier-2 - Restricted",sub:"Executed contracts · detailed cap table · full model",docs:[
+      {n:"Founder vesting & CSPAs (executed)",t:"LOCKED",lock:true},
+      {n:"Signed SAFEs + board consents",t:"LOCKED",lock:true},
+      {n:"Detailed cap table",t:"LOCKED",lock:true},
+      {n:"Full financial model / pro-forma",t:"LOCKED",lock:true}]};
+
+  function pill(s){
+    var m={cleared:"Cleared",partial:"Partial",restricted:"Restricted"};
+    return '<span class="pill '+s+'"><span class="dot"></span>'+m[s]+'</span>';
+  }
+  function docRow(d){
+    var attrs, act;
+    if(d.lock){      attrs=' data-req="1"';                                          act='<span class="act lock">Request →</span>'; }
+    else if(d.board){attrs=' data-board="1"';                                        act='<span class="act">Open board</span>'; }
+    else if(d.src){  attrs=' data-open="1" data-src="'+d.src+'" data-title="'+d.n+'"'; act='<span class="act">Open</span>'; }
+    else {           attrs=' data-open="1"';                                         act='<span class="act">Open</span>'; }
+    return '<div class="doc" role="button" tabindex="0"'+attrs+'><span class="dn">'+d.n+'</span><span class="dt">'+d.t+'</span>'+act+'</div>';
+  }
+  function tierEl(tp,wall){
+    var el=document.createElement("div");
+    el.className="tier"+(wall?" wall":"");
+    var badge = wall ? pill("restricted") : pill(tp.status);
+    el.innerHTML =
+      '<div class="head" role="button" tabindex="0" aria-expanded="false">'+
+        '<span class="idx">'+tp.idx+'</span>'+
+        '<span class="name"><span class="nm-t">'+tp.name+'</span><small>'+tp.sub+'</small></span>'+
+        '<span class="right"><span class="count">'+tp.docs.length+' DOC'+(tp.docs.length>1?'S':'')+'</span>'+badge+'<span class="chev">▸</span></span>'+
+      '</div>'+
+      '<div class="docs">'+tp.docs.map(docRow).join("")+'</div>';
+    var head=el.querySelector(".head");
+    function toggle(){ var o=el.classList.toggle("open"); head.setAttribute("aria-expanded",o); }
+    head.addEventListener("click",toggle);
+    head.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();} });
+    return el;
+  }
+
+  // Every document streams through the gated endpoint /api/doc, which checks the
+  // session cookie, logs the open, and pulls the file from private Blob storage.
+  // The files are NOT on this site. Locally there is no API, so read the
+  // gitignored dev copies directly.
+  var DOC_FILES={
+    deck:"arklight-investor-deck.pdf",
+    memo:"arklight-investor-memo.pdf",
+    cert:"arklight-certificate-of-incorporation.pdf",
+    bylaws:"arklight-bylaws.pdf",
+    plan:"arklight-equity-incentive-plan.pdf",
+    bios:"arklight-team-bios.pdf",
+    market:"arklight-market-analysis.pdf",
+    comp:"arklight-competitive-landscape.pdf",
+    funds:"arklight-use-of-funds.pdf"
+  };
+  function docSrc(id){
+    return LOCAL ? "/data-room-assets/"+DOC_FILES[id] : "/api/doc?id="+id;
+  }
+  TIERS[0].docs[0].src=docSrc("deck");
+  TIERS[0].docs[1].src=docSrc("memo");
+  TIERS[1].docs[0].src=docSrc("cert");    // Company & Legal -> Certificate of Incorporation
+  TIERS[1].docs[1].src=docSrc("bylaws");  // Company & Legal -> Bylaws
+  TIERS[1].docs[2].src=docSrc("plan");    // Company & Legal -> Equity Incentive Plan
+  TIERS[2].docs[0].src=docSrc("bios");    // Team
+  TIERS[3].docs[2].src=docSrc("market");  // Product & Market -> Market Size & Analysis
+  TIERS[3].docs[3].src=docSrc("comp");    // Product & Market -> Competitor Landscape & Analysis
+  TIERS[5].docs[0].src=docSrc("funds");   // Financials -> Use of Funds
+
+  var feed=document.getElementById("feed");
+  TIERS.forEach(function(t){ feed.appendChild(tierEl(t,false)); });
+  feed.appendChild(tierEl(WALL,true));
+
+  // ---- decode-on-hover (terminal text-scramble) ----
+  var REDUCE=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var GLYPH="0123456789ABCDEF#%/*+=:";  // no angle brackets or ampersand: keeps innerHTML safe
+  var CYCLE=45;      // ms between glyph flips (higher = slower, more readable)
+  var HOLD=5;        // steps each char scrambles before locking
+  var STAGGER=0.5;   // steps of delay added per character (left-to-right ripple)
+  // ~0.65s decode on a typical section title (tune CYCLE for overall speed)
+  function scramble(el){
+    var finalText=el.getAttribute("data-txt")||el.textContent;
+    if(REDUCE){el.textContent=finalText;return;}
+    var len=finalText.length, reveal=[];
+    for(var i=0;i<len;i++){
+      var start=Math.round(i*STAGGER + Math.random()*1.5);
+      reveal.push({s:start, e:start+HOLD+Math.floor(Math.random()*4)});
+    }
+    cancelAnimationFrame(el._raf);
+    var t0=null, lastStep=-1;
+    function run(ts){
+      if(t0===null) t0=ts;
+      var step=Math.floor((ts-t0)/CYCLE);
+      if(step!==lastStep){                 // only redraw on a cadence tick, not every frame
+        lastStep=step;
+        var out="",done=0;
+        for(var i=0;i<len;i++){
+          var r=reveal[i], f=finalText[i];
+          if(f===" "){out+=" ";done++;continue;}
+          if(step>=r.e){out+=f;done++;}
+          else if(step>=r.s){out+='<span class="sc">'+GLYPH[Math.floor(Math.random()*GLYPH.length)]+'</span>';}
+          else out+='<span class="sc">'+GLYPH[Math.floor(Math.random()*GLYPH.length)]+'</span>';
+        }
+        el.innerHTML=out;
+        if(done>=len){ el.textContent=finalText; return; }
+      }
+      el._raf=requestAnimationFrame(run);
+    }
+    el._raf=requestAnimationFrame(run);
+  }
+  feed.querySelectorAll(".nm-t, .doc .dn").forEach(function(el){
+    el.setAttribute("data-txt", el.textContent);
+    el.addEventListener("mouseenter", function(){ scramble(el); });
+  });
+
+  // toast + activity log
+  var toast=document.getElementById("toast"), toastT;
+  function ping(msg){
+    if(msg){toast.firstChild.nextSibling; }
+    toast.classList.add("on"); clearTimeout(toastT);
+    toastT=setTimeout(function(){toast.classList.remove("on")},2600);
+  }
+  var logEl=document.getElementById("log");
+  function stamp(){var d=new Date();return pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());}
+  function logAdd(txt,cls){
+    var row=document.createElement("div");
+    row.innerHTML='<span class="tm">'+stamp()+'</span><span class="'+(cls||'')+'">'+txt+'</span>';
+    logEl.insertBefore(row,logEl.firstChild);
+    while(logEl.children.length>7) logEl.removeChild(logEl.lastChild);
+  }
+  // ---- in-room document viewer ----
+  function openViewer(src,title){
+    var v=document.getElementById("viewer"), f=document.getElementById("vIframe"), t=document.getElementById("vTitle");
+    t.textContent=title||"Document";
+    // #toolbar=0&navpanes=0 hides the browser PDF chrome (download/print) for a view-only read
+    f.src=src+"#toolbar=0&navpanes=0&statusbar=0&view=FitH";
+    v.classList.add("on"); v.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    if(typeof pauseMonitor==="function") pauseMonitor();   // full focus + smooth scroll while reading
+  }
+  function closeViewer(){
+    var v=document.getElementById("viewer"), f=document.getElementById("vIframe");
+    v.classList.remove("on"); v.setAttribute("aria-hidden","true");
+    f.src="about:blank"; document.body.style.overflow="";
+    if(typeof resumeMonitor==="function") resumeMonitor();
+  }
+
+  // ---- live pipeline board (Kanban) ----
+  // Active engagements only (the 14 we're talking to now), mirrored from the CRM.
+  // Update this array to match the live Notion pipeline before sharing.
+  var PIPELINE=[
+    {stage:"Identified", accent:"idle", count:292, summary:"prospects mapped<br>17 now engaged"},
+    {stage:"In Conversation", accent:"steel", cards:[
+      {co:"SpaceX"},
+      {co:"AstroForge"},
+      {co:"Varda Space Industries"},
+      {co:"Impulse Space"},
+      {co:"Armada"},
+      {co:"General Matter"},
+      {co:"Valar Atomics"},
+      {co:"Nominal"},
+      {co:"Neros Technologies"},
+      {co:"Northwood Space"},
+      {co:"Adam Simpson"}]},
+    {stage:"Advanced Conversation + Negotiation", accent:"amber", cards:[
+      {co:"Oracle", contact:"Executive buy-in"},
+      {co:"Hadrian", contact:"Executive buy-in"},
+      {co:"AMCA", contact:"Executive buy-in"},
+      {co:"Anduril Industries", contact:"Executive buy-in"},
+      {co:"Gecko Robotics", contact:"Executive buy-in"}]},
+    {stage:"Pilot / LOI Signed", accent:"verify", cards:[
+      {co:"Valinor", contact:"Signed MOU · 06-15"}]}
+  ];
+  function renderBoard(){
+    var wrap=document.getElementById("bcols"); if(!wrap) return;
+    wrap.innerHTML=PIPELINE.map(function(col){
+      var n=(col.count!=null?col.count:(col.cards?col.cards.length:0));
+      var head='<div class="ch"><span class="cn">'+col.stage+'</span><span class="cc">'+n+'</span></div>';
+      var body= col.summary
+        ? '<div class="bsum"><b>'+col.count+'</b>'+col.summary+'</div>'
+        : '<div class="bcards">'+col.cards.map(function(c){
+            return '<div class="bcard"><div class="co">'+c.co+'</div>'+(c.contact?'<div class="ct">'+c.contact+'</div>':'')+'</div>';
+          }).join('')+'</div>';
+      return '<div class="bcol '+col.accent+'">'+head+body+'</div>';
+    }).join('');
+  }
+  function openBoard(){
+    renderBoard();
+    var b=document.getElementById("board");
+    b.classList.add("on"); b.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    if(typeof pauseMonitor==="function") pauseMonitor();
+  }
+  function closeBoard(){
+    var b=document.getElementById("board");
+    b.classList.remove("on"); b.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+    if(typeof resumeMonitor==="function") resumeMonitor();
+  }
+
+  document.addEventListener("click",function(e){
+    if(e.target.closest("[data-vclose]")){ closeViewer(); return; }
+    if(e.target.closest("[data-bclose]")){ closeBoard(); return; }
+    var bd=e.target.closest("[data-board]");
+    if(bd){ var bn=bd.closest(".doc").querySelector(".dn").textContent; logAdd("OPENED · "+bn.slice(0,24),"ok"); openBoard(); return; }
+    var o=e.target.closest("[data-open]"), r=e.target.closest("[data-req]");
+    if(o){
+      var nm=o.closest(".doc").querySelector(".dn").textContent;
+      logAdd("OPENED · "+nm.slice(0,24),"ok");
+      var src=o.getAttribute("data-src");
+      if(src){ openViewer(src, o.getAttribute("data-title")||nm); }
+      else { ping(); toast.firstChild.textContent="✓ LOGGED"; setTimeout(function(){toast.firstChild.textContent="✓ ACCESS REQUEST TRANSMITTED"},2600); }
+    }
+    if(r){ var nm2=r.closest(".doc").querySelector(".dn").textContent; logAdd("TIER-2 REQUEST · "+nm2.slice(0,18),""); ping(); }
+  });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){ closeViewer(); closeBoard(); return; }
+    if(e.key==="Enter"||e.key===" "){
+      var row=e.target.closest ? e.target.closest('.doc[data-open], .doc[data-req], .doc[data-board]') : null;
+      if(row){ e.preventDefault(); row.click(); }
+    }
+  });
+
+  // seed a couple of log lines
+  logAdd("SESSION ESTABLISHED","ok"); logAdd("MANIFEST DECRYPTED","");
+
+  // ---- Situation Monitor: live cost accrual + sector scan ----
+  // Rate derived from $1T projected impact by 2030 (Deloitte/NAM) over the
+  // seconds remaining to 2030 ~= $9,500/sec. Tune COST_RATE to taste.
+  var COST_RATE=9500, costVal=0, costLast=0, monRaf=0, scanTimer=0, monBig=null, monCells=null, monSi=0;
+  function costLoop(ts){
+    var now=ts||performance.now();
+    costVal += COST_RATE*((now-costLast)/1000); costLast=now;
+    if(monBig) monBig.textContent="$"+Math.floor(costVal).toLocaleString("en-US");
+    monRaf=requestAnimationFrame(costLoop);
+  }
+  function scanStep(){
+    if(!monCells||!monCells.length) return;
+    monCells.forEach(function(c){c.classList.remove("scan")});
+    var c=monCells[monSi]; c.classList.add("scan");
+    var n=c.querySelector(".n");                          // re-query: decode the deficit figure
+    if(n){ if(!n.getAttribute("data-txt")) n.setAttribute("data-txt", n.textContent); scramble(n); }
+    monSi=(monSi+1)%monCells.length;
+  }
+  function startMonitor(){
+    monBig=document.getElementById("costVal");
+    if(!monBig) return;
+    costVal=0; costLast=performance.now();
+    cancelAnimationFrame(monRaf); monRaf=requestAnimationFrame(costLoop);
+    monCells=document.querySelectorAll("#sectors .scell"); monSi=0;
+    clearInterval(scanTimer); if(monCells.length) scanTimer=setInterval(scanStep,1900);
+  }
+  // pause everything while a document is open (full focus + smooth PDF scroll)
+  function pauseMonitor(){ cancelAnimationFrame(monRaf); monRaf=0; clearInterval(scanTimer); scanTimer=0; }
+  function resumeMonitor(){
+    if(!monBig) return;
+    costLast=performance.now();                            // don't jump the counter on resume
+    cancelAnimationFrame(monRaf); monRaf=requestAnimationFrame(costLoop);
+    clearInterval(scanTimer); if(monCells&&monCells.length) scanTimer=setInterval(scanStep,1900);
+  }
+
+  // ---- gate → boot → room ----
+  var OPERATOR="ARC-INV-014";
+  function setOperator(email){
+    if(!email) return;
+    OPERATOR=email;
+    var el=document.getElementById("operatorId");
+    if(el) el.textContent=email;
+  }
+  var BOOT=[
+    ['> VERIFYING CREDENTIAL','warn'],
+    ['> OPERATOR IDENTIFIED: {OP}','ok'],
+    ['> CLEARANCE: TIER-1 // GRANTED','ok'],
+    ['> ESTABLISHING ENCRYPTED SESSION','warn'],
+    ['> DECRYPTING DOCUMENT MANIFEST','warn'],
+    ['> ROOM ONLINE','ok']
+  ];
+  function enterRoom(){
+    document.getElementById("gate").style.display="none";
+    document.getElementById("boot").classList.remove("on");
+    document.getElementById("room").classList.add("on");
+    window.scrollTo(0,0);
+    startMonitor();
+  }
+  function boot(skipAnim){
+    var g=document.getElementById("gate"), b=document.getElementById("boot"),
+        lines=document.getElementById("bootlines");
+    if(skipAnim){ enterRoom(); return; }          // returning session: straight in
+    g.style.display="none"; b.classList.add("on"); lines.innerHTML="";
+    var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+    var i=0;
+    function next(){
+      if(i>=BOOT.length){ setTimeout(enterRoom,420); return; }
+      var L=BOOT[i], div=document.createElement("div");
+      div.className="line";
+      var text=L[0].replace("{OP}",'<span class="ok">'+OPERATOR+'</span>');
+      div.innerHTML=text.replace(/(\/\/ .*|GRANTED|ONLINE)/,'<span class="'+L[1]+'">$1</span>')+
+                    (i===BOOT.length-1?'<span class="cursor"></span>':'');
+      lines.appendChild(div);
+      requestAnimationFrame(function(){div.classList.add("show")});
+      i++; setTimeout(next, reduce?60:340);
+    }
+    next();
+  }
+
+  // ---- email sign-in (magic link) ----
+  var gateMsg=document.getElementById("gateMsg");
+  function setMsg(text,cls){ if(gateMsg){ gateMsg.textContent=text; gateMsg.className="gatemsg"+(cls?" "+cls:""); } }
+
+  if(/[?&]err=link/.test(location.search)){
+    setMsg("That sign-in link has expired or is not valid. Enter your email to get a new one.","err");
+  }
+
+  document.getElementById("accessForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var email=(document.getElementById("email").value||"").trim();
+    var hp=(document.getElementById("hp")||{}).value||"";
+    var btn=document.getElementById("gateBtn");
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ setMsg("Please enter a valid email address.","err"); return; }
+    btn.disabled=true; setMsg("Sending...","");
+    fetch("/api/auth-request",{
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email:email, company_website:hp})
+    }).then(function(r){
+      if(r.status===404 && LOCAL){                 // local preview has no API
+        setMsg("Local preview: API not running here, opening the room directly.","");
+        setTimeout(function(){ boot(); },700); return null;
+      }
+      if(r.ok){
+        setMsg("Check your email. If "+email+" is on the invitation list, a secure sign-in link is on its way. It expires in 20 minutes.","ok");
+        return null;
+      }
+      return r.json().catch(function(){return {};}).then(function(j){
+        setMsg(j.error||"Something went wrong. Please try again.","err"); btn.disabled=false;
+      });
+    }).catch(function(){
+      if(LOCAL){ setMsg("Local preview: no API here, opening the room directly.",""); setTimeout(function(){ boot(); },700); }
+      else { setMsg("Network error. Please try again.","err"); btn.disabled=false; }
+    });
+  });
+
+  // Already signed in? Skip the gate entirely.
+  fetch("/api/session",{credentials:"same-origin"})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(s){ if(s && s.ok){ setOperator(s.email); boot(true); } })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>

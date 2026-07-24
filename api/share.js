@@ -36,12 +36,12 @@ module.exports = async function handler(req, res) {
           from: 'Project Arklight <share@arklight.us>',
           to: email,
           subject: `${senderName} wants you to check out Project Arklight`,
-          text: `Dear colleague,\n\n${senderName} from ${companyName} recently viewed our pitch deck and wanted to share Project Arklight with you, as they thought it might be of interest.\n\nView the pitch deck: https://arklight.us/pitch-deck.pdf\n\nThis is an automated message sent on their behalf.\n\nFor more information about Project Arklight, please visit arklight.us or reach out to dani@arklight.us.\n\n—\nProject Arklight\narklight.us`,
+          text: `Dear colleague,\n\n${senderName} from ${companyName} wanted to share Project Arklight with you, as they thought it might be of interest.\n\nLearn more: https://arklight.us\n\nThis is an automated message sent on their behalf.\n\nFor more information about Project Arklight, please visit arklight.us or reach out to dani@arklight.us.\n\n—\nProject Arklight\narklight.us`,
           html: `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 560px; margin: 0 auto; color: #1a1a1a; line-height: 1.7;">
   <p>Dear colleague,</p>
-  <p><strong>${senderName}</strong> from <strong>${companyName}</strong> recently viewed our pitch deck and wanted to share Project Arklight with you, as they thought it might be of interest.</p>
+  <p><strong>${senderName}</strong> from <strong>${companyName}</strong> wanted to share Project Arklight with you, as they thought it might be of interest.</p>
   <p style="margin: 28px 0;">
-    <a href="https://arklight.us/pitch-deck.pdf" style="display: inline-block; background: #d62839; color: #ffffff; text-decoration: none; padding: 12px 28px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">View Pitch Deck</a>
+    <a href="https://arklight.us" style="display: inline-block; background: #d62839; color: #ffffff; text-decoration: none; padding: 12px 28px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em;">Learn More</a>
   </p>
   <p style="color: #737373; font-size: 14px;">This is an automated message sent on their behalf.</p>
   <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 24px 0;">

@@ -4,7 +4,8 @@
   "redirects": [
     { "source": "/mission", "destination": "/", "permanent": true },
     { "source": "/product", "destination": "/trade-school", "permanent": true },
-    { "source": "/hire", "destination": "/content/how-to-hire-industrial-operators", "permanent": true }
+    { "source": "/hire", "destination": "/content/how-to-hire-industrial-operators", "permanent": true },
+    { "source": "/data-room-assets/:path*", "destination": "/data-room", "permanent": false }
   ],
   "rewrites": [
     {
