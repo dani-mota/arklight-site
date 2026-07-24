@@ -69,7 +69,7 @@ Source files are read from `data-room-assets/` (local only, never deployed).
 
 1. Put the PDF in `data-room-assets/`.
 2. Add an entry to `api/_docs.js` (set `tier: 2` to hide it behind the second wall).
-3. Point the manifest at it in `data-room.html`: `docSrc("yourId")`.
+3. Point the manifest at it in `public/data-room.html`: `docSrc("yourId")`.
 4. Re-run the upload script.
 
 ## After you deploy — verify these three things
@@ -93,7 +93,11 @@ scripts/upload-investor-docs.js  publish PDFs to Blob
 ## Local development
 
 `python3 -m http.server 8791` from the repo root, then open
-`http://localhost:8791/data-room.html`.
+`http://localhost:8791/public/data-room.html`.
+
+Note: `public/` is the deployed web root, so the page lives at `public/data-room.html`
+and is served at `/data-room` in production. The `api/` directory stays at the repo
+root (that is where Vercel looks for functions).
 
 There is no API locally, so on `localhost` only: the gate opens the room directly and
 documents are read straight from `data-room-assets/`. Both bypasses are
