@@ -1,0 +1,3 @@
+
+# investor documents live in Vercel Blob, never in the deployment
+data-room-assets/

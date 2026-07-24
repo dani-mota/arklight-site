@@ -3,7 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/mission", "destination": "/", "permanent": true },
-    { "source": "/product", "destination": "/trade-school", "permanent": true }
+    { "source": "/product", "destination": "/trade-school", "permanent": true },
+    { "source": "/data-room-assets/:path*", "destination": "/data-room", "permanent": false }
   ],
   "rewrites": [
     {

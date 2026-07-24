@@ -2,3 +2,12 @@
 .vercel
 node_modules
 .claude
+
+# local-only investor room assets (served via /api/doc in prod)
+data-room-assets/
+
+# never commit secrets (this repo is public)
+.env
+.env.*
+!.env.example
+.env*.local
