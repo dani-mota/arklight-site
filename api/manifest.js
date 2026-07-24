@@ -18,7 +18,9 @@ const SRC = {
   'Arklight - Team Bios.pdf': 'bios',
   'Market Size & Analysis': 'market',
   'Competitor Landscape & Analysis': 'comp',
-  'Use of Funds': 'funds'
+  'Use of Funds': 'funds',
+  'Valinor MOU - Signed': 'valinor',
+  'Oracle Proposal': 'oracle'
 };
 
 const TIERS = [
