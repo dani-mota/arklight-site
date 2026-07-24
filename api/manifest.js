@@ -40,33 +40,30 @@ const TIERS = [
     { n: 'Valinor MOU - Signed', t: 'SIGNED 06-15' },
     { n: 'Oracle Proposal', t: '06-15' },
     { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]},
-  { idx: '06', name: 'Financials', sub: 'Use of funds · model & projections', status: 'partial', docs: [
-    { n: 'Use of Funds', t: 'SYNC' },
-    { n: 'Financial Model & Projections', t: 'TIER-2', lock: true }]}
+  { idx: '06', name: 'Financials', sub: 'Use of funds', status: 'cleared', docs: [
+    { n: 'Use of Funds', t: 'SYNC' }]}
 ];
 
-const WALL = { idx: '◆', name: 'Tier-2 - Restricted', sub: 'Executed contracts · detailed cap table · full model', docs: [
-  { n: 'Founder vesting & CSPAs (executed)', t: 'LOCKED', lock: true },
-  { n: 'Signed SAFEs + board consents', t: 'LOCKED', lock: true },
-  { n: 'Detailed cap table', t: 'LOCKED', lock: true },
-  { n: 'Full financial model / pro-forma', t: 'LOCKED', lock: true }]};
+// Tier-2 / Restricted block is hidden: there is nothing behind it yet, and
+// listing documents we cannot serve only advertises what we hold. To re-enable,
+// restore an object here and add tier: 2 entries to api/_docs.js.
+const WALL = null;
 
 const STATS = [
   { k: 'STAGE', v: 'PRE-SEED' },
   { k: 'INSTRUMENT', v: 'SAFE' },
-  { k: 'CAP', v: '$3.0M' },
-  { k: 'TIER-1', v: 'CLEARED', tone: 'ok' },
-  { k: 'TIER-2', v: 'RESTRICTED', tone: 'bad' }
+  { k: 'CAP', v: '$3.0M' }
 ];
 
 const PIPELINE = [
-  { stage: 'Identified', accent: 'idle', count: 292, summary: 'prospects mapped<br>17 now engaged' },
+  { stage: 'Identified', accent: 'idle', count: 292, summary: 'prospects mapped<br>15 now engaged' },
   { stage: 'In Conversation', accent: 'steel', cards: [
-    { co: 'SpaceX' }, { co: 'AstroForge' }, { co: 'Varda Space Industries' },
+    { co: 'AstroForge' }, { co: 'Varda Space Industries' },
     { co: 'Impulse Space' }, { co: 'Armada' }, { co: 'General Matter' },
     { co: 'Valar Atomics' }, { co: 'Nominal' }, { co: 'Neros Technologies' },
-    { co: 'Northwood Space' }, { co: 'Adam Simpson' }]},
+    { co: 'Northwood Space' }]},
   { stage: 'Advanced Conversation + Negotiation', accent: 'amber', cards: [
+    { co: 'SpaceX', contact: 'Executive buy-in' },
     { co: 'Oracle', contact: 'Executive buy-in' },
     { co: 'Hadrian', contact: 'Executive buy-in' },
     { co: 'AMCA', contact: 'Executive buy-in' },
@@ -95,7 +92,7 @@ module.exports = async function handler(req, res) {
     })
   }));
 
-  const docCount = tiers.reduce((n, t) => n + t.docs.length, 0) + WALL.docs.length;
+  const docCount = tiers.reduce((n, t) => n + t.docs.length, 0) + (WALL ? WALL.docs.length : 0);
 
   return res.status(200).json({
     ok: true,
@@ -104,6 +101,6 @@ module.exports = async function handler(req, res) {
     tiers,
     wall: WALL,
     pipeline: PIPELINE,
-    pipelineMeta: '17 active · 292 identified · updated 07-13'
+    pipelineMeta: '15 active · 292 identified · updated 07-23'
   });
 };
