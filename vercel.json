@@ -18,10 +18,18 @@
   ],
   "headers": [
     {
-      "source": "/((?!talent-factory).*)",
+      "source": "/((?!talent-factory|api/doc).*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    },
+    {
+      "source": "/api/doc",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'self'" }
       ]
     }
   ]
