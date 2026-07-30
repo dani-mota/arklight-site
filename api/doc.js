@@ -66,7 +66,10 @@ module.exports = async function handler(req, res) {
   let result;
   try {
     const { get } = require('@vercel/blob');
-    result = await get(blobPath(doc), { access: 'private', token });
+    // useCache:false — a data-room document can be re-published (e.g. an updated
+    // deck or bio). The default cached read can serve stale bytes after an
+    // overwrite, so always fetch the current object.
+    result = await get(blobPath(doc), { access: 'private', token, useCache: false });
   } catch (e) {
     return res.status(500).json({ error: 'Storage error.' });
   }
