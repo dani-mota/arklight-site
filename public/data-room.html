@@ -45,15 +45,12 @@
   /* subtle field: hairline grid + radial warm glow */
   body::before{
     content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-    background:
-      radial-gradient(120% 90% at 50% -10%, var(--blue-glow-lo), transparent 55%),
-      linear-gradient(rgba(255,250,235,.025) 1px,transparent 1px) 0 0/100% 40px,
-      linear-gradient(90deg,rgba(255,250,235,.025) 1px,transparent 1px) 0 0/40px 100%;
-    mask:radial-gradient(130% 100% at 50% 40%,#000 55%,transparent 100%);
+    /* subtle brand glow only — the grid + scanline overlays were removed
+       (they cast a grey wash and showed as on-top lines when zoomed). */
+    background:radial-gradient(120% 90% at 50% -10%, var(--blue-glow-lo), transparent 55%);
   }
-  /* scanlines + vignette */
+  /* vignette (soft edge depth) */
   .fx{position:fixed; inset:0; pointer-events:none; z-index:60}
-  .fx.scan{background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 1px,transparent 1px 3px); opacity:.5; mix-blend-mode:multiply}
   .fx.vig{box-shadow:inset 0 0 240px 40px rgba(0,0,0,.55)}
   /* viewport corner brackets */
   .bracket{position:fixed; width:26px; height:26px; z-index:61; pointer-events:none; border:1.5px solid var(--blue-300); opacity:.55}
@@ -74,10 +71,9 @@
   .topbar{display:flex; justify-content:space-between; align-items:center; padding:26px 4px; gap:16px}
   .topbar .lbl{color:var(--text-3)}
   .brand{display:flex; align-items:center; gap:10px}
-  .brand b{font-weight:600; letter-spacing:.02em; color:var(--text-0)}
+  .brand b{font-weight:600; letter-spacing:.08em; color:var(--text-0); font-size:13px}
   .gatecenter{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:22px; padding:40px 0 80px}
-  .mark{width:210px; max-width:64vw; height:auto; filter:drop-shadow(0 0 26px var(--blue-glow)); margin-bottom:4px}
-  .hmark{height:13px; width:auto; vertical-align:middle; opacity:.95}
+  .wordmark{font-family:var(--font-display); font-weight:700; font-size:clamp(30px,7vw,52px); letter-spacing:.14em; color:var(--text-0); text-shadow:0 0 26px var(--blue-glow-lo); margin-bottom:6px}
   .eyebrow{color:var(--blue-200)}
   h1{font-family:var(--font-display); font-weight:600; letter-spacing:-.02em; color:var(--text-0); margin:0; font-size:clamp(32px,6vw,58px); line-height:1.04; text-wrap:balance}
   .gatesub{max-width:46ch; color:var(--text-2); margin:-6px 0 6px; font-size:14px}
@@ -197,9 +193,9 @@
   .bars{display:flex; gap:3px}
   .bars i{flex:1; height:9px; background:var(--bd-2); border-radius:1px}
   .bars i.on{background:var(--ember); box-shadow:0 0 6px var(--ember-glow)}
-  .cost{padding:12px; margin-bottom:14px; background:var(--canvas-0); border:1px solid var(--bd-1); border-radius:2px}
-  .cost .big{font-family:var(--font-mono); font-size:25px; font-weight:500; color:var(--text-0); letter-spacing:.01em; font-variant-numeric:tabular-nums; line-height:1.05}
-  .cost .cap{font-size:10.5px; color:var(--amber); margin-top:7px; line-height:1.4; letter-spacing:.02em}
+  .cost{padding:14px 12px; margin-bottom:14px; background:var(--canvas-0); border:1px solid var(--bd-1); border-radius:2px}
+  .cost .cap{font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--amber); text-transform:uppercase; letter-spacing:.08em; line-height:1.35; margin:0 0 9px}
+  .cost .big{font-family:var(--font-mono); font-size:29px; font-weight:600; color:var(--text-0); letter-spacing:.01em; font-variant-numeric:tabular-nums; line-height:1.05}
   .cost .cap b{color:var(--amber); font-weight:500}
   .spark{margin-bottom:6px}
   .spark svg{display:block; width:100%; height:auto}
@@ -283,7 +279,6 @@
 </head>
 <body>
 
-<div class="fx scan"></div>
 <div class="fx vig"></div>
 <span class="bracket tl"></span><span class="bracket tr"></span>
 <span class="bracket bl"></span><span class="bracket br"></span>
@@ -298,7 +293,7 @@
   </div>
 
   <div class="wrap gatecenter">
-    <img class="mark" src="/logo/arklight_icon.svg" alt="Project Arklight"/>
+    <div class="wordmark">PROJECT ARKLIGHT</div>
     <div class="lbl eyebrow">Investor Access · Tier-1 Clearance</div>
     <h1>The Situation Room</h1>
     <p class="gatesub">Authenticated, per-operator access to Project Arklight's investor materials. Every session is logged. Your credential is unique to you - do not forward it.</p>
@@ -326,7 +321,7 @@
   <div class="roomhead">
     <div class="wrap">
       <div class="row">
-        <div class="brand"><img class="hmark" src="/logo/arklight_icon.svg" alt="Arklight"/> <span class="lbl" style="color:var(--text-3)">// INVESTOR ACCESS</span></div>
+        <div class="brand"><b>PROJECT ARKLIGHT</b> <span class="lbl" style="color:var(--text-3)">// INVESTOR ACCESS</span></div>
         <div class="meta">
           <span class="lbl">OPERATOR <b id="operatorId" style="color:var(--blue-200)">ARC-INV-014</b></span>
           <span class="lbl" id="clk2">--:--:--</span>
@@ -345,20 +340,14 @@
 
     <aside class="side">
       <div class="panel mon">
-        <div class="top">
-          <h3 style="margin:0">Situation Monitor</h3>
-          <span class="live"><span class="d"></span>LIVE</span>
+        <div class="cost">
+          <div class="cap">Economic cost of shortage since you entered</div>
+          <div class="big" id="costVal">$0</div>
         </div>
-        <p class="sub">US Industrial Base · Workforce</p>
 
         <div class="readi">
           <div class="rl"><span class="lbl">Base Readiness</span><b>CRITICAL</b></div>
           <div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-        </div>
-
-        <div class="cost">
-          <div class="big" id="costVal">$0</div>
-          <div class="cap">Economic cost of shortage since you entered.</div>
         </div>
 
         <div class="spark">
@@ -659,7 +648,7 @@
   // seed a couple of log lines
   logAdd("SESSION ESTABLISHED","ok"); logAdd("MANIFEST DECRYPTED","");
 
-  // ---- Situation Monitor: live cost accrual + sector scan ----
+  // ---- monitor panel: live cost accrual + sector scan ----
   // Rate derived from $1T projected impact by 2030 (Deloitte/NAM) over the
   // seconds remaining to 2030 ~= $9,500/sec. Tune COST_RATE to taste.
   var COST_RATE=9500, costVal=0, costLast=0, monRaf=0, scanTimer=0, monBig=null, monCells=null, monSi=0;
