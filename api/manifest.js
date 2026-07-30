@@ -36,7 +36,8 @@ const TIERS = [
   { idx: '04', name: 'Product & Market', sub: 'Demos · market · competitive', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/dfbb6c5e59cf4376b9dce541f82f0ec0' },
-    { n: 'Employer Portal Product Demo', t: 'DEMO' },
+    { n: 'Talent Factory Product Demo - Employer', t: 'LOOM', kind: 'video',
+      src: 'https://www.loom.com/embed/fda93ccf13824da9aecd118685f3617a' },
     { n: 'Market Size & Analysis', t: 'SYNC' },
     { n: 'Competitor Landscape & Analysis', t: 'SYNC' }]},
   { idx: '05', name: 'Traction', sub: 'MOU · proposal · live pipeline', status: 'cleared', docs: [
