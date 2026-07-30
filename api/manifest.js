@@ -11,7 +11,6 @@ const { getSession } = require('./_auth');
 // Which manifest rows map to a real gated document (/api/doc?id=...).
 const SRC = {
   'Arklight - Investor Deck.pdf': 'deck',
-  'Arklight - Investor Memo.pdf': 'memo',
   'Certificate of Incorporation (DE)': 'cert',
   'Bylaws (adopted)': 'bylaws',
   '2026 Equity Incentive Plan': 'plan',
@@ -24,9 +23,8 @@ const SRC = {
 };
 
 const TIERS = [
-  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo', status: 'cleared', docs: [
-    { n: 'Arklight - Investor Deck.pdf', t: 'SYNC 07-08' },
-    { n: 'Arklight - Investor Memo.pdf', t: 'SYNC 07-11' }]},
+  { idx: '01', name: 'Pitch & Summary', sub: 'Deck', status: 'cleared', docs: [
+    { n: 'Arklight - Investor Deck.pdf', t: 'SYNC 07-08' }]},
   { idx: '02', name: 'Company & Legal', sub: 'Formation · bylaws · equity plan', status: 'cleared', docs: [
     { n: 'Certificate of Incorporation (DE)', t: 'FILED 02-03' },
     { n: 'Bylaws (adopted)', t: '02-03' },

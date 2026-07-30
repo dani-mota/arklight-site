@@ -11,7 +11,6 @@ const BLOB_PREFIX = 'investor-room/';
 
 const DOCS = {
   deck:   { file: 'arklight-investor-deck.pdf',              title: 'Arklight - Investor Deck',          tier: 1 },
-  memo:   { file: 'arklight-investor-memo.pdf',              title: 'Arklight - Investor Memo',          tier: 1 },
   cert:   { file: 'arklight-certificate-of-incorporation.pdf', title: 'Certificate of Incorporation',    tier: 1 },
   bylaws: { file: 'arklight-bylaws.pdf',                     title: 'Bylaws',                            tier: 1 },
   plan:   { file: 'arklight-equity-incentive-plan.pdf',      title: '2026 Equity Incentive Plan',        tier: 1 },
