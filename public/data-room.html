@@ -396,10 +396,10 @@
   <div class="vframe">
     <div class="vhead">
       <span class="vt" id="vTitle">Document</span>
-      <span class="vbadge">View only</span>
+      <span class="vbadge" id="vBadge">View only</span>
       <button class="vclose" data-vclose type="button">Close ✕</button>
     </div>
-    <iframe id="vIframe" class="viewbody" title="Document viewer"></iframe>
+    <iframe id="vIframe" class="viewbody" title="Document viewer" allow="fullscreen; picture-in-picture" referrerpolicy="no-referrer"></iframe>
   </div>
 </div>
 
@@ -453,7 +453,7 @@
     var attrs, act;
     if(d.lock){      attrs=' data-req="1"';                                          act='<span class="act lock">Request →</span>'; }
     else if(d.board){attrs=' data-board="1"';                                        act='<span class="act">Open board</span>'; }
-    else if(d.src){  attrs=' data-open="1" data-src="'+d.src+'" data-title="'+d.n+'"'; act='<span class="act">Open</span>'; }
+    else if(d.src){  attrs=' data-open="1" data-src="'+d.src+'" data-title="'+d.n+'"'+(d.kind?' data-kind="'+d.kind+'"':''); act='<span class="act">'+(d.kind==="video"?"Play ▶":"Open")+'</span>'; }
     else {           attrs=' data-open="1"';                                         act='<span class="act">Open</span>'; }
     return '<div class="doc" role="button" tabindex="0"'+attrs+'><span class="dn">'+d.n+'</span><span class="dt">'+d.t+'</span>'+act+'</div>';
   }
@@ -573,11 +573,25 @@
     while(logEl.children.length>7) logEl.removeChild(logEl.lastChild);
   }
   // ---- in-room document viewer ----
-  function openViewer(src,title){
-    var v=document.getElementById("viewer"), f=document.getElementById("vIframe"), t=document.getElementById("vTitle");
+  // Only two sources are ever framed: our own gated /api/doc, and Loom video
+  // embeds. Anything else (javascript:, data:, other hosts) is refused.
+  function safeViewerSrc(src){
+    return /^\/api\/doc\?id=[a-z0-9_-]+$/i.test(src) ||
+           /^https:\/\/www\.loom\.com\/(embed|share)\/[a-z0-9]+/i.test(src);
+  }
+  function openViewer(src,title,kind){
+    if(!safeViewerSrc(src)) return;
+    var v=document.getElementById("viewer"), f=document.getElementById("vIframe"),
+        t=document.getElementById("vTitle"), b=document.getElementById("vBadge");
     t.textContent=title||"Document";
-    // #toolbar=0&navpanes=0 hides the browser PDF chrome (download/print) for a view-only read
-    f.src=src+"#toolbar=0&navpanes=0&statusbar=0&view=FitH";
+    if(kind==="video"){
+      if(b) b.textContent="Video";
+      f.src=src;   // Loom serves its own player; no PDF chrome params
+    } else {
+      if(b) b.textContent="View only";
+      // #toolbar=0&navpanes=0 hides the browser PDF chrome (download/print) for a view-only read
+      f.src=src+"#toolbar=0&navpanes=0&statusbar=0&view=FitH";
+    }
     v.classList.add("on"); v.setAttribute("aria-hidden","false");
     document.body.style.overflow="hidden";
     if(typeof pauseMonitor==="function") pauseMonitor();   // full focus + smooth scroll while reading
@@ -629,7 +643,7 @@
       var nm=o.closest(".doc").querySelector(".dn").textContent;
       logAdd("OPENED · "+nm.slice(0,24),"ok");
       var src=o.getAttribute("data-src");
-      if(src){ openViewer(src, o.getAttribute("data-title")||nm); }
+      if(src){ openViewer(src, o.getAttribute("data-title")||nm, o.getAttribute("data-kind")); }
       else { ping(); toast.firstChild.textContent="✓ LOGGED"; setTimeout(function(){toast.firstChild.textContent="✓ ACCESS REQUEST TRANSMITTED"},2600); }
     }
     if(r){ var nm2=r.closest(".doc").querySelector(".dn").textContent; logAdd("TIER-2 REQUEST · "+nm2.slice(0,18),""); ping(); }

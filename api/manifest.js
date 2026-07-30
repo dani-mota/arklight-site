@@ -34,7 +34,8 @@ const TIERS = [
   { idx: '03', name: 'Team', sub: 'Founder & team bios', status: 'cleared', docs: [
     { n: 'Arklight - Team Bios.pdf', t: 'SYNC 07-13' }]},
   { idx: '04', name: 'Product & Market', sub: 'Demos · market · competitive', status: 'cleared', docs: [
-    { n: 'Arklight OS Product Demo', t: 'DEMO' },
+    { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
+      src: 'https://www.loom.com/embed/dfbb6c5e59cf4376b9dce541f82f0ec0' },
     { n: 'Employer Portal Product Demo', t: 'DEMO' },
     { n: 'Market Size & Analysis', t: 'SYNC' },
     { n: 'Competitor Landscape & Analysis', t: 'SYNC' }]},
