@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="icon" href="/favicon.svg">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XH6JFV56FJ');
+</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Break One World Record. Every Year. | Project Arklight</title>
+<meta name="description" content="A student program where students build real things with real tools, and break a world record every year. From the first cardboard to real flight hardware."/>
+<link rel="canonical" href="https://www.arklight.us/world-record"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Project Arklight"/>
+<meta property="og:title" content="Break one world record. Every year."/>
+<meta property="og:description" content="Students build real things with real tools, and break a world record every year."/>
+<meta property="og:url" content="https://www.arklight.us/world-record"/>
+<meta property="og:image" content="https://www.arklight.us/assets/astronaut-eva.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Break one world record. Every year."/>
+<meta name="twitter:description" content="Students build real things with real tools, and break a world record every year."/>
+<meta name="twitter:image" content="https://www.arklight.us/assets/astronaut-eva.jpg"/>
+<meta name="author" content="Dani Mota"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles/chrome.css"/>
+<link rel="stylesheet" href="/styles/cr.css"/>
+<link rel="stylesheet" href="/styles/ark-mobile.css">
+<style id="wr-css">
+/* ===================== WORLD RECORD · student program ===================== */
+.wr{--space-0:#04060D;--space-1:#0A1122;--space-2:#0E1A31;--ink:#F5F4EF;--muted:rgba(245,244,239,.70);--muted-2:rgba(245,244,239,.52);--amber:#F5A14A;--blue:#7FB0E8;--font-d:'Inter Tight',-apple-system,sans-serif;--font-m:'JetBrains Mono',ui-monospace,monospace}
+body.wr{background:var(--space-0);color:var(--ink);font-family:var(--font-d);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wr-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-d);font-size:15px;font-weight:500;cursor:pointer;border:0;text-decoration:none;background:none;color:#F4F3EF;transition:color .3s cubic-bezier(.38,.005,.215,1),transform .3s cubic-bezier(.38,.005,.215,1)}
+.wr-btn .arr{display:inline-block;transition:transform .3s cubic-bezier(.38,.005,.215,1)}
+.wr-btn:hover{transform:translateY(-2px);color:#FFFFFF}
+.wr-hero .wr-btn{background:none;border:0;padding:0;height:auto;border-radius:0;color:#F4F3EF;font-size:15px;font-weight:500}
+.wr-hero .wr-btn:hover{background:none;transform:translateY(-2px);color:#FFFFFF}
+.wr-btn:hover .arr{transform:translateX(6px)}
+.wr-btn.-ghost{background:transparent;color:var(--ink);border:1px solid rgba(245,244,239,.28);box-shadow:none}
+.wr-btn.-ghost:hover{background:rgba(245,244,239,.08);border-color:rgba(245,244,239,.5)}
+
+/* ---------- header legibility on dark ---------- */
+body.wr .c-header_logo-text,body.wr .c-header_toggler span{color:var(--ink)!important}
+body.wr .c-header_toggler span{background:var(--ink)}
+body.wr .c-header_logo-icon{color:var(--ink)}
+
+/* ---------- HERO (astronaut photo) ---------- */
+.wr-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:#04060D}
+.wr-hero_bg{position:absolute;inset:0;z-index:0}
+.wr-hero_bg img{width:100%;height:100%;object-fit:cover;object-position:62% 42%}
+.wr-hero_bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(4,6,13,.62) 0%,rgba(4,6,13,.22) 45%,rgba(4,6,13,0) 76%),
+  radial-gradient(135% 118% at 50% 36%,rgba(4,6,13,0) 48%,rgba(4,6,13,.28) 74%,rgba(4,6,13,.55) 100%),
+  linear-gradient(180deg,rgba(4,6,13,0) 36%,rgba(4,6,13,.5) 66%,rgba(4,6,13,.92) 88%,#04060D 100%)}
+.wr-hero_inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
+.wr-hero_content{max-width:760px;padding:0}
+.wr-eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 26px;font-family:var(--font-m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber)}
+.wr-eyebrow .bar{width:28px;height:1px;background:var(--amber);opacity:.9}
+.wr-hero h1{font-size:clamp(2.35rem,4.6vw,2.8125rem);line-height:1.05;letter-spacing:-.02em;font-weight:700;color:var(--ink);margin:0 0 28px}
+.wr-hero h1 .yr{display:block}
+.wr-hero_sub{font-size:clamp(17px,1.7vw,22px);line-height:1.45;color:var(--muted);margin:0 0 38px;max-width:44ch}
+.wr-hero_cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- STARFIELD SPACE (sections 2 + 3) ---------- */
+.wr-space{position:relative;overflow:hidden;background:linear-gradient(180deg,#04060D 0%,#0A1426 16%,#0E1E38 34%,#0A1526 54%,#070C18 80%,#03040A 100%)}
+.wr-stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.wr-stars i{position:absolute;inset:0;display:block;background-repeat:repeat;will-change:background-position}
+.wr-stars .s1{background-image:radial-gradient(1px 1px at 25px 45px,rgba(255,255,255,.85),transparent),radial-gradient(1px 1px at 92px 120px,rgba(255,255,255,.6),transparent),radial-gradient(1.4px 1.4px at 150px 60px,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 60px 180px,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 205px 150px,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 130px 220px,rgba(255,255,255,.55),transparent);background-size:240px 240px;opacity:.7;animation:wr-drift1 90s linear infinite}
+.wr-stars .s2{background-image:radial-gradient(1.6px 1.6px at 50px 80px,rgba(205,222,255,.9),transparent),radial-gradient(2px 2px at 175px 40px,rgba(255,255,255,.95),transparent),radial-gradient(1px 1px at 110px 165px,rgba(255,255,255,.55),transparent),radial-gradient(1.5px 1.5px at 20px 135px,rgba(220,230,255,.7),transparent),radial-gradient(1.5px 1.5px at 285px 210px,rgba(255,255,255,.8),transparent);background-size:340px 340px;opacity:.8;animation:wr-drift2 62s linear infinite,wr-twinkle 7s ease-in-out infinite alternate}
+@keyframes wr-drift1{from{background-position:0 0}to{background-position:0 240px}}
+@keyframes wr-drift2{from{background-position:0 0}to{background-position:0 340px}}
+@keyframes wr-twinkle{from{opacity:.5}to{opacity:.9}}
+@media(prefers-reduced-motion:reduce){.wr-stars .s1,.wr-stars .s2{animation:none}}
+
+/* ---------- STAKES ---------- */
+.wr-stakes{background:transparent;position:relative;z-index:1;padding:130px 24px}
+.wr-stakes_inner{max-width:1080px;margin:0 auto;text-align:center}
+.wr-stakes_k{font-family:var(--font-m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);margin:0 0 22px}
+.wr-stakes h2{font-size:clamp(30px,4.4vw,58px);line-height:1.04;letter-spacing:-.03em;font-weight:700;color:var(--ink);margin:0 auto;max-width:20ch}
+.wr-stakes p{font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:var(--muted);margin:26px auto 0;max-width:56ch}
+.wr-epic,.wr-hero h1 .yr{background-image:radial-gradient(1.6px 1.6px at 9px 11px,#fff,transparent),radial-gradient(1.2px 1.2px at 31px 24px,rgba(255,255,255,.9),transparent),radial-gradient(1.7px 1.7px at 50px 8px,#fff,transparent),radial-gradient(1.2px 1.2px at 17px 45px,#fff,transparent),radial-gradient(1.5px 1.5px at 54px 42px,rgba(255,255,255,.95),transparent),radial-gradient(1.1px 1.1px at 38px 57px,#fff,transparent),linear-gradient(105deg,#6EA8E8 0%,#8E7BF2 36%,#CE7BEA 60%,#F5A14A 100%);background-size:64px 64px,64px 64px,64px 64px,64px 64px,64px 64px,64px 64px,220% 100%;background-repeat:repeat,repeat,repeat,repeat,repeat,repeat,no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:wr-epic 13s ease-in-out infinite alternate}
+@keyframes wr-epic{from{background-position:0 0,0 0,0 0,0 0,0 0,0 0,0% 50%}to{background-position:64px 64px,64px 64px,64px 64px,64px 64px,64px 64px,64px 64px,100% 50%}}
+@media(prefers-reduced-motion:reduce){.wr-epic{animation:none}}
+
+/* ---------- WALK OUT WITH ---------- */
+.wr-walk{background:transparent;position:relative;z-index:1;padding:120px 24px 130px}
+.wr-walk_inner{max-width:940px;margin:0 auto}
+.wr-walk_head{text-align:center;margin:0 0 56px}
+.wr-walk_k{font-family:var(--font-m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber);margin:0 0 16px}
+.wr-walk_head h2{font-size:clamp(30px,4.2vw,54px);line-height:1.02;letter-spacing:-.03em;font-weight:700;margin:0}
+.wr-list{border-top:1px solid rgba(245,244,239,.13)}
+.wr-item{display:flex;align-items:baseline;gap:28px;padding:30px 4px;border-bottom:1px solid rgba(245,244,239,.13)}
+.wr-item_n{font-family:var(--font-m);font-size:12px;letter-spacing:.1em;color:var(--amber);flex:none;width:30px}
+.wr-item_t{font-size:clamp(20px,2.7vw,32px);font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.16;margin:0}
+.wr-item.-lead .wr-item_t{color:var(--amber);font-weight:700}
+
+/* reveal */
+.wr-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.wr-reveal.-in{opacity:1;transform:none}
+.wr-item:nth-child(2){transition-delay:.06s}.wr-item:nth-child(3){transition-delay:.12s}.wr-item:nth-child(4){transition-delay:.18s}.wr-item:nth-child(5){transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){.wr-reveal{opacity:1;transform:none;transition:none}}
+@media(max-width:600px){.wr-item{gap:18px;padding:24px 2px}}
+
+/* ---------- HOW IT WORKS ---------- */
+.wr-hiw{background:transparent;position:relative;z-index:1;padding:130px 24px 120px}
+.wr-hiw_inner{max-width:1160px;margin:0 auto}
+.wr-hiw_head{text-align:center;max-width:760px;margin:0 auto 84px}
+.wr-hiw_k{font-family:var(--font-m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);margin:0 0 22px}
+.wr-hiw_head h2{font-size:clamp(34px,5.2vw,66px);line-height:1;letter-spacing:-.03em;font-weight:700;color:var(--ink);margin:0}
+.wr-hiw_head p{font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:var(--muted);margin:24px auto 0;max-width:52ch}
+.hiw{position:relative}
+.hiw_line{position:absolute;top:92px;left:7px;right:7px;height:2px;background:rgba(245,244,239,.13);border-radius:2px;z-index:1}
+.hiw_fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:2px;background:linear-gradient(90deg,#6EA8E8,#8E7BF2 42%,#CE7BEA 70%,#F5A14A)}
+.hiw_spark{position:absolute;top:50%;left:0;width:9px;height:9px;border-radius:50%;background:#fff;opacity:0;transform:translate(-50%,-50%);box-shadow:0 0 10px 3px rgba(245,161,74,.9),0 0 22px 7px rgba(206,123,234,.55);z-index:3}
+.hiw_cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.hiw_col{position:relative;padding-top:118px}
+.hiw_num{position:absolute;top:0;left:0;margin:0;font-family:var(--font-m);font-size:12px;letter-spacing:.14em;color:var(--amber)}
+.hiw_ttl{position:absolute;top:24px;left:0;right:14px;margin:0;font-size:15px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);line-height:1.16}
+.hiw_dot{position:absolute;top:86px;left:0;width:14px;height:14px;border-radius:50%;background:var(--space-1);border:2px solid rgba(245,244,239,.5);box-shadow:0 0 0 4px #050a16;z-index:2}
+.hiw_col:last-child .hiw_dot{background:#CE7BEA;border-color:#E4B6F5}
+.hiw_desc{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.hiw_ends{display:flex;justify-content:space-between;margin:36px 0 0;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+@keyframes hiw-fill{0%{width:0;opacity:.5}5%{opacity:1}60%{width:100%}88%{width:100%;opacity:1}100%{width:100%;opacity:0}}
+@keyframes hiw-spark{0%{left:0;opacity:0;transform:translate(-50%,-50%) scale(1)}4%{opacity:1}58%{left:100%;opacity:1;transform:translate(-50%,-50%) scale(1)}64%{left:100%;opacity:1;transform:translate(-50%,-50%) scale(2.4)}74%{left:100%;opacity:0;transform:translate(-50%,-50%) scale(2.9)}100%{left:100%;opacity:0}}
+@keyframes hiw-pulse{0%{box-shadow:0 0 0 4px #050a16,0 0 0 0 rgba(206,123,234,0);transform:scale(1)}8%{box-shadow:0 0 0 4px #050a16,0 0 15px 4px rgba(206,123,234,.85);transform:scale(1.5)}22%{box-shadow:0 0 0 4px #050a16,0 0 0 0 rgba(206,123,234,0);transform:scale(1)}100%{box-shadow:0 0 0 4px #050a16,0 0 0 0 rgba(206,123,234,0);transform:scale(1)}}
+@keyframes hiw-burst{0%{box-shadow:0 0 0 4px #050a16,0 0 0 0 rgba(206,123,234,.9);transform:scale(1)}10%{box-shadow:0 0 0 4px #050a16,0 0 26px 9px rgba(206,123,234,.95);transform:scale(2)}30%{box-shadow:0 0 0 4px #050a16,0 0 0 0 rgba(206,123,234,0);transform:scale(1)}100%{box-shadow:0 0 0 4px #050a16,0 0 0 0 rgba(206,123,234,0);transform:scale(1)}}
+.hiw.-in .hiw_fill{animation:hiw-fill 6s linear infinite}
+.hiw.-in .hiw_spark{animation:hiw-spark 6s linear infinite}
+.hiw.-in .hiw_col .hiw_dot{animation:hiw-pulse 6s linear infinite}
+.hiw.-in .hiw_col:nth-child(2) .hiw_dot{animation-delay:.9s}
+.hiw.-in .hiw_col:nth-child(3) .hiw_dot{animation-delay:1.8s}
+.hiw.-in .hiw_col:last-child .hiw_dot{animation:hiw-burst 6s linear infinite;animation-delay:2.7s}
+@media(prefers-reduced-motion:reduce){
+  .hiw.-in .hiw_fill{animation:none;width:100%;opacity:1}
+  .hiw.-in .hiw_spark{animation:none;opacity:0}
+  .hiw.-in .hiw_dot{animation:none!important}
+}
+@media(max-width:720px){
+  .hiw_line,.hiw_ends{display:none}
+  .hiw_cols{grid-template-columns:1fr;gap:0;border-left:2px solid rgba(245,244,239,.16);margin-left:7px}
+  .hiw_col{padding:0 0 28px 30px}
+  .hiw_col:last-child{padding-bottom:0}
+  .hiw_num{position:static;display:block;margin:0 0 5px}
+  .hiw_ttl{position:static;right:auto;margin:0 0 8px}
+  .hiw_dot{top:2px;left:-8px}
+}
+
+/* ---------- THE FIVE FRONTIERS ---------- */
+.wr-ff{background:transparent;position:relative;z-index:1;color:var(--muted);padding:118px 24px 150px}
+.wr-ff_inner{max-width:1160px;margin:0 auto}
+.wr-ff_head{text-align:center;max-width:620px;margin:0 auto 52px}
+.wr-ff_head h2{font-size:clamp(30px,3.9vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.04;color:var(--ink);margin:0}
+.wr-ff_lead{font-size:16.5px;line-height:1.62;color:var(--muted);margin:20px auto 0;max-width:50ch}
+.wr-fcards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.wr-fcard{position:relative;height:340px;border-radius:12px;overflow:hidden;margin:0;border:1px solid rgba(245,244,239,.10);transition:border-color .35s cubic-bezier(.38,.005,.215,1),box-shadow .35s cubic-bezier(.38,.005,.215,1)}
+.wr-fcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.38,.005,.215,1)}
+.wr-fcard:hover img{transform:scale(1.06)}
+.wr-fcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,6,13,.05),rgba(4,6,13,.15) 42%,rgba(4,6,13,.82))}
+.wr-fcard figcaption{position:absolute;left:16px;bottom:15px;z-index:2;font-family:var(--font-d);font-weight:700;font-size:20px;letter-spacing:-.01em;color:#F4F3EF;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.wr-fcard:hover{border-color:rgba(206,123,234,.7);box-shadow:0 0 0 1px rgba(206,123,234,.5),0 0 28px -6px rgba(206,123,234,.55)}
+.wr-ff_foot{display:flex;justify-content:center;margin:48px 0 0}
+@media(max-width:900px){.wr-fcards{grid-template-columns:repeat(3,1fr)}.wr-fcard{height:280px}}
+@media(max-width:560px){.wr-fcards{grid-template-columns:repeat(2,1fr);gap:12px}.wr-fcard{height:210px}.wr-ff_foot{gap:24px}}
+
+/* ---------- CONTACT (dark) ---------- */
+.wr-contact{background:#04060D;color:var(--ink);padding:120px 24px 130px}
+.wr-contact_inner{max-width:1080px;margin:0 auto}
+.wr-contact_head{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+.wr-contact_head .bar{width:28px;height:1px;background:var(--amber)}
+.wr-contact_eyebrow{font-family:var(--font-m);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin:0}
+.wr-contact_title{font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.03em;color:var(--ink);margin:0 0 52px;font-weight:700;max-width:16ch}
+.wr-contact_grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start}
+@media(max-width:860px){.wr-contact_grid{grid-template-columns:1fr;gap:38px}}
+.wr-contact_lead{font-size:17px;line-height:1.6;color:var(--muted);margin:0 0 30px;max-width:34ch}
+.wr-contact_meta dl{display:grid;grid-template-columns:auto 1fr;margin:0;border-top:1px solid rgba(245,244,239,.16)}
+.wr-contact_meta dt{font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);padding:15px 0;border-bottom:1px solid rgba(245,244,239,.10)}
+.wr-contact_meta dd{font-size:14px;color:var(--muted);margin:0;padding:15px 0;text-align:right;border-bottom:1px solid rgba(245,244,239,.10)}
+.wr-contact_form{background:rgba(245,244,239,.03);border:1px solid rgba(245,244,239,.12);border-radius:14px;padding:30px}
+.wr-contact_row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:520px){.wr-contact_row{grid-template-columns:1fr}}
+.wr-field{display:block;margin-bottom:18px}
+.wr-field>span{display:block;font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);margin-bottom:9px}
+.wr-field>span em{font-style:normal;text-transform:none;letter-spacing:0;color:rgba(245,244,239,.4)}
+.wr-field input,.wr-field textarea{width:100%;background:rgba(4,6,13,.6);border:1px solid rgba(245,244,239,.18);border-radius:8px;color:var(--ink);font-family:inherit;font-size:15px;padding:13px 14px;outline:none;transition:border-color .2s}
+.wr-field input:focus,.wr-field textarea:focus{border-color:var(--amber)}
+.wr-field textarea{resize:vertical;min-height:120px}
+.wr-contact_actions{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:4px}
+.wr-contact_status{margin:0;font-family:var(--font-m);font-size:11.5px;letter-spacing:.03em;color:var(--muted-2)}
+body.wr .c-logo{display:none!important}
+</style>
+</head>
+<body class="wr">
+
+<c-header class="c-header"> <header class="c-header_inner"> <a href="/" class="c-header_logo"> <span class="c-icon c-header_logo-icon" data-astro-cid-xaas34xa> <svg class="svg-logo-icon" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo-icon" data-astro-cid-xaas34xa></use> </svg> <span class="u-sr-only" data-astro-cid-xaas34xa>Project Arklight</span> </span>  <span class="c-header_logo-text | u-h2">Project Arklight</span> </a> <button class="c-header_toggler | u-h2-regular" data-header-toggler> <span></span> <span></span> <span class="u-sr-only">Toggle menu</span> </button> <div class="c-menu" aria-hidden="true" data-header-menu> <div class="c-menu_overlay" data-header-menu-overlay> <span class="u-sr-only">Close Menu</span> </div> <div class="c-menu_inner"> <ul class="c-nav u-h1"> <li class="c-nav_item"><a href="/" class="c-nav_link"><span class="c-nav_label">Home</span></a></li> <li class="c-nav_item"><a href="/trade-school" data-no-swup class="c-nav_link"><span class="c-nav_label">Trade School</span></a></li><li class="c-nav_item"><a href="/world-record" data-no-swup class="c-nav_link"><span class="c-nav_label">High School</span></a></li>  <li class="c-nav_item"><a href="/content-research" data-no-swup class="c-nav_link"><span class="c-nav_label">Content &amp; Research</span></a></li> <li class="c-nav_item"><a href="#contact" class="c-nav_link"><span class="c-nav_label">Partner With Us</span></a></li> </ul>     <p class="c-details"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  </div> </div> </header> </c-header>
+
+<main>
+
+<!-- HERO -->
+<section class="wr-hero">
+  <div class="wr-hero_bg"><img src="/assets/astronaut-eva.jpg" alt="An astronaut floating untethered in space above Earth" width="2200" height="2200" loading="eager" decoding="async"></div>
+  <div class="wr-hero_inner">
+    <div class="wr-hero_content">
+      <h1>Break one world record.<span class="yr">Every year.</span></h1>
+      <div class="wr-hero_cta">
+        <a href="#contact" class="wr-btn">Bring it to your school <span class="arr">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STARFIELD SPACE (sections 2 + 3) -->
+<div class="wr-space">
+<div class="wr-stars" aria-hidden="true"><i class="s1"></i><i class="s2"></i></div>
+
+<!-- HOW IT WORKS -->
+<section class="wr-hiw">
+  <div class="wr-hiw_inner">
+    <div class="wr-hiw_head">
+      <p class="wr-hiw_k">How it works</p>
+      <h2><span class="wr-epic">Epic</span> is the assignment.</h2>
+      <p>Students don't rise to low expectations.</p>
+    </div>
+    <div class="hiw wr-reveal">
+      <div class="hiw_line"><span class="hiw_fill"></span><span class="hiw_spark"></span></div>
+      <div class="hiw_cols">
+        <div class="hiw_col"><p class="hiw_num">01</p><p class="hiw_ttl">Learn the machines</p><span class="hiw_dot"></span><p class="hiw_desc">Every student rotates through every station. CNC, welding, printing, electronics.</p></div>
+        <div class="hiw_col"><p class="hiw_num">02</p><p class="hiw_ttl">Build small things</p><span class="hiw_dot"></span><p class="hiw_desc">Real projects, each one harder than the last. Every small build is a piece of the big one.</p></div>
+        <div class="hiw_col"><p class="hiw_num">03</p><p class="hiw_ttl">Build the record machine</p><span class="hiw_dot"></span><p class="hiw_desc">One cohort, one machine, designed and manufactured together.</p></div>
+        <div class="hiw_col"><p class="hiw_num">04</p><p class="hiw_ttl">Break the record</p><span class="hiw_dot"></span><p class="hiw_desc">In public. Timed, judged, verified.</p></div>
+      </div>
+      <div class="hiw_ends"><span>Week 1: cardboard</span><span>Week 16: world record</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WALK OUT WITH -->
+<section class="wr-walk" id="walk">
+  <div class="wr-walk_inner">
+    <div class="wr-walk_head">
+      <p class="wr-walk_k">The experience</p>
+      <h2>What students walk out with.</h2>
+    </div>
+    <div class="wr-list">
+      <div class="wr-item -lead wr-reveal"><span class="wr-item_n">01</span><p class="wr-item_t">Breaking a world record. Every year.</p></div>
+      <div class="wr-item wr-reveal"><span class="wr-item_n">02</span><p class="wr-item_t">Build with real tools, real machines, and real materials.</p></div>
+      <div class="wr-item wr-reveal"><span class="wr-item_n">03</span><p class="wr-item_t">Make something nobody has ever made.</p></div>
+      <div class="wr-item wr-reveal"><span class="wr-item_n">04</span><p class="wr-item_t">Go from the first cardboard to real flight hardware.</p></div>
+      <div class="wr-item wr-reveal"><span class="wr-item_n">05</span><p class="wr-item_t">Have an absurd amount of fun the entire way.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FIVE FRONTIERS -->
+<section id="frontiers" class="wr-ff">
+  <div class="wr-ff_inner">
+    <div class="wr-ff_head">
+      <h2>The Five Frontiers.</h2>
+      <p class="wr-ff_lead">We aim to break a world record in each of these domains.</p>
+    </div>
+    <div class="wr-fcards">
+      <figure class="wr-fcard"><img src="/assets/frontiers/water.jpg" alt="" loading="lazy" decoding="async"><figcaption>Water</figcaption></figure>
+      <figure class="wr-fcard"><img src="/assets/frontiers/sky.jpg" alt="" loading="lazy" decoding="async"><figcaption>Sky</figcaption></figure>
+      <figure class="wr-fcard"><img src="/assets/frontiers/land.jpg" alt="" loading="lazy" decoding="async"><figcaption>Land</figcaption></figure>
+      <figure class="wr-fcard"><img src="/assets/frontiers/space.jpg" alt="" loading="lazy" decoding="async"><figcaption>Space</figcaption></figure>
+      <figure class="wr-fcard"><img src="/assets/frontiers/underground.jpg" alt="" loading="lazy" decoding="async"><figcaption>Underground</figcaption></figure>
+    </div>
+    <div class="wr-ff_foot">
+      <a href="#contact" class="wr-btn">Bring it to your school <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+</div>
+
+</main>
+
+<!-- CONTACT -->
+<section id="contact" class="wr-contact">
+  <div class="wr-contact_inner">
+    <div class="wr-contact_head"><span class="bar"></span><p class="wr-contact_eyebrow">Contact us</p></div>
+    <h2 class="wr-contact_title">Bring it to your school.</h2>
+    <div class="wr-contact_grid">
+      <div class="wr-contact_info">
+        <p class="wr-contact_lead">Tell us about your students and we will show you what a first record attempt could look like. We respond within one business day.</p>
+        <div class="wr-contact_meta"><dl><dt>For</dt><dd>Schools, districts &amp; parents</dd><dt>Based</dt><dd>Austin, Texas</dd></dl></div>
+      </div>
+      <form class="wr-contact_form" id="ark-contact-form" novalidate>
+        <div class="wr-contact_row">
+          <label class="wr-field"><span>Name</span><input name="name" type="text" autocomplete="name" required></label>
+          <label class="wr-field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label class="wr-field"><span>School / Organization <em>(optional)</em></span><input name="org" type="text" autocomplete="organization"></label>
+        <label class="wr-field"><span>Tell us about your students</span><textarea name="message" rows="4" required placeholder="Grade levels, how many students, and what you are hoping they will build."></textarea></label>
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+        <div class="wr-contact_actions"><button type="submit" class="wr-btn">Send message <span class="arr">&rarr;</span></button><p class="wr-contact_status" role="status" aria-live="polite"></p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="c-footer" data-scroll data-scroll-css-progress data-scroll-position="start, end" data-scroll-offset="0, 100%"> <span class="c-logo-trigger -bottom" data-scroll data-scroll-event-progress="scroll.logoExpand" data-scroll-position="start, end" data-scroll-offset="0, 100%"></span>  <footer class="c-footer_wrap"> <div class="c-footer_inner | u-container -bleed"> <h2 class="c-footer_title | u-h2">Building American talent</h2> <ul class="c-nav u-h2-regular"> <li class="c-nav_item"> <a href="/" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Home</span> </a> </li> <li class="c-nav_item"> <a href="/trade-school" data-no-swup class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Trade School</span> </a> </li> <li class="c-nav_item"> <a href="/world-record" data-no-swup class="c-nav_link"> <span class="c-nav_label">High School</span> </a> </li>  <li class="c-nav_item"> <a href="/content-research" data-no-swup class="c-nav_link"> <span class="c-nav_label">Content &amp; Research</span> </a> </li> <li class="c-nav_item"> <a href="#contact" class="c-nav_link"> <span class="c-icon c-nav_icon" data-astro-cid-xaas34xa> <svg class="svg-logo-spark" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use xlink:href="/mission/assets/images/sprite.svg#logo-spark" data-astro-cid-xaas34xa></use> </svg> </span> <span class="c-nav_label">Contact</span> </a> </li> </ul>   <ul class="c-footer_nav | u-h2-regular"> <li>   </li> <li> <a href="https://x.com/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>X</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a> <a href="https://www.linkedin.com/company/projectarklight" target="_blank" rel="noopener noreferrer" aria-hidden="false" data-astro-cid-lreuz2uq="true" class="c-button -external"> <span class="c-button_inner u-h2-regular" data-astro-cid-lreuz2uq>  <span class="c-button_label" data-astro-cid-lreuz2uq>LinkedIn</span> <span class="c-button_icon" data-astro-cid-lreuz2uq> <span data-astro-cid-lreuz2uq>↗</span> </span> </span> </a>  </li> </ul> <a href="/" class="c-footer_logo"> <span class="c-icon" data-astro-cid-xaas34xa> <svg class="svg-logo" aria-hidden="true" focusable="false" data-astro-cid-xaas34xa> <use  xlink:href="/mission/assets/images/sprite.svg#logo" data-astro-cid-xaas34xa></use> </svg>  </span>  <span class="u-sr-only">Go to homepage</span> </a> <div class="c-footer_bottom"> <p class="c-details -columns"> <span>Project Arklight</span> <span>Austin, Texas <c-clock class="c-clock">00:00</c-clock>  </span> </p>  <ul class="c-footer_nav"> <li> <a href="/privacy-terms"> Privacy &amp; Terms </a> </li> </ul> </div> </div> <div class="ark-foot-wm" aria-hidden="true">Project Arklight</div></footer> </div>
+
+<script src="/styles/chrome.js"></script>
+<script src="/styles/cr.js"></script>
+<script id="wr-reveal-js">(function(){var els=document.querySelectorAll(".wr-reveal");if(!els.length)return;function go(){if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("-in");});return;}var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("-in");o.unobserve(e.target);}});},{threshold:0.2});els.forEach(function(e){o.observe(e);});}go();if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);})();</script>
+<script id="ark-contact-js">(function(){function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}function smooth(toY,dur){var sY=window.scrollY||window.pageYOffset,d=toY-sY,st=null;function step(ts){if(st===null)st=ts;var p=Math.min((ts-st)/dur,1);window.scrollTo(0,sY+d*ease(p));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);var el=id&&document.getElementById(id);if(el){e.preventDefault();var y=el.getBoundingClientRect().top+(window.scrollY||window.pageYOffset)-24;smooth(y,850);}});var f=document.getElementById('ark-contact-form');if(f){f.addEventListener('submit',function(e){e.preventDefault();var s=f.querySelector('.wr-contact_status');var btn=f.querySelector('button');var qp=new URLSearchParams(location.search).get('from');var d={name:f.elements['name'].value,email:f.elements['email'].value,org:f.elements['org'].value,message:f.elements['message'].value,company_website:(f.elements['company_website']?f.elements['company_website'].value:''),source_page:qp||location.href,referrer:document.referrer};btn.disabled=true;s.style.color='rgba(245,244,239,.6)';s.textContent='Sending...';fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});}).then(function(res){if(res.ok){f.reset();s.style.color='#7FD88A';s.textContent='Thanks, we will be in touch shortly.';if(window.gtag){gtag('event','generate_lead',{source_page:d.source_page});}}else{s.style.color='#E55A4A';s.textContent=(res.j&&res.j.error)||'Something went wrong.';}btn.disabled=false;}).catch(function(){s.style.color='#E55A4A';s.textContent='Network error. Email dani@arklight.us';btn.disabled=false;});});}})();</script>
+
+</body>
+</html>
