@@ -92,7 +92,7 @@ html.is-scrolling-down .c-header:not(.has-menu-open) .c-header_logo{opacity:0;tr
 .c-footer_wrap .svg-logo-spark{fill:#F4F3EF!important}
 .c-footer_wrap .c-button -external,.c-footer_wrap .c-nav_link{color:#F4F3EF!important}
 .c-content-block_button .c-button_inner{position:relative;z-index:2}
-.c-menu .c-nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.2em}
+.c-menu .c-nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5em}
 .c-menu .c-nav_link{font-family:'Inter Tight',sans-serif;color:#15140F;text-decoration:none;font-weight:500;letter-spacing:-.02em;transition:color .2s}
 .c-menu .c-nav_link:hover{color:#2E5A86}
 .c-header_toggler{color:#fff!important}
