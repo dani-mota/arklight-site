@@ -5,6 +5,7 @@
     { "source": "/mission", "destination": "/", "permanent": true },
     { "source": "/product", "destination": "/trade-school", "permanent": true },
     { "source": "/world-record", "destination": "/high-school", "permanent": true },
+    { "source": "/content-research", "destination": "/research", "permanent": true },
     { "source": "/data-room-assets/:path*", "destination": "/data-room", "permanent": false }
   ],
   "rewrites": [

@@ -7,7 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root{
-  --canvas-0:#F5F3ED;   /* page */
+  --canvas-0:#FFFFFF;   /* page */
   --canvas-1:#FBFAF6;   /* lightest / cards */
   --canvas-2:#EFEDE6;   /* alt section */
   --canvas-3:#E7E4DC;
