@@ -52,21 +52,22 @@ body.wr .c-header_logo-icon{color:var(--ink)}
 body.wr .c-header.has-menu-open .c-header_toggler span{background:#15140F!important}
 
 /* ---------- HERO (astronaut photo) ---------- */
-.wr-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:#04060D}
+.wr-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-start;overflow:hidden;background:#04060D}
 .wr-hero_bg{position:absolute;inset:0;z-index:0}
-.wr-hero_bg img{width:100%;height:100%;object-fit:cover;object-position:62% 42%}
+.wr-hero_bg img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;transform:scale(1.32) translateX(-19%);transform-origin:center}
 .wr-hero_bg::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(90deg,rgba(4,6,13,.62) 0%,rgba(4,6,13,.22) 45%,rgba(4,6,13,0) 76%),
+  linear-gradient(270deg,rgba(4,6,13,.62) 0%,rgba(4,6,13,.22) 45%,rgba(4,6,13,0) 76%),
   radial-gradient(135% 118% at 50% 36%,rgba(4,6,13,0) 48%,rgba(4,6,13,.28) 74%,rgba(4,6,13,.55) 100%),
   linear-gradient(180deg,rgba(4,6,13,0) 36%,rgba(4,6,13,.5) 66%,rgba(4,6,13,.92) 88%,#04060D 100%)}
-.wr-hero_inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
-.wr-hero_content{max-width:760px;padding:0}
+.wr-hero_inner{position:relative;z-index:2;width:100%;max-width:1376px;margin:0 auto;padding:0 24px}
+.wr-hero_content{max-width:760px;padding:0;margin-left:34%;margin-top:26vh}
 .wr-eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 26px;font-family:var(--font-m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber)}
 .wr-eyebrow .bar{width:28px;height:1px;background:var(--amber);opacity:.9}
 .wr-hero h1{font-size:clamp(2.35rem,4.6vw,2.8125rem);line-height:1.05;letter-spacing:-.02em;font-weight:700;color:var(--ink);margin:0 0 28px}
 .wr-hero h1 .yr{display:block}
 .wr-hero_sub{font-size:clamp(17px,1.7vw,22px);line-height:1.45;color:var(--muted);margin:0 0 38px;max-width:44ch}
 .wr-hero_cta{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.wr-hero{align-items:center}.wr-hero_content{margin-left:0;margin-top:0}.wr-hero_bg img{transform:none;object-position:50% 34%}.wr-hero_bg::after{background:linear-gradient(90deg,rgba(4,6,13,.62) 0%,rgba(4,6,13,.22) 45%,rgba(4,6,13,0) 76%),radial-gradient(135% 118% at 50% 36%,rgba(4,6,13,0) 48%,rgba(4,6,13,.28) 74%,rgba(4,6,13,.55) 100%),linear-gradient(180deg,rgba(4,6,13,0) 36%,rgba(4,6,13,.5) 66%,rgba(4,6,13,.92) 88%,#04060D 100%)}}
 
 /* ---------- STARFIELD SPACE (sections 2 + 3) ---------- */
 .wr-space{position:relative;overflow:hidden;background:linear-gradient(180deg,#04060D 0%,#0A1426 16%,#0E1E38 34%,#0A1526 54%,#070C18 80%,#03040A 100%)}
@@ -91,7 +92,7 @@ body.wr .c-header.has-menu-open .c-header_toggler span{background:#15140F!import
 
 /* ---------- WALK OUT WITH ---------- */
 .wr-walk{background:transparent;position:relative;z-index:1;padding:120px 24px 130px}
-.wr-walk_inner{max-width:940px;margin:0 auto}
+.wr-walk_inner{max-width:1160px;margin:0 auto}
 .wr-walk_head{text-align:center;margin:0 0 56px}
 .wr-walk_k{font-family:var(--font-m);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--amber);margin:0 0 16px}
 .wr-walk_head h2{font-size:clamp(30px,4.2vw,54px);line-height:1.02;letter-spacing:-.03em;font-weight:700;margin:0}
@@ -171,7 +172,7 @@ body.wr .c-header.has-menu-open .c-header_toggler span{background:#15140F!import
 
 /* ---------- CONTACT (dark) ---------- */
 .wr-contact{background:#04060D;color:var(--ink);padding:120px 24px 130px}
-.wr-contact_inner{max-width:1080px;margin:0 auto}
+.wr-contact_inner{max-width:1160px;margin:0 auto}
 .wr-contact_head{display:flex;align-items:center;gap:12px;margin:0 0 16px}
 .wr-contact_head .bar{width:28px;height:1px;background:var(--amber)}
 .wr-contact_eyebrow{font-family:var(--font-m);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);margin:0}
@@ -219,26 +220,7 @@ body.wr .c-logo{display:none!important}
 <div class="wr-space">
 <div class="wr-stars" aria-hidden="true"><i class="s1"></i><i class="s2"></i></div>
 
-<!-- HOW IT WORKS -->
-<section class="wr-hiw">
-  <div class="wr-hiw_inner">
-    <div class="wr-hiw_head">
-      <p class="wr-hiw_k">How it works</p>
-      <h2><span class="wr-epic">Epic</span> is the assignment.</h2>
-      <p>Students don't rise to low expectations.</p>
-    </div>
-    <div class="hiw wr-reveal">
-      <div class="hiw_line"><span class="hiw_fill"></span><span class="hiw_spark"></span></div>
-      <div class="hiw_cols">
-        <div class="hiw_col"><p class="hiw_num">01</p><p class="hiw_ttl">Learn the machines</p><span class="hiw_dot"></span><p class="hiw_desc">Every student rotates through every station. CNC, welding, printing, electronics.</p></div>
-        <div class="hiw_col"><p class="hiw_num">02</p><p class="hiw_ttl">Build small things</p><span class="hiw_dot"></span><p class="hiw_desc">Real projects, each one harder than the last. Every small build is a piece of the big one.</p></div>
-        <div class="hiw_col"><p class="hiw_num">03</p><p class="hiw_ttl">Build the record machine</p><span class="hiw_dot"></span><p class="hiw_desc">One cohort, one machine, designed and manufactured together.</p></div>
-        <div class="hiw_col"><p class="hiw_num">04</p><p class="hiw_ttl">Break the record</p><span class="hiw_dot"></span><p class="hiw_desc">In public. Timed, judged, verified.</p></div>
-      </div>
-      <div class="hiw_ends"><span>Week 1: cardboard</span><span>Week 16: world record</span></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- WALK OUT WITH -->
 <section class="wr-walk" id="walk">
