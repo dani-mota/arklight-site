@@ -67,7 +67,7 @@
 .rz-pill:hover{border-color:var(--ink-0);background:var(--ink-0);color:var(--canvas-1);transform:translateY(-2px)}
 .rz-pill:hover span{transform:translateX(3px)}
 .rz-hero_cover{aspect-ratio:16/10}
-.rz-hero_cover .rz-cover_big{font-size:clamp(32px,4.2vw,56px)}
+.rz-hero_cover .rz-cover_big{font-size:clamp(24px,3vw,38px);line-height:1.06}
 .rz-secondary{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 .rz-scard{display:block}
 .rz-scard .rz-cover{aspect-ratio:16/9;margin:0 0 14px;transition:transform .5s cubic-bezier(.38,.005,.215,1)}
@@ -131,14 +131,14 @@
     <div class="rz-hero">
       <div class="rz-hero_text" data-reveal>
         <div class="rz-hero_date">Featured briefing · May 2026</div>
-        <h2 class="rz-hero_title">Electricians labor shortage.</h2>
+        <h2 class="rz-hero_title">Understanding the Electrician Shortage.</h2>
         <p class="rz-hero_lead">Roughly 10,000 credentialed electricians a year against demand approaching 100,000 a year, and structurally widening. The deficit is binding what America says it wants to build.</p>
         <a href="/research/electrician-shortage" class="rz-pill">Read the briefing <span>&rsaquo;</span></a>
       </div>
       <a href="/research/electrician-shortage" class="rz-cover rz-hero_cover" data-cover="1" data-reveal data-reveal-delay="2"><img src="/assets/covers/c5.jpg" alt="" loading="lazy">
         <span class="rz-cover_tag">Electricians</span>
         <span class="rz-cover_mono">ARK-R-001</span>
-        <span class="rz-cover_big">Supply 10K<br/>Demand 97K</span>
+        <span class="rz-cover_big">Understanding the Electrician Shortage.</span>
       </a>
     </div>
     <div class="rz-secondary">
@@ -201,19 +201,6 @@
       <span class="rz-cover" data-cover="1"><img src="/assets/covers/c4.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Geopolitics</span><span class="rz-cover_title">How China weaponized classrooms.</span></span>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 3, 2026</span></div>
     </a>
-  </div>
-</section>
-
-<!-- ═════════ SUBSCRIBE ═════════ -->
-<section class="cr-subscribe">
-  <div class="cr-subscribe_inner">
-    <div class="num">03 · Briefing</div>
-    <h3>The monthly briefing.<br/><em>Data, in your inbox.</em></h3>
-    <p>One research drop per month. Workforce data, sector breakdowns, and the field notes that didn't make the cut on X. No filler.</p>
-    <form class="cr-subscribe_form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Subscribed';">
-      <input type="email" name="email" required placeholder="you@company.com"/>
-      <button type="submit">Subscribe →</button>
-    </form>
   </div>
 </section>
 
