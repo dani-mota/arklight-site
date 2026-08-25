@@ -44,28 +44,28 @@ const STATS = [
 ];
 
 const PIPELINE = [
-  { stage: 'Identified', accent: 'idle', count: 292, summary: 'prospects mapped<br>18 now engaged' },
+  { stage: 'Identified', accent: 'idle', count: 292, summary: 'prospects mapped<br>17 now engaged' },
   { stage: 'In Conversation', accent: 'steel', cards: [
     { co: 'AstroForge' }, { co: 'Varda Space Industries' },
     { co: 'Impulse Space' }, { co: 'Armada' }, { co: 'General Matter' },
-    { co: 'Valar Atomics' }, { co: 'Nominal' }, { co: 'Neros Technologies' },
+    { co: 'Valar Atomics' }, { co: 'Neros Technologies' },
     { co: 'Northwood Space' }]},
   // bleed:true cards straddle Advanced and Signed - the same deal appears in
   // both columns with a bridging (amber->green) treatment.
   { stage: 'Advanced Conversation + Negotiation', accent: 'amber', cards: [
-    { co: 'SpaceX', contact: 'In signing', bleed: true },
-    { co: 'Anduril Industries', contact: 'In signing', bleed: true },
-    { co: 'Mariana Minerals', contact: 'In signing', bleed: true },
+    { co: 'SpaceX', bleed: true },
+    { co: 'Anduril Industries', bleed: true },
+    { co: 'Mariana Minerals', bleed: true },
     { co: 'Tesla', contact: 'Executive buy-in' },
-    { co: 'Oracle', contact: 'Executive buy-in' },
     { co: 'Hadrian', contact: 'Executive buy-in' },
     { co: 'AMCA', contact: 'Executive buy-in' },
-    { co: 'Gecko Robotics', contact: 'Executive buy-in' }]},
+    { co: 'Gecko Robotics', contact: 'Executive buy-in' },
+    { co: 'MP Materials', contact: 'Executive buy-in' }]},
   { stage: 'Pilot / MOU Signed', accent: 'verify', cards: [
     { co: 'Valinor', contact: 'Signed MOU · 06-15' },
-    { co: 'SpaceX', contact: 'In signing', bleed: true },
-    { co: 'Anduril Industries', contact: 'In signing', bleed: true },
-    { co: 'Mariana Minerals', contact: 'In signing', bleed: true }]}
+    { co: 'SpaceX', bleed: true },
+    { co: 'Anduril Industries', bleed: true },
+    { co: 'Mariana Minerals', bleed: true }]}
 ];
 
 module.exports = async function handler(req, res) {
@@ -96,6 +96,6 @@ module.exports = async function handler(req, res) {
     tiers,
     wall: WALL,
     pipeline: PIPELINE,
-    pipelineMeta: '18 active · 292 identified'
+    pipelineMeta: '17 active · 292 identified'
   });
 };
