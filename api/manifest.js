@@ -56,16 +56,17 @@ const PIPELINE = [
     { co: 'SpaceX', bleed: true },
     { co: 'Anduril Industries', bleed: true },
     { co: 'Mariana Minerals', bleed: true },
+    { co: 'AMCA', bleed: true },
     { co: 'Tesla', contact: 'Executive buy-in' },
     { co: 'Hadrian', contact: 'Executive buy-in' },
-    { co: 'AMCA', contact: 'Executive buy-in' },
     { co: 'Gecko Robotics', contact: 'Executive buy-in' },
     { co: 'MP Materials', contact: 'Executive buy-in' }]},
   { stage: 'Pilot / MOU Signed', accent: 'verify', cards: [
     { co: 'Valinor', contact: 'Signed MOU · 06-15' },
     { co: 'SpaceX', bleed: true },
     { co: 'Anduril Industries', bleed: true },
-    { co: 'Mariana Minerals', bleed: true }]}
+    { co: 'Mariana Minerals', bleed: true },
+    { co: 'AMCA', bleed: true }]}
 ];
 
 module.exports = async function handler(req, res) {
