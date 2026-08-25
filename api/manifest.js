@@ -11,8 +11,7 @@ const { getSession } = require('./_auth');
 // Which manifest rows map to a real gated document (/api/doc?id=...).
 const SRC = {
   'Arklight - Pitch Deck.pdf': 'deck',
-  'Market Size & Analysis': 'market',
-  'Competitor Landscape & Analysis': 'comp',
+  'Understanding Demand & Market': 'market',
   'Use of Funds': 'funds',
   'Valinor MOU - Signed': 'valinor'
 };
@@ -20,13 +19,12 @@ const SRC = {
 const TIERS = [
   { idx: '01', name: 'Pitch & Summary', sub: 'Deck', status: 'cleared', docs: [
     { n: 'Arklight - Pitch Deck.pdf', t: 'SYNC 08-19' }]},
-  { idx: '02', name: 'Product & Market', sub: 'Demos · market · competitive', status: 'cleared', docs: [
+  { idx: '02', name: 'Product & Market', sub: 'Demos · market', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/dfbb6c5e59cf4376b9dce541f82f0ec0' },
     { n: 'Talent Factory Product Demo - Employer', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/fda93ccf13824da9aecd118685f3617a' },
-    { n: 'Market Size & Analysis', t: 'SYNC' },
-    { n: 'Competitor Landscape & Analysis', t: 'SYNC' }]},
+    { n: 'Understanding Demand & Market', t: 'SYNC 08-19' }]},
   { idx: '03', name: 'Traction', sub: 'MOU · live pipeline', status: 'cleared', docs: [
     { n: 'Valinor MOU - Signed', t: 'SIGNED 06-15' },
     { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]},

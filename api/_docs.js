@@ -15,7 +15,7 @@ const DOCS = {
   bylaws: { file: 'arklight-bylaws.pdf',                     title: 'Bylaws',                            tier: 1 },
   plan:   { file: 'arklight-equity-incentive-plan.pdf',      title: '2026 Equity Incentive Plan',        tier: 1 },
   bios:   { file: 'arklight-team-bios.pdf',                  title: 'Team Bios',                         tier: 1 },
-  market: { file: 'arklight-market-analysis.pdf',            title: 'Market Size & Analysis',            tier: 1 },
+  market: { file: 'arklight-market-analysis.pdf',            title: 'Understanding Demand & Market',            tier: 1 },
   comp:   { file: 'arklight-competitive-landscape.pdf',      title: 'Competitor Landscape & Analysis',   tier: 1 },
   funds:  { file: 'arklight-use-of-funds.pdf',               title: 'Use of Funds',                      tier: 1 },
   valinor:{ file: 'arklight-valinor-mou.pdf',                title: 'Valinor Talent MOU (signed)',       tier: 1 },
