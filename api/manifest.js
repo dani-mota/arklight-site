@@ -10,7 +10,7 @@ const { getSession } = require('./_auth');
 
 // Which manifest rows map to a real gated document (/api/doc?id=...).
 const SRC = {
-  'Arklight - Investor Deck.pdf': 'deck',
+  'Arklight - Pitch Deck.pdf': 'deck',
   'Market Size & Analysis': 'market',
   'Competitor Landscape & Analysis': 'comp',
   'Use of Funds': 'funds',
@@ -19,7 +19,7 @@ const SRC = {
 
 const TIERS = [
   { idx: '01', name: 'Pitch & Summary', sub: 'Deck', status: 'cleared', docs: [
-    { n: 'Arklight - Investor Deck.pdf', t: 'SYNC 07-08' }]},
+    { n: 'Arklight - Pitch Deck.pdf', t: 'SYNC 08-19' }]},
   { idx: '02', name: 'Product & Market', sub: 'Demos · market · competitive', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/dfbb6c5e59cf4376b9dce541f82f0ec0' },
