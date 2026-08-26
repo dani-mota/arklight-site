@@ -175,7 +175,7 @@ footer.bot a{color:var(--ink2)}
       <div class="chips" data-name="students" data-single><button type="button" class="chip" aria-pressed="false">Just mine (1)</button><button type="button" class="chip" aria-pressed="false">2-5</button><button type="button" class="chip" aria-pressed="false">6-15</button><button type="button" class="chip" aria-pressed="false">16-40</button><button type="button" class="chip" aria-pressed="false">40+ / whole co-op</button></div>
     </fieldset>
 
-    <fieldset class="fld"><legend>What ages? <span class="hint">(choose any)</span></legend>
+    <fieldset class="fld"><legend>What ages? <span class="req" aria-hidden="true">*</span></legend>
       <div class="chips" data-name="ages" data-multi><button type="button" class="chip" aria-pressed="false">Elementary (K-5)</button><button type="button" class="chip" aria-pressed="false">Middle (6-8)</button><button type="button" class="chip" aria-pressed="false">High school (9-12)</button></div>
     </fieldset>
 
@@ -183,7 +183,7 @@ footer.bot a{color:var(--ink2)}
       <div class="chips" data-name="timing" data-single><button type="button" class="chip" aria-pressed="false">This semester</button><button type="button" class="chip" aria-pressed="false">Next school year</button><button type="button" class="chip" aria-pressed="false">Just exploring</button></div>
     </fieldset>
 
-    <fieldset class="fld"><legend>What's the draw? <span class="hint">(choose any)</span></legend>
+    <fieldset class="fld"><legend>What's the draw? <span class="req" aria-hidden="true">*</span></legend>
       <div class="chips" data-name="interests" data-multi><button type="button" class="chip" aria-pressed="false">Facility tours</button><button type="button" class="chip" aria-pressed="false">Build challenges</button><button type="button" class="chip" aria-pressed="false">Technical learning</button><button type="button" class="chip" aria-pressed="false">Mentorship</button><button type="button" class="chip" aria-pressed="false">Credential</button><button type="button" class="chip" aria-pressed="false">Community</button></div>
     </fieldset>
 
@@ -191,13 +191,13 @@ footer.bot a{color:var(--ink2)}
       <div class="chips" data-name="pay" data-single><button type="button" class="chip" aria-pressed="false">Yes definitely</button><button type="button" class="chip" aria-pressed="false">Yes depending on price</button><button type="button" class="chip" aria-pressed="false">Maybe</button><button type="button" class="chip" aria-pressed="false">Only if free</button></div>
     </fieldset>
 
-    <div class="fld"><label class="lbl" for="price">What feels reasonable per student, per semester? <span class="hint">(optional)</span></label>
-      <select id="price" name="price"><option value="" disabled selected>Select one</option><option>Under $200</option><option>$200-500</option><option>$500-1000</option><option>$1000+</option><option>Not sure</option></select>
+    <div class="fld"><label class="lbl" for="price">What feels reasonable per student, per semester? <span class="req" aria-hidden="true">*</span></label>
+      <select id="price" name="price" required><option value="" disabled selected>Select one</option><option>Under $200</option><option>$200-500</option><option>$500-1000</option><option>$1000+</option><option>Not sure</option></select>
     </div>
 
-    <div class="fld"><label class="lbl" for="location">What city or ZIP are you in? <span class="hint">(optional)</span></label><input id="location" type="text" name="location" placeholder="e.g. Austin, 78701"></div>
+    <div class="fld"><label class="lbl" for="location">What city or ZIP are you in? <span class="req" aria-hidden="true">*</span></label><input id="location" type="text" name="location" placeholder="e.g. Austin, 78701" required></div>
 
-    <div class="fld"><label class="lbl" for="why">What would make this worth it for your family? <span class="hint">(optional)</span></label><textarea id="why" name="why" placeholder="A sentence or two"></textarea></div>
+    <div class="fld"><label class="lbl" for="why">What would make this worth it for your family? <span class="req" aria-hidden="true">*</span></label><textarea id="why" name="why" placeholder="A sentence or two" required></textarea></div>
 
     <fieldset class="fld"><legend>Last thing</legend>
       <div class="flags">
@@ -284,7 +284,7 @@ footer.bot a{color:var(--ink2)}
       ref_code:refCode, referred_by:referredBy
     };
     if(!payload.name||!payload.email){ status.textContent='Please add your name and email.'; status.className='status err'; return; }
-    if(!payload.role||!payload.students||!payload.timing||!payload.pay){ status.textContent='A few required questions are still blank.'; status.className='status err'; return; }
+    if(!payload.role||!payload.students||!payload.ages.length||!payload.timing||!payload.interests.length||!payload.pay||!payload.price||!payload.location||!payload.why){ status.textContent='Please answer all the questions before sending.'; status.className='status err'; return; }
     var btn=form.querySelector('button.submit'); btn.disabled=true;
     status.textContent='Sending...'; status.className='status';
     fetch('/api/interest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
