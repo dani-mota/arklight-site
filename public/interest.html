@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" href="data:,">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XH6JFV56FJ');</script>
+<title>Hands-on Engineering for Homeschoolers | Project Arklight</title>
+<meta name="description" content="A training center for hands-on engineering and manufacturing, built with companies like Tesla and SpaceX. Opening a homeschool pilot in Austin. Tell us if you're interested."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Hands-on Engineering for Homeschoolers | Project Arklight"/>
+<meta property="og:description" content="Facility tours, build challenges, and real technical learning, built with the companies rebuilding America. An Austin homeschool pilot."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#05060E;--bg2:#0A1020;--ink:#EEF1F8;--muted:rgba(238,241,248,.66);--muted2:rgba(238,241,248,.44);
+  --line:rgba(238,241,248,.14);--cyan:#6FE9FF;--amber:#F5A14A;--magenta:#E58BEE;--green:#7CF6A8;
+  --pix:'Press Start 2P',monospace;--body:'Inter Tight',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---- starfield ---- */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(1200px 700px at 78% -8%, rgba(111,233,255,.10), transparent 60%),
+  radial-gradient(900px 600px at 12% 108%, rgba(229,139,238,.10), transparent 60%),
+  var(--bg)}
+.stars i{position:absolute;inset:0;display:block;background-repeat:repeat}
+.stars .s1{background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 120px 80px,rgba(255,255,255,.7),transparent),radial-gradient(2px 2px at 210px 150px,#fff,transparent),radial-gradient(2px 2px at 80px 200px,rgba(255,255,255,.55),transparent);background-size:260px 260px;opacity:.7;animation:drift 120s linear infinite;image-rendering:pixelated}
+.stars .s2{background-image:radial-gradient(2px 2px at 60px 60px,var(--cyan),transparent),radial-gradient(2px 2px at 180px 120px,#fff,transparent),radial-gradient(2px 2px at 300px 220px,var(--amber),transparent);background-size:360px 360px;opacity:.5;animation:drift 200s linear infinite reverse;image-rendering:pixelated}
+@keyframes drift{from{background-position:0 0}to{background-position:0 600px}}
+@media(prefers-reduced-motion:reduce){.stars i{animation:none}}
+
+/* ---- header ---- */
+.hd{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;max-width:1120px;margin:0 auto;padding:22px 24px}
+.hd_logo{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.hd_tag{font-family:var(--pix);font-size:8px;letter-spacing:.06em;color:var(--cyan);border:2px solid var(--cyan);padding:7px 10px}
+.hd a.back{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hd a.back:hover{color:var(--ink)}
+
+/* ---- hero ---- */
+.hero{position:relative;z-index:2;padding:56px 0 40px}
+.hero_grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{font-family:var(--pix);font-size:9px;line-height:1.8;letter-spacing:.08em;color:var(--amber);margin:0 0 24px}
+.hero h1{font-family:var(--pix);font-size:clamp(20px,3.4vw,34px);line-height:1.5;color:var(--ink);margin:0 0 26px;text-shadow:0 0 18px rgba(111,233,255,.25)}
+.hero h1 .c{color:var(--cyan)}
+.hero_sub{font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:var(--muted);max-width:46ch;margin:0 0 32px}
+.hero_meta{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2)}
+.hero_meta b{color:var(--cyan);font-weight:500}
+
+/* pixel button */
+.pbtn{display:inline-flex;align-items:center;gap:10px;font-family:var(--pix);font-size:11px;letter-spacing:.02em;color:#05060E;background:var(--cyan);border:0;padding:15px 22px;cursor:pointer;box-shadow:5px 5px 0 rgba(111,233,255,.28);transition:transform .12s,box-shadow .12s;image-rendering:pixelated}
+.pbtn:hover{transform:translate(-1px,-1px);box-shadow:7px 7px 0 rgba(111,233,255,.35)}
+.pbtn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 rgba(111,233,255,.3)}
+.pbtn.amber{background:var(--amber);box-shadow:5px 5px 0 rgba(245,161,74,.3)}
+.pbtn.amber:hover{box-shadow:7px 7px 0 rgba(245,161,74,.4)}
+
+.rocket{width:100%;max-width:360px;margin:0 auto;filter:drop-shadow(0 0 30px rgba(111,233,255,.25))}
+.rocket .flame{animation:flick .18s steps(2) infinite}
+@keyframes flick{50%{opacity:.65;transform:translateY(2px)}}
+@media(prefers-reduced-motion:reduce){.rocket .flame{animation:none}}
+
+/* ---- vision ---- */
+.sec{position:relative;z-index:2;padding:64px 0}
+.sec_k{font-family:var(--pix);font-size:9px;letter-spacing:.08em;color:var(--magenta);margin:0 0 20px}
+.sec h2{font-size:clamp(26px,3vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--ink);margin:0 0 20px;max-width:20ch}
+.sec p.lead{font-size:17px;line-height:1.65;color:var(--muted);max-width:60ch;margin:0}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:44px 0 0}
+.card{border:2px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));padding:22px 18px;transition:border-color .25s,transform .25s}
+.card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.card .px{width:34px;height:34px;margin:0 0 16px;image-rendering:pixelated}
+.card h3{font-size:16px;font-weight:600;color:var(--ink);margin:0 0 8px;letter-spacing:-.01em}
+.card p{font-size:13.5px;line-height:1.5;color:var(--muted);margin:0}
+
+/* ---- form ---- */
+.form-sec{position:relative;z-index:2;padding:20px 0 96px}
+.panel{border:2px solid var(--line);background:linear-gradient(180deg,rgba(10,16,32,.7),rgba(5,6,14,.7));backdrop-filter:blur(4px);padding:clamp(28px,4vw,52px)}
+.panel_top{border-bottom:2px solid var(--line);padding:0 0 26px;margin:0 0 30px}
+.panel_top .sec_k{color:var(--green);margin:0 0 14px}
+.panel_top h2{font-size:clamp(24px,2.6vw,34px);margin:0 0 10px}
+.panel_top p{font-size:15px;color:var(--muted);margin:0}
+.fld{margin:0 0 26px}
+.fld > label,.fld > .q{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin:0 0 12px}
+.fld .req{color:var(--amber)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+input[type=text],input[type=email],select,textarea{width:100%;background:rgba(5,6,14,.6);border:2px solid var(--line);color:var(--ink);font-family:var(--body);font-size:15px;padding:13px 14px;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+textarea{resize:vertical;min-height:96px;line-height:1.5}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+select option{background:#0A1020;color:var(--ink)}
+::placeholder{color:var(--muted2)}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-family:var(--body);font-size:14px;font-weight:500;color:var(--muted);background:rgba(5,6,14,.5);border:2px solid var(--line);padding:9px 15px;cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{color:var(--ink);border-color:rgba(238,241,248,.3)}
+.chip.on{color:#05060E;background:var(--cyan);border-color:var(--cyan)}
+.chip.on.amber{background:var(--amber);border-color:var(--amber)}
+/* checkbox flags */
+.flags{display:flex;flex-direction:column;gap:12px}
+.flag{display:flex;align-items:center;gap:12px;cursor:pointer;font-size:15px;color:var(--ink)}
+.flag input{position:absolute;opacity:0;pointer-events:none}
+.flag .box{width:22px;height:22px;flex:none;border:2px solid var(--line);background:rgba(5,6,14,.5);display:grid;place-items:center;transition:all .15s}
+.flag .box::after{content:'';width:10px;height:10px;background:var(--green);transform:scale(0);transition:transform .12s;image-rendering:pixelated}
+.flag input:checked + .box{border-color:var(--green)}
+.flag input:checked + .box::after{transform:scale(1)}
+.flag:hover .box{border-color:rgba(238,241,248,.34)}
+.flag.star{font-weight:600}
+.submit-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:34px 0 0}
+.status{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.status.err{color:#FF8C7A}.status.ok{color:var(--green)}
+.done{text-align:center;padding:40px 10px}
+.done .px{width:56px;height:56px;margin:0 auto 20px;image-rendering:pixelated}
+.done h3{font-family:var(--pix);font-size:16px;line-height:1.6;color:var(--cyan);margin:0 0 14px}
+.done p{color:var(--muted);font-size:16px;margin:0}
+
+/* footer */
+.ft{position:relative;z-index:2;border-top:2px solid var(--line);padding:34px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
+.ft a{color:var(--muted)}
+
+@media(max-width:860px){
+  .hero_grid{grid-template-columns:1fr;gap:12px}
+  .rocket{order:-1;max-width:220px}
+  .feat{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .feat{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .hd_tag{display:none}
+}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"><i class="s1"></i><i class="s2"></i></div>
+
+<header class="hd">
+  <a href="/" class="hd_logo">Project Arklight</a>
+  <span class="hd_tag">AUSTIN · HOMESCHOOL PILOT</span>
+  <a href="/" class="back">&larr; Home</a>
+</header>
+
+<!-- HERO -->
+<section class="hero"><div class="wrap"><div class="hero_grid">
+  <div>
+    <p class="eyebrow">INSERT COIN &middot; PLAYER ONE</p>
+    <h1>Hands-on <span class="c">engineering</span>, for homeschoolers.</h1>
+    <p class="hero_sub">We're building the training center of the future: real machines, real engineers, and the companies rebuilding America. We designed it for school districts. Now we're opening it to homeschool families.</p>
+    <a href="#form" class="pbtn">Gauge interest <span>&darr;</span></a>
+    <div class="hero_meta" style="margin-top:34px">
+      <span><b>Tours</b> Tesla, SpaceX &amp; more</span>
+      <span><b>Builds</b> real tools, real projects</span>
+      <span><b>Where</b> Austin, TX</span>
+    </div>
+  </div>
+  <svg class="rocket" viewBox="0 0 120 160" shape-rendering="crispEdges" aria-hidden="true">
+    <!-- pixel rocket -->
+    <g fill="#EEF1F8"><rect x="52" y="12" width="16" height="8"/><rect x="48" y="20" width="24" height="8"/><rect x="44" y="28" width="32" height="48"/></g>
+    <g fill="#C9D3E6"><rect x="64" y="28" width="12" height="48"/></g>
+    <g fill="#6FE9FF"><rect x="52" y="40" width="16" height="16"/></g>
+    <g fill="#3AA7C4"><rect x="60" y="40" width="8" height="16"/></g>
+    <g fill="#EEF1F8"><rect x="44" y="76" width="32" height="16"/></g>
+    <g fill="#E58BEE"><rect x="28" y="60" width="16" height="32"/><rect x="76" y="60" width="16" height="32"/></g>
+    <g fill="#B85DBE"><rect x="36" y="60" width="8" height="32"/><rect x="76" y="60" width="8" height="32"/></g>
+    <g fill="#C9D3E6"><rect x="48" y="92" width="8" height="8"/><rect x="64" y="92" width="8" height="8"/></g>
+    <g class="flame"><rect x="52" y="100" width="16" height="10" fill="#F5A14A"/><rect x="56" y="110" width="8" height="10" fill="#FFD27A"/><rect x="48" y="100" width="4" height="6" fill="#F5A14A"/><rect x="68" y="100" width="4" height="6" fill="#F5A14A"/></g>
+    <g fill="#6FE9FF"><rect x="14" y="24" width="4" height="4"/><rect x="100" y="44" width="4" height="4"/><rect x="106" y="110" width="4" height="4"/><rect x="16" y="120" width="4" height="4"/></g>
+  </svg>
+</div></div></section>
+
+<!-- VISION -->
+<section class="sec"><div class="wrap">
+  <p class="sec_k">&#9632; THE VISION</p>
+  <h2>A training center where students build the real thing.</h2>
+  <p class="lead">Most kids never touch the work that runs the world. We're changing that: facility tours inside real factories, hands-on build challenges with real tools, and technical learning taught by working engineers. We built the model for school districts. Homeschool families kept asking for a way in, so we're piloting one in Austin.</p>
+  <div class="feat">
+    <div class="card">
+      <svg class="px" viewBox="0 0 16 16" shape-rendering="crispEdges"><g fill="#6FE9FF"><rect x="2" y="6" width="12" height="8"/><rect x="4" y="3" width="3" height="3"/><rect x="9" y="3" width="3" height="3"/></g><g fill="#05060E"><rect x="5" y="9" width="2" height="2"/><rect x="9" y="9" width="2" height="2"/></g></svg>
+      <h3>Facility tours</h3><p>Walk the floor at Tesla, SpaceX, and more.</p>
+    </div>
+    <div class="card">
+      <svg class="px" viewBox="0 0 16 16" shape-rendering="crispEdges"><g fill="#F5A14A"><rect x="7" y="2" width="2" height="4"/><rect x="3" y="6" width="10" height="2"/><rect x="4" y="8" width="8" height="6"/></g></svg>
+      <h3>Build challenges</h3><p>Real projects, real tools, real deadlines.</p>
+    </div>
+    <div class="card">
+      <svg class="px" viewBox="0 0 16 16" shape-rendering="crispEdges"><g fill="#7CF6A8"><rect x="2" y="3" width="12" height="2"/><rect x="2" y="7" width="8" height="2"/><rect x="2" y="11" width="10" height="2"/></g></svg>
+      <h3>Technical learning</h3><p>Engineering fundamentals that actually stick.</p>
+    </div>
+    <div class="card">
+      <svg class="px" viewBox="0 0 16 16" shape-rendering="crispEdges"><g fill="#E58BEE"><rect x="6" y="2" width="4" height="4"/><rect x="4" y="8" width="8" height="6"/><rect x="2" y="10" width="2" height="4"/><rect x="12" y="10" width="2" height="4"/></g></svg>
+      <h3>Mentorship</h3><p>Guidance from engineers doing the work.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- FORM -->
+<section class="form-sec" id="form"><div class="wrap"><div class="panel">
+  <div class="panel_top">
+    <p class="sec_k">&#9654; TELL US ABOUT YOUR FAMILY</p>
+    <h2>Is this something you'd want?</h2>
+    <p>Early stage, no commitment. This just helps us gauge interest and build it around what you actually want. Takes about a minute.</p>
+  </div>
+  <form id="interest-form" novalidate>
+    <div class="row">
+      <div class="fld"><label>Your name <span class="req">*</span></label><input type="text" name="name" autocomplete="name" required></div>
+      <div class="fld"><label>Email <span class="req">*</span></label><input type="email" name="email" autocomplete="email" required></div>
+    </div>
+
+    <div class="fld"><label>Who's asking? <span class="req">*</span></label>
+      <select name="role" required>
+        <option value="" disabled selected>Select one...</option>
+        <option>Homeschool parent</option><option>Co-op / group leader</option><option>Microschool / umbrella</option>
+        <option>Educator or tutor</option><option>Student</option><option>Company or mentor</option><option>Other</option>
+      </select>
+    </div>
+
+    <div class="fld"><span class="q">How many students would this be for? <span class="req">*</span></span>
+      <div class="chips" data-name="students" data-single><button type="button" class="chip">Just mine (1)</button><button type="button" class="chip">2-5</button><button type="button" class="chip">6-15</button><button type="button" class="chip">16-40</button><button type="button" class="chip">40+ / whole co-op</button></div>
+    </div>
+
+    <div class="row">
+      <div class="fld"><span class="q">What ages?</span>
+        <div class="chips" data-name="ages" data-multi><button type="button" class="chip">Elementary (K-5)</button><button type="button" class="chip">Middle (6-8)</button><button type="button" class="chip">High school (9-12)</button></div>
+      </div>
+      <div class="fld"><span class="q">When are you thinking? <span class="req">*</span></span>
+        <div class="chips" data-name="timing" data-single><button type="button" class="chip">This semester</button><button type="button" class="chip">Next school year</button><button type="button" class="chip">Just exploring</button></div>
+      </div>
+    </div>
+
+    <div class="fld"><span class="q">What's the draw?</span>
+      <div class="chips" data-name="interests" data-multi><button type="button" class="chip">Facility tours</button><button type="button" class="chip">Build challenges</button><button type="button" class="chip">Technical learning</button><button type="button" class="chip">Mentorship</button><button type="button" class="chip">Credential</button><button type="button" class="chip">Community</button></div>
+    </div>
+
+    <div class="row">
+      <div class="fld"><span class="q">Would you pay for it? <span class="req">*</span></span>
+        <div class="chips" data-name="pay" data-single data-amber><button type="button" class="chip">Yes definitely</button><button type="button" class="chip">Yes depending on price</button><button type="button" class="chip">Maybe</button><button type="button" class="chip">Only if free</button></div>
+      </div>
+      <div class="fld"><label>What feels reasonable per student, per semester?</label>
+        <select name="price"><option value="" disabled selected>Optional...</option><option>Under $200</option><option>$200-500</option><option>$500-1000</option><option>$1000+</option><option>Not sure</option></select>
+      </div>
+    </div>
+
+    <div class="fld"><label>What city or ZIP are you in?</label><input type="text" name="location" placeholder="e.g. Austin, 78701"></div>
+
+    <div class="fld"><label>In a sentence or two, what would make this worth it for your family?</label><textarea name="why" placeholder="What do you hope your student gets out of it?"></textarea></div>
+
+    <div class="fld"><span class="q">Last thing</span>
+      <div class="flags">
+        <label class="flag star"><input type="checkbox" name="founding"><span class="box"></span> Save me a spot in the founding cohort</label>
+        <label class="flag"><input type="checkbox" name="call"><span class="box"></span> I'd hop on a quick call to share more</label>
+        <label class="flag"><input type="checkbox" name="others"><span class="box"></span> I know other families who'd want this</label>
+      </div>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" class="pbtn amber">Send it <span>&rarr;</span></button>
+      <span class="status" id="fstatus"></span>
+    </div>
+  </form>
+  <div class="done" id="done" style="display:none">
+    <svg class="px" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><g fill="#7CF6A8"><rect x="3" y="8" width="2" height="2"/><rect x="5" y="10" width="2" height="2"/><rect x="7" y="8" width="2" height="2"/><rect x="9" y="6" width="2" height="2"/><rect x="11" y="4" width="2" height="2"/></g></svg>
+    <h3>GOT IT. THANK YOU!</h3>
+    <p>We'll be in touch as the pilot takes shape. Talk soon.</p>
+  </div>
+</div></div></section>
+
+<footer class="ft"><div class="wrap">Project Arklight &middot; Austin, Texas &middot; <a href="/">arklight.us</a></div></footer>
+
+<script>
+(function(){
+  // chip groups (single / multi select)
+  document.querySelectorAll('.chips').forEach(function(g){
+    var single=g.hasAttribute('data-single'), amber=g.hasAttribute('data-amber');
+    g.addEventListener('click',function(e){
+      var c=e.target.closest('.chip'); if(!c) return;
+      if(single){ g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on','amber')}); c.classList.add('on'); if(amber)c.classList.add('amber'); }
+      else { c.classList.toggle('on'); if(amber)c.classList.toggle('amber',c.classList.contains('on')); }
+    });
+  });
+  function collect(name){ var g=document.querySelector('.chips[data-name="'+name+'"]'); if(!g)return []; return [].slice.call(g.querySelectorAll('.chip.on')).map(function(x){return x.textContent.trim()}); }
+  var form=document.getElementById('interest-form'), status=document.getElementById('fstatus');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(form);
+    var students=collect('students'), timing=collect('timing'), pay=collect('pay');
+    var payload={
+      name:(fd.get('name')||'').trim(), email:(fd.get('email')||'').trim(),
+      role:fd.get('role')||'', students:students[0]||'', ages:collect('ages'),
+      timing:timing[0]||'', interests:collect('interests'), pay:pay[0]||'',
+      price:fd.get('price')||'', location:(fd.get('location')||'').trim(), why:(fd.get('why')||'').trim(),
+      founding:form.founding.checked, call:form.call.checked, others:form.others.checked
+    };
+    if(!payload.name||!payload.email){ status.textContent='Please add your name and email.'; status.className='status err'; return; }
+    if(!payload.role||!payload.students||!payload.timing||!payload.pay){ status.textContent='A couple of required questions are still blank.'; status.className='status err'; return; }
+    var btn=form.querySelector('button[type=submit]'); btn.disabled=true;
+    status.textContent='Sending...'; status.className='status';
+    fetch('/api/interest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+      .then(function(res){
+        if(res.ok){ form.style.display='none'; document.getElementById('done').style.display='block'; document.getElementById('form').scrollIntoView({behavior:'smooth',block:'center'}); }
+        else { status.textContent=(res.j&&res.j.error)||'Something went wrong.'; status.className='status err'; btn.disabled=false; }
+      })
+      .catch(function(){ status.textContent='Network error. Email dani@arklight.us and we’ll add you.'; status.className='status err'; btn.disabled=false; });
+  });
+})();
+</script>
+</body>
+</html>
