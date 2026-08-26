@@ -37,6 +37,8 @@ async function writeToNotion(fields) {
   setCheck('Founding cohort', fields.founding);
   setCheck('Open to call', fields.call);
   setCheck('Knows others', fields.others);
+  setText('Ref code', fields.ref_code);
+  setText('Referred by', fields.referred_by);
   setSelect('Status', 'New');
 
   const resp = await fetch('https://api.notion.com/v1/pages', {
@@ -76,6 +78,8 @@ module.exports = async function handler(req, res) {
     founding: truthy(b.founding),
     call: truthy(b.call),
     others: truthy(b.others),
+    ref_code: (b.ref_code || '').toString().trim().slice(0, 24),
+    referred_by: (b.referred_by || '').toString().trim().slice(0, 24),
   };
 
   if (!f.name || !f.email) {
@@ -113,7 +117,8 @@ module.exports = async function handler(req, res) {
           `Role: ${f.role || '—'}\nStudents: ${f.students || '—'}\n` +
           `Ages: ${f.ages.join(', ') || '—'}\nInterests: ${f.interests.join(', ') || '—'}\n` +
           `Would pay: ${f.pay || '—'}\nPrice range: ${f.price || '—'}\nTiming: ${f.timing || '—'}\n` +
-          `Location: ${f.location || '—'}\nFlags: ${flags}\n\n` +
+          `Location: ${f.location || '—'}\nFlags: ${flags}\n` +
+          `Ref code: ${f.ref_code || '—'}\nReferred by: ${f.referred_by || '(none)'}\n\n` +
           `Why: ${f.why || '—'}\n\n` +
           `Notion: ${notion.ok ? 'saved' : notion.skipped ? 'skipped (no NOTION_TOKEN)' : 'error — ' + notion.error}\n`,
       });
