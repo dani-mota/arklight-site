@@ -79,6 +79,7 @@ button.submit:disabled{opacity:.6;cursor:default}
 .status.err{color:var(--err)}.status.ok{color:var(--ok)}
 
 .done{padding:60px 0 48px;text-align:center;max-width:600px;margin:0 auto}
+.done:focus{outline:none}
 .done h2{font-size:30px;font-weight:700;color:var(--ok);margin:0 0 20px;line-height:1.16}
 .done p{font-size:19px;color:var(--ink2);margin:0}
 .done-badge{display:inline-block;font-family:var(--pix);font-size:10px;color:var(--ok);border:2px solid var(--ok);padding:8px 12px;margin:0 0 26px;box-shadow:3px 3px 0 rgba(0,0,0,.4)}
@@ -313,11 +314,15 @@ footer.bot a{color:var(--ink2)}
     fetch('/api/interest',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
       .then(function(res){
-        if(res.ok){ wireShare(); form.style.display='none'; var intro=document.querySelector('.intro'); if(intro) intro.style.display='none'; var d=document.getElementById('done'); d.style.display='block'; d.setAttribute('tabindex','-1'); d.focus(); window.scrollTo({top:0,behavior:'smooth'}); }
+        if(res.ok){ showDone(); }
         else { status.textContent=(res.j&&res.j.error)||'Something went wrong.'; status.className='status err'; btn.disabled=false; }
       })
       .catch(function(){ status.textContent='Network error. Please email dani@arklight.us and we will add you.'; status.className='status err'; btn.disabled=false; });
   });
+
+  // Preview the post-submit screen without submitting: add ?preview=done to the URL.
+  function showDone(){ wireShare(); form.style.display='none'; var intro=document.querySelector('.intro'); if(intro) intro.style.display='none'; var d=document.getElementById('done'); if(!d) return; d.style.display='block'; d.setAttribute('tabindex','-1'); d.focus(); window.scrollTo({top:0,behavior:'smooth'}); }
+  try{ if((new URLSearchParams(location.search).get('preview'))==='done'){ showDone(); } }catch(e){}
 })();
 </script>
 </body>
