@@ -1,0 +1,3 @@
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/inter-tight-600.ttf") format("truetype")}
+header.header .inline_wordmark{color:#E9EEF5;display:block;font-family:"Inter Tight",sans-serif;font-size:15px;font-weight:600;font-style:normal;letter-spacing:.06em;line-height:1;white-space:nowrap}
+header.header .inline_wordmark em{color:#E8762A;font-family:"Inter Tight",sans-serif;font-style:normal;font-weight:600;letter-spacing:0}

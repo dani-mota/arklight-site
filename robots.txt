@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /data-room
+Disallow: /data-room/
+Disallow: /api/
 
 Sitemap: https://www.arklight.us/sitemap.xml

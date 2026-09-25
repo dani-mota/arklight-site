@@ -1,0 +1,13 @@
+/**
+ * GSAP column curtain mode — cross-document View Transitions off.
+ *
+ * With `navigation: auto`, supporting browsers still snapshot and composite the
+ * outgoing/incoming documents; that can produce a brief flash alongside the overlay.
+ * `navigation: none` keeps a normal full navigation so only the curtain is visible.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@view-transition
+ */
+
+@view-transition {
+    navigation: none;
+}

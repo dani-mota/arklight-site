@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		(function () {
+			if (!window.matchMedia) {
+				return;
+			}
+			var isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			if (!isReduced) {
+				return;
+			}
+			document.documentElement.classList.add("is-reduced-motion");
+			window.okdSmoothScrollDisabled = true;
+		})();
+	</script>
+		<script>
+		(function () {
+			try {
+				if (
+					sessionStorage.getItem("okdPageTx") === "1" &&
+					window.matchMedia &&
+					!window.matchMedia("(prefers-reduced-motion: reduce)").matches
+				) {
+					document.documentElement.classList.add("okd-pt-entering");
+				}
+			} catch (e) {}
+		})();
+	</script>
+		<style id="okd-inline-css-view-transitions-gsap-css" type="text/css">
+/**
+ * GSAP column curtain mode — cross-document View Transitions off.
+ *
+ * With `navigation: auto`, supporting browsers still snapshot and composite the
+ * outgoing/incoming documents; that can produce a brief flash alongside the overlay.
+ * `navigation: none` keeps a normal full navigation so only the curtain is visible.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@view-transition
+ */
+
+@view-transition {
+    navigation: none;
+}
+</style>
+<style id="okd-inline-css-reset-css" type="text/css">
+/**
+ * The New CSS Reset - version 1.11.3
+ * https://github.com/elad2412/the-new-css-reset
+ * License: MIT
+ */
+
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    position: relative;
+}
+
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+a,
+button {
+    cursor: revert;
+}
+
+ol,
+ul,
+menu,
+summary {
+    list-style: none;
+}
+
+ol {
+    counter-reset: revert;
+}
+
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+input,
+textarea {
+    -webkit-user-select: auto;
+}
+
+textarea {
+    white-space: revert;
+}
+
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+:where(pre) {
+    all: revert;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: unset;
+}
+
+:where([hidden]) {
+    display: none;
+}
+
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+::-webkit-details-marker {
+    display: none;
+}
+</style>
+<title>Privacy Policy · Project Arklight</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+<link rel="canonical" href="https://www.arklight.us/privacy-policy" />
+<meta name="description" content="What personal information Project Arklight collects through this website and how we use it." />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Project Arklight" />
+<meta property="og:title" content="Contact" />
+<meta property="og:description" content="What personal information Project Arklight collects through this website and how we use it." />
+<meta property="og:url" content="https://www.arklight.us/privacy-policy" />
+<meta property="og:image" content="/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contact" />
+<meta name="twitter:description" content="What personal information Project Arklight collects through this website and how we use it." />
+<meta name="twitter:image" content="/og.jpg" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.arklight.us/#website","url":"https://www.arklight.us/","name":"Project Arklight","description":"Arklight is developing America's next generation talent.","inLanguage":"en-US","publisher":{"@type":"Organization","@id":"https://www.arklight.us/#organization","name":"Project Arklight","url":"https://www.arklight.us/","sameAs":["https://x.com/ProjectArklight","https://www.linkedin.com/company/project-arklight/"],"logo":{"@type":"ImageObject","url":"https://www.arklight.us/favicon.svg","contentUrl":"https://www.arklight.us/favicon.svg","width":512,"height":512,"contentSize":"21733"}}},{"@type":"WebPage","@id":"https://www.arklight.us/privacy-policy#webpage","url":"https://www.arklight.us/privacy-policy","name":"Privacy Policy · Project Arklight","description":"What personal information Project Arklight collects through this website and how we use it.","inLanguage":"en-US","isPartOf":{"@id":"https://www.arklight.us/#/schema/WebSite"},"breadcrumb":{"@type":"BreadcrumbList","@id":"https://www.arklight.us/privacy-policy#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":"https://www.arklight.us/privacy-policy","name":"Project Arklight"},{"@type":"ListItem","position":2,"name":"Contact"}]},"potentialAction":{"@type":"ReadAction","target":"https://www.arklight.us/privacy-policy"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 2.57ms meta | 0.56ms boot -->
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='okd-view-transitions-css' href='/wp-content/themes/okd/static/css/view-transitions-gsap.css?ver=1779486584' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--hypergreen: #abd233;--wp--preset--color--error: #E43A3A;--wp--preset--color--neutral-110: #0d0e10;--wp--preset--color--neutral-100: #141618;--wp--preset--color--neutral-90: #202427;--wp--preset--color--neutral-80: #2d3438;--wp--preset--color--neutral-70: #3d454b;--wp--preset--color--neutral-60: #4c555c;--wp--preset--color--neutral-50: #5a636a;--wp--preset--color--neutral-40: #939ca2;--wp--preset--color--neutral-30: #c4ccd1;--wp--preset--color--neutral-20: #e4e9ed;--wp--preset--color--neutral-10: #eff0f1;--wp--preset--color--neutral-05: #f5f6f7;--wp--preset--color--neutral-0: #ffffff;--wp--preset--color--base: #ffffff;--wp--preset--color--contrast: #0d0e10;--wp--preset--color--accent-4: #939ca2;--wp--preset--color--accent-5: #e4e9ed;--wp--preset--color--accent-6: #c4ccd1;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--h-1: clamp(41px, calc(-5.666667px + 5.833333vw), 69px);--wp--preset--font-size--h-2: clamp(36px, calc(1px + 4.375vw), 57px);--wp--preset--font-size--h-3: clamp(32px, calc(5.333333px + 3.333333vw), 48px);--wp--preset--font-size--h-4: clamp(29px, calc(10.666667px + 2.291667vw), 40px);--wp--preset--font-size--h-5: clamp(26px, calc(14.333333px + 1.458333vw), 33px);--wp--preset--font-size--h-6: clamp(23px, calc(14.666667px + 1.041667vw), 28px);--wp--preset--font-size--body-lg: 19px;--wp--preset--font-size--body-md: 16px;--wp--preset--font-size--body-sm: 13px;--wp--preset--font-size--body-xs: 12px;--wp--preset--font-family--sans: articulat-cf, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;--wp--preset--font-family--mono: Roboto Mono, Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--spacing--8: 8px;--wp--preset--spacing--16: 16px;--wp--preset--spacing--24: 24px;--wp--preset--spacing--32: 32px;--wp--preset--spacing--48: 48px;--wp--preset--spacing--72: 72px;--wp--preset--spacing--96: 96px;--wp--preset--spacing--128: 128px;--wp--preset--spacing--164: 164px;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);--wp--custom--body--lg--font-weight: 400;--wp--custom--body--lg--letter-spacing: 0.01em;--wp--custom--body--lg--line-height: 1.5;--wp--custom--body--md--font-weight: 400;--wp--custom--body--md--letter-spacing: 0.01em;--wp--custom--body--md--line-height: 1.5;--wp--custom--body--sm--font-weight: 400;--wp--custom--body--sm--letter-spacing: 0.02em;--wp--custom--body--sm--line-height: 1.5;--wp--custom--body--xs--font-weight: 400;--wp--custom--body--xs--letter-spacing: 0.01em;--wp--custom--body--xs--line-height: 1.5;}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 100%;--wp--style--global--wide-size: 100%; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--neutral-100);color: #fff;font-family: var(--wp--preset--font-family--sans);font-size: var(--wp--preset--font-size--body-md);font-weight: 400;letter-spacing: 0.01em;line-height: 1.5;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--accent);}h1, h2, h3, h4, h5, h6{font-family: var(--wp--preset--font-family--sans);}h1{font-size: var(--wp--preset--font-size--h1);font-weight: 400;letter-spacing: -0.01em;line-height: 1;}h2{font-size: var(--wp--preset--font-size--h2);font-weight: 400;letter-spacing: -0.01em;line-height: 1.05;}h3{font-size: var(--wp--preset--font-size--h3);font-weight: 400;letter-spacing: -0.01em;line-height: 1.05;}h4{font-size: var(--wp--preset--font-size--h4);font-weight: 400;letter-spacing: -0.01em;line-height: 1.1;}h5{font-size: var(--wp--preset--font-size--h5);font-weight: 400;letter-spacing: -0.01em;line-height: 1.1;}h6{font-size: var(--wp--preset--font-size--h6);font-weight: 400;letter-spacing: -0.01em;line-height: 1.1;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-hypergreen-color{color: var(--wp--preset--color--hypergreen) !important;}.has-error-color{color: var(--wp--preset--color--error) !important;}.has-neutral-110-color{color: var(--wp--preset--color--neutral-110) !important;}.has-neutral-100-color{color: var(--wp--preset--color--neutral-100) !important;}.has-neutral-90-color{color: var(--wp--preset--color--neutral-90) !important;}.has-neutral-80-color{color: var(--wp--preset--color--neutral-80) !important;}.has-neutral-70-color{color: var(--wp--preset--color--neutral-70) !important;}.has-neutral-60-color{color: var(--wp--preset--color--neutral-60) !important;}.has-neutral-50-color{color: var(--wp--preset--color--neutral-50) !important;}.has-neutral-40-color{color: var(--wp--preset--color--neutral-40) !important;}.has-neutral-30-color{color: var(--wp--preset--color--neutral-30) !important;}.has-neutral-20-color{color: var(--wp--preset--color--neutral-20) !important;}.has-neutral-10-color{color: var(--wp--preset--color--neutral-10) !important;}.has-neutral-05-color{color: var(--wp--preset--color--neutral-05) !important;}.has-neutral-0-color{color: var(--wp--preset--color--neutral-0) !important;}.has-base-color{color: var(--wp--preset--color--base) !important;}.has-contrast-color{color: var(--wp--preset--color--contrast) !important;}.has-accent-4-color{color: var(--wp--preset--color--accent-4) !important;}.has-accent-5-color{color: var(--wp--preset--color--accent-5) !important;}.has-accent-6-color{color: var(--wp--preset--color--accent-6) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-hypergreen-background-color{background-color: var(--wp--preset--color--hypergreen) !important;}.has-error-background-color{background-color: var(--wp--preset--color--error) !important;}.has-neutral-110-background-color{background-color: var(--wp--preset--color--neutral-110) !important;}.has-neutral-100-background-color{background-color: var(--wp--preset--color--neutral-100) !important;}.has-neutral-90-background-color{background-color: var(--wp--preset--color--neutral-90) !important;}.has-neutral-80-background-color{background-color: var(--wp--preset--color--neutral-80) !important;}.has-neutral-70-background-color{background-color: var(--wp--preset--color--neutral-70) !important;}.has-neutral-60-background-color{background-color: var(--wp--preset--color--neutral-60) !important;}.has-neutral-50-background-color{background-color: var(--wp--preset--color--neutral-50) !important;}.has-neutral-40-background-color{background-color: var(--wp--preset--color--neutral-40) !important;}.has-neutral-30-background-color{background-color: var(--wp--preset--color--neutral-30) !important;}.has-neutral-20-background-color{background-color: var(--wp--preset--color--neutral-20) !important;}.has-neutral-10-background-color{background-color: var(--wp--preset--color--neutral-10) !important;}.has-neutral-05-background-color{background-color: var(--wp--preset--color--neutral-05) !important;}.has-neutral-0-background-color{background-color: var(--wp--preset--color--neutral-0) !important;}.has-base-background-color{background-color: var(--wp--preset--color--base) !important;}.has-contrast-background-color{background-color: var(--wp--preset--color--contrast) !important;}.has-accent-4-background-color{background-color: var(--wp--preset--color--accent-4) !important;}.has-accent-5-background-color{background-color: var(--wp--preset--color--accent-5) !important;}.has-accent-6-background-color{background-color: var(--wp--preset--color--accent-6) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-hypergreen-border-color{border-color: var(--wp--preset--color--hypergreen) !important;}.has-error-border-color{border-color: var(--wp--preset--color--error) !important;}.has-neutral-110-border-color{border-color: var(--wp--preset--color--neutral-110) !important;}.has-neutral-100-border-color{border-color: var(--wp--preset--color--neutral-100) !important;}.has-neutral-90-border-color{border-color: var(--wp--preset--color--neutral-90) !important;}.has-neutral-80-border-color{border-color: var(--wp--preset--color--neutral-80) !important;}.has-neutral-70-border-color{border-color: var(--wp--preset--color--neutral-70) !important;}.has-neutral-60-border-color{border-color: var(--wp--preset--color--neutral-60) !important;}.has-neutral-50-border-color{border-color: var(--wp--preset--color--neutral-50) !important;}.has-neutral-40-border-color{border-color: var(--wp--preset--color--neutral-40) !important;}.has-neutral-30-border-color{border-color: var(--wp--preset--color--neutral-30) !important;}.has-neutral-20-border-color{border-color: var(--wp--preset--color--neutral-20) !important;}.has-neutral-10-border-color{border-color: var(--wp--preset--color--neutral-10) !important;}.has-neutral-05-border-color{border-color: var(--wp--preset--color--neutral-05) !important;}.has-neutral-0-border-color{border-color: var(--wp--preset--color--neutral-0) !important;}.has-base-border-color{border-color: var(--wp--preset--color--base) !important;}.has-contrast-border-color{border-color: var(--wp--preset--color--contrast) !important;}.has-accent-4-border-color{border-color: var(--wp--preset--color--accent-4) !important;}.has-accent-5-border-color{border-color: var(--wp--preset--color--accent-5) !important;}.has-accent-6-border-color{border-color: var(--wp--preset--color--accent-6) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-h-1-font-size{font-size: var(--wp--preset--font-size--h-1) !important;}.has-h-2-font-size{font-size: var(--wp--preset--font-size--h-2) !important;}.has-h-3-font-size{font-size: var(--wp--preset--font-size--h-3) !important;}.has-h-4-font-size{font-size: var(--wp--preset--font-size--h-4) !important;}.has-h-5-font-size{font-size: var(--wp--preset--font-size--h-5) !important;}.has-h-6-font-size{font-size: var(--wp--preset--font-size--h-6) !important;}.has-body-lg-font-size{font-size: var(--wp--preset--font-size--body-lg) !important;}.has-body-md-font-size{font-size: var(--wp--preset--font-size--body-md) !important;}.has-body-sm-font-size{font-size: var(--wp--preset--font-size--body-sm) !important;}.has-body-xs-font-size{font-size: var(--wp--preset--font-size--body-xs) !important;}.has-sans-font-family{font-family: var(--wp--preset--font-family--sans) !important;}.has-mono-font-family{font-family: var(--wp--preset--font-family--mono) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='contact-form-7-css' href='/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.6' media='all' />
+<style class="wp-fonts-local">
+@font-face{font-family:articulat-cf;font-style:normal;font-weight:400;font-display:swap;src:url('/wp-content/themes/okd/static/fonts/ArticulatCF-Normal.woff2') format('woff2');}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/favicon-180.png" />
+<style id="blockstudio-tailwind">:root,:host{--font-sans:var(--wp--preset--font-family--sans);--font-mono:var(--wp--preset--font-family--mono);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}*,::after,::before,::backdrop,::file-selector-button{box-sizing:border-box;margin:0;padding:0;border:0 solid}html,:host{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji');font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea,::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type='button'],[type='reset'],[type='submit']),::file-selector-button{-webkit-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden='until-found'])){display:none !important}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}</style>
+<link rel='stylesheet' data-processed id='blockstudio-okd-header-style-scss' href='/wp-content/themes/okd/blockstudio/blocks/header/_dist/style-b321296498e15e856a4aa17adc8b5e64.css?ver=1779737838'><link rel='stylesheet' data-processed id='blockstudio-okd-footer-style-scss' href='/wp-content/themes/okd/blockstudio/blocks/footer/_dist/style-2fc50d37df7811ff628a4fb9765cddc0.css?ver=1779544698'><link rel='stylesheet' data-processed id='blockstudio-okd-form-style-scss' href='/wp-content/themes/okd/blockstudio/blocks/form/_dist/style-2fc50d37df7811ff628a4fb9765cddc0.css?ver=1779544698'><link rel='stylesheet'  id='blockstudio-blockstudio-82749153babb-5-0-1-dist-locomotive-scroll-css' href='/wp-content/themes/okd/blockstudio/assets/_dist/modules/locomotive-scroll/5.0.1-dist-locomotive-scroll.css?ver=1779487109'><link rel='stylesheet'  id='blockstudio-blockstudio-82749153babb-1-3-18-dist-lenis-css' href='/wp-content/themes/okd/blockstudio/assets/_dist/modules/lenis/1.3.18-dist-lenis.css?ver=1779486579'><link rel='stylesheet' data-processed id='blockstudio-blockstudio-82749153babb-global-styles-scss' href='/wp-content/themes/okd/blockstudio/assets/_dist/global-styles-73dee9831086c5eb00eebdfd7415325b.css?ver=1779544697'><link rel="stylesheet" href="/wp-content/themes/okd/blockstudio/blocks/hero-maside/_dist/style-72ee4003cd674ec3f82262731a4db2ad.css"><link rel="stylesheet" href="/wp-content/themes/okd/blockstudio/blocks/careers-list/_dist/style-2fc50d37df7811ff628a4fb9765cddc0.css"><link rel="stylesheet" href="/fonts/arklight-logo.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH6JFV56FJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XH6JFV56FJ');
+</script>
+</head>
+<body class="wp-singular page-template-default page page-id-111 wp-theme-okd okd-frontend">
+
+	<div id="okd-page-transition" class="okd-page-transition" aria-hidden="true">
+			<span class="okd-page-transition__col"></span>
+			<span class="okd-page-transition__col"></span>
+			<span class="okd-page-transition__col"></span>
+			<span class="okd-page-transition__col"></span>
+			<span class="okd-page-transition__col"></span>
+			<span class="okd-page-transition__col"></span>
+	</div>
+
+<header class="header wp-block-okd-header">
+		<div class="header_inline">
+        <div class="okd-block-container -no-padding inline_shell-wrap">
+            <div class="inline_shell u-grid">
+                <div class="inline_brand">
+                    <a class="inline_logo" href="/" aria-label="Arklight" data-scroll-top-only="true"><span class="inline_wordmark">ARKLIGHT<em>/</em></span></a>
+                </div>
+
+                <div class="inline_toggle-wrap">
+                    <button type="button" class="inline_toggle" aria-expanded="false" aria-controls="okd-site-menu" aria-haspopup="dialog" data-label-open="Open menu" data-label-close="Close menu" aria-label="Open menu">
+                        <span class="nav_menu" aria-hidden="true">
+                            <span class="menu_dot -upper-left"></span>
+                            <span class="menu_dot -upper-right"></span>
+                            <span class="menu_dot -center"></span>
+                            <span class="menu_dot -lower-left"></span>
+                            <span class="menu_dot -lower-right"></span>
+                        </span>
+                    </button>
+                </div>
+
+                                <nav class="inline_nav header_nav" aria-label="Primary">
+                                                                                                                                                                                                                                                                                <a class="header_nav_link u-btn--1 -inline" href="/research" aria-label="Research" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Research</span></a><a class="header_nav_link u-btn--1 -inline" href="/careers" aria-label="Careers" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Careers</span></a>                                    </nav>
+                
+                                    <div class="inline_cta-wrap">
+                        <a class="inline_cta-btn u-btn--1 -on-dark" href="/contact" aria-label="Contact" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Contact</span></a>                    </div>
+                            </div>
+            <div class="okd-block-container-lines"></div>
+        </div>
+	</div>
+
+		<div id="okd-site-menu" class="header_mobile" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true" inert data-lenis-prevent>
+		<div class="mobile_inner">
+						<nav class="mobile_nav" aria-label="Primary">
+														<a class="mobile_nav_link" href="/research" aria-label="Research" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Research</span></a><a class="mobile_nav_link" href="/careers" aria-label="Careers" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Careers</span></a>								<div class="okd-block-container-lines"></div>
+			</nav>
+						<div class="mobile_mobile_footer">
+									<a class="mobile_cta u-btn--1 -wide -on-dark" href="/contact" aria-label="Get in Touch" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Get in Touch</span></a>													<div class="mobile_copyright">&copy; 2026 Project Arklight, Inc.</div>
+													<nav class="mobile_terms" aria-label="Legal">
+													<a class="mobile_terms_link" href="/terms-of-use" aria-label="Terms of Use" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Terms of Use</span></a>													<a class="mobile_terms_link" href="/privacy-policy" aria-label="Privacy Policy" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Privacy Policy</span></a>											</nav>
+							</div>
+		</div>
+	</div>
+</header>
+<main>
+<style>
+.legal{background:#141618;color:#d7dce0;padding:120px 8vw 88px}
+.legal h1{color:#fff;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.03em;font-weight:500;margin:0 0 12px}
+.legal .meta{color:#9aa3ab;margin:0 0 40px}
+.legal h2{color:#fff;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:36px 0 12px}
+.legal p,.legal li{font-size:17px;line-height:1.55;max-width:68ch}
+.legal p{margin:0 0 1.15em}
+.legal ul{list-style:disc;margin:0 0 1.15em;padding-left:1.25em}
+.legal li{margin:0 0 .55em}
+.legal a{color:#fff;text-decoration:underline}
+</style>
+<section class="legal">
+<h1>Privacy Policy</h1>
+<p class="meta">Project Arklight, Inc. · Effective September 25, 2026</p>
+<p>This policy explains what personal information Project Arklight, Inc. collects through this website and how we use it.</p>
+<h2>Who we are</h2>
+<p>Project Arklight, Inc. operates this website. Questions about privacy go to <a href="mailto:contact@arklight.us">contact@arklight.us</a>.</p>
+<h2>What we collect</h2>
+<p>We collect information you choose to send us. That includes your name, email, phone number, and message when you contact us, and the details you include in a job application, such as your resume, cover letter, LinkedIn profile, and website.</p>
+<p>We do not ask you to create an account. We do not sell personal information.</p>
+<h2>Analytics and cookies</h2>
+<p>We use Google Analytics to understand how this website is used. That measurement covers pages viewed, approximate region, and device and browser type. It does not identify you by name.</p>
+<p>Google Analytics sets cookies and uses local storage for that measurement. We use only the cookies the site needs to function and those analytics cookies. We do not use advertising or cross-site tracking cookies.</p>
+<h2>How we use it</h2>
+<ul>
+<li>To reply to you.</li>
+<li>To review an application for a role you applied to.</li>
+<li>To operate and secure the website.</li>
+<li>To meet legal obligations.</li>
+<li>To understand, in aggregate, how the website is used.</li>
+</ul>
+<h2>How you send it</h2>
+<p>Contact and application forms open an email to Project Arklight. Your message, and any file you attach in your own email program, is sent by you. We receive it at contact@arklight.us and keep it long enough to respond and, for applications, to complete the hiring process.</p>
+<h2>Sharing</h2>
+<p>We do not share your information for advertising. We may share it with people who help us operate the company, such as counsel or a hosting provider, and only as needed. We may also disclose it if the law requires it.</p>
+<h2>Your choices</h2>
+<p>You may ask us what application or contact information we hold about you, ask us to correct it, or ask us to delete it, subject to records we must keep. Email <a href="mailto:contact@arklight.us">contact@arklight.us</a>.</p>
+<h2>Children</h2>
+<p>This site is not directed at children under 13, and we do not knowingly collect their information.</p>
+<h2>Changes</h2>
+<p>If this policy changes, we will update the date on this page.</p>
+</section>
+</main>
+<footer class="footer wp-block-okd-footer">
+			<div class="footer_media footer_media--bg" aria-hidden="true">
+			<div class="okd-c-media okd-c-media--footer footer_media_inner"><video class="okd-c-media__video footer_media_video" muted loop playsinline><source src="/media/footer-launch-locked.mp4" type="video/mp4"></video></div>		</div>
+		<div class="footer_block_inner">
+		<div class="footer_main okd-block-container">
+			<div class="footer_main_inner">
+                <div class="main_eyebrow">
+                                    </div>
+
+				<div class="main_content u-grid">
+					<div class="main_col main_col--heading">
+													<div class="footer_heading" data-okd-scroll-text-reveal>
+								Building American Talent.							</div>
+											</div>
+
+					<div class="main_col main_col--aside">
+													<nav class="footer_nav" aria-label="Footer" data-okd-scroll-reveal>
+																										<div class="footer_nav_item">
+										<button type="button" class="footer_nav_link u-btn--1 -dot-indicator" data-manifesto-open>Our Mission</button>									</div>
+																										
+																										<div class="footer_nav_item">
+										<a class="footer_nav_link u-btn--1 -dot-indicator" href="/careers" aria-label="Careers" target="_self">Careers</a>									</div>
+<div class="footer_nav_item"><a class="footer_nav_link u-btn--1 -dot-indicator" href="/research" aria-label="Research" target="_self">Research</a></div>
+															</nav>
+						
+													<div class="footer_cta-wrap" data-okd-scroll-reveal>
+								<a class="footer_cta-btn u-btn--1" href="/contact" aria-label="Get in Touch" target="_self"><span class="btn_label" data-button-animate-chars aria-hidden="true">Get in Touch</span></a>							</div>
+						
+													<ul class="footer_socials" aria-label="Social media" data-okd-scroll-reveal>
+																										<li class="footer_social_item">
+										<a class="footer_social_link" href="https://www.linkedin.com/company/project-arklight/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+											<img src="/media/social-linkedin.svg" class="footer_social_icon" alt="" loading="lazy" decoding="async">										</a>
+									</li>
+																										<li class="footer_social_item">
+										<a class="footer_social_link" href="https://x.com/ProjectArklight" target="_blank" rel="noopener noreferrer" aria-label="X">
+											<img src="/media/social-x.svg" class="footer_social_icon" alt="" loading="lazy" decoding="async">										</a>
+									</li>
+															</ul>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer_bottom okd-block-container">
+			<div class="footer_bottom_inner">
+				<div class="footer_bottom_row">
+					<div class="footer_copyright">
+						&copy; 2026 Project Arklight, Inc.					</div>
+					<p class="footer_credit">
+						<a class="footer_credit-link u-btn--1 -inline" href="/terms-of-use" aria-label="Terms of Use" target="_self">Terms of Use</a>
+						<a class="footer_credit-link u-btn--1 -inline" href="/privacy-policy" aria-label="Privacy Policy" target="_self">Privacy Policy</a>
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+    <div class="okd-block-container-lines" aria-hidden="true"></div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/okd/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="gsap-js" src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js?ver=3.14.2"></script>
+<script id="gsap-scrolltrigger-js" src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js?ver=3.14.2"></script>
+<script id="gsap-splittext-js" src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/SplitText.min.js?ver=3.14.2"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {"api":{"root":"","namespace":"contact-form-7/v1"}};
+</script>
+<script id="okd-media-responsive-video-js" src="/wp-content/themes/okd/static/js/okd-media-responsive-video.js?ver=1779486585"></script>
+<script type='module' data-processed id='blockstudio-okd-header-script-js' src='/wp-content/themes/okd/blockstudio/blocks/header/_dist/script-1788539706.js?ver=1788539706'></script><script type='module' data-processed id='blockstudio-okd-footer-script-view-js' src='/wp-content/themes/okd/blockstudio/blocks/footer/_dist/script.view-1779544698.js?ver=1779544698'></script><script type='module' data-processed id='blockstudio-okd-form-script-js' src='/wp-content/themes/okd/blockstudio/blocks/form/_dist/script-1779486581.js?ver=1779486581'></script><script type='module' data-processed id='blockstudio-blockstudio-82749153babb-global-scripts-js' src='/wp-content/themes/okd/blockstudio/assets/_dist/global-scripts-1788539706.js?ver=1788539706'></script>
+<script>
+document.querySelectorAll("[data-role]").forEach(function (link) {
+  link.addEventListener("click", function () {
+    var role = document.getElementById("role");
+    if (role) role.value = link.getAttribute("data-role");
+  });
+});
+var applyForm = document.getElementById("apply-form");
+if (applyForm) applyForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var form = e.target;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  var data = new FormData(form);
+  var resume = form.querySelector("#resume").files[0];
+  var cover = form.querySelector("#cover").files[0];
+  var body = [
+    "Role: " + data.get("role"),
+    "First name: " + data.get("first-name"),
+    "Last name: " + data.get("last-name"),
+    "Preferred first name: " + (data.get("preferred-name") || ""),
+    "Email: " + data.get("email"),
+    "Phone: " + (data.get("phone") || ""),
+    "Country: " + (data.get("country") || ""),
+    "LinkedIn: " + (data.get("linkedin") || ""),
+    "Website: " + (data.get("website") || ""),
+    "",
+    "Resume file to attach: " + (resume ? resume.name : ""),
+    "Cover letter file to attach: " + (cover ? cover.name : "")
+  ].join("\n");
+  window.location.href = "mailto:contact@arklight.us?subject=" + encodeURIComponent("Application: " + data.get("role")) + "&body=" + encodeURIComponent(body);
+  var root = form.closest("[data-site-form-root]");
+  root.dataset.siteFormState = "success";
+  root.querySelector('[data-site-form-panel="form"]').setAttribute("aria-hidden", "true");
+  root.querySelector('[data-site-form-panel="success"]').setAttribute("aria-hidden", "false");
+});
+</script>
+
+<style>
+.ark-manifesto{position:fixed;inset:0;z-index:400;color:#f5f6f7}
+.ark-manifesto[hidden]{display:none}
+.ark-manifesto:not(.is-open){pointer-events:none}
+.ark-manifesto__bg{position:absolute;inset:0;background:rgba(8,8,8,.92);backdrop-filter:blur(5px);opacity:0;transition:opacity .5s cubic-bezier(.38,.005,.215,1);cursor:pointer}
+.ark-manifesto.is-open .ark-manifesto__bg{opacity:1}
+.ark-manifesto__close{position:absolute;top:28px;right:32px;z-index:2;background:none;border:0;color:#f5f6f7;font:inherit;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.ark-manifesto__wrap{position:relative;z-index:1;height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 10%,rgba(0,0,0,.7) 22%,#000 34%,#000 66%,rgba(0,0,0,.7) 78%,rgba(0,0,0,.2) 90%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 10%,rgba(0,0,0,.7) 22%,#000 34%,#000 66%,rgba(0,0,0,.7) 78%,rgba(0,0,0,.2) 90%,transparent 100%)}
+.ark-manifesto__inner{width:min(640px,calc(100% - 80px));margin-left:auto;margin-right:8vw;padding-top:calc(50vh - .5em);padding-bottom:calc(50vh - .5em);opacity:0;transform:translate3d(0,40vh,0);transition:opacity .5s cubic-bezier(.38,.005,.215,1),transform .5s cubic-bezier(.38,.005,.215,1)}
+.ark-manifesto.is-open .ark-manifesto__inner{opacity:1;transform:none}
+.ark-manifesto__inner p{font-size:clamp(22px,2.4vw,34px);line-height:1.25;letter-spacing:-.02em;margin:0 0 1.6em}
+.footer_nav_link[data-manifesto-open]{background:none;border:0;color:inherit;font:inherit;cursor:pointer;text-align:left}.ctext__cta[data-manifesto-open]{border:0;cursor:pointer;color:#161C24 !important;--btn-background-color:#fff !important;--btn-text-color:#161C24 !important;--btn-background-color-hover:#fff !important;--btn-text-color-hover:#161C24 !important}.ctext__cta[data-manifesto-open] .btn_label{color:#161C24 !important;-webkit-text-fill-color:#161C24 !important}
+</style>
+<div class="ark-manifesto" data-manifesto hidden>
+  <div class="ark-manifesto__bg" data-manifesto-close></div>
+  <button type="button" class="ark-manifesto__close" data-manifesto-close>Close</button>
+  <div class="ark-manifesto__wrap" data-lenis-prevent="true">
+    <div class="ark-manifesto__inner">
+      <p>America is building again.</p>
+      <p>After decades of offshoring and decline, capital and ambition are flooding back into American industry, across manufacturing, energy, defense, and AI.</p>
+      <p>But you cannot build what you cannot staff.</p>
+      <p>The workforce that built America's industrial base is retiring, and nothing has replaced it. The people who know how to make things are disappearing.</p>
+      <p>America once trained the best.</p>
+      <p>We built the arsenal of democracy. We put people on the moon. The skill to make hard things was forged here, on real floors, by real operators.</p>
+      <p>Then we stopped.</p>
+      <p>We told a generation the only path was a four-year degree and a mountain of debt. We let the trades wither and the pipeline run dry.</p>
+      <p>We will build the builders.</p>
+      <p>Arklight develops the talent to rebuild American industry. Real operators, trained on real work, with military methodology and AI, ready to ship on day one.</p>
+      <p>It is a new era of American making.</p>
+      <p>Give a generation the chance to build, and they will rebuild the country. The capacity to make what we need, and the people who can make it.</p>
+      <p>America's potential is written in its people.</p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var root=document.querySelector("[data-manifesto]");
+  if(!root) return;
+  function stopPage(){var lenis=window.okdLenis;if(lenis&&typeof lenis.stop==="function")lenis.stop();}
+  function startPage(){var lenis=window.okdLenis;if(lenis&&typeof lenis.start==="function")lenis.start();}
+  function open(){root.hidden=false;stopPage();requestAnimationFrame(function(){root.classList.add("is-open");});document.body.style.overflow="hidden";}
+  function close(){root.classList.remove("is-open");document.body.style.overflow="";startPage();setTimeout(function(){if(!root.classList.contains("is-open"))root.hidden=true;},500);}
+  document.querySelectorAll("[data-manifesto-open]").forEach(function(el){el.addEventListener("click",function(e){e.preventDefault();open();});});
+  root.querySelectorAll("[data-manifesto-close]").forEach(function(el){el.addEventListener("click",close);});
+  var wrap=root.querySelector(".ark-manifesto__wrap");
+  if(wrap){wrap.addEventListener("wheel",function(e){e.preventDefault();e.stopPropagation();wrap.scrollTop+=e.deltaY;},{passive:false});}
+  document.addEventListener("keydown",function(e){if(e.key==="Escape") close();});
+})();
+</script>
+</body>
+</html>
