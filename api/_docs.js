@@ -20,7 +20,8 @@ const DOCS = {
   comp:   { file: 'arklight-competitive-landscape.pdf',      title: 'Competitor Landscape & Analysis',   tier: 1 },
   funds:  { file: 'arklight-use-of-funds.pdf',               title: 'Use of Funds',                      tier: 1 },
   valinor:{ file: 'arklight-valinor-mou.pdf',                title: 'Valinor Talent MOU (signed)',       tier: 1 },
-  oracle: { file: 'arklight-oracle-proposal.pdf',            title: 'Oracle Proposal',                   tier: 1 }
+  oracle: { file: 'arklight-oracle-proposal.pdf',            title: 'Oracle Proposal',                   tier: 1 },
+  spacex: { file: 'arklight-spacex-opportunity.pdf',         title: 'SpaceX Opportunity',                tier: 1 }
 
   // When the financial model is ready, add it behind the second wall:
   // model: { file:'arklight-financial-model.pdf', title:'Financial Model & Projections', tier: 2 },
