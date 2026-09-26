@@ -12,15 +12,19 @@ const { getSession } = require('./_auth');
 const SRC = {
   'Arklight - Pitch Deck.pdf': 'deck',
   'Investment Memo': 'memo',
+  'The SpaceX Pilot Opportunity': 'spacex',
+  'The Anduril Opportunity': 'anduril',
   'Understanding Demand & Market': 'market',
   'Use of Funds': 'funds',
   'Valinor MOU - Signed': 'valinor'
 };
 
 const TIERS = [
-  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo', status: 'cleared', docs: [
+  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo · pilots', status: 'cleared', docs: [
     { n: 'Arklight - Pitch Deck.pdf', t: 'SYNC 08-19' },
-    { n: 'Investment Memo', t: 'MEMO' }]},
+    { n: 'Investment Memo', t: 'MEMO' },
+    { n: 'The SpaceX Pilot Opportunity', t: 'CASE 09-12' },
+    { n: 'The Anduril Opportunity', t: 'CASE 09-14' }]},
   { idx: '02', name: 'Product & Market', sub: 'Demos · market', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/dfbb6c5e59cf4376b9dce541f82f0ec0' },
@@ -39,11 +43,7 @@ const TIERS = [
 // restore an object here and add tier: 2 entries to api/_docs.js.
 const WALL = null;
 
-const STATS = [
-  { k: 'STAGE', v: 'PRE-SEED' },
-  { k: 'INSTRUMENT', v: 'SAFE' },
-  { k: 'CAP', v: '$3.0M' }
-];
+const STATS = [];
 
 const PIPELINE = [
   { stage: 'Identified', accent: 'idle', count: 292, summary: 'prospects mapped<br>17 now engaged' },
@@ -55,8 +55,8 @@ const PIPELINE = [
   // bleed:true cards straddle Advanced and Signed - the same deal appears in
   // both columns with a bridging (amber->green) treatment.
   { stage: 'Advanced Conversation + Negotiation', accent: 'amber', cards: [
-    { co: 'SpaceX', bleed: true },
-    { co: 'Anduril Industries', bleed: true },
+    { co: 'SpaceX', bleed: true, src: '/api/doc?id=spacex', title: 'The SpaceX Pilot Opportunity' },
+    { co: 'Anduril Industries', bleed: true, src: '/api/doc?id=anduril', title: 'The Anduril Opportunity' },
     { co: 'Mariana Minerals', bleed: true },
     { co: 'AMCA', bleed: true },
     { co: 'Tesla', contact: 'Executive buy-in' },
@@ -65,8 +65,8 @@ const PIPELINE = [
     { co: 'MP Materials', contact: 'Executive buy-in' }]},
   { stage: 'Pilot / MOU Signed', accent: 'verify', cards: [
     { co: 'Valinor', contact: 'Signed MOU · 06-15' },
-    { co: 'SpaceX', bleed: true },
-    { co: 'Anduril Industries', bleed: true },
+    { co: 'SpaceX', bleed: true, src: '/api/doc?id=spacex', title: 'The SpaceX Pilot Opportunity' },
+    { co: 'Anduril Industries', bleed: true, src: '/api/doc?id=anduril', title: 'The Anduril Opportunity' },
     { co: 'Mariana Minerals', bleed: true },
     { co: 'AMCA', bleed: true }]}
 ];

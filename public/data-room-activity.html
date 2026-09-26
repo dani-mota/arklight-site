@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" href="/favicon.svg"/>
+<title>Activity | Project Arklight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"/>
+<style>
+  :root{
+    --canvas-0:#0B0A08; --canvas-1:#111210; --canvas-2:#17181A;
+    --canvas-3:#1E2024;
+    --text-0:#F4F3EF; --text-1:#C9C8C3; --text-2:#A6A5A0; --text-3:#8A8984;
+    --bd-0:rgba(255,250,235,.06); --bd-1:rgba(255,250,235,.10);
+    --bd-2:rgba(255,250,235,.16);
+    --blue-200:#9EB8CB; --blue-400:#4A739A;
+    --amber:#F5A14A; --verify:#7FD88A;
+    --font-display:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{
+    background:var(--canvas-0); color:var(--text-1);
+    font-family:var(--font-display); font-size:15px; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:radial-gradient(120% 90% at 50% -10%, rgba(110,142,168,.10), transparent 55%);
+  }
+  .wrap{position:relative; z-index:1; max-width:1080px; margin:0 auto; padding:28px 22px 80px}
+  .top{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px}
+  .brand{font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text-0)}
+  .brand span{color:var(--text-3)}
+  .meta{font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3)}
+  h1{font-size:28px; font-weight:500; letter-spacing:-.02em; color:var(--text-0); margin:0 0 8px}
+  .sub{color:var(--text-2); font-size:14px; margin:0 0 22px}
+  .msg{font-family:var(--font-mono); font-size:12px; letter-spacing:.06em; color:var(--text-2); padding:20px 0}
+  .msg.err{color:var(--amber)}
+  a.back{color:var(--blue-200); text-decoration:none; font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase}
+  a.back:hover{color:var(--text-0)}
+
+  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:0 0 18px}
+  .kpi{background:var(--canvas-1); border:1px solid var(--bd-1); border-radius:3px; padding:14px 16px}
+  .kpi .k{font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3)}
+  .kpi .v{font-size:22px; font-weight:500; color:var(--text-0); margin-top:6px; letter-spacing:-.02em}
+  .kpi .s{font-family:var(--font-mono); font-size:10px; color:var(--text-3); margin-top:4px}
+
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; align-items:center}
+  .filters input, .filters select{
+    background:var(--canvas-1); color:var(--text-0); border:1px solid var(--bd-1);
+    border-radius:2px; padding:8px 10px; font-family:var(--font-mono); font-size:12px;
+  }
+  .filters input{min-width:220px; flex:1}
+  .filters select{color:var(--text-1)}
+  .chip{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+    border:1px solid var(--bd-1); background:transparent; color:var(--text-2); padding:7px 10px; border-radius:2px; cursor:pointer}
+  .chip.on{border-color:var(--blue-400); color:var(--text-0); background:rgba(74,115,154,.16)}
+  .clear{margin-left:auto}
+
+  .tabs{display:flex; gap:0; border-bottom:1px solid var(--bd-1); margin:0 0 16px}
+  .tab{background:none; border:0; border-bottom:2px solid transparent; color:var(--text-3);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    padding:10px 14px; cursor:pointer; margin-bottom:-1px}
+  .tab.on{color:var(--text-0); border-bottom-color:var(--amber)}
+
+  .row{display:grid; grid-template-columns:minmax(180px,1.4fr) 110px 90px 90px minmax(120px,1fr); gap:12px; align-items:center;
+    padding:12px 14px; border:1px solid var(--bd-1); border-radius:3px; background:var(--canvas-1); margin:0 0 8px; cursor:pointer}
+  .row:hover{background:var(--canvas-2)}
+  .row.head{cursor:default; background:transparent; border:0; padding:4px 14px 10px; color:var(--text-3);
+    font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase}
+  .row.head:hover{background:transparent}
+  .who{color:var(--text-0); font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .num{font-family:var(--font-mono); font-size:12px; color:var(--blue-200)}
+  .muted{font-family:var(--font-mono); font-size:11px; color:var(--text-3)}
+  .meter{height:6px; background:var(--bd-0); border-radius:2px; overflow:hidden}
+  .meter i{display:block; height:100%; background:linear-gradient(90deg,var(--blue-400),var(--amber)); min-width:2px}
+
+  .sess{background:var(--canvas-1); border:1px solid var(--bd-1); border-radius:3px; margin:0 0 10px; overflow:hidden}
+  .sess summary{list-style:none; cursor:pointer; display:flex; gap:16px; align-items:baseline; padding:14px 16px; flex-wrap:wrap}
+  .sess summary::-webkit-details-marker{display:none}
+  .sess summary:hover{background:var(--canvas-2)}
+  .sess .who{flex:1; min-width:180px}
+  .when,.dur,.n{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; color:var(--text-3)}
+  .dur{color:var(--blue-200)}
+  .body{padding:0 16px 16px; border-top:1px solid var(--bd-0)}
+  .doc{padding:14px 0; border-bottom:1px solid var(--bd-0)}
+  .doc:last-child{border-bottom:0}
+  .dn{color:var(--text-0); font-size:14px}
+  .dt{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; color:var(--text-3); margin-top:2px}
+  .bars{display:flex; gap:3px; align-items:flex-end; height:28px; margin-top:10px}
+  .bars i{display:block; flex:1; min-width:4px; max-width:18px; height:100%; background:var(--blue-400); border-radius:1px 1px 0 0; opacity:.18}
+  .bars i.on{background:var(--amber); opacity:1}
+  .hint{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; color:var(--text-3); margin-top:8px}
+  .empty{font-family:var(--font-mono); font-size:12px; color:var(--text-3); padding:24px 4px}
+  .count{font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin:0 0 10px}
+  @media (max-width:820px){
+    .kpis{grid-template-columns:1fr 1fr}
+    .row,.row.head{grid-template-columns:1fr 1fr; gap:6px}
+    .row .meter{grid-column:1 / -1}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">PROJECT ARKLIGHT <span>// ACTIVITY</span></div>
+    <div class="meta" id="opMeta"></div>
+  </div>
+  <h1>Reading tape</h1>
+  <p class="sub">Who opened what, for how long, on which pages. Background tabs do not count.</p>
+  <div id="boot" class="msg">Loading</div>
+  <div id="app" hidden>
+    <div class="kpis" id="kpis"></div>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Filter by email or firm…" autocomplete="off"/>
+      <select id="person"><option value="">All people</option></select>
+      <select id="doc"><option value="">All documents</option></select>
+      <button type="button" class="chip on" data-range="7d">7 days</button>
+      <button type="button" class="chip" data-range="24h">24h</button>
+      <button type="button" class="chip" data-range="30d">30 days</button>
+      <button type="button" class="chip" data-range="all">All</button>
+      <button type="button" class="chip clear" id="reset">Reset</button>
+    </div>
+    <div class="tabs">
+      <button type="button" class="tab on" data-tab="people">People</button>
+      <button type="button" class="tab" data-tab="docs">Documents</button>
+      <button type="button" class="tab" data-tab="sessions">Sessions</button>
+    </div>
+    <div class="count" id="count"></div>
+    <div id="panel"></div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var ALL=[], state={ q:"", person:"", doc:"", range:"7d", tab:"people" };
+
+  function esc(s){
+    return String(s||"").replace(/[&<>"']/g, function(c){
+      return ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" })[c];
+    });
+  }
+  function fmtMs(ms){
+    ms=Math.max(0, Number(ms)||0);
+    if(ms<1000) return "<1s";
+    var s=Math.round(ms/1000);
+    if(s<60) return s+"s";
+    var m=Math.floor(s/60); s=s%60;
+    if(m<60) return s ? m+"m "+s+"s" : m+"m";
+    var h=Math.floor(m/60); m=m%60;
+    return m ? h+"h "+m+"m" : h+"h";
+  }
+  function fmtWhen(iso){
+    if(!iso) return "—";
+    var d=new Date(iso);
+    if(isNaN(d.getTime())) return iso;
+    return d.toLocaleString(undefined,{ month:"short", day:"numeric", hour:"numeric", minute:"2-digit" });
+  }
+  function inRange(iso, range){
+    if(range==="all" || !iso) return true;
+    var t=new Date(iso).getTime();
+    if(isNaN(t)) return true;
+    var ms={ "24h":864e5, "7d":7*864e5, "30d":30*864e5 }[range];
+    return (Date.now()-t) <= (ms||7*864e5);
+  }
+  function domainOf(email){
+    var i=String(email||"").indexOf("@");
+    return i>=0 ? email.slice(i+1) : "";
+  }
+  function maxPage(pages){
+    var n=0;
+    Object.keys(pages||{}).forEach(function(k){ var p=+k; if(p>n) n=p; });
+    return n;
+  }
+  function peakMs(pages){
+    var p=1;
+    Object.keys(pages||{}).forEach(function(k){ var v=+pages[k]||0; if(v>p) p=v; });
+    return p;
+  }
+  function bars(pages){
+    var max=maxPage(pages), peak=peakMs(pages), html="";
+    if(!max) return '<div class="hint">Opened, no dwell yet</div>';
+    html='<div class="bars" aria-hidden="true">';
+    for(var i=1;i<=max;i++){
+      var ms=pages[i]||0;
+      var t=ms/peak;
+      var h=ms? Math.max(18, Math.round(100*t)) : 12;
+      html+='<i class="'+(ms?"on":"")+'" title="Page '+i+' · '+fmtMs(ms)+'" style="height:'+h+'%"></i>';
+    }
+    return html+'</div><div class="hint">Pages 1–'+max+'</div>';
+  }
+
+  function filtered(){
+    var q=state.q.trim().toLowerCase();
+    return ALL.filter(function(s){
+      if(!inRange(s.last||s.started, state.range)) return false;
+      if(state.person && s.email!==state.person) return false;
+      if(state.doc && !(s.docs||[]).some(function(d){ return d.id===state.doc; })) return false;
+      if(q){
+        var hay=(s.email+" "+domainOf(s.email)).toLowerCase();
+        if(hay.indexOf(q)<0) return false;
+      }
+      return true;
+    });
+  }
+
+  function rollup(sessions){
+    var people={}, docs={}, total=0, docSet={};
+    sessions.forEach(function(s){
+      total += s.total_ms||0;
+      if(!people[s.email]) people[s.email]={ email:s.email, sessions:0, total_ms:0, last:s.last, docs:{} };
+      var p=people[s.email];
+      p.sessions += 1;
+      p.total_ms += s.total_ms||0;
+      if(s.last && (!p.last || s.last>p.last)) p.last=s.last;
+      (s.docs||[]).forEach(function(d){
+        p.docs[d.id]=true;
+        docSet[d.id]=d.title||d.id;
+        if(!docs[d.id]) docs[d.id]={ id:d.id, title:d.title||d.id, total_ms:0, readers:{}, sessions:0, pages:{} };
+        var g=docs[d.id];
+        g.total_ms += d.total_ms||0;
+        g.readers[s.email]=true;
+        g.sessions += 1;
+        Object.keys(d.pages||{}).forEach(function(pg){
+          g.pages[pg]=(g.pages[pg]||0)+(+d.pages[pg]||0);
+        });
+      });
+    });
+    var peopleList=Object.keys(people).map(function(k){
+      var x=people[k];
+      x.docCount=Object.keys(x.docs).length;
+      return x;
+    }).sort(function(a,b){ return b.total_ms-a.total_ms; });
+    var docList=Object.keys(docs).map(function(k){
+      var x=docs[k];
+      x.readerCount=Object.keys(x.readers).length;
+      return x;
+    }).sort(function(a,b){ return b.total_ms-a.total_ms; });
+    return { people:peopleList, docs:docList, total:total, catalog:docSet };
+  }
+
+  function fillSelects(allRoll){
+    var person=document.getElementById("person");
+    var doc=document.getElementById("doc");
+    var emails={}; ALL.forEach(function(s){ emails[s.email]=1; });
+    var pOpts=['<option value="">All people</option>'];
+    Object.keys(emails).sort().forEach(function(e){
+      pOpts.push('<option value="'+esc(e)+'"'+(state.person===e?" selected":"")+'>'+esc(e)+'</option>');
+    });
+    person.innerHTML=pOpts.join("");
+    var dOpts=['<option value="">All documents</option>'];
+    Object.keys(allRoll.catalog).sort(function(a,b){ return allRoll.catalog[a].localeCompare(allRoll.catalog[b]); }).forEach(function(id){
+      dOpts.push('<option value="'+esc(id)+'"'+(state.doc===id?" selected":"")+'>'+esc(allRoll.catalog[id])+'</option>');
+    });
+    doc.innerHTML=dOpts.join("");
+  }
+
+  function kpisHtml(sessions, roll){
+    return (
+      '<div class="kpi"><div class="k">People</div><div class="v">'+roll.people.length+'</div><div class="s">in this filter</div></div>'+
+      '<div class="kpi"><div class="k">Sessions</div><div class="v">'+sessions.length+'</div><div class="s">visits</div></div>'+
+      '<div class="kpi"><div class="k">Focused time</div><div class="v">'+fmtMs(roll.total)+'</div><div class="s">tab in view</div></div>'+
+      '<div class="kpi"><div class="k">Documents</div><div class="v">'+roll.docs.length+'</div><div class="s">touched</div></div>'
+    );
+  }
+
+  function peopleHtml(roll){
+    if(!roll.people.length) return '<div class="empty">No people in this filter.</div>';
+    var peak=Math.max(1, roll.people[0].total_ms||1);
+    var rows=roll.people.map(function(p){
+      var w=Math.round(100*(p.total_ms||0)/peak);
+      return '<div class="row" data-person="'+esc(p.email)+'">'+
+        '<div class="who">'+esc(p.email)+'</div>'+
+        '<div class="muted">'+fmtWhen(p.last)+'</div>'+
+        '<div class="num">'+p.sessions+' sess</div>'+
+        '<div class="num">'+fmtMs(p.total_ms)+'</div>'+
+        '<div class="meter" title="'+p.docCount+' docs"><i style="width:'+w+'%"></i></div>'+
+      '</div>';
+    }).join("");
+    return '<div class="row head"><div>Investor</div><div>Last seen</div><div>Sessions</div><div>Time</div><div>Relative time</div></div>'+rows;
+  }
+
+  function docsHtml(roll){
+    if(!roll.docs.length) return '<div class="empty">No documents in this filter.</div>';
+    var peak=Math.max(1, roll.docs[0].total_ms||1);
+    return roll.docs.map(function(d){
+      var w=Math.round(100*(d.total_ms||0)/peak);
+      return '<div class="sess"><summary data-doc="'+esc(d.id)+'">'+
+        '<span class="who">'+esc(d.title)+'</span>'+
+        '<span class="n">'+d.readerCount+' reader'+(d.readerCount===1?"":"s")+'</span>'+
+        '<span class="dur">'+fmtMs(d.total_ms)+'</span>'+
+        '</summary><div class="body">'+
+        '<div class="meter" style="margin:12px 0 8px"><i style="width:'+w+'%"></i></div>'+
+        bars(d.pages)+
+        '<div class="hint">'+Object.keys(d.readers).sort().map(esc).join(" · ")+'</div>'+
+      '</div></div>';
+    }).join("");
+  }
+
+  function sessHtml(s){
+    var docs=(s.docs||[]).filter(function(d){ return !state.doc || d.id===state.doc; }).map(function(d){
+      return '<div class="doc"><div class="dn">'+esc(d.title)+'</div><div class="dt">'+fmtMs(d.total_ms)+' focused</div>'+bars(d.pages)+'</div>';
+    }).join("") || '<div class="hint">No documents in this session</div>';
+    return '<details class="sess"><summary><span class="who">'+esc(s.email)+'</span><span class="when">'+fmtWhen(s.last)+'</span><span class="dur">'+fmtMs(s.total_ms)+'</span><span class="n">'+(s.docs||[]).length+' doc'+((s.docs||[]).length===1?"":"s")+'</span></summary><div class="body">'+docs+'</div></details>';
+  }
+
+  function render(){
+    var sessions=filtered();
+    var roll=rollup(sessions);
+    document.getElementById("kpis").innerHTML=kpisHtml(sessions, roll);
+    var label={ people:"people", docs:"documents", sessions:"sessions" }[state.tab];
+    var n=state.tab==="people"?roll.people.length: state.tab==="docs"?roll.docs.length: sessions.length;
+    document.getElementById("count").textContent=n+" "+label;
+    var panel=document.getElementById("panel");
+    if(state.tab==="people") panel.innerHTML=peopleHtml(roll);
+    else if(state.tab==="docs") panel.innerHTML=docsHtml(roll);
+    else panel.innerHTML=sessions.length? sessions.map(sessHtml).join("") : '<div class="empty">No sessions in this filter.</div>';
+  }
+
+  function setRange(r){
+    state.range=r;
+    document.querySelectorAll("[data-range]").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-range")===r); });
+    render();
+  }
+  function setTab(t){
+    state.tab=t;
+    document.querySelectorAll(".tab").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-tab")===t); });
+    render();
+  }
+
+  document.querySelectorAll("[data-range]").forEach(function(b){
+    b.addEventListener("click", function(){ setRange(b.getAttribute("data-range")); });
+  });
+  document.querySelectorAll(".tab").forEach(function(b){
+    b.addEventListener("click", function(){ setTab(b.getAttribute("data-tab")); });
+  });
+  document.getElementById("q").addEventListener("input", function(e){ state.q=e.target.value; render(); });
+  document.getElementById("person").addEventListener("change", function(e){ state.person=e.target.value; render(); });
+  document.getElementById("doc").addEventListener("change", function(e){ state.doc=e.target.value; render(); });
+  document.getElementById("reset").addEventListener("click", function(){
+    state={ q:"", person:"", doc:"", range:"7d", tab:state.tab };
+    document.getElementById("q").value="";
+    document.getElementById("person").value="";
+    document.getElementById("doc").value="";
+    setRange("7d");
+  });
+  document.getElementById("panel").addEventListener("click", function(e){
+    var p=e.target.closest("[data-person]");
+    if(p){ state.person=p.getAttribute("data-person"); document.getElementById("person").value=state.person; setTab("sessions"); return; }
+    var d=e.target.closest("summary[data-doc]");
+    if(d && e.target.closest("summary")===d){
+      /* let details toggle; also set filter if they alt-click? skip */
+    }
+  });
+
+  var boot=document.getElementById("boot");
+  fetch("/api/activity",{ credentials:"same-origin" }).then(function(r){
+    if(r.status===401){
+      boot.className="msg err";
+      boot.innerHTML='Sign in through the data room first, then open this page. <a class="back" href="/data-room">Data room →</a>';
+      return null;
+    }
+    if(r.status===404){ boot.className="msg"; boot.textContent="Not found."; return null; }
+    if(!r.ok){ boot.className="msg err"; boot.textContent="Could not load activity."; return null; }
+    return r.json();
+  }).then(function(j){
+    if(!j) return;
+    var meta=document.getElementById("opMeta");
+    if(meta) meta.textContent=j.operator||"";
+    if(!j.store){
+      boot.className="msg err";
+      boot.textContent="Activity store is not connected. Add Upstash Redis on the Vercel project, then reopen a document.";
+      return;
+    }
+    ALL=j.sessions||[];
+    if(!ALL.length){
+      boot.className="msg";
+      boot.textContent="No sessions yet. Open a document in the data room, then refresh.";
+      return;
+    }
+    boot.hidden=true;
+    document.getElementById("app").hidden=false;
+    fillSelects(rollup(ALL));
+    render();
+  }).catch(function(){
+    boot.className="msg err";
+    boot.textContent="Network error.";
+  });
+})();
+</script>
+</body>
+</html>

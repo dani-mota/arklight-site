@@ -30,11 +30,8 @@
 <link rel="stylesheet" href="/wp-content/themes/okd/blockstudio/blocks/header/_dist/style-b321296498e15e856a4aa17adc8b5e64.css">
 <link rel="stylesheet" href="/wp-content/themes/okd/blockstudio/blocks/footer/_dist/style-2fc50d37df7811ff628a4fb9765cddc0.css">
 <link rel="stylesheet" href="/fonts/arklight-logo.css">
+<link rel="stylesheet" href="/styles/brand-chrome.css">
 <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-<style>
-@font-face{font-family:articulat-cf;font-style:normal;font-weight:400;font-display:swap;src:url('/wp-content/themes/okd/static/fonts/ArticulatCF-Normal.woff2') format('woff2');}
-body{padding-top:88px}
-</style>
 
 
 <style id="rz-brand">
@@ -53,8 +50,8 @@ body{padding-top:88px}
   --amber:#E8762A;
   --line:rgba(22,28,36,.14);
   --line-soft:rgba(22,28,36,.08);
-  --font-body:articulat-cf,"Inter Tight",system-ui,sans-serif;
-  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  --font-body:articulat-cf,-apple-system,BlinkMacSystemFont,"avenir next",avenir,"segoe ui","helvetica neue","Adwaita Sans",Cantarell,Ubuntu,roboto,noto,helvetica,arial,sans-serif;
+  --font-mono:"Roboto Mono",Menlo,Consolas,Monaco,"Adwaita Mono","Liberation Mono","Lucida Console",monospace;
   --maxw:1240px;
 }
 body{background:var(--canvas-0);color:var(--ink-1);font-family:var(--font-body)}
@@ -65,12 +62,12 @@ a{color:inherit}
 <style id="rz-css">
 /* Research index v2: OpenAI filter, Grok hero, OpenAI grid, cream brand */
 .rz-top{max-width:var(--maxw);margin:0 auto;padding:60px 24px 0}
-.rz-title{font-size:clamp(40px,6vw,68px);font-weight:600;letter-spacing:-.035em;line-height:1;color:var(--ink-0);margin:0 0 34px}
-.rz-filter{position:sticky;top:0;z-index:60;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 24px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.rz-title{font-size:clamp(40px,6vw,68px);font-weight:400;letter-spacing:-.035em;line-height:1;color:var(--ink-0);margin:0 0 34px}
+.rz-filter{position:sticky;top:var(--okd-header-inline-height);z-index:40;max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 24px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .rz-tabs{display:flex;align-items:center;gap:26px}
-.rz-tab{background:none;border:0;cursor:pointer;font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--ink-2);padding:0;transition:color .2s;white-space:nowrap}
+.rz-tab{background:none;border:0;cursor:pointer;font-family:var(--font-body);font-size:16px;font-weight:400;color:var(--ink-2);padding:0;transition:color .2s;white-space:nowrap}
 .rz-tab:hover{color:var(--ink-0)}
-.rz-tab.active{color:var(--ink-0);font-weight:600}
+.rz-tab.active{color:var(--ink-0);font-weight:400}
 .rz-controls{display:flex;align-items:center;gap:16px}
 .rz-ctl{background:none;border:0;cursor:pointer;font-family:var(--font-body);font-size:14px;color:var(--ink-1);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .rz-ctl:hover{color:var(--ink-0)}
@@ -93,17 +90,17 @@ a{color:inherit}
 [data-cover="6"]{background:linear-gradient(140deg,#4a7ba8,#2a1c12)}
 .rz-cover_tag{position:absolute;left:15px;top:13px;z-index:2;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.92)}
 .rz-cover_mono{position:absolute;right:15px;top:13px;z-index:2;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.55)}
-.rz-cover_big{position:absolute;left:18px;bottom:15px;right:18px;z-index:2;font-size:clamp(24px,3.2vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.02;color:#fff}
-.rz-cover_title{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff;font-weight:600;letter-spacing:-.015em;line-height:1.15;font-size:16px;text-shadow:0 1px 14px rgba(0,0,0,.38)}
+.rz-cover_big{position:absolute;left:18px;bottom:15px;right:18px;z-index:2;font-size:clamp(24px,3.2vw,40px);font-weight:400;letter-spacing:-.02em;line-height:1.02;color:#fff}
+.rz-cover_title{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff;font-weight:400;letter-spacing:-.015em;line-height:1.15;font-size:16px;text-shadow:0 1px 14px rgba(0,0,0,.38)}
 .rz-scard .rz-cover_title{font-size:23px;left:18px;bottom:16px}
 
 /* Grok hero */
 .rz-featured{margin:0 0 58px}
 .rz-hero{display:grid;grid-template-columns:.92fr 1.18fr;gap:52px;align-items:center;margin:0 0 32px}
 .rz-hero_date{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 18px}
-.rz-hero_title{font-size:clamp(30px,3.8vw,50px);font-weight:600;letter-spacing:-.03em;line-height:1.02;color:var(--ink-0);margin:0 0 18px}
+.rz-hero_title{font-size:clamp(30px,3.8vw,50px);font-weight:400;letter-spacing:-.03em;line-height:1.02;color:var(--ink-0);margin:0 0 18px}
 .rz-hero_lead{font-size:17px;line-height:1.55;color:var(--ink-1);margin:0 0 30px;max-width:44ch}
-.rz-pill{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid rgba(20,18,15,.28);border-radius:100px;font-size:15px;font-weight:500;color:var(--ink-0);transition:border-color .25s,background .25s,color .25s,transform .25s}
+.rz-pill{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid rgba(20,18,15,.28);border-radius:100px;font-size:15px;font-weight:400;color:var(--ink-0);transition:border-color .25s,background .25s,color .25s,transform .25s}
 .rz-pill span{transition:transform .25s}
 .rz-pill:hover{border-color:var(--ink-0);background:var(--ink-0);color:var(--canvas-1);transform:translateY(-2px)}
 .rz-pill:hover span{transform:translateX(3px)}
@@ -114,16 +111,16 @@ a{color:inherit}
 .rz-scard .rz-cover{aspect-ratio:16/9;margin:0 0 14px;transition:transform .5s cubic-bezier(.38,.005,.215,1)}
 .rz-scard:hover .rz-cover{transform:translateY(-4px)}
 .rz-scard_date{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);display:block;margin:0 0 6px}
-.rz-scard_title{font-size:19px;font-weight:600;letter-spacing:-.015em;color:var(--ink-0);margin:0;line-height:1.2}
+.rz-scard_title{font-size:19px;font-weight:400;letter-spacing:-.015em;color:var(--ink-0);margin:0;line-height:1.2}
 
 /* OpenAI grid */
 .rz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px 26px;padding:0 0 8px}
 .rz-card{display:block}
 .rz-card .rz-cover{aspect-ratio:16/11;margin:0 0 15px;transition:transform .5s cubic-bezier(.38,.005,.215,1)}
 .rz-card:hover .rz-cover{transform:translateY(-4px)}
-.rz-card_title{font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.22;color:var(--ink-0);margin:0 0 11px}
+.rz-card_title{font-size:18px;font-weight:400;letter-spacing:-.015em;line-height:1.22;color:var(--ink-0);margin:0 0 11px}
 .rz-card_meta{display:flex;align-items:center;gap:9px;font-size:13px}
-.rz-card_meta .tag{font-weight:600;color:var(--ink-0)}
+.rz-card_meta .tag{font-weight:400;color:var(--ink-0)}
 .rz-card_meta .date{color:var(--ink-2)}
 
 /* list view */
@@ -137,7 +134,7 @@ a{color:inherit}
 @media(max-width:620px){.rz-grid,.rz-secondary{grid-template-columns:1fr}.rz-filter{overflow-x:auto}.rz-controls .rz-ctl .lbl{display:none}.rz-grid.is-list .rz-card{grid-template-columns:120px 1fr;gap:16px}}
 </style>
 </head>
-<body>
+<body class="okd-frontend">
 <header class="header wp-block-okd-header">
 		<div class="header_inline">
         <div class="okd-block-container -no-padding inline_shell-wrap">

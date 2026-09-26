@@ -46,6 +46,8 @@ Vercel → Project → Settings → Environment Variables:
 | `TIER2_ALLOWLIST` | Optional. Who may open restricted (`tier: 2`) documents |
 | `RESEND_API_KEY` | Already set |
 | `ALERT_EMAIL` | Optional. Defaults to `dani@arklight.us` |
+| `OPERATOR_ALLOWLIST` | Who can open `/data-room/activity`. Comma-separated. Defaults to `ALERT_EMAIL` / `dani@arklight.us` |
+| `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` | Vercel → Storage → Create Redis (Upstash). Auto-injected. Without these, documents still open; the reading tape stays empty. |
 
 ## One-time: publish the documents
 
@@ -72,6 +74,18 @@ Source files are read from `data-room-assets/` (local only, never deployed).
 3. Point the manifest at it in `public/data-room.html`: `docSrc("yourId")`.
 4. Re-run the upload script.
 
+## Reading tape (page + dwell)
+
+The room renders PDFs with a self-hosted PDF.js viewer so we can see which
+pages were on screen and for how long (focused tab only). Loom and the
+pipeline board are unchanged.
+
+- Investors keep the same overlay. A small `3 / 18` counter is the only new chrome.
+- Events POST to `/api/activity`; the server stamps the email from the session cookie.
+- You read the tape at `https://www.arklight.us/data-room/activity` (not linked from the room). Signed-in non-operators get 404.
+
+One-time: Vercel → Storage → Create Redis (Upstash) → connect to `arklight-site`. Then add your address to `OPERATOR_ALLOWLIST` if it is not already `dani@arklight.us`.
+
 ## After you deploy — verify these three things
 
 1. `https://arklight.us/data-room-assets/arklight-investor-deck.pdf` → **should NOT return the PDF**
@@ -87,6 +101,10 @@ api/auth-request.js              POST  email in, magic link out
 api/auth-verify.js               GET   link -> session cookie -> redirect
 api/session.js                   GET   who am I  |  POST  sign out
 api/doc.js                       GET   gated, logged, streamed document
+api/activity.js                  POST  reading events  |  GET  operator tape
+api/_activity.js                 Redis helpers
+public/vendor/pdfjs/             self-hosted PDF.js (lazy-loaded on first PDF)
+public/data-room-activity.html   operator tape at /data-room/activity
 scripts/upload-investor-docs.js  publish PDFs to Blob
 ```
 

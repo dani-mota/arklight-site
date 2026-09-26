@@ -233,15 +233,15 @@
   #toast .ok{color:var(--verify)}
 
   /* ---- in-room document viewer ---- */
-  .viewer{position:fixed; inset:0; z-index:90; display:none; align-items:center; justify-content:center; padding:24px}
+  .viewer{position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:24px}
   .viewer.on{display:flex}
   .vbackdrop{position:absolute; inset:0; background:#080705}   /* solid: hides the monitor + no blur-repaint jank while scrolling */
   .vframe{position:relative; z-index:1; width:min(1120px,95vw); height:min(90vh,940px); background:var(--canvas-1); border:1px solid var(--bd-2); border-radius:3px; display:flex; flex-direction:column; box-shadow:0 30px 90px rgba(0,0,0,.6); animation:fadein .28s ease both}
   .vframe::before,.vframe::after{content:""; position:absolute; width:14px; height:14px; pointer-events:none; opacity:.6}
   .vframe::before{left:-1px; top:-1px; border-left:1.5px solid var(--blue-300); border-top:1.5px solid var(--blue-300)}
   .vframe::after{right:-1px; bottom:-1px; border-right:1.5px solid var(--blue-300); border-bottom:1.5px solid var(--blue-300)}
-  .vhead{display:flex; align-items:center; gap:12px; padding:12px 14px; border-bottom:1px solid var(--bd-1)}
-  .vt{font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-0); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .vhead{display:flex; align-items:center; gap:8px; padding:12px 14px; border-bottom:1px solid var(--bd-1); min-width:0}
+  .vt{font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-0); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   .vbadge{font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; color:var(--amber); border:1px solid rgba(245,161,74,.32); background:rgba(245,161,74,.07); padding:4px 9px; border-radius:2px; white-space:nowrap}
   .vclose{font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; color:var(--text-1); background:var(--canvas-2); border:1px solid var(--bd-2); padding:7px 11px; border-radius:2px}
   .vclose:hover{border-color:var(--blue-400); color:var(--blue-200)}
@@ -250,7 +250,21 @@
   .vopen:hover{border-color:var(--amber); color:var(--amber)}
   .vopen:focus-visible{outline:2px solid var(--amber); outline-offset:2px}
   .vopen[hidden]{display:none}
-  .viewbody{flex:1; width:100%; border:0; background:var(--canvas-0); border-radius:0 0 3px 3px}
+  .vbadge,.vclose,.vopen,.vpage{flex-shrink:0}
+  .vpage{font-family:var(--font-mono); font-size:9px; letter-spacing:.16em; color:var(--text-2); border:1px solid var(--bd-1); padding:4px 9px; border-radius:2px; white-space:nowrap; font-variant-numeric:tabular-nums}
+  .vpage[hidden]{display:none}
+  .viewbody{flex:1; width:100%; border:0; background:var(--canvas-0); border-radius:0 0 3px 3px; min-height:0}
+  .vpdf{overflow:auto; background:var(--canvas-0); position:relative; -webkit-overflow-scrolling:touch; outline:none}
+  .vpdf-pages{display:flex; flex-direction:column; align-items:center; gap:12px; padding:16px 12px 32px}
+  .vpdf-page{position:relative; background:#fff; box-shadow:0 4px 24px rgba(0,0,0,.45); line-height:0}
+  .vpdf-page canvas{display:block; width:100%; height:auto}
+  .vpdf-status{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); pointer-events:none}
+  .vpdf-status[hidden]{display:none}
+  iframe.viewbody[hidden], .vpdf[hidden]{display:none}
+  .textLayer{position:absolute; inset:0; overflow:clip; line-height:1; transform-origin:0 0; z-index:1; caret-color:transparent}
+  .textLayer :is(span,br){color:transparent; position:absolute; white-space:pre; cursor:text; transform-origin:0% 0%}
+  .textLayer ::selection{background:rgba(110,142,168,.35)}
+  .textLayer ::-moz-selection{background:rgba(110,142,168,.35)}
 
   /* ---- live pipeline board (Kanban) ---- */
   .board{position:fixed; inset:0; z-index:90; display:none; align-items:center; justify-content:center; padding:24px}
@@ -275,15 +289,21 @@
   .bcards{display:flex; flex-direction:column; gap:8px; padding:10px; overflow-y:auto}
   .bcard{background:var(--canvas-2); border:1px solid var(--bd-1); border-radius:2px; padding:10px 11px; cursor:default; transition:border-color .12s, transform .12s}
   .bcard:hover{border-color:var(--blue-400); transform:translateY(-1px)}
+  .bcard[data-open]{cursor:pointer}
+  .bcard[data-open]:hover{border-color:var(--amber)}
   .bcard .co{color:var(--text-0); font-size:13px; font-weight:500; letter-spacing:.01em}
   .bcard .ct{color:var(--text-2); font-family:var(--font-mono); font-size:10.5px; margin-top:4px; letter-spacing:.02em}
+  .bcard .case{font-family:var(--font-mono); font-size:8.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); margin-top:6px}
   /* bridge: one box straddling the Advanced|MOU seam (left half Advanced, right half Signed) */
   .bridge-pair{position:relative; display:flex; gap:12px; flex:0 0 auto}
   .bridge-pair .bcol .ch{min-height:54px}
   .bridge-layer{position:absolute; top:54px; left:50%; transform:translateX(-50%); width:200px; z-index:6; display:flex; flex-direction:column; gap:8px; padding-top:10px}
   /* straddling box: same look as any other card (shadow only, to sit cleanly over the seam) */
-  .bridge-card{height:40px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; padding:0 12px; background:var(--canvas-2); border:1px solid var(--bd-1); border-radius:2px; box-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .bridge-card{height:40px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; padding:0 12px; background:var(--canvas-2); border:1px solid var(--bd-1); border-radius:2px; box-shadow:0 2px 12px rgba(0,0,0,.5); cursor:default; gap:8px}
+  .bridge-card[data-open]{cursor:pointer}
+  .bridge-card[data-open]:hover{border-color:var(--amber)}
   .bridge-card .co{color:var(--text-0); font-size:13px; font-weight:500; letter-spacing:.01em}
+  .bridge-card .case{font-family:var(--font-mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--amber)}
   .bsum{padding:16px 12px; color:var(--text-3); font-family:var(--font-mono); font-size:10.5px; line-height:1.5; text-align:center}
   .bsum b{display:block; color:var(--text-1); font-size:22px; margin-bottom:4px; font-variant-numeric:tabular-nums}
 
@@ -394,9 +414,14 @@
   <div class="vframe">
     <div class="vhead">
       <span class="vt" id="vTitle">Document</span>
+      <span class="vpage" id="vPage" hidden>1 / 1</span>
       <span class="vbadge" id="vBadge">View only</span>
       <a class="vopen" id="vOpen" target="_blank" rel="noopener noreferrer" href="#">Open in new tab ↗</a>
       <button class="vclose" data-vclose type="button">Close ✕</button>
+    </div>
+    <div id="vPdf" class="viewbody vpdf" hidden tabindex="-1">
+      <div id="vPdfStatus" class="vpdf-status">Loading</div>
+      <div id="vPdfPages" class="vpdf-pages"></div>
     </div>
     <iframe id="vIframe" class="viewbody" title="Document viewer" allow="fullscreen; picture-in-picture" referrerpolicy="no-referrer"></iframe>
   </div>
@@ -578,12 +603,237 @@
     return /^\/api\/doc\?id=[a-z0-9_-]+$/i.test(src) ||
            /^https:\/\/www\.loom\.com\/(embed|share)\/[a-z0-9]+/i.test(src);
   }
+  function docIdFromSrc(src){
+    var m=/\/api\/doc\?id=([a-z0-9_-]+)/i.exec(src||"");
+    return m ? m[1] : null;
+  }
   // Phones/tablets frequently render PDFs blank inside an iframe. On those
   // devices we skip the in-room viewer for documents and hand the file to the
   // native full-screen PDF viewer in a new tab. Videos still play inline.
+  // PDF.js (canvas) is used on desktop; mobile keeps this escape hatch until
+  // the canvas path is proven on iOS/Android.
   function isMobile(){
     return /Android|iPhone|iPad|iPod|Mobile|Silk/i.test(navigator.userAgent) ||
            (window.matchMedia && window.matchMedia("(pointer: coarse)").matches && window.innerWidth <= 900);
+  }
+
+  function sessionId(){
+    try{
+      var s=sessionStorage.getItem("ark_act");
+      if(s) return s;
+      s=(crypto.randomUUID && crypto.randomUUID()) || (Date.now()+"-"+Math.random().toString(16).slice(2));
+      sessionStorage.setItem("ark_act", s);
+      return s;
+    }catch(e){
+      return Date.now()+"-"+Math.random().toString(16).slice(2);
+    }
+  }
+  var act={ doc:null, page:0, since:0, timer:0 };
+  function actSend(event, page, dwell){
+    if(!act.doc) return;
+    var body=JSON.stringify({
+      session_id: sessionId(),
+      doc: act.doc,
+      event: event,
+      page: page||act.page||1,
+      dwell_ms: dwell||0
+    });
+    try{
+      if((event==="close"||event==="hidden") && navigator.sendBeacon){
+        navigator.sendBeacon("/api/activity", new Blob([body],{type:"application/json"}));
+        return;
+      }
+      fetch("/api/activity",{
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:body, keepalive:true
+      }).catch(function(){});
+    }catch(e){}
+  }
+  function actFlush(event, force){
+    if(!act.doc) return;
+    var now=Date.now();
+    var dwell=now-act.since;
+    if(!force && dwell<1000){ act.since=now; return; }
+    if(dwell>20000) dwell=20000;
+    if(event!=="close" && event!=="hidden" && document.visibilityState!=="visible") return;
+    actSend(event, act.page, dwell);
+    act.since=now;
+  }
+  function actStart(doc){
+    actEnd();
+    if(!doc) return;
+    act.doc=doc; act.page=1; act.since=Date.now();
+    actSend("open", 1, 0);
+    act.timer=setInterval(function(){
+      if(document.visibilityState!=="visible") return;
+      actFlush("heartbeat", false);
+    },10000);
+  }
+  function actPage(n){
+    n=Math.max(1, n|0);
+    if(!act.doc || n===act.page) return;
+    actFlush("page", false);
+    act.page=n;
+    act.since=Date.now();
+  }
+  function actEnd(){
+    if(act.timer){ clearInterval(act.timer); act.timer=0; }
+    if(!act.doc) return;
+    actFlush("close", true);
+    act.doc=null; act.page=0;
+  }
+  document.addEventListener("visibilitychange", function(){
+    if(!act.doc) return;
+    if(document.visibilityState==="hidden") actFlush("hidden", true);
+    else act.since=Date.now();
+  });
+  window.addEventListener("pagehide", function(){ actEnd(); });
+
+  var pdfLib=null, pdfObs=null, pdfRenderGen=0, pdfAbort=null, pdfPainted=false;
+  function loadPdfJs(){
+    if(pdfLib) return Promise.resolve(pdfLib);
+    return import("/vendor/pdfjs/pdf.min.mjs").then(function(m){
+      m.GlobalWorkerOptions.workerSrc="/vendor/pdfjs/pdf.worker.min.mjs";
+      pdfLib=m;
+      return m;
+    });
+  }
+  function setPdfMode(on){
+    var pdfEl=document.getElementById("vPdf");
+    var frame=document.getElementById("vIframe");
+    var pageEl=document.getElementById("vPage");
+    if(pdfEl) pdfEl.hidden=!on;
+    if(frame) frame.hidden=!!on;
+    if(pageEl && !on) pageEl.hidden=true;
+  }
+  function setPdfStatus(text){
+    var s=document.getElementById("vPdfStatus");
+    if(!s) return;
+    if(!text){ s.hidden=true; s.textContent=""; return; }
+    s.hidden=false; s.textContent=text;
+  }
+  function destroyPdf(){
+    pdfRenderGen++;
+    pdfPainted=false;
+    if(pdfAbort){ try{ pdfAbort.abort(); }catch(e){} pdfAbort=null; }
+    if(pdfObs){ pdfObs.disconnect(); pdfObs=null; }
+    var pages=document.getElementById("vPdfPages");
+    if(pages) pages.innerHTML="";
+    setPdfStatus("");
+  }
+  function showPdfPage(n, total){
+    var el=document.getElementById("vPage");
+    if(!el) return;
+    el.hidden=false;
+    el.textContent=n+" / "+total;
+    actPage(n);
+  }
+  function paintPage(lib, page, n, width){
+    var base=page.getViewport({ scale:1 });
+    var viewport=page.getViewport({ scale: width/base.width });
+    var dpr=Math.min(window.devicePixelRatio||1, 1.5);
+    var wrap=document.createElement("div");
+    wrap.className="vpdf-page";
+    wrap.setAttribute("data-page", String(n));
+    wrap.style.width=Math.floor(viewport.width)+"px";
+    var canvas=document.createElement("canvas");
+    canvas.width=Math.floor(viewport.width*dpr);
+    canvas.height=Math.floor(viewport.height*dpr);
+    wrap.appendChild(canvas);
+    var ctx=canvas.getContext("2d");
+    var render=page.render({
+      canvasContext: ctx,
+      viewport: viewport,
+      transform: dpr!==1 ? [dpr,0,0,dpr,0,0] : undefined
+    }).promise;
+    if(lib.TextLayer){
+      var layer=document.createElement("div");
+      layer.className="textLayer";
+      wrap.appendChild(layer);
+      try{
+        var tl=new lib.TextLayer({
+          textContentSource: page.streamTextContent(),
+          container: layer,
+          viewport: viewport
+        });
+        return render.then(function(){ return tl.render(); }).catch(function(){}).then(function(){ return wrap; });
+      }catch(e){}
+    }
+    return render.then(function(){ return wrap; });
+  }
+  function watchPages(host, wraps, total, docId){
+    showPdfPage(1, total);
+    if(pdfObs) pdfObs.disconnect();
+    pdfObs=new IntersectionObserver(function(entries){
+      var best=null, ratio=0;
+      entries.forEach(function(en){
+        if(en.intersectionRatio>ratio){ ratio=en.intersectionRatio; best=en.target; }
+      });
+      if(!best || ratio<0.35) return;
+      var n=parseInt(best.getAttribute("data-page"),10);
+      if(n) showPdfPage(n, total);
+    },{ root: host, threshold:[0.35,0.5,0.75] });
+    wraps.forEach(function(w){ pdfObs.observe(w); });
+    var vis=document.getElementById("viewer");
+    if(vis && vis.classList.contains("on") && docId) actStart(docId);
+    var pane=document.getElementById("vPdf");
+    if(pane && !pane.hidden) try{ pane.focus({ preventScroll:true }); }catch(e){}
+  }
+  function renderPdfInto(buf, docId){
+    var gen=++pdfRenderGen;
+    var host=document.getElementById("vPdf");
+    var pagesEl=document.getElementById("vPdfPages");
+    if(!host || !pagesEl) return Promise.reject(new Error("no host"));
+    setPdfMode(true);
+    setPdfStatus("Loading");
+    pagesEl.innerHTML="";
+    pdfPainted=false;
+    return loadPdfJs().then(function(lib){
+      if(gen!==pdfRenderGen) return;
+      return lib.getDocument({ data: buf }).promise.then(function(pdf){
+        if(gen!==pdfRenderGen) return;
+        var total=pdf.numPages;
+        var width=Math.max(320, host.clientWidth-24);
+        var wraps=[];
+        var chain=Promise.resolve();
+        for(var i=1;i<=total;i++){
+          (function(n){
+            chain=chain.then(function(){
+              if(gen!==pdfRenderGen) return;
+              return pdf.getPage(n).then(function(page){
+                if(gen!==pdfRenderGen) return;
+                return paintPage(lib, page, n, width);
+              }).then(function(wrap){
+                if(!wrap || gen!==pdfRenderGen) return;
+                pagesEl.appendChild(wrap);
+                wraps.push(wrap);
+                if(n===1){
+                  pdfPainted=true;
+                  setPdfStatus("");
+                  watchPages(host, wraps, total, docId);
+                } else if(pdfObs) pdfObs.observe(wrap);
+              }).catch(function(){
+                if(n===1) throw new Error("first page");
+              });
+            });
+          })(i);
+        }
+        return chain;
+      });
+    });
+  }
+  function openPdfFallback(src){
+    var f=document.getElementById("vIframe");
+    var o=document.getElementById("vOpen");
+    var b=document.getElementById("vBadge");
+    destroyPdf();
+    setPdfMode(false);
+    if(b) b.textContent="View only";
+    if(o){ o.href=src; o.hidden=false; }
+    if(f) f.src=src+"#toolbar=0&navpanes=0&statusbar=0&view=FitH";
+    var id=docIdFromSrc(src);
+    if(id) actStart(id);
   }
   function openViewer(src,title,kind){
     if(!safeViewerSrc(src)) return;
@@ -591,28 +841,53 @@
         t=document.getElementById("vTitle"), b=document.getElementById("vBadge"),
         o=document.getElementById("vOpen");
     t.textContent=title||"Document";
+    destroyPdf();
+    actEnd();
     if(kind==="video"){
+      setPdfMode(false);
       if(b) b.textContent="Video";
-      if(o) o.hidden=true;   // videos play inline; no new-tab fallback needed
-      f.src=src;   // Loom serves its own player; no PDF chrome params
+      if(o) o.hidden=true;
+      if(f) f.src=src;
     } else {
       if(b) b.textContent="View only";
-      // Mobile browsers often render large PDFs blank inside an iframe. The
-      // new-tab link hands the raw doc to the device's native PDF viewer,
-      // which renders reliably. Desktop still reads inline via the iframe.
       if(o){ o.href=src; o.hidden=false; }
-      // #toolbar=0&navpanes=0 hides the browser PDF chrome (download/print) for a view-only read
-      f.src=src+"#toolbar=0&navpanes=0&statusbar=0&view=FitH";
+      if(f) f.src="about:blank";
+      setPdfMode(true);
+      setPdfStatus("Loading");
+      var docId=docIdFromSrc(src);
+      pdfAbort=typeof AbortController==="function" ? new AbortController() : null;
+      fetch(src,{ credentials:"same-origin", signal: pdfAbort ? pdfAbort.signal : undefined }).then(function(r){
+        if(!r.ok) throw new Error("doc "+r.status);
+        return r.arrayBuffer();
+      }).then(function(buf){
+        return renderPdfInto(new Uint8Array(buf), docId);
+      }).catch(function(err){
+        if(err && err.name==="AbortError") return;
+        if(pdfPainted) return;
+        openPdfFallback(src);
+      });
     }
     v.classList.add("on"); v.setAttribute("aria-hidden","false");
     document.body.style.overflow="hidden";
-    if(typeof pauseMonitor==="function") pauseMonitor();   // full focus + smooth scroll while reading
+    if(typeof pauseMonitor==="function") pauseMonitor();
   }
   function closeViewer(){
     var v=document.getElementById("viewer"), f=document.getElementById("vIframe");
+    actEnd();
+    destroyPdf();
     v.classList.remove("on"); v.setAttribute("aria-hidden","true");
-    f.src="about:blank"; document.body.style.overflow="";
+    if(f) f.src="about:blank";
+    setPdfMode(false);
+    document.body.style.overflow="";
     if(typeof resumeMonitor==="function") resumeMonitor();
+  }
+  function viewerOpen(){
+    var v=document.getElementById("viewer");
+    return !!(v && v.classList.contains("on"));
+  }
+  function boardOpen(){
+    var b=document.getElementById("board");
+    return !!(b && b.classList.contains("on"));
   }
 
   // ---- live pipeline board (Kanban) ----
@@ -620,6 +895,13 @@
   // by /api/manifest to signed-in sessions only and is declared empty above.
   function renderBoard(){
     var wrap=document.getElementById("bcols"); if(!wrap) return;
+    function cardAttrs(c){
+      if(!c.src) return '';
+      return ' data-open="1" data-src="'+c.src+'" data-title="'+(c.title||c.co)+'"'+(c.kind?' data-kind="'+c.kind+'"':'');
+    }
+    function cardHtml(c){
+      return '<div class="bcard"'+cardAttrs(c)+'><div class="co">'+c.co+'</div>'+(c.contact?'<div class="ct">'+c.contact+'</div>':'')+(c.src?'<div class="case">Open case →</div>':'')+'</div>';
+    }
     // A bleed:true deal renders ONCE as a single box straddling the seam between
     // the last two columns - its left half sits in Advanced, its right half in
     // MOU Signed. Collect the unique bleed deals; they are removed from the
@@ -638,9 +920,7 @@
       var pstyle=(col.accent==="amber"||col.accent==="verify")?' style="padding-top:'+reserve+'px"':'';
       var body= col.summary
         ? '<div class="bsum"><b>'+col.count+'</b>'+col.summary+'</div>'
-        : '<div class="bcards"'+pstyle+'>'+cards.map(function(c){
-            return '<div class="bcard"><div class="co">'+c.co+'</div>'+(c.contact?'<div class="ct">'+c.contact+'</div>':'')+'</div>';
-          }).join('')+'</div>';
+        : '<div class="bcards"'+pstyle+'>'+cards.map(cardHtml).join('')+'</div>';
       return '<div class="bcol '+col.accent+'">'+head+body+'</div>';
     }
     var html='', i=0;
@@ -648,7 +928,7 @@
       var col=PIPELINE[i];
       if(col.accent==="amber" && PIPELINE[i+1] && PIPELINE[i+1].accent==="verify"){
         var layer='<div class="bridge-layer">'+bleed.map(function(c){
-          return '<div class="bridge-card"><span class="co">'+c.co+'</span></div>';
+          return '<div class="bridge-card"'+cardAttrs(c)+'><span class="co">'+c.co+'</span>'+(c.src?'<span class="case">Case</span>':'')+'</div>';
         }).join('')+'</div>';
         html+='<div class="bridge-pair">'+colHtml(col)+colHtml(PIPELINE[i+1])+layer+'</div>';
         i+=2;
@@ -677,7 +957,8 @@
     if(bd){ var bn=bd.closest(".doc").querySelector(".dn").textContent; logAdd("OPENED · "+bn.slice(0,24),"ok"); openBoard(); return; }
     var o=e.target.closest("[data-open]"), r=e.target.closest("[data-req]");
     if(o){
-      var nm=o.closest(".doc").querySelector(".dn").textContent;
+      var docEl=o.closest(".doc");
+      var nm=o.getAttribute("data-title") || (docEl && docEl.querySelector(".dn") ? docEl.querySelector(".dn").textContent : "Document");
       logAdd("OPENED · "+nm.slice(0,24),"ok");
       var src=o.getAttribute("data-src"), okind=o.getAttribute("data-kind");
       if(src){
@@ -695,6 +976,20 @@
   });
   document.addEventListener("keydown",function(e){
     if(e.key==="Escape"){ closeViewer(); closeBoard(); return; }
+    if(viewerOpen()){
+      var pane=document.getElementById("vPdf");
+      if(pane && !pane.hidden && !e.target.closest("button,a,input,textarea")){
+        var h=pane.clientHeight||400;
+        if(e.key==="PageDown" || (e.key===" " && !e.shiftKey)){ e.preventDefault(); pane.scrollBy(0, h*0.9); return; }
+        if(e.key==="PageUp" || (e.key===" " && e.shiftKey)){ e.preventDefault(); pane.scrollBy(0, -h*0.9); return; }
+        if(e.key==="ArrowDown"){ e.preventDefault(); pane.scrollBy(0, 48); return; }
+        if(e.key==="ArrowUp"){ e.preventDefault(); pane.scrollBy(0, -48); return; }
+        if(e.key==="Home"){ e.preventDefault(); pane.scrollTop=0; return; }
+        if(e.key==="End"){ e.preventDefault(); pane.scrollTop=pane.scrollHeight; return; }
+      }
+      return;
+    }
+    if(boardOpen()) return;
     if(e.key==="Enter"||e.key===" "){
       var row=e.target.closest ? e.target.closest('.doc[data-open], .doc[data-req], .doc[data-board]') : null;
       if(row){ e.preventDefault(); row.click(); }

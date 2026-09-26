@@ -1,10 +1,11 @@
 /* ============================================================
    Content & Research — Project Arklight (new brand)
    Shared stylesheet for the C&R index, essays, and research briefings.
-   Light "cream" brand: Inter Tight + JetBrains Mono, rust + steel accents.
+   Article layouts. Body type is Articulat CF, matching the homepage.
+   Mono labels stay JetBrains. The wordmark uses the local Inter Tight file.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root{
   --canvas-0:#FFFFFF;   /* page */
@@ -21,7 +22,7 @@
   --amber:#F5A14A;      /* accent on dark */
   --line:rgba(20,18,15,.12);
   --line-soft:rgba(20,18,15,.08);
-  --font-body:'Inter Tight',system-ui,sans-serif;
+  --font-body:articulat-cf,-apple-system,BlinkMacSystemFont,"avenir next",avenir,"segoe ui","helvetica neue","Adwaita Sans",Cantarell,Ubuntu,roboto,noto,helvetica,arial,sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
   --maxw:1240px;
 }

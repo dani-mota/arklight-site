@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@upstash/redis": "^1.38.4",
     "@vercel/analytics": "^1.6.1",
     "@vercel/blob": "^2.6.1",
+    "pdfjs-dist": "^4.10.38",
     "resend": "^6.9.3"
   }
 }

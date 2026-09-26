@@ -1,0 +1,58 @@
+/* Brand chrome for pages that reuse the homepage header but do not load
+   the WordPress global-styles block. Tokens match public/index.html. */
+
+@font-face{
+  font-family:articulat-cf;
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+  src:url("/wp-content/themes/okd/static/fonts/ArticulatCF-Normal.woff2") format("woff2");
+}
+
+:root{
+  --wp--preset--font-family--sans:articulat-cf,-apple-system,BlinkMacSystemFont,"avenir next",avenir,"segoe ui","helvetica neue","Adwaita Sans",Cantarell,Ubuntu,roboto,noto,helvetica,arial,sans-serif;
+  --wp--preset--font-family--mono:"Roboto Mono",Menlo,Consolas,Monaco,"Adwaita Mono","Liberation Mono","Lucida Console",monospace;
+  --wp--preset--color--hypergreen:#abd233;
+  --wp--preset--color--neutral-110:#0d0e10;
+  --wp--preset--color--neutral-100:#141618;
+  --wp--preset--color--neutral-90:#202427;
+  --wp--preset--color--neutral-80:#2d3438;
+  --wp--preset--color--neutral-70:#3d454b;
+  --wp--preset--color--neutral-60:#4c555c;
+  --wp--preset--color--neutral-50:#5a636a;
+  --wp--preset--color--neutral-40:#939ca2;
+  --wp--preset--color--neutral-30:#c4ccd1;
+  --wp--preset--color--neutral-20:#e4e9ed;
+  --wp--preset--color--neutral-10:#eff0f1;
+  --wp--preset--color--neutral-05:#f5f6f7;
+  --wp--preset--color--neutral-0:#ffffff;
+  --wp--preset--spacing--8:8px;
+  --wp--preset--spacing--16:16px;
+  --wp--preset--spacing--24:24px;
+  --wp--preset--spacing--32:32px;
+  --wp--preset--spacing--48:48px;
+  --wp--custom--body--sm--font-weight:400;
+  --wp--custom--body--sm--letter-spacing:0.02em;
+}
+
+/* The header stylesheet collapses the bar unless the page opts into the theme. */
+body.okd-frontend{
+  margin:0;
+  padding-top:var(--okd-header-inline-height);
+  font-family:var(--wp--preset--font-family--sans);
+  font-weight:400;
+  letter-spacing:0.01em;
+  -webkit-font-smoothing:antialiased;
+}
+body.okd-frontend *,
+body.okd-frontend *::before,
+body.okd-frontend *::after{box-sizing:border-box}
+
+/* Homepage bar is translucent over a dark hero. On these light pages the same
+   chrome is the solid brand neutral, so the wordmark and nav read the same. */
+body.okd-frontend header.header{
+  background:#141618;
+}
+body.okd-frontend header.header .header_mobile{
+  background:#141618;
+}
