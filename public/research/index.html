@@ -91,10 +91,7 @@ a{color:inherit}
 .rz-hero_date{font-family:var(--font-body);font-size:14px;letter-spacing:.01em;text-transform:none;color:var(--ink-2);margin:0 0 18px}
 .rz-hero_title{font-size:clamp(30px,3.8vw,50px);font-weight:400;letter-spacing:-.03em;line-height:1.02;color:var(--ink-0);margin:0 0 18px}
 .rz-hero_lead{font-size:17px;line-height:1.55;color:var(--ink-1);margin:0 0 30px;max-width:44ch}
-.rz-pill{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid rgba(20,18,15,.28);border-radius:100px;font-size:15px;font-weight:400;color:var(--ink-0);transition:border-color .25s,background .25s,color .25s,transform .25s}
-.rz-pill span{transition:transform .25s}
-.rz-pill:hover{border-color:var(--ink-0);background:var(--ink-0);color:var(--canvas-1);transform:translateY(-2px)}
-.rz-pill:hover span{transform:translateX(3px)}
+.rz-hero .u-btn--1{box-shadow:inset 0 0 0 1px rgba(22,28,36,.16)}
 .rz-hero_cover{aspect-ratio:16/10}
 .rz-secondary{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 .rz-scard{display:block}
@@ -195,7 +192,7 @@ a{color:inherit}
         <div class="rz-hero_date">Featured briefing · May 2026</div>
         <h2 class="rz-hero_title">Understanding the Electrician Shortage.</h2>
         <p class="rz-hero_lead">Roughly 10,000 credentialed electricians a year against demand approaching 100,000 a year, and structurally widening. The deficit is binding what America says it wants to build.</p>
-        <a href="/research/electrician-shortage" class="rz-pill">Read the briefing <span>&rsaquo;</span></a>
+        <a href="/research/electrician-shortage" class="u-btn--1"><span class="btn_label" data-button-animate-chars>Read the briefing</span></a>
       </div>
       <a href="/research/electrician-shortage" class="rz-cover rz-hero_cover" aria-label="Understanding the Electrician Shortage." data-reveal data-reveal-delay="2"><img src="/assets/covers/electrician.jpg" alt="" loading="lazy"></a>
     </div>
