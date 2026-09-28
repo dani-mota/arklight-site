@@ -13,7 +13,6 @@ const SRC = {
   'Arklight - Pitch Deck.pdf': 'deck',
   'Investment Memo': 'memo',
   'Understanding Demand & Market': 'market',
-  'Use of Funds': 'funds',
   'Valinor MOU - Signed': 'valinor'
 };
 
@@ -29,9 +28,7 @@ const TIERS = [
     { n: 'Understanding Demand & Market', t: 'SYNC 08-19' }]},
   { idx: '03', name: 'Traction', sub: 'MOU · live pipeline', status: 'cleared', docs: [
     { n: 'Valinor MOU - Signed', t: 'SIGNED 06-15' },
-    { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]},
-  { idx: '04', name: 'Financials', sub: 'Use of funds', status: 'cleared', docs: [
-    { n: 'Use of Funds', t: 'SYNC' }]}
+    { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]}
 ];
 
 // Tier-2 / Restricted block is hidden: there is nothing behind it yet, and
