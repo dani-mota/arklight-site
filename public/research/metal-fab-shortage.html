@@ -81,7 +81,7 @@
 <section class="vb-head">
   <a href="/research" class="vb-back">← All Research</a>
   <div class="vb-head_meta">
-    <span class="tag">Research · ARK-R-002</span>
+    <span class="tag">Research</span>
     <span class="date">Updated May 2026</span>
     <span class="id">Model: 3-method triangulation</span>
   </div>
@@ -241,7 +241,7 @@
 (function () {
   if (!window.Chart || !window.CR) return;
   var C = CR.colors;
-  var ink = C.ink, dim = C.tick, faint = 'rgba(20,18,15,.5)', grid = C.grid;
+  var ink = C.ink, dim = C.tick, faint = '#5a636a', grid = C.grid;
   var amber = C.rust, blue = C.steel, ember = C.ember;
   var mono = C.mono, sans = C.body;
 
@@ -259,7 +259,7 @@
     ] },
     options: { maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (ctx) { return ctx.raw.toLocaleString() + ' workers/yr'; } } } },
-      scales: { y: { beginAtZero: true, grid: { color: grid }, ticks: { callback: fmtK }, title: { display: true, text: 'WORKERS / YEAR', color: faint, font: { size: 9 } } }, x: { grid: { display: false }, ticks: { color: ink, font: { family: sans, size: 13, weight: '600' } } } } }
+      scales: { y: { beginAtZero: true, grid: { color: grid }, ticks: { callback: fmtK }, title: { display: true, text: 'WORKERS / YEAR', color: faint, font: { size: 9 } } }, x: { grid: { display: false }, ticks: { color: ink, font: { family: sans, size: 13, weight: '400' } } } } }
   });
 
   // 02 Gap widening
@@ -268,7 +268,7 @@
     data: { labels: ['2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'], datasets: [{
       data: [31000, 36000, 41000, 45000, 48000, 53000, 58000, 63000, 69000],
       borderColor: ember, borderWidth: 2.5,
-      backgroundColor: function (ctx) { var c = ctx.chart.ctx; var g = c.createLinearGradient(0, 0, 0, 300); g.addColorStop(0, 'rgba(192,67,43,0.22)'); g.addColorStop(1, 'rgba(192,67,43,0.0)'); return g; },
+      backgroundColor: function (ctx) { var c = ctx.chart.ctx; var g = c.createLinearGradient(0, 0, 0, 300); g.addColorStop(0, 'rgba(232,118,42,0.22)'); g.addColorStop(1, 'rgba(232,118,42,0.0)'); return g; },
       fill: true, tension: 0.35,
       pointRadius: function (ctx) { return ctx.dataIndex === 4 ? 5 : 0; }, pointBackgroundColor: amber, pointBorderColor: amber
     }] },
@@ -295,7 +295,7 @@
     data: { labels: ['2024', '2026', '2028', '2030', '2032', '2034'], datasets: [{
       data: [600.2, 601.5, 602.4, 602.9, 603.0, 602.7],
       borderColor: blue, borderWidth: 2.5,
-      backgroundColor: function (ctx) { var c = ctx.chart.ctx; var g = c.createLinearGradient(0, 0, 0, 300); g.addColorStop(0, 'rgba(46,90,134,0.22)'); g.addColorStop(1, 'rgba(46,90,134,0.0)'); return g; },
+      backgroundColor: function (ctx) { var c = ctx.chart.ctx; var g = c.createLinearGradient(0, 0, 0, 300); g.addColorStop(0, 'rgba(22,28,36,0.22)'); g.addColorStop(1, 'rgba(22,28,36,0.0)'); return g; },
       fill: true, tension: 0.3,
       pointRadius: function (ctx) { return (ctx.dataIndex === 0 || ctx.dataIndex === 5) ? 5 : 0; }, pointBackgroundColor: blue
     }] },
@@ -321,11 +321,11 @@
     type: 'bar',
     data: { labels: ['Low', 'High'], datasets: [
       { label: 'Low', data: [7, 7], backgroundColor: amber, stack: 's', borderWidth: 0, barPercentage: 0.5 },
-      { label: 'High band', data: [0, 3], backgroundColor: ember, stack: 's', borderWidth: 0, barPercentage: 0.5 }
+      { label: 'High band', data: [0, 3], backgroundColor: '#161C24', stack: 's', borderWidth: 0, barPercentage: 0.5 }
     ] },
     options: { maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (ctx) { return ctx.datasetIndex === 0 ? 'Floor: $' + ctx.raw + 'B' : '+ up to $' + ctx.parsed.y + 'B more'; }, footer: function (ctx) { var t = ctx.reduce(function (a, c) { return a + c.parsed.y; }, 0); return 'Total: $' + t + 'B/yr'; } } } },
-      scales: { y: { beginAtZero: true, grid: { color: grid }, ticks: { callback: function (v) { return '$' + v + 'B'; } }, stacked: true, title: { display: true, text: 'LOST OUTPUT $B/YR (VALUE-ADDED)', color: faint, font: { size: 9 } } }, x: { grid: { display: false }, stacked: true, ticks: { color: ink, font: { family: sans, size: 13, weight: '600' } } } } }
+      scales: { y: { beginAtZero: true, grid: { color: grid }, ticks: { callback: function (v) { return '$' + v + 'B'; } }, stacked: true, title: { display: true, text: 'LOST OUTPUT $B/YR (VALUE-ADDED)', color: faint, font: { size: 9 } } }, x: { grid: { display: false }, stacked: true, ticks: { color: ink, font: { family: sans, size: 13, weight: '400' } } } } }
   });
 
   // 07 Multiplier loss
@@ -334,7 +334,7 @@
     data: { labels: ['Base case', 'Aggressive'], datasets: [{ data: [150000, 200000], backgroundColor: [blue, ember], borderWidth: 0, barPercentage: 0.5 }] },
     options: { maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (ctx) { return '~' + ctx.raw.toLocaleString() + ' jobs blocked'; } } } },
-      scales: { y: { beginAtZero: true, grid: { color: grid }, ticks: { callback: fmtK }, title: { display: true, text: 'DOWNSTREAM JOBS BLOCKED', color: faint, font: { size: 9 } } }, x: { grid: { display: false }, ticks: { color: ink, font: { family: sans, size: 13, weight: '600' } } } } }
+      scales: { y: { beginAtZero: true, grid: { color: grid }, ticks: { callback: fmtK }, title: { display: true, text: 'DOWNSTREAM JOBS BLOCKED', color: faint, font: { size: 9 } } }, x: { grid: { display: false }, ticks: { color: ink, font: { family: sans, size: 13, weight: '400' } } } } }
   });
 })();
 </script>
