@@ -57,3 +57,14 @@ body.okd-frontend *::after{box-sizing:border-box}
   position:relative;
   z-index:1;
 }
+
+body.okd-frontend a.inline_logo,
+body.okd-frontend .rz-cover,
+body.okd-frontend .rz-card,
+body.okd-frontend .rz-scard,
+body.okd-frontend .rz-cover_kicker,
+body.okd-frontend .rz-card_title,
+body.okd-frontend .rz-scard_title,
+body.okd-frontend .rz-hero_title{
+  text-decoration:none;
+}

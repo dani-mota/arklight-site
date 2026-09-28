@@ -226,8 +226,8 @@ img{max-width:100%;height:auto;display:block}
 .rs-body h2{font-size:clamp(24px,2.8vw,32px);font-weight:400;letter-spacing:-.02em;color:var(--ink-0);line-height:1.15;margin:48px 0 18px}
 .rs-body h3{font-size:20px;font-weight:400;letter-spacing:-.015em;color:var(--ink-0);margin:36px 0 14px}
 .rs-body p{font-size:17px;line-height:1.7;color:var(--ink-1);margin:0 0 22px}
-.rs-body a:not(.rs-back){color:var(--ink-0);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(232,118,42,.75)}
-.rs-body a:not(.rs-back):hover{color:var(--rust);text-decoration-color:var(--rust)}
+.rs-body a:not(.rs-back){color:var(--ink-0);text-decoration:none}
+.rs-body a:not(.rs-back):hover{color:var(--rust)}
 .rs-body strong{color:var(--ink-0);font-weight:400}
 .rs-body em{font-style:italic}
 .rs-body ul,.rs-body ol{font-size:17px;line-height:1.7;color:var(--ink-1);margin:0 0 22px;padding-left:24px}
@@ -317,7 +317,8 @@ img{max-width:100%;height:auto;display:block}
 .vb-method_inner p{font-size:14.5px;line-height:1.65;color:var(--ink-1);margin:0 0 16px}
 .vb-method_inner p:last-child{margin-bottom:0}
 .vb-method_inner strong{color:var(--ink-0)}
-.vb-method_inner a{color:var(--steel);text-decoration:underline;text-underline-offset:2px}
+.vb-method_inner a{color:var(--ink-0);text-decoration:none}
+.vb-method_inner a:hover{color:var(--rust)}
 
 /* ============================================================
    REVEAL ON SCROLL
