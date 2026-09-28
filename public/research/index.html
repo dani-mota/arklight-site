@@ -79,10 +79,14 @@ a{color:inherit}
 .rz-feed{max-width:var(--maxw);margin:0 auto;padding:46px 24px 8px}
 .rz-hide{display:none!important}
 
-/* covers: dark plate, one orange rule, titles live in the card */
-.rz-cover{position:relative;overflow:hidden;border-radius:2px;background:#141618;isolation:isolate;display:block;border-bottom:2px solid #E8762A}
+/* covers: campaign graphic, at most three words centered on the image */
+.rz-cover{position:relative;overflow:hidden;border-radius:2px;background:#141618;isolation:isolate;display:block}
 .rz-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s cubic-bezier(.38,.005,.215,1)}
-.rz-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,24,.12) 0%,rgba(20,22,24,.28) 100%);z-index:1;pointer-events:none}
+.rz-cover::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(8,10,16,.46) 0%,rgba(8,10,16,.12) 68%);z-index:1;pointer-events:none}
+.rz-cover_kicker{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:14px 16px;color:#fff;font-family:var(--font-body);font-weight:400;font-size:clamp(26px,4.2vw,34px);letter-spacing:-.03em;line-height:1.02;text-align:center;text-wrap:balance}
+.rz-hero_cover .rz-cover_kicker{font-size:clamp(42px,4.2vw,72px)}
+.rz-scard .rz-cover_kicker{font-size:clamp(32px,3vw,48px)}
+.rz-grid.is-list .rz-cover_kicker{font-size:16px;padding:8px}
 .rz-card:hover .rz-cover img,.rz-scard:hover .rz-cover img,.rz-hero_cover:hover img{transform:scale(1.04)}
 
 /* Grok hero */
@@ -194,16 +198,16 @@ a{color:inherit}
         <p class="rz-hero_lead">Roughly 10,000 credentialed electricians a year against demand approaching 100,000 a year, and structurally widening. The deficit is binding what America says it wants to build.</p>
         <a href="/research/electrician-shortage" class="u-btn--1"><span class="btn_label" data-button-animate-chars>Read the briefing</span></a>
       </div>
-      <a href="/research/electrician-shortage" class="rz-cover rz-hero_cover" aria-label="Understanding the Electrician Shortage." data-reveal data-reveal-delay="2"><img src="/assets/covers/electrician.jpg" alt="" loading="lazy"></a>
+      <a href="/research/electrician-shortage" class="rz-cover rz-hero_cover" aria-label="Understanding the Electrician Shortage." data-reveal data-reveal-delay="2"><img src="/assets/covers/electrician.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">The shortage.</span></a>
     </div>
     <div class="rz-secondary">
       <a href="/research/metal-fab-shortage" class="rz-scard" data-reveal>
-        <span class="rz-cover"><img src="/assets/covers/fabricators.jpg" alt="" loading="lazy"></span>
+        <span class="rz-cover"><img src="/assets/covers/fabricators.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Missing welders.</span></span>
         <h3 class="rz-scard_title">Fabricators labor shortage.</h3>
         <span class="rz-scard_date">Research · May 2026</span>
       </a>
       <a href="/research/machinist-shortage" class="rz-scard" data-reveal data-reveal-delay="2">
-        <span class="rz-cover"><img src="/assets/covers/machinists.jpg" alt="" loading="lazy"></span>
+        <span class="rz-cover"><img src="/assets/covers/machinists.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Empty machines.</span></span>
         <h3 class="rz-scard_title">Machinists labor shortage.</h3>
         <span class="rz-scard_date">Research · May 2026</span>
       </a>
@@ -213,57 +217,57 @@ a{color:inherit}
   <!-- ═══ ESSAYS (OpenAI grid) ═══ -->
   <div class="rz-grid" id="rzGrid">
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/build-buy-rent-industrial-workforce" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/build-buy-rent.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/build-buy-rent.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Build, buy, rent.</span></span>
       <h3 class="rz-card_title">Build, buy, or rent your industrial workforce.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/apprenticeship-vs-college" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/apprenticeship-college.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/apprenticeship-college.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Honest math.</span></span>
       <h3 class="rz-card_title">Apprenticeship vs. college: the honest math.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/are-skilled-trades-ai-proof" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/trades-ai.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/trades-ai.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Still human.</span></span>
       <h3 class="rz-card_title">Are the skilled trades AI-proof?</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/build-manufacturing-apprenticeship-program" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/apprenticeship-program.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/apprenticeship-program.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Train them here.</span></span>
       <h3 class="rz-card_title">How to build a manufacturing apprenticeship program.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-05-21" href="/content/measuring-competency" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/measuring-competency.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/measuring-competency.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Prove the skill.</span></span>
       <h3 class="rz-card_title">Measuring competency when the stakes are real.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">May 21, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-26" href="/content/trades-arent-alternative" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/trades-primary.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/trades-primary.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">The real path.</span></span>
       <h3 class="rz-card_title">The trades aren't an alternative to college.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 26, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-20" href="/content/trade-school-needed" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/trade-school.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/trade-school.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">School, rebuilt.</span></span>
       <h3 class="rz-card_title">The Trade School 2.0 America needs.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 20, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-14" href="/content/education-decay" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/education-decay.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/education-decay.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Quiet decay.</span></span>
       <h3 class="rz-card_title">Education decay is a national security risk.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 14, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-09" href="/content/universities-cant-produce" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/universities.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/universities.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Not produced.</span></span>
       <h3 class="rz-card_title">Why universities can't produce the talent.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 9, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-06" href="/content/iran-war-workforce" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/iran-workforce.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/iran-workforce.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">The exposure.</span></span>
       <h3 class="rz-card_title">The Iran War exposed America's AI workforce crisis.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 6, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-03" href="/content/china-weaponized-classrooms" data-reveal>
-      <span class="rz-cover"><img src="/assets/covers/china-classrooms.jpg" alt="" loading="lazy"></span>
+      <span class="rz-cover"><img src="/assets/covers/china-classrooms.jpg" alt="" loading="lazy"><span class="rz-cover_kicker">Weaponized classrooms.</span></span>
       <h3 class="rz-card_title">How China weaponized classrooms.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 3, 2026</span></div>
     </a>
