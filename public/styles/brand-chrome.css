@@ -48,11 +48,10 @@ body.okd-frontend *,
 body.okd-frontend *::before,
 body.okd-frontend *::after{box-sizing:border-box}
 
-/* Homepage bar is translucent over a dark hero. On these light pages the same
-   chrome is the solid brand neutral, so the wordmark and nav read the same. */
-body.okd-frontend header.header{
-  background:#141618;
-}
-body.okd-frontend header.header .header_mobile{
-  background:#141618;
+/* The homepage only contains a button's fill on devices that report a fine
+   pointer. Without that, the fill stretches over the nearest positioned
+   ancestor and covers the navbar and footer. */
+.u-btn--1{
+  position:relative;
+  z-index:1;
 }
