@@ -2,6 +2,7 @@
 .vercel
 node_modules
 .claude
+_site
 
 # local-only investor room assets (served via /api/doc in prod)
 data-room-assets/
