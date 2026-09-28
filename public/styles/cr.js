@@ -76,18 +76,18 @@
   // Exposed so research briefings can read consistent colors.
   window.CR = window.CR || {};
   window.CR.colors = {
-    rust: '#B85416',
-    rustFill: 'rgba(184,84,22,0.16)',
-    steel: '#2E5A86',
-    steelFill: 'rgba(46,90,134,0.16)',
-    amber: '#C9781F',
-    ember: '#C0432B',
-    ink: '#15140F',
-    grid: 'rgba(20,18,15,0.10)',
-    tick: 'rgba(20,18,15,0.55)',
-    track: 'rgba(20,18,15,0.08)',
-    mono: "'JetBrains Mono', ui-monospace, monospace",
-    body: "'Inter Tight', sans-serif"
+    rust: '#E8762A',
+    rustFill: 'rgba(232,118,42,0.16)',
+    steel: '#161C24',
+    steelFill: 'rgba(22,28,36,0.10)',
+    amber: '#E8762A',
+    ember: '#E8762A',
+    ink: '#161C24',
+    grid: '#e4e9ed',
+    tick: '#5a636a',
+    track: 'rgba(22,28,36,0.08)',
+    mono: "articulat-cf,-apple-system,BlinkMacSystemFont,'avenir next',avenir,sans-serif",
+    body: "articulat-cf,-apple-system,BlinkMacSystemFont,'avenir next',avenir,sans-serif"
   };
   window.CR.applyChartTheme = function () {
     if (!window.Chart) return;
@@ -104,11 +104,11 @@
   window.CR.tooltip = function (suffix) {
     var c = window.CR.colors;
     return {
-      backgroundColor: 'rgba(21,20,15,0.95)',
+      backgroundColor: '#161C24',
       borderColor: 'rgba(255,255,255,0.14)',
       borderWidth: 1,
-      titleColor: '#F5F3ED',
-      bodyColor: '#F5F3ED',
+      titleColor: '#f5f6f7',
+      bodyColor: '#f5f6f7',
       titleFont: { family: c.mono, size: 10 },
       bodyFont: { family: c.mono, size: 11 },
       padding: 12,

@@ -79,25 +79,16 @@ a{color:inherit}
 .rz-feed{max-width:var(--maxw);margin:0 auto;padding:46px 24px 8px}
 .rz-hide{display:none!important}
 
-/* gradient covers */
-.rz-cover{position:relative;overflow:hidden;border-radius:14px;background:var(--navy);isolation:isolate;display:block}
-.rz-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s cubic-bezier(.38,.005,.215,1)}.rz-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,20,.40) 0%,rgba(8,12,20,.03) 20%,rgba(8,12,20,.03) 34%,rgba(8,12,20,.80) 100%);z-index:1;pointer-events:none}.rz-card:hover .rz-cover img,.rz-scard:hover .rz-cover img,.rz-hero_cover:hover img{transform:scale(1.05)}
-[data-cover="1"]{background:linear-gradient(140deg,#254a72,#0c1a2e)}
-[data-cover="2"]{background:linear-gradient(140deg,#c05a18,#5a2809)}
-[data-cover="3"]{background:linear-gradient(140deg,#3a6699,#18324F)}
-[data-cover="4"]{background:linear-gradient(140deg,#F5A14A,#b04f14)}
-[data-cover="5"]{background:linear-gradient(140deg,#33507a,#14130f)}
-[data-cover="6"]{background:linear-gradient(140deg,#4a7ba8,#2a1c12)}
-.rz-cover_tag{position:absolute;left:15px;top:13px;z-index:2;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.92)}
-.rz-cover_mono{position:absolute;right:15px;top:13px;z-index:2;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.55)}
-.rz-cover_big{position:absolute;left:18px;bottom:15px;right:18px;z-index:2;font-size:clamp(24px,3.2vw,40px);font-weight:400;letter-spacing:-.02em;line-height:1.02;color:#fff}
-.rz-cover_title{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff;font-weight:400;letter-spacing:-.015em;line-height:1.15;font-size:16px;text-shadow:0 1px 14px rgba(0,0,0,.38)}
-.rz-scard .rz-cover_title{font-size:23px;left:18px;bottom:16px}
+/* covers: dark plate, one orange rule, titles live in the card */
+.rz-cover{position:relative;overflow:hidden;border-radius:2px;background:#141618;isolation:isolate;display:block;border-bottom:2px solid #E8762A}
+.rz-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s cubic-bezier(.38,.005,.215,1)}
+.rz-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,24,.12) 0%,rgba(20,22,24,.28) 100%);z-index:1;pointer-events:none}
+.rz-card:hover .rz-cover img,.rz-scard:hover .rz-cover img,.rz-hero_cover:hover img{transform:scale(1.04)}
 
 /* Grok hero */
 .rz-featured{margin:0 0 58px}
 .rz-hero{display:grid;grid-template-columns:.92fr 1.18fr;gap:52px;align-items:center;margin:0 0 32px}
-.rz-hero_date{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 18px}
+.rz-hero_date{font-family:var(--font-body);font-size:14px;letter-spacing:.01em;text-transform:none;color:var(--ink-2);margin:0 0 18px}
 .rz-hero_title{font-size:clamp(30px,3.8vw,50px);font-weight:400;letter-spacing:-.03em;line-height:1.02;color:var(--ink-0);margin:0 0 18px}
 .rz-hero_lead{font-size:17px;line-height:1.55;color:var(--ink-1);margin:0 0 30px;max-width:44ch}
 .rz-pill{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid rgba(20,18,15,.28);border-radius:100px;font-size:15px;font-weight:400;color:var(--ink-0);transition:border-color .25s,background .25s,color .25s,transform .25s}
@@ -105,13 +96,12 @@ a{color:inherit}
 .rz-pill:hover{border-color:var(--ink-0);background:var(--ink-0);color:var(--canvas-1);transform:translateY(-2px)}
 .rz-pill:hover span{transform:translateX(3px)}
 .rz-hero_cover{aspect-ratio:16/10}
-.rz-hero_cover .rz-cover_big{font-size:clamp(24px,3vw,38px);line-height:1.06}
 .rz-secondary{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 .rz-scard{display:block}
 .rz-scard .rz-cover{aspect-ratio:16/9;margin:0 0 14px;transition:transform .5s cubic-bezier(.38,.005,.215,1)}
 .rz-scard:hover .rz-cover{transform:translateY(-4px)}
-.rz-scard_date{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);display:block;margin:0 0 6px}
-.rz-scard_title{font-size:19px;font-weight:400;letter-spacing:-.015em;color:var(--ink-0);margin:0;line-height:1.2}
+.rz-scard_date{font-family:var(--font-body);font-size:14px;letter-spacing:.01em;text-transform:none;color:var(--ink-2);display:block;margin:8px 0 0}
+.rz-scard_title{font-size:19px;font-weight:400;letter-spacing:-.015em;color:var(--ink-0);margin:14px 0 0;line-height:1.2}
 
 /* OpenAI grid */
 .rz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px 26px;padding:0 0 8px}
@@ -207,22 +197,18 @@ a{color:inherit}
         <p class="rz-hero_lead">Roughly 10,000 credentialed electricians a year against demand approaching 100,000 a year, and structurally widening. The deficit is binding what America says it wants to build.</p>
         <a href="/research/electrician-shortage" class="rz-pill">Read the briefing <span>&rsaquo;</span></a>
       </div>
-      <a href="/research/electrician-shortage" class="rz-cover rz-hero_cover" data-cover="1" data-reveal data-reveal-delay="2"><img src="/assets/covers/c5.jpg" alt="" loading="lazy">
-        <span class="rz-cover_tag">Electricians</span>
-        <span class="rz-cover_mono">ARK-R-001</span>
-        <span class="rz-cover_big">Understanding the Electrician Shortage.</span>
-      </a>
+      <a href="/research/electrician-shortage" class="rz-cover rz-hero_cover" aria-label="Understanding the Electrician Shortage." data-reveal data-reveal-delay="2"><img src="/assets/covers/electrician.jpg" alt="" loading="lazy"></a>
     </div>
     <div class="rz-secondary">
       <a href="/research/metal-fab-shortage" class="rz-scard" data-reveal>
-        <span class="rz-cover" data-cover="4"><img src="/assets/covers/c1.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Fabricators</span><span class="rz-cover_mono">ARK-R-002</span><span class="rz-cover_title">Fabricators labor shortage.</span></span>
-        <span class="rz-scard_date">May 2026</span>
-        
+        <span class="rz-cover"><img src="/assets/covers/fabricators.jpg" alt="" loading="lazy"></span>
+        <h3 class="rz-scard_title">Fabricators labor shortage.</h3>
+        <span class="rz-scard_date">Research · May 2026</span>
       </a>
       <a href="/research/machinist-shortage" class="rz-scard" data-reveal data-reveal-delay="2">
-        <span class="rz-cover" data-cover="6"><img src="/assets/covers/c2.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Machinists</span><span class="rz-cover_mono">ARK-R-003</span><span class="rz-cover_title">Machinists labor shortage.</span></span>
-        <span class="rz-scard_date">May 2026</span>
-        
+        <span class="rz-cover"><img src="/assets/covers/machinists.jpg" alt="" loading="lazy"></span>
+        <h3 class="rz-scard_title">Machinists labor shortage.</h3>
+        <span class="rz-scard_date">Research · May 2026</span>
       </a>
     </div>
   </div>
@@ -230,47 +216,58 @@ a{color:inherit}
   <!-- ═══ ESSAYS (OpenAI grid) ═══ -->
   <div class="rz-grid" id="rzGrid">
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/build-buy-rent-industrial-workforce" data-reveal>
-      <span class="rz-cover" data-cover="3"><img src="/assets/covers/c3.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Strategy</span><span class="rz-cover_title">Build, buy, or rent your industrial workforce.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/build-buy-rent.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">Build, buy, or rent your industrial workforce.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/apprenticeship-vs-college" data-reveal>
-      <span class="rz-cover" data-cover="5"><img src="/assets/covers/c4.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Education</span><span class="rz-cover_title">Apprenticeship vs. college: the honest math.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/apprenticeship-college.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">Apprenticeship vs. college: the honest math.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/are-skilled-trades-ai-proof" data-reveal>
-      <span class="rz-cover" data-cover="2"><img src="/assets/covers/c6.jpg" alt="" loading="lazy"><span class="rz-cover_tag">AI</span><span class="rz-cover_title">Are the skilled trades AI-proof?</span></span>
+      <span class="rz-cover"><img src="/assets/covers/trades-ai.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">Are the skilled trades AI-proof?</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-06-11" href="/content/build-manufacturing-apprenticeship-program" data-reveal>
-      <span class="rz-cover" data-cover="6"><img src="/assets/covers/c7.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Guide</span><span class="rz-cover_title">How to build a manufacturing apprenticeship program.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/apprenticeship-program.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">How to build a manufacturing apprenticeship program.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Jun 11, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-05-21" href="/content/measuring-competency" data-reveal>
-      <span class="rz-cover" data-cover="1"><img src="/assets/covers/c8.jpg" alt="" loading="lazy"><span class="rz-cover_tag">ACI</span><span class="rz-cover_title">Measuring competency when the stakes are real.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/measuring-competency.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">Measuring competency when the stakes are real.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">May 21, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-26" href="/content/trades-arent-alternative" data-reveal>
-      <span class="rz-cover" data-cover="4"><img src="/assets/covers/c9.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Policy</span><span class="rz-cover_title">The trades aren't an alternative to college.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/trades-primary.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">The trades aren't an alternative to college.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 26, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-20" href="/content/trade-school-needed" data-reveal>
-      <span class="rz-cover" data-cover="5"><img src="/assets/covers/c10.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Build</span><span class="rz-cover_title">The Trade School 2.0 America needs.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/trade-school.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">The Trade School 2.0 America needs.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 20, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-14" href="/content/education-decay" data-reveal>
-      <span class="rz-cover" data-cover="2"><img src="/assets/covers/c11.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Defense</span><span class="rz-cover_title">Education decay is a national security risk.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/education-decay.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">Education decay is a national security risk.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 14, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-09" href="/content/universities-cant-produce" data-reveal>
-      <span class="rz-cover" data-cover="3"><img src="/assets/covers/c12.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Education</span><span class="rz-cover_title">Why universities can't produce the talent.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/universities.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">Why universities can't produce the talent.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 9, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-06" href="/content/iran-war-workforce" data-reveal>
-      <span class="rz-cover" data-cover="6"><img src="/assets/covers/c3.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Geopolitics</span><span class="rz-cover_title">The Iran War exposed America's AI workforce crisis.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/iran-workforce.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">The Iran War exposed America's AI workforce crisis.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 6, 2026</span></div>
     </a>
     <a class="rz-card" data-cat="essays" data-date="2026-04-03" href="/content/china-weaponized-classrooms" data-reveal>
-      <span class="rz-cover" data-cover="1"><img src="/assets/covers/c4.jpg" alt="" loading="lazy"><span class="rz-cover_tag">Geopolitics</span><span class="rz-cover_title">How China weaponized classrooms.</span></span>
+      <span class="rz-cover"><img src="/assets/covers/china-classrooms.jpg" alt="" loading="lazy"></span>
+      <h3 class="rz-card_title">How China weaponized classrooms.</h3>
       <div class="rz-card_meta"><span class="tag">Essay</span><span class="date">Apr 3, 2026</span></div>
     </a>
   </div>
