@@ -14,7 +14,8 @@ const SRC = {
   'Investment Memo': 'memo',
   'Understanding Demand & Market': 'market',
   'Use of Funds': 'funds',
-  'Valinor MOU - Signed': 'valinor'
+  'Valinor MOU - Signed': 'valinor',
+  'SpaceX Opportunity': 'spacex'
 };
 
 const TIERS = [
@@ -27,8 +28,9 @@ const TIERS = [
     { n: 'Talent Factory Product Demo - Employer', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/fda93ccf13824da9aecd118685f3617a' },
     { n: 'Understanding Demand & Market', t: 'SYNC 08-19' }]},
-  { idx: '03', name: 'Traction', sub: 'MOU · live pipeline', status: 'cleared', docs: [
+  { idx: '03', name: 'Traction', sub: 'MOU · opportunity · pipeline', status: 'cleared', docs: [
     { n: 'Valinor MOU - Signed', t: 'SIGNED 06-15' },
+    { n: 'SpaceX Opportunity', t: 'CASE 09-12' },
     { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]},
   { idx: '04', name: 'Financials', sub: 'Use of funds', status: 'cleared', docs: [
     { n: 'Use of Funds', t: 'SYNC' }]}
