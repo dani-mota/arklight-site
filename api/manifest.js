@@ -14,13 +14,17 @@ const SRC = {
   'Investment Memo': 'memo',
   'Understanding Demand & Market': 'market',
   'Use of Funds': 'funds',
-  'Valinor MOU - Signed': 'valinor'
+  'Valinor MOU - Signed': 'valinor',
+  'Understanding the SpaceXAI Opportunity': 'spacexai',
+  'The Anduril Opportunity': 'anduril'
 };
 
 const TIERS = [
-  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo', status: 'cleared', docs: [
+  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo · opportunities', status: 'cleared', docs: [
     { n: 'Arklight - Pitch Deck.pdf', t: 'SYNC 08-19' },
-    { n: 'Investment Memo', t: 'MEMO' }]},
+    { n: 'Investment Memo', t: 'MEMO' },
+    { n: 'Understanding the SpaceXAI Opportunity', t: 'CASE' },
+    { n: 'The Anduril Opportunity', t: 'CASE' }]},
   { idx: '02', name: 'Product & Market', sub: 'Demos · market', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/dfbb6c5e59cf4376b9dce541f82f0ec0' },
