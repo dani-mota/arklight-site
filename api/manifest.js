@@ -20,9 +20,10 @@ const SRC = {
 };
 
 const TIERS = [
-  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo · Anduril', status: 'cleared', docs: [
+  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo · opportunities', status: 'cleared', docs: [
     { n: 'Arklight - Pitch Deck.pdf', t: 'SYNC 08-19' },
     { n: 'Investment Memo', t: 'MEMO' },
+    { n: 'The SpaceX Opportunity', t: 'CASE' },
     { n: 'The Anduril Opportunity', t: 'CASE' }]},
   { idx: '02', name: 'Product & Market', sub: 'Demos · market', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
