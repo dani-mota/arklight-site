@@ -31,9 +31,10 @@ const TIERS = [
     { n: 'Talent Factory Product Demo - Employer', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/fda93ccf13824da9aecd118685f3617a' },
     { n: 'Understanding Demand & Market', t: 'SYNC 08-19' }]},
-  { idx: '03', name: 'Traction', sub: 'SpaceX case · MOU · pipeline', status: 'cleared', docs: [
+  { idx: '03', name: 'Traction', sub: 'Cases · MOU · pipeline', status: 'cleared', docs: [
     { n: 'Valinor MOU - Signed', t: 'SIGNED 06-15' },
     { n: 'The SpaceX Opportunity', t: 'CASE' },
+    { n: 'The Anduril Opportunity', t: 'CASE' },
     { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]},
   { idx: '04', name: 'Financials', sub: 'Use of funds', status: 'cleared', docs: [
     { n: 'Use of Funds', t: 'SYNC' }]}
