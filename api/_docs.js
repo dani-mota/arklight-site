@@ -21,7 +21,7 @@ const DOCS = {
   funds:  { file: 'arklight-use-of-funds.pdf',               title: 'Use of Funds',                      tier: 1 },
   valinor:{ file: 'arklight-valinor-mou.pdf',                title: 'Valinor Talent MOU (signed)',       tier: 1 },
   oracle: { file: 'arklight-oracle-proposal.pdf',            title: 'Oracle Proposal',                   tier: 1 },
-  spacexai: { file: 'arklight-spacexai-opportunity.pdf',   title: 'Understanding the SpaceXAI Opportunity', tier: 1 },
+  spacexai: { file: 'arklight-spacexai-opportunity.pdf',   title: 'The SpaceX Opportunity', tier: 1 },
   anduril: { file: 'arklight-anduril-opportunity.pdf',     title: 'The Anduril Opportunity',           tier: 1 }
 
   // When the financial model is ready, add it behind the second wall:

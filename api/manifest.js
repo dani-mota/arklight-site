@@ -15,15 +15,14 @@ const SRC = {
   'Understanding Demand & Market': 'market',
   'Use of Funds': 'funds',
   'Valinor MOU - Signed': 'valinor',
-  'Understanding the SpaceXAI Opportunity': 'spacexai',
+  'The SpaceX Opportunity': 'spacexai',
   'The Anduril Opportunity': 'anduril'
 };
 
 const TIERS = [
-  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo · opportunities', status: 'cleared', docs: [
+  { idx: '01', name: 'Pitch & Summary', sub: 'Deck · memo · Anduril', status: 'cleared', docs: [
     { n: 'Arklight - Pitch Deck.pdf', t: 'SYNC 08-19' },
     { n: 'Investment Memo', t: 'MEMO' },
-    { n: 'Understanding the SpaceXAI Opportunity', t: 'CASE' },
     { n: 'The Anduril Opportunity', t: 'CASE' }]},
   { idx: '02', name: 'Product & Market', sub: 'Demos · market', status: 'cleared', docs: [
     { n: 'Arklight OS Product Demo - Student', t: 'LOOM', kind: 'video',
@@ -31,8 +30,9 @@ const TIERS = [
     { n: 'Talent Factory Product Demo - Employer', t: 'LOOM', kind: 'video',
       src: 'https://www.loom.com/embed/fda93ccf13824da9aecd118685f3617a' },
     { n: 'Understanding Demand & Market', t: 'SYNC 08-19' }]},
-  { idx: '03', name: 'Traction', sub: 'MOU · live pipeline', status: 'cleared', docs: [
+  { idx: '03', name: 'Traction', sub: 'SpaceX case · MOU · pipeline', status: 'cleared', docs: [
     { n: 'Valinor MOU - Signed', t: 'SIGNED 06-15' },
+    { n: 'The SpaceX Opportunity', t: 'CASE' },
     { n: 'Pipeline CRM Tracker', t: 'LIVE', board: true }]},
   { idx: '04', name: 'Financials', sub: 'Use of funds', status: 'cleared', docs: [
     { n: 'Use of Funds', t: 'SYNC' }]}
