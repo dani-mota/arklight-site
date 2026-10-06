@@ -53,13 +53,15 @@
 <link rel="apple-touch-icon" href="/favicon-180.png?v=5">
 <style>
 @font-face{font-family:articulat-cf;font-style:normal;font-weight:400;font-display:swap;src:url('/wp-content/themes/okd/static/fonts/ArticulatCF-Normal.woff2') format('woff2');}
-.rs-body > .ex{box-sizing:border-box;width:min(960px,calc(100vw - 48px));max-width:none;margin-left:calc(50% - min(480px,50vw - 24px));margin-right:calc(50% - min(480px,50vw - 24px))}
-.ex{box-sizing:border-box;margin-top:28px;margin-bottom:36px;background:#fff;border:1px solid rgba(22,28,36,.14);border-radius:2px;padding:22px 22px 18px}
+.rs-body > .ex{box-sizing:border-box;width:100%;max-width:100%;margin-left:0;margin-right:0}
+.ex{box-sizing:border-box;margin-top:28px;margin-bottom:36px;background:#fff;border:1px solid rgba(22,28,36,.14);border-radius:2px;padding:18px 16px 12px}
 .ex-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#E8762A;margin:0 0 8px}
 .ex-title{font-size:20px;letter-spacing:-.02em;font-weight:400;color:#161C24;margin:0 0 6px;line-height:1.2}
 .ex-sub{font-size:14px;line-height:1.45;color:#5a636a;margin:0 0 16px}
-.ex-take{margin:14px 0 0;padding-top:12px;border-top:1px solid rgba(22,28,36,.08);font-size:14.5px;line-height:1.45;color:#161C24}
-.ex-note{margin:8px 0 0;font-size:12.5px;line-height:1.45;color:#5a636a}
+.rs-body .ex-sub{font-size:13px;line-height:1.4;margin:0 0 12px}
+.rs-body .ex-take{margin:10px 0 0;padding-top:8px;border-top:1px solid rgba(22,28,36,.08);font-size:12.5px;line-height:1.4;color:#5a636a}
+.rs-body .ex-note{margin:4px 0 0;padding:0;font-size:10.5px;line-height:1.35;color:#939ca2}
+.rs-body .ex .call{margin:8px 0 0;font-size:12.5px;line-height:1.4;color:#5a636a}
 .flow-block{margin:0 0 16px}
 .flow-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#5a636a;margin:0 0 8px}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
@@ -109,7 +111,7 @@
 .score .result dd{font-size:clamp(18px,2.1vw,22px);letter-spacing:-.02em}
 .score .b .result dd{color:#E8762A}
 .sankey-wrap{overflow-x:auto}
-.sankey{display:block;width:100%;height:auto;min-width:720px}
+.sankey{display:block;width:100%;height:auto}
 .ex img{display:block;width:100%;height:auto}
 .ex.plain{background:transparent;border:0;padding:0}
 .ex.plain .ex-take{border-top:0;padding-top:4px}
@@ -117,7 +119,7 @@
 .bar{flex:1;background:#E8762A;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-size:13px;padding-top:8px}
 .bar-labs{display:flex;gap:28px;margin-top:8px}
 .bar-labs span{flex:1;text-align:center;font-size:13px;color:#161C24}
-.call{margin:12px 0 0;font-size:14px;color:#161C24}
+.call{margin:8px 0 0;font-size:12.5px;line-height:1.4;color:#5a636a}
 .call b{color:#E8762A;font-weight:400}
 @media(max-width:860px){.score{grid-template-columns:1fr}}
 @media(max-width:720px){.tl{grid-template-columns:1fr}.tl-axis{grid-column:1}.seg{font-size:10px}.mx{font-size:12px}}
