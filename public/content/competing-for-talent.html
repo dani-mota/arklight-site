@@ -108,18 +108,8 @@
 .score .result{align-items:baseline}
 .score .result dd{font-size:clamp(18px,2.1vw,22px);letter-spacing:-.02em}
 .score .b .result dd{color:#E8762A}
-.sk{margin:0 0 18px}
-.sk h4{margin:0 0 8px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;color:#5a636a}
-.sk .b{color:#E8762A}
-.sk-line{display:grid;grid-template-columns:92px 1fr;gap:8px;align-items:center;margin:0 0 6px}
-.sk-lab{font-size:12px;color:#5a636a}
-.sk-track{display:flex;align-items:stretch;height:28px;background:#f5f6f7}
-.sk-keep,.sk-loss{display:flex;align-items:center;padding:0 6px;font-size:11px;white-space:nowrap;overflow:hidden}
-.sk-keep.a{background:#161C24;color:#fff}
-.sk-keep.b{background:#E8762A;color:#fff}
-.sk-loss{background:#e4e9ed;color:#3d454b}
-.sk-loss.out{overflow:visible;position:relative;padding:0}
-.sk-loss.out::after{content:attr(data-label);position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);color:#3d454b;font-size:11px;white-space:nowrap}
+.sankey-wrap{overflow-x:auto}
+.sankey{display:block;width:100%;height:auto;min-width:720px}
 .bars{display:flex;align-items:flex-end;gap:28px;height:220px;padding:8px 8px 0;border-bottom:1px solid #e4e9ed}
 .bar{flex:1;background:#E8762A;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-size:13px;padding-top:8px}
 .bar-labs{display:flex;gap:28px;margin-top:8px}
@@ -602,22 +592,59 @@
   <figure class="ex">
     <p class="ex-kicker">Supporting visual · Illustrative</p>
     <h3 class="ex-title">Where does the talent supply leak?</h3>
-    <p class="ex-sub">Two systems can begin with the same hundred entrants and produce very different amounts of productive capability. Bar width is the share of the original hundred still in the system. Gray is who left at that step.</p>
-    <div class="sk">
-      <h4>Program A · 11.25% retained</h4>
-      <div class="sk-line"><div class="sk-lab">Entered</div><div class="sk-track"><div class="sk-keep a" style="width:100%">100</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Completed</div><div class="sk-track"><div class="sk-keep a" style="width:30%">30</div><div class="sk-loss" style="width:70%">70 left</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Competent</div><div class="sk-track"><div class="sk-keep a" style="width:15%">15</div><div class="sk-loss" style="width:15%">15 left</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Productive</div><div class="sk-track"><div class="sk-keep a" style="width:15%">15</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Retained</div><div class="sk-track"><div class="sk-keep a" style="width:11.25%">11.25</div><div class="sk-loss out" style="width:3.75%" data-label="3.75 left"></div></div></div>
-    </div>
-    <div class="sk">
-      <h4 class="b">Program B · 61.2% retained</h4>
-      <div class="sk-line"><div class="sk-lab">Entered</div><div class="sk-track"><div class="sk-keep b" style="width:100%">100</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Completed</div><div class="sk-track"><div class="sk-keep b" style="width:80%">80</div><div class="sk-loss" style="width:20%">20 left</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Competent</div><div class="sk-track"><div class="sk-keep b" style="width:72%">72</div><div class="sk-loss" style="width:8%">8 left</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Productive</div><div class="sk-track"><div class="sk-keep b" style="width:72%">72</div></div></div>
-      <div class="sk-line"><div class="sk-lab">Retained</div><div class="sk-track"><div class="sk-keep b" style="width:61.2%">61.2</div><div class="sk-loss" style="width:10.8%">10.8 left</div></div></div>
+    <p class="ex-sub">Two systems begin with the same hundred entrants. Ribbon width is the number of people. Gray is who leaves at that step.</p>
+    <div class="sankey-wrap">
+  <svg class="sankey" viewBox="0 0 860 474" role="img" aria-label="Illustrative Sankey. Program A goes from 100 entered to 11.25 retained. Program B goes from 100 entered to 61.2 retained. Gray ribbons are people who leave at that step.">
+    <g font-family="articulat-cf, sans-serif">
+      <text x="34.0" y="18" text-anchor="middle" fill="#5a636a" font-size="12" letter-spacing="0.4">Entered</text>
+      <text x="202.0" y="18" text-anchor="middle" fill="#5a636a" font-size="12" letter-spacing="0.4">Completed</text>
+      <text x="370.0" y="18" text-anchor="middle" fill="#5a636a" font-size="12" letter-spacing="0.4">Competent</text>
+      <text x="538.0" y="18" text-anchor="middle" fill="#5a636a" font-size="12" letter-spacing="0.4">Productive</text>
+      <text x="706.0" y="18" text-anchor="middle" fill="#5a636a" font-size="12" letter-spacing="0.4">Retained</text>
+      <text x="28" y="44" fill="#5a636a" font-size="12" letter-spacing="1.1">PROGRAM A · 11.25 RETAINED</text>
+      <path d="M40.0,76.0 C118.0,76.0 118.0,76.0 196.0,76.0 L196.0,113.8 C118.0,113.8 118.0,113.8 40.0,113.8 Z" fill="#161C24"/>
+      <path d="M40.0,113.8 C69.0,121.8 69.0,133.8 98.0,141.8 L98.0,230.0 C69.0,238.0 69.0,194.0 40.0,202.0 Z" fill="#c5ced6"/>
+      <text x="116.0" y="157.8" fill="#3d454b" font-size="12" dominant-baseline="middle">70 left</text>
+      <path d="M208.0,76.0 C286.0,76.0 286.0,76.0 364.0,76.0 L364.0,94.9 C286.0,94.9 286.0,94.9 208.0,94.9 Z" fill="#161C24"/>
+      <path d="M208.0,94.9 C237.0,98.7 237.0,119.1 266.0,122.9 L266.0,141.8 C237.0,145.6 237.0,110.0 208.0,113.8 Z" fill="#c5ced6"/>
+      <text x="284.0" y="132.3" fill="#3d454b" font-size="12" dominant-baseline="middle">15 left</text>
+      <path d="M376.0,76.0 C454.0,76.0 454.0,76.0 532.0,76.0 L532.0,94.9 C454.0,94.9 454.0,94.9 376.0,94.9 Z" fill="#161C24"/>
+      <path d="M544.0,76.0 C622.0,76.0 622.0,76.0 700.0,76.0 L700.0,90.2 C622.0,90.2 622.0,90.2 544.0,90.2 Z" fill="#161C24"/>
+      <path d="M544.0,90.2 C573.0,91.1 573.0,117.2 602.0,118.2 L602.0,122.9 C573.0,123.8 573.0,94.0 544.0,94.9 Z" fill="#c5ced6"/>
+      <text x="620.0" y="120.5" fill="#3d454b" font-size="12" dominant-baseline="middle">3.75 left</text>
+      <rect x="28" y="76.0" width="12" height="126.0" fill="#161C24"/>
+      <text x="34.0" y="68.0" text-anchor="middle" fill="#161C24" font-size="13">100</text>
+      <rect x="196" y="76.0" width="12" height="37.8" fill="#161C24"/>
+      <text x="202.0" y="68.0" text-anchor="middle" fill="#161C24" font-size="13">30</text>
+      <rect x="364" y="76.0" width="12" height="18.9" fill="#161C24"/>
+      <text x="370.0" y="68.0" text-anchor="middle" fill="#161C24" font-size="13">15</text>
+      <rect x="532" y="76.0" width="12" height="18.9" fill="#161C24"/>
+      <text x="538.0" y="68.0" text-anchor="middle" fill="#161C24" font-size="13">15</text>
+      <rect x="700" y="76.0" width="12" height="14.2" fill="#161C24"/>
+      <text x="706.0" y="68.0" text-anchor="middle" fill="#161C24" font-size="13">11.25</text>
+      <text x="28" y="260" fill="#E8762A" font-size="12" letter-spacing="1.1">PROGRAM B · 61.2 RETAINED</text>
+      <path d="M40.0,292.0 C118.0,292.0 118.0,292.0 196.0,292.0 L196.0,392.8 C118.0,392.8 118.0,392.8 40.0,392.8 Z" fill="#E8762A"/>
+      <path d="M40.0,392.8 C69.0,397.8 69.0,415.8 98.0,420.8 L98.0,446.0 C69.0,451.0 69.0,413.0 40.0,418.0 Z" fill="#c5ced6"/>
+      <text x="116.0" y="433.4" fill="#3d454b" font-size="12" dominant-baseline="middle">20 left</text>
+      <path d="M208.0,292.0 C286.0,292.0 286.0,292.0 364.0,292.0 L364.0,382.7 C286.0,382.7 286.0,382.7 208.0,382.7 Z" fill="#E8762A"/>
+      <path d="M208.0,382.7 C237.0,384.7 237.0,408.7 266.0,410.7 L266.0,420.8 C237.0,422.8 237.0,390.8 208.0,392.8 Z" fill="#c5ced6"/>
+      <text x="284.0" y="415.8" fill="#3d454b" font-size="12" dominant-baseline="middle">8 left</text>
+      <path d="M376.0,292.0 C454.0,292.0 454.0,292.0 532.0,292.0 L532.0,382.7 C454.0,382.7 454.0,382.7 376.0,382.7 Z" fill="#E8762A"/>
+      <path d="M544.0,292.0 C622.0,292.0 622.0,292.0 700.0,292.0 L700.0,369.1 C622.0,369.1 622.0,369.1 544.0,369.1 Z" fill="#E8762A"/>
+      <path d="M544.0,369.1 C573.0,371.8 573.0,394.4 602.0,397.1 L602.0,410.7 C573.0,413.4 573.0,380.0 544.0,382.7 Z" fill="#c5ced6"/>
+      <text x="620.0" y="403.9" fill="#3d454b" font-size="12" dominant-baseline="middle">10.8 left</text>
+      <rect x="28" y="292.0" width="12" height="126.0" fill="#E8762A"/>
+      <text x="34.0" y="284.0" text-anchor="middle" fill="#161C24" font-size="13">100</text>
+      <rect x="196" y="292.0" width="12" height="100.8" fill="#E8762A"/>
+      <text x="202.0" y="284.0" text-anchor="middle" fill="#161C24" font-size="13">80</text>
+      <rect x="364" y="292.0" width="12" height="90.7" fill="#E8762A"/>
+      <text x="370.0" y="284.0" text-anchor="middle" fill="#161C24" font-size="13">72</text>
+      <rect x="532" y="292.0" width="12" height="90.7" fill="#E8762A"/>
+      <text x="538.0" y="284.0" text-anchor="middle" fill="#161C24" font-size="13">72</text>
+      <rect x="700" y="292.0" width="12" height="77.1" fill="#E8762A"/>
+      <text x="706.0" y="284.0" text-anchor="middle" fill="#161C24" font-size="13">61.2</text>
+    </g>
+  </svg>
     </div>
     <p class="ex-take">The company does not need entrants or graduates. It needs productive capability at the end of the system. 100 entrants become 11.25 retained productive workers in Program A, and 61.2 in Program B.</p>
     <p class="ex-note">Illustrative, normalized to 100 entrants. Completion, competency among completers, and first-year retention are the assumptions in Exhibit 6. The essay does not assume a separate loss between competent and productive, so those two stages stay equal.</p>
