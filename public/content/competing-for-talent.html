@@ -110,6 +110,9 @@
 .score .b .result dd{color:#E8762A}
 .sankey-wrap{overflow-x:auto}
 .sankey{display:block;width:100%;height:auto;min-width:720px}
+.ex img{display:block;width:100%;height:auto}
+.ex.plain{background:transparent;border:0;padding:0}
+.ex.plain .ex-take{border-top:0;padding-top:4px}
 .bars{display:flex;align-items:flex-end;gap:28px;height:220px;padding:8px 8px 0;border-bottom:1px solid #e4e9ed}
 .bar{flex:1;background:#E8762A;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-size:13px;padding-top:8px}
 .bar-labs{display:flex;gap:28px;margin-top:8px}
@@ -468,44 +471,9 @@
 
   <p>That is time to productivity.</p>
 
-  <figure class="ex">
-    <p class="ex-kicker">Exhibit 5 · Illustrative</p>
-    <h3 class="ex-title">Time to productivity</h3>
-    <p class="ex-sub">How long does each pathway take to produce useful capability? Months from candidate entry.</p>
-    <div class="tl">
-      <div class="tl-name">Purpose-built system</div>
-      <div class="tl-track">
-        <div class="seg train" style="left:0;width:6.67%">0–4</div>
-        <div class="seg part" style="left:6.67%;width:3.33%">4–6</div>
-        <div class="seg go" style="left:10%;width:90%">Independent · 6 months onward</div>
-      </div>
-      <div class="tl-name">On-the-job training</div>
-      <div class="tl-track">
-        <div class="seg train tip" style="left:0;width:3.33%" data-tip="0–2"></div>
-        <div class="seg part" style="left:3.33%;width:11.67%">2–9</div>
-        <div class="seg go" style="left:15%;width:85%">Independent · 9 months onward</div>
-      </div>
-      <div class="tl-name">Community college</div>
-      <div class="tl-track">
-        <div class="seg train" style="left:0;width:20%">Training · 0–12</div>
-        <div class="seg part" style="left:20%;width:5%">12–15</div>
-        <div class="seg go" style="left:25%;width:75%">Independent · 15 months onward</div>
-      </div>
-      <div class="tl-name">Four-year university</div>
-      <div class="tl-track">
-        <div class="seg train" style="left:0;width:80%">Education · 0–48 months</div>
-        <div class="seg part" style="left:80%;width:10%">48–54</div>
-        <div class="seg go" style="left:90%;width:10%">54+</div>
-      </div>
-      <div class="tl-axis"><span>0</span><span>12</span><span>24</span><span>36</span><span>48</span><span>60</span></div>
-    </div>
-    <div class="legend">
-      <span><i style="background:#d5dde3;height:10px"></i>Training</span>
-      <span><i style="background:#F5C19F;height:10px"></i>Partial productivity</span>
-      <span><i style="background:#E8762A;height:10px"></i>Independent productivity</span>
-    </div>
+  <figure class="ex plain">
+    <img src="/content/img/time-to-productivity.png" width="3000" height="1538" alt="Exhibit 5. Time to productivity. Illustrative timelines. Arklight reaches independent productivity at 6 months, on-the-job training at 9 months, community college at 15 months, and a four-year university at 54 months.">
     <p class="ex-take">The relevant metric is not program duration. It is time to productive capability.</p>
-    <p class="ex-note">Illustrative timelines. Actual duration varies by role, pathway design, and employer. The scale runs to month 60 so the 54-month mark and the continuing arrow both have room. On-the-job training is 0–2 months of initial training, then partial productivity through month 9.</p>
   </figure>
 
   <p>Two systems may graduate the same number of people while producing very different amounts of useful capacity. One may require eighteen months before workers become independently productive. Another may produce the same capability in six. Formal completion may look similar, but the underlying production systems are not.</p>
@@ -524,18 +492,11 @@
 
   <p>This distinction matters because different talent pathways place their costs in different places.</p>
 
-  <div class="rs-table-wrap">
-    <table class="rs-table">
-      <thead>
-        <tr><th>Pathway</th><th>Visible cost</th><th>Cost easily overlooked</th></tr>
-      </thead>
-      <tbody>
-        <tr><th>On-the-job training</th><td>Low formal training spend</td><td>Experienced-worker time, supervision, reduced productive capacity</td></tr>
-        <tr><th>Community college / university</th><td>Tuition or program funding</td><td>Time to productivity, uncertain employer yield, capability mismatch</td></tr>
-        <tr><th>Purpose-built system</th><td>Higher upfront investment</td><td>Fixed infrastructure and operating costs</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <figure class="ex">
+    <p class="ex-kicker">Exhibit 6</p>
+    <h3 class="ex-title">Visible cost, and the cost easily overlooked</h3>
+    <img src="/content/img/visible-cost.png" width="2800" height="736" alt="Exhibit 6. On-the-job training shows a low formal training spend and hides experienced-worker time. Community college and university show tuition and hide time to productivity. A purpose-built system shows a higher upfront investment and hides fixed infrastructure.">
+  </figure>
 
   <p>Looking only at the price a company is invoiced therefore creates a misleading comparison. Each model can appear inexpensive by ignoring costs that occur somewhere else in the system. The better comparison is the total cost required to produce the same amount of productive capability.</p>
 
@@ -548,33 +509,10 @@
   <p>Now the economics look different.</p>
 
   <figure class="ex">
-    <p class="ex-kicker">Exhibit 6 · Illustrative model</p>
+    <p class="ex-kicker">Exhibit 7 · Illustrative model</p>
     <h3 class="ex-title">The real cost of 100 productive workers</h3>
     <p class="ex-sub">Same assignment: produce 100 competent workers who remain through their first year. Program B costs twice as much per entrant and far less in total.</p>
-    <div class="score">
-      <article>
-        <h4>Program A</h4>
-        <dl>
-          <div class="row"><dt>Cost per entrant</dt><dd>$5,000</dd></div>
-          <div class="row"><dt>Retained productive yield</dt><dd>11.25%</dd></div>
-          <div class="row"><dt>Entrants required</dt><dd>889</dd></div>
-          <div class="row"><dt>Time to productivity</dt><dd>18 months</dd></div>
-          <div class="row"><dt>Total modeled cost</dt><dd>$13.34M</dd></div>
-          <div class="row result"><dt>Cost per retained productive worker</dt><dd>$133,444</dd></div>
-        </dl>
-      </article>
-      <article class="b">
-        <h4>Program B</h4>
-        <dl>
-          <div class="row"><dt>Cost per entrant</dt><dd>$10,000</dd></div>
-          <div class="row"><dt>Retained productive yield</dt><dd>61.2%</dd></div>
-          <div class="row"><dt>Entrants required</dt><dd>163</dd></div>
-          <div class="row"><dt>Time to productivity</dt><dd>6 months</dd></div>
-          <div class="row"><dt>Total modeled cost</dt><dd>$4.79M</dd></div>
-          <div class="row result"><dt>Cost per retained productive worker</dt><dd>$47,869</dd></div>
-        </dl>
-      </article>
-    </div>
+    <img src="/content/img/real-cost.png" width="2800" height="1086" alt="Exhibit 7. Program A costs $5,000 per entrant, retains 11.25 percent, needs 889 entrants, takes 18 months, and costs $133,444 per retained productive worker. Program B costs $10,000 per entrant, retains 61.2 percent, needs 163 entrants, takes 6 months, and costs $47,869 per retained productive worker.">
     <p class="ex-take">Program B costs twice as much per entrant, and produces the required workforce at a much lower total economic cost. $133,444 versus $47,869 per retained productive worker.</p>
     <p class="ex-note">Illustrative model. Not representative of a particular institution or pathway. Program A assumes 30% completion, 50% competency among completers, and 25% first-year attrition. Program B assumes 80% completion, 90% competency, and 15% attrition. Modeled totals include extraordinary supervision and an assumed economic cost of delayed productive capacity.</p>
   </figure>
@@ -590,7 +528,7 @@
   <p>The process can be reduced to a simple sequence: entered, completed, competent, productive, retained. Every transition can reduce the final yield.</p>
 
   <figure class="ex">
-    <p class="ex-kicker">Supporting visual · Illustrative</p>
+    <p class="ex-kicker">Exhibit 8 · Illustrative</p>
     <h3 class="ex-title">Where does the talent supply leak?</h3>
     <p class="ex-sub">Two systems begin with the same hundred entrants. Ribbon width is the number of people. Gray is who leaves at that step.</p>
     <div class="sankey-wrap">
@@ -647,7 +585,7 @@
   </svg>
     </div>
     <p class="ex-take">The company does not need entrants or graduates. It needs productive capability at the end of the system. 100 entrants become 11.25 retained productive workers in Program A, and 61.2 in Program B.</p>
-    <p class="ex-note">Illustrative, normalized to 100 entrants. Completion, competency among completers, and first-year retention are the assumptions in Exhibit 6. The essay does not assume a separate loss between competent and productive, so those two stages stay equal.</p>
+    <p class="ex-note">Illustrative, normalized to 100 entrants. Completion, competency among completers, and first-year retention are the assumptions in Exhibit 7. The essay does not assume a separate loss between competent and productive, so those two stages stay equal.</p>
   </figure>
 
   <p>In the illustration above, Program A ultimately retains 11.25 productive workers for every hundred entrants. To produce one hundred retained workers, it therefore requires approximately 889 people to enter the system. Program B retains slightly more than 61 productive workers for every hundred entrants and needs only about 163 entrants to reach the same output.</p>
@@ -665,15 +603,10 @@
   <p>Every month between the need for capability and the arrival of productive capability carries an economic cost.</p>
 
   <figure class="ex">
-    <p class="ex-kicker">Exhibit 7 · Illustrative</p>
+    <p class="ex-kicker">Exhibit 9 · Illustrative</p>
     <h3 class="ex-title">The cost of time</h3>
     <p class="ex-sub">Modeled economic cost of delayed productive capacity for 100 missing workers, at an assumed $50,000 a year each.</p>
-    <div class="bars" aria-hidden="true">
-      <div class="bar" style="height:33%">$2.5M</div>
-      <div class="bar" style="height:66%">$5.0M</div>
-      <div class="bar" style="height:100%">$7.5M</div>
-    </div>
-    <div class="bar-labs"><span>6 months</span><span>12 months</span><span>18 months</span></div>
+    <img src="/content/img/cost-of-time.png" width="2800" height="721" alt="Exhibit 9. Modeled delay cost is $2.5 million at 6 months, $5.0 million at 12 months, and $7.5 million at 18 months.">
     <p class="call"><b>12 months faster preserves about $5 million</b> of modeled economic value, the gap between six months and eighteen.</p>
     <p class="ex-take">Every month before capability becomes productive carries an economic cost.</p>
     <p class="ex-note">Illustrative. 100 workers required. Each missing productive worker is assigned an annual economic cost of $50,000. Six months is $2.5 million, twelve months is $5.0 million, and eighteen months is $7.5 million.</p>
@@ -706,7 +639,7 @@
   <p>The relevant question is therefore not whether producing talent is always cheaper than buying it. It is where the crossover occurs.</p>
 
   <figure class="ex">
-    <p class="ex-kicker">Exhibit 8 · Illustrative</p>
+    <p class="ex-kicker">Exhibit 10 · Illustrative</p>
     <h3 class="ex-title">The economic crossover point</h3>
     <p class="ex-sub">How the economics of buying talent and producing it change as recurring annual demand grows. No dollar scale: the essay does not provide measured costs at these volumes.</p>
     <svg class="chart" viewBox="0 0 640 340" role="img" aria-label="Illustrative chart. Buying talent starts cheaper and rises steeply. Controlling production starts higher and rises slowly. The lines cross.">
