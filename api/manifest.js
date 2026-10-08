@@ -1,10 +1,9 @@
 /**
  * GET /api/manifest
  *
- * Returns the data room's contents: document manifest, round stats, and the
- * live pipeline board. Requires a valid session — this data is confidential
- * (named prospects, deal stages, round terms) and must never ship in the
- * public HTML.
+ * Returns the data room's contents: the document manifest and the live
+ * pipeline board. Requires a valid session — this data is confidential
+ * (named prospects and deal stages) and must never ship in the public HTML.
  */
 const { getSession } = require('./_auth');
 
@@ -44,12 +43,6 @@ const TIERS = [
 // listing documents we cannot serve only advertises what we hold. To re-enable,
 // restore an object here and add tier: 2 entries to api/_docs.js.
 const WALL = null;
-
-const STATS = [
-  { k: 'STAGE', v: 'PRE-SEED' },
-  { k: 'INSTRUMENT', v: 'SAFE' },
-  { k: 'CAP', v: '$3.0M' }
-];
 
 const PIPELINE = [
   { stage: 'Identified', accent: 'idle', count: 292, summary: 'prospects mapped<br>17 now engaged' },
@@ -96,12 +89,10 @@ module.exports = async function handler(req, res) {
     })
   }));
 
-  const docCount = tiers.reduce((n, t) => n + t.docs.length, 0) + (WALL ? WALL.docs.length : 0);
-
   return res.status(200).json({
     ok: true,
     email: session.email,
-    stats: STATS.concat([{ k: 'DOCS', v: String(docCount), num: true }]),
+    stats: [],
     tiers,
     wall: WALL,
     pipeline: PIPELINE,

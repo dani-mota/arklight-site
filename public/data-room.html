@@ -117,19 +117,9 @@
   .rec{display:flex; align-items:center; gap:7px; color:var(--ember)}
   .rec .dot{background:var(--ember); box-shadow:0 0 8px var(--ember-glow); animation:pulse 1.6s ease-in-out infinite}
   @keyframes pulse{50%{opacity:.35}}
-  .statstrip{display:flex; gap:0; border-bottom:1px solid var(--bd-1); flex-wrap:wrap}
-  .statstrip div{padding:12px 20px 12px 0; margin-right:20px; display:flex; gap:9px; align-items:baseline}
-  .statstrip b{color:var(--text-0); font-weight:500; font-variant-numeric:tabular-nums}
 
   .layout{display:grid; grid-template-columns:1fr 300px; gap:28px; padding:26px 0 90px}
   @media(max-width:860px){.layout{grid-template-columns:1fr} .side{order:-1}}
-  /* Mobile: keep the stat strip but make it compact so it stops eating space. */
-  @media(max-width:640px){
-    .statstrip{gap:0}
-    .statstrip div{padding:7px 12px 7px 0; margin-right:12px; gap:5px}
-    .statstrip .lbl{font-size:8px}
-    .statstrip b{font-size:11px}
-  }
 
   .tier{border:1px solid var(--bd-1); border-radius:3px; background:var(--canvas-1); margin-bottom:10px; overflow:hidden}
   .tier > .head{display:grid; grid-template-columns:38px 1fr auto; align-items:center; gap:14px; padding:15px 16px; cursor:pointer; transition:background .12s}
@@ -337,7 +327,6 @@
           <span class="rec lbl"><span class="dot"></span>SESSION MONITORED</span>
         </div>
       </div>
-      <div class="statstrip" id="statstrip"></div>
     </div>
   </div>
 
@@ -439,7 +428,7 @@
   setInterval(tick,1000); tick();
 
   // ---- data manifest (mirrors the data-room folder) ----
-  // The document manifest, round stats and pipeline are CONFIDENTIAL and are
+  // The document manifest and pipeline are CONFIDENTIAL and are
   // never shipped in this file. They are fetched from /api/manifest, which
   // requires a valid session. Nothing below is populated until sign-in.
   var TIERS=[], WALL=null, PIPELINE=[];
@@ -492,22 +481,6 @@
     TIERS.forEach(function(t){ feed.appendChild(tierEl(t,false)); });
     if(WALL) feed.appendChild(tierEl(WALL,true));
     attachDecode();
-  }
-
-  function renderStats(stats){
-    var strip=document.getElementById("statstrip");
-    if(!strip||!stats) return;
-    strip.innerHTML="";
-    stats.forEach(function(s){
-      var d=document.createElement("div");
-      var k=document.createElement("span"); k.className="lbl"; k.textContent=s.k;
-      var v=document.createElement("b");
-      if(s.num) v.className="num";
-      if(s.tone==="ok") v.style.color="var(--verify)";
-      if(s.tone==="bad") v.style.color="var(--ember)";
-      v.textContent=s.v;
-      d.appendChild(k); d.appendChild(v); strip.appendChild(d);
-    });
   }
 
   // ---- decode-on-hover (terminal text-scramble) ----
@@ -831,7 +804,6 @@
         WALL     = m.wall     || null;
         PIPELINE = m.pipeline || [];
         setOperator(m.email);
-        renderStats(m.stats);
         var bm=document.getElementById("bmeta");
         if(bm) bm.textContent = m.pipelineMeta || "";
         buildFeed();
